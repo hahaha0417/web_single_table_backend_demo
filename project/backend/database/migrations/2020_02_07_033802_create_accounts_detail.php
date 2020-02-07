@@ -19,14 +19,14 @@ class CreateAccountsDetail extends Migration
             $table->bigIncrements('id');
             // 關注項目
             $table->unsignedBigInteger('accounts_id')->comment('會員id');
-            $table->string('name')->comment('名稱');
-            $table->string('nickname')->comment('暱稱');
-            $table->string('avatar', 512)->comment('頭像');
-            $table->string('image', 512)->comment('圖片');
-            $table->string('url', 512)->comment('連結');
-            $table->string('phone')->comment('電話');
+            $table->string('name')->comment('名稱')->nullable();
+            $table->string('nickname')->comment('暱稱')->nullable();
+            $table->string('avatar', 512)->comment('頭像')->nullable();
+            $table->string('image', 512)->comment('圖片')->nullable();
+            $table->string('url', 512)->comment('連結')->nullable();
+            $table->string('phone')->comment('電話')->nullable();
             // 暫存
-            $table->string('verify_token')->comment('驗證碼');
+            $table->string('verify_token')->comment('驗證碼')->nullable();
             
             $table->timestamps();
             // 外鍵

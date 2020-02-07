@@ -18,6 +18,7 @@ class CreateAccountsRelations extends Migration
         Schema::create('accounts_relations', function (Blueprint $table) {
             $table->unsignedBigInteger('accounts_id1')->comment('帳號id1');
             $table->unsignedBigInteger('accounts_id2')->comment('帳號id2');
+            $table->string('description')->comment('description')->nullable();
             $table->timestamps();
 
             $table->foreign('accounts_id1')->references('id')->on('accounts');

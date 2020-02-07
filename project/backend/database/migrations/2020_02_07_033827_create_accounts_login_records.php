@@ -21,7 +21,7 @@ class CreateAccountsLoginRecords extends Migration
             $table->unsignedBigInteger('accounts_id')->comment('帳號id');
             $table->string('ip')->comment('ip');
             $table->dateTime('login_time')->comment('登入時間');
-            $table->string('description')->comment('描述');
+            $table->string('description')->comment('描述')->nullable();
 
             $table->timestamps();
             // 外鍵
