@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* flex 對齊方式 */
+/* https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes */
+/* https://www.w3schools.com/css/css3_flexbox.asp */
+/* https://juejin.im/entry/581898a2a0bb9f0058873262 */
+/* 隨視窗變大變小的設法vw, vh */
+/* http://wemee.blogspot.tw/2014/12/html-css.html */
+.collapse_content {
+    /* 垂直時要設width，不然scroll可能被擋住 */
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    /* height: auto; */
+    display: block; 
+    position: relative;
+    /* flex-direction: column;    
+    flex-wrap: nowrap; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background:red; */
+}
+
+
+.title_content{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    flex: 0 0 80px;
+    display: none;
+    z-index: 1100;
+
+}
+
+.title_content .ul_button{
+    margin: auto 0;
+    width: 400px;
+    height: 80px;
+    text-align: center;
+    font-size: 1.5em;
+    /* overflow: hidden; */
+}
+
+.title_content .ul_img{
+    margin: auto auto;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+}
+
+
+
+
+.accordion_accordion{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+}
+
+.accordion_content{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+.vertical_accordion li:last-child .link {
+	border-bottom: 1px solid #CCC;
+}
+
+.bottom_content{
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    /* flex: 0 0 80px;
+    align-self: flex-end; */
+    display: block;
+    position: relative;
+    height: 80px;
+    z-index: 1000;
+    /* align-items:flex-end;
+    flex-direction: row; */
+}
+
+.content_button {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: relative;
+    float: left;
+    margin: 10px 10px;
+    z-index: 1100;
+}
+
+
+/* 置中方式 */
+ /* http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html */
+
+
+
+

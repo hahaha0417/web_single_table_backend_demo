@@ -1,0 +1,93 @@
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* body{background-color: #1F1F1F} */
+.plugin_banner {
+	width: 100%;
+	height: 500px;
+	background-color: aqua;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+.plugin_banner .plugin_banner_imgbox {
+	width: 100%;
+	height: 500px;
+	position: relative;
+	background-color: #222222;
+	overflow: hidden;
+}
+.plugin_banner .plugin_banner_img {
+	position: absolute;
+	display: none;
+	/* 要設最小寬度，不然會歪掉 */
+	min-width: 1000px;
+	left: 50%;
+	width: auto;
+	height: 500px;
+	margin-left: -500px;
+}
+.plugin_banner .plugin_banner_im {
+	display: block;
+}
+.plugin_banner .plugin_banner_change {
+	height: 100px;
+	display: block;
+	position: absolute;
+	z-index: 20;
+	opacity: 0.4;
+	transition: 0.4s;
+	top: 50%;
+	margin-top: -50px
+}
+.plugin_banner .plugin_banner_change:hover {
+	opacity: 1;
+}
+.plugin_banner .plugin_banner_pre {
+	left: 1%;
+}
+.plugin_banner .plugin_banner_next {
+	right: 1%;
+}
+.plugin_banner .plugin_banner_cirbox {
+	width: 88px;
+	position: absolute;
+	bottom: 15px;
+	z-index: 10;
+	left: 50%;
+	margin-left: -44px;
+	cursor: pointer;
+}
+.plugin_banner .plugin_banner_cir {
+	width: 12px;
+	height: 12px;
+	background-color: white;
+	opacity: 0.4;
+	float: left;
+	border-radius: 6px;
+	margin: 0 5px 0 5px;
+	cursor: pointer;
+}
+.plugin_banner .plugin_banner_cir:hover {
+	background-color: cyan;
+	transition: 0.8s;
+}
+.plugin_banner .plugin_banner_cr {
+	opacity: 1;
+}
+.plugin_banner .plugin_banner_cr:hover {
+	background-color: white;
+}

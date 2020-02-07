@@ -1,0 +1,13 @@
+這其實就是初始化框架，解析命令，做動作
+
+我不想限制格式，因此這裡請自建
+
+例如可以
+php command.php aaa:bbb:ccc:ddd:eee!test a b c
+php command.php aaa:bbb:ccc:ddd:eee!test --a=a --b=b --c=c
+用explode處理一下命令即可，命令樣式很多，參數樣式很多，寫死沒啥意義
+我這邊參數不預處理，寫個小模組parser一下即可
+
+三層以上或還有變化，其實就要寫模組了
+
+也可以直接載入框架，寫php當command，這也可以

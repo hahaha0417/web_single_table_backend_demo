@@ -1,0 +1,521 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#asus_intel *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+#asus_intel ul,
+#asus_intel ol,
+#asus_intel li {
+    margin: 0;
+    padding:0;
+}
+#asus_intel{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+#asus_intel h1,
+#asus_intel h2,
+#asus_intel h3,
+#asus_intel h4,
+#asus_intel p,
+#asus_intel a,
+#asus_intel li,
+#asus_intel b,
+#asus_intel small {
+    margin: 0;
+    padding:0;
+    line-height: normal;
+    color: white;
+}
+/* ---------- Element ---------- */
+#asus_intel{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#asus_intel img {
+    display: block;
+    margin:0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+#asus_intel .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+#asus_intel .hd-downloadbox,
+#asus_intel .hd-tagbox {
+    display: block;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;
+    text-align: center;
+    background-color: #000;
+    color:#fff;
+    margin:10px auto 20px;
+}
+#asus_intel .hd-downloadbox{
+    font-family: "Fjalla One", sans-serif;
+    line-height: 46px;
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+}
+#asus_intel .hd-tagbox{
+    border-radius: 10px;
+    width: 90%;
+    padding:15px;
+    text-transform: uppercase;
+}
+#asus_intel .hd-tagbox p{
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 400;
+}
+#asus_intel .hd-tagbox small{
+    font-weight: 400;
+    display: block;
+    line-height: 14px;
+}
+#asus_intel .hd-downloadbox:before,
+#asus_intel .hd-tagbox:before{
+    content:'';
+    display: block;
+    position: absolute;
+    top: -2px;left: -2px;
+    background: #c9c9c9;
+    z-index: -1;
+    background: #000000;
+    background: -moz-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: -webkit-linear-gradient(-20deg, #000000 0%,#c9c9c9 50%,#131313 100%);
+    background: linear-gradient(160deg, #000000 0%,#c9c9c9 50%,#131313 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313',GradientType=1 );
+}
+#asus_intel .hd-downloadbox:before{
+    width:calc(100% + 4px);
+    max-width: 204px;
+    height: 49px;
+}
+#asus_intel .hd-tagbox:before{
+    border-radius: 10px;
+    width:calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+
+#asus_intel p.hd-skewtag {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 21px;
+    font-weight: 400 !important;
+    position: relative;
+    line-height: 46px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+#asus_intel .hd-skewtag:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 45px;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: skewX(340deg);
+    -moz-transform: skewX(340deg);
+    -ms-transform: skewX(340deg);
+    -o-transform: skewX(340deg);
+    transform: skewX(340deg);
+    border: 2px solid #8D0000;
+    z-index: 0;
+}
+#asus_intel .hd-list-dot li {
+    font-size: 16px;
+    padding-left: 15px;
+    position: relative;
+}
+#asus_intel .hd-list-dot li:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+#asus_intel .txt_decoline {
+    background: url('/assets/plugin_split/asus/layout/asus_intel/image/deco-line.png') right bottom no-repeat;
+}
+#asus_intel .txt_decolineflip {
+    background: url('/assets/plugin_split/asus/layout/asus_intel/image/deco-line-flip.png') left bottom no-repeat;
+}
+#asus_intel .hd-frame:before{
+    content:"";
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding:3px;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: -1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#800c20+0,5d0600+15,9a0d0e+54,480600+100 */
+    background: #800c20; /* Old browsers */
+    background: -moz-linear-gradient(left,  #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #800c20 0%,#5d0600 15%,#9a0d0e 54%,#480600 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #800c20 0%,#5d0600 15%,#9a0d0e 54%,#480600 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#800c20', endColorstr='#480600',GradientType=1 ); /* IE6-9 */
+}
+
+#asus_intel .hd-pic01 {
+    width: 100%;
+    background: center center no-repeat;
+    background-size: 1920px;
+}
+/* ---------- Block ---------- */
+#asus_intel .hd-mobile_on,
+#asus_intel .hd-1023on {display: none; }
+
+#asus_intel .fleft {float: left; }
+#asus_intel .fright {float: right; }
+
+#asus_intel .hd-w1920,
+#asus_intel .hd-w1500,
+#asus_intel .hd-w1400,
+#asus_intel .hd-w1300,
+#asus_intel .hd-w1200,
+#asus_intel .hd-w1100,
+#asus_intel .hd-w1000,
+#asus_intel .hd-w800,
+#asus_intel .hd-w500{
+    position: relative;
+    width: 90%;
+    margin:0 auto;
+    z-index: 2;
+}
+#asus_intel .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+#asus_intel .hd-w1500 {max-width: 1500px;}
+#asus_intel .hd-w1400 {max-width: 1400px;}
+#asus_intel .hd-w1300 {max-width: 1300px;}
+#asus_intel .hd-w1200 {max-width: 1200px;}
+#asus_intel .hd-w1100 {max-width: 1100px;}
+#asus_intel .hd-w1000 {max-width: 1000px;}
+#asus_intel .hd-w800{max-width: 800px;}
+#asus_intel .hd-w500{max-width: 500px;}
+#asus_intel .hd-ib{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+#asus_intel .ib-top{vertical-align: top;}
+#asus_intel .ib-bottom{vertical-align: bottom;}
+#asus_intel .hd-col20 {width: 20%;}
+#asus_intel .hd-col25 {width: 25%;}
+#asus_intel .hd-col33 {width: 33.3333%;}
+#asus_intel .hd-col40 {width: 40%;}
+#asus_intel .hd-col45 {width: 45%;}
+#asus_intel .hd-col50 {width: 50%;}
+#asus_intel .hd-col55 {width: 55%;}
+#asus_intel .hd-col60 {width: 60%;}
+#asus_intel .hd-col65 {width: 65%;}
+#asus_intel .hd-col80 {width: 80%;}
+#asus_intel .hd-col85 {width: 85%;}
+#asus_intel .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+#asus_intel .hd-bgflip .hd-w1100,
+#asus_intel .hd-bgflip .hd-w1200,
+#asus_intel .hd-bgflip .hd-w1300,
+#asus_intel .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+/* ---------- Text ---------- */
+#asus_intel h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin:0 auto;
+
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color:#ffffff !important;
+    /*background: #fff;
+    background: -webkit-linear-gradient(black,black, white, black);
+    background: -o-linear-gradient(black,black, white, black);
+    background: -moz-linear-gradient(black,black, white, black);
+    background: linear-gradient(black,black, white, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+/*ie11 above fixed*/
+/*_:-ms-fullscreen,
+:root #asus_intel h2 {
+    background: transparent !important;
+}*/
+#asus_intel h2.right{
+    text-align: right;
+}
+#asus_intel h2 span{
+    color: #b80202;
+    font-size: 60px;
+    line-height:66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+#asus_intel h2 span.top{
+    display: block;
+    margin:0 0 30px 5px;
+}
+#asus_intel h2 span.bottom{
+    display: block;
+    margin:10px 0 0 5px;
+}
+#asus_intel h2 span.left,
+#asus_intel h2 span.center{
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+#asus_intel h2 span.center{
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+/*ie11 above fixed*/
+_:-ms-fullscreen,
+:root #asus_intel h2 span{
+    background: transparent !important;
+}
+#asus_intel h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size:  34px;
+    line-height:  38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+#asus_intel h4,
+#asus_intel h5,
+#asus_intel button,
+#asus_intel .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+#asus_intel h4{
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+#asus_intel h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+#asus_intel p,
+#asus_intel small,
+#asus_intel a,
+#asus_intel li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#asus_intel p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+#asus_intel b{
+    font-weight: bold;
+}
+#asus_intel small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+#asus_intel a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+#asus_intel a.hd-link:hover {
+    color: white;
+}
+
+#asus_intel .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+#asus_intel .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+#asus_intel .txt-center{text-align: center; }
+#asus_intel .txt-left{text-align: left; }
+#asus_intel sup{
+    display: inline-block;
+    margin-top: -7px;
+}
+
+/* ------------ SEC_intel ------------ */
+#asus_intel{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+#asus_intel h2{
+    max-width: 1300px;
+    margin-bottom: 100px;
+}
+#asus_intel h2:before{
+    content:'';
+    width: 100%;
+    height: 0;
+    padding-bottom: 30%;
+    background: url("/assets/plugin_split/asus/layout/asus_intel/image/title_intel.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+#asus_intel .hd-sec-intel {
+    padding-bottom: 50px;
+}
+#asus_intel .hd-sec-intel .hd-col80 {
+    margin: 0 auto;
+}
+#asus_intel .hd-sec-intel img {
+    width: 110px;
+    display: inline-block;
+    vertical-align: top;
+}
+#asus_intel .hd-sec-intel img~div {
+    width: calc(100% - 130px);
+    padding-left: 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+#asus_intel .hd-sec-intel img~div p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ---------- hidden-section ---------- */
+#asus_intel .hd-more {
+    width: 100%;
+    height: 61px;
+    padding:0 20px;
+    margin:50px 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_intel/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+#asus_intel .hd-btn-more {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding:0 20px;
+    margin:0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_intel/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#asus_intel .hd-sec-hidden {display: none; }
+
+@media screen and (max-width: 1280px) {
+    #asus_intel {
+        padding: 70px 0;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #asus_intel h2 {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #asus_intel {
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #asus_intel .hd-sec-intel img {
+        display: block;
+        margin: 0 auto 30px;
+    }
+}

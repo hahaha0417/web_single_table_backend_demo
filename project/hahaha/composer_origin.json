@@ -1,0 +1,36 @@
+{
+    "name": "hahaha/hahaha",
+    "description": "The Hahaha Framework.",
+    "keywords": ["framework", "hahaha", "hahahalib", "windows"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "classmap": [
+            "app",
+            "bootstrap",
+			"config",
+			"libraries"
+        ]
+    },
+    "autoload-dev": {
+    },
+    "extra": {
+        "hahaha": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

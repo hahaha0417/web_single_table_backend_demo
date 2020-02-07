@@ -1,0 +1,1209 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+
+/* ---------- RESET ---------- */
+	
+#asus_lighting *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+#asus_lighting ::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+#asus_lighting ::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+#asus_lighting ul,
+#asus_lighting ol,
+#asus_lighting li {
+    margin: 0;
+    padding:0;
+}
+#asus_lighting {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+#asus_lighting h1,
+#asus_lighting h2,
+#asus_lighting h3,
+#asus_lighting h4,
+#asus_lighting p,
+#asus_lighting a,
+#asus_lighting li,
+#asus_lighting b,
+#asus_lighting small {
+    margin: 0;
+    padding:0;
+    line-height: normal;
+    color: white;
+}
+/* ---------- Element ---------- */
+#asus_lighting{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#asus_lighting img {
+    display: block;
+    margin:0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+#asus_lighting .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* ---------- Block ---------- */
+#asus_lighting .hd-mobile_on,
+#asus_lighting .hd-1023on {display: none; }
+
+#asus_lighting .fleft {float: left; }
+#asus_lighting .fright {float: right; }
+
+#asus_lighting .hd-w1920,
+#asus_lighting .hd-w1500,
+#asus_lighting .hd-w1400,
+#asus_lighting .hd-w1300,
+#asus_lighting .hd-w1200,
+#asus_lighting .hd-w1100,
+#asus_lighting .hd-w1000,
+#asus_lighting .hd-w800,
+#asus_lighting .hd-w500{
+    position: relative;
+    width: 90%;
+    margin:0 auto;
+    z-index: 2;
+}
+#asus_lighting .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+#asus_lighting .hd-w1500 {max-width: 1500px;}
+#asus_lighting .hd-w1400 {max-width: 1400px;}
+#asus_lighting .hd-w1300 {max-width: 1300px;}
+#asus_lighting .hd-w1200 {max-width: 1200px;}
+#asus_lighting .hd-w1100 {max-width: 1100px;}
+#asus_lighting .hd-w1000 {max-width: 1000px;}
+#asus_lighting .hd-w800{max-width: 800px;}
+#asus_lighting .hd-w500{max-width: 500px;}
+#asus_lighting .hd-ib{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+#asus_lighting .ib-top{vertical-align: top;}
+#asus_lighting .ib-bottom{vertical-align: bottom;}
+#asus_lighting .hd-col20 {width: 20%;}
+#asus_lighting .hd-col25 {width: 25%;}
+#asus_lighting .hd-col33 {width: 33.3333%;}
+#asus_lighting .hd-col40 {width: 40%;}
+#asus_lighting .hd-col45 {width: 45%;}
+#asus_lighting .hd-col50 {width: 50%;}
+#asus_lighting .hd-col55 {width: 55%;}
+#asus_lighting .hd-col60 {width: 60%;}
+#asus_lighting .hd-col65 {width: 65%;}
+#asus_lighting .hd-col80 {width: 80%;}
+#asus_lighting .hd-col85 {width: 85%;}
+#asus_lighting .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+#asus_lighting .hd-bgflip .hd-w1100,
+#asus_lighting .hd-bgflip .hd-w1200,
+#asus_lighting .hd-bgflip .hd-w1300,
+#asus_lighting .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+/* ---------- Text ---------- */
+#asus_lighting h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin:0 auto;
+
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color:#ffffff !important;
+    /*background: #fff;
+    background: -webkit-linear-gradient(black,black, white, black);
+    background: -o-linear-gradient(black,black, white, black);
+    background: -moz-linear-gradient(black,black, white, black);
+    background: linear-gradient(black,black, white, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+/*ie11 above fixed*/
+/*_:-ms-fullscreen,
+:root #asus_lighting h2 {
+    background: transparent !important;
+}*/
+#asus_lighting h2.right{
+    text-align: right;
+}
+#asus_lighting h2 span{
+    color: #b80202;
+    font-size: 60px;
+    line-height:66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+
+#asus_lighting h2 span.top{
+    display: block;
+    margin:0 0 30px 5px;
+}
+#asus_lighting h2 span.bottom{
+    display: block;
+    margin:10px 0 0 5px;
+}
+#asus_lighting h2 span.left,
+#asus_lighting h2 span.center{
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+#asus_lighting h2 span.center{
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+/*ie11 above fixed*/
+#asus_lighting _:-ms-fullscreen,
+:root #asus_lighting h2 span{
+    background: transparent !important;
+}
+#asus_lighting h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size:  34px;
+    line-height:  38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+#asus_lighting h4,
+#asus_lighting h5,
+#asus_lighting button,
+#asus_lighting .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+#asus_lighting h4{
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+#asus_lighting h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+#asus_lighting p,
+#asus_lighting small,
+#asus_lighting a,
+#asus_lighting li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#asus_lighting p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+#asus_lighting b{
+    font-weight: bold;
+}
+#asus_lighting small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+#asus_lighting a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+#asus_lighting a.hd-link:hover {
+    color: white;
+}
+
+#asus_lighting .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+#asus_lighting .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+#asus_lighting .txt-center{text-align: center; }
+#asus_lighting .txt-left{text-align: left; }
+#asus_lighting sup{
+    display: inline-block;
+    margin-top: -7px;
+}
+
+/* ------------ SEC_lighting ------------ */
+#asus_lighting{
+    position: relative;
+    padding:120px 0 0;
+    z-index: 0;
+}
+#asus_lighting h2:before{   
+    content:'';
+    display: block;
+    width: 100%;
+    padding-bottom: 30%;
+    height: 10%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("/assets/plugin_split/asus/layout/asus_lighting/image/title_lighting.png") 0 0 no-repeat;
+    background-size: cover;
+    z-index: -2;
+    
+}
+#asus_lighting h2{
+    margin-bottom: 100px;
+}
+/* ------------ oled ------------ */
+#asus_lighting .hd-sec-oled{
+    padding:50px 0;
+}
+#asus_lighting .hd-sec-oled .hd-col40 img{
+    width: 200px;
+}
+#asus_lighting .hd-sec-oled .hd-col70{
+    margin-right: -20%;
+    position: relative;
+}
+#asus_lighting .hd-sec-oled .hd-col70 .hd-window{
+    width: 20%;
+    position: absolute;
+    top: 37.75%;
+    left: 38%;
+    z-index: -1;
+}
+/* ------------ lighting ------------ */
+#asus_lighting .hd-sec-lighting{
+    padding:100px 0;
+    background: 90% top no-repeat;
+}
+
+#asus_lighting .hd-lighting > img{
+    width: 100%;
+}
+#asus_lighting .hd-lightingbox{
+    position: relative;
+    width: 515px;
+    height: 100%;
+}
+#asus_lighting .hd-lighting{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+/*#asus_lighting .hd-lightingbott{
+    position: absolute;
+    width: 200%;
+    bottom: 40px;
+    left: 78%;
+}
+#asus_lighting .hd-lightingbott small{
+    display: block;
+    font-weight: 400;
+    vertical-align: middle;
+    width: 52%;
+}*/
+
+#asus_lighting .hd-sec-lighting .hd-col55{
+    box-sizing: border-box;
+    padding:0 1% 0 2%;
+    position: relative;
+}
+#asus_lighting .hd-sec-lighting h3{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#asus_lighting .hd-controls{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: -5%;
+    position: relative;
+}
+#asus_lighting .hd-controls li{
+    width: 20%;
+    max-width: 130px;
+    cursor:pointer;
+    opacity: .5;
+}
+#asus_lighting .hd-controls li:hover,
+#asus_lighting .hd-controls li.hd-active{
+    opacity: 1;
+}
+#asus_lighting .hd-controls li img{
+    display: block;
+    width: 65px;
+    height: 65px;
+    margin:20px auto 10px;
+}
+#asus_lighting .hd-controls b{
+    font-size: 16px;
+    display: block;
+}
+#asus_lighting .hd-controls small{
+    width: 113px;
+    height: 65px;
+}
+
+#asus_lighting #colorpicker{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#asus_lighting #colorbox{
+    width: 98%;
+    height: 0;
+    padding-bottom: 127%;
+    margin-top: 1px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    z-index: -1;
+    overflow: hidden;
+}
+#asus_lighting #color,
+#asus_lighting #greybg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#asus_lighting #greybg {
+    background-color: #000000;
+    z-index: -2;
+}
+/* ------------ rgbheader ------------ */
+#asus_lighting .hd-sec-rgbheader{
+    padding:50px 0;
+}
+#asus_lighting .hd-sec-rgbheader .fleft{
+    padding-right: 4%;
+    padding-bottom: 30%;
+    position: relative;
+    z-index: 2;
+}
+#asus_lighting .hd-sec-rgbheader img{
+    position: absolute;
+    max-width: none !important;
+    width: 110%;
+    top: 20%;
+    left: -5%;
+}
+/* ------------ sdk ------------ */
+#asus_lighting .hd-sec-sdk h3 + p{
+    margin-bottom: 70px;
+}
+#asus_lighting .hd-sec-sdk .hd-col50.left{
+    vertical-align: top;
+    padding-right: 5%;
+}
+#asus_lighting .hd-sec-sdk .hd-col50.right{
+    vertical-align: top;
+    padding-left: 5%;
+}
+#asus_lighting .hd-sec-sdk .hd-col50.left > img{
+    -webkit-transform: perspective(660px) rotateY(10deg);
+       -moz-transform: perspective(660px) rotateY(10deg);
+        -ms-transform: perspective(660px) rotateY(10deg);
+         -o-transform: perspective(660px) rotateY(10deg);
+            transform: perspective(660px) rotateY(10deg);
+}
+#asus_lighting .hd-sec-sdk .hd-col50.right > img{
+    -webkit-transform: perspective(660px) rotateY(-10deg);
+       -moz-transform: perspective(660px) rotateY(-10deg);
+        -ms-transform: perspective(660px) rotateY(-10deg);
+         -o-transform: perspective(660px) rotateY(-10deg);
+            transform: perspective(660px) rotateY(-10deg);
+}
+#asus_lighting .hd-sec-sdk img + p{
+    position: relative;
+    margin-top: -70px;
+    z-index: 2;
+}
+#asus_lighting .hd-sec-sdk .hd-col50.left p{
+    padding:0 15% 0 5%;
+}
+#asus_lighting .hd-sec-sdk .hd-col50.right p{
+    padding:0 5% 0 15%;
+}
+#asus_lighting #sdk_logo{
+    display: block;
+    position: absolute;
+    top: 0;right: 0;bottom: 0;left: 0;
+    margin:auto;
+}
+/* ------------ sync ------------ */
+#asus_lighting .hd-sec-sync {
+    max-width: 1920px;
+    margin:0 auto;
+    position: relative;
+    padding-top: 50px;
+}
+#asus_lighting .title_logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+}
+#asus_lighting .hd-sec-sync .hd-col65 {
+    margin-left: auto;
+    padding-bottom: 28%;
+}
+#asus_lighting .hd-sec-sync .hd-bg{
+    width: 100%;
+    height: 0;
+    padding-bottom: 41%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#asus_lighting .hd-sec-sync .hd-bg img{
+    width: 100%;
+    max-width: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#asus_lighting .hd-sec-sync .hd-bg img:first-child{
+    -webkit-animation: colorrun 3s infinite;
+       -moz-animation: colorrun 3s infinite;
+        -ms-animation: colorrun 3s infinite;
+         -o-animation: colorrun 3s infinite;
+            animation: colorrun 3s infinite;
+}
+#asus_lighting .hd-sec-sync span{
+    display: block;
+    width: 100%;
+    padding-bottom: 41%;
+}
+
+/* ------------ SEC_MORE------------ */
+#asus_lighting #more{
+    padding-top: 100px;
+}
+#asus_lighting #more h2{
+    padding-bottom: 0;
+    margin-bottom: 100px;
+}
+#asus_lighting #more h2:before{
+    content:'';
+    width: 100%;
+    height: 0;
+    padding-bottom: 24%;
+    background: url("/assets/plugin_split/asus/layout/asus_lighting/image/title_more.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* ---------- hidden- -section--------- */
+#asus_lighting .hd-more {
+    width: 100%;
+    height: 61px;
+    padding:0 20px;
+    margin:50px 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_lighting/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+#asus_lighting .hd-btn-more {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding:0 20px;
+    margin:0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_lighting/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#asus_lighting .hd-sec-hidden {display: none; }
+/* ---------- ANIMATION ---------- */
+@-webkit-keyframes fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@-webkit-keyframes colorrun {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    to {
+        -webkit-filter: hue-rotate(359deg);
+        filter: hue-rotate(359deg);
+    }
+}
+@keyframes colorrun {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    to {
+        -webkit-filter: hue-rotate(359deg);
+        filter: hue-rotate(359deg);
+    }
+}
+/* ---------- color effect ---------- */
+#asus_lighting .hd-rainbow{
+    width: 500% !important;
+    background: url("/assets/plugin_split/asus/layout/asus_lighting/image/rainbow.jpg") 0 0 repeat;
+}
+#asus_lighting .hd-comet{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ff0000+30,ff0000+77,000000+100 */
+    background: #000000; /* Old browsers */
+    background: -moz-linear-gradient(110deg,  #000000 0%,#000000 20%, #ff0000 30%, #ff0000 77%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(110deg,  #000000 0%,#000000 20%,#ff0000 30%,#ff0000 77%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(110deg,  #000000 0%,#000000 20%,#ff0000 30%,#ff0000 77%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+    box-shadow: 0 0 50px 100px rgba(0,0,0,1);
+}
+#asus_lighting .hd-flash{
+    /* http://colorzilla.com/gradient-editor/#000000+0,000000+28,ff0000+48,ff0000+61,000000+79,000000+100 */
+    background: #820303; /* Old browsers */
+    background: -moz-linear-gradient(110deg,  #820303 0%, #820303 28%, #ff0000 48%, #ff0000 61%, #820303 79%, #820303 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(110deg,  #820303 0%,#820303 28%,#ff0000 48%,#ff0000 61%,#820303 79%,#820303 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(110deg,  #820303 0%,#820303 28%,#ff0000 48%,#ff0000 61%,#820303 79%,#820303 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#820303', endColorstr='#820303',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#asus_lighting .hd-flashbg{
+    background-color: #820303 !important;
+    -webkit-animation: colorrun 6s infinite;
+    -o-animation: colorrun 6s infinite;
+    animation: colorrun 6s infinite;
+}
+#asus_lighting .hd-yoyo {
+    box-shadow: 0 0 100px 100px #000 inset;
+}
+
+#asus_lighting .hd-starryNight {background: #820303 !important; }
+
+#asus_lighting .starry_night {display: none; }
+#asus_lighting .starry_night li {
+    width: 10%;
+    height: 10%;
+    background-color: #FFF;
+    position: absolute;
+    background: #ff0000;
+    -webkit-animation: starryNight 2s infinite;
+    -o-animation: starryNight 2s infinite;
+    animation: starryNight 2s infinite;
+    opacity: 0;
+}
+
+#asus_lighting .starry_night li:nth-child(1) {
+    width: 20%;
+    height: 40%;
+    left: 5%;
+    top: 8%;
+    animation-delay: .4s;
+}
+#asus_lighting .starry_night li:nth-child(2) {
+    width: 20%;
+    height: 5%;
+    left: 40%;
+    top: 52.5%;
+    animation-delay: 1.5s;
+}
+#asus_lighting .starry_night li:nth-child(3) {
+    width: 45.5%;
+    height: 40%;
+    left: 16%;
+    top: 50%;
+    -webkit-transform: skewX(-20deg);
+       -moz-transform: skewX(-20deg);
+        -ms-transform: skewX(-20deg);
+         -o-transform: skewX(-20deg);
+            transform: skewX(-20deg);
+    animation-delay: .25s;
+}
+#asus_lighting .starry_night li:nth-child(4) {
+    width: 20%;
+    height: 15%;
+    left: 58%;
+    top: 72%;
+    animation-delay: .75s;
+}
+#asus_lighting .starry_night li:nth-child(5) {
+    width: 10%;
+    height: 20%;
+    left: 90%;
+    top: 2%;
+    animation-delay: .1s;
+}
+
+@-webkit-keyframes static{
+    0% {opacity: 1}
+    50%{opacity: 1}
+}
+@keyframes static{
+    0% {opacity: 1}
+    50%{opacity: 1}
+}
+@-webkit-keyframes breathing{
+    0% {opacity: 1}
+    50%{opacity: 0}
+}
+@keyframes breathing{
+    0% {opacity: 1}
+    50%{opacity: 0}
+}
+@-webkit-keyframes strobing{
+    0% {opacity: 1}
+    50%{opacity: 0}
+}
+@keyframes strobing{
+    0% {opacity: 1}
+    50%{opacity: 0}
+}
+@-webkit-keyframes music{
+    0%  {opacity: 1}
+    10% {opacity: .3}
+    40% {opacity: 1}
+    60% {opacity: .3}
+    70% {opacity: 1}
+    100%{opacity: .3}
+}
+@keyframes music{
+    0%  {opacity: 1}
+    10% {opacity: .3}
+    40% {opacity: 1}
+    60% {opacity: .3}
+    70% {opacity: 1}
+    100%{opacity: .3}
+}
+@-webkit-keyframes cycle{
+    0%		{background-color: red}
+    15%		{background-color: orange}
+    30%		{background-color: yellow}
+    45%		{background-color: #00CB07}
+    60%		{background-color: #07A9FF}
+    75%		{background-color: #1044FF}
+    90%		{background-color: #a12fd9}
+    100%	{background-color: red}
+}
+@keyframes cycle{
+    0%		{background-color: red}
+    15%		{background-color: orange}
+    30%		{background-color: yellow}
+    45%		{background-color: #00CB07}
+    60%		{background-color: #07A9FF}
+    75%		{background-color: #1044FF}
+    90%		{background-color: #a12fd9}
+    100%	{background-color: red}
+}
+@-webkit-keyframes rainbow{
+    0%	{-webkit-transform: translateX(-50%); }
+    100%{-webkit-transform: translateX(-5%); }
+}
+@keyframes rainbow{
+    0%	{transform: translateX(-50%); }
+    100%{transform: translateX(-5%); }
+}
+@-webkit-keyframes cpu{
+    0%		{background-color: red}
+    30%		{background-color: yellow}
+    60%		{background-color: green}
+    90%		{background-color: yellow;}
+}
+@keyframes cpu{
+    0%		{background-color: red}
+    30%		{background-color: yellow}
+    60%		{background-color: green}
+    90%		{background-color: yellow;}
+}
+@keyframes comet{
+    0%	{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-100%);
+    }
+    100%{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-25%);
+    }
+}
+@-webkit-keyframes comet{
+    0%	{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-100%);
+    }
+    100%{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-25%);
+    }
+}
+@keyframes flash{
+    0%	{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-100%);
+    }
+    100%{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(50%);
+    }
+}
+@-webkit-keyframes flash{
+    0%	{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(-100%);
+    }
+    100%{
+        z-index: -1;
+        width: 200%;
+        transform: translateX(50%);
+    }
+}
+@-webkit-keyframes yoyo {
+    0% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-120%, -30%);
+    }
+    80% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-20%, -30%);
+    }
+    81% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-120%, -30%);
+    }
+    100% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-20%, -30%);
+    }
+}
+@keyframes yoyo {
+    0% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-120%, -30%);
+    }
+    80% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-20%, -30%);
+    }
+    81% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-120%, -30%);
+    }
+    100% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        transform: translate(-20%, -30%);
+    }
+}
+
+@-webkit-keyframes wave {
+    0% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-120%, -30%);
+    }
+    50% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-20%, -30%);
+    }
+    100% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-120%, -30%);
+    }
+}
+@keyframes wave {
+    0% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-120%, -30%);
+    }
+    50% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-20%, -30%);
+    }
+    100% {
+        z-index: -1;
+        width: 150%;
+        height: 180%;
+        box-shadow: 0 0 100px 100px #000 inset;
+        transform: translate(-120%, -30%);
+    }
+}
+
+@-webkit-keyframes starryNight {
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: 1; }
+}
+
+@keyframes starryNight {
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: 1; }
+}
+
+
+/* ---------------------------------- */
+
+@media screen and (min-width: 2250px) {
+   
+    #asus_lighting #more{padding-top: 150px; }
+    #asus_lighting .hd-sec-sync .hd-col65 {padding-bottom: 35%; }
+}
+@media screen and (min-width: 1921px) {
+   #asus_lighting .hd-sec-sync .hd-col65 {padding-bottom: 28%; }
+}
+
+@media screen and (max-width: 1440px){
+   
+    #asus_lighting h2{margin-bottom: 50px;}
+    #asus_lighting .hd-sec-lighting h2{margin-bottom: 50px; }
+    #asus_lighting .hd-sec-lighting h3{margin: 30px 0 15px; }
+
+    #asus_lighting .hd-sec-sync .hd-col65{
+        width: 60%;
+        padding-bottom: 25%;
+    }
+    #asus_lighting .hd-sec-sync h3{margin-bottom: 10px; }
+
+   
+}
+@media screen and (max-width: 1366px){
+   
+    #asus_lighting .hd-sec-sync .hd-bg img{
+        max-width: none!important;
+        width: 120%;
+        left: -10%;
+        right: auto;
+    }
+
+    
+}
+@media screen and (max-width: 1280px){
+  
+    /* ------------ SEC_LIGHTING ------------ */
+        #asus_lighting .hd-sec-oled .hd-col70{width: 65%; }
+        #asus_lighting .hd-sec-lighting h2{margin-bottom: 30px; }
+        #asus_lighting .hd-sec-lighting .hd-col55{width: 44%; }
+        #asus_lighting .hd-controls li img{
+            width: 50px;
+            height: 50px;
+        }
+        #colorpicker{right: -50px; }
+
+    #asus_lighting .hd-sec-rgbheader img{
+        position: absolute;
+        top: 15%;
+        right: -5%;
+    }
+    #asus_lighting #sdk_logo{width: 200px; }
+
+    #asus_lighting .hd-sec-rgbheader .fleft{padding-bottom:25%;}
+  
+}
+
+@media screen and (max-width: 1024px){
+ 
+    /* ------------ SEC_LIGHTING ------------ */
+        #asus_lighting .hd-sec-lighting{
+            background-position: right top;
+            background-size: 500px;
+        }
+        #asus_lighting .hd-sec-lighting h3,
+        #asus_lighting .hd-sec-lighting h3+p{
+            margin-bottom: 10px;
+        }
+    #asus_lighting .hd-sec-sync h3{margin-bottom: 0; }
+
+}
+@media screen and (max-width: 1023px){
+    #asus_lighting .hd-1023on{display: block; }
+    #asus_lighting .hd-1023off{display: none; }
+    #asus_lighting h2{
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    #asus_lighting #protection h2{
+        font-size: 90px;
+        line-height: 80px;
+    }
+    #asus_lighting h2 span{
+        font-size: 36px;
+        line-height: 36px;
+    }
+    #asus_lighting h2 span.top{margin-bottom: 30px; }
+    #asus_lighting h2 span.left{
+        width: 130px;
+        line-height: 25px;
+    }
+    #asus_lighting h2 span.center{
+        width: 90px;
+        line-height: 25px;
+    }
+  
+    /* ------------ SEC_LIGHTING ------------ */
+        #asus_lighting .hd-sec-lighting .hd-col55{
+            width: 100%;
+            float:none;
+        }
+        #asus_lighting .hd-sec-lighting h3{
+            margin-top: 0;
+        }
+        #asus_lighting .hd-sec-lighting h3,
+        #asus_lighting .hd-sec-lighting h3+p{
+            margin-bottom: 30px;
+        }
+        #asus_lighting .hd-lightingbox{
+            width: 50%;
+            margin:50px auto 0;
+            float:none;
+        }
+        #asus_lighting #colorpicker{
+            right: 10px;
+        }
+    /* ------------ rgbheader ------------ */
+        #asus_lighting .hd-sec-rgbheader .fleft{
+            width: 100%;
+            float:none;
+            padding-bottom: 0;
+            margin:0 auto;
+        }
+        #asus_lighting .hd-sec-rgbheader img{
+            position: relative;
+            top: 0;right: 0;
+        }
+    #asus_lighting #sdk_logo{width: 150px; }
+  
+}
+@media screen and (max-width: 768px){
+    #asus_lighting .hd-mobile_on{display: block; }
+    #asus_lighting .hd-mobile_off{display: none; }
+    #asus_lighting h3{
+        font-size: 32px;
+        line-height: 32px;
+    }
+    #asus_lighting .hd_box {
+        width: 100%;
+        height: auto;
+        padding: 50px 20px 10px;
+    }
+   
+    /* ------------ oled ------------ */
+        #asus_lighting .hd-sec-oled{
+            padding-bottom: 0;
+            margin-bottom: -30px;
+        }
+        #asus_lighting .hd-sec-oled .hd-col40,
+        #asus_lighting .hd-sec-oled .hd-col70{
+            width: 100%;
+            margin:0 auto;
+        }
+    /* ------------ SEC_LIGHTING ------------ */
+        #asus_lighting .hd-sec-lighting{padding-bottom: 0; }
+    /* ------------ rgbheader ------------ */
+        #asus_lighting .hd-sec-rgbheader .fright{width: 90%; }
+    /* ------------ sync ------------ */
+        #asus_lighting .hd-sec-sync .hd-col65{
+            width: 100%;
+            padding-bottom: 0;
+        }
+        #asus_lighting .hd-sec-sync .hd-bg{
+            position: relative;
+            top: -30px;
+        }
+  
+}
+@media screen and (max-width: 620px){
+    #asus_lighting h2,
+    #asus_lighting #protection h2{
+        font-size: 50px;
+        line-height: 40px;
+    }
+    #asus_lighting h2 span{
+        font-size: 30px;
+        line-height: 30px;
+    }
+    #asus_lighting h2 span.left{
+        line-height: 20px;
+        width: 100px;
+    }
+    #asus_lighting h2 span.top{margin-bottom: 10px; }
+    #asus_lighting h3{
+        font-size: 24px;
+        line-height: 24px;
+    }
+    #asus_lighting h4{
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+   
+    #asus_lighting .hd-lightingbox{
+        width: 100%;
+        max-width: 500px;
+    }
+    #asus_lighting #colorpicker{display: none !important; }
+    /* ------------ rgbheader ------------ */
+        #asus_lighting .hd-sec-rgbheader .hd-description li:nth-child(1){left: 50%; }
+        #asus_lighting .hd-sec-rgbheader .hd-description li:nth-child(2){left: 15%; }
+    /* ------------ sdk ------------ */
+        #asus_lighting .hd-sec-sdk h3 + p{margin-bottom: 0; }
+        #asus_lighting .hd-sec-sdk .hd-col50.left,
+        #asus_lighting .hd-sec-sdk .hd-col50.right,
+        #asus_lighting .hd-sec-sdk .hd-col50.left p,
+        #asus_lighting .hd-sec-sdk .hd-col50.right p{
+            width: 100%;
+            padding: 0;
+        }
+        #asus_lighting .hd-sec-sdk .hd-col50.left > img,
+        #asus_lighting .hd-sec-sdk .hd-col50.right > img{
+            -webkit-transform: none;
+               -moz-transform: none;
+                -ms-transform: none;
+                 -o-transform: none;
+                    transform: none;
+        }
+        #asus_lighting #sdk_logo{position: relative;}
+   
+}
+@media screen and (max-width: 480px){
+   
+    /* ------------ SEC_LIGHTING ------------ */
+    #asus_lighting #colorpicker{display: none !important; }
+        #asus_lighting .hd-lightingbox{
+            width: 90%;
+            margin-left: auto;
+            margin-top: 10px;
+        }
+        #asus_lighting .hd-controls li{width: 25%; }
+    /* ------------ rgbheader ------------ */
+        #asus_lighting .hd-sec-rgbheader .hd-description li:nth-child(1){
+            top: 0;
+            left: 40%;
+        }
+        #asus_lighting .hd-sec-rgbheader .hd-description li:nth-child(2){left: 0; }
+
+    #asus_lighting .title_logo{
+        display: block;
+        margin:0 auto;
+    }
+
+    #asus_lighting .hd-sec-languard .fright li{left: 70%; }
+
+    #asus_lighting #gamevideo{margin-bottom: 0; }
+
+    #asus_lighting .hd-sec-overview .hd-menu li{width: 45%; }
+
+    
+}

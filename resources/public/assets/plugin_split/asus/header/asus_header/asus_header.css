@@ -1,0 +1,321 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.asus_header .width-line-gray {
+    background: url("https://www.asus.com/media/img/product-header-gray-bg.jpg") no-repeat 0px 100%;
+    background-size: 100%;
+    margin-left: 0px !important
+}
+
+
+
+.asus_header .accessory-zone {
+    list-style: none;
+    margin-left: 0
+}
+
+.asus_header .accessory-zone li {
+    display: block;
+    float: left;
+    width: 200px
+}
+
+.asus_header .accessory-zone li a {
+    text-decoration: none;
+    color: #333
+}
+
+.asus_header .accessory-zone li a:hover {
+    color: #33b9ff
+}
+
+.asus_header .similar-zone a .product-name,
+.asus_header .accessory-zone a .product-name {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 0.5em
+}
+
+.asus_header #aside-button a {
+    margin-right: 10px
+}
+
+.asus_header #product-quick-award li {
+    display: inline-block;
+    margin-right: 15px;
+    *float: left
+}
+
+
+
+
+
+
+
+.asus_header.row {
+    margin-left: 0;
+    display: block;
+    flex-wrap: inherit;
+    float: left;
+}
+
+.asus_header #product-main-image {
+    float: left;
+    width: 47%;
+    margin-left: 0;
+    margin-top: 40px
+}
+
+.asus_header #product-info-zone {
+    width: 50%;
+    float: right;
+}
+
+.asus_header #product-main-image {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    float: left;
+    width: 47%;
+    margin-left: 0;
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+
+
+.asus_header .span6 {
+    margin-left: 24px;
+    margin-bottom: 20px;
+}
+
+.asus_header .product-slogan {
+    margin: 10px 0;
+    font-family: inherit;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    font-size: 26px;
+    line-height: 120%;
+    font-weight: normal;
+    line-height: 34px;
+    margin-bottom: 26px;
+    padding-bottom: 0px;
+}
+
+.asus_header #product-main-image .product-intro {
+    width: 96%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.asus_header dl, .asus_header ol, .asus_header ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.asus_header dl, .asus_header ol, .asus_header ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.asus_header ul, .asus_header ol {
+    padding: 0;
+    margin: 0 0 10px 25px;
+}
+
+.asus_header li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+@media(max-width: 959px) and (min-width: 720px) {
+    .asus_header .span6 {
+        margin-left: 1%;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 720px) {
+    .asus_header .span6 {
+        width: auto!important;
+        margin-left: 0!important;
+        display: block;
+    }
+    
+}
+
+@media (max-width: 719px) {
+    .asus_header .span6 {
+        width: auto!important;
+        margin-left: 0!important;
+        display: block;
+    }
+}
+
+.asus_header #product-main-image .product-intro {
+    width: 96%;
+    margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+
+.asus_header .product-intro ul {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAAHe9q7oAAAAGXRFW…wMDJIAAQRjJIMY/4GMFwABBpdigIDnTEAiBSQDxE9BbABCMROmV/rSAQAAAABJRU5ErkJggg==);
+}
+
+
+
+
+
+.asus_header .product-intro ul li {
+    font: inherit;
+    margin: 0;
+    border: 0;
+    font-size: 12px;
+    padding: 5px 0;
+    line-height: 14px;
+    
+    vertical-align: baseline;
+}
+.asus_header .product-intro ul::selection {
+    
+    color: #CE0000;
+}
+
+.asus_header label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+    line-height: normal;
+    font-family: "Segoe UI", "微軟正黑體", "Microsoft JhengHei", "Arial", "新細明體";
+    margin-left: -18px;
+    
+    
+    margin-right: 0px;
+}
+
+.asus_header .add-to-list input[type="checkbox"] {
+    margin-right: 0px;
+    margin-left: 0px;
+    float: left;
+    width: 20px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 8px;
+    line-height: inherit;
+}
+
+.asus_header .checkbox {
+    min-height: 20px;
+    padding-left: 18px;
+}
+
+.asus_header .add-to-list {
+    color: #33b9ff;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.asus_header .add-to-list {
+    color: #000;
+}
+
+.asus_header #product-quick-logo {
+    margin-bottom: 10px;
+}
+
+.asus_header #product-quick-logo .unstyled li {
+    display: block;
+    float: left;
+    padding-right: 14px;
+}
+
+.asus_header #product-quick-logo .unstyled {
+    float: right;
+    
+}
+
+.asus_header #product-quick-logo {
+    display: none;
+}
+
+.asus_header .hide {
+    display: none;
+}
+
+.asus_header #product-info-zone img {
+    height: auto;
+    vertical-align: middle;
+    border: none;
+    -ms-interpolation-mode: bicubic;
+}
+
+@media (max-width: 1000px) {
+    .asus_header #product-info-zone img {
+        max-width: 100%!important;
+        
+    }
+}
+
+
+
+
+
+
+
+#rog_black_style .product-slogan {
+    color: #c8c8c8;;
+}
+
+#rog_black_style .product-intro ul {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAAHe9q7oAAAAGXRFW…4PEEAwhicTAwODJBDPAwgwRrA8hAMCz0EyKUD8AoifgtgAPDwOBRShMx8AAAAASUVORK5CYII=);
+}
+
+#rog_black_style .product-intro ul {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAAHe9q7oAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADpJREFUeNpiWMjM5AkQQAxA4hlAAIEJIP4PEEAwhicTAwODJBDPAwgwRrA8hAMCz0EyKUD8AoifgtgAPDwOBRShMx8AAAAASUVORK5CYII=)
+}
+
+#rog_black_style .product-intro ul li {
+    color: #ffffff
+}
+
+#rog_black_style .asus_header .add-to-list {
+    color: #a10302;
+}
+
+
+#rog_black_style .asus_header .add-to-list {
+    color: #717171;
+}
+

@@ -1,0 +1,1580 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#asus_audio * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+
+::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+
+#asus_audio ul,
+#asus_audio ol,
+#asus_audio li {
+    margin: 0;
+    padding: 0;
+}
+
+#asus_audio {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+#asus_audio h1,
+#asus_audio h2,
+#asus_audio h3,
+#asus_audio h4,
+#asus_audio p,
+#asus_audio a,
+#asus_audio li,
+#asus_audio b,
+#asus_audio small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+
+/* ---------- Element ---------- */
+
+#asus_audio {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 0;
+}
+
+#asus_audio img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+#asus_audio .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#asus_audio .hd-downloadbox,
+#asus_audio .hd-tagbox {
+    display: block;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    margin: 10px auto 20px;
+}
+
+#asus_audio .hd-downloadbox {
+    font-family: "Fjalla One", sans-serif;
+    line-height: 46px;
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+}
+
+#asus_audio .hd-tagbox {
+    border-radius: 10px;
+    width: 90%;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+#asus_audio .hd-tagbox p {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#asus_audio .hd-tagbox small {
+    font-weight: 400;
+    display: block;
+    line-height: 14px;
+}
+
+#asus_audio .hd-downloadbox:before,
+#asus_audio .hd-tagbox:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #c9c9c9;
+    z-index: -1;
+    background: #000000;
+    background: -moz-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: -webkit-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: linear-gradient(160deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1);
+}
+
+#asus_audio .hd-downloadbox:before {
+    width: calc(100% + 4px);
+    max-width: 204px;
+    height: 49px;
+}
+
+#asus_audio .hd-tagbox:before {
+    border-radius: 10px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+
+#asus_audio p.hd-skewtag {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 21px;
+    font-weight: 400 !important;
+    position: relative;
+    line-height: 46px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+#asus_audio .hd-skewtag:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 45px;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: skewX(340deg);
+    -moz-transform: skewX(340deg);
+    -ms-transform: skewX(340deg);
+    -o-transform: skewX(340deg);
+    transform: skewX(340deg);
+    border: 2px solid #8D0000;
+    z-index: 0;
+}
+
+#asus_audio .hd-list-dot li {
+    font-size: 16px;
+    padding-left: 15px;
+    position: relative;
+}
+
+#asus_audio .hd-list-dot li:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+
+#asus_audio .txt_decoline {
+    background: url('/assets/plugin_split/asus/layout/asus_audio/image/deco-line.png') right bottom no-repeat;
+}
+
+#asus_audio .txt_decolineflip {
+    background: url('/assets/plugin_split/asus/layout/asus_audio/image/deco-line-flip.png') left bottom no-repeat;
+}
+
+#asus_audio .hd-frame:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: -1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#800c20+0,5d0600+15,9a0d0e+54,480600+100 */
+    background: #800c20;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#800c20', endColorstr='#480600', GradientType=1);
+    /* IE6-9 */
+}
+
+#asus_audio .hd-pic01 {
+    width: 100%;
+    background: center center no-repeat;
+    background-size: 1920px;
+}
+
+
+/* ---------- Block ---------- */
+
+#asus_audio .hd-mobile_on,
+#asus_audio .hd-1023on {
+    display: none;
+}
+
+#asus_audio .fleft {
+    float: left;
+}
+
+#asus_audio .fright {
+    float: right;
+}
+
+#asus_audio .hd-w1920,
+#asus_audio .hd-w1500,
+#asus_audio .hd-w1400,
+#asus_audio .hd-w1300,
+#asus_audio .hd-w1200,
+#asus_audio .hd-w1100,
+#asus_audio .hd-w1000,
+#asus_audio .hd-w800,
+#asus_audio .hd-w500 {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#asus_audio .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+
+#asus_audio .hd-w1500 {
+    max-width: 1500px;
+}
+
+#asus_audio .hd-w1400 {
+    max-width: 1400px;
+}
+
+#asus_audio .hd-w1300 {
+    max-width: 1300px;
+}
+
+#asus_audio .hd-w1200 {
+    max-width: 1200px;
+}
+
+#asus_audio .hd-w1100 {
+    max-width: 1100px;
+}
+
+#asus_audio .hd-w1000 {
+    max-width: 1000px;
+}
+
+#asus_audio .hd-w800 {
+    max-width: 800px;
+}
+
+#asus_audio .hd-w500 {
+    max-width: 500px;
+}
+
+#asus_audio .hd-ib {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+#asus_audio .ib-top {
+    vertical-align: top;
+}
+
+#asus_audio .ib-bottom {
+    vertical-align: bottom;
+}
+
+#asus_audio .hd-col20 {
+    width: 20%;
+}
+
+#asus_audio .hd-col25 {
+    width: 25%;
+}
+
+#asus_audio .hd-col33 {
+    width: 33.3333%;
+}
+
+#asus_audio .hd-col40 {
+    width: 40%;
+}
+
+#asus_audio .hd-col45 {
+    width: 45%;
+}
+
+#asus_audio .hd-col50 {
+    width: 50%;
+}
+
+#asus_audio .hd-col55 {
+    width: 55%;
+}
+
+#asus_audio .hd-col60 {
+    width: 60%;
+}
+
+#asus_audio .hd-col65 {
+    width: 65%;
+}
+
+#asus_audio .hd-col80 {
+    width: 80%;
+}
+
+#asus_audio .hd-col85 {
+    width: 85%;
+}
+
+#asus_audio .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#asus_audio .hd-bgflip .hd-w1100,
+#asus_audio .hd-bgflip .hd-w1200,
+#asus_audio .hd-bgflip .hd-w1300,
+#asus_audio .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+/* ---------- Text ---------- */
+
+#asus_audio h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #ffffff !important;
+    /*background: #fff;
+		background: -webkit-linear-gradient(black,black, white, black);
+		background: -o-linear-gradient(black,black, white, black);
+		background: -moz-linear-gradient(black,black, white, black);
+		background: linear-gradient(black,black, white, black);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+
+
+/*ie11 above fixed*/
+
+
+/*_:-ms-fullscreen,
+	:root #asus_audio h2 {
+	    background: transparent !important;
+	}*/
+
+#asus_audio h2.right {
+    text-align: right;
+}
+
+#asus_audio h2 span {
+    color: #b80202;
+    font-size: 60px;
+    line-height: 66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#asus_audio h2 span.top {
+    display: block;
+    margin: 0 0 30px 5px;
+}
+
+#asus_audio h2 span.bottom {
+    display: block;
+    margin: 10px 0 0 5px;
+}
+
+#asus_audio h2 span.left,
+#asus_audio h2 span.center {
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+
+#asus_audio h2 span.center {
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+/*ie11 above fixed*/
+
+_:-ms-fullscreen,
+:root #asus_audio h2 span {
+    background: transparent !important;
+}
+
+#asus_audio h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#asus_audio h4,
+#asus_audio h5,
+#asus_audio button,
+#asus_audio .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+
+#asus_audio h4 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+#asus_audio h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+#asus_audio p,
+#asus_audio small,
+#asus_audio a,
+#asus_audio li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#asus_audio p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+#asus_audio b {
+    font-weight: bold;
+}
+
+#asus_audio small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+#asus_audio a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#asus_audio a.hd-link:hover {
+    color: white;
+}
+
+#asus_audio .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+
+#asus_audio .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+#asus_audio .txt-center {
+    text-align: center;
+}
+
+#asus_audio .txt-left {
+    text-align: left;
+}
+
+#asus_audio sup {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+
+/* ------------ SEC_AUDIO ------------ */
+
+#asus_audio {
+    padding-top: 90px;
+}
+
+#asus_audio h2:before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    background: url("/assets/plugin_split/asus/layout/asus_audio/image/title_audio.png") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#asus_audio h2 {
+    margin-bottom: 100px;
+}
+
+
+/* ------------ audio ------------ */
+
+#asus_audio .hd-sec-audio {
+    position: relative;
+    padding-bottom: 200px;
+    z-index: 1;
+}
+
+#asus_audio .hd-sec-audio:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 50%;
+    padding-bottom: 26%;
+    max-width: 1080px;
+    background: url("/assets/plugin_split/asus/layout/asus_audio/image/supremefx_bg.png") 0 0 no-repeat;
+    background-size: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#asus_audio .hd-supremefx {
+    position: relative;
+    padding-top: 50px;
+}
+
+#asus_audio .hd-supremefx img {
+    margin-right: 0;
+}
+
+#asus_audio .hd-supremefx li:not(:first-child) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    opacity: 0;
+}
+
+#asus_audio .hd-supremefx li:first-child {
+    opacity: 1;
+}
+
+#asus_audio .hd-supremefx li:not(:first-child).hd-active {
+    opacity: 1;
+}
+
+#asus_audio .hd-supremefx .txt-box {
+    width: 280px;
+    display: block;
+    position: absolute;
+}
+
+#asus_audio .hd-supremefx li:nth-child(2) .txt-box {
+    top: -10%;
+    left: 70%;
+}
+
+#asus_audio .hd-supremefx li:nth-child(3) .txt-box {
+    top: -5%;
+    left: 60%;
+}
+
+#asus_audio .hd-supremefx li:nth-child(4) .txt-box {
+    top: -15%;
+    left: 67%;
+}
+
+#asus_audio .hd-supremefx li:nth-child(5) .txt-box {
+    top: 15%;
+    left: 30%;
+}
+
+#asus_audio .hd-supremefx li:nth-child(6) .txt-box {
+    top: 0%;
+    left: 70%;
+}
+
+#asus_audio .audio-switch {
+    position: relative;
+    width: 80%;
+    height: 24px;
+    border-radius: 16px;
+    border: 3px solid #7c7c7e;
+    margin-top: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#asus_audio .audio-switch li {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#asus_audio .audio-switch li#dragger {
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 17px;
+    background: url("/assets/plugin_split/asus/layout/asus_audio/image/dragger.png") center center no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0 !important;
+    bottom: 0;
+    margin: auto 0;
+    cursor: pointer;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+#asus_audio .audio-switch li#dragger:hover {
+    box-shadow: 1px 1px 10px #ad0202;
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 0px #ad0202;
+    }
+    to {
+        box-shadow: 1px 1px 10px #ad0202;
+    }
+}
+
+#asus_audio .audio-switch li#dragger.pos1 {
+    left: 0;
+}
+
+#asus_audio .audio-switch li#dragger.pos2 {
+    left: 21%;
+}
+
+#asus_audio .audio-switch li#dragger.pos3 {
+    left: 48%;
+}
+
+#asus_audio .audio-switch li#dragger.pos4 {
+    left: 75%;
+}
+
+#asus_audio .audio-switch li#dragger.pos5 {
+    left: 96.5%;
+}
+
+#asus_audio .audio-switch li#dragger.moving {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-animation: glow .5s 1;
+    -o-animation: glow .5s 1;
+    animation: glow .5s 1;
+}
+
+#asus_audio .audio-switch li:first-child {
+    width: 15%;
+    margin-left: -6.5%;
+}
+
+#asus_audio .audio-switch li:nth-child(5) {
+    width: 15%;
+    margin-right: -6.5%;
+}
+
+#asus_audio .audio-switch li:first-child span {
+    margin-left: 3px;
+}
+
+#asus_audio .audio-switch li:nth-child(5) span {
+    margin-right: 3px;
+}
+
+#asus_audio .audio-switch li span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 6px;
+    margin: 4px;
+    position: relative;
+    background: #46505a;
+    background: -moz-linear-gradient(135deg, #46505a 0%, #7f8180 18%, #7f8084 29%, #6d767d 38%, #67717a 46%, #67747c 46%, #727c85 48%, #727f87 48%, #9ca9b1 55%, #a2afb5 56%, #636c75 68%, #6f747a 77%, #6f7478 78%, #7f8082 93%, #7f7f7f 100%);
+    background: -webkit-linear-gradient(135deg, #46505a 0%, #7f8180 18%, #7f8084 29%, #6d767d 38%, #67717a 46%, #67747c 46%, #727c85 48%, #727f87 48%, #9ca9b1 55%, #a2afb5 56%, #636c75 68%, #6f747a 77%, #6f7478 78%, #7f8082 93%, #7f7f7f 100%);
+    background: linear-gradient(135deg, #46505a 0%, #7f8180 18%, #7f8084 29%, #6d767d 38%, #67717a 46%, #67747c 46%, #727c85 48%, #727f87 48%, #9ca9b1 55%, #a2afb5 56%, #636c75 68%, #6f747a 77%, #6f7478 78%, #7f8082 93%, #7f7f7f 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#46505a', endColorstr='#7f7f7f', GradientType=1);
+}
+
+#asus_audio .audio-switch li h4 {
+    font-size: 18px;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#asus_audio .btn-audio {
+    display: inline-block;
+    max-width: 80%;
+    padding: 0 20px 20px;
+    border-radius: 5px;
+    margin: 70px auto 0;
+    background: #000000;
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #b80202;
+    position: relative;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+#asus_audio .btn-audio:before {
+    content: '';
+    display: block;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 7px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: -1;
+    background: #ff0000;
+    background: -moz-linear-gradient(left, #ff0000 0%, #9c0000 25%, #ff0000 54%, #840000 100%);
+    background: -webkit-linear-gradient(left, #ff0000 0%, #9c0000 25%, #ff0000 54%, #840000 100%);
+    background: linear-gradient(to right, #ff0000 0%, #9c0000 25%, #ff0000 54%, #840000 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#840000', GradientType=1);
+}
+
+#asus_audio .btn-audio:hover {
+    color: #fff;
+}
+
+
+/* ------------ sonic ------------ */
+
+#asus_audio .hd-sec-sonic {
+    padding-bottom: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+#asus_audio .hd-sec-sonic figure {
+    position: relative;
+    width: 80%;
+    max-width: 580px;
+    margin: 15% auto 0;
+}
+
+#asus_audio .hd-sec-sonic:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    height: 70%;
+    /*background: url(https://www.asus.com/websites/global/products/R8suNyyA4xqZ0dIi/img/bg-glow.jpg) center 110% no-repeat;
+		background-size: contain;*/
+    border-radius: 50%;
+    background: #333;
+    border: 2px solid #000;
+    box-shadow: 0 80px 200px 220px #000 inset, 0 0 0 1px #000 inset;
+    z-index: -1;
+}
+
+#asus_audio .hd-sec-sonic figure > img {
+    cursor: pointer;
+}
+
+#asus_audio .hd-sec-sonic .hd-num {
+    display: none;
+}
+
+#asus_audio .hd-sec-sonic figure li {
+    width: 55%;
+    position: absolute;
+}
+
+#asus_audio .hd-sec-sonic figure li h4 {
+    font-size: 24px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    background-size: 95%;
+    position: relative;
+}
+
+#asus_audio .hd-sec-sonic figure li h4,
+#asus_audio .hd-sec-sonic figure li p {
+    padding-left: 70px;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(1) {
+    top: 31%;
+    left: -60%;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(1) h4:after,
+#asus_audio .hd-sec-sonic figure li:nth-child(2) h4:after {
+    content: '';
+    display: block;
+    width: 110%;
+    height: 1px;
+    background-color: #b80202;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(2) {
+    top: 80%;
+    left: -60%;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(3) {
+    top: 16%;
+    right: -50%;
+    width: 60%;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(3) h4 {
+    padding-right: 70px;
+    margin-bottom: 30px;
+}
+
+#asus_audio .hd-sec-sonic figure li:nth-child(3) h4:after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: #b80202;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#sonic_ui_on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 99;
+    display: none;
+}
+
+#sonic_ui_on img {
+    max-width: 90% !important;
+    max-height: 80vh;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    box-shadow: 0 0 50px 2px rgba(255, 255, 255, .5);
+}
+
+
+/* ------------ radar ------------ */
+
+#asus_audio .hd-sec-radar {
+    background: center center no-repeat;
+    background-image: url('/assets/plugin_split/asus/layout/asus_audio/image/audio-bg2.jpg');
+    padding: 50px 0 95px;
+    margin-bottom: 100px;
+}
+
+#asus_audio .hd-sec-radar p.hd-col80 {
+    margin: 0 auto 100px;
+}
+
+#asus_audio #audiogif {
+    transform: perspective(660px) rotateY(12deg);
+    position: relative;
+    left: -29px;
+    top: -7px;
+    margin: 0;
+}
+
+#asus_audio .gif-focus {
+    position: absolute;
+    display: none;
+}
+
+#asus_audio .ghost-bg {
+    position: absolute;
+    right: -8%;
+    bottom: -20%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag {
+    position: absolute;
+    z-index: 2;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border: 1px solid #FF0000;
+}
+
+#asus_audio .hd-sec-radar .txt_decoline {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag small {
+    display: block;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(1) {
+    width: 400px;
+    top: 40%;
+    right: 3%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(1):before {
+    display: none;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(2) {
+    width: 355px;
+    top: 60%;
+    right: 8%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(2):before {
+    /*width: 185px;
+		height: 40px;
+		left: -197px;
+		top:43px;*/
+    width: 52%;
+    height: 37%;
+    left: -55%;
+    top: 40%;
+    border-top: none;
+    border-left: none;
+    transform: skewX(-30deg);
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(2):after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 136px;
+    height: 136px;
+    border-radius: 68px;
+    border: 1px solid #ff0000;
+    /*left: -335px;
+    	top: 50px;*/
+    left: -94%;
+    top: 47%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(2) h4,
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(2) small {
+    padding-left: 45px;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(3) {
+    width: 330px;
+    top: 80%;
+    right: 8%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(3) h4,
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(3) small {
+    padding-left: 20px;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(3):before {
+    width: 125px;
+    height: 75px;
+    left: -148px;
+    top: -33px;
+    border-bottom: none;
+    border-left: none;
+    transform: skewX(30deg);
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4) {
+    width: 366px;
+    bottom: -18%;
+    left: 40%;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4) h4,
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4) small {
+    padding-left: 10px;
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4):before {
+    /*width: 215px;
+	    height: 254px;
+	    left: -341px;
+	    top: -189px;*/
+    width: 58.5%;
+    height: 293%;
+    left: -93%;
+    top: -219%;
+    border-top: none;
+    border-right: none;
+    transform: skewX(40deg);
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4) small:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 22px;
+    left: -10px;
+    top: 44px;
+    border-right: 1px solid #FF0000;
+    transform: skewX(-40deg);
+}
+
+#asus_audio .hd-sec-radar li.audio-tag:nth-child(4):after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    border: 1px solid #ff0000;
+    /*left: -517px;
+    	top: -259px;*/
+    left: -141%;
+    top: -302%;
+}
+
+
+/* ---------- hidden-section ---------- */
+
+#asus_audio .hd-more {
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 50px 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_audio/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+#asus_audio .hd-btn-more {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_audio/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#asus_audio .hd-sec-hidden {
+    display: none;
+}
+
+
+/* ---------------------------------- */
+
+@media screen and (min-width: 2250px) {
+    #asus_audio {
+        padding-top: 150px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    #asus_audio .hd-sec-audio:before {
+        width: 65%;
+        bottom: -5%;
+    }
+    #asus_audio .hd-sec-radar {
+        padding-bottom: 40px;
+        margin-bottom: 150px;
+    }
+    #asus_audio .hd-sec-radar p.hd-col80 {
+        margin-bottom: 40px;
+    }
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2):after {
+        left: -97%;
+        top: 20%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    #asus_audio h2 {
+        margin-bottom: 50px;
+    }
+    #asus_audio .hd-supremefx .txt-box h4 {
+        margin-bottom: 10px;
+    }
+    #asus_audio .hd-sec-sonic figure {
+        margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    /* ------------ sonic ------------ */
+    #asus_audio .hd-sec-sonic figure li {
+        width: 35%;
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(3) {
+        width: 45%;
+        right: -37%;
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(1),
+    #asus_audio .hd-sec-sonic figure li:nth-child(2) {
+        left: -38%;
+    }
+    #asus_audio .hd-sec-sonic figure li h4,
+    #asus_audio .hd-sec-sonic figure li p {
+        padding-left: 40px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    /* ------------ radar ------------ */
+    #asus_audio .hd-sec-radar {
+        background-size: cover;
+    }
+    #asus_audio .hd-sec-radar p.hd-col80 {
+        margin-bottom: 80px;
+    }
+    #asus_audio #audiogif {
+        width: 62%;
+        top: auto;
+        bottom: 20px;
+        left: 10px;
+    }
+    #asus_audio .ghost-bg {
+        width: 45%;
+        bottom: 5%;
+        z-index: 0;
+    }
+    #asus_audio .gif-focus {
+        position: absolute;
+        display: block;
+    }
+    #asus_audio .hd-sec-radar ul {
+        width: 35%;
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: 0;
+        margin-top: -38.5%;
+    }
+    #asus_audio .hd-sec-radar li.audio-tag {
+        margin-bottom: 20px;
+    }
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(1),
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2),
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(3),
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4) {
+        width: 100%;
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2) h4,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2) small,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(3) h4,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(3) small,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4) h4,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4) small {
+        padding-left: 0;
+    }
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2):before,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(2):after,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(3):before,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4):before,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4):after,
+    #asus_audio .hd-sec-radar li.audio-tag:nth-child(4) small:before {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #asus_audio .hd-1023on {
+        display: block;
+    }
+    #asus_audio .hd-1023off {
+        display: none;
+    }
+    #asus_audio h2 {
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    #asus_audio #protection h2 {
+        font-size: 90px;
+        line-height: 80px;
+    }
+    #asus_audio h2 span {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    #asus_audio h2 span.top {
+        margin-bottom: -40px;
+    }
+    #asus_audio h2 span.left {
+        width: 130px;
+        line-height: 25px;
+    }
+    #asus_audio h2 span.center {
+        width: 90px;
+        line-height: 25px;
+    }
+    /* ------------ audio ------------ */
+    #asus_audio .audio-filter {
+        flex-wrap: wrap;
+    }
+    #asus_audio .audio-filter li {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+    #asus_audio .audio-filter li h4 {
+        min-height: 40px;
+    }
+    /* ------------ sonic ------------ */
+    #asus_audio .hd-sec-sonic:before {
+        height: 50%;
+        bottom: auto;
+        top: 50%;
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(n) {
+        position: static;
+        width: 100%;
+        top: 0;
+        left: 0;
+        margin: 10px auto;
+    }
+    #asus_audio .hd-sec-sonic figure li h4,
+    #asus_audio .hd-sec-sonic figure li p {
+        padding-left: 0;
+    }
+    #asus_audio .hd-sec-sonic .txt_decoline,
+    #asus_audio .hd-sec-sonic .txt_decolineflip {
+        background: url("/assets/plugin_split/asus/layout/asus_audio/image/deco-line.png") right bottom no-repeat;
+        background-size: contain;
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(1) h4:after,
+    #asus_audio .hd-sec-sonic figure li:nth-child(2) h4:after,
+    #asus_audio .hd-sec-sonic figure li:nth-child(3) h4:after {
+        display: none;
+    }
+    #asus_audio .hd-sec-sonic figure li h4:before {
+        content: '1. ';
+        display: inline-block;
+        width: 40px;
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(2) h4:before {
+        content: '2. ';
+    }
+    #asus_audio .hd-sec-sonic figure li:nth-child(3) h4:before {
+        content: '3. ';
+    }
+    #asus_audio .hd-sec-sonic figure li h4 img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #asus_audio .hd-sec-sonic .hd-num {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-bottom: 102.24%;
+    }
+    #asus_audio .hd-sec-sonic .hd-num li:nth-child(n) {
+        position: absolute;
+        display: block;
+        width: 28px;
+        height: 28px;
+        line-height: 24px;
+        padding-right: 1px;
+        text-align: center;
+        border-radius: 15px;
+        margin: 0;
+        border: 2px solid #b80202;
+        background-color: rgba(0, 0, 0, .6);
+    }
+    #asus_audio .hd-sec-sonic .hd-num li:nth-child(1) {
+        top: 28%;
+        left: .5%;
+    }
+    #asus_audio .hd-sec-sonic .hd-num li:nth-child(2) {
+        top: 80%;
+        left: .5%;
+    }
+    #asus_audio .hd-sec-sonic .hd-num li:nth-child(3) {
+        top: 11%;
+        left: 55%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #asus_audio .hd-mobile_on {
+        display: block;
+    }
+    #asus_audio .hd-mobile_off {
+        display: none;
+    }
+    #asus_audio h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    /* ------------ SEC_AUDIO ------------ */
+    #asus_audio .hd-sec-audio {
+        padding-bottom: 50px;
+    }
+    #asus_audio h2 {
+        margin-bottom: 30px;
+    }
+    #asus_audio .audio-switch li h4 {
+        font-size: 16px;
+    }
+    #asus_audio .hd-supremefx .txt-box {
+        width: 90%;
+    }
+    #asus_audio .hd-supremefx {
+        padding-top: 80px;
+    }
+    #asus_audio .hd-supremefx li:nth-child(n) .txt-box {
+        top: -80px;
+        left: 5%;
+    }
+    /* ------------ radar ------------ */
+    #asus_audio .hd-sec-radar {
+        margin-top: 30px;
+        margin-bottom: 0;
+        background: none;
+    }
+    #asus_audio .hd-sec-radar p.hd-col80 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #asus_audio #audiogif {
+        width: 90%;
+        display: block;
+        margin: 0 auto 30px;
+        top: 0;
+        left: 0;
+        transform: none;
+        border: 10px solid #333333;
+    }
+    #asus_audio .hd-sec-radar ul {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #asus_audio h2,
+    #asus_audio #protection h2 {
+        font-size: 50px;
+        line-height: 40px;
+    }
+    #asus_audio h2 span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    #asus_audio h2 span.left {
+        line-height: 20px;
+        width: 100px;
+    }
+    #asus_audio h2 span.top {
+        margin-bottom: -10px;
+    }
+    #asus_audio h3 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    #asus_audio h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    #fp-nav {
+        display: none;
+    }
+    /* ------------ SEC_AUDIO ------------ */
+    #asus_audio {
+        padding-top: 30px;
+    }
+    #asus_audio h2:before {
+        background-size: 1024px;
+        background-position: top right;
+        padding-bottom: 60%;
+    }
+    /* ------------ audio ------------ */
+    #asus_audio .hd-sec-audio:before {
+        display: none;
+    }
+    #asus_audio .audio-filter li {
+        width: 48%;
+        margin-right: 1%;
+    }
+    #asus_audio .audio-filter li h4 {
+        font-size: 18px;
+        line-height: 20px;
+        min-height: 0;
+    }
+    #asus_audio .audio-filter li p {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    #asus_audio .hd-sec-sonic {
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+    #asus_audio .hd-sec-sonic figure {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* ------------ SEC_AUDIO ------------ */
+    #asus_audio .hd-supremefx {
+        padding-top: 150px;
+    }
+    #asus_audio .audio-switch li h4 {
+        font-size: 14px;
+    }
+    #asus_audio .hd-supremefx li:nth-child(n) .txt-box {
+        top: -150px;
+    }
+    #asus_audio .audio-switch li#dragger.pos1 {
+        left: -2%;
+    }
+    #asus_audio .audio-switch li#dragger.pos2 {
+        left: 19%;
+    }
+    #asus_audio .audio-switch li#dragger.pos3 {
+        left: 46%;
+    }
+    #asus_audio .audio-switch li#dragger.pos4 {
+        left: 73%;
+    }
+    #asus_audio .audio-switch li#dragger.pos5 {
+        left: 94.5%;
+    }
+    #asus_audio .btn-audio {
+        font-size: 24px;
+        line-height: 24px;
+        padding: 0 20px 15px;
+    }
+    #asus_audio .hd-sec-protectionmore figure {
+        width: 100%;
+        margin: 20px 0;
+    }
+    #asus_audio .hd-sec-protectionmore .hd-content {
+        height: auto;
+    }
+    #asus_audio h2 span.center {
+        width: 60px;
+        font-size: 24px;
+        line-height: 18px;
+    }
+}

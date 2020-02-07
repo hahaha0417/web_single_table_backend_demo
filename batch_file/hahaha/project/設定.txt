@@ -1,0 +1,33 @@
+ ---------------------------- 
+ ---------------------------- 
+laravel
+ ---------------------------- 
+ ---------------------------- 
+因為專案懶人包要建置最新專案
+基本上，插件也是最新的，所以手動設定 
+專案基本上不能直接相容，(例如不同版本設定檔，參數不一樣，或者有改結構)
+所以不用事先寫好複製
+ 
+ ---------------------------- 
+laravel doctrine
+ ---------------------------- 
+ 
+config/app.php
+
+// Provider
+LaravelDoctrine\ORM\DoctrineServiceProvider::class,
+
+// Facade
+'EntityManager' => LaravelDoctrine\ORM\Facades\EntityManager::class,
+'Registry'      => LaravelDoctrine\ORM\Facades\Registry::class,
+'Doctrine'      => LaravelDoctrine\ORM\Facades\Doctrine::class,
+ ---------------------------- 
+laravel cors
+ ---------------------------- 
+// app/Http/Kernel.php
+// middleware 
+\Fruitcake\Cors\HandleCors::class,
+// config/cors.php
+'paths' => ['api/*'],
+ ---------------------------- 
+

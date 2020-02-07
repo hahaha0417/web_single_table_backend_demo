@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+.initial_title{
+    height: auto;
+    float: left;
+    position: relative;
+    margin:50px 0 0 50px;
+    /* display:none; */
+}
+
+.initial_title .hr_title{
+    border: 1px solid #ccc;
+    width: 98%;
+}
+
+@media (min-width: 768px) {
+    .initial_title .hr_title{
+        border: 1px solid #ccc;
+        width: 700px;
+    }  
+
+}
+ 
+
+.initial_space{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.initial_content{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.initial_content .hr1{
+    border: 1px solid #ccc;
+}
+
+/* header
+{
+    background: red;
+}
+#content
+{
+    background: green;
+}
+footer
+{
+    background: blue;
+} */
+
+/* 覆蓋base.css */
+#content {
+    background: initial;
+}
+#main_box {
+    background: initial;
+}
+
+

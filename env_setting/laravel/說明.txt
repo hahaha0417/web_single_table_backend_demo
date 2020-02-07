@@ -1,0 +1,6 @@
+public\assets
+
+為hahaha網站設定檔，實際要看頁面請去看
+php hahaha framework demo
+不一定會100%同步(因為我是直接複製的)
+要引用則去相關網站移植過來用(前提沒有法律和政治問題，請自行負責)

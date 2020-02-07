@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+#content {
+    background: initial;
+}
+#main_box {
+    background: initial;
+}
+
+.home_title{
+    height: auto;
+    float: left;
+    position: relative;
+    margin:50px 0 0 50px;
+    /* display:none; */
+}
+
+.home_title .hr_title{
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.home_space{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.home_content{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+} 
+
+.home_content .item{
+    display: block;    
+    width: 100%; 
+    height: auto;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.home_content img{
+    /* margin: 15px 15px; */
+    display:block;
+    margin: 15px auto;  
+    width: 300px;
+    height: 200px;
+}
+@media (min-width: 576px) {
+    .home_content img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }   
+}
+@media (min-width: 768px) { 
+    .home_content img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }
+}
+
+.home_content .hr1{
+    border: 1px solid #ccc;
+}

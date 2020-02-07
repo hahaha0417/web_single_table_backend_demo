@@ -1,0 +1,857 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#asus_protection * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+
+::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+
+#asus_protection ul,
+#asus_protection ol,
+#asus_protection li {
+    margin: 0;
+    padding: 0;
+}
+
+#asus_protection {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    z-index: 0;
+}
+
+#asus_protection h1,
+#asus_protection h2,
+#asus_protection h3,
+#asus_protection h4,
+#asus_protection p,
+#asus_protection a,
+#asus_protection li,
+#asus_protection b,
+#asus_protection small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+
+/* ---------- Element ---------- */
+
+#asus_protection {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#asus_protection img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+#asus_protection .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#asus_protection .hd-downloadbox,
+#asus_protection .hd-tagbox {
+    display: block;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    margin: 10px auto 20px;
+}
+
+#asus_protection .hd-downloadbox {
+    font-family: "Fjalla One", sans-serif;
+    line-height: 46px;
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+}
+
+#asus_protection .hd-tagbox {
+    border-radius: 10px;
+    width: 90%;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+#asus_protection .hd-tagbox p {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#asus_protection .hd-tagbox small {
+    font-weight: 400;
+    display: block;
+    line-height: 14px;
+}
+
+#asus_protection .hd-downloadbox:before,
+#asus_protection .hd-tagbox:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #c9c9c9;
+    z-index: -1;
+    background: #000000;
+    background: -moz-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: -webkit-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: linear-gradient(160deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1);
+}
+
+#asus_protection .hd-downloadbox:before {
+    width: calc(100% + 4px);
+    max-width: 204px;
+    height: 49px;
+}
+
+#asus_protection .hd-tagbox:before {
+    border-radius: 10px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+
+#asus_protection p.hd-skewtag {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 21px;
+    font-weight: 400 !important;
+    position: relative;
+    line-height: 46px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+#asus_protection .hd-skewtag:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 45px;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: skewX(340deg);
+    -moz-transform: skewX(340deg);
+    -ms-transform: skewX(340deg);
+    -o-transform: skewX(340deg);
+    transform: skewX(340deg);
+    border: 2px solid #8D0000;
+    z-index: 0;
+}
+
+#asus_protection .hd-list-dot li {
+    font-size: 16px;
+    padding-left: 15px;
+    position: relative;
+}
+
+#asus_protection .hd-list-dot li:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+
+#asus_protection .txt_decoline {
+    background: url('/assets/plugin_split/asus/layout/asus_protection/image/deco-line.png') right bottom no-repeat;
+}
+
+#asus_protection .txt_decolineflip {
+    background: url('/assets/plugin_split/asus/layout/asus_protection/image/deco-line-flip.png') left bottom no-repeat;
+}
+
+#asus_protection .hd-frame:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: -1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#800c20+0,5d0600+15,9a0d0e+54,480600+100 */
+    background: #800c20;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#800c20', endColorstr='#480600', GradientType=1);
+    /* IE6-9 */
+}
+
+#asus_protection .hd-pic01 {
+    width: 100%;
+    background: center center no-repeat;
+    background-size: 1920px;
+}
+
+
+/* ---------- Block ---------- */
+
+#asus_protection .hd-mobile_on,
+#asus_protection .hd-1023on {
+    display: none;
+}
+
+#asus_protection .fleft {
+    float: left;
+}
+
+#asus_protection .fright {
+    float: right;
+}
+
+#asus_protection .hd-w1920,
+#asus_protection .hd-w1500,
+#asus_protection .hd-w1400,
+#asus_protection .hd-w1300,
+#asus_protection .hd-w1200,
+#asus_protection .hd-w1100,
+#asus_protection .hd-w1000,
+#asus_protection .hd-w800,
+#asus_protection .hd-w500 {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#asus_protection .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+
+#asus_protection .hd-w1500 {
+    max-width: 1500px;
+}
+
+#asus_protection .hd-w1400 {
+    max-width: 1400px;
+}
+
+#asus_protection .hd-w1300 {
+    max-width: 1300px;
+}
+
+#asus_protection .hd-w1200 {
+    max-width: 1200px;
+}
+
+#asus_protection .hd-w1100 {
+    max-width: 1100px;
+}
+
+#asus_protection .hd-w1000 {
+    max-width: 1000px;
+}
+
+#asus_protection .hd-w800 {
+    max-width: 800px;
+}
+
+#asus_protection .hd-w500 {
+    max-width: 500px;
+}
+
+#asus_protection .hd-ib {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+#asus_protection .ib-top {
+    vertical-align: top;
+}
+
+#asus_protection .ib-bottom {
+    vertical-align: bottom;
+}
+
+#asus_protection .hd-col20 {
+    width: 20%;
+}
+
+#asus_protection .hd-col25 {
+    width: 25%;
+}
+
+#asus_protection .hd-col33 {
+    width: 33.3333%;
+}
+
+#asus_protection .hd-col40 {
+    width: 40%;
+}
+
+#asus_protection .hd-col45 {
+    width: 45%;
+}
+
+#asus_protection .hd-col50 {
+    width: 50%;
+}
+
+#asus_protection .hd-col55 {
+    width: 55%;
+}
+
+#asus_protection .hd-col60 {
+    width: 60%;
+}
+
+#asus_protection .hd-col65 {
+    width: 65%;
+}
+
+#asus_protection .hd-col80 {
+    width: 80%;
+}
+
+#asus_protection .hd-col85 {
+    width: 85%;
+}
+
+#asus_protection .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#asus_protection .hd-bgflip .hd-w1100,
+#asus_protection .hd-bgflip .hd-w1200,
+#asus_protection .hd-bgflip .hd-w1300,
+#asus_protection .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+/* ---------- Text ---------- */
+
+#asus_protection h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #ffffff !important;
+    /*background: #fff;
+		background: -webkit-linear-gradient(black,black, white, black);
+		background: -o-linear-gradient(black,black, white, black);
+		background: -moz-linear-gradient(black,black, white, black);
+		background: linear-gradient(black,black, white, black);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+
+
+/*ie11 above fixed*/
+
+
+/*_:-ms-fullscreen,
+	:root #asus_protection h2 {
+	    background: transparent !important;
+	}*/
+
+#asus_protection h2.right {
+    text-align: right;
+}
+
+#asus_protection h2 span {
+    color: #b80202;
+    font-size: 60px;
+    line-height: 66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#asus_protection h2 span.top {
+    display: block;
+    margin: 0 0 30px 5px;
+}
+
+#asus_protection h2 span.bottom {
+    display: block;
+    margin: 10px 0 0 5px;
+}
+
+#asus_protection h2 span.left,
+#asus_protection h2 span.center {
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+
+#asus_protection h2 span.center {
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+/*ie11 above fixed*/
+
+_:-ms-fullscreen,
+:root #asus_protection h2 span {
+    background: transparent !important;
+}
+
+#asus_protection h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#asus_protection h4,
+#asus_protection h5,
+#asus_protection button,
+#asus_protection .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+
+#asus_protection h4 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+#asus_protection h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+#asus_protection p,
+#asus_protection small,
+#asus_protection a,
+#asus_protection li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#asus_protection p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+#asus_protection b {
+    font-weight: bold;
+}
+
+#asus_protection small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+#asus_protection a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#asus_protection a.hd-link:hover {
+    color: white;
+}
+
+#asus_protection .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+
+#asus_protection .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+#asus_protection .txt-center {
+    text-align: center;
+}
+
+#asus_protection .txt-left {
+    text-align: left;
+}
+
+#asus_protection sup {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+
+/* ------------ SEC_PROTECTION ------------ */
+
+#asus_protection {
+    padding-top: 110px;
+}
+
+#asus_protection h2 {
+    font-size: 132px;
+    margin-bottom: 90px;
+}
+
+#asus_protection h2:before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    background: url("/assets/plugin_split/asus/layout/asus_protection/image/title_protection.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+/* ------------ armor ------------ */
+
+#asus_protection .hd-sec-armor .fright {
+    margin-top: 5%;
+}
+
+
+/* ------------ rogarmor ------------ */
+
+#asus_protection .hd-sec-rogarmor {
+    padding-top: 50px;
+    margin-bottom: -50px;
+}
+
+#asus_protection .hd-sec-rogarmor .fleft {
+    margin-top: 20%;
+}
+
+
+/* ------------ protectionmore ------------ */
+
+#asus_protection .hd-sec-protectionmore .hd-w800 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 100px 0;
+}
+
+#asus_protection .hd-sec-protectionmore figure {
+    width: 29%;
+    margin: 20px 2%;
+    text-align: center;
+}
+
+#asus_protection .hd-sec-protectionmore .txt_decoline {
+    background-size: 130%;
+    text-align: left;
+    padding: 20px 0;
+}
+
+#asus_protection .hd-sec-protectionmore .hd-content {
+    height: 275px;
+    position: relative;
+    margin: 5px;
+    display: block;
+    padding: 50px 35px;
+    background: #3A3A3A;
+    box-shadow: 0 0 100px 50px black inset;
+}
+
+#asus_protection .hd-sec-protectionmore h4 {
+    font-size: 22px;
+    text-align: left;
+}
+
+#asus_protection .hd-sec-protectionmore .hd-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#asus_protection .hd-sec-protectionmore .hd-content p span {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-size: 60px;
+}
+
+
+/* ------------ SEC_MORE------------ */
+
+#asus_protection #more {
+    padding-top: 100px;
+}
+
+#asus_protection #more h2 {
+    padding-bottom: 0;
+    margin-bottom: 100px;
+}
+
+#asus_protection #more h2:before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: 24%;
+    background: url("/assets/plugin_split/asus/layout/asus_protection/image/title_more.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+/* ---------- hidden-section ---------- */
+
+#asus_protection .hd-more {
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 50px 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_protection/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+#asus_protection .hd-btn-more {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_protection/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#asus_protection .hd-sec-hidden {
+    display: none;
+}
+
+
+/* ---------------------------------- */
+
+@media screen and (min-width: 2250px) {
+    #asus_protection {
+        padding-top: 150px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #asus_protection .hd-sec-protectionmore .hd-w800 {
+        padding: 30px 0 50px;
+    }
+    #asus_protection #more {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #asus_protection .hd-1023on {
+        display: block;
+    }
+    #asus_protection .hd-1023off {
+        display: none;
+    }
+    #asus_protection h2 {
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    #asus_protection h2 {
+        font-size: 90px;
+        line-height: 80px;
+    }
+    #asus_protection h2 span {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    #asus_protection h2 span.top {
+        margin-bottom: -40px;
+    }
+    #asus_protection h2 span.left {
+        width: 130px;
+        line-height: 25px;
+    }
+    #asus_protection h2 span.center {
+        width: 90px;
+        line-height: 25px;
+    }
+    /* ------------ SEC_PROTECTION + INTEL ------------ */
+    #asus_protection {
+        padding-top: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #asus_protection .hd-mobile_on {
+        display: block;
+    }
+    #asus_protection .hd-mobile_off {
+        display: none;
+    }
+    #asus_protection h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    #asus_protection .hd_box {
+        width: 100%;
+        height: auto;
+        padding: 50px 20px 10px;
+    }
+    /* ------------ protectionmore ------------ */
+    #asus_protection .hd-sec-protectionmore figure {
+        width: 31%;
+        margin: 20px 1%;
+    }
+    #asus_protection .hd-sec-protectionmore .hd-content {
+        padding: 40px 15px;
+    }
+    #asus_protection .hd-sec-protectionmore h4 {
+        font-size: 20px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #asus_protection h2,
+    #asus_protection h2 {
+        font-size: 50px;
+        line-height: 40px;
+    }
+    #asus_protection h2 span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    #asus_protection h2 span.left {
+        line-height: 20px;
+        width: 100px;
+    }
+    #asus_protection h2 span.top {
+        margin-bottom: -10px;
+    }
+    #asus_protection h3 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    #asus_protection h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    #fp-nav {
+        display: none;
+    }
+    /* ------------ SEC_PROTECTION ------------ */
+    #asus_protection h2 {
+        margin-bottom: 30px;
+    }
+    #asus_protection .hd-sec-rogarmor .hd-col50,
+    #asus_protection .hd-sec-armor .hd-col40,
+    #asus_protection .hd-sec-armor .hd-col60 {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    #asus_protection .hd-sec-protectionmore figure {
+        width: 46%;
+        margin: 20px 2%;
+    }
+    /* ------------ SEC_MORE ------------ */
+    #asus_protection #more h2 {
+        margin-bottom: 50px;
+    }
+    #asus_protection h2 span.center {
+        font-size: 32px;
+        margin-right: 0;
+    }
+    #asus_protection #more h2:before {
+        background-size: 850px;
+        background-position: top left;
+    }
+}

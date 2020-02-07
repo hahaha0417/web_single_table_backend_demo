@@ -1,0 +1,214 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.home_overview_title{
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0;
+    /* display:none; */
+}
+
+.home_overview_title .hr_title{
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.home_overview_space{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.home_overview_content{
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 0%;
+   
+} 
+
+.home_overview_content .item{
+    display: block;    
+    width: 100%; 
+    height: auto;
+    margin: 0;
+}
+
+.home_overview_content img{
+    /* margin: 15px 15px; */
+    display:block;
+    margin: 0;  
+    width: 100%;
+    height: auto;
+}
+@media (min-width: 576px) {
+    
+    .home_overview_title{
+        height: auto;
+        float: left;
+        position: relative;
+        margin:50px 0 0 50px;
+        /* display:none; */
+    }
+
+    .home_overview_content{
+        width: 96%;
+        height: auto;
+        float: left;
+        position: relative;
+        margin: 0 0 0 2%;
+       
+    } 
+
+    .home_overview_content .item{
+        display: block;    
+        width: 600px; 
+        height: auto;
+        margin: 15px;
+    }
+
+    
+
+    .home_overview_content img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }   
+}
+@media (min-width: 768px) { 
+    .home_overview_content img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }
+}
+
+.home_overview_content .hr1{
+    border: 1px solid #ccc;
+}
+
+.home_overview_content2{
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 0%;
+   
+}
+
+.home_overview_content2 .item{
+    display: block;
+    width: 100%; 
+    height: auto;
+    margin: 0;
+    
+}
+
+
+
+.home_overview_content2 img{
+    display:block;
+    margin: 0;  
+    width: 100%;
+    height: auto;
+}
+@media (min-width: 576px) {
+    .home_overview_content2{
+        width: 96%;
+        height: auto;
+        float: left;
+        position: relative;
+        margin: 0 0 0 2%;
+       
+    }
+
+    .home_overview_content2 .item{
+        display: block;
+        width: 600px; 
+        height: auto;
+        margin: 20px;
+        
+    }
+
+    .home_overview_content2 img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }   
+}
+@media (min-width: 768px) { 
+    .home_overview_content2 img{
+        display:block;
+        margin: 15px auto;     
+        width: 450px;
+        height: 300px; 
+    }
+}
+
+.home_overview_content2 .hr2{
+    border: 1px solid #ccc;
+}
+
+.carousel_content{
+    position:relative;
+    float: left;
+    /* margin: auto; */
+    display:block;   
+    width: 1920px;
+    left: 50%;
+    margin-left: -960px;
+}
+
+#water_wheel_carousel_button{
+    position:relative;
+    float: left;
+    display:block;          
+    width: 1% of viewport width;
+    left: 50%;
+    margin-left: -100px;
+}
+
+#water_wheel_carousel {
+    display:block;
+    margin: auto;     
+    width: 100%;
+    left: 0;
+    /* border:1px solid #222; */
+    height:300px;
+    position:relative;
+    float: left;
+    clear:both;
+    overflow:hidden;
+}
+#water_wheel_carousel img {
+    visibility:hidden;
+    cursor:pointer;
+    width:400px;
+    height:300px;
+}
+
+

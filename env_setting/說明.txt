@@ -1,0 +1,15 @@
+將資料夾直接複製到laravel專案覆蓋
+
+
+
+新增composer.json
+// root專案
+"classmap": [
+	"libraries",
+	"../libraries"
+]
+// project下專案
+"classmap": [
+	"libraries",
+	"../../libraries"
+]

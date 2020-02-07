@@ -1,3 +1,42 @@
+因為php hahaha framework有加入限制條件，如果是黨國 or 金融...etc，則禁止使用
+其他如同MIT條款
+https://github.com/hahaha0417/php_hahaha_framework/blob/master/License
+
+備註 : hahahalib指的是php hahaha framework裡面的hahahalib
+
+採多專案結合
+核心為單表式後台 & 前台套版
+
+hahaha - laravel主專案，並引入hahahalib
+project\hahaha - php hahaha framework
+
+
+也就是就算有第三方使用，譬如他要轉賣給國 & 共，包含附隨組織
+則我的框架的衍伸作品請移植到別的框架，不然提告
+
+至於hahahalib，則隨意，如果有專案只拆出hahahalib掛在其他框架，則要賣可以直接賣
+但是要是我hahahalib更新，請自己處理，少在那邊牽脫要我提供相容或修Bug
+如有政治或法律不允許(合理理由)，請自己參考，打一份類似的，那應該就算是個人資產
+
+
+為什麼hahahalib可以任意使用，因為那是我管理的，而且90%包composer套件
+其實那只是寫個設定檔讓他可以用，並且提供便捷接口
+如果有敵對組織要用我的核心掛在他的框架，基本上核心方向最終是我決定的
+我決定的才將模組放進來，如果敵對組織要亂，會被我擋掉
+就算他有需求，我可以特定模組不加入hahahalib(例如deep learning我不想導入，有需求的請自己處理)
+
+而且目前PHP生態是禁用reference，要是我下條件限制放行reference
+他們要就follow me，不然就自己維護
+
+而且假設敵對組織弄個簡易框架接我的library，那要是我調整架構接口，
+原則上他要思考怎樣相容我的接口，這同步其實很繁瑣，卡到不是獨立分支，就是變成呆帳(何況我通常會有Bug)
+我沒義務幫他們review框架
+(重點在他是我敵對，他亂搞我，消息傳到名眾，則不會有人有立場要求我替他看框架，就算有，8成那是他的地下組織，有正相關的利益關係)
+
+
+
+
+
 MIT License
 
 Copyright (c) 2020 hahaha

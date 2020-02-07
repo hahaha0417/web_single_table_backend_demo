@@ -1,0 +1,521 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+/* ---------- RESET ---------- */
+
+#asus_spec * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+#asus_spec ul,
+#asus_spec ol,
+#asus_spec li {
+    margin: 0;
+    padding: 0;
+}
+
+#asus_spec {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+#asus_spec h1,
+#asus_spec h2,
+#asus_spec h3,
+#asus_spec h4,
+#asus_spec p,
+#asus_spec a,
+#asus_spec li,
+#asus_spec b,
+#asus_spec small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+#asus_spec p {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+#asus_spec p, #asus_spec small, #asus_spec a, #asus_spec li {
+    font-family: 'Roboto Condensed', sans-serif,微軟正黑體!important;
+}
+/* ---------- Element ---------- */
+
+
+/* ---------- Block ---------- */
+
+#asus_spec .hd-mobile_on,
+#asus_spec .hd-1023on {
+    display: none;
+}
+
+#asus_spec .fleft {
+    float: left;
+}
+
+#asus_spec .fright {
+    float: right;
+}
+
+
+#asus_spec .hd-w1920,
+#asus_spec .hd-w1500,
+#asus_spec .hd-w1400,
+#asus_spec .hd-w1300,
+#asus_spec .hd-w1200,
+#asus_spec .hd-w1100,
+#asus_spec .hd-w1000,
+#asus_spec .hd-w800,
+#asus_spec .hd-w500 {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#asus_spec .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+
+#asus_spec .hd-w1500 {
+    max-width: 1500px;
+}
+
+#asus_spec .hd-w1400 {
+    max-width: 1400px;
+}
+
+#asus_spec .hd-w1300 {
+    max-width: 1300px;
+}
+
+#asus_spec .hd-w1200 {
+    max-width: 1200px;
+}
+
+#asus_spec .hd-w1100 {
+    max-width: 1100px;
+}
+
+#asus_spec .hd-w1000 {
+    max-width: 1000px;
+}
+
+#asus_spec .hd-w800 {
+    max-width: 800px;
+}
+
+#asus_spec .hd-w500 {
+    max-width: 500px;
+}
+
+#asus_spec .hd-ib {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+#asus_spec .ib-top {
+    vertical-align: top;
+}
+
+#asus_spec .ib-bottom {
+    vertical-align: bottom;
+}
+
+#asus_spec .hd-col20 {
+    width: 20%;
+}
+
+#asus_spec .hd-col25 {
+    width: 25%;
+}
+
+#asus_spec .hd-col33 {
+    width: 33.3333%;
+}
+
+#asus_spec .hd-col40 {
+    width: 40%;
+}
+
+#asus_spec .hd-col45 {
+    width: 45%;
+}
+
+#asus_spec .hd-col50 {
+    width: 50%;
+}
+
+#asus_spec .hd-col55 {
+    width: 55%;
+}
+
+#asus_spec .hd-col60 {
+    width: 60%;
+}
+
+#asus_spec .hd-col65 {
+    width: 65%;
+}
+
+#asus_spec .hd-col80 {
+    width: 80%;
+}
+
+#asus_spec .hd-col85 {
+    width: 85%;
+}
+
+#asus_spec .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#asus_spec .hd-bgflip .hd-w1100,
+#asus_spec .hd-bgflip .hd-w1200,
+#asus_spec .hd-bgflip .hd-w1300,
+#asus_spec .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#asus_spec img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+/* ------------ SEC_SPEC ------------ */
+
+#asus_spec {
+    padding: 100px 0;
+}
+
+#asus_spec .spec-main {
+    width: 100%;
+    height: 0;
+    padding-bottom: 65%;
+    background: url('/assets/plugin_split/asus/layout/asus_spec/image/spec.jpg') 36% center no-repeat;
+    background-size: contain;
+}
+
+#asus_spec ol {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    counter-reset: mycounter;
+}
+
+#asus_spec ol li {
+    position: absolute;
+    font-size: 16px;
+}
+
+#asus_spec ol li:before {
+    counter-increment: mycounter;
+    content: counter(mycounter);
+    display: none;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid #8D0000;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    z-index: 2;
+}
+
+#asus_spec ol li p {
+    margin-bottom: 10px;
+    letter-spacing: 0;
+}
+
+#asus_spec ol li small {
+    display: block;
+    line-height: 14px;
+    margin: 5px 0 10px;
+}
+
+#asus_spec ol li b {
+    font-weight: 400;
+}
+
+
+#asus_spec .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+
+#asus_spec .txt-left{text-align: left; }
+#asus_spec sup{
+    display: inline-block;
+    margin-top: -7px;
+}
+
+/* spec li positions*/
+
+#asus_spec ol li:nth-child(-n+5) {
+    left: 5%;
+}
+
+#asus_spec ol li:nth-child(1) {
+    top: 1%;
+}
+
+#asus_spec ol li:nth-child(2) {
+    top: 20.5%;
+}
+
+#asus_spec ol li:nth-child(3) {
+    top: 46.5%;
+}
+
+#asus_spec ol li:nth-child(4) {
+    top: 60%;
+    left: 17%;
+}
+
+#asus_spec ol li:nth-child(5) {
+    top: 85%;
+}
+
+#asus_spec ol li:nth-child(n+6) {
+    left: 75%;
+}
+
+#asus_spec ol li:nth-child(6) {
+    top: 6%;
+}
+
+#asus_spec ol li:nth-child(7) {
+    top: 11.5%;
+}
+
+#asus_spec ol li:nth-child(8) {
+    top: 21%;
+}
+
+#asus_spec ol li:nth-child(9) {
+    top: 25%;
+}
+
+#asus_spec ol li:nth-child(10) {
+    top: 33.5%;
+}
+
+#asus_spec ol li:nth-child(11) {
+    top: 43.5%;
+}
+
+#asus_spec ol li:nth-child(11) img {
+    position: relative;
+    z-index: -1;
+    margin-top: -50px;
+    margin-left: 75%;
+}
+
+#asus_spec ol li:nth-child(12) {
+    top: 50%;
+}
+
+#asus_spec ol li:nth-child(13) {
+    top: 59%;
+}
+
+#asus_spec ol li:nth-child(14) {
+    top: 63.5%;
+    padding-left: 5px;
+}
+
+#asus_spec ol li:nth-child(15) {
+    top: 72.5%;
+}
+
+#asus_spec ol li:nth-child(16) {
+    top: 76.5%;
+}
+
+#asus_spec ol li:nth-child(17) {
+    top: 92%;
+}
+
+@media screen and (max-width: 1280px) {
+    /* ------------ SEC_SPEC ------------ */
+    #asus_spec .hd-w1300 {
+        width: 100%;
+    }
+    #asus_spec ol li small {
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #asus_spec .hd-w1300 {
+        margin-left: -3%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #asus_spec ol li p {
+        text-align: left;
+    }
+
+    #asus_spec h2 {
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    #asus_spec h2 span {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    #asus_spec h2 span.top {
+        margin-bottom: -40px;
+    }
+    #asus_spec h2 span.left {
+        width: 130px;
+        line-height: 25px;
+    }
+    #asus_spec h2 span.center {
+        width: 90px;
+        line-height: 25px;
+    }
+    /* ------------ SEC_SPEC ------------ */
+    #asus_spec .spec-main {
+        background-image: url('/assets/plugin_split/asus/layout/asus_spec/image/spec_m.jpg');
+        padding-bottom: 100%;
+    }
+    #asus_spec .hd-w1300 {
+        width: 90%;
+        margin-left: auto;
+    }
+    #asus_spec ol,
+    #asus_spec ol li:nth-child(n) {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    #asus_spec ol {
+        -webkit-column-count: 2;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 2;
+        /* Firefox */
+        column-count: 2;
+        padding: 30px 0 0;
+    }
+    #asus_spec ol li:nth-child(n) {
+        margin: 12px 0;
+        padding-left: 40px;
+    }
+    #asus_spec ol li:before {
+        display: block;
+        left: 0;
+    }
+    #asus_spec ol li img {
+        margin-left: 0;
+    }
+    #asus_spec ol li p {
+        text-align: left;
+    }
+    #asus_spec ol li:nth-child(4) br {
+        display: none;
+    }
+    #asus_spec ol li:nth-child(11) img {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #asus_spec h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    /* ------------ SEC_SPEC ------------ */
+    #asus_spec {
+        padding: 50px 0 30px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #asus_spec h2,
+    #asus_spec h2 span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    #asus_spec h2 span.left {
+        line-height: 20px;
+        width: 100px;
+    }
+    #asus_spec h2 span.top {
+        margin-bottom: -10px;
+    }
+    #asus_spec h3 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    #asus_spec h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #asus_spec .spec-main {
+        padding-bottom: 135%;
+    }
+    #asus_spec ol {
+        -webkit-column-count: 1;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 1;
+        /* Firefox */
+        column-count: 1;
+        padding: 30px 0 0;
+    }
+}

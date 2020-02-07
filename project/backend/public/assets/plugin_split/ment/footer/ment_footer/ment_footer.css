@@ -1,0 +1,183 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.footer {
+    border-bottom: 2px solid #c9c9c9;
+    background: #fff;
+    height: 350px;
+}
+
+.footer .links {
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    background: #f1f1f1;
+    padding: 70px 0
+}
+
+.footer .links a.logo {
+    display: block;
+    width: 180px;
+    margin: auto
+}
+
+.footer .links ul {
+    text-align: center;
+    margin-top: 50px
+}
+
+.footer .links ul li {
+    display: inline-block;
+    position: relative;
+    line-height: 26px;
+    font-size: .875rem;
+    margin-left: -3px;
+    padding: 0 25px
+}
+
+.footer .links ul li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 14px;
+    background: #6c6867;
+    top: 6px;
+    left: -1px
+}
+
+.footer .links ul li:first-child {
+    margin-left: 0
+}
+
+.footer .links ul li:first-child:before {
+    display: none
+}
+
+.footer .links ul li a {
+    color: #221815
+}
+
+.footer .links ul li a:hover {
+    color: #a7be38
+}
+
+.footer .copy {
+    font-size: .8125rem;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 20px 15px;    
+}
+
+.footer .copy span {
+    display: inline-block;
+    vertical-align: top
+}
+
+.footer .copy span +span {
+    margin-left: 6px
+}
+
+.footer .copy a {
+    display: inline-block;
+    color: #5b5a5a;
+    vertical-align: top;
+    margin-left: 6px
+}
+
+.footer .copy a:hover {
+    color: #333
+}
+
+@media (max-width:991px) {
+    .footer .links ul li {
+        padding: 0 15px
+    }
+}
+
+@media (max-width:767px) {
+    .footer .links {
+        padding: 35px 0 30px
+    }
+    .footer .links a.logo {
+        width: 150px;
+        margin: 0
+    }
+    .footer .links ul {
+        text-align: left;
+        margin-top: 15px
+    }
+    .footer .links ul li {
+        padding: 0
+    }
+    .footer .links ul li:before {
+        left: -11px
+    }
+    .footer .copy {
+        text-align: left
+    }
+    .footer .copy span {
+        display: block
+    }
+    .footer .copy span +span,
+    .footer .copy a {
+        margin-left: 0
+    }
+}
+
+@media (min-width:544px) and (max-width:767px) {
+    .footer .links ul li {
+        width: calc(33.333% - 1px);
+        margin-bottom: 5px
+    }
+    .footer .links ul li:nth-child(3n+1) {
+        margin-left: 0
+    }
+    .footer .links ul li:nth-child(3n+1):before {
+        display: none
+    }
+}
+
+@media (min-width:320px) and (max-width:543px) {
+    .footer .links ul li {
+        width: calc(50% - 1px);
+        padding: 0 10px;
+        margin-bottom: 5px
+    }
+    .footer .links ul li:nth-child(2n+1) {
+        margin-left: 0
+    }
+    .footer .links ul li:nth-child(2n+1):before {
+        display: none
+    }
+}
+
+@media (max-width:319px) {
+    .footer .links ul li {
+        width: 100%;
+        padding: 0 10px;
+        margin-left: 0;
+        margin-bottom: 5px
+    }
+    .footer .links ul li:before {
+        display: none
+    }
+}
+
+
+/* ----------------------- */

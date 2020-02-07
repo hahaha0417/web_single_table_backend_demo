@@ -1,0 +1,543 @@
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+body .header-right {
+  position: static;
+}
+@media (min-width: 768px) {
+  body .header-right .main-menu {
+    position: static;
+  }
+}
+
+body .header-right .main-menu .menu > ul > li.parentitem:hover > a {
+  background: initial;   
+}
+
+body .header-right .main-menu .menu .menublock {
+  display: none;
+  width: 100%;
+}
+ body .header-right .main-menu .menu .menublock {
+    background-color: rgba(92, 155, 92, 0.9);
+    position: absolute;
+    z-index: 1005;
+    
+    margin: 0;
+    padding-top: 15px;
+	left: 0;
+    top: 0;
+	width: 100%;
+	height: 100%;
+  }
+body .header-right .main-menu .menu .menublock .category {
+  line-height: 2;
+  font-size: 16px;
+  color: #FF9900;
+  line-height: normal;
+  padding-bottom: 11px;
+  padding-top: 11px;
+  line-height: 1.2;
+}
+body .header-right .main-menu .menu .menublock ul {
+  padding: 0;
+}
+@media (min-width: 768px) {
+  body .header-right .main-menu .menu li.categorylist-sub > .menublock > ul {
+    padding-left: 1%;
+  }
+}
+@media (min-width: 768px) {
+  body .header-right .main-menu .menu > ul > li.normal-sub {
+    position: relative;
+  }
+  body .header-right .main-menu .menu > ul > li.normal-sub > .menublock {
+    width: 300px;
+    position: absolute;
+    left: 0px;
+    top: 22px;
+  }
+}
+body .header-right .main-menu .menu .btn {
+  color: #ffffff;
+  background-color: #95c93f;
+  border-color: #ffffff;
+  padding: 10px 2em;
+  font-size: inherit;
+  line-height: 25px;
+  margin-bottom: 5px;
+  margin-top: 11px;
+  border-radius: 0;
+  border: 2px solid white;
+  font-weight: normal;
+  padding-right: 56px;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+body .header-right .main-menu .menu .btn:hover,
+body .header-right .main-menu .menu .btn:focus,
+body .header-right .main-menu .menu .btn.focus,
+body .header-right .main-menu .menu .btn:active,
+body .header-right .main-menu .menu .btn.active,
+.open > .dropdown-togglebody .header-right .main-menu .menu .btn {
+  color: #ffffff;
+  background-color: #79a62f;
+  border-color: #e0e0e0;
+}
+body .header-right .main-menu .menu .btn:active,
+body .header-right .main-menu .menu .btn.active,
+.open > .dropdown-togglebody .header-right .main-menu .menu .btn {
+  background-image: none;
+}
+body .header-right .main-menu .menu .btn.disabled,
+body .header-right .main-menu .menu .btn[disabled],
+fieldset[disabled] body .header-right .main-menu .menu .btn,
+body .header-right .main-menu .menu .btn.disabled:hover,
+body .header-right .main-menu .menu .btn[disabled]:hover,
+fieldset[disabled] body .header-right .main-menu .menu .btn:hover,
+body .header-right .main-menu .menu .btn.disabled:focus,
+body .header-right .main-menu .menu .btn[disabled]:focus,
+fieldset[disabled] body .header-right .main-menu .menu .btn:focus,
+body .header-right .main-menu .menu .btn.disabled.focus,
+body .header-right .main-menu .menu .btn[disabled].focus,
+fieldset[disabled] body .header-right .main-menu .menu .btn.focus,
+body .header-right .main-menu .menu .btn.disabled:active,
+body .header-right .main-menu .menu .btn[disabled]:active,
+fieldset[disabled] body .header-right .main-menu .menu .btn:active,
+body .header-right .main-menu .menu .btn.disabled.active,
+body .header-right .main-menu .menu .btn[disabled].active,
+fieldset[disabled] body .header-right .main-menu .menu .btn.active {
+  background-color: #95c93f;
+  border-color: #ffffff;
+}
+body .header-right .main-menu .menu .btn .badge {
+  color: #95c93f;
+  background-color: #ffffff;
+}
+body .header-right .main-menu .menu .btn:after {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: FontAwesome;
+  content: '\f105';
+  position: absolute;
+  right: 10px;
+  font-weight: normal;
+  line-height: inherit;
+  font-size: 150%;
+}
+.menu-container {
+  width: 100%;
+  margin: 0 auto;
+  background: transparent;
+}
+.menu-mobile {
+  display: none;
+  z-index: 1006;
+  top: 23px;
+  left: 15px;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 22px;
+  margin-top: 0;
+  vertical-align: top;
+  line-height: 4px;
+  color: white;
+  height: auto;
+  cursor: pointer;
+  text-align: left;
+  right: 0;
+}
+.menu-mobile::after {
+  content: '\f0c9';
+  font-family: FontAwesome;
+}
+.menu-mobile:hover {
+  color: #ffffff;
+}
+.menu-dropdown-icon::before {
+  content: "\f489";
+  font-family: "Ionicons";
+  display: none;
+  cursor: pointer;
+  float: right;
+  padding: 1.5em 2em;
+  background: #fff;
+  color: #333;
+}
+#page-cover {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 1004;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index:100;
+}
+.menu > ul {
+  margin: 0 auto;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  
+  
+}
+.menu > ul::before,
+.menu > ul::after {
+  content: "";
+  display: table;
+}
+.menu > ul::after {
+  clear: both;
+}
+.menu > ul > li {
+  float: left;
+  padding: 0;
+  margin: 0;
+  border-right: 2px solid white;
+}
+@media (max-width: 991px) {
+  .menu > ul > li {
+    border-right: none;
+  }
+}
+.menu > ul > li.hoverparent {
+  border-right: none;
+}
+.menu > ul > li.active > a.touch,
+.menu > ul > li.active > a {
+  color: #FF9900;
+}
+.menu > ul > li.active > a.touch::after,
+.menu > ul > li.active > a::after {
+  color: white;
+  background: #FF9900;
+}
+.menu > ul > li > a {
+  line-height: normal;
+  font-size: 15px;
+  padding: 7px 13px 7px;
+  border-bottom: none;
+  border-top: none;
+  letter-spacing: normal;
+  color: white;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .menu > ul > li > a {
+    font-size: 13px;
+  }
+}
+@media (max-width: 991px) {
+  .menu > ul > li > a {
+    border-right: none;
+    padding: 5px 9px;
+  }
+}
+.menu > ul > li > a:hover {
+  color: #ccc;
+}
+.menu > ul > li > a.touch {
+  padding-right: 26px;
+  position: relative;
+  padding-left: 8px;
+}
+.menu > ul > li > a.touch:after {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: FontAwesome;
+  content: "\f107";
+  position: absolute;
+  right: 10px;
+  font-weight: normal;
+  line-height: inherit;
+  font-size: 150%;
+}
+.menu > ul > li > a.touch .doorway {
+  position: absolute;
+  right: 2px;
+  width: 18px;
+  height: 21px;
+  top: 4px;
+  cursor: pointer;
+  z-index: 1006;
+  
+}
+.menu > ul > li > a.touch::after {
+  line-height: 13px;
+  top: 0;
+  position: absolute;
+  font-size: 15px;
+  top: 4px;
+  right: 2px;
+  background: #53535d;
+  height: 21px;
+  text-align: center;
+  padding-top: 4px;
+  width: 18px;
+}
+.menu > ul > li ul.container {
+  position: relative;
+  list-style: none;
+}
+.menu > ul > li ul.container::before,
+.menu > ul > li ul.container::after {
+  content: "";
+  display: table;
+}
+.menu > ul > li ul.container::after {
+  clear: both;
+}
+.menu > ul > li ul.container li {
+  margin: 0;
+  padding-bottom: 0;
+  list-style: none;
+  width: 25%;
+  min-height: 42px;
+  background: none;
+}
+@media (max-width: 991px) {
+  .menu > ul > li ul.container li {
+    width: 40%;
+  }
+}
+.menu > ul > li ul.container li.buttonlink {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.menu > ul > li ul.container li a {
+  color: white;
+  padding: 10px 2em;
+  width: 100%;
+  display: block;
+}
+.menu > ul > li ul.container li.parentitem > ul {
+  display: none;
+  z-index: 1100;
+}
+.menu > ul > li ul.container li.parentitem:hover {
+  background-color: #B1B2B2;
+}
+.menu > ul > li ul.container li.parentitem > a {
+  padding-right: 56px;
+  position: relative;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+.menu > ul > li ul.container li.parentitem > a:after {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: FontAwesome;
+  content: '\f105';
+  position: absolute;
+  right: 10px;
+  font-weight: normal;
+  line-height: inherit;
+  font-size: 150%;
+}
+.menu > ul > li ul.container li.parentitem > a::after {
+  line-height: 40px;
+  font-size: 22px;
+  top: 0;
+  right: 2em;
+}
+.menu > ul > li ul.container li.parentitem > a.touch .doorway {
+  position: absolute;
+  right: 0;
+  width: 5em;
+  height: 40px;
+  background: transparent;
+  top: 0;
+  cursor: pointer;
+  z-index: 1006;
+  background: initial;
+}
+.menu > ul > li ul.container li.parentitem > a.touch::after {
+  position: absolute;
+  line-height: 22px;
+  font-size: 22px;
+  top: 3px;
+  right: 2em;
+  z-index: 3;
+  background: initial;
+  height: 34px;
+  text-align: center;
+  padding-left: 10px;
+  padding-top: 6px;
+  padding-right: 7px;
+  cursor: pointer;
+}
+.menu > ul > li ul.container li > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.menu > ul > li ul.container li > ul > li {
+  width: 100%;
+}
+.menu > ul > li ul.container li > ul::before,
+.menu > ul > li ul.container li > ul::after {
+  content: "";
+  display: table;
+}
+.menu > ul > li ul.container li > ul::after {
+  clear: both;
+}
+.menu > ul > li ul.container li > ul a {
+  color: black;
+}
+.menu > ul > li ul.container li > ul a:hover {
+  background: #FBFBFB;
+}
+.menu > ul > li ul.container li:not(.categorylist) > ul {
+  width: 25%;
+  left: 25%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(245, 245, 245, 0.85);
+  min-height: 100%;
+  margin-left: 5em;
+}
+@media (max-width: 991px) {
+  .menu > ul > li ul.container li:not(.categorylist) > ul {
+    width: 40%;
+    left: 40%;
+  }
+}
+.menu > ul > li ul.container > li:not(.categorylist) {
+  margin-left: 5em;
+}
+.menu > ul > li ul.container > li.categorylist {
+  background: none;
+  float: left;
+  margin: 0;
+  padding-bottom: 20px;
+}
+.menu > ul > li ul.container > li.categorylist a {
+  color: white;
+}
+
+.menu > ul > li ul.container > li.categorylist > ul > li:not(.category) {
+  background-color: initial;  
+}
+
+.menu > ul > li ul.container > li.categorylist > ul > li:not(.category):hover {
+  background-color: #B1B2B2;
+}
+.menu > ul > li ul.container > li.categorylist > ul > li:not(.category):hover > a {
+  background-color: transparent;
+}
+@media (min-width: 768px) {
+  .menu > ul > li ul.container > li.categorylist:not(:first-child) > ul > li + li {
+    border-left: 1px solid #FF9900;
+  }
+}
+.menu > ul > li:last-child {
+  border-right: none;
+}
+.menu > ul > li.normal-sub ul.container {
+  width: 100% !important;
+}
+.menu > ul > li.normal-sub ul.container > li {
+  width: 100%;
+  margin-left: 0;
+}
+.menu > ul > li.normal-sub ul.container > li.category {
+  margin-left: 1em;
+}
+.menu > ul > li.normal-sub ul.container > li:not(.category):hover {
+  background-color: #B1B2B2;
+}
+
+@media only screen and (max-width: 767px) {
+  .menu-container {
+    width: 100%;
+  }
+  .menu-mobile {
+    display: block;
+  }
+  .menu-dropdown-icon::before {
+    display: block;
+  }
+  .menu > ul {
+    display: none;
+  }
+  .menu > ul > li {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+  .menu > ul > li a {
+    padding: 1.2em;
+    width: 100%;
+    display: block;
+  }
+  .menu > ul > li a.touch::after {
+    top: 16px;
+    right: 15px;
+  }
+  .menu > ul > li a.touch .doorway {
+    top: 16px;
+    right: 15px;
+  }
+  .menu > ul > li .menublock {
+    padding-top: 0;
+    background-color: #8e8d8d;    
+  }
+  .menu > ul > li .menublock > ul.container > li {
+    margin-left: 1em;
+    width: 100%;
+  }
+  .menu > ul > li .menublock > ul.container > li:hover {
+    background-color: transparent;
+  }
+  .menu > ul > li .menublock > ul.container > li a.touch .doorway {
+    display: none;
+  }
+  .menu > ul > li .menublock > ul.container > li a.touch::after {
+    display: none;
+  }
+  .menu > ul > li .menublock > ul.container > li > ul {
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    left: 2em;
+    background: none;
+  }
+  .menu .show-on-mobile {
+    display: block;
+    margin-top: 50px;
+    background: #333333;
+    overflow-y: scroll;
+    max-height: 300px;
+    overflow-x: hidden;
+  }
+}

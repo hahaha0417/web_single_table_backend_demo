@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+body{
+    background-color: #000;
+}
+
+#content{
+    background: inherit;
+    display: block;
+    
+}
+
+.asus_header{
+    background-color: #000;
+    width: 100%;
+    
+}
+
+.asus_header.row{
+    margin: 0 15px;
+}
+
+.ment_about {
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+
+.ment_about .bg{
+    width: 100%;
+}
+
+.asus_sec_vtop {
+    background: url("/image/front/test/TW.jpg") no-repeat;
+    background-size: 100% 400px;    
+    padding: 50px 0;
+    float: left;
+    width: 100%;
+}
+
+.asus_sec_vtop .video_txt{
+    color: rgba(255, 100, 100, 1);
+}
+
+#asus_performance{
+    background-color: #000;
+    width: 100%;
+    float: left;
+}
+
+#asus_performance .hd-sec-mode figure img{
+    width: 300px;
+    height: 400px;
+}
+
+.ment_news {
+    /* background-color: rgba(210, 225, 210, 1); */
+    /* background-color: #eee; */
+    background-color: #000;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+}
+
+.ment_news .head .ti-en, .ment_news .head .ti-ch{
+    color: #ffffff;
+}
+
+.ment_news .news-slick .item >a:after {
+    background: initial;
+}

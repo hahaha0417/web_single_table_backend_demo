@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.ment_contact {
+    position: relative;
+    height: 670px;
+    overflow: hidden;
+    padding-top: 460px
+}
+
+.ment_contact img {
+    display: block;
+    position: absolute;
+    width: 1920px;
+    height: 860px;
+    top: 0;
+    left: 50%;
+    margin-left: -960px
+}
+
+@media (min-width:1921px) {
+    .ment_contact img {
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin-left: 0
+    }
+}
+
+.ment_contact a {
+    display: block;
+    position: relative;
+    width: 210px;
+    height: 40px;
+    line-height: 38px;
+    font-size: 1rem;
+    color: #a7be38;
+    border: 1px solid #a7be38;
+    border-radius: 2px;
+    text-align: center;
+    margin: auto;
+    transition: all .2s cubic-bezier(0, .4, .4, 1);
+    -ms-transition: all .2s cubic-bezier(0, .4, .4, 1);
+    -moz-transition: all .2s cubic-bezier(0, .4, .4, 1);
+    -webkit-transition: all .2s cubic-bezier(0, .4, .4, 1)
+}
+
+.ment_contact a:hover {
+    color: #fff;
+    background: #a7be38
+}
+
+@media (max-width:991px) {
+    .ment_contact {
+        height: 420px;
+        padding-top: 290px
+    }
+    .ment_contact img {
+        width: 1200px;
+        height: auto;
+        top: 0 !important;
+        margin-left: -600px
+    }
+}
+
+@media (max-width:767px) {
+    .ment_contact {
+        height: 300px;
+        padding-top: 160px
+    }
+}

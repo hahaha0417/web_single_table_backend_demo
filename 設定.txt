@@ -1,0 +1,324 @@
+由於講求彈性，我可以revert proxy，也可單public，更可分機器，因此全部節點要設
+
+// ---------------------------------- 
+httpd.conf
+// ---------------------------------- 
+Listen 8700
+Listen 8701
+Listen 8702
+Listen 8703
+Listen 8704
+
+<Directory "D:/web/project/hahaha/hahaha/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+<Directory "D:/web/project/hahaha/hahaha/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+<Directory "D:/web/project/hahaha/project/hahaha/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+<Directory "D:/web/project/hahaha/project/front/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+<Directory "D:/web/project/hahaha/project/backend/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+<Directory "D:/web/project/hahaha/project/api/public">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+// ---------------------------------- 
+httpd-vhosts.conf
+// ---------------------------------- 
+Listen 8700
+Listen 8701
+Listen 8702
+Listen 8703
+Listen 8704
+Listen 8705
+
+<VirtualHost *:8700>
+    ServerAdmin public
+    DocumentRoot "D:/web/project/hahaha/public
+    ServerName web.single.table.backend.public"
+    ErrorLog "logs/dummy-web.single.table.backend.public-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.public-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8701>
+    ServerAdmin hahaha_main
+    DocumentRoot "D:/web/project/hahaha/hahaha/public"
+    ServerName web.single.table.backend.hahaha.main
+    ErrorLog "logs/dummy-web.single.table.backend.hahaha.main-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.hahaha.main-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8702>
+    ServerAdmin hahaha_slave
+    DocumentRoot "D:/web/project/hahaha/project/hahaha/public"
+    ServerName web.single.table.backend.hahaha.slave
+    ErrorLog "logs/dummy-web.single.table.backend.hahaha.slave-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.hahaha.slave-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8703>
+    ServerAdmin front
+    DocumentRoot "D:/web/project/hahaha/project/front/public"
+    ServerName web.single.table.backend.front
+    ErrorLog "logs/dummy-web.single.table.backend.front-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.front-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8704>
+    ServerAdmin backend
+    DocumentRoot "D:/web/project/hahaha/project/backend/public"
+    ServerName web.single.table.backend.backend
+    ErrorLog "logs/dummy-web.single.table.backend.backend-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.backend-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8705>
+    ServerAdmin api
+    DocumentRoot "D:/web/project/hahaha/project/api/public"
+    ServerName web.single.table.backend.api
+    ErrorLog "logs/dummy-web.single.table.backend.api-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.api-access.log" common
+</VirtualHost>
+
+// ---------------------------------- 
+httpd-ssl.conf
+// ---------------------------------- 
+Listen 8540
+Listen 8541
+Listen 8542
+Listen 8543
+Listen 8544
+Listen 8545
+
+<VirtualHost *:8540>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+	
+    ServerAdmin public
+    DocumentRoot "D:/web/project/hahaha/public
+    ServerName web.single.table.backend.public"
+    ErrorLog "logs/dummy-web.single.table.backend.public-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.public-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8541>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+	
+    ServerAdmin hahaha_main
+    DocumentRoot "D:/web/project/hahaha/hahaha/public"
+    ServerName web.single.table.backend.hahaha.main
+    ErrorLog "logs/dummy-web.single.table.backend.hahaha.main-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.hahaha.main-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8542>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+	
+    ServerAdmin hahaha_slave
+    DocumentRoot "D:/web/project/hahaha/project/hahaha/public"
+    ServerName web.single.table.backend.hahaha.slave
+    ErrorLog "logs/dummy-web.single.table.backend.hahaha.slave-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.hahaha.slave-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8543>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+	
+    ServerAdmin front
+    DocumentRoot "D:/web/project/hahaha/project/front/public"
+    ServerName web.single.table.backend.front
+    ErrorLog "logs/dummy-web.single.table.backend.front-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.front-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8544>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+	
+    ServerAdmin backend
+    DocumentRoot "D:/web/project/hahaha/project/backend/public"
+    ServerName web.single.table.backend.backend
+    ErrorLog "logs/dummy-web.single.table.backend.backend-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.backend-access.log" common
+</VirtualHost>
+
+<VirtualHost *:8545>
+	SSLEngine on
+	SSLCertificateFile "conf/ssl.crt/certificate.crt"
+	SSLCertificateKeyFile "conf/ssl.crt/private.key"
+	SSLCertificateChainFile "conf/ssl.crt/ca_bundle.crt"
+
+    ServerAdmin api
+    DocumentRoot "D:/web/project/hahaha/project/api/public"
+    ServerName web.single.table.backend.api
+    ErrorLog "logs/dummy-web.single.table.backend.api-error.log"
+    CustomLog "logs/dummy-web.single.table.backend.api-access.log" common
+</VirtualHost>

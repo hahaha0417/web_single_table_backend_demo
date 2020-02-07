@@ -1,0 +1,9 @@
+
+
+必須 : 
+安裝ext-redis
+https://windows.php.net/downloads/pecl/releases/redis/
+php -v
+找到對應版本安裝，ZTS是thread safe(預設)
+
+啟用ext-sockets
