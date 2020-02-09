@@ -21,6 +21,8 @@ LaravelDoctrine\ORM\DoctrineServiceProvider::class,
 'EntityManager' => LaravelDoctrine\ORM\Facades\EntityManager::class,
 'Registry'      => LaravelDoctrine\ORM\Facades\Registry::class,
 'Doctrine'      => LaravelDoctrine\ORM\Facades\Doctrine::class,
+
+php artisan vendor:publish --tag="config"
  ---------------------------- 
 laravel cors
  ---------------------------- 
@@ -29,5 +31,7 @@ laravel cors
 \Fruitcake\Cors\HandleCors::class,
 // config/cors.php
 'paths' => ['api/*'],
+
+php artisan vendor:publish --tag="cors"
  ---------------------------- 
 

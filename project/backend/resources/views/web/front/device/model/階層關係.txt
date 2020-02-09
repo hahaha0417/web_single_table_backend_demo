@@ -1,3 +1,0 @@
-model/feature/{item}
-             /overview 
-             /new

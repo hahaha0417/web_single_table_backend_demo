@@ -24,6 +24,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <title>hahaha網站</title>
-<link rel="shortcut icon" type="image/x-icon" href="{{url('image/hahaha.ico')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{\p_ha::Url('images/hahaha.ico')}}">
 {{-- Bootstrap --}}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

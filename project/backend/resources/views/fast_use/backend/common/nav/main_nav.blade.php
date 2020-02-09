@@ -14,9 +14,9 @@
 
 
 {{--  請手動整理至上方  --}}
-<link rel="stylesheet" href="{{asset("assets/plugin/animation/animation.css")}}">
+<link rel="stylesheet" href="{{\p_ha::Assets("plugin/animation/animation.css")}}">
 {{--  --}}
-<script src="{{asset("assets/module/backend/common/nav/main_nav/main_nav.js")}}"></script>
-<link rel="stylesheet" href="{{asset("assets/module/backend/common/nav/main_nav/main_nav.css")}}">
+<script src="{{\p_ha::Assets("module/backend/common/nav/main_nav/main_nav.js")}}"></script>
+<link rel="stylesheet" href="{{\p_ha::Assets("module/backend/common/nav/main_nav/main_nav.css")}}">
 
 @include('module.backend.common.nav.main_nav.main_nav')

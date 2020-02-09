@@ -16,7 +16,7 @@
 {{--  請手動整理至上方  --}}
 {{--  --}}
 
-<script src="{{asset("assets/module/backend/common/tail/main_tail/main_tail.js")}}"></script>
-<link rel="stylesheet" href="{{asset("assets/module/backend/common/tail/main_tail/main_tail.css")}}">
+<script src="{{\p_ha::Assets("module/backend/common/tail/main_tail/main_tail.js")}}"></script>
+<link rel="stylesheet" href="{{\p_ha::Assets("module/backend/common/tail/main_tail/main_tail.css")}}">
 
 @include('module.backend.common.tail.main_tail.main_tail')

@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
-BASEDIR=$(dirname "$0")
+# https://blog.csdn.net/kangkanglou/article/details/81943986
+BASEDIR=$(cd `dirname $0`;pwd)
 # 切換目錄
 # cd "$BASEDIR"/../../
 

@@ -6,10 +6,56 @@
 // root專案
 "classmap": [
 	"libraries",
-	"../libraries"
+	"../libraries",
+	"../config",
+	"../framework"
 ]
 // project下專案
 "classmap": [
 	"libraries",
-	"../../libraries"
+	"../../libraries",
+	"../../config",
+	"../../framework"
 ]
+
+ ---------------------------- 
+laravel
+ ---------------------------- 
+// bootstrap/app.php
+// 初始化 - 公用設定		
+$global_ = \pub\hahaha_global::Instance();
+if($global_->Project->Jump == 0)
+{
+    // 不是跳轉專案
+	$global_pub_->Node->Name = "Backend";	// 根據對應專案\pub\hahaha_system_setting參數
+    $system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
+}
+//
+
+// .env
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+// 有使用RECAPTCHA V3，請去申請
+// https://www.google.com/recaptcha/intro/v3.html
+// 填入
+GOOGLE_RECAPTCHA_WEB_KEY=
+GOOGLE_RECAPTCHA_SECRET_KEY=
+ ---------------------------- 
+php hahaha framework
+ ---------------------------- 
+// app/hahaha_application.php
+// 
+public function Initial()
+{
+	// 初始化 - 公用設定		
+	$global_ = \pub\hahaha_global::Instance();
+	if($global_->Project->Jump == 0)
+	{
+		// 不是跳轉專案
+		$global_pub_->Node->Name = "Hahaha";	// 根據對應專案\pub\hahaha_system_setting參數
+		$system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
+	}
+	//
+	parent::Initial();
+}

@@ -16,7 +16,7 @@
 {{--  請手動整理至上方  --}}
 {{--  --}}
 
-<script src="{{asset("assets/module/backend/common/home/main_home/main_home.js")}}"></script>
-<link rel="stylesheet" href="{{asset("assets/module/backend/common/home/main_home/main_home.css")}}">
+<script src="{{\p_ha::Assets("module/backend/common/home/main_home/main_home.js")}}"></script>
+<link rel="stylesheet" href="{{\p_ha::Assets("module/backend/common/home/main_home/main_home.css")}}">
 
 @include('module.backend.common.home.main_home.main_home')

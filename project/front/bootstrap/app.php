@@ -52,4 +52,14 @@ $app->singleton(
 |
 */
 
+// 初始化 - 公用設定		
+$global_pub_ = \pub\hahaha_global::Instance();
+if($global_pub_->Project->Jump == 0)
+{
+    // 不是跳轉專案
+    $global_pub_->Node->Name = "Front";
+    $system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
+}
+//
+
 return $app;

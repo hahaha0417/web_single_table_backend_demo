@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
-BASEDIR=$(dirname "$0")
+# https://blog.csdn.net/kangkanglou/article/details/81943986
+BASEDIR=$(cd `dirname $0`;pwd)
 # 切換目錄
 # cd "$BASEDIR"/../../../../project
 
@@ -21,6 +22,10 @@ cd "$BASEDIR"/../../../../
 cp -Rf ./env_setting/hahaha/* ./project/hahaha
 # ./resources/public要的自己複製，因為裡面包含前台 & 後台，可能有些人只要一種
 
+# ----------------------------------- 
+# 安裝套件
+# ----------------------------------- 
+cd "$BASEDIR"/../../../../project/hahaha
 # ----------------------------------- 
 # Third Party
 # ----------------------------------- 

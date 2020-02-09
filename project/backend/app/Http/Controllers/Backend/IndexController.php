@@ -5,56 +5,40 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
-    ----------------------------------------------------------------------------
-    說明 : 
-    ----------------------------------------------------------------------------   
-    
-    ----------------------------------------------------------------------------
+{{--
+----------------------------------------------------------------------------
+說明 :
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
-*/
+ */
 namespace App\Http\Controllers\Backend;
 
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Crypt;
 use App\Http\Models\Backend\User;
-use Illuminate\Support\ServiceProvider;
-use Config;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
-// reCAPTCHA hahaha(114.32.144.211)  
-// Site key :  6LfYLVUUAAAAAIQqzvZ3wJTYNw0mEihhkh2n3Jeq  
-// Secret key : 6LfYLVUUAAAAAI21HFaEX7aXqcQVxdWHdmGFyRag 
-// https://www.google.com/recaptcha/admin#site/341126616?setup  
-// 驗證  
-// URL: https://www.google.com/recaptcha/api/siteverify 
-// secret (required)	6LfYLVUUAAAAAI21HFaEX7aXqcQVxdWHdmGFyRag 
-// response (required)	The value of 'g-recaptcha-response'. 
-// remoteip	The end user's ip address.  
-// https://www.cloudways.com/blog/use-recaptcha-laravel-forms-validation/ 
-
-// send_post
-// http://guzzle.readthedocs.io/en/latest/
-// use Guzzle\Http\Client;
-// composer require guzzlehttp/guzzle
+/*
+使用laravel session處理login，有需要請自行換別種auth方式
+目前知道可用的只有session & token & jwt auth
+*/
 class IndexController extends CommonController
 {
     //
     public function __construct()
     {
-        
+
     }
 
     public function index()
-    {       
+    {
         // http://php.net/manual/en/language.types.object.php
 
         // 目前先用變數存，有空再用資料庫
         // 導航條
-        $nav = array(  
+        $nav = array(
 
         );
         // 選單
@@ -65,18 +49,18 @@ class IndexController extends CommonController
         // link 項目
         // -- web 直接連結
         // -- self 站內
-        $menu = array(  
-            'Main' => array( 
+        $menu = array(
+            'Main' => array(
                 'type' => 'label',
                 // 'url' => '#',
                 // 'target' => '_self',
                 'background' => 'rgba(190,155,90,0.5)',
                 'active' => 'true',
-                
+
                 // 'icon' => "fa-angle-double-down",
                 // 前端首頁
             ),
-            'Home' => array( 
+            'Home' => array(
                 'type' => 'item',
                 'url' => '/',
                 'target' => '_self',
@@ -94,7 +78,7 @@ class IndexController extends CommonController
             //     'active' => 'false',
             //     'background' => 'rgba(190,155,255,0.5)',
             //     'mini' => 'Board',
-            //     'menu' => array(   
+            //     'menu' => array(
 
             //     ),
             // ],
@@ -112,17 +96,17 @@ class IndexController extends CommonController
                 // 'icon' => "fa-angle-double-down",
                 // 'icon' => "fa-angle-double-down",
                 // 'icon' => "fa-angle-double-down",
-                // 'menu' => array(   
-                   
+                // 'menu' => array(
+
                 // ),
-                // 'menu2' => array(   
-                   
+                // 'menu2' => array(
+
                 // ),
             ],
             // 其他設定頁面
             // 'Dashboard' => [
             //     'icon' => 'fa-angle-double-down',
-            //     'menu' => array(   
+            //     'menu' => array(
 
             //     ),
             // ],
@@ -130,7 +114,7 @@ class IndexController extends CommonController
             // 這裡索引顯示在iframe，完整項目內容，點擊iframe項目即開新blank
 
             // 有很多註解再規劃到 /note 資料夾，目前是單頁
-            'Note' => array( 
+            'Note' => array(
                 'type' => 'item',
                 'url' => '/backend/note',
                 'target' => 'index_content_frame',
@@ -140,7 +124,7 @@ class IndexController extends CommonController
                 'mini' => 'Note',
                 // 前端首頁
             ),
-            // 'Index' => array( 
+            // 'Index' => array(
             //     'type' => 'menu',
             //     'url' => '/backend/index',
             //     'target' => 'index_content_frame',
@@ -148,7 +132,7 @@ class IndexController extends CommonController
             //     'active' => 'false',
             //     'background' => 'rgba(90,255,150,0.5)',
             //     'mini' => 'Index',
-            //     'menu' => array(  
+            //     'menu' => array(
             //         // 'Initial' => [
             //         //     'type' => 'item',
             //         //     'url' => 'backend/index/initial',
@@ -157,7 +141,7 @@ class IndexController extends CommonController
             //         //     'background' => '',
             //         //     //'icon' => 'fa-angle-double-down',
             //         //     // dir
-            //         // ], 
+            //         // ],
             //         'Index' => [
             //             'type' => 'item',
             //             'url' => 'backend/index/index',
@@ -188,7 +172,7 @@ class IndexController extends CommonController
                 'active' => 'false',
                 'background' => 'rgba(150,255,255,0.5)',
                 'mini' => 'Class',
-                'menu' => array(   
+                'menu' => array(
                     'All' => [
                         'type' => 'item',
                         'url' => 'backend/class/all',
@@ -225,17 +209,17 @@ class IndexController extends CommonController
                 'active' => 'false',
                 'background' => 'rgba(255,255,0,0.5)',
                 'mini' => 'Map',
-                'menu' =>  array(  
+                'menu' => array(
                     // 一層清單
                     // Recent
-                    // Short_Cut   
-                    // New            
+                    // Short_Cut
+                    // New
                     'Node' => [
                         'type' => 'menu',
                         'url' => '/',
                         'target' => '_self',
                         //'icon' => 'fa-angle-double-down',
-                        'menu' => array(   
+                        'menu' => array(
                             // 'Root' => [
                             //     'type' => 'item',
                             //     'url' => 'backend/map/node/root',
@@ -259,7 +243,7 @@ class IndexController extends CommonController
                                 'background' => '',
                                 //'icon' => 'fa-angle-double-down',
                                 // node
-                                'menu' => array(   
+                                'menu' => array(
                                     'List' => [
                                         'type' => 'item',
                                         'url' => 'backend/product/list',
@@ -309,7 +293,7 @@ class IndexController extends CommonController
                                 'background' => '',
                                 //'icon' => 'fa-angle-double-down',
                                 // node
-                                'menu' => array(   
+                                'menu' => array(
                                     'List' => [
                                         'type' => 'item',
                                         'url' => 'backend/device/list',
@@ -359,7 +343,7 @@ class IndexController extends CommonController
                     //     'url' => '/',
                     //     'target' => '_self',
                     //     //'icon' => "fa-angle-double-down",
-                    //     'menu' => array(   
+                    //     'menu' => array(
                     //         // other
                     //         'Module' => [
                     //             'type' => 'item',
@@ -368,7 +352,7 @@ class IndexController extends CommonController
                     //             'background' => '',
                     //             //'icon' => 'fa-angle-double-down',
                     //             // dir
-                    //             // 'menu' => array(   
+                    //             // 'menu' => array(
                     //             //     'Root' => [
                     //             //         'type' => 'item',
                     //             //         'url' => '#',
@@ -408,10 +392,10 @@ class IndexController extends CommonController
                     //             // page
                     //         ],
                     //     ),
-                    // ],                    
-                ),                
-            ],       
-            // 'Other' => array( 
+                    // ],
+                ),
+            ],
+            // 'Other' => array(
             //     'type' => 'label',
             //     // 'url' => '/',
             //     // 'target' => 'self',
@@ -419,8 +403,8 @@ class IndexController extends CommonController
             //     'active' => 'false',
             //     // 'icon' => "fa-angle-double-down",
             //     // 前端首頁
-            // ),   
-            'Blog' => array( 
+            // ),
+            'Blog' => array(
                 'type' => 'item',
                 'url' => 'http://hahaha-cplusplus.blogspot.com/2016/08/hahaha-c.html',
                 'target' => 'self',
@@ -429,79 +413,74 @@ class IndexController extends CommonController
                 'background' => "rgba(40,255,190,0.5)",
                 'mini' => 'Blog',
                 // 前端首頁
-            ),  
+            ),
         );
         // 尾端
-        $tail = array(  
+        $tail = array(
 
         );
         //
 
         //
         return view('web.backend.index', compact('nav', 'menu', 'tail'));
-        
+
     }
     public function login()
-    {		
-		session(['backend_user' => 'hahaha']);
-		return redirect('backend');
-		exit;
-        if($input = Input::all()){            
-            $post_data = array(          
-                'secret' => '6LfYLVUUAAAAAIQqzvZ3wJTYNw0mEihhkh2n3Jeq',          
-                'response' => $_POST["g-recaptcha-response"]
-            ); 
-            
-            // 驗證google recaptcha
-            $client = new \GuzzleHttp\Client();
-            $res = $client->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
-                'form_params' => $post_data
-            ]);
-            // echo $res->getStatusCode();
-            // "200"
-            // echo $res->getHeader('content-type');
-            // // 'application/json; charset=utf8'
-            // echo $res->getBody();
-            $recaptcha_result = json_decode($res->getBody());
-            
-            if($recaptcha_result){
+    {
+        $input_ = request()->all();
+        $recaptcha_response_ = request()->get('recaptcha_response');
+        if (request()->isMethod('post') && isset($recaptcha_response_) )
+        {
+            $verify_ = true;
+            // Build POST request:
+            $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptcha_secret = env('GOOGLE_RECAPTCHA_SECRET_KEY');
+            $recaptcha_response = $recaptcha_response_;
+        
+            // Make and decode POST request:
+            $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+            $recaptcha = json_decode($recaptcha);
+     // exit;
+            // Take action based on the score returned:
+            if ($recaptcha->score >= 0.5) {
                 // 成功
-                $user = User::where('name', $input['user_name'])->find(1);
-                // $user->password = Crypt::encrypt("111");   
-                // $user->password = Crypt::encrypt("123456");              
+             //   $user = User::where('name', $input_['user_name'])->find(1);
+                // $user->password = Crypt::encrypt("111");
+                // $user->password = Crypt::encrypt("123456");
                 // $user->save();
-                
+
                 //echo Crypt::decrypt($user->password);
                 // return ;
-                if( $user == null || $input['user_name'] != $user->name || $input['user_pass'] != Crypt::decrypt($user->password)){
-                //    return back()->with('msg','用戶名或密碼錯誤!');
-                }
-                
-                session(['backend_user' => $user->name]);
-                // dd( session('user'));
-                // echo 'ok';
-                // return;
+              //  if ($user == null || $input_['user_name'] != $user->name || $input_['user_pass'] != Crypt::decrypt($user->password)) {
+              //      return back()->with('msg','用戶名或密碼錯誤!');
+              //  }
+
+               // session(['backend_user' => $user->name]);
+               session(['backend_user' => 'hahaha']);
+
                 return redirect('backend');
-            }
-            else{
+            } 
+            else
+            {
                 // 驗證失敗
-                return back()->with('msg','驗證失敗!');
+                return back()->with('msg', '驗證失敗!');
             }
-        }else{
-            //dd($_SERVER);
+        } 
+        else 
+        {
             $value = session('backend_user');
-            // dd($value);
-            // return;
             //session()->forget('backend_user');
 
             //session()->flush();
-            if(!session()->has('backend_user') ){
+            if (!session()->has('backend_user')) 
+            {
                 return view('web.backend.login');
-            }
-            else{
+            } 
+            else 
+            {
                 return redirect('backend');
             }
-            
+
         }
     }
     public function logout()
@@ -509,14 +488,13 @@ class IndexController extends CommonController
         session()->forget('backend_user');
         session()->flush();
         return view('web.backend.logout');
-        
+
     }
 
     public function note()
     {
         return view('web.backend.note');
-        
+
     }
 
-    
 }

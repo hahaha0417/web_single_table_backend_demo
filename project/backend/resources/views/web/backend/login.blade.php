@@ -26,16 +26,26 @@
         @include('web.common.sub_css')
 
         <script src='https://www.google.com/recaptcha/api.js'></script>
-    
-        <link rel="stylesheet" href="{{asset("assets/web/backend/login.css")}}">
-        <script src="{{asset("assets/web/backend/login.js")}}"></script>
+     
+        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/login.css")}}">
+        <script src="{{\p_ha::Assets("web/backend/login.js")}}"></script>
+
+        <script src="https://www.google.com/recaptcha/api.js?render={{env('GOOGLE_RECAPTCHA_WEB_KEY')}}"></script>
+        <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute("{{env('GOOGLE_RECAPTCHA_WEB_KEY')}}", { action: 'contact' }).then(function (token) {
+                    var recaptchaResponse = document.getElementById('recaptchaResponse');
+                    recaptchaResponse.value = token;
+                });
+            });
+        </script>
         
     </head>
     <body>
         <div class="login_box">
             <div class="login_content">
-                <h1>hahaha</h1>
-                <h2>歡迎使用hahaha後台管理系統</h2>
+                <h1>{{__('backend.web.name')}}</h1>
+                <h2>{{__('backend.web.description')}}</h2>
                 {{--  <h5 style="color:red;">新增中，暫停進入!!</h5>  --}}
                 {{--  <h5 style="color:red;">按照PPT 鄉民指導，網站進行修改!!</h5>
                 <h5 style="color:red;">密碼更改，改完才開放登入!!</h5>  --}}
@@ -72,15 +82,7 @@
                                 <input type="password" class="form-control" name="user_pass" id="user_password" placeholder="密碼">
                             </div>
                         </div>
-                        <div class="col-auto text-left">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="remember_password">
-                                <label class="form-check-label"  name="remember_pass" for="remember_password">
-                                    記得密碼
-                                </label>
-                            </div>
-                        </div>
-                        <div class="g-recaptcha"  data-sitekey="6LfYLVUUAAAAAIQqzvZ3wJTYNw0mEihhkh2n3Jeq"></div>                          
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">                       
                         <div class="col-auto">
                             <button type="submit" class="btn btn-dark btn-block mb-2">送出</button>
                         </div>

@@ -1,0 +1,7 @@
+類似laravel facade
+
+使用方式
+$app = \p_ha\App::Instance();
+$app->xxx();
+
+

@@ -27,7 +27,7 @@
 {{--    --}}
 
 
-<link rel="stylesheet" href="{{asset("assets/web/common/base.css")}}">
+<link rel="stylesheet" href="{{\p_ha::url("assets/web/common/base.css")}}">
 
  
 

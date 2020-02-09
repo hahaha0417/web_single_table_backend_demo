@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
-BASEDIR=$(dirname "$0")
+# https://blog.csdn.net/kangkanglou/article/details/81943986
+BASEDIR=$(cd `dirname $0`;pwd)
 # 切換目錄
 # cd "$BASEDIR"/../../../../project
 
@@ -15,16 +16,18 @@ cp -Rf ./env_setting/laravel/libraries ./project/api
 # ./resources/public要的自己複製，因為裡面包含前台 & 後台，可能有些人只要一種
 
 # ----------------------------------- 
+# 安裝套件
+# ----------------------------------- 
+cd "$BASEDIR"/../../../../project/api
+# ----------------------------------- 
 # Laravel
 # ----------------------------------- 
 # Laravel Socialite
 composer require laravel/socialite
 # Laravel Doctrine
 composer require "laravel-doctrine/orm"
-php artisan vendor:publish --tag="config"
 # Laravel Cors
 composer require barryvdh/laravel-cors
-php artisan vendor:publish --tag="cors"
 
 
 # ----------------------------------- 

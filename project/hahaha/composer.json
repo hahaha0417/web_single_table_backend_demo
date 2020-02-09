@@ -33,8 +33,11 @@
             "config",
             "table",
             "flow",
-            "resources"
-
+            "resources",
+            "libraries",
+            "../../libraries",
+            "../../config",
+            "../../framework"
         ],
 		"psr-0": {"": "src/"}
     },

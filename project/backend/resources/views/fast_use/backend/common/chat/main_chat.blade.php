@@ -17,7 +17,7 @@
 {{--  請手動整理至上方  --}}
 {{--  --}}
 
-<script src="{{asset("assets/module/backend/common/chat/main_chat/main_chat.js")}}"></script>
-<link rel="stylesheet" href="{{asset("assets/module/backend/common/chat/main_chat/main_chat.css")}}">
+<script src="{{\p_ha::Assets("module/backend/common/chat/main_chat/main_chat.js")}}"></script>
+<link rel="stylesheet" href="{{\p_ha::Assets("module/backend/common/chat/main_chat/main_chat.css")}}">
 
 @include('module.backend.common.chat.main_chat.main_chat')

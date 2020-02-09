@@ -37,12 +37,20 @@ class hahaha_application extends hahaha_application_base
 	/*
 	初始化			
 	*/
-	/*
 	public function Initial()
 	{
+		// 初始化 - 公用設定		
+		$global_pub_ = \pub\hahaha_global::Instance();
+		if($global_pub_->Project->Jump == 0)
+		{
+			// 不是跳轉專案
+			$global_pub_->Node->Name = "Hahaha";
+			$system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
+		}
+		//
 		parent::Initial();
 	}
-	*/
+	
 	
 	/*
 	每次流程都必須重置的東西

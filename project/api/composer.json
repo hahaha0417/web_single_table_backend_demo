@@ -4,14 +4,25 @@
     "description": "The Laravel Framework.",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "libraries",
+        "../../libraries",
+        "../../config",
+        "../../framework"
     ],
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "barryvdh/laravel-cors": "^1.0",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.5",
+        "laravel-doctrine/orm": "^1.5",
         "laravel/framework": "^6.2",
-        "laravel/tinker": "^2.0"
+        "laravel/socialite": "^4.3",
+        "laravel/tinker": "^2.0",
+        "nesbot/carbon": "^2.29",
+        "predis/predis": "^1.1",
+        "signe/redlock-php": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
