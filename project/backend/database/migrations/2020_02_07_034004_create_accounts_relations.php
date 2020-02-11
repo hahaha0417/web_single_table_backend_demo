@@ -16,6 +16,7 @@ class CreateAccountsRelations extends Migration
     public function up()
     {
         Schema::create('accounts_relations', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('accounts_id1')->comment('帳號id1');
             $table->unsignedBigInteger('accounts_id2')->comment('帳號id2');
             $table->string('description')->comment('description')->nullable();
@@ -23,6 +24,8 @@ class CreateAccountsRelations extends Migration
 
             $table->foreign('accounts_id1')->references('id')->on('accounts');
             $table->foreign('accounts_id2')->references('id')->on('accounts');
+            //
+            $table->index(['accounts_id1', 'accounts_id2']);
         });
     }
 

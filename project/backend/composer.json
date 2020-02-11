@@ -47,7 +47,8 @@
             "libraries",
             "../../libraries",
             "../../config",
-            "../../framework"
+            "../../framework",
+            "code"
         ]
     },
     "autoload-dev": {

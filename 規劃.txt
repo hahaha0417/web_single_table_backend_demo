@@ -108,6 +108,25 @@ hahaha framework(尚無) - 政治完全OK才授權，這如果有的話，我會
 (因為指標問題不好處理)
 
  -------------------------------------- 
+資料庫相關
+ -------------------------------------- 
+因為laravel ORM很慢，有效率需求的地方都不用
+migrate用laravel的scheme
+
+seeder用laravel or doctrine應該都行(只要laravel不是用ORM)，
+DB::table('accounts')->insert一次多筆是OK的，他只是query builder
+https://www.youtube.com/watch?v=3TJfR1Ta4GU
+
+一般專案query則統一用doctrine的，"laravel的query builder只放行到seeder & migration"
+其他地方限制用doctrine，避免看起來很奇怪
+
+極致要求效能的強制用MySQLi or PDO
+一般場景放行到Doctrine2
+
+其實一般來說會進行Cache，doctrine可以設result cache，一般情況會比較方便
+性能高要求的，有空我再做模組，看是不是可以對MySQLi or PDO進行Cache or 更方便使用
+
+ -------------------------------------- 
 願景
  -------------------------------------- 
 

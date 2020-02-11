@@ -14,6 +14,7 @@ class CreateAccountsProductsLikes extends Migration
     public function up()
     {
         Schema::create('accounts_products_likes', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('accounts_id')->comment('帳號id');
             $table->unsignedBigInteger('products_id')->comment('產品id');
             $table->tinyInteger('like')->comment('喜歡 0 不喜歡 1 喜歡');      
@@ -21,6 +22,8 @@ class CreateAccountsProductsLikes extends Migration
 
             $table->foreign('accounts_id')->references('id')->on('accounts');
             $table->foreign('products_id')->references('id')->on('products');
+            //
+            $table->index(['accounts_id', 'products_id']);
         });
     }
 

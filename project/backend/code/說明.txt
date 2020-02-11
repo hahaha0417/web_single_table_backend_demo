@@ -1,0 +1,71 @@
+用class_map命名，不用PSR4，但是可以相依laravel的套件
+原本裡面的要直接放在app裡面，但是因為laravel的app是基於PSR4
+我完成的功能，可能要快速遷移至我的php hahaha framework(因為有綁定laravel框架，所以複製到我的框架下一定要修改)
+
+ --------------------------------- 
+目錄
+ --------------------------------- 
+base - 基礎
+define - 定義
+entitys - doctrine entity 
+
+ --------------------------------- 
+ --------------------------------- 
+models
+ --------------------------------- 
+ --------------------------------- 
+因為我專案可能分多個database，且doctrine model generator會自動對應PSR4(我希望自己指定關聯)
+因此我沒辦法控制namespace，沒辦法照我的方式放在namespace hahaha下面
+因此我包在models\test123，以做不同database的區隔
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\test123\'
+這可以選擇laravel不同的資料庫連線，需要修改config/doctrine.php & onfig/database.php
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\test123\' ---connection=mysql_read_only
+
+
+注意 : doctrine 3.0似乎orm:generate-entities棄用了(目前2.6)，要改用symfony/maker-bundle，但是目前laravel沒辦法用symfony/maker-bundle的bin/console，這到時候orm:generate-entities再上網查看要怎樣處理
+因為orm:convert-mapping只能強制覆蓋，orm:generate-entities基本上預設只會附加(--regenerate-entities=true則entity有異動會還原)，剩下的要自己處理
+這樣下不會產生備份檔，並且不會覆蓋修改過的entity的get & set
+./vendor/bin/doctrine orm:generate-entities code --no-backup
+這樣下會產生備份檔，並且會覆蓋修改過的entity的get & set
+./vendor/bin/doctrine orm:generate-entities code --no-backup --regenerate-entities=true
+// 加入這個可以在對應的資料夾直接產生
+ * @ORM\Entity(repositoryClass="Repository\Accounts")
+// 這樣會產生成namespace路徑
+ * @ORM\Entity(repositoryClass="Accounts")
+
+因為orm:generate-entities & orm:generate-entities，namespace相同，如果將orm:generate-entities產生在專案裡面，
+會使的composer要特別設置，因為orm:generate-entities速度很快，所以我將它產生專案資料夾外，也就是不儲存，要時再下指令取得最新的
+ --------------------------------- 
+實際用法 *
+ --------------------------------- 
+注意 : 因為不產生在專案內，所以指令在暫存路徑d:/temp/code
+// config/doctrine.php - 要對應路徑
+'paths'         => [
+    env('DOCTRINE_PATH', 'code'),
+    // base_path('code/models/test123'),
+],
+// 產生對應表
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\test123\'
+// 更新get & set
+./vendor/bin/doctrine orm:generate-entities code --no-backup
+// 更新Repository
+./vendor/bin/doctrine orm:generate-repositories code
+
+基本上用途只能產生第一次，往後只能手動修改，但是orm:generate-entities在entity新增欄位變數時，可以用來自動產生get & set
+基於上面描述，entity可以直接修改
+
+如果有新增欄位，則orm:convert-mapping到別的資料夾，再將PHPDoc要的地方複製到專案內
+ --------------------------------- 
+lazy load議題
+ --------------------------------- 
+基本上hahaha管理專案不使用lazy load，因為那會影響效能，並且hahaha也不用eager load，那可能會撈很多資料
+不管指令怎麼下，最後orm有的，一定代表SQL有下到取出
+
+其他人怎樣管，請問負責的人
+ --------------------------------- 
+orm convert mapping問題
+ --------------------------------- 
+因為composite primary key似乎doctrine無法generate entity
+沒設primary key也會出錯
+因此每個table都固定用id當作primary key，如要加速用index的方式，index也可以設成composite
+ --------------------------------- 
