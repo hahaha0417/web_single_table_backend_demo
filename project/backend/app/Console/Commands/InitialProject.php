@@ -40,16 +40,16 @@ class InitialProject extends Command
     {
         // create database
         $conn_ = mysqli_connect(
-            Config::get('database.connections.mysql.host'), 
-            Config::get('database.connections.mysql.username'), 
-            Config::get('database.connections.mysql.password'),
+            Config::get('database.connections.mysql_backend.host'), 
+            Config::get('database.connections.mysql_backend.username'), 
+            Config::get('database.connections.mysql_backend.password'),
             NULL,       // 要建立DB，所以為null
-            Config::get('database.connections.mysql.port')
+            Config::get('database.connections.mysql_backend.port')
         );            
         
-        $database_ = Config::get('database.connections.mysql.database');
-        $charset_ = Config::get('database.connections.mysql.charset');
-        $collation_ = Config::get('database.connections.mysql.collation');
+        $database_ = Config::get('database.connections.mysql_backend.database');
+        $charset_ = Config::get('database.connections.mysql_backend.charset');
+        $collation_ = Config::get('database.connections.mysql_backend.collation');
         
 
         $result_ = mysqli_query($conn_, "SHOW DATABASES LIKE '$database_';");

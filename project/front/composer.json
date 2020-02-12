@@ -47,7 +47,9 @@
             "libraries",
             "../../libraries",
             "../../config",
-            "../../framework"        ]
+            "../../framework",
+            "code"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

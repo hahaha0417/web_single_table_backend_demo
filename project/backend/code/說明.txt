@@ -69,3 +69,23 @@ orm convert mapping問題
 沒設primary key也會出錯
 因此每個table都固定用id當作primary key，如要加速用index的方式，index也可以設成composite
  --------------------------------- 
+Entities & Repositories議題
+ --------------------------------- 
+Entities - 基於Doctrine基本上只是Generator，因為他後面的附加，都是加在最尾端，其實實際上我可能會照順序排get & set位置，因此我採取，generator在外面暫存資料夾，利用winmerge將我要的東西進行整合
+Repositories - 基本上這只是殼，產生完移動位置整理是OK，因為我是使用class map，所以不會有移動完位置要改很多地方設定的問題
+ --------------------------------- 
+資料夾擺放問題
+ --------------------------------- 
+因為
+table有所謂的相依性(Accounts & Products & AccountsProductsLikes)
+因此假設我分類以表類型做分類，這樣不好查找關聯，因此，我的分類方式是
+1. 元件類型(Entities & Repositories)外層
+2. 表的相依關係內層(Accounts & Products)
+這樣表的相依關係比較容易懂，也比較好點選(所有表呈現一個List，不會切換資料夾很多次)
+
+原則為 :　先以list平放，太多時開資料夾往內分類，資料夾命名以檔案關聯做命名，檔案命名是doctrine產生的，不改
+因為是class map所以搬位置不需做任何修改，只要重新composer dump-autoload
+除非非常必要，不然不要沒事用很多層namespace，那不會比較好
+
+至於為什麼最外層要以元件類型當作資料夾，主要是因為doctrine只能產出list，如果我要維護表的同步，Entity放一起我比較好更新，如doctrine可以直接生成樹狀結構(這應該不可能，除非DB本身可以建立樹狀結構的表)，我會考慮以table分類當作最外層資料夾(一樣問題，migrate要不要也可以多層)
+ --------------------------------- 

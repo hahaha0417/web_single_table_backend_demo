@@ -39,6 +39,8 @@ class hahaha_application extends hahaha_application_base
 	*/
 	public function Initial()
 	{
+		// 這要先autoload在裡面載入
+		parent::Initial();
 		// 初始化 - 公用設定		
 		$global_pub_ = \pub\hahaha_global::Instance();
 		if($global_pub_->Project->Jump == 0)
@@ -47,8 +49,7 @@ class hahaha_application extends hahaha_application_base
 			$global_pub_->Node->Name = "Hahaha";
 			$system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
 		}
-		//
-		parent::Initial();
+		
 	}
 	
 	

@@ -116,6 +116,11 @@ class p_ha
         $system_setting_pub_ = \p_ha\System_Setting::Get();
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
+		if($url == "/")
+		{
+			return $project_->Url;
+		}
+
 		return $project_->Url . $url;
 	}
 	

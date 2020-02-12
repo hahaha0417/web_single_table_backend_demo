@@ -7,3 +7,28 @@ php -v
 找到對應版本安裝，ZTS是thread safe(預設)
 
 啟用ext-sockets
+ ------------------------------ 
+ ------------------------------ 
+sympony console argv問題
+ ------------------------------ 
+ ------------------------------ 
+不小心安裝到sympony console相關套件(可以在composer.lock裡面看到)
+composer處理完相依關係
+composer update就會裝sympony console
+sympony console需要開啟php.ini
+register_argc_argv=On
+不然會出錯
+
+所以不要亂裝sympony console相依的套件，要小心
+
+ ------------------------------ 
+處理方法
+ ------------------------------ 
+要解除這個問題
+似乎要先還原相依
+將多餘的Provider註解掉
+composer.json用laravel最初的composer.json
+composer update
+將composer.json還原使用中的
+composer update
+重啟server，因為opcache可能cache住了，導致檔案沒還原

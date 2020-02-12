@@ -25,8 +25,8 @@
         @include('web.common.main_css')
         @include('web.common.sub_css')
     
-        <link rel="stylesheet" href="{{asset("assets/web/backend/index.css")}}">
-        <script src="{{asset("assets/web/backend/index.js")}}"></script>
+        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/index.css")}}">
+        <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
         
         <script>
             $(function(){    
@@ -42,7 +42,20 @@
                 padding: 0;
                 max-width: 100%;
             }
-            
+            .sidebar-menu.sidebar-mini {
+                /* 會被iframe遮住 */
+                z-index: 2000;
+            }
+            .sidebar-menu.sidebar-mini .main-menu ul li .submenu{
+                /* 字太長延長 */
+                width: 400px;
+                right: -400px;
+            }
+
+            .sidebar-menu.sidebar-mini .main-menu ul li .submenu li {
+                /* 字太長延長 */
+                width: 400px;
+            }
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
         
@@ -76,7 +89,7 @@
                 </iframe>
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  tail  --}}
-                @include("fast_use.front.common.tail.main_tail")
+                @include("fast_use.backend.common.tail.main_tail")
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
             </div>
             {{--  <div id="right_box">  --}}

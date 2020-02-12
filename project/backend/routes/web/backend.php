@@ -45,7 +45,6 @@ Route::group(['middleware' => ['web','backend.login'],'prefix'=>'backend','names
     }
 );
     
-// });
 // //------------------------------------------------------------------------------------------------------
 // // Root
 // Route::group(['middleware' => ['web','backend.login'],'prefix'=>'backend','namespace'=>'Backend'],function(){
@@ -101,15 +100,15 @@ Route::group(['middleware' => ['web'],'prefix'=>'backend','namespace'=>'Backend'
     
     
 });
-// //------------------------------------------------------------------------------------------------------
-// // 分類頁
-// Route::group(['middleware' => ['web','backend.login'],'prefix'=>'backend','namespace'=>'Backend\Home'],function(){
-//     // class
-//     Route::get('/class/all', 'ClassController@all');
-//     Route::get('/class/all/node', 'ClassController@node');
-//     Route::get('/class/all/global', 'ClassController@global');
-//     // 頁面還是必須手動建路由，避免頁面有版本對應問題
-// });
+//------------------------------------------------------------------------------------------------------
+// 分類頁
+Route::group(['middleware' => ['web','backend.login'],'prefix'=>'backend','namespace'=>'Backend\Home'],function(){
+    // class
+    Route::get('/class/all', 'ClassController@all');
+    Route::get('/class/all/node', 'ClassController@node');
+    Route::get('/class/all/global', 'ClassController@global');
+    // 頁面還是必須手動建路由，避免頁面有版本對應問題
+});
 
 // Route::group(['middleware' => ['web','backend.login'],'prefix'=>'backend','namespace'=>'Backend\Home'],function(){
 //     // map

@@ -41,6 +41,7 @@ DB_PASSWORD=
 // 填入
 GOOGLE_RECAPTCHA_WEB_KEY=
 GOOGLE_RECAPTCHA_SECRET_KEY=
+
  ---------------------------- 
 php hahaha framework
  ---------------------------- 

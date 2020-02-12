@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         if($type_ == "demo")
         {
             $this->call(\Seeder\Demo\AccountsTableSeeder::class);
-            $this->call(\Seeder\Demo\ProductsTableSeeder::class);
         }
         else if($type_ == "migrate")
         {

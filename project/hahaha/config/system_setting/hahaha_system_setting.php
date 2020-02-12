@@ -55,8 +55,8 @@ class hahaha_system_setting
 		$system_setting->Global = new \stdClass;
 		// Autoload
 		$system_setting->Autoload = new \stdClass;
-		$system_setting->Autoload->Default = false;
-		$system_setting->Autoload->Hahaha = true;
+		$system_setting->Autoload->Default = true;
+		$system_setting->Autoload->Hahaha = false;
 		// Bootstrap
 		$system_setting->Bootstrap = new \stdClass;
 		$system_setting->Bootstrap->Enabled = true;
