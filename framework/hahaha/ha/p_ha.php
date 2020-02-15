@@ -113,7 +113,14 @@ class p_ha
 	public static function Url($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+						
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		if($url == "/")
@@ -130,7 +137,14 @@ class p_ha
 	public static function Images($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+						
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 		
 		return $project_->Url .  $project_->Images . $url;
@@ -142,7 +156,14 @@ class p_ha
 	public static function Videos($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+						
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 		
 		return $project_->Url .  $project_->Videos . $url;
@@ -154,7 +175,14 @@ class p_ha
 	public static function Assets($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+						
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 		
 		return $project_->Url .  $project_->Assets . $url;
@@ -166,7 +194,14 @@ class p_ha
 	public static function Uploads($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 		
 		return $project_->Url .  $project_->Uploads . $url;
@@ -187,7 +222,14 @@ class p_ha
 	public static function V_Url($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		return $project_->Virtual_Url . $url;
@@ -199,7 +241,14 @@ class p_ha
 	public static function V_Images($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		return $project_->Virtual_Url .  $project_->Images . $url;
@@ -211,7 +260,14 @@ class p_ha
 	public static function V_Videos($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		return $project_->Virtual_Url .  $project_->Videos . $url;
@@ -223,7 +279,14 @@ class p_ha
 	public static function V_Assets($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		return $project_->Virtual_Url .  $project_->Assets . $url;
@@ -235,12 +298,121 @@ class p_ha
 	public static function V_Uploads($url)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
-        $system_setting_pub_ = \p_ha\System_Setting::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
 		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
 		return $project_->Virtual_Url .  $project_->Uploads . $url;
 	}
 
+	// --------------------------------------------------------------------------
+	// 選擇
+	// --------------------------------------------------------------------------
+
+	/*
+	選擇url，因為可能有mapping或自定義對應
+
+	// 純路徑用
+	http://127.0.0.1:8700/backend
+
+	// 有要複雜設計請做成模組，這裡只是root
+	*/
+	public static function S_Url($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+
+		return $project_->Select_Url . $url;
+	}
+
+	/*
+	選擇Images
+	*/
+	public static function S_Images($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+
+		return $project_->Select_Url .  $project_->Images . $url;
+	}
+
+	/*
+	選擇Videos
+	*/
+	public static function S_Videos($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+
+		return $project_->Select_Url .  $project_->Videos . $url;
+	}
+
+	/*
+	選擇Assets
+	*/
+	public static function S_Assets($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+				
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+
+		return $project_->Select_Url .  $project_->Assets . $url;
+	}
+
+	/*
+	選擇Uploads
+	*/
+	public static function S_Uploads($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+        $system_setting_pub_ = \p_ha\System_Setting::Get();		
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+
+		return $project_->Select_Url .  $project_->Uploads . $url;
+	}
 
 	// --------------------------------------------------------------------------
 	// require

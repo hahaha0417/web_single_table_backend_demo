@@ -11,16 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 $root_path = base_path(); 
-
-// 入口
-// Route::group(['middleware' => ['web'],'prefix'=>'','namespace'=>''],function(){
-//     Route::get('/', 'IndexController@index');
-// });
 
 // 前端入口寫在front
 // Include front routes

@@ -10,8 +10,12 @@ class hahaha_system_setting
 {
 	use \hahahasublib\hahaha_instance_trait;
 
+	// 是否初始化 0 no 1 yes
+	public $Initial;
+
 	function __construct()
 	{
+		$this->Initial = false;
 		// $this->Initial();
 	}
 		
@@ -24,6 +28,7 @@ class hahaha_system_setting
 		if($system_setting == 'hahaha' && method_exists($this, "Initial_Ha"))
 		{
 			$this->Initial_Ha($this, $mode);
+			$this->Initial = true;
 		}	
 		return $this;
 	}
@@ -32,11 +37,12 @@ class hahaha_system_setting
 	初始化腳本
 	*/
 	public function Initial_Ha($system_setting, $mode = 0)
-	{		
-		if(empty($_SERVER['REQUEST_SCHEME']))
-		{
-			return;
-		}	
+	{	
+		// composer dump-autoload也要用，所以不是只有web需要	
+		// if(empty($_SERVER['REQUEST_SCHEME']))
+		// {
+		// 	return;
+		// }	
 
 		$system_setting->System = new \stdClass;
 		if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
@@ -57,7 +63,12 @@ class hahaha_system_setting
 		// 專案
 		$system_setting->Project = new \stdClass;
 
-		$url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'];
+		$url = "http://127.0.0.1";
+		if(!empty($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['REQUEST_NAME']))
+		{
+			$url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'];
+		}
+	
 		// project/front (這必須最前，有相依)
 		$system_setting->Project->Front = new \stdClass;
 		if(!empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == "http")
@@ -83,17 +94,21 @@ class hahaha_system_setting
 			$url . "/" : 
 			$url . ":" . $system_setting->Project->Front->Port . "/";
 		// 虛擬路徑
+		$system_setting->Project->Front->Virtual_Url = empty($system_setting->System->Port) ? 
+			$url . "/" : 
+			$url . ":" . $system_setting->System->Port . $system_setting->Project->Front->Node; // 這不用"/"
+		// 選擇路徑
 		if($mode == 0) 
 		{
 			// 走專案public路線
-			$system_setting->Project->Front->Virtual_Url = empty($system_setting->Project->Front->Port) ? 
+			$system_setting->Project->Front->Select_Url = empty($system_setting->Project->Front->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->Project->Front->Port . "/";
 		}
 		else
 		{
 			// 走public路線
-			$system_setting->Project->Front->Virtual_Url = empty($system_setting->System->Port) ? 
+			$system_setting->Project->Front->Select_Url = empty($system_setting->System->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->System->Port . $system_setting->Project->Front->Node; // 這不用"/"
 		}	
@@ -122,17 +137,21 @@ class hahaha_system_setting
 			$url . "/" : 
 			$url . ":" . $system_setting->Project->Master->Port . "/";
 		// 虛擬路徑
+		$system_setting->Project->Master->Virtual_Url = empty($system_setting->System->Port) ? 
+			$url . "/" : 
+			$url . ":" . $system_setting->System->Port . $system_setting->Project->Master->Node . "/";
+		// 選擇路徑
 		if($mode == 0) 
 		{
 			// 走專案public路線
-			$system_setting->Project->Master->Virtual_Url = empty($system_setting->Project->Master->Port) ? 
+			$system_setting->Project->Master->Select_Url = empty($system_setting->Project->Master->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->Project->Master->Port . "/";
 		}
 		else
 		{
 			// 走public路線
-			$system_setting->Project->Master->Virtual_Url = empty($system_setting->System->Port) ? 
+			$system_setting->Project->Master->Select_Url = empty($system_setting->System->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->System->Port . $system_setting->Project->Master->Node . "/";
 		}				
@@ -161,17 +180,21 @@ class hahaha_system_setting
 			$url . "/" : 
 			$url . ":" . $system_setting->Project->Hahaha->Port . "/";
 		// 虛擬路徑
+		$system_setting->Project->Hahaha->Virtual_Url = empty($system_setting->System->Port) ? 
+			$url . "/" : 
+			$url . ":" . $system_setting->System->Port . $system_setting->Project->Hahaha->Node . "/";
+		// 選擇路徑
 		if($mode == 0) 
 		{
 			// 走專案public路線
-			$system_setting->Project->Hahaha->Virtual_Url = empty($system_setting->Project->Hahaha->Port) ? 
+			$system_setting->Project->Hahaha->Select_Url = empty($system_setting->Project->Hahaha->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->Project->Hahaha->Port . "/";
 		}
 		else
 		{
 			// 走public路線
-			$system_setting->Project->Hahaha->Virtual_Url = empty($system_setting->System->Port) ? 
+			$system_setting->Project->Hahaha->Select_Url = empty($system_setting->System->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->System->Port . $system_setting->Project->Hahaha->Node . "/";
 		}	
@@ -200,17 +223,21 @@ class hahaha_system_setting
 			$url . "/" : 
 			$url . ":" . $system_setting->Project->Backend->Port . "/";
 		// 虛擬路徑
+		$system_setting->Project->Backend->Virtual_Url = empty($system_setting->System->Port) ? 
+			$url . "/" : 
+			$url . ":" . $system_setting->System->Port . $system_setting->Project->Backend->Node . "/";
+		// 選擇路徑
 		if($mode == 0) 
 		{
 			// 走專案public路線
-			$system_setting->Project->Backend->Virtual_Url = empty($system_setting->Project->Backend->Port) ? 
+			$system_setting->Project->Backend->Select_Url = empty($system_setting->Project->Backend->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->Project->Backend->Port . "/";
 		}
 		else
 		{
 			// 走public路線
-			$system_setting->Project->Backend->Virtual_Url = empty($system_setting->System->Port) ? 
+			$system_setting->Project->Backend->Select_Url = empty($system_setting->System->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->System->Port . $system_setting->Project->Backend->Node . "/";
 		}	
@@ -239,20 +266,25 @@ class hahaha_system_setting
 			$url . "/" : 
 			$url . ":" . $system_setting->Project->Api->Port . "/";
 		// 虛擬路徑
+		$system_setting->Project->Api->Virtual_Url = empty($system_setting->System->Port) ? 
+			$url . "/" : 
+			$url . ":" . $system_setting->System->Port . $system_setting->Project->Api->Node . "/";
+		// 選擇路徑
 		if($mode == 0) 
 		{
 			// 走專案public路線
-			$system_setting->Project->Api->Virtual_Url = empty($system_setting->Project->Api->Port) ? 
+			$system_setting->Project->Api->Select_Url = empty($system_setting->Project->Api->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->Project->Api->Port . "/";
 		}
 		else
 		{
 			// 走public路線
-			$system_setting->Project->Api->Virtual_Url = empty($system_setting->System->Port) ? 
+			$system_setting->Project->Api->Select_Url = empty($system_setting->System->Port) ? 
 				$url . "/" : 
 				$url . ":" . $system_setting->System->Port . $system_setting->Project->Api->Node . "/";
 		}	
+		
 	}
 }
 

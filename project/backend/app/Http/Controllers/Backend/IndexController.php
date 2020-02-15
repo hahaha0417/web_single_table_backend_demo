@@ -35,17 +35,114 @@ class IndexController extends CommonController
 
     }
 
+    /*
+
+    */
     public function index()
-    {
+    {   
         // index 設定檔
-        $setting_index_ = \hahaha\hahaha_setting_index::Instance();
-        $nav = &$setting_index_->nav;
-        $menu = &$setting_index_->menu;
-        $tail = &$setting_index_->tail;
+        $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
+        $nav = &$setting_index_->Nav;
+        $menu = &$setting_index_->Menu;
+        $tail = &$setting_index_->Tail;
         //
-        return view('web.backend.index', compact('nav', 'menu', 'tail'));
+        $page_url = \p_ha::V_Url('cover'); 
+        // 順便記錄打開順序，目前只有四層
+        $menu_open = [];
+        $menu_target = null;
+      
+        return view('web.backend.index', compact('nav', 'menu', 'tail', 'page_url', 'menu_open', 'menu_target'));
 
     }
+
+    /*
+    指定頁面
+    */
+    public function page($name)
+    {
+        // index 設定檔
+        $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
+        $nav = &$setting_index_->Nav;
+        $menu = &$setting_index_->Menu;
+        $tail = &$setting_index_->Tail;
+        
+        $page_url = \p_ha::V_Url('cover'); 
+        // 順便記錄打開順序，目前只有四層
+        $menu_open = [];
+        $menu_target = $name;
+        foreach($menu as $key => &$value)
+        {
+            // 第一層
+            if(!empty($value['name']) && $value['name'] == $name)
+            {
+                $page_url = &$value['url']; 
+                // 替換掉default_page預設路徑
+                $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value['name']}");
+
+                //$menu_open[$key] = true;                
+                break 1;
+            }
+            else if(!empty($value['menu']) && is_array($value['menu']))
+            {
+                // 第二層
+                foreach($value['menu'] as $key2 => &$value2)
+                {
+                    if(!empty($value2['name']) && $value2['name'] == $name)
+                    {
+                        $page_url = &$value2['url']; 
+                        // 替換掉default_page預設路徑
+                        $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value2['name']}");
+
+                        $menu_open[$key] = true;
+                        //$menu_open[$key2] = true;
+                        break 2;
+                    }
+                    else if(!empty($value2['menu']) && is_array($value2['menu']))
+                    {
+                        foreach($value2['menu'] as $key3 => &$value3)
+                        {
+                            if(!empty($value3['name']) && $value3['name'] == $name)
+                            {
+                                $page_url = &$value3['url']; 
+                                // 替換掉default_page預設路徑
+                                $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value3['name']}");
+
+                                $menu_open[$key] = true;
+                                $menu_open[$key2] = true;
+                                //$menu_open[$key3] = true;
+                                break 3;
+                            }
+                            else if(!empty($value3['menu']) && is_array($value3['menu']))
+                            {
+                                foreach($value3['menu'] as $key4 => &$value4)
+                                {
+                                    if(!empty($value4['name']) && $value4['name'] == $name)
+                                    {
+                                        $page_url = &$value4['url']; 
+                                        // 替換掉default_page預設路徑
+                                        $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value4['name']}");
+
+                                        $menu_open[$key] = true;
+                                        $menu_open[$key2] = true;
+                                        $menu_open[$key3] = true;
+                                        //$menu_open[$key4] = true;
+                                        break 4;
+                                    }
+                                    else if(!empty($value4['menu']) && is_array($value4))
+                                    {
+                                    }
+                                }
+                            }                            
+                        }
+                    }                    
+                }
+            }
+        }
+   
+        return view('web.backend.index', compact('nav', 'menu', 'tail', 'page_url', 'menu_open', 'menu_target'));
+
+    }
+
     public function login()
     {
         $input_ = request()->all();
@@ -112,10 +209,14 @@ class IndexController extends CommonController
 
     }
 
+    public function cover()
+    {
+        return view('web.backend.cover');
+    }
+
     public function note()
     {
         return view('web.backend.note');
-
     }
 
 }

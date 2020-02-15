@@ -92,6 +92,13 @@ class Products
     private $saleEndTime;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false, options={"comment"="狀態 -1 停用 0 正常"})
+     */
+    private $status;
+
+    /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -355,6 +362,30 @@ class Products
     public function getSaleEndTime()
     {
         return $this->saleEndTime;
+    }
+
+    /**
+     * Set status.
+     *
+     * @param string $status
+     *
+     * @return Products
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**

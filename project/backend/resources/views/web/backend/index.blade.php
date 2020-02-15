@@ -27,6 +27,7 @@
     
         <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/index.css")}}">
         <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
+        <script src="{{\p_ha::Assets("cross_origin/iframe_resize_height.js")}}"></script>
         
         <script>
             $(function(){    
@@ -34,6 +35,7 @@
             });
             
         </script>
+
         <style>
             .container {
                 /* https://pjchender.blogspot.tw/2017/10/bs-bootstrap-4-custom-container-and.html */
@@ -44,7 +46,7 @@
             }
             .sidebar-menu.sidebar-mini {
                 /* 會被iframe遮住 */
-                z-index: 2000;
+                z-index: 5000;
             }
             .sidebar-menu.sidebar-mini .main-menu ul li .submenu{
                 /* 字太長延長 */
@@ -85,8 +87,16 @@
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  如需改成用ajax撈，須建立管理器，管理js & css在頭部不重複，目前沒要這樣做  --}}
                 {{--  iframe無法用ajax取得頁面內容替換  --}}
-                <iframe class="content_frame index_content_frame" loaded="0" name="index_content_frame" id="index_content_frame" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{url("backend/class/all")}}">
+                <?
+                $settings_ = \hahaha\backend\hahaha_setting_index::Instance()->Settings;
+                ?>
+                @if(empty($page_url))
+                <iframe class="content_frame index_content_frame" loaded="0" name="index_content_frame" id="index_content_frame" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{$settings_['default']['index']}}">
                 </iframe>
+                @else 
+                <iframe class="content_frame index_content_frame" loaded="0" name="index_content_frame" id="index_content_frame" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{$page_url}}">
+                </iframe>
+                @endif
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  tail  --}}
                 @include("fast_use.backend.common.tail.main_tail")

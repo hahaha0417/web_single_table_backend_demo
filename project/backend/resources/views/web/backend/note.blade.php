@@ -26,8 +26,9 @@
         @include('web.common.main_css')
         @include('web.common.sub_css')
 
-        <link rel="stylesheet" href="{{asset("assets/web/front/index.css")}}">
-        <script src="{{asset("assets/web/front/index.js")}}"></script>
+        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/index.css")}}">
+        <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
+        <script src="{{\p_ha::Assets("cross_origin/iframe_resize_height.js")}}"></script>
         
         <script>
             $(function(){    
@@ -35,6 +36,7 @@
             });
             
         </script>
+
         <style>
             .container {
                 /* https://pjchender.blogspot.tw/2017/10/bs-bootstrap-4-custom-container-and.html */
@@ -50,20 +52,20 @@
         
         
     </head>
-    <body>            
+    <body style="background:rgba(190, 190, 190, 1);">            
         <div style="background:rgba(190,255,190,1);">
                 <hr />
-                <h1>註解 - 註解多了才規劃子頁</h1>
+                <h1>註解</h1>
                 <hr />
             </div>
             <br />
     
-            <div style="background:rgba(255,190,190,1);">
+            {{-- <div style="background:rgba(255,190,190,1);">
                 <hr />
                 <h1>Node</h1>
                 <hr />
             </div>
-            <br />
+            <br /> --}}
     
             {{--  例 : Index  --}}
             {{--  Cover 封面頁  --}}
@@ -78,7 +80,7 @@
             {{--  編輯階段 : 顯示在新頁面(_blank)  --}}
     
             {{--  Root  --}}
-            <div>            
+            {{-- <div>            
                 <div id="root_index" style="background:rgba(190,255,190,1);">
                     <hr />
                     <div style="margin-left:20px;">
@@ -91,7 +93,7 @@
                     </div>
                     <hr />
                 </div>
-            </div>
+            </div> --}}
         </div>
     </body>
     <script>

@@ -23,12 +23,20 @@
                             {{$key}}
                         </li>
                     @elseif($value['type'] == "item")
-                        <li class="{{$value["active"]}}">           
+                        <li class="{{$value["active"]}}"> 
                             <div class="stress" style="background:{{$value["background"]}};"></div>
                             @if($value["url"] != null)
-                                <a href="{{url($value["url"])}}" target="{{$value["target"]}}">
-                            @elseif($value["url"] == null)
-                                <a target="{{$value["target"]}}">
+                                @if(empty($menu_target) || $menu_target != $value['name'])
+                                    <a href="{{url($value["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value["name"])}}" class="default_page_link" id="{{$value["name"]}}" target="{{$value["target"]}}">
+                                @else
+                                    <a href="{{url($value["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value["name"])}}" class="default_page_link target" id="{{$value["name"]}}" target="{{$value["target"]}}">
+                                @endif     
+                                @elseif($value["url"] == null)
+                                @if(empty($menu_target) || $menu_target != $value['name'])
+                                    <a default_page="{{\p_ha::V_Url("page/" . $value["name"])}}" class="default_page_link" id="{{$value["name"]}}" target="{{$value["target"]}}">
+                                @else
+                                    <a default_page="{{\p_ha::V_Url("page/" . $value["name"])}}" class="default_page_link target" id="{{$value["name"]}}" target="{{$value["target"]}}">
+                                @endif     
                             @endif
                                 <span class="menu-content block">
                                     <span class="menu-icon">
@@ -44,7 +52,11 @@
                             </a>
                         </li>
                     @elseif($value['type'] == "menu")
-                        <li class="openable">
+                        @if(empty($menu_open[$key]))
+                            <li class="openable">
+                        @else
+                            <li class="openable open">
+                        @endif                        
                             <div class="stress" style="background:{{$value["background"]}};"></div>
                             @if($value["url"] != null)
                                 <a href="{{url($value["url"])}}" target="{{$value["target"]}}">
@@ -67,27 +79,91 @@
                             <ul class="submenu">
                                 @foreach($value["menu"] as $key2 => $value2)
                                     @if($value2['type'] == "item")
-                                        <li><a style="background:{{$value2["background"]}};" href="{{url($value2["url"])}}" target="{{$value2["target"]}}"><span class="submenu-label">{{$key2}}</span></a></li>
+                                        @if($value2["url"] != null)
+                                            <li>
+                                            @if(empty($menu_target) || $menu_target != $value2['name'])
+                                                <a style="background:{{$value2["background"]}};" href="{{url($value2["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value2["name"])}}" class="default_page_link" id="{{$value2["name"]}}" target="{{$value2["target"]}}"><span class="submenu-label">{{$key2}}</span></a>
+                                            @else
+                                                <a style="background:{{$value2["background"]}};" href="{{url($value2["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value2["name"])}}" class="default_page_link target" id="{{$value2["name"]}}" target="{{$value2["target"]}}"><span class="submenu-label">{{$key2}}</span></a>
+                                            @endif 
+                                            </li>
+                                        @elseif($value2["url"] == null)
+                                            <li>
+                                            @if(empty($menu_target) || $menu_target != $value2['name'])
+                                                <a style="background:{{$value2["background"]}};" default_page="{{\p_ha::Url("page/" . $value2["name"])}}" class="default_page_link" id="{{$value2["name"]}}" target="{{$value2["target"]}}"><span class="submenu-label">{{$key2}}</span></a>
+                                            @else
+                                                <a style="background:{{$value2["background"]}};" default_page="{{\p_ha::Url("page/" . $value2["name"])}}" class="default_page_link target" id="{{$value2["name"]}}" target="{{$value2["target"]}}"><span class="submenu-label">{{$key2}}</span></a>
+                                            @endif 
+                                            </li>
+                                        @endif                                        
                                     @elseif($value2['type'] == "menu")
-                                        <li class="openable">
-                                            <a href="{{url($value2["url"])}}" target="{{$value2["target"]}}">
-                                                <span class="submenu-label">{{$key2}}</span>
-                                                <small class="badge badge-success badge-square bounceIn animation-delay2 m-left-xs pull-right">{{count($value2["menu"])}}</small>
-                                            </a>
+                                        @if(empty($menu_open[$key2]))
+                                            <li class="openable">
+                                        @else
+                                            <li class="openable open">
+                                        @endif   
+                                            @if($value2["url"] != null)
+                                                <a href="{{url($value2["url"])}}" target="{{$value2["target"]}}">
+                                            @elseif($value2["url"] == null)
+                                                <a target="{{$value2["target"]}}">
+                                            @endif    
+                                                    <span class="submenu-label">{{$key2}}</span>
+                                                    <small class="badge badge-success badge-square bounceIn animation-delay2 m-left-xs pull-right">{{count($value2["menu"])}}</small>
+                                                </a>                                           
                                             <ul class="submenu third-level">
                                                 @foreach($value2["menu"] as $key3 => $value3)
                                                     @if($value3['type'] == "item")
-                                                        <li><a style="background:{{$value3["background"]}};" href="{{url($value3["url"])}}" target="{{$value3["target"]}}"><span class="submenu-label">{{$key3}}</span></a></li>
+                                                        @if($value3["url"] != null)
+                                                            <li> 
+                                                            @if(empty($menu_target) || $menu_target != $value3['name'])
+                                                                <a style="background:{{$value3["background"]}};" href="{{url($value3["url"])}}" default_page="{{\p_ha::Url("page/" . $value3["name"])}}" class="default_page_link" id="{{$value3["name"]}}" target="{{$value3["target"]}}"><span class="submenu-label">{{$key3}}</span></a>
+                                                            @else
+                                                                <a style="background:{{$value3["background"]}};" href="{{url($value3["url"])}}" default_page="{{\p_ha::Url("page/" . $value3["name"])}}" class="default_page_link target" id="{{$value3["name"]}}" target="{{$value3["target"]}}"><span class="submenu-label">{{$key3}}</span></a>
+                                                            @endif                                                                 
+                                                            </li>
+                                                        @elseif($value3["url"] == null)
+                                                            <li> 
+                                                            @if(empty($menu_target) || $menu_target != $value3['name'])
+                                                            <a style="background:{{$value3["background"]}};" default_page="{{\p_ha::Url("page/" . $value3["name"])}}" class="default_page_link" id="{{$value3["name"]}}" target="{{$value3["target"]}}"><span class="submenu-label">{{$key3}}</span></a>
+                                                            @else
+                                                            <a style="background:{{$value3["background"]}};" default_page="{{\p_ha::Url("page/" . $value3["name"])}}" class="default_page_link target" id="{{$value3["name"]}}" target="{{$value3["target"]}}"><span class="submenu-label">{{$key3}}</span></a>
+                                                            @endif 
+                                                            </li>  
+                                                        @endif                                                        
                                                     @elseif($value3['type'] == "menu")
-                                                        <li class="openable">
-                                                            <a href="{{url($value3["url"])}}" target="{{$value3["target"]}}">
-                                                                <span class="submenu-label">{{$key3}}</span>
-                                                                <small class="badge badge-danger badge-square bounceIn animation-delay2 m-left-xs pull-right">{{count($value3["menu"])}}</small>
-                                                            </a>
+                                                        @if(empty($menu_open[$key3]))
+                                                            <li class="openable">
+                                                        @else
+                                                            <li class="openable open">
+                                                        @endif   
+                                                            @if($value3["url"] != null)
+                                                                <a href="{{url($value3["url"])}}" target="{{$value3["target"]}}">
+                                                            @elseif($value3["url"] == null)
+                                                                <a target="{{$value3["target"]}}">
+                                                            @endif  
+                                                                    <span class="submenu-label">{{$key3}}</span>
+                                                                    <small class="badge badge-danger badge-square bounceIn animation-delay2 m-left-xs pull-right">{{count($value3["menu"])}}</small>
+                                                                </a>                                                             
                                                             <ul class="submenu fourth-level">
                                                                 @foreach($value3["menu"] as $key4 => $value4)
                                                                     @if($value4['type'] == "item")
-                                                                        <li><a style="background:{{$value4["background"]}};" href="{{url($value4["url"])}}" target="{{$value4["target"]}}"><span class="submenu-label">{{$key4}}</span></a></li>
+                                                                        @if($value4["url"] != null)
+                                                                            <li> 
+                                                                            @if(empty($menu_target) || $menu_target != $value4['name'])
+                                                                                <a style="background:{{$value4["background"]}};" href="{{url($value4["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value4["name"])}}" class="default_page_link" id="{{$value4["name"]}}" target="{{$value4["target"]}}"><span class="submenu-label">{{$key4}}</span></a>
+                                                                            @else
+                                                                                <a style="background:{{$value4["background"]}};" href="{{url($value4["url"])}}" default_page="{{\p_ha::V_Url("page/" . $value4["name"])}}" class="default_page_link target" id="{{$value4["name"]}}" target="{{$value4["target"]}}"><span class="submenu-label">{{$key4}}</span></a>
+                                                                            @endif 
+                                                                            </li>
+                                                                        @elseif($value4["url"] == null)
+                                                                            <li> 
+                                                                            @if(empty($menu_target) || $menu_target != $value4['name'])
+                                                                                <a style="background:{{$value4["background"]}};" default_page="{{\p_ha::Url("page/" . $value4["name"])}}" class="default_page_link" id="{{$value4["name"]}}" target="{{$value4["target"]}}"><span class="submenu-label">{{$key4}}</span></a>
+                                                                            @else
+                                                                                <a style="background:{{$value4["background"]}};" default_page="{{\p_ha::Url("page/" . $value4["name"])}}" class="default_page_link target" id="{{$value4["name"]}}" target="{{$value4["target"]}}"><span class="submenu-label">{{$key4}}</span></a>
+                                                                            @endif 
+                                                                            </li>
+                                                                        @endif                                                                        
                                                                     @elseif($value4['type'] == "menu")
                                                                         // 底部
                                                                     @endif

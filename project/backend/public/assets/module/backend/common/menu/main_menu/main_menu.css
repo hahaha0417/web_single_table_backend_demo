@@ -951,5 +951,17 @@
       left: -400px;
     }
   } */
+  .sidebar-menu .main-menu ul li a.target {
+    background-color: rgb(255, 255, 255, 0.2);
+  }
+  .sidebar-menu .main-menu ul li .submenu li a.target {
+    background-color: rgb(255, 255, 255, 0.2);
+  }
+  .sidebar-menu .main-menu ul li .submenu.third-level li a.target {
+    background-color: rgb(255, 255, 255, 0.2);
+  }
+  .sidebar-menu .main-menu ul li .submenu.fourth-level li a.target {
+    background-color: rgb(255, 255, 255, 0.2);
+  }
 
 

@@ -15,48 +15,10 @@
 */
 
 // https://stackoverflow.com/questions/9975810/make-iframe-automatically-adjust-height-according-to-the-contents-without-using?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-function getDocHeight(doc) {
-    doc = doc || document;
-    // stackoverflow.com/questions/1145850/
-    var body = doc.body, html = doc.documentElement;
-    var height = Math.max( body.scrollHeight, body.offsetHeight, 
-        html.clientHeight, html.scrollHeight, html.offsetHeight );
-    return height;
-}
 
-function setIframeHeight(id) {
-    var ifrm = document.getElementById(id);
-    var doc = ifrm.contentDocument? ifrm.contentDocument: 
-        ifrm.contentWindow.document;
-    $scrollHor=$(window).scrollTop(); 
-    ifrm.style.visibility = 'hidden';
-    ifrm.style.height = "10px"; // reset to minimal height ...
-    // IE opt. for bing/msn needs a bit added or scrollbar appears
-    
-    ifrm.style.height = getDocHeight( doc ) + "px";  
-    $(window).scrollTop($scrollHor);  
-    ifrm.style.visibility = 'visible';
-    
-}
 
 $(function(){   
 
-    
-    var iframe_=$(".content_frame");
-    $.each(iframe_, function(key, value){
-        value.onload = function(){    
-            setIframeHeight($(value).attr("id"));   
-            iframe_.loaded = 1;   
-        };  
-    });
-    
-    $(window).resize(function(){    
-        $.each(iframe_, function(key, value){  
-            setIframeHeight($(value).attr("id"));     
-        });
-        
-    });   
-   
     $('.top-nav .main_munu_button').click(function()	{        
 		if($('.wrapper').hasClass('display-right'))	{
 			$('.wrapper').removeClass('display-right');
@@ -111,4 +73,17 @@ $(function(){
 });
 
 $(function(){ 
+    // 修改預設頁面
+    var link_ = $("#left_box .sidebar-menu .accordion .default_page_link");
+    $.each(link_, function(key, value){
+        $(value).click(function(){
+            if($(this).attr('id') == 'default_page')
+            {
+                return;
+            }
+            $("#left_box .sidebar-menu .accordion #default_page").attr("href", $(this).attr('default_page'));
+        });       
+
+	});
+
 });

@@ -25,6 +25,7 @@ class CreateProducts extends Migration
             $table->dateTime('show_end_time')->comment('顯示結束時間')->nullable();
             $table->dateTime('sale_start_time')->comment('販賣開始時間')->nullable();
             $table->dateTime('sale_end_time')->comment('販賣結束時間')->nullable();
+            $table->integer('status')->comment('狀態 -1 停用 0 正常');
             $table->timestamps();
         });
     }
