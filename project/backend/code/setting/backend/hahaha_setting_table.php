@@ -183,6 +183,7 @@ class hahaha_setting_table
 			// 因為項目很多並且設定應該是一樣的，因此表另外建立，這裡只做選擇，將要顯示的列在下面
 			// 清單有必要維持簡潔，因此這裡用instance()->main("xxx")，取得設置項目
 
+			// 因為初始化要時間，因此要用到時再new or Instance
 			"hahaha" => [
 				"accounts" => [					
 					"node" => "accounts/list",
@@ -190,28 +191,8 @@ class hahaha_setting_table
 					"description" => "紀載著會員資訊",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/list"),
-					"entity" => "entities\backend\Accounts",
-					"table" => [
-						"name" => "",
-						"index" => [
-							"main" => [
-
-							],
-							"panel" => [
-
-							],
-							"new" => [
-	
-							],
-						],	
-						"preview" => [
-
-						],					
-						"edit" => [
-
-						],
-
-					],
+					"entity" => '\entities\backend\Accounts',
+					"table" => '\hahaha\backend\hahaha_table_accounts',
 				],
 				"accounts_detail" => [
 					"node" => "accounts/detail",
@@ -219,7 +200,8 @@ class hahaha_setting_table
 					"description" => "紀載著會員詳細資訊",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/detail"),
-					"entity" => "entities\backend\AccountsDetail",
+					"entity" => '\entities\backend\AccountsDetail',
+					"table" => '\hahaha\backend\hahaha_table_accounts_detail',
 				],
 				"accounts_login_records" => [
 					"node" => "accounts/login_records",
@@ -227,7 +209,8 @@ class hahaha_setting_table
 					"description" => "紀載著會員登入紀錄",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/login_records"),
-					"entity" => "entities\backend\AccountsLoginRecords",
+					"entity" => '\entities\backend\AccountsLoginRecords',
+					"table" => '\hahaha\backend\hahaha_table_accounts_login_records',
 				],
 				"accounts_relations" => [
 					"node" => "accounts/relations",					
@@ -235,7 +218,8 @@ class hahaha_setting_table
 					"description" => "紀載著會員關係",
 					"namespace" => "",				
 					"url" => \p_ha::V_Url("table/backend/accounts/relations"),
-					"entity" => "entities\backend\AccountsRelations",
+					"entity" => '\entities\backend\AccountsRelations',
+					"table" => '\hahaha\backend\hahaha_table_accounts_relations',
 				],
 			],
 		];

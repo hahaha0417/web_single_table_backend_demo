@@ -12,6 +12,12 @@
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
+<?
+use  hahaha\define\hahaha_define_table_direction as direction;
+use  hahaha\define\hahaha_define_table_group as group;
+use  hahaha\define\hahaha_define_table_key as key;
+use  hahaha\define\hahaha_define_table_type as type;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +64,9 @@
         
         <script>
             $(function(){    
-                
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                  })
                 
             });
             
@@ -97,8 +105,8 @@
             <h1 style="font-weight:bold;">{{__('backend.db_table')}}</h1>
             <hr class="hr_title" />
             {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
-            <h3 style="font-weight:bold;">{{$table_target['title']}}</h3>
-            {{$table_target['description']}}
+            <h3 style="font-weight:bold;">{{$target_setting_table['title']}}</h3>
+            {{$target_setting_table['description']}}
             <hr class="hr_title" />
             
         </div> 
@@ -354,20 +362,139 @@
                     <div class="index_result_wrap">
                         <div class="index_result_content">
                             <table class="list_tab table table-sm">
-                                <tr id="index_item_all" class="index_item">
-                                    <th style="width:45px;"><input id="index_item_all_select" type="checkbox" name="checkbox" data-labelauty=" "></th>
-                                    <th style="width:80px;">排序</th>
-                                    <th style="width:200px;">頁面</th>                                
-                                    <th style="width:300px;">
-                                        標題                                    
-                                    </th>
-                                    <th style="width:200px;">超連結</th>
-                                    <th style="width:120px;">圖片</th>
-                                    <th style="width:120px;">操作</th>
-                                    <th style="width:auto;">備註</th>                                
+                                <tr id="index_item_all" class="index_item">                                   
+                                    @foreach($target_table->Index['main'] as $key_item => $item) 
+                                        <th @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
+                                            @if($item[key::TYPE] == type::LABEL)           
+                                                {{$item[key::TITLE]}}
+                                            @elseif($item[key::TYPE] == type::CHECKBOX_SELECTED)
+                                                <input id="{{$item[key::ID]}}" type="checkbox" name="checkbox" data-labelauty=" ">
+                                            @else 
+                                                {{$item[key::TITLE]}}
+                                            @endif   
+                                        </th> 
+                                    @endforeach                                                                   
                                 </tr>
-                                {{--  aaaa  --}}
-                                               
+                                {{-- @foreach($data_list as $key => $value)                                 --}}
+                                    {{-- <tr id="index_item_{{$loop->index}}" class="index_item" item_id="{{$value['id']}}" index="{{$loop->index}}">    --}}
+                                    <tr>
+                                        {{-- laravel套版不要用reference，@foreach($item[key::ITEMS] as $key_field => $field)，會找不到$item[key::ITEMS] --}}
+                                        @foreach($target_table->Index['main'] as $key_item => $item)  
+                                            <td @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
+                                                @if(!empty($item[key::GROUP]))
+                                                    @if($item[key::GROUP] == group::INPUT_GROUP) 
+                                                        <div class="input-group">
+                                                    @endif
+                                                @endif
+                                                @foreach($item[key::ITEMS] as $key_field => $field) 
+                                                    @if($field[key::TYPE] == type::LABEL)           
+                                                        OGC
+                                                    @elseif($field[key::TYPE] == type::TEXT)           
+                                                        <input  
+                                                            @if(!empty($field[key::ID])) 
+                                                                id="{{$field[key::ID]}}" 
+                                                            @endif 
+                                                            @if(!empty($field[key::STYLES])) 
+                                                                style="{{$field[key::STYLES]}}" 
+                                                            @endif 
+                                                            type="text" 
+                                                            @if(!empty($field[key::CLASSES])) 
+                                                                class="{{$field[key::CLASSES]}} form-control" 
+                                                            @else 
+                                                                class="form-control" 
+                                                            @endif 
+                                                            placeholder="" value="value" 
+                                                            @if(!empty($field[key::HINT])) 
+                                                                data-toggle="tooltip" 
+                                                                @if(!empty($field[key::HINT][key::DIRECTION])) 
+                                                                    data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
+                                                                @else
+                                                                    data-placement="top"
+                                                                @endif 
+                                                                @if(!empty($field[key::HINT][key::TITLE])) 
+                                                                    title="{{$field[key::HINT][key::TITLE]}}"
+                                                                @endif 
+                                                            @endif 
+                                                            >
+                                                    @elseif($field[key::TYPE] == type::PANEL) 
+                                                            <div 
+                                                                @if(!empty($field[key::ID])) 
+                                                                    id="{{$field[key::ID]}}" 
+                                                                @endif 
+                                                                @if(!empty($field[key::CLASSES])) 
+                                                                    class="{{$field[key::CLASSES]}}" 
+                                                                @else 
+                                                                @endif 
+                                                                >
+                                                                <label 
+                                                                    @if(!empty($field[key::STYLES])) 
+                                                                        style="{{$field[key::STYLES]}} input-group-prepend" 
+                                                                    @endif 
+                                                                    class="btn-secondary input-group-text" for="index_item_account_1">
+                                                                    <i class="fab fa-elementor"></i>
+                                                                </label>
+                                                            </div>
+                                                            {{-- <div id="index_item_panel_{{$loop->index}}" class="index_item_panel">
+                                                                <div class="index_item_panel_content">
+                                                                    <div class="row">
+                                                                        <div class="col-sm">
+                                                                            <img id="index_item_panel_image_thumbnail_{{$loop->index}}" class="index_item_panel_image_thumbnail" src="{{url($value['image'])}}" style="width: auto;height: 200px;"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="height:5px;">&nbsp;</div>
+                                                                    <div class="row">
+                                                                        <label for="index_item_panel_item_{{$loop->index}}" class="col-sm-3 col-form-label">項目 : </label>
+                                                                        <div class="col">
+                                                                            <input style="width:530px;" id="index_item_panel_item_{{$loop->index}}" style="" type="text" class="index_item_panel_item form-control" placeholder="項目" value="{{$value['item']}}">  
+                                                                        </div>   
+                                                                    </div>
+                                                                    <div style="height:5px;">&nbsp;</div>
+                                                                    <div class="row">
+                                                                        <label for="index_item_panel_image_{{$loop->index}}" class="col-sm-3 col-form-label">圖片 : </label>
+                                                                        <div class="col">
+                                                                            <input style="width:530px;" id="index_item_panel_image_{{$loop->index}}" style="" type="text" class="index_item_panel_image form-control" placeholder="圖片" value="{{$value['image']}}">  
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <div id="index_item_panel_image_refresh_{{$loop->index}}" style="font-size:1em; color:Tomato" class="index_item_panel_image_refresh btn btn-dark">
+                                                                                <i class="fas fa-refresh"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div id="index_item_panel_create_time_{{$loop->index}}" class="col">{{$value['create_time']}}</div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div id="index_item_panel_update_time_{{$loop->index}}" class="col">{{$value['update_time']}}</div>                                                
+                                                                    </div>
+                                                                </div>
+                                                            </div> --}}
+                                                       
+                                                    @elseif($field[key::TYPE] == type::CHECKBOX_SELECTED)  
+                                                        <input 
+                                                            @if(!empty($field[key::ID])) 
+                                                                id="{{$field[key::ID]}}"  
+                                                            @endif 
+                                                            @if(!empty($field[key::CLASSES])) 
+                                                                class="{{$field[key::CLASSES]}} form-control" 
+                                                            @else 
+                                                                class="form-control" 
+                                                            @endif 
+                                                            type="checkbox" name="checkbox" data-labelauty=" ">
+                                                    @else 
+
+                                                    @endif            
+                                                @endforeach  
+                                                @if(!empty($item[key::GROUP]))
+                                                    @if($item[key::GROUP] == group::INPUT_GROUP) 
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                            </td>                                         
+                                        @endforeach    
+                                                                     
+                                    </tr> 
+                                {{-- @endforeach                     --}}
                             </table>
                         </div>
                         <div class="index_result_content">

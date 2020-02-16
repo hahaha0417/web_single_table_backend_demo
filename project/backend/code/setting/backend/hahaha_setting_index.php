@@ -415,28 +415,28 @@ class hahaha_setting_index
 								'menu' => [
 									// 第四層
 									__('backend.index.menu.list') => [
-										'name' => 'backend_accouts_list',
+										'name' => 'backend_accounts_list',
 										'type' => 'item',
 										'url' => $backend_tables_['accounts']['url'],
 										'target' => 'index_content_frame',
 										'background' => '',
 									],
 									__('backend.index.menu.detail') => [
-										'name' => 'backend_accouts_detail',
+										'name' => 'backend_accounts_detail',
 										'type' => 'item',
 										'url' => $backend_tables_['accounts_detail']['url'],
 										'target' => 'index_content_frame',
 										'background' => '',
 									],
 									__('backend.index.menu.login_record') => [
-										'name' => 'backend_accouts_login_record',
+										'name' => 'backend_accounts_login_record',
 										'type' => 'item',
 										'url' => $backend_tables_['accounts_login_records']['url'],
 										'target' => 'index_content_frame',
 										'background' => '',
 									],
 									'| --  ' . __('backend.index.menu.relation') => [
-										'name' => 'backend_accouts_account_relation',
+										'name' => 'backend_accoutns_account_relation',
 										'type' => 'item',
 										'url' => $backend_tables_['accounts_relations']['url'],
 										'target' => 'index_content_frame',

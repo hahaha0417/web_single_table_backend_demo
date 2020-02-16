@@ -9,7 +9,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_validate
+class hahaha_define_table_class
 {	
     use hahaha_instance_trait;
 
@@ -22,30 +22,25 @@ class hahaha_define_table_validate
     // 這裡是標籤，不是實際設定，例如integer對應某項laravel的validate設定組
 
     // -------------------------------------- 
-    // integer
+    // visible 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    const INT_ = "integer";
+    const VISIBLED = "visibled";
     // -------------------------------------- 
-    // float
+    // visible 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    const FLOAT_ = "float";
+    const INVISIBLED = "invisibled";
     // -------------------------------------- 
-    // double
+    // enable 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    const DOUBLE_ = "double";
+    const ENABLED = "enabled";
     // -------------------------------------- 
-    // email
+    // disabled 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    const EMAIL = "email";
+    const DISABLED = "disabled";
     // -------------------------------------- 
-    // phone
+    // display_none false 不更新 true 自動更新
     // -------------------------------------- 
-    const PHONE = "phone";
-    // -------------------------------------- 
-    // password
-    // -------------------------------------- 
-    const PASSWORD = "password";
-    const PASSWORD_CONFIRM = "password_comfirm";
+    const DISPLAY_NONE = "display_none";
     // -------------------------------------- 
 
 	function __construct()

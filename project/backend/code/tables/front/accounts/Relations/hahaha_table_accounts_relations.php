@@ -101,29 +101,39 @@ class hahaha_table_accounts_relations
 	{
 		// 因為同一個節點，這是共用設定
 		$Fields = [
-			"id" => [
-				"type" => null,
-				"validate" => null,
-				"auto_update" => false,
-				"visible" => true,
-				"enabled" => true,
-				"dispaly_none" => false,
+			self::ID => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
 			],
-
-
-
-
-			
-			// $table->bigIncrements('id');
-			// // 關注項目
-			// $table->string('account')->comment('帳號');
-			// $table->string('password')->comment('密碼');
-			// $table->string('email')->comment('信箱');
-			// $table->tinyInteger('gender')->comment('性別 0 女 1 男');            
-			// $table->integer('status')->comment('狀態 -1 停用 0 為驗證 1 驗證');
-			// $table->timestamps();
-			// created_at
-			// updated_at
+			self::ACCOUNTS_ID1 => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::ACCOUNTS_ID2 => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::DESCRIPTION => [
+				key::TYPE => type::TEXTAREA,	
+			],
+			self::CREATED_AT => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::UPDATED_AT => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
         ];
         
     }
@@ -140,16 +150,112 @@ class hahaha_table_accounts_relations
                 // 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
                 // 主要列表
                 "main" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID1 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID2 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::DESCRIPTION => [
+						key::TYPE => type::TEXTAREA,	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // 
                 // detail panel
                 "detail" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID1 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID2 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::DESCRIPTION => [
+						key::TYPE => type::TEXTAREA,	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // new panel
                 "new" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID1 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID2 => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::DESCRIPTION => [
+						key::TYPE => type::TEXTAREA,	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
 			],
         ];
@@ -165,7 +271,39 @@ class hahaha_table_accounts_relations
 		// 因為同一個節點，所以所有資料表共用一個router
 		$Preview = [
 			"hahaha" => [
-				
+				self::ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID1 => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID2 => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::DESCRIPTION => [
+					key::TYPE => type::TEXTAREA,	
+				],
+				self::CREATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::UPDATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
 			],
 		];
 
@@ -179,7 +317,39 @@ class hahaha_table_accounts_relations
 		// 因為同一個節點，所以所有資料表共用一個model
 		$Edit = [
 			"hahaha" => [
-				
+				self::ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID1 => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID2 => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::DESCRIPTION => [
+					key::TYPE => type::TEXTAREA,	
+				],
+				self::CREATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::UPDATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
 			],
         ];
         

@@ -43,37 +43,41 @@ class IndexController extends BaseIndexController
     public function index($stage, $class, $item)
     {
         // 找到設定
-        $setting_table_ = "\\hahaha\\$stage\\hahaha_setting_table";
-        $settings_ = $setting_table_::Instance();		
-        $routes_ = &$settings_->Routes[$settings_->Settings['default']['route']];
-        $controllers_ = &$settings_->Controllers[$settings_->Settings['default']['controller']];
-        $tables_ = &$settings_->Tables[$settings_->Settings['default']['table']];
-
+        $setting_table_class_ = "\\hahaha\\$stage\\hahaha_setting_table";
+        $setting_tables_ = $setting_table_class_::Instance();	
+        // 取出設定檔	
+        $routes_ = &$setting_tables_->Routes[$setting_tables_->Settings['default']['route']];
+        $controllers_ = &$setting_tables_->Controllers[$setting_tables_->Settings['default']['controller']];
+        $tables_ = &$setting_tables_->Tables[$setting_tables_->Settings['default']['table']];
+        // 
         $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
         $global_pub_ = \pub\hahaha_global::Instance();
         $project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
-        $table_target = null;
+        $target_setting_table = null;
         foreach($tables_ as $key => &$table)
         {
             $url_ = "{$project_->Node}/table/{$stage}/{$table['node']}";
-
+            
             if($url_ == $_SERVER['REQUEST_URI'])
             {
-                // 找到table
-                $table_target = &$table;
+                // 找到table setting檔
+                $target_setting_table = &$table;
                 break;
             }
         }
         
-        if(empty($table_target))
+        if(empty($target_setting_table))
         {
             // 有空做成自己的error頁面
             return abort(404, 'Page not found');
         }
 
+        // table物件
+        $target_table = $target_setting_table['table']::Instance();
+
         $page = "all";
-        return view('web.backend.table.index', compact('table_target', 'page'));    
+        return view('web.backend.table.index', compact('target_setting_table', 'target_table', 'page'));    
     }
 
     /**

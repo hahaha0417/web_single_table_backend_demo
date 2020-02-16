@@ -13,8 +13,16 @@ class hahaha_define_table_type
 {	
     use hahaha_instance_trait;
 
+    /*
+    注意 : 沒有要做完，有做到才補
+    */
+
     // 如要其他類型，則這樣寫TEXT_HA
 
+    // -------------------------------------- 
+    // label
+    // -------------------------------------- 
+    const LABEL = "label";
     // -------------------------------------- 
     // text
     // -------------------------------------- 
@@ -31,6 +39,7 @@ class hahaha_define_table_type
     // checkbox
     // -------------------------------------- 
     const CHECKBOX = "checkbox";
+    const CHECKBOX_SELECTED = "checkbox_selected";
     // -------------------------------------- 
     // rediobox
     // -------------------------------------- 
@@ -52,6 +61,20 @@ class hahaha_define_table_type
     // editor
     // -------------------------------------- 
     const EDITOR = "editor";
+    // -------------------------------------- 
+    // panel
+    // -------------------------------------- 
+    const PANEL = "panel";
+    // -------------------------------------- 
+    // button
+    // -------------------------------------- 
+    const BUTTON = "button";
+    // addition key : 
+    // key::ICON    
+    const BUTTON_ICON = "button_icon";
+    // addition key : 
+    // key::ICON    
+    const BUTTON_ICON_TEXT = "button_icon_text";
     // -------------------------------------- 
 
 	function __construct()

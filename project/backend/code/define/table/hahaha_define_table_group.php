@@ -9,7 +9,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_action
+class hahaha_define_table_group
 {	
     use hahaha_instance_trait;
 
@@ -18,13 +18,13 @@ class hahaha_define_table_action
     */
 
     // 如要其他類型，則這樣寫TEXT_HA
-    // 因為有類型衝突，有衝突的加_，ex. INT_
-    // 這裡是標籤，不是實際設定，例如integer對應某項laravel的validate設定組
 
     // -------------------------------------- 
-    // auto_update false 不更新 true 自動更新
+    // INPUT_GROUP
     // -------------------------------------- 
-    const AUTO_UPDATE = "auto_update";
+    const INPUT_GROUP = "input_group";
+    // -------------------------------------- 
+   
     // -------------------------------------- 
 
 	function __construct()
@@ -34,7 +34,7 @@ class hahaha_define_table_action
 	
 	public function Initial()
 	{
-       
+        
 	}
 
 

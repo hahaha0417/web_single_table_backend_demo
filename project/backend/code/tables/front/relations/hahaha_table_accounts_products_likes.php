@@ -155,16 +155,112 @@ class hahaha_table_accounts_products_likes
                 // 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
                 // 主要列表
                 "main" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PRODUCTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::LIKE => [
+						key::TYPE => type::CHECKBOX,
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // 
                 // detail panel
                 "detail" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PRODUCTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::LIKE => [
+						key::TYPE => type::CHECKBOX,
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // new panel
                 "new" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PRODUCTS_ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::LIKE => [
+						key::TYPE => type::CHECKBOX,
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
 			],
         ];
@@ -180,7 +276,39 @@ class hahaha_table_accounts_products_likes
 		// 因為同一個節點，所以所有資料表共用一個router
 		$Preview = [
 			"hahaha" => [
-				
+				self::ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::PRODUCTS_ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::LIKE => [
+					key::TYPE => type::CHECKBOX,
+				],
+				self::CREATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::UPDATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
 			],
 		];
 
@@ -194,7 +322,39 @@ class hahaha_table_accounts_products_likes
 		// 因為同一個節點，所以所有資料表共用一個model
 		$Edit = [
 			"hahaha" => [
-				
+				self::ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNTS_ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::PRODUCTS_ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::LIKE => [
+					key::TYPE => type::CHECKBOX,
+				],
+				self::CREATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::UPDATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
 			],
         ];
         

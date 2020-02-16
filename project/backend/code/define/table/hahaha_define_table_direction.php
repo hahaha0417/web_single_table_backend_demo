@@ -9,34 +9,32 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_tag
+class hahaha_define_table_direction
 {	
     use hahaha_instance_trait;
 
+    /*
+    注意 : 沒有要做完，有做到才補
+    */
+
     // 如要其他類型，則這樣寫TEXT_HA
-    // 因為有類型衝突，有衝突的加_，ex. INT_
-    // 這裡是標籤，不是實際設定，例如integer對應某項laravel的validate設定組
 
     // -------------------------------------- 
-    // visible 0 不加標籤 1 加標籤
+    // top
     // -------------------------------------- 
-    const VISIBLED = "visibled";
+    const TOP = "top";
     // -------------------------------------- 
-    // visible 0 不加標籤 1 加標籤
+    // right
     // -------------------------------------- 
-    const INVISIBLED = "invisibled";
+    const RIGHT = "right";
     // -------------------------------------- 
-    // enable 0 不加標籤 1 加標籤
+    // bottom
     // -------------------------------------- 
-    const ENABLED = "enabled";
+    const BOTTOM = "bottom";
     // -------------------------------------- 
-    // disabled 0 不加標籤 1 加標籤
+    // left
     // -------------------------------------- 
-    const DISABLED = "disabled";
-    // -------------------------------------- 
-    // display_none false 不更新 true 自動更新
-    // -------------------------------------- 
-    const DISPLAY_NONE = "display_none";
+    const LEFT = "left";
     // -------------------------------------- 
 
 	function __construct()
@@ -46,7 +44,7 @@ class hahaha_define_table_tag
 	
 	public function Initial()
 	{
-       
+        
 	}
 
 

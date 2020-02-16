@@ -104,13 +104,55 @@ class hahaha_table_accounts
 		// 基礎欄位設定
 		// 使用上，只要self::ID => []，這樣目的是使的可以覆蓋這裡的預設值，基本上有預設的，要調整就必須覆蓋
 		$Fields = [
-			
-
-
-
-
-			
-			
+			self::ID => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::ACCOUNT => [					// 帳號不可以改
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::PASSWORD => [
+				key::TYPE => type::PASSWORD,
+			],
+			self::PASSWORD_CONFIRM => [
+				key::TYPE => type::PASSWORD,
+			],
+			self::PASSWORD_NEW => [
+				key::TYPE => type::PASSWORD,
+			],
+			self::PASSWORD_NEW_CONFIRM => [
+				key::TYPE => type::PASSWORD,
+			],
+			self::EMAIL => [
+				key::TYPE => type::TEXT,
+				key::VALIDATE => validate::EMAIL,				
+			],
+			self::GENDER => [
+				key::TYPE => type::REDIOBOX,
+			],
+			self::STATUS => [
+				key::TYPE => type::TEXT,
+				key::ACTIONS => [
+					action::AUTO_UPDATE => true,
+				],	
+			],
+			self::CREATED_AT => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
+			self::UPDATED_AT => [
+				key::TYPE => type::TEXT,
+				key::TAGS => [
+					tag::DISABLED => true,
+				],
+			],
         ];
         
     }
@@ -127,16 +169,160 @@ class hahaha_table_accounts
                 // 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
                 // 主要列表
                 "main" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNT => [					// 帳號不可以改
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PASSWORD => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::EMAIL => [
+						key::TYPE => type::TEXT,
+						key::VALIDATE => validate::EMAIL,				
+					],
+					self::GENDER => [
+						key::TYPE => type::REDIOBOX,
+					],
+					self::STATUS => [
+						key::TYPE => type::TEXT,
+						key::ACTIONS => [
+							action::AUTO_UPDATE => true,
+						],	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // 
                 // detail panel
                 "detail" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNT => [					// 帳號不可以改
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PASSWORD => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::EMAIL => [
+						key::TYPE => type::TEXT,
+						key::VALIDATE => validate::EMAIL,				
+					],
+					self::GENDER => [
+						key::TYPE => type::REDIOBOX,
+					],
+					self::STATUS => [
+						key::TYPE => type::TEXT,
+						key::ACTIONS => [
+							action::AUTO_UPDATE => true,
+						],	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
                 // new panel
                 "new" => [
-
+					self::ID => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::ACCOUNT => [					// 帳號不可以改
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::PASSWORD => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::PASSWORD_NEW_CONFIRM => [
+						key::TYPE => type::PASSWORD,
+					],
+					self::EMAIL => [
+						key::TYPE => type::TEXT,
+						key::VALIDATE => validate::EMAIL,				
+					],
+					self::GENDER => [
+						key::TYPE => type::REDIOBOX,
+					],
+					self::STATUS => [
+						key::TYPE => type::TEXT,
+						key::ACTIONS => [
+							action::AUTO_UPDATE => true,
+						],	
+					],
+					self::CREATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
+					self::UPDATED_AT => [
+						key::TYPE => type::TEXT,
+						key::TAGS => [
+							tag::DISABLED => true,
+						],
+					],
                 ],
 			],
         ];
@@ -152,7 +338,55 @@ class hahaha_table_accounts
 		// 因為同一個節點，所以所有資料表共用一個router
 		$Preview = [
 			"hahaha" => [
-				
+				self::ID => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::ACCOUNT => [					// 帳號不可以改
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::PASSWORD => [
+					key::TYPE => type::PASSWORD,
+				],
+				self::PASSWORD_CONFIRM => [
+					key::TYPE => type::PASSWORD,
+				],
+				self::PASSWORD_NEW => [
+					key::TYPE => type::PASSWORD,
+				],
+				self::PASSWORD_NEW_CONFIRM => [
+					key::TYPE => type::PASSWORD,
+				],
+				self::EMAIL => [
+					key::TYPE => type::TEXT,
+					key::VALIDATE => validate::EMAIL,				
+				],
+				self::GENDER => [
+					key::TYPE => type::REDIOBOX,
+				],
+				self::STATUS => [
+					key::TYPE => type::TEXT,
+					key::ACTIONS => [
+						action::AUTO_UPDATE => true,
+					],	
+				],
+				self::CREATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::UPDATED_AT => [
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
 			],
 		];
 
@@ -166,7 +400,25 @@ class hahaha_table_accounts
 		// 因為同一個節點，所以所有資料表共用一個model
 		$Edit = [
 			"hahaha" => [
-				
+				self::ACCOUNT => [					// 帳號不可以改
+					key::TYPE => type::TEXT,
+					key::TAGS => [
+						tag::DISABLED => true,
+					],
+				],
+				self::EMAIL => [
+					key::TYPE => type::TEXT,
+					key::VALIDATE => validate::EMAIL,				
+				],
+				self::GENDER => [
+					key::TYPE => type::REDIOBOX,
+				],
+				self::STATUS => [
+					key::TYPE => type::TEXT,
+					key::ACTIONS => [
+						action::AUTO_UPDATE => true,
+					],	
+				],
 			],
         ];
         
