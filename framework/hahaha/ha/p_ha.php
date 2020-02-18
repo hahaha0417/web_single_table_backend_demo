@@ -109,8 +109,11 @@ class p_ha
 	http://127.0.0.1:8700/backend
 
 	// 有要複雜設計請做成模組，這裡只是root
+	$stage 是站，有指定用指定的，沒有用預設的
+
+	只須改Url /abc ./abc abc
 	*/
-	public static function Url($url)
+	public static function Url($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -121,7 +124,15 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
+		
 
 		if($url == "/")
 		{
@@ -133,6 +144,7 @@ class p_ha
 	
 	/*
 	Images
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function Images($url)
 	{
@@ -145,13 +157,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
-		
-		return $project_->Url .  $project_->Images . $url;
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
+
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Url .  $project_->Images . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Url .  $project_->Images . $url;
+		}		
 	}
 
 	/*
 	Videos
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function Videos($url)
 	{
@@ -164,13 +191,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 		
-		return $project_->Url .  $project_->Videos . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Url .  $project_->Videos . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Url .  $project_->Videos . $url;
+		}	
 	}
 
 	/*
 	Assets
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function Assets($url)
 	{
@@ -183,13 +225,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 		
-		return $project_->Url .  $project_->Assets . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Url .  $project_->Assets . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Url .  $project_->Assets . $url;
+		}	
 	}
 
 	/*
 	Uploads
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function Uploads($url)
 	{
@@ -202,9 +259,23 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 		
-		return $project_->Url .  $project_->Uploads . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Url .  $project_->Uploads . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Url .  $project_->Uploads . $url;
+		}	
 	}
 
 	// --------------------------------------------------------------------------
@@ -218,6 +289,7 @@ class p_ha
 	http://127.0.0.1:8700/backend
 
 	// 有要複雜設計請做成模組，這裡只是root
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function V_Url($url)
 	{
@@ -230,13 +302,21 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
 		return $project_->Virtual_Url . $url;
 	}
 
 	/*
 	虛擬Images
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function V_Images($url)
 	{
@@ -249,13 +329,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Virtual_Url .  $project_->Images . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Virtual_Url .  $project_->Images . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Virtual_Url .  $project_->Images . $url;
+		}
 	}
 
 	/*
 	虛擬Videos
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function V_Videos($url)
 	{
@@ -268,13 +363,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Virtual_Url .  $project_->Videos . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Virtual_Url .  $project_->Videos . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Virtual_Url .  $project_->Videos . $url;
+		}
 	}
 
 	/*
 	虛擬Assets
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function V_Assets($url)
 	{
@@ -287,13 +397,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Virtual_Url .  $project_->Assets . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Virtual_Url .  $project_->Assets . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Virtual_Url .  $project_->Assets . $url;
+		}
 	}
 
 	/*
 	虛擬Uploads
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function V_Uploads($url)
 	{
@@ -306,9 +431,23 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Virtual_Url .  $project_->Uploads . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Virtual_Url .  $project_->Uploads . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Virtual_Url .  $project_->Uploads . $url;
+		}
 	}
 
 	// --------------------------------------------------------------------------
@@ -322,6 +461,7 @@ class p_ha
 	http://127.0.0.1:8700/backend
 
 	// 有要複雜設計請做成模組，這裡只是root
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function S_Url($url)
 	{
@@ -334,13 +474,21 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
 		return $project_->Select_Url . $url;
 	}
 
 	/*
 	選擇Images
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function S_Images($url)
 	{
@@ -353,13 +501,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Select_Url .  $project_->Images . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Select_Url .  $project_->Images . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Select_Url .  $project_->Images . $url;
+		}
 	}
 
 	/*
 	選擇Videos
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function S_Videos($url)
 	{
@@ -372,13 +535,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Select_Url .  $project_->Videos . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Select_Url .  $project_->Videos . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Select_Url .  $project_->Videos . $url;
+		}
 	}
 
 	/*
 	選擇Assets
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function S_Assets($url)
 	{
@@ -391,13 +569,28 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Select_Url .  $project_->Assets . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Select_Url .  $project_->Assets . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Select_Url .  $project_->Assets . $url;
+		}
 	}
 
 	/*
 	選擇Uploads
+	$stage 是站，有指定用指定的，沒有用預設的
 	*/
 	public static function S_Uploads($url)
 	{
@@ -409,9 +602,23 @@ class p_ha
 			$system_setting_pub_->Initial();
 		}
 
-		$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		if(empty($stage))
+		{
+			$project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+		}
+		else
+		{
+			$project_ = $system_setting_pub_->Project->{$stage};
+		}
 
-		return $project_->Select_Url .  $project_->Uploads . $url;
+		if($system_setting_pub_->System->Resource->Addition_Time)
+		{
+			return $project_->Select_Url .  $project_->Uploads . $url . "?t=" . $system_setting_pub_->System->Resource->Time;
+		}
+		else
+		{
+			return $project_->Select_Url .  $project_->Uploads . $url;
+		}
 	}
 
 	// --------------------------------------------------------------------------

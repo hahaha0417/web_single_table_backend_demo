@@ -26,28 +26,30 @@ require __DIR__.'/../config/global/hahaha_global.php';
 $system_setting_ = \pub\hahaha_system_setting::Instance()->Initial("hahaha", 0);
 $global_ = \pub\hahaha_global::Instance();
 
+$url_token_ = explode("?", $_SERVER['REQUEST_URI']);
+
 // 跳轉專案
 $global_->Project->Jump = 1;
 // 比對站點
-if(strpos($_SERVER['REQUEST_URI'], $system_setting_->Project->Hahaha->Node) === 0)
+if(strpos($url_token_[0], $system_setting_->Project->Hahaha->Node) === 0)
 {
     // api(H) - 快速API
     $global_->Node->Name = "Hahaha";
     require $system_setting_->Project->Hahaha->Index;
 }
-else if(strpos($_SERVER['REQUEST_URI'], $system_setting_->Project->Api->Node) === 0)
+else if(strpos($url_token_[0], $system_setting_->Project->Api->Node) === 0)
 {
     // api - 提供API
     $global_->Node->Name = "Api";
     require $system_setting_->Project->Api->Index;
 }
-else if(strpos($_SERVER['REQUEST_URI'], $system_setting_->Project->Backend->Node) === 0)
+else if(strpos($url_token_[0], $system_setting_->Project->Backend->Node) === 0)
 {
     // 後台 - 單表式後台
     $global_->Node->Name = "Backend";
     require $system_setting_->Project->Backend->Index;
 }
-else if(strpos($_SERVER['REQUEST_URI'], $system_setting_->Project->Master->Node) === 0)
+else if(strpos($url_token_[0], $system_setting_->Project->Master->Node) === 0)
 {
     // 主控台 - 系統操作及後門
     $global_->Node->Name = "Master";

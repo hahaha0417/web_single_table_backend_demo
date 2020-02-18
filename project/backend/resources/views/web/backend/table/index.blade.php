@@ -13,10 +13,11 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
 <?
-use  hahaha\define\hahaha_define_table_direction as direction;
-use  hahaha\define\hahaha_define_table_group as group;
-use  hahaha\define\hahaha_define_table_key as key;
-use  hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_type as type;
+use Spatie\Url\Url;
 ?>
 
 <!DOCTYPE html>
@@ -375,9 +376,13 @@ use  hahaha\define\hahaha_define_table_type as type;
                                         </th> 
                                     @endforeach                                                                   
                                 </tr>
-                                {{-- @foreach($data_list as $key => $value)                                 --}}
-                                    {{-- <tr id="index_item_{{$loop->index}}" class="index_item" item_id="{{$value['id']}}" index="{{$loop->index}}">    --}}
-                                    <tr>
+<?
+ //dd($data_list);
+?>
+
+                                @foreach($data_list as $key_data => $data)     
+                                <? //dd($target_table->Index['main']); ?>                          
+                                    <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
                                         {{-- laravel套版不要用reference，@foreach($item[key::ITEMS] as $key_field => $field)，會找不到$item[key::ITEMS] --}}
                                         @foreach($target_table->Index['main'] as $key_item => $item)  
                                             <td @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
@@ -386,13 +391,22 @@ use  hahaha\define\hahaha_define_table_type as type;
                                                         <div class="input-group">
                                                     @endif
                                                 @endif
+                                                {{--  對應欄位  --}}
                                                 @foreach($item[key::ITEMS] as $key_field => $field) 
-                                                    @if($field[key::TYPE] == type::LABEL)           
-                                                        OGC
-                                                    @elseif($field[key::TYPE] == type::TEXT)           
+                                                    @if($field[key::TYPE] == type::LABEL)          
+                                                        {{--  有欄位才填  --}}
+                                                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                                            @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                                                {{$data[$field[key::DB_FIELD][key::NAME]]}}
+                                                            @else 
+                                                                {{$data[$key_field]}}
+                                                            @endif
+                                                        @else
+                                                        @endif
+                                                    @elseif($field[key::TYPE] == type::TEXT)                                                       
                                                         <input  
                                                             @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}" 
+                                                                id="{{$field[key::ID]}}_{{$key_data}}" 
                                                             @endif 
                                                             @if(!empty($field[key::STYLES])) 
                                                                 style="{{$field[key::STYLES]}}" 
@@ -402,8 +416,19 @@ use  hahaha\define\hahaha_define_table_type as type;
                                                                 class="{{$field[key::CLASSES]}} form-control" 
                                                             @else 
                                                                 class="form-control" 
-                                                            @endif 
-                                                            placeholder="" value="value" 
+                                                            @endif                                                             
+                                                            placeholder="" 
+                                                            
+                                                            {{--  有欄位才填  --}}
+                                                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
+                                                                @else 
+                                                                    value="{{$data[$key_field]}}"
+                                                                @endif
+                                                            @else
+                                                            @endif
+
                                                             @if(!empty($field[key::HINT])) 
                                                                 data-toggle="tooltip" 
                                                                 @if(!empty($field[key::HINT][key::DIRECTION])) 
@@ -416,6 +441,53 @@ use  hahaha\define\hahaha_define_table_type as type;
                                                                 @endif 
                                                             @endif 
                                                             >
+                                                    @elseif($field[key::TYPE] == type::IMAGE)   
+                                                        <img 
+                                                            @if(!empty($field[key::ID])) 
+                                                                id="{{$field[key::ID]}}_thumbnail_{{$key_data}}"
+                                                                class="{{$field[key::ID]}}_thumbnail"
+                                                            @endif    
+                                                          
+                                                            {{--  有欄位才填  --}}
+                                                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                                                    src="{{\p_ha::IMAGES($data[$field[key::DB_FIELD][key::NAME]], $target_setting_table['stage']) }}"
+                                                                @else 
+                                                                    src="{{\p_ha::IMAGES($data[$key_field], $target_setting_table['stage']) }}"
+                                                                @endif
+                                                            @else
+                                                            @endif
+
+                                                            @if(!empty($field[key::STYLES])) 
+                                                                style="{{$field[key::STYLES]}}" 
+                                                            @endif 
+                                                        >
+                                                    @elseif($field[key::TYPE] == type::UPLOAD) 
+                                                        <div 
+                                                            @if(!empty($field[key::ID])) 
+                                                                id="{{$field[key::ID]}}_upload_{{$key_data}}"
+                                                                class="{{$field[key::ID]}}_upload"
+                                                                name="{{$field[key::ID]}}_upload_{{$key_data}}"
+                                                            @endif       
+                                                            @if(!empty($field[key::STYLES])) 
+                                                                style="{{$field[key::STYLES]}}" 
+                                                            @endif 
+                                                                type="file"
+                                                            >
+                                                        </div>  
+                                                    @elseif($field[key::TYPE] == type::BUTTON_ICON)     
+                                                        <div
+                                                            @if(!empty($field[key::ID])) 
+                                                                id="{{$field[key::ID]}}_{{$key_data}}"
+                                                                class="{{$field[key::ID]}} btn btn-dark"
+                                                                name="{{$field[key::ID]}}_{{$key_data}}"
+                                                            @endif       
+                                                            @if(!empty($field[key::STYLES])) 
+                                                                style="{{$field[key::STYLES]}}" 
+                                                            @endif 
+                                                            >
+                                                            <i class="fas {{$field[key::ICON]}}"></i>
+                                                        </div>
                                                     @elseif($field[key::TYPE] == type::PANEL) 
                                                             <div 
                                                                 @if(!empty($field[key::ID])) 
@@ -434,9 +506,9 @@ use  hahaha\define\hahaha_define_table_type as type;
                                                                     <i class="fab fa-elementor"></i>
                                                                 </label>
                                                             </div>
-                                                            {{-- <div id="index_item_panel_{{$loop->index}}" class="index_item_panel">
-                                                                <div class="index_item_panel_content">
-                                                                    <div class="row">
+                                                            <div id="{{$field[key::ID]}}_1" class="{{$field[key::ID]}}">
+                                                                <div class="{{$field[key::ID]}}_content">
+                                                                    {{--            <div class="row">
                                                                         <div class="col-sm">
                                                                             <img id="index_item_panel_image_thumbnail_{{$loop->index}}" class="index_item_panel_image_thumbnail" src="{{url($value['image'])}}" style="width: auto;height: 200px;"/>
                                                                         </div>
@@ -466,14 +538,14 @@ use  hahaha\define\hahaha_define_table_type as type;
                                                                     </div>
                                                                     <div class="row">
                                                                         <div id="index_item_panel_update_time_{{$loop->index}}" class="col">{{$value['update_time']}}</div>                                                
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
-                                                            </div> --}}
+                                                            </div> 
                                                        
                                                     @elseif($field[key::TYPE] == type::CHECKBOX_SELECTED)  
                                                         <input 
                                                             @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}"  
+                                                                id="{{$field[key::ID]}}_{{$key_data}}"  
                                                             @endif 
                                                             @if(!empty($field[key::CLASSES])) 
                                                                 class="{{$field[key::CLASSES]}} form-control" 
@@ -494,7 +566,7 @@ use  hahaha\define\hahaha_define_table_type as type;
                                         @endforeach    
                                                                      
                                     </tr> 
-                                {{-- @endforeach                     --}}
+                                @endforeach                   
                             </table>
                         </div>
                         <div class="index_result_content">
@@ -516,8 +588,66 @@ use  hahaha\define\hahaha_define_table_type as type;
                     <div class="index_result_wrap">                    
                         <div style="height:5px">&nbsp;</div>
                         <div class="page_list">
-                            {{--  這會產生多頁按鈕  --}}
-                            {{--  {{$data_list->links()}}  --}}
+                            {{--  laravel樣式，有需要再模組化  --}}
+                            <?
+                            $page_ = $data_link['page'];
+                            $count_ = $data_link['count'];
+                            $range_ = $data_link['range'];
+                            //
+                            $range_start_ = $page_ - $range_;
+                            $range_end_ = $page_ + $range_;
+                            $out_start_flag_ = false;
+                            $out_end_flag_ = false;
+
+                            $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
+                            $url_ = Url::fromString($actual_link_);                         
+                            ?>
+                            <ul class="pagination" role="navigation">
+                                @if(1 == $page_)
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="« First">
+                                        <span class="page-link" aria-hidden="true">‹‹</span>
+                                    </li> 
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
+                                        <span class="page-link" aria-hidden="true">‹</span>
+                                    </li> 
+                                @else
+                                    <li class="page-item" aria-disabled="true" aria-label="« First">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', 1)}}" rel="next" aria-label="« First">‹‹</a>
+                                    </li>    
+                                    <li class="page-item" aria-disabled="true" aria-label="« Previous">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ - 1)}}" rel="next" aria-label="« Previous">‹</a>
+                                    </li>                        
+                                @endif
+                                @for ($i = 1; $i <= $count_; $i++)
+                                    @if($page_ == $i)
+                                        <li class="page-item active" aria-current="page"><span class="page-link">{{$i}}</span></li>
+                                    @elseif($i >= $range_start_ && $i <= $range_end_)
+                                        <li class="page-item"><a class="page-link" href="{{$url_->withQueryParameter('page', $i)}}">{{$i}}</a></li>
+                                    @elseif(!$out_start_flag_ && $i < $range_start_)
+                                        <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
+                                        <? $out_start_flag_ = true; ?>                                        
+                                    @elseif(!$out_end_flag_ && $i > $range_end_)
+                                        <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
+                                        <? $out_end_flag_ = true; ?>
+                                    @endif
+                                @endfor
+                                @if($count_ == $page_)
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="Next »">
+                                        <span class="page-link" aria-hidden="true">›</span>
+                                    </li> 
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="End »">
+                                        <span class="page-link" aria-hidden="true">››</span>
+                                    </li> 
+                                @else
+                                    <li class="page-item" aria-disabled="true" aria-label="Next »">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ + 1)}}" rel="next" aria-label="Next »">›</a>
+                                    </li>            
+                                    <li class="page-item" aria-disabled="true" aria-label="End »">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $count_)}}" rel="next" aria-label="End »">››</a>
+                                    </li>                 
+                                @endif
+                               
+                            </ul>
                         </div>
                     </div>
                 </form>         

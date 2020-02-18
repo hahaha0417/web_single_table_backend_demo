@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "nesbot/carbon": "^2.29",
         "predis/predis": "^1.1",
-        "signe/redlock-php": "^1.1"
+        "signe/redlock-php": "^1.1",
+        "spatie/url": "^1.3"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

@@ -35,8 +35,8 @@ $(function(){
                 }     
                 // alert(33);
                 $(item).parent().find(".index_item_image_thumbnail").attr('src', new URL(data['image'], window.location.protocol + "//" + location.host));
-                $(item).parent().parent().parent().find(".index_item_panel_image").val(data['image']);
-                $(item).parent().parent().parent().find(".index_item_panel_image_thumbnail").attr('src', new URL(data['image'], window.location.protocol + "//" + location.host));
+                $(item).parent().parent().parent().find(".index_item_panel_detail_image").val(data['image']);
+                $(item).parent().parent().parent().find(".index_item_panel_detail_image_thumbnail").attr('src', new URL(data['image'], window.location.protocol + "//" + location.host));
                 item_image_upload_file[index].reset();
             },      
             showQueueDiv: "index_nav_title_image_output",                                    
@@ -47,7 +47,7 @@ $(function(){
                 'target': 'image',
                 'item': {
                     "page": $(item).parent().parent().parent().find(".index_item_page").val(),
-                    "item": $(item).parent().parent().parent().find(".index_item_panel_item").val(),
+                    "item": $(item).parent().parent().parent().find(".index_item_panel_detail_item").val(),
                     "id": $(item).parent().parent().parent().attr("item_id"),
                 },
             },
@@ -70,31 +70,31 @@ $(function(){
             };
             change_order(id, item);
         });
-        $("#index_item_title_prepend_" + index).mouseenter(function(){
-            var panel = $(this).parent().find(".index_item_panel");
-            index_item_title_prepend_mouseenter(this, panel);            
+        $("#index_item_panel_detail_prepend_" + index).mouseenter(function(){
+            var panel = $(this).parent().find(".index_item_panel_detail");
+            index_item_panel_detail_prepend_mouseenter(this, panel);            
         });
-        $("#index_item_title_prepend_" + index).mouseleave(function(e){
-            index_item_title_prepend_mouseleave(this, e);
+        $("#index_item_panel_detail_prepend_" + index).mouseleave(function(e){
+            index_item_panel_detail_prepend_mouseleave(this, e);
         });
-        $("#index_item_panel_" + index).mouseleave(function(event){          
+        $("#index_item_panel_detail_" + index).mouseleave(function(event){          
             var div = $("#ui-id-" + (parseInt(index) + 1));
             var this_ = this;
             div.mouseleave(function(event){
-                index_item_panel_mouseleave(this_, div, event);
+                index_item_panel_detail_mouseleave(this_, div, event);
             });
-            index_item_panel_mouseleave(this_, div, event);
+            index_item_panel_detail_mouseleave(this_, div, event);
         });
-        $("#index_item_panel_item_" + index).autocomplete({
+        $("#index_item_panel_detail_item_" + index).autocomplete({
             source: auto_complete_tag
         });
 
-        $("#index_item_panel_item" + index).change(function() {
-            index_item_panel_item_change(this);
+        $("#index_item_panel_detail_item" + index).change(function() {
+            index_item_panel_detail_item_change(this);
         });
     
         $(window).scroll(function() {
-            $(".index_item .index_item_panel").hide();
+            $(".index_item .index_item_panel_detail").hide();
         });
         $("#index_item_delete_" + index).click(function() {        
             var id = $(this).attr("value");
@@ -107,13 +107,13 @@ $(function(){
             item_edit(id);        
         });
         
-        $("#index_item_panel_image_refresh + index").click(function() {  
+        $("#index_item_panel_detail_image_refresh + index").click(function() {  
             var id = $(this).parent().parent().parent().parent().parent().parent().parent().attr("item_id");
             var item = {
-                'image': $(this).parent().parent().find(".index_item_panel_image").val(),
+                'image': $(this).parent().parent().find(".index_item_panel_detail_image").val(),
             };
             var this_refresh = this;
-            index_item_panel_image_refresh(id, item, this_refresh);
+            index_item_panel_detail_image_refresh(id, item, this_refresh);
         });
     }
 
@@ -126,42 +126,42 @@ $(function(){
             <td>            \
                 <div class=\"input-group\">         \
                     <input id=\"index_item_title_" + index + "\" type=\"text\" class=\"index_item_title form-control\" placeholder=\"標題\" value=\"" + item["title"] + "\">       \
-                    <div id=\"index_item_title_prepend_" + index + "\" class=\"input-group-prepend index_item_title_prepend\">          \
+                    <div id=\"index_item_panel_detail_prepend_" + index + "\" class=\"input-group-prepend index_item_panel_detail_prepend\">          \
                         <label style=\"font-size:1.5em; color:Tomato\" class=\"btn-secondary input-group-text\" for=\"index_item_title_" + index + "\">      \
                             <i class=\"fab fa-elementor\"></i>              \
                         </label>                \
                     </div>              \
-                    <div id=\"index_item_panel_" + index + "\" class=\"index_item_panel\">           \
-                        <div class=\"index_item_panel_content\">              \
+                    <div id=\"index_item_panel_detail_" + index + "\" class=\"index_item_panel_detail\">           \
+                        <div class=\"index_item_panel_detail_content\">              \
                             <div class=\"row\">               \
                                 <div class=\"col-sm\">            \
-                                    <img id=\"index_item_panel_image_thumbnail_" + index + "\" class=\"index_item_panel_image_thumbnail\" src=\"" + new URL(item["image"], window.location.protocol + "//" + location.host) + "\" style=\"width: auto;height: 200px;\"/>         \
+                                    <img id=\"index_item_panel_detail_image_thumbnail_" + index + "\" class=\"index_item_panel_detail_image_thumbnail\" src=\"" + new URL(item["image"], window.location.protocol + "//" + location.host) + "\" style=\"width: auto;height: 200px;\"/>         \
                                 </div>              \
                             </div>                  \
                             <div style=\"height:5px;\">&nbsp;</div>               \
                             <div class=\"row\">                             \
-                                <label for=\"index_item_panel_item_" + index + "\" class=\"col-sm-3 col-form-label\">項目 : </label>               \
+                                <label for=\"index_item_panel_detail_item_" + index + "\" class=\"col-sm-3 col-form-label\">項目 : </label>               \
                                 <div class=\"col\">               \
-                                    <input style=\"width:530px;\" id=\"index_item_panel_item_" + index + "\" style=\"\" type=\"text\" class=\"index_item_panel_item form-control\" placeholder=\"項目\" value=\"" + item["item"] + "\">     \
+                                    <input style=\"width:530px;\" id=\"index_item_panel_detail_item_" + index + "\" style=\"\" type=\"text\" class=\"index_item_panel_detail_item form-control\" placeholder=\"項目\" value=\"" + item["item"] + "\">     \
                                 </div>                  \
                             </div>          \
                             <div style=\"height:5px;\">&nbsp;</div>               \
                             <div class=\"row\">                   \
-                                <label for=\"index_item_panel_image_" + index + "\" class=\"col-sm-3 col-form-label\">圖片 : </label>                 \
+                                <label for=\"index_item_panel_detail_image_" + index + "\" class=\"col-sm-3 col-form-label\">圖片 : </label>                 \
                                 <div class=\"col\">                   \
-                                    <input style=\"width:530px;\" id=\"index_item_panel_image_" + index + "\" style=\"\" type=\"text\" class=\"index_item_panel_image form-control\" placeholder=\"圖片\" value=\""+ item["image"] +"\">           \
+                                    <input style=\"width:530px;\" id=\"index_item_panel_detail_image_" + index + "\" style=\"\" type=\"text\" class=\"index_item_panel_detail_image form-control\" placeholder=\"圖片\" value=\""+ item["image"] +"\">           \
                                 </div>                          \
                                 <div class=\"col-sm-2\">                      \
-                                    <div id=\"index_item_panel_image_refresh_" + index + "\" style=\"font-size:1em; color:Tomato\" class=\"index_item_panel_image_refresh btn btn-dark\">              \
+                                    <div id=\"index_item_panel_detail_image_refresh_" + index + "\" style=\"font-size:1em; color:Tomato\" class=\"index_item_panel_detail_image_refresh btn btn-dark\">              \
                                         <i class=\"fas fa-refresh\"></i>                  \
                                     </div>                      \
                                 </div>                      \
                             </div>                      \
                             <div class=\"row\">                   \
-                                <div id=\"index_item_panel_create_time_" + index + "\" class=\"col\">" + item["create_time"] + "</div>             \
+                                <div id=\"index_item_panel_detail_create_time_" + index + "\" class=\"col\">" + item["create_time"] + "</div>             \
                             </div>                              \
                             <div class=\"row\">                           \
-                                <div id=\"index_item_panel_update_time_" + index + "\" class=\"col\">" + item["update_time"] + "</div>                     \
+                                <div id=\"index_item_panel_detail_update_time_" + index + "\" class=\"col\">" + item["update_time"] + "</div>                     \
                             </div>                          \
                         </div>                          \
                     </div>                  \
@@ -1351,11 +1351,11 @@ $(function(){
             item.push(
                 {
                     "page": $(this).find(".index_item_page").val(),
-                    "item": $(this).find(".index_item_panel_item").find(":selected").attr("name"),
+                    "item": $(this).find(".index_item_panel_detail_item").find(":selected").attr("name"),
                     "order_": $(this).find(".index_item_order").val(),
                     "id": $(this).attr("item_id"),
                     "title": $(this).find(".index_item_title").val(),
-                    "image": $(this).find(".index_item_panel_image").val(),
+                    "image": $(this).find(".index_item_panel_detail_image").val(),
                     "url": $(this).find(".index_item_url").val(),
                     "comment": $(this).find(".index_item_comment").val(),
                 }
@@ -1498,7 +1498,7 @@ $(function(){
         change_order(id, item);
     });
 
-    function index_item_panel_item_change(this_){
+    function index_item_panel_detail_item_change(this_){
         var id = $(this_).parent().parent().parent().parent().parent().parent().parent().attr("item_id");
         var item = {
             "page": $(this_).parent().parent().parent().parent().parent().parent().parent().find(".index_item_page").val(),
@@ -1528,8 +1528,8 @@ $(function(){
 
                     // console.log($("#index_pic_board_select"));
                     // alert(response.item['image']);
-                    $(this_).parent().parent().parent().find(".index_item_panel_image").val(response.item['image']);
-                    $(this_).parent().parent().parent().find(".index_item_panel_image_thumbnail").attr('src', new URL(response.item['image'], window.location.protocol + "//" + location.host));
+                    $(this_).parent().parent().parent().find(".index_item_panel_detail_image").val(response.item['image']);
+                    $(this_).parent().parent().parent().find(".index_item_panel_detail_image_thumbnail").attr('src', new URL(response.item['image'], window.location.protocol + "//" + location.host));
                     $(this_).parent().parent().parent().parent().parent().parent().parent().find(".index_item_image_thumbnail").attr('src', new URL(response.item['image'], window.location.protocol + "//" + location.host));
                 }
                 else{
@@ -1565,11 +1565,11 @@ $(function(){
             },
         });
     }
-    $(".index_item .index_item_panel_item").change(function() {
-        index_item_panel_item_change(this);
+    $(".index_item .index_item_panel_detail_item").change(function() {
+        index_item_panel_detail_item_change(this);
     });
 
-    function index_item_panel_image_refresh(id, item, this_){
+    function index_item_panel_detail_image_refresh(id, item, this_){
         $.ajax({
 			type:"POST",
             url:"/backend/index/index/deal",
@@ -1594,7 +1594,7 @@ $(function(){
                     // alert(response.thumbnail);
                     // console.log($("#index_pic_board_select"));
                     
-                    $(this_).parent().parent().parent().find(".index_item_panel_image_thumbnail").attr('src', new URL(response.thumbnail, window.location.protocol + "//" + location.host));
+                    $(this_).parent().parent().parent().find(".index_item_panel_detail_image_thumbnail").attr('src', new URL(response.thumbnail, window.location.protocol + "//" + location.host));
                     $(this_).parent().parent().parent().parent().parent().parent().parent().find(".index_item_image_thumbnail").attr('src', new URL(response.thumbnail, window.location.protocol + "//" + location.host));
                     
                 }
@@ -1635,13 +1635,13 @@ $(function(){
         });
     }
 
-    $(".index_item .index_item_panel_image_refresh").click(function() {  
+    $(".index_item .index_item_panel_detail_image_refresh").click(function() {  
         var id = $(this).parent().parent().parent().parent().parent().parent().parent().attr("item_id");
         var item = {
-            'image': $(this).parent().parent().find(".index_item_panel_image").val(),
+            'image': $(this).parent().parent().find(".index_item_panel_detail_image").val(),
         };
         var this_ = this;
-        index_item_panel_image_refresh(id, item, this_);
+        index_item_panel_detail_image_refresh(id, item, this_);
     });
 
     
@@ -1687,7 +1687,7 @@ $(function(){
         // });
 
         
-        $.each($(".index_item_panel_item"), function( index, value ) {  
+        $.each($(".index_item_panel_detail_item"), function( index, value ) {  
             $( value ).autocomplete({
                 source: auto_complete_tag
             });
@@ -1784,7 +1784,7 @@ $(function(){
         item_edit(id);        
     });
 
-    function index_item_title_prepend_mouseenter(this_, panel){
+    function index_item_panel_detail_prepend_mouseenter(this_, panel){
         if(is_in_iframe){
             if($(this_).offset().top - $(window).scrollTop() - $(panel).height() >= 0){
                 panel.css("left", $(this_).offset().left - $(window).scrollLeft() - ($(panel).width() - $(this_).width()) / 2) + "px";   
@@ -1813,7 +1813,7 @@ $(function(){
         panel.show();
     }
 
-    function index_item_title_prepend_mouseleave(this_, event){
+    function index_item_panel_detail_prepend_mouseleave(this_, event){
         e = event || window.event;
         // alert($(this_).offset().top - $(window).scrollTop());
         //alert(flag);
@@ -1822,14 +1822,14 @@ $(function(){
                 if(e.clientY < $(this_).offset().top - $(window).scrollTop() && $(this_).offset().left - $(window).scrollLeft() <= e.clientX && e.clientX < ($(this_).offset().left - $(window).scrollLeft() + $(this_).width()))
                 {}
                 else{
-                    $(this_).parent().find(".index_item_panel").hide();
+                    $(this_).parent().find(".index_item_panel_detail").hide();
                 }
             }
             else if(flag == 1){
                 if($(this_).offset().top - $(window).scrollTop() <= e.clientY && $(this_).offset().left - $(window).scrollLeft() <= e.clientX && e.clientX < ($(this_).offset().left - $(window).scrollLeft() + $(this_).width()))
                 {}
                 else{
-                    $(this_).parent().find(".index_item_panel").hide();
+                    $(this_).parent().find(".index_item_panel_detail").hide();
                 }
             }
         }
@@ -1838,20 +1838,20 @@ $(function(){
                 if(e.clientY < $(this_).offset().top - $(window).scrollTop() && $(this_).offset().left - $(window).scrollLeft() <= e.clientX && e.clientX < ($(this_).offset().left - $(window).scrollLeft() + $(this_).width()))
                 {}
                 else{
-                    $(this_).parent().find(".index_item_panel").hide();
+                    $(this_).parent().find(".index_item_panel_detail").hide();
                 }
             }
             else if(flag == 1){
                 if($(this_).offset().top - $(window).scrollTop() <= e.clientY && $(this_).offset().left - $(window).scrollLeft() <= e.clientX && e.clientX < ($(this_).offset().left - $(window).scrollLeft() + $(this_).width()))
                 {}
                 else{
-                    $(this_).parent().find(".index_item_panel").hide();
+                    $(this_).parent().find(".index_item_panel_detail").hide();
                 }
             }
         }
     }
 
-    function index_item_panel_mouseleave(this_, div, event){
+    function index_item_panel_detail_mouseleave(this_, div, event){
         e = event || window.event;
         // alert($(this_).offset().top - $(window).scrollTop());
         
@@ -1887,30 +1887,30 @@ $(function(){
     $(".list_tab tr input[name=checkbox]").labelauty(); 
 
     {
-        $(".index_item .index_item_title_prepend").mouseenter(function(){            
-            var panel = $(this).parent().find(".index_item_panel");
-            index_item_title_prepend_mouseenter(this, panel);            
+        $(".index_item .index_item_panel_detail_prepend").mouseenter(function(){            
+            var panel = $(this).parent().find(".index_item_panel_detail");
+            index_item_panel_detail_prepend_mouseenter(this, panel);            
         });
-        $(".index_item .index_item_title_prepend").mouseleave(function(event){
-            index_item_title_prepend_mouseleave(this, event);
+        $(".index_item .index_item_panel_detail_prepend").mouseleave(function(event){
+            index_item_panel_detail_prepend_mouseleave(this, event);
         });
         var panel_ok = false;
         
-        $(".index_item .index_item_panel").mouseleave(function(event){
+        $(".index_item .index_item_panel_detail").mouseleave(function(event){
             var index =  $(this).parent().parent().parent().attr("index");
             // alert("#ui-id-" + (index + 1));
             // var div = $("#ui-id-" + (parseInt(index) + 1));
-            var div = $(this).parent().find(".index_item_panel");
+            var div = $(this).parent().find(".index_item_panel_detail");
             
             var this_ = this;
             div.mouseleave(function(event){
-                index_item_panel_mouseleave(this_, div, event);
+                index_item_panel_detail_mouseleave(this_, div, event);
             });
-            index_item_panel_mouseleave(this_, div, event);
+            index_item_panel_detail_mouseleave(this_, div, event);
         });
 
         $(window).scroll(function() {            
-            $(".index_item .index_item_panel").hide();
+            $(".index_item .index_item_panel_detail").hide();
         });
     }
 

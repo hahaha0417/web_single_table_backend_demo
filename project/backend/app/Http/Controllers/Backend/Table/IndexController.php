@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
 use Redirect;
+use EntityManager;
+use Config;
 
 // 如要資料庫切換 原則上有三種方式
 // 1. 多個Controller，Include一份General的Code : Controller會很多個，不好
@@ -41,7 +43,15 @@ class IndexController extends BaseIndexController
 
     */
     public function index($stage, $class, $item)
-    {
+    {  
+        $input_ = request()->all();
+        $page_ = request()->get('page');
+        if(empty($page_))
+        {
+            $page_ = 1;
+        }
+        $size_ = Config::get("option.table.size");
+
         // 找到設定
         $setting_table_class_ = "\\hahaha\\$stage\\hahaha_setting_table";
         $setting_tables_ = $setting_table_class_::Instance();	
@@ -55,11 +65,12 @@ class IndexController extends BaseIndexController
         $project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
 
         $target_setting_table = null;
+        $url_token_ = explode("?", $_SERVER['REQUEST_URI']);
         foreach($tables_ as $key => &$table)
         {
             $url_ = "{$project_->Node}/table/{$stage}/{$table['node']}";
             
-            if($url_ == $_SERVER['REQUEST_URI'])
+            if($url_ == $url_token_[0])
             {
                 // 找到table setting檔
                 $target_setting_table = &$table;
@@ -74,10 +85,35 @@ class IndexController extends BaseIndexController
         }
 
         // table物件
-        $target_table = $target_setting_table['table']::Instance();
+        $target_table = $target_setting_table['table']::Instance()
+            ->Initial_Index()
+            ->Initial_Fields_Index();;
+            
+        $target_repository_ = EntityManager::getRepository($target_setting_table['entity']);
+        
+        $data_list = [];
+        
+        $data_link = [];
+
+        $result_ = $target_repository_->findByPagination($data_list, 
+            $data_link,
+            $target_setting_table, 
+            $target_table->Fields_Index, 
+            $page_, 
+            $size_
+        );
+
+        // 如資料連結有額外需求，在得到後進行二次轉換
+        // $data_link = convert($data_link);
+        
+        if(!$result_)
+        {
+            // 有空做成自己的error頁面
+            return abort(404, 'findByPagination error');
+        }
 
         $page = "all";
-        return view('web.backend.table.index', compact('target_setting_table', 'target_table', 'page'));    
+        return view('web.backend.table.index', compact('target_setting_table', 'target_table', 'data_list', 'data_link', 'page'));    
     }
 
     /**

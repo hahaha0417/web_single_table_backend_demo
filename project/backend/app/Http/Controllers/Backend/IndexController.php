@@ -162,7 +162,8 @@ class IndexController extends CommonController
             // Take action based on the score returned:
             if ($recaptcha->score >= 0.5) { 
                 $account_repository_ = EntityManager::getRepository(Accounts::class);
-                $account_ = $account_repository_->findByAccountLogin($input_['user_name']);
+                $account_ = [];
+                $account_repository_->findByAccountLogin($account_, $input_['user_name']);
                 $account_ = count($account_) == 1 ? $account_[0] : null;
 
                 if(empty($account_))

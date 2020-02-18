@@ -2,8 +2,12 @@
 
 namespace repositories\backend;
 
+use hahaha\hahaha_repositories_single_table_basic_trait;
+use hahaha\hahaha_repositories_single_table_composite_trait;
+use hahaha\hahaha_convert_doctrine_dql;
 use Doctrine\ORM\Query;
 use Registry;
+use EntityManager;
 
 /**
  * Accounts
@@ -13,23 +17,52 @@ use Registry;
  */
 class Accounts extends \Doctrine\ORM\EntityRepository
 {
+    use hahaha_repositories_single_table_basic_trait;
+    use hahaha_repositories_single_table_composite_trait;
+
+    public $Alias = "a";
+
     /*
     避免複製，用reference
     */
-    public function &findByAccountLogin(&$account) 
+    public function findByAccountLogin(&$result, &$account) 
     {
-        // 有效能需求，因此採最簡
-        $qb_ = Registry::getManager('backend')->createQueryBuilder();
-        $qb_->select("a.account, a.password")
-           ->from('entities\backend\Accounts', 'a')
-           ->where('a.account = :account')
-           ->setParameter('account' , $account);
+        $fields_ = [
+            "account",
+            "password",
+        ];
 
+        // ----------------------------------------- 
+        $setting_table_class_ = "\\hahaha\\backend\\hahaha_setting_table";
+        $setting_tables_ = $setting_table_class_::Instance();	
+        // 取出設定檔	
+        $tables_ = &$setting_tables_->Tables[$setting_tables_->Settings['default']['table']];
+        $setting_table_ = $tables_['accounts'];
+        // 
+        $alias_ = &$setting_table_['alias'];
+        
+        // 有效能需求，因此採最簡
+        // 串出需要的select
+		$select_ = '';
+		$convert_doctrine_dql_ = hahaha_convert_doctrine_dql::Instance();
+        $convert_doctrine_dql_->To_Select($select_, $fields_, $alias_);
+
+        $qb_ = Registry::getManager($setting_table_["connection"])->createQueryBuilder();
+        $qb_->select($select_)
+           ->from($setting_table_['entity'], $alias_)
+           ->where("{$alias_}.account = :account")
+           ->setParameter('account' , $account);
         $query_ = $qb_->getQuery()
             ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true);
-        $result_ = $query_->getArrayResult();
+        $result = $query_->getArrayResult();
 
-        return $result_;
+        if(!$result)
+        {
+            return false;
+        }
+
+        return true;
     }
 
+    
 }

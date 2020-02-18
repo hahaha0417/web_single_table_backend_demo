@@ -5,13 +5,15 @@ namespace hahaha\backend;
 use hahahasublib\hahaha_instance_trait;
 use hahaha\hahaha_table_trait;
 
-use  hahaha\define\hahaha_define_table_action as action;
-use  hahaha\define\hahaha_define_table_group as group;
-use  hahaha\define\hahaha_define_table_key as key;
-use  hahaha\define\hahaha_define_table_class as class_;
-use  hahaha\define\hahaha_define_table_direction as direction;
-use  hahaha\define\hahaha_define_table_type as type;
-use  hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_validate as validate;
+
+use EntityManager;
 
 /*
 首頁自定義欄位
@@ -27,6 +29,11 @@ class hahaha_table_accounts
 	use hahaha_table_trait;
 	
 	// 寫成標籤，避免要檢查字串
+	// const 必須對應DB field，如怕不安全，則在array裡加key::DB_Field => [key::Field => true, key::Name => "id"]，以便自動產生query
+	// 沒設用key name，有設用field
+	// 可以用這個取得entity name的field name
+	// $em->getClassMetadata('Entities\MyEntity')->getColumnNames()
+	// $em->getClassMetadata('Entities\MyEntity')->getColumnName('id');
 	const ID = "id";
 	const ACCOUNT = "account";
 	const PASSWORD = "password";
@@ -72,7 +79,10 @@ class hahaha_table_accounts
 	*/
 	public $Settings_Edit = [];
 
-
+	/*
+	settings 附加的DB欄位，用來DB撈資料附加要求欄位
+	*/
+	public $Settings_DB_Fields_Addition = [];
 
 	function __construct()
 	{
@@ -84,14 +94,18 @@ class hahaha_table_accounts
 		// 可以給其他人設定
 		// 初始化設定檔
 		$this->Settings($this->Settings);
+		$this->Settings_DB_Fields_Addition($this->Settings_DB_Fields_Addition);
 		$this->Settings_Fields($this->Settings_Fields);
 		$this->Settings_Index($this->Settings_Index);
 		$this->Settings_Preview($this->Settings_Preview);
 		$this->Settings_Edit($this->Settings_Edit);
-		// 初始化使用設定
-		$this->Initial_Index($this->Index);
-		$this->Initial_Preview($this->Preview);
-		$this->Initial_Edit($this->Edit);
+		// 初始化使用設定，要用到才做初始化(為了快)
+		// $this->Initial_Index($this->Index);
+		// $this->Initial_Preview($this->Preview);
+		// $this->Initial_Edit($this->Edit);
+		// $this->Initial_Fields_Index($this->Fields_Index);
+		// $this->Initial_Fields_Preview($this->Fields_Preview);
+		// $this->Initial_Fields_Edit($this->Fields_Edit);
 	
 	}
 
@@ -112,9 +126,27 @@ class hahaha_table_accounts
         ];
         
 	}
+
+	/*
+	fields - DB table additional fields
+	因為未來要移植php hahaha framework，所以不放在config
+	*/
+	public function Settings_DB_Fields_Addition(&$settings_db_fields_addition)
+	{
+		// 因為同一個節點，這是共用設定
+		$settings_db_fields_addition = [
+			self::ID => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					// key::NAME => self::ID,
+				],				
+			],			
+        ];
+        
+    }
 	
 	/*
-	fields - DB table fields
+	fields - table fields
 	因為未來要移植php hahaha framework，所以不放在config
 	
 	"id" => [
@@ -136,6 +168,10 @@ class hahaha_table_accounts
 		$settings_fields = [
 			self::ID => [
 				key::ID => "index_item_" . self::ID,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					// key::NAME => self::ID,
+				],
 				key::TITLE => __('backend.id'),
 				key::TYPE => type::TEXT,
 				key::CLASSES => [
@@ -144,6 +180,9 @@ class hahaha_table_accounts
 			],
 			self::ACCOUNT => [					// 帳號不可以改
 				key::ID => "index_item_" . self::ACCOUNT,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.account'),
 				key::TYPE => type::TEXT,
 				key::CLASSES => [
@@ -152,6 +191,9 @@ class hahaha_table_accounts
 			],
 			self::PASSWORD => [
 				key::ID => "index_item_" . self::PASSWORD,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.password'),
 				key::TYPE => type::PASSWORD,
 			],
@@ -172,17 +214,26 @@ class hahaha_table_accounts
 			],
 			self::EMAIL => [
 				key::ID => "index_item_" . self::EMAIL,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.email'),
 				key::TYPE => type::TEXT,
 				key::VALIDATE => validate::EMAIL,				
 			],
 			self::GENDER => [
 				key::ID => "index_item_" . self::GENDER,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.gender'),
 				key::TYPE => type::REDIOBOX,
 			],
 			self::STATUS => [
 				key::ID => "index_item_" . self::STATUS,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.status'),
 				key::TYPE => type::TEXT,
 				key::ACTIONS => [
@@ -191,6 +242,9 @@ class hahaha_table_accounts
 			],
 			self::CREATED_AT => [
 				key::ID => "index_item_" . self::CREATED_AT,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.created_at'),
 				key::TYPE => type::TEXT,
 				key::CLASSES => [
@@ -199,6 +253,9 @@ class hahaha_table_accounts
 			],
 			self::UPDATED_AT => [
 				key::ID => "index_item_" . self::UPDATED_AT,
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+				],
 				key::TITLE => __('backend.updated_at'),
 				key::TYPE => type::TEXT,
 				key::CLASSES => [
@@ -209,7 +266,6 @@ class hahaha_table_accounts
 			self::CHECKBOX_SELECTED => [
 				key::ID => "index_item_" . self::CHECKBOX_SELECTED,
 				key::TITLE => __('backend.selected'),
-				key::ID => "index_item_select",
 				key::TYPE => type::CHECKBOX_SELECTED,
 			],
 			self::PANEL_DETAIL => [
@@ -221,11 +277,13 @@ class hahaha_table_accounts
 				key::ID => "index_item_" . self::BUTTON_DELETE,
 				key::TITLE => __('backend.delete'),
 				key::TYPE => type::BUTTON_ICON,
+				key::ICON => "fas fa-minus",
 			],
 			self::BUTTON_EDIT => [
 				key::ID => "index_item_" . self::BUTTON_EDIT,
 				key::TITLE => __('backend.edit'),
 				key::TYPE => type::BUTTON_ICON,
+				key::ICON => "fas fa-edit",
 			],
 
         ];
@@ -304,9 +362,35 @@ class hahaha_table_accounts
 					[
 						key::TITLE => __('backend.gender'),
 						key::TYPE => type::LABEL,
+						key::GROUP => group::INPUT_GROUP,
 						key::ITEMS => [
 							self::GENDER => [
 								key::TYPE => type::LABEL,
+								key::STYLES => [
+									"width" => "45px",
+								],
+							],
+						],
+						key::STYLES => [
+							"width" => "45px",
+						],
+					],
+					[
+						key::TITLE => __('backend.gender'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::INPUT_GROUP,
+						key::ITEMS => [
+							self::BUTTON_DELETE => [								
+								key::STYLES => [
+									"font-size" => "1em", 
+									"color" => "Tomato",
+								],
+							],
+							self::BUTTON_EDIT => [
+								key::STYLES => [
+									"font-size" => "1em", 
+									"color" => "Tomato",
+								],
 							],
 						],
 						key::STYLES => [

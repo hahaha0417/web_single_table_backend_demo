@@ -90,5 +90,122 @@ class AccountsTableSeeder extends Seeder
             ],
         ]);        
 
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha1',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com1',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha2',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com2',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha3',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com3',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha4',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com4',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha5',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com5',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha6',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com4',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha7',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com5',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha8',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com4',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
+        $i++;
+        DB::table('accounts')->insert([
+            [
+                'account' => 'hahaha9',
+                'password' => md5('hahaha'),
+                'email' => 'hahaha0417@hotmail.com5',
+                'gender' => 1,
+                'status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+        ]);
+
     }
 }

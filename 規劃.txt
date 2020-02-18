@@ -127,6 +127,52 @@ https://www.youtube.com/watch?v=3TJfR1Ta4GU
 性能高要求的，有空我再做模組，看是不是可以對MySQLi or PDO進行Cache or 更方便使用
 
  -------------------------------------- 
+reference議題
+ -------------------------------------- 
+因為做完目標是移值到php hahaha framework
+因為我的框架很快
+因此可以減少記憶體複製就減少，
+所以return 我只是用來回傳狀態，如要接資料用refence
+public function findByFields(&$result, &$setting_table,
+	&$fields = ['*'], 
+	$offset = null, 
+	$limit = null
+) 
+{
+	return true;
+	// return [$a, &$b];
+}
+return [true, &$result]這樣也可，但是基本上，上面那樣寫是最快，最方便，這裡這樣寫使用還要$result[1]
+而且我不確定是否會reference成功，這要測試看看才可以決定是否可以用
+這好像要這樣接
+[$a, &$b] = findByFields();，要寫兩次reference
+沒確定前，禁止使用這樣reference，沒寫兩個reference似乎沒寫的地方還是用copy的
+
+ -------------------------------------- 
+效能議題
+ -------------------------------------- 
+我的框架只贏laravel在純memory + 本機的情況
+因此當導入快取，會出現明顯差距
+
+DB操作，只有在要求很快的情況下要換成
+MySQLi or PDO
+一般情況下，還是放行doctrine，但少用PHPDoc相關的function如get classmeta
+
+ -------------------------------------- 
+doctrine PHPDoc議題
+ -------------------------------------- 
+例如
+$class_meta_ = EntityManager::getClassMetadata($setting_table['entity']);
+$table_name_ = $class_meta_->getTableName();
+
+這似乎會parser entity php檔案，會慢10ms
+在我的php hahaha framework裡面太慢
+
+因此決定我的框架內禁用，用填表法代替
+ex. single table backend web
+hahaha_setting_table.php
+
+ -------------------------------------- 
 願景
  -------------------------------------- 
 

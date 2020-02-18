@@ -44,7 +44,7 @@ class hahaha_system_setting
 		// 	return;
 		// }	
 
-		$system_setting->System = new \stdClass;
+		$system_setting->System = new \stdClass;		
 		if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
 			$system_setting->System->Public = realpath(__DIR__ . "/../../../public/project/windows");
 		} 
@@ -60,6 +60,11 @@ class hahaha_system_setting
 		{
 			$system_setting->System->Port = "8540";
 		}
+		
+		$system_setting->System->Resource = new \stdClass;
+		// 資源附加參數時間，避免資源檔要Ctrl + F5刷新
+		$system_setting->System->Resource->Addition_Time = true;
+		$system_setting->System->Resource->Time = time();
 		// 專案
 		$system_setting->Project = new \stdClass;
 
