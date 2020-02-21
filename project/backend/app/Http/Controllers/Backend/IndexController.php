@@ -60,6 +60,7 @@ class IndexController extends CommonController
     */
     public function page($name)
     {
+        $global_pub_ = \p_ha\_Global::Get();
         // index 設定檔
         $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
         $nav = &$setting_index_->Nav;
@@ -77,7 +78,7 @@ class IndexController extends CommonController
             {
                 $page_url = &$value['url']; 
                 // 替換掉default_page預設路徑
-                $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value['name']}");
+                $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value['name']}");
 
                 //$menu_open[$key] = true;                
                 break 1;
@@ -91,7 +92,7 @@ class IndexController extends CommonController
                     {
                         $page_url = &$value2['url']; 
                         // 替換掉default_page預設路徑
-                        $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value2['name']}");
+                        $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value2['name']}");
 
                         $menu_open[$key] = true;
                         //$menu_open[$key2] = true;
@@ -105,7 +106,7 @@ class IndexController extends CommonController
                             {
                                 $page_url = &$value3['url']; 
                                 // 替換掉default_page預設路徑
-                                $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value3['name']}");
+                                $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value3['name']}");
 
                                 $menu_open[$key] = true;
                                 $menu_open[$key2] = true;
@@ -120,7 +121,7 @@ class IndexController extends CommonController
                                     {
                                         $page_url = &$value4['url']; 
                                         // 替換掉default_page預設路徑
-                                        $menu[__('backend.default_page')]['url'] = \p_ha::Url("backend/page/{$value4['name']}");
+                                        $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value4['name']}");
 
                                         $menu_open[$key] = true;
                                         $menu_open[$key2] = true;

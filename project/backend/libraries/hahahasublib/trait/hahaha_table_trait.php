@@ -68,6 +68,24 @@ trait hahaha_table_trait
 			return $this;
 		}
 
+		$class_list_ = [
+			key::CLASSES,
+			key::CLASSES_1,
+			key::CLASSES_2,
+			key::CLASSES_3,
+			key::CLASSES_4,
+			key::CLASSES_5,
+		];
+
+		$style_list_ = [
+			key::STYLES,
+			key::STYLES_1,
+			key::STYLES_2,
+			key::STYLES_3,
+			key::STYLES_4,
+			key::STYLES_5,
+		];
+
 		$setting_ = &$this->Settings_Index[$this->Settings["default"]["index"]];
 		// 複製
 		$index_ = $setting_;
@@ -89,101 +107,141 @@ trait hahaha_table_trait
 						// 有預設值，合併
 						$field_target_ = array_merge($this->Settings_Fields[$key_field], $field);
 					}
-					// 轉換tag & style格式，array to html class & style format
-					if(!empty($field_target_[key::CLASSES]))
+
+					// class
+					foreach($class_list_ as $key_list => &$value_list)
 					{
-						$class_list_ = &$field_target_[key::CLASSES];
-						$class_ = "";
-						$last_ = count($class_list_) - 1;
-						$i = 0;
-						foreach($class_list_ as $key_class => &$class)
+						if(!empty($field_target_[$value_list]))
 						{
-							if($class)
+							$value_list_ = &$field_target_[$value_list];
+							$str_ = "";
+							$last_ = count($value_list_) - 1;
+							$i = 0;
+							foreach($value_list_ as $key_str => &$value_str)
 							{
-								// class true才設
+								if($value_str)
+								{
+									//  true才設
+									if($i != $last_)
+									{
+										$str_ .= "{$value_str} ";
+									}
+									else
+									{
+										$str_ .= "{$value_str}";
+									}
+								}
+								$i++;								
+							}
+							$field_target_[$value_list] = $str_;
+						}
+						else
+						{
+							unset($field_target_[$key_list]);
+						}
+					}
+					// style
+					foreach($style_list_ as $key_list => &$value_list)
+					{
+						if(!empty($field_target_[$value_list]))
+						{
+							$value_list_ = &$field_target_[$value_list];
+							$str_ = "";
+							$last_ = count($value_list_) - 1;
+							$i = 0;
+							foreach($value_list_ as $key_str => &$value_str)
+							{
+								if($value_str)
+								{
+									//  true才設
+									if($i != $last_)
+									{
+										$str_ .= "{$key_str}:{$value_str}; ";
+									}
+									else
+									{
+										$str_ .= "{$key_str}:{$value_str};";
+									}
+								}
+								$i++;								
+							}
+							$field_target_[$value_list] = $str_;
+						}
+						else
+						{
+							unset($field_target_[$key_list]);
+						}
+					}					
+				}
+
+				$item_target_ = &$items_target_[$key_item];
+				// class
+				foreach($class_list_ as $key_list => &$value_list)
+				{
+					if(!empty($item_target_[$value_list]))
+					{
+						$value_list_ = &$item_target_[$value_list];
+						$str_ = "";
+						$last_ = count($value_list_) - 1;
+						$i = 0;
+						foreach($value_list_ as $key_str => &$value_str)
+						{
+							if($value_str)
+							{
+								//  true才設
 								if($i != $last_)
 								{
-									$class_ .= "{$key_class} ";
+									$str_ .= "{$value_str} ";
 								}
 								else
 								{
-									$class_ .= "{$key_class}";
+									$str_ .= "{$value_str}";
 								}
 							}
 							$i++;								
 						}
-						$field_target_[key::CLASSES] = $class_;
+						$item_target_[$value_list] = $str_;
 					}
 					else
 					{
-						unset($field_target_[key::CLASSES]);
+						unset($item_target_[$key_list]);
 					}
-					if(!empty($field_target_[key::STYLES]))
+				}				
+				// style
+				foreach($style_list_ as $key_list => &$value_list)
+				{
+					if(!empty($item_target_[$value_list]))
 					{
-						$style_list_ = &$field_target_[key::STYLES];
-						$style_ = "";
-						foreach($style_list_ as $key_style => &$style)
+						$value_list_ = &$item_target_[$value_list];
+						$str_ = "";
+						$last_ = count($value_list_) - 1;
+						$i = 0;
+						foreach($value_list_ as $key_str => &$value_str)
 						{
-							$style_ .= "{$key_style}:{$style};";
+							if($value_str)
+							{
+								//  true才設
+								if($i != $last_)
+								{
+									$str_ .= "{$key_str}:{$value_str}; ";
+								}
+								else
+								{
+									$str_ .= "{$key_str}:{$value_str};";
+								}
+							}
+							$i++;								
 						}
-						$field_target_[key::STYLES] = $style_;
+						$item_target_[$value_list] = $str_;
 					}
 					else
 					{
-						unset($field_target_[key::STYLES]);
+						unset($item_target_[$key_list]);
 					}
 				}
-
-				// item也要處理style & class
-				$item_target_ = &$items_target_[$key_item];
-				
-				// 轉換tag & style格式，array to html class & style format
-				if(!empty($item_target_[key::CLASSES]))
-				{
-					$class_list_ = &$item_target_[key::CLASSES];
-					$class_ = "";
-					$last_ = count($class_list_) - 1;
-					$i = 0;
-					foreach($class_list_ as $key_class => &$class)
-					{
-						if($class)
-						{
-							// class true才設
-							if($i != $last_)
-							{
-								$class_ .= "{$key_class} ";
-							}
-							else
-							{
-								$class_ .= "{$key_class}";
-							}
-						}
-						$i++;								
-					}
-					$item_target_[key::CLASSES] = $class_;
-				}
-				else
-				{
-					unset($item_target_[key::CLASSES]);
-				}
-				if(!empty($item_target_[key::STYLES]))
-				{
-					$style_list_ = &$item_target_[key::STYLES];
-					$style_ = "";
-					foreach($style_list_ as $key_style => &$style)
-					{
-						$style_ .= "{$key_style}:{$style};";
-					}
-					$item_target_[key::STYLES] = $style_;
-				}
-				else
-				{
-					unset($item_target_[key::STYLES]);
-				}
-				
 			}
 		}
-
+		
 		return $this;
 	}
 

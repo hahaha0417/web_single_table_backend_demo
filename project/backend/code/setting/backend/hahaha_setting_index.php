@@ -273,7 +273,7 @@ class hahaha_setting_index
 			__('backend.index.menu.home') => [
 				'name' => 'home',
 				'type' => 'item',
-				'url' => \p_ha::V_Url('/'),
+				'url' => \p_ha::Self_Url('/'),
 				'target' => '_self',
 				'icon' => "fa-home",
 				'active' => 'false',

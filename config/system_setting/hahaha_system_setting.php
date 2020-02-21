@@ -52,13 +52,14 @@ class hahaha_system_setting
 		{
 			$system_setting->System->Public = realpath(__DIR__ . "/../../../public/project/linux");
 		}
-		if(!empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == "http")
+		// 這跟request url port，避免跑掉
+		if(!empty($_SERVER['SERVER_PORT']) && !empty($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['SERVER_NAME']))
 		{
-			$system_setting->System->Port = "8700";
-		}
-		else if(!empty($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == "https")
-		{
-			$system_setting->System->Port = "8540";
+			$system_setting->System->Port = $_SERVER['SERVER_PORT'];
+			$url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'];
+			$system_setting->System->Url = empty($system_setting->System->Port) ? 
+				$url . "/" : 
+				$url . ":" . $system_setting->System->Port . "/";			
 		}
 		
 		$system_setting->System->Resource = new \stdClass;

@@ -50,6 +50,12 @@ class hahaha_table_accounts
 	const PANEL_DETAIL = "panel_detail";
 	const BUTTON_DELETE = "button_delete";
 	const BUTTON_EDIT = "button_edit";
+	//
+	const BUTTON_ADD = "button_add";
+	const BUTTON_SELECTED_DELETE = "button_selected_delete";
+	const BUTTON_ALL_SAVE = "button_all_save";
+	const BUTTON_ALL_REFRESH = "button_all_refresh";
+
 	
 	// ----------------------------------------------- 
 	// 設定檔
@@ -275,17 +281,111 @@ class hahaha_table_accounts
 			],
 			self::BUTTON_DELETE => [
 				key::ID => "index_item_" . self::BUTTON_DELETE,
-				key::TITLE => __('backend.delete'),
+				// 不顯示字
+				//key::TITLE => __('backend.delete'),
 				key::TYPE => type::BUTTON_ICON,
-				key::ICON => "fas fa-minus",
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-minus",
+				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
 			],
 			self::BUTTON_EDIT => [
 				key::ID => "index_item_" . self::BUTTON_EDIT,
-				key::TITLE => __('backend.edit'),
+				// 不顯示字
+				// key::TITLE => __('backend.edit'),
 				key::TYPE => type::BUTTON_ICON,
-				key::ICON => "fas fa-edit",
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-edit",
+				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
 			],
-
+			//
+			self::BUTTON_ADD => [
+				key::ID => "index_item_" . self::BUTTON_ADD,
+				key::TITLE => __('backend.new'),
+				key::TYPE => type::BUTTON_ICON,
+				// class
+				key::CLASSES => [
+					"index_item_" . self::BUTTON_ADD,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-plus",
+				],
+				// class
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			self::BUTTON_SELECTED_DELETE => [
+				key::ID => "index_item_" . self::BUTTON_SELECTED_DELETE,
+				key::TITLE => __('backend.selected_delete'),
+				key::TYPE => type::BUTTON_ICON,
+				key::CLASSES => [
+					"index_item_" . self::BUTTON_SELECTED_DELETE,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-minus",
+				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			self::BUTTON_ALL_SAVE => [
+				key::ID => "index_item_" . self::BUTTON_ALL_SAVE,
+				key::TITLE => __('backend.all_save'),
+				key::TYPE => type::BUTTON_ICON,
+				key::CLASSES => [
+					"index_item_" . self::BUTTON_ALL_REFRESH,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-save",
+				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			self::BUTTON_ALL_REFRESH => [
+				key::ID => "index_item_" . self::BUTTON_ALL_REFRESH,
+				key::TITLE => __('backend.all_refresh'),
+				key::TYPE => type::BUTTON_ICON,
+				key::CLASSES => [
+					"index_item_" . self::BUTTON_ALL_REFRESH,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark",
+				],
+				key::CLASSES_2 => [
+					"fas fa-refresh",
+				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
         ];
         
     }
@@ -300,10 +400,96 @@ class hahaha_table_accounts
 	{
 		// 因為同一個節點，這是共用設定
 		$settings_index = [
-			"hahaha" => [
-                // 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
-				// 主要列表
-				// 兩層，沒有要做多層
+			// --------------------------------------------------- 
+			// hahaha的版本的設定集，寫死，避免要處理很細
+			// --------------------------------------------------- 			
+			// --------------------------------------------------- 
+			"hahaha" => [		
+				// --------------------------------------------------- 
+				// --------------------------------------------------- 
+				// 主要畫面區
+				// --------------------------------------------------- 	
+				// --------------------------------------------------- 
+				// 這裡不做太複雜，如果前端需要搬移設計
+				// 基本上如我前台首頁做法(page & item)
+				// 如要多層嵌套，基本上只要牽扯到動態資料，模組最多2~3個維度，也就是2層 + 彈出面板
+				// 不會有動態資料需要多層嵌套(這不是視窗程式，視窗程式也不會多層動態，那改起來太累了，一定是固定架構)
+				// 靜態資料，則可以拆分模組，多個模組整在一起會很難維護，原則上很多零散模組，則分開管理，避免太亂
+				// --------------------------------------------------- 
+								
+				// --------------------------------------------------- 
+				// 上方區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                "top" => [
+					// 目前只放button，外層只是分隔線...
+					[
+						// key::TITLE => __('backend.item'),
+						key::TYPE => type::B_BLOCK_NORMAL,
+						key::GROUP => group::SHORT_WRAP,
+						key::ITEMS => [
+							self::BUTTON_ADD => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_top_" . self::BUTTON_ADD,
+							],
+							self::BUTTON_SELECTED_DELETE => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
+							],
+							self::BUTTON_ALL_SAVE => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_top_" . self::BUTTON_ALL_SAVE,
+							],
+							self::BUTTON_ALL_REFRESH => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_top_" . self::BUTTON_ALL_REFRESH,
+							],
+						],
+						key::STYLES => [
+						],
+					],				
+				],	
+
+				// --------------------------------------------------- 
+				// 上方區塊 - 2維嵌套
+				// --------------------------------------------------- 
+				// 每行有多項Items，樣式如下面那樣，有空再做
+				// --------------------------------------------------- 
+                // "top_2d" => [
+				// 	[
+				// 		key::TITLE => __('backend.item'),
+				// 		key::TYPE => type::B_BLOCK_SEPERATOR,
+				// 		key::GROUP => group::SHORT_WRAP,
+				// 		key::LINES => [
+				// 			[
+				// 				key::TITLE => __('backend.item'),
+				// 				key::TYPE => type::B_BLOCK_SEPERATOR,
+				// 				key::GROUP => group::SHORT_WRAP,
+				// 				key::ITEMS => [
+				// 					self::BUTTON_ADD => [
+				// 						// 因為ID重複，所以加上Top
+				// 						key::ID => "index_item_top_" . self::BUTTON_ADD,
+				// 					],
+				// 					self::BUTTON_SELECTED_DELETE => [
+				// 						// 因為ID重複，所以加上Top
+				// 						key::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
+				// 					],
+				// 				],
+				// 				key::STYLES => [
+				// 				],
+				// 			],
+				// 		],
+				// 		key::STYLES => [
+				// 		],
+				// 	],
+				// ],
+
+				// --------------------------------------------------- 
+				// 主要區塊
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
                 "main" => [
 					[				
 						key::ID => "index_item_all_select",		
@@ -376,7 +562,7 @@ class hahaha_table_accounts
 						],
 					],
 					[
-						key::TITLE => __('backend.gender'),
+						key::TITLE => __('backend.operator'),
 						key::TYPE => type::LABEL,
 						key::GROUP => group::INPUT_GROUP,
 						key::ITEMS => [
@@ -384,17 +570,19 @@ class hahaha_table_accounts
 								key::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
+									"width" => "45px",
 								],
 							],
 							self::BUTTON_EDIT => [
 								key::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
+									"width" => "45px",
 								],
 							],
 						],
 						key::STYLES => [
-							"width" => "45px",
+							"width" => "92px",
 						],
 					],
 					[
@@ -416,191 +604,162 @@ class hahaha_table_accounts
 							"width" => "45px",
 						],
 					],					
-                ],
-                // 
-                // detail panel
-                "detail" => [
-					// [						
-					// 	key::TITLE => __('backend.selected'),
-					// 	key::TYPE => type::CHECKBOX,
-					// 	key::ITEMS => [
-					// 		self::CHECKBOX_SELECTED => [
-					// 			key::TITLE => __('backend.selected'),
-					// 			key::TYPE => type::CHECKBOX,
-					// 			key::CLASSES => [
-					// 				class_::DISABLED => true,
-					// 			],
-					// 		],
-					// 	],
-					// ],
-					// [
-					// 	key::TITLE => __('backend.account'),
-					// 	key::ITEMS => [
-					// 		self::ACCOUNT => [					// 帳號不可以改
-					// 			key::TITLE => __('backend.account'),
-					// 			key::TYPE => type::TEXT,
-					// 			key::CLASSES => [
-					// 				class_::DISABLED => true,
-					// 			],
-					// 		],
-					// 		self::PANEL_DETAIL => [
-					// 			key::TITLE => __('backend.detail'),
-					// 			key::TYPE => type::PANEL,
-					// 			key::CLASSES => [
-					// 				class_::DISABLED => true,
-					// 			],
-					// 		],
-					// 	],
-					// ],
-					// [
-					// 	key::TITLE => __('backend.email'),
-					// 	key::ITEMS => [
-					// 		self::EMAIL => [
-					// 			[
-					// 				key::TYPE => type::TEXT,
-					// 				key::VALIDATE => validate::EMAIL,	
-					// 			],									
-					// 		],
-					// 	],
-					// ],
-					// [
-					// 	key::TITLE => __('backend.gender'),
-					// 	key::ITEMS => [
-					// 		self::GENDER => [
-					// 			[
-					// 				key::TYPE => type::TEXT,
-					// 			],
-					// 		],
-					// 	],
-					// ],
-					// [
-					// 	key::TITLE => __('backend.operator'),
-					// 	key::ITEMS => [
-					// 		self::BUTTON_DELETE => [
-					// 			key::TITLE => __('backend.delete'),
-					// 			key::TYPE => type::BUTTON_ICON,
-					// 		],
-					// 		self::BUTTON_EDIT => [
-					// 			key::TITLE => __('backend.edit'),
-					// 			key::TYPE => type::BUTTON_ICON,
-					// 		],
-					// 	],
-					// ],
-					// [
-					// 	key::TITLE => __('backend.status'),
-					// 	key::ITEMS => [
-					// 		self::STATUS => [
-					// 			[
-					// 				key::TYPE => type::TEXT,
-					// 				key::ACTIONS => [
-					// 					action::AUTO_UPDATE => true,
-					// 				],	
-					// 			],
-					// 		],
-					// 	],
-					// ],	
-					// self::ID => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::ACCOUNT => [					// 帳號不可以改
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::PASSWORD => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_CONFIRM => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_NEW => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_NEW_CONFIRM => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::EMAIL => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::VALIDATE => validate::EMAIL,				
-					// ],
-					// self::GENDER => [
-					// 	key::TYPE => type::REDIOBOX,
-					// ],
-					// self::STATUS => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::ACTIONS => [
-					// 		action::AUTO_UPDATE => true,
-					// 	],	
-					// ],
-					// self::CREATED_AT => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::UPDATED_AT => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-                ],
-                // new panel
-                "new" => [
-					// self::ID => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::ACCOUNT => [					// 帳號不可以改
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::PASSWORD => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_CONFIRM => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_NEW => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::PASSWORD_NEW_CONFIRM => [
-					// 	key::TYPE => type::PASSWORD,
-					// ],
-					// self::EMAIL => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::VALIDATE => validate::EMAIL,				
-					// ],
-					// self::GENDER => [
-					// 	key::TYPE => type::REDIOBOX,
-					// ],
-					// self::STATUS => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::ACTIONS => [
-					// 		action::AUTO_UPDATE => true,
-					// 	],	
-					// ],
-					// self::CREATED_AT => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-					// self::UPDATED_AT => [
-					// 	key::TYPE => type::TEXT,
-					// 	key::CLASSES => [
-					// 		class_::DISABLED => true,
-					// 	],
-					// ],
-                ],
+				],
+				// --------------------------------------------------- 
+				// 下方區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                "bottom" => [
+					// 目前只放button，外層只是分隔線...
+					[
+						// key::TITLE => __('backend.item'),
+						key::TYPE => type::B_BLOCK_NORMAL,
+						key::GROUP => group::SHORT_WRAP,
+						key::ITEMS => [
+							self::BUTTON_SELECTED_DELETE => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_bottom_" . self::BUTTON_SELECTED_DELETE,
+							],
+							self::BUTTON_ALL_SAVE => [
+								// 因為ID重複，所以加上Top
+								key::ID => "index_item_bottom_" . self::BUTTON_ALL_SAVE,
+							],
+						],
+						key::STYLES => [
+						],
+					],			
+				],				
+				// --------------------------------------------------- 
+				// 連結區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                "link" => [
+					// 目前只有link，也沒有模組化，因此暫時沒用到
+				],
+				
+
+				// --------------------------------------------------- 
+				// --------------------------------------------------- 
+				// 面板區
+				// --------------------------------------------------- 	
+				// --------------------------------------------------- 
+
+				// --------------------------------------------------- 
+				// 新增面板
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                "add_panel" => [
+					[
+						key::TITLE => __('backend.account'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::ACCOUNT => [					// 帳號不可以改
+								key::ID => "index_item_add_panel_" . self::ACCOUNT,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.account'),
+								key::TYPE => type::TEXT,
+								key::CLASSES => [
+									class_::DISABLED => true,
+								],
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.password'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PASSWORD => [
+								key::ID => "index_item_add_panel_" . self::PASSWORD,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.password'),
+								key::TYPE => type::PASSWORD,
+							],
+							self::PASSWORD_CONFIRM => [
+								key::ID => "index_item_add_panel_" . self::PASSWORD_CONFIRM,
+								key::TITLE => __('backend.password_confirm'),
+								key::TYPE => type::PASSWORD,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.email'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::EMAIL => [
+								key::ID => "index_item_add_panel_" . self::EMAIL,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.email'),
+								key::TYPE => type::TEXT,
+								key::VALIDATE => validate::EMAIL,				
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.email'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::GENDER => [
+								key::ID => "index_item_add_panel_" . self::GENDER,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.gender'),
+								key::TYPE => type::REDIOBOX,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.email'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::STATUS => [
+								key::ID => "index_item_add_panel_" . self::STATUS,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.status'),
+								key::TYPE => type::TEXT,
+								key::ACTIONS => [
+									action::AUTO_UPDATE => true,
+								],	
+							],
+						],
+						key::STYLES => [
+						],
+					],
+				],
+                // --------------------------------------------------- 
+				// 細節面板
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                "detail_panel" => [
+					
+				],
+				
+              
 			],
         ];
         

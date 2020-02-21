@@ -55,11 +55,22 @@ use Spatie\Url\Url;
              --}}
         </script>  
          
+        {{--  主要文件  --}}
+        {{--  因為參數式內容需要，所以需要產生需要的CSS & JS  
+            因為表是動態內容，每個表會對應一組CSS & JS，存放在對應的
+            // \p_ha::Assets('web/backend/table/index/*')路徑下
+            命名為hahaha/backend_accounts_list.css & hahaha/backend/accounts_list.js
+            {key} / {stage} / {node}("/"換成"_")
+            --}}        
         {{--    --}}
         <link rel="stylesheet" href="{{\p_ha::Assets('web/backend/table/index.css')}}">
         <script src="{{\p_ha::Assets('web/backend/table/index.js')}}"></script>
+
         <script src="{{\p_ha::Assets('cross_origin/iframe_resize_height.js')}}"></script>
-        {{--    --}}
+
+
+        
+        {{--  附加  --}}
         
 
         
@@ -97,100 +108,93 @@ use Spatie\Url\Url;
             }
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
-        
-        
-
     </head>
     <body>    
+        {{--  有需要再模組化，基本上只是分塊整入index資料夾，用@include填入  --}}
+        {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
+
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <? // 標題面板 ?>
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
         <div class="index_title">
             <h1 style="font-weight:bold;">{{__('backend.db_table')}}</h1>
             <hr class="hr_title" />
-            {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
+            
             <h3 style="font-weight:bold;">{{$target_setting_table['title']}}</h3>
             {{$target_setting_table['description']}}
             <hr class="hr_title" />
-            
         </div> 
-        <p>
-        {{--  間隔  --}}
-        <div class="index_space">
-            <br><br>
-        </div>
-
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <? // 內容面板 ?>
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
         <div class="index_content">
-            <div class="row">    
-                
-            </div>
-
-            
-            
-            <hr class="hr1" />
-    
-            <br><br>
-
             <div class="index_content">
                 <form action="#" method="post">
                     {{csrf_field()}}
+                    {{--  分隔線  --}}
                     <div class="index_result_wrap">
                     </div>
-                    @if($page == "all")
-                        <div class="index_result_wrap">
-                            <!--快捷导航 开始-->
-                            <div class="index_result_content">
-                                <div class="short_wrap">                            
-                                    <div id="index_item_add_index" class="index_item_add_index btn btn-dark">
-                                        <div style="font-size:1.5em; color:Tomato">
-                                            <i class="fas fa-plus">新增首頁</i>
-                                        </div>
-                                    </div>  
-                                    <div id="index_item_add_nav" class="index_item_add_nav btn btn-dark">
-                                        <div style="font-size:1.5em; color:Tomato">
-                                            <i class="fas fa-plus">新增Nav</i>
-                                        </div>
-                                    </div>   
-                                    {{--  新增Relate Page  --}}
-                                </div>
-                                {{-- 全部default設置或是全部項目default設置 --}}
-                            </div>
-                            <!--快捷导航 结束-->
-                        </div>
-                    @endif   
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <? // 置頂面板 ?>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
                     <div class="index_result_wrap">
                         <!--快捷导航 开始-->
                         <div class="index_result_content">
-                            <div class="short_wrap">
-                                <div id="index_item_add" class="index_item_add btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-plus">新增</i>
-                                    </div>
-                                </div>
-                                <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-minus">選擇刪除</i>
-                                    </div>
-                                </div>
-                                <div id="index_item_all_save" class="index_item_all_save btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-save">全部儲存</i>
-                                    </div>
-                                </div>
-                                <div id="index_item_all_refresh" class="index_item_all_refresh btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-refresh">全部刷新</i>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach($target_table->Index['top'] as $key_item => $item)                              
+                                @if($item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
+                                    <div @if(!empty($item[key::GROUP])) class="{{$item[key::GROUP]}}" @endif>
+                                        @foreach($item[key::ITEMS] as $key_field => $field)                                     
+                                            @if($field[key::TYPE] == type::BUTTON_ICON)                                   
+                                                {{--  
+                                                    不採用一個屬性一個key，因為這樣太麻煩了，例如ICON給一個key::ICON，BUTTON給一個key::BUTTON
+                                                    基本上只有要做的很完整的模組，我才會給特定key，但是假設很完整，為何不做成一個Module，目前覺得，如果是一個Module，Module應該提供Object Builder(不管是參數Builder還是元件Builder)
+                                                    大概意思是，假設規劃很多，請做成一個模組，讓我用模組的方式建立，例如$obj->Parameter_Array() or $obj->HTML 
+                                                    當然可以訂少數的Custom Key，但是原則上屬性的key僅限於放行比較通用的屬性
+                                                    
+                                                    大概意思是做得很完整，我會希望做成一個class，讓我可以快速導入，而不是我慢慢看code研究
+
+                                                    總之，這裡有兩個class，基本上是簡易模組，除非有很複雜的模組(例如5層+，但可能放行完我會要求說把它弄成上面的Module做使用)，不然這邊就是key::Classed有五種
+                                                    五種內的用5種key::STYLES or key::CLASSES
+                                                --}}
+                                                {{--  
+                                                    範例 : 
+                                                <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
+                                                    <div style="font-size:1.5em; color:Tomato">
+                                                        <i class="fas fa-minus">選擇刪除</i>
+                                                    </div>
+                                                </div>  
+                                                --}}
+                                                <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
+                                                    <div style="{{$field[key::STYLES]}}">
+                                                        <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>                                    
+                                @endif
+                            @endforeach
                             {{-- 全部default設置或是全部項目default設置 --}}
                         </div>
                         <!--快捷导航 结束-->
-                    </div>
-    
+                    </div>     
                     {{-- ------------------------------------------------------------------------------ --}}
-                    {{-- Add --}}
-                    <div class="index_result_wrap">
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <? // Add置中面板 ?>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <div>
                         <div class="index_result_content">
                             <div id="index_item_add_panel" class="index_item_add_panel">
                                 <div class="index_item_add_panel_content">
+                                    @foreach($target_table->Index['add_panel'] as $key_item => $item)  
+                                        @if(!empty($item[key::GROUP]))
+                                            @if($item[key::GROUP] == group::FORM_GROUP_ROW) 
+<?  ?>
+
+                                            @endif
+                                        @endif 
+                                    @endforeach
+                                
                                     <div class="form-group row">
                                         <label for="index_item_add_panel_page" class="col-sm-3 col-form-label">頁面(Page) :      </label>
                                         <input type="text" class="form-control col-sm-4" id="index_item_add_panel_page" name="index_item_add_panel_page" placeholder="頁面" value="">
@@ -236,130 +240,9 @@ use Spatie\Url\Url;
                             </div>
                         </div>
                     </div>
-    
-                    {{-- 只有在$page出現的時候 --}}
-                    {{-- Add Index --}}
-                    @if($page == "all")
-                        {{--  <div class="index_result_wrap">  --}}
-                            <div class="index_result_content">
-                                <div id="index_item_add_index_panel" class="index_item_add_index_panel">
-                                    <div class="index_item_add_index_panel_content">
-                                        <div class="form-group row">
-                                            <label for="index_item_add_index_panel_page" class="col-sm-3 col-form-label">頁面(Page) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_index_panel_page" name="index_item_add_index_panel_page" placeholder="頁面" readonly value="">
-                                        </div>  
-                                        <div class="form-group row">
-                                            <label for="index_item_add_index_panel_item" class="col-sm-3 col-form-label">項目(Item) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_index_panel_item" name="index_item_add_index_panel_item" placeholder="項目" readonly value="">
-                                        </div>                                        
-                                        <div class="form-group row">
-                                            <label for="index_item_add_index_panel_id" class="col-sm-3 col-form-label"><span style="color:red;">*</span>識別項(Id) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_index_panel_id" name="index_item_add_index_panel_id" placeholder="識別項">
-                                            <div id="index_item_add_index_panel_id_check" class="index_item_add_index_panel_id_check">
-                                                <div style="font-size:1.5em; color:green">
-                                                    <i class="fas fa-check"></i>
-                                                </div>
-                                            </div>
-                                            <div id="index_item_add_index_panel_id_error" class="index_item_add_index_panel_id_error">
-                                                <div style="font-size:1.5em; color:red">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
-                                            </div>
-                                        </div>                              
-                                        <div class="form-group row">
-                                            <label for="index_item_add_index_panel_title" class="col-sm-3 col-form-label">標題(Title) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_index_panel_title" name="index_item_add_index_panel_title" placeholder="首頁">
-                                        </div>
-                                        <div class="form-group row">
-                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                                            <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                                            <label for="index_item_add_index_panel_title_name" class="col-sm-3 col-form-label"><span style="color:red;">*</span>名稱(Name) :      </label>
-                                            <input type="text" class="form-control col-sm-4 index_item_add_index_panel_title_name" id="index_item_add_index_panel_title_name" name="index_item_add_index_panel_title_name" placeholder="名稱">
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="short_wrap">
-                                                <div id="index_item_add_index_panel_add" class="index_item_add_index_panel_add btn btn-dark">
-                                                    <div style="font-size:1.5em; color:Tomato">
-                                                        <i class="fas fa-plus">新增</i>
-                                                    </div>
-                                                </div>
-                                                <div id="index_item_add_index_panel_cancel" class="index_item_add_index_panel_cancel btn btn-dark">
-                                                    <div style="font-size:1.5em; color:Tomato">
-                                                        <i class="fas fa-times">取消</i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {{--  </div>  --}}
-                    @endif
-                    {{-- ------------------------------------------------------------------------------ --}}
-                    {{-- Add Nav --}}
-                    @if($page == "all")
-                        {{--  <div class="index_result_wrap">  --}}
-                            <div class="index_result_content">
-                                <div id="index_item_add_nav_panel" class="index_item_add_nav_panel">
-                                    <div class="index_item_add_nav_panel_content">
-                                        <div class="form-group row">
-                                            <label for="index_item_add_nav_panel_item" class="col-sm-3 col-form-label">項目(Item) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_nav_panel_item" name="index_item_add_nav_panel_item" placeholder="項目" readonly value="">
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="index_item_add_nav_panel_page" class="col-sm-3 col-form-label">頁面(Page) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_nav_panel_page" name="index_item_add_nav_panel_page" placeholder="頁面" value="">
-                                        </div>      
-                                        <div class="form-group row">
-                                            <label for="index_item_add_nav_panel_id" class="col-sm-3 col-form-label"><span style="color:red;">*</span>識別項(Id) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_nav_panel_id" name="index_item_add_nav_panel_id" placeholder="識別項">
-                                            <div id="index_item_add_nav_panel_id_check" class="index_item_add_nav_panel_id_check">
-                                                <div style="font-size:1.5em; color:green">
-                                                    <i class="fas fa-check"></i>
-                                                </div>
-                                            </div>
-                                            <div id="index_item_add_nav_panel_id_error" class="index_item_add_nav_panel_id_error">
-                                                <div style="font-size:1.5em; color:red">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
-                                            </div>
-                                        </div>                              
-                                        <div class="form-group row">
-                                            <label for="index_item_add_nav_panel_title" class="col-sm-3 col-form-label">標題(Title) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_nav_panel_title" name="index_item_add_nav_panel_title" placeholder="標題">
-                                        </div>
-                                        <div class="form-group row">
-                                            <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                                            <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                                            <label for="index_item_add_nav_panel_title_name" class="col-sm-3 col-form-label"><span style="color:red;">*</span>名稱(Name) :      </label>
-                                            <input type="text" class="form-control col-sm-4 index_item_add_nav_panel_title_name" id="index_item_add_nav_panel_title_name" name="index_item_add_nav_panel_title_name" placeholder="名稱">
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="index_item_add_nav_panel_title" class="col-sm-3 col-form-label">網址(Url) :      </label>
-                                            <input type="text" class="form-control col-sm-4" id="index_item_add_nav_panel_url" name="index_item_add_nav_panel_url" placeholder="網址">
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="short_wrap">
-                                                <div id="index_item_add_nav_panel_add" class="index_item_add_nav_panel_add btn btn-dark">
-                                                    <div style="font-size:1.5em; color:Tomato">
-                                                        <i class="fas fa-plus">新增</i>
-                                                    </div>
-                                                </div>
-                                                <div id="index_item_add_nav_panel_cancel" class="index_item_add_nav_panel_cancel btn btn-dark">
-                                                    <div style="font-size:1.5em; color:Tomato">
-                                                        <i class="fas fa-times">取消</i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-                                </div>
-                            </div>
-                        {{--  </div>  --}}
-                    @endif
-                    {{-- ------------------------------------------------------------------------------ --}}
-            
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <? // 內容面板 ?>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
                     <div class="index_result_wrap">
                         <div class="index_result_content">
                             <table class="list_tab table table-sm">
@@ -376,12 +259,7 @@ use Spatie\Url\Url;
                                         </th> 
                                     @endforeach                                                                   
                                 </tr>
-<?
- //dd($data_list);
-?>
-
-                                @foreach($data_list as $key_data => $data)     
-                                <? //dd($target_table->Index['main']); ?>                          
+                                @foreach($data_list as $key_data => $data)                            
                                     <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
                                         {{-- laravel套版不要用reference，@foreach($item[key::ITEMS] as $key_field => $field)，會找不到$item[key::ITEMS] --}}
                                         @foreach($target_table->Index['main'] as $key_item => $item)  
@@ -479,14 +357,14 @@ use Spatie\Url\Url;
                                                         <div
                                                             @if(!empty($field[key::ID])) 
                                                                 id="{{$field[key::ID]}}_{{$key_data}}"
-                                                                class="{{$field[key::ID]}} btn btn-dark"
+                                                                class="{{$field[key::ID]}} {{$field[key::CLASSES_1]}}"
                                                                 name="{{$field[key::ID]}}_{{$key_data}}"
                                                             @endif       
                                                             @if(!empty($field[key::STYLES])) 
                                                                 style="{{$field[key::STYLES]}}" 
                                                             @endif 
                                                             >
-                                                            <i class="fas {{$field[key::ICON]}}"></i>
+                                                            <i class="{{$field[key::CLASSES_2]}}"></i>
                                                         </div>
                                                     @elseif($field[key::TYPE] == type::PANEL) 
                                                             <div 
@@ -569,22 +447,38 @@ use Spatie\Url\Url;
                                 @endforeach                   
                             </table>
                         </div>
-                        <div class="index_result_content">
-                            <div class="short_wrap">                            
-                                <div id="index_item_select_delete1" class="index_item_select_delete btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-minus">選擇刪除</i>
-                                    </div>
-                                </div>
-                                <div id="index_item_all_save1" class="index_item_all_save btn btn-dark">
-                                    <div style="font-size:1.5em; color:Tomato">
-                                        <i class="fas fa-refresh">全部儲存</i>
-                                    </div>
-                                </div>
-                                {{-- 全部default設置或是全部項目default設置 --}}
-                            </div>
-                        </div>                   
                     </div>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <? // 置底面板 ?>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <div class="index_result_wrap"> 
+                        @foreach($target_table->Index['bottom'] as $key_item => $item)                              
+                                @if($item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
+                                    <div @if(!empty($item[key::GROUP])) class="{{$item[key::GROUP]}}" @endif>
+                                        @foreach($item[key::ITEMS] as $key_field => $field)                                     
+                                            @if($field[key::TYPE] == type::BUTTON_ICON)                                   
+                                                {{--  
+                                                    範例 : 
+                                                <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
+                                                    <div style="font-size:1.5em; color:Tomato">
+                                                        <i class="fas fa-minus">選擇刪除</i>
+                                                    </div>
+                                                </div>  
+                                                --}}
+                                                <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
+                                                    <div style="{{$field[key::STYLES]}}">
+                                                        <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>                                    
+                                @endif
+                            @endforeach          
+                    </div>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                    <? // link面板 ?>
+                    <? // -------------------------------------------------------------------------------------------------------------- ?>
                     <div class="index_result_wrap">                    
                         <div style="height:5px">&nbsp;</div>
                         <div class="page_list">
@@ -646,7 +540,6 @@ use Spatie\Url\Url;
                                         <a class="page-link" href="{{$url_->withQueryParameter('page', $count_)}}" rel="next" aria-label="End »">››</a>
                                     </li>                 
                                 @endif
-                               
                             </ul>
                         </div>
                     </div>

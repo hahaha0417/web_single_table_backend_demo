@@ -5,6 +5,10 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
+use hahaha\define\hahaha_define_table_key as key;
+*/
+
+/*
 table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
@@ -35,12 +39,26 @@ class hahaha_define_table_key
     const ACTIONS = "actions";
     // -------------------------------------- 
     // tags
-    // -------------------------------------- 
+    // --------------------------------------
+    // 重要的 
     const CLASSES = "classes";
+    // 多層
+    const CLASSES_1 = "classes_1";
+    const CLASSES_2 = "classes_2";
+    const CLASSES_3 = "classes_3";
+    const CLASSES_4 = "classes_4";
+    const CLASSES_5 = "classes_5";
     // -------------------------------------- 
     // style
     // -------------------------------------- 
+    // 重要的 
     const STYLES = "styles";
+    // 多層
+    const STYLES_1 = "styles_1";
+    const STYLES_2 = "styles_2";
+    const STYLES_3 = "styles_3";
+    const STYLES_4 = "styles_4";
+    const STYLES_5 = "styles_5";
     // -------------------------------------- 
     // icon
     // -------------------------------------- 

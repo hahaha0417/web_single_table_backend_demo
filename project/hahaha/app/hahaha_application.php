@@ -46,6 +46,7 @@ class hahaha_application extends hahaha_application_base
 		if($global_pub_->Project->Jump == 0)
 		{
 			// 不是跳轉專案
+			$global_pub_->Stage->Name = "Hahaha";
 			$global_pub_->Node->Name = "Hahaha";
 			$system_setting_ = \pub\hahaha_system_setting::Instance()->Initial();
 		}

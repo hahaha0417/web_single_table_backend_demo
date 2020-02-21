@@ -30,8 +30,11 @@ class hahaha_global
 	*/
 	public function Initial_Ha($global)
 	{		
-		$global->Node = new \stdClass;
-		$global->Node->Name = "Master";
+		$global->Stage = new \stdClass;
+		$global->Stage->Name = "Public";	// 進入舞台
+
+		$global->Node = new \stdClass;		
+		$global->Node->Name = "Master";		// 運行節點
 
 		$global->Project = new \stdClass;
 		$global->Project->Jump = 0;

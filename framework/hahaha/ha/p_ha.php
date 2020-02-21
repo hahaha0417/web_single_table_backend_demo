@@ -99,6 +99,13 @@ class p_ha
 		
 	}
 
+	public static function include_all($class)
+	{
+		$file_name_ = new \ReflectionClass($class);
+		return $file_name_->getFileName();
+		
+	}
+
 	// --------------------------------------------------------------------------
 	// 真實
 	// --------------------------------------------------------------------------
@@ -146,7 +153,7 @@ class p_ha
 	Images
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function Images($url)
+	public static function Images($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -180,7 +187,7 @@ class p_ha
 	Videos
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function Videos($url)
+	public static function Videos($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -214,7 +221,7 @@ class p_ha
 	Assets
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function Assets($url)
+	public static function Assets($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -248,7 +255,7 @@ class p_ha
 	Uploads
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function Uploads($url)
+	public static function Uploads($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -291,7 +298,7 @@ class p_ha
 	// 有要複雜設計請做成模組，這裡只是root
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function V_Url($url)
+	public static function V_Url($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -311,6 +318,11 @@ class p_ha
 			$project_ = $system_setting_pub_->Project->{$stage};
 		}
 
+		if($url == "/")
+		{
+			return $project_->Virtual_Url;
+		}
+
 		return $project_->Virtual_Url . $url;
 	}
 
@@ -318,7 +330,7 @@ class p_ha
 	虛擬Images
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function V_Images($url)
+	public static function V_Images($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -352,7 +364,7 @@ class p_ha
 	虛擬Videos
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function V_Videos($url)
+	public static function V_Videos($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -386,7 +398,7 @@ class p_ha
 	虛擬Assets
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function V_Assets($url)
+	public static function V_Assets($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -420,7 +432,7 @@ class p_ha
 	虛擬Uploads
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function V_Uploads($url)
+	public static function V_Uploads($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -463,7 +475,7 @@ class p_ha
 	// 有要複雜設計請做成模組，這裡只是root
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function S_Url($url)
+	public static function S_Url($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -483,6 +495,11 @@ class p_ha
 			$project_ = $system_setting_pub_->Project->{$stage};
 		}
 
+		if($url == "/")
+		{
+			return $project_->Select_Url;
+		}
+
 		return $project_->Select_Url . $url;
 	}
 
@@ -490,7 +507,7 @@ class p_ha
 	選擇Images
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function S_Images($url)
+	public static function S_Images($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -524,7 +541,7 @@ class p_ha
 	選擇Videos
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function S_Videos($url)
+	public static function S_Videos($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -558,7 +575,7 @@ class p_ha
 	選擇Assets
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function S_Assets($url)
+	public static function S_Assets($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
 		$system_setting_pub_ = \p_ha\System_Setting::Get();
@@ -592,7 +609,7 @@ class p_ha
 	選擇Uploads
 	$stage 是站，有指定用指定的，沒有用預設的
 	*/
-	public static function S_Uploads($url)
+	public static function S_Uploads($url, $stage = null)
 	{
 		$global_pub_ = \p_ha\_Global::Get();
         $system_setting_pub_ = \p_ha\System_Setting::Get();		
@@ -619,6 +636,43 @@ class p_ha
 		{
 			return $project_->Select_Url .  $project_->Uploads . $url;
 		}
+	}
+
+	// --------------------------------------------------------------------------
+	// 目標
+	// --------------------------------------------------------------------------
+	/*
+	自己的url
+
+	*/
+	public static function Self_Url($url)
+	{
+		$global_pub_ = \p_ha\_Global::Get();
+		$system_setting_pub_ = \p_ha\System_Setting::Get();
+						
+		if(!$system_setting_pub_->Initial)
+		{
+			// composer dump-autoload會用到，因為他會直接分析controller
+			$system_setting_pub_->Initial();
+		}
+
+		if($global_pub_->Stage->Name == "Public")
+		{
+			if($url == "/")
+			{
+				return $system_setting_pub_->System->Url;
+			}
+			return $system_setting_pub_->System->Url . $url;
+		}
+		
+		$project_ = $system_setting_pub_->Project->{$global_pub_->Stage->Name};				
+
+		if($url == "/")
+		{
+			return $project_->Url;
+		}
+
+		return $project_->Url . $url;
 	}
 
 	// --------------------------------------------------------------------------

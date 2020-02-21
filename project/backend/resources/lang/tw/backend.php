@@ -58,5 +58,14 @@ return [
     'selected' => '選擇',
     'detail' => '細節',
     'edit' => '編輯',
+    'new' => '新增',
+    'selected_delete' => '選擇刪除',
+    'all_save' => '全部儲存',
+    'all_refresh' => '全部刷新',
+    'seperator' => '分隔線',
+    'button' => '按鈕',
+    'item' => '項目',
+    'all' => '全部',
 
 ];
+ 
