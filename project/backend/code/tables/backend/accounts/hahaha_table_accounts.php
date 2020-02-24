@@ -7,16 +7,18 @@ use hahaha\hahaha_table_trait;
 
 use hahaha\define\hahaha_define_table_action as action;
 use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_css as css;
 use hahaha\define\hahaha_define_table_key as key;
 use hahaha\define\hahaha_define_table_class as class_;
 use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_validate as validate;
 
 use EntityManager;
 
 /*
-首頁自定義欄位
+首頁自定義欄位 
 
 因為套版用，設定會是死的，所以直接用array描述，不需要另外從資料庫撈，存在快取
 
@@ -34,6 +36,24 @@ class hahaha_table_accounts
 	// 可以用這個取得entity name的field name
 	// $em->getClassMetadata('Entities\MyEntity')->getColumnNames()
 	// $em->getClassMetadata('Entities\MyEntity')->getColumnName('id');
+	// ---------------------------------- 
+	// 不用這個是因為使用上字太多，不是不好看，沒有比"_"好
+	// self::_
+	// const _ = "_";
+	//
+	const IDENTIFY = "index_item";
+	//
+	const HAHAHA = "hahaha";
+	// block
+	const B_TOP = "top";
+	const B_MAIN = "main";
+	const B_BOTTOM = "bottom";
+	const B_LINK = "link";
+	const B_PANEL_ADD = "panel_add";
+	const B_PANEL_DETAIL = "panel_detail";
+
+
+	//
 	const ID = "id";
 	const ACCOUNT = "account";
 	const PASSWORD = "password";
@@ -125,9 +145,9 @@ class hahaha_table_accounts
 		$settings = [
 			"default" => [
                 // 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
-                "index" => "hahaha",
-                "preview" => "hahaha",
-                "edit" => "hahaha",
+                "index" => self::HAHAHA,
+                "preview" => self::HAHAHA,
+                "edit" => self::HAHAHA,
 			],
         ];
         
@@ -173,7 +193,7 @@ class hahaha_table_accounts
 		// 因為同一個節點，這是共用設定
 		$settings_fields = [
 			self::ID => [
-				key::ID => "index_item_" . self::ID,
+				key::ID => self::IDENTIFY . "_" . self::ID,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 					// key::NAME => self::ID,
@@ -183,9 +203,10 @@ class hahaha_table_accounts
 				key::CLASSES => [
 					class_::DISABLED => true,
 				],
+				key::PLACEHOLDER => __('backend.id') . " : " . "integer",
 			],
 			self::ACCOUNT => [					// 帳號不可以改
-				key::ID => "index_item_" . self::ACCOUNT,
+				key::ID => self::IDENTIFY . "_" . self::ACCOUNT,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
@@ -194,49 +215,55 @@ class hahaha_table_accounts
 				key::CLASSES => [
 					class_::DISABLED => true,
 				],
+				key::PLACEHOLDER => __('backend.account') . " : " . "hahaha",
 			],
 			self::PASSWORD => [
-				key::ID => "index_item_" . self::PASSWORD,
+				key::ID => self::IDENTIFY . "_" . self::PASSWORD,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
 				key::TITLE => __('backend.password'),
 				key::TYPE => type::PASSWORD,
+				key::PLACEHOLDER => __('backend.password') . " : " . "hahaha",
 			],
 			self::PASSWORD_CONFIRM => [
-				key::ID => "index_item_" . self::PASSWORD_CONFIRM,
+				key::ID => self::IDENTIFY . "_" . self::PASSWORD_CONFIRM,
 				key::TITLE => __('backend.password_confirm'),
 				key::TYPE => type::PASSWORD,
+				key::PLACEHOLDER => __('backend.password_confirm') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW => [
-				key::ID => "index_item_" . self::PASSWORD_NEW,
+				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW,
 				key::TITLE => __('backend.password_new'),
 				key::TYPE => type::PASSWORD,
+				key::PLACEHOLDER => __('backend.password_new') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW_CONFIRM => [
-				key::ID => "index_item_" . self::PASSWORD_NEW_CONFIRM,
+				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW_CONFIRM,
 				key::TITLE => __('backend.password_new_confirm'),
 				key::TYPE => type::PASSWORD,
+				key::PLACEHOLDER => __('backend.password_new_confirm') . " : " . "hahaha",
 			],
 			self::EMAIL => [
-				key::ID => "index_item_" . self::EMAIL,
+				key::ID => self::IDENTIFY . "_" . self::EMAIL,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
 				key::TITLE => __('backend.email'),
 				key::TYPE => type::TEXT,
-				key::VALIDATE => validate::EMAIL,				
+				key::VALIDATE => validate::EMAIL,
+				key::PLACEHOLDER => __('backend.email') . " : " . "hahaha0417@hotmail.com",				
 			],
 			self::GENDER => [
-				key::ID => "index_item_" . self::GENDER,
+				key::ID => self::IDENTIFY . "_" . self::GENDER,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
 				key::TITLE => __('backend.gender'),
-				key::TYPE => type::REDIOBOX,
+				key::TYPE => type::RADIOBOX,
 			],
 			self::STATUS => [
-				key::ID => "index_item_" . self::STATUS,
+				key::ID => self::IDENTIFY . "_" . self::STATUS,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
@@ -245,9 +272,10 @@ class hahaha_table_accounts
 				key::ACTIONS => [
 					action::AUTO_UPDATE => true,
 				],	
+				key::PLACEHOLDER => __('backend.status') . " : " . "-1 停權 0 為驗證 1 驗證",	
 			],
 			self::CREATED_AT => [
-				key::ID => "index_item_" . self::CREATED_AT,
+				key::ID => self::IDENTIFY . "_" . self::CREATED_AT,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
@@ -258,7 +286,7 @@ class hahaha_table_accounts
 				],
 			],
 			self::UPDATED_AT => [
-				key::ID => "index_item_" . self::UPDATED_AT,
+				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
 				],
@@ -270,25 +298,25 @@ class hahaha_table_accounts
 			],
 			//
 			self::CHECKBOX_SELECTED => [
-				key::ID => "index_item_" . self::CHECKBOX_SELECTED,
+				key::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
 				key::TITLE => __('backend.selected'),
 				key::TYPE => type::CHECKBOX_SELECTED,
 			],
 			self::PANEL_DETAIL => [
-				key::ID => "index_item_" . self::PANEL_DETAIL,
+				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
 				key::TITLE => __('backend.detail'),
 				key::TYPE => type::PANEL,
 			],
 			self::BUTTON_DELETE => [
-				key::ID => "index_item_" . self::BUTTON_DELETE,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
 				// 不顯示字
 				//key::TITLE => __('backend.delete'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-minus",
+					"fas fa-minus" => true,
 				],
 				key::STYLES => [
 					"font-size" => "1.5em", 
@@ -296,15 +324,15 @@ class hahaha_table_accounts
 				],
 			],
 			self::BUTTON_EDIT => [
-				key::ID => "index_item_" . self::BUTTON_EDIT,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
 				// 不顯示字
 				// key::TITLE => __('backend.edit'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-edit",
+					"fas fa-edit" => true,
 				],
 				key::STYLES => [
 					"font-size" => "1.5em", 
@@ -313,18 +341,18 @@ class hahaha_table_accounts
 			],
 			//
 			self::BUTTON_ADD => [
-				key::ID => "index_item_" . self::BUTTON_ADD,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
 				key::TITLE => __('backend.new'),
 				key::TYPE => type::BUTTON_ICON,
 				// class
 				key::CLASSES => [
-					"index_item_" . self::BUTTON_ADD,
+					self::IDENTIFY . "_" . self::BUTTON_ADD,
 				],
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-plus",
+					"fas fa-plus" => true,
 				],
 				// class
 				key::STYLES => [
@@ -333,17 +361,17 @@ class hahaha_table_accounts
 				],
 			],
 			self::BUTTON_SELECTED_DELETE => [
-				key::ID => "index_item_" . self::BUTTON_SELECTED_DELETE,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
 				key::TITLE => __('backend.selected_delete'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					"index_item_" . self::BUTTON_SELECTED_DELETE,
+					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
 				],
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-minus",
+					"fas fa-minus" => true,
 				],
 				key::STYLES => [
 					"font-size" => "1.5em", 
@@ -351,17 +379,17 @@ class hahaha_table_accounts
 				],
 			],
 			self::BUTTON_ALL_SAVE => [
-				key::ID => "index_item_" . self::BUTTON_ALL_SAVE,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
 				key::TITLE => __('backend.all_save'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					"index_item_" . self::BUTTON_ALL_REFRESH,
+					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
 				],
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-save",
+					"fas fa-save" => true,
 				],
 				key::STYLES => [
 					"font-size" => "1.5em", 
@@ -369,17 +397,17 @@ class hahaha_table_accounts
 				],
 			],
 			self::BUTTON_ALL_REFRESH => [
-				key::ID => "index_item_" . self::BUTTON_ALL_REFRESH,
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
 				key::TITLE => __('backend.all_refresh'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					"index_item_" . self::BUTTON_ALL_REFRESH,
+					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
 				],
 				key::CLASSES_1 => [
-					"btn btn-dark",
+					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-refresh",
+					"fas fa-refresh" => true,
 				],
 				key::STYLES => [
 					"font-size" => "1.5em", 
@@ -404,7 +432,7 @@ class hahaha_table_accounts
 			// hahaha的版本的設定集，寫死，避免要處理很細
 			// --------------------------------------------------- 			
 			// --------------------------------------------------- 
-			"hahaha" => [		
+			self::HAHAHA => [		
 				// --------------------------------------------------- 
 				// --------------------------------------------------- 
 				// 主要畫面區
@@ -422,7 +450,7 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "top" => [
+                self::B_TOP => [
 					// 目前只放button，外層只是分隔線...
 					[
 						// key::TITLE => __('backend.item'),
@@ -431,19 +459,19 @@ class hahaha_table_accounts
 						key::ITEMS => [
 							self::BUTTON_ADD => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_top_" . self::BUTTON_ADD,
+								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ADD,
 							],
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
+								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_SELECTED_DELETE,
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_top_" . self::BUTTON_ALL_SAVE,
+								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_SAVE,
 							],
 							self::BUTTON_ALL_REFRESH => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_top_" . self::BUTTON_ALL_REFRESH,
+								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_REFRESH,
 							],
 						],
 						key::STYLES => [
@@ -490,9 +518,9 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "main" => [
+                self::B_MAIN => [
 					[				
-						key::ID => "index_item_all_select",		
+						key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
 						key::TITLE => __('backend.selected'),
 						key::TYPE => type::CHECKBOX_SELECTED,
 						key::ITEMS => [
@@ -517,7 +545,7 @@ class hahaha_table_accounts
 								key::TITLE => __('backend.detail'),
 								key::TYPE => type::PANEL,
 								key::CLASSES => [
-									"index_item_prepend_" . self::ACCOUNT,
+									"index_item_prepend_" . self::ACCOUNT => true,
 								],
 								key::STYLES => [
 									// 這設定label的style沒有錯
@@ -610,7 +638,7 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "bottom" => [
+                self::B_BOTTOM => [
 					// 目前只放button，外層只是分隔線...
 					[
 						// key::TITLE => __('backend.item'),
@@ -619,11 +647,11 @@ class hahaha_table_accounts
 						key::ITEMS => [
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_bottom_" . self::BUTTON_SELECTED_DELETE,
+								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_SELECTED_DELETE,
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => "index_item_bottom_" . self::BUTTON_ALL_SAVE,
+								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_ALL_SAVE,
 							],
 						],
 						key::STYLES => [
@@ -635,7 +663,7 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "link" => [
+                self::B_LINK => [
 					// 目前只有link，也沒有模組化，因此暫時沒用到
 				],
 				
@@ -651,22 +679,25 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "add_panel" => [
+                self::B_PANEL_ADD => [
 					[
 						key::TITLE => __('backend.account'),
 						key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
 							self::ACCOUNT => [					// 帳號不可以改
-								key::ID => "index_item_add_panel_" . self::ACCOUNT,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::ACCOUNT,
 								key::DB_FIELD => [
 									key::IS_FIELD => true,
 								],
 								key::TITLE => __('backend.account'),
-								key::TYPE => type::TEXT,
+								key::TYPE => type::TEXT_EXIST_CHECK,
 								key::CLASSES => [
-									class_::DISABLED => true,
-								],
+									class_::DISABLED => false,
+								], 
+								key::CLASSES_1 => [
+									class_::REQUIRED => true,
+								], 
 							],
 						],
 						key::STYLES => [
@@ -678,7 +709,7 @@ class hahaha_table_accounts
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
 							self::PASSWORD => [
-								key::ID => "index_item_add_panel_" . self::PASSWORD,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD,
 								key::DB_FIELD => [
 									key::IS_FIELD => true,
 								],
@@ -686,7 +717,7 @@ class hahaha_table_accounts
 								key::TYPE => type::PASSWORD,
 							],
 							self::PASSWORD_CONFIRM => [
-								key::ID => "index_item_add_panel_" . self::PASSWORD_CONFIRM,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD_CONFIRM,
 								key::TITLE => __('backend.password_confirm'),
 								key::TYPE => type::PASSWORD,
 							],
@@ -700,7 +731,7 @@ class hahaha_table_accounts
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
 							self::EMAIL => [
-								key::ID => "index_item_add_panel_" . self::EMAIL,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::EMAIL,
 								key::DB_FIELD => [
 									key::IS_FIELD => true,
 								],
@@ -713,17 +744,19 @@ class hahaha_table_accounts
 						],
 					],
 					[
-						key::TITLE => __('backend.email'),
+						key::TITLE => __('backend.gender'),
 						key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
+							
+
 							self::GENDER => [
-								key::ID => "index_item_add_panel_" . self::GENDER,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER,
 								key::DB_FIELD => [
 									key::IS_FIELD => true,
 								],
 								key::TITLE => __('backend.gender'),
-								key::TYPE => type::REDIOBOX,
+								key::TYPE => type::RADIOBOX,
 							],
 						],
 						key::STYLES => [
@@ -735,7 +768,7 @@ class hahaha_table_accounts
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
 							self::STATUS => [
-								key::ID => "index_item_add_panel_" . self::STATUS,
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::STATUS,
 								key::DB_FIELD => [
 									key::IS_FIELD => true,
 								],
@@ -755,7 +788,7 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                "detail_panel" => [
+                self::B_PANEL_DETAIL => [
 					
 				],
 				
@@ -773,7 +806,7 @@ class hahaha_table_accounts
 	{
 		// 因為同一個節點，所以所有資料表共用一個router
 		$settings_preview = [
-			"hahaha" => [
+			self::HAHAHA => [
 				self::ID => [
 					key::TYPE => type::TEXT,
 					key::CLASSES => [
@@ -803,7 +836,7 @@ class hahaha_table_accounts
 					key::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::REDIOBOX,
+					key::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
 					key::TYPE => type::TEXT,
@@ -835,7 +868,7 @@ class hahaha_table_accounts
 	{
 		// 因為同一個節點，所以所有資料表共用一個model
 		$settings_edit = [
-			"hahaha" => [
+			self::HAHAHA => [
 				self::ID => [
 					key::TYPE => type::TEXT,
 					key::CLASSES => [
@@ -865,7 +898,7 @@ class hahaha_table_accounts
 					key::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::REDIOBOX,
+					key::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
 					key::TYPE => type::TEXT,

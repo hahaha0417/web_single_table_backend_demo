@@ -75,6 +75,7 @@ class IndexController extends BaseIndexController
                 // 找到table setting檔
                 $target_setting_table = &$table;
                 break;
+
             }
         }
         
@@ -112,8 +113,30 @@ class IndexController extends BaseIndexController
             return abort(404, 'findByPagination error');
         }
 
+        $target_table_identify = implode('_', explode('/', $target_setting_table['stage']) ) . '_' . implode('_', explode('/', $target_setting_table['node']));
+      
         $page = "all";
-        return view('web.backend.table.index', compact('target_setting_table', 'target_table', 'data_list', 'data_link', 'page'));    
+
+        // 因為generator要用，這裡準備參數
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        // 輸入
+        $parameter_->Input = new \hahaha\hahaha_parameter;
+        // 輸出
+        $parameter_->Output = new \hahaha\hahaha_parameter;
+        // 暫記參數
+        $parameter_->Extra = new \hahaha\hahaha_parameter;
+        // 使用的資料
+        $parameter_->Use = new \hahaha\hahaha_parameter;
+        // property
+        $parameter_->Target_Setting_Table = &$target_setting_table;
+        $parameter_->Target_Table_Identify = &$target_table_identify;
+        $parameter_->Target_Table = &$target_table;
+        $parameter_->Data_List = &$data_list;
+        $parameter_->Data_Link = &$data_link;
+        $parameter_->Page = &$page;
+        //
+
+        return view('web.backend.table.index', compact('target_setting_table', 'target_table_identify', 'target_table', 'data_list', 'data_link', 'page'));    
     }
 
     /**

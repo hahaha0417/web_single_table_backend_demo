@@ -107,7 +107,11 @@ class hahaha_define_table_key
     // direction
     // -------------------------------------- 
     const DIRECTION = "direction";
+    // -------------------------------------- 
+    // placeholder
     // --------------------------------------    
+    const PLACEHOLDER = "placeholder";
+    // --------------------------------------   
 
 	function __construct()
 	{

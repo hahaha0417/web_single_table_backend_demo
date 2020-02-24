@@ -92,9 +92,9 @@ class hahaha_system_setting
 		$system_setting->Project->Front->Assets = "assets/";
 		$system_setting->Project->Front->Uploads = "uploads/";
 		//
-		$system_setting->Project->Front->Index = __DIR__ . "/../../project/front/public/index.php";
-		$system_setting->Project->Front->Root = realpath(__DIR__ . "/../../../project/front");
-		$system_setting->Project->Front->Public = realpath(__DIR__ . "/../../../project/front/public");
+		$system_setting->Project->Front->Index = realpath(__DIR__ . "/../../project/front/public/index.php");
+		$system_setting->Project->Front->Root = realpath(__DIR__ . "/../../project/front");
+		$system_setting->Project->Front->Public = realpath(__DIR__ . "/../../project/front/public");
 		// 絕對路徑
 		$system_setting->Project->Front->Url = empty($system_setting->Project->Front->Port) ? 
 			$url . "/" : 
@@ -135,9 +135,9 @@ class hahaha_system_setting
 		$system_setting->Project->Master->Assets = "assets/";
 		$system_setting->Project->Master->Uploads = "uploads/";
 		//
-		$system_setting->Project->Master->Index = __DIR__ . "/../../hahaha/public/index.php";
-		$system_setting->Project->Master->Root = realpath(__DIR__ . "/../../../hahaha");
-		$system_setting->Project->Master->Public = realpath(__DIR__ . "/../../../hahaha/public");
+		$system_setting->Project->Master->Index = realpath(__DIR__ . "/../../hahaha/public/index.php");
+		$system_setting->Project->Master->Root = realpath(__DIR__ . "/../../hahaha");
+		$system_setting->Project->Master->Public = realpath(__DIR__ . "/../../hahaha/public");
 		// 絕對路徑
 		$system_setting->Project->Master->Url = empty($system_setting->Project->Master->Port) ? 
 			$url . "/" : 
@@ -178,9 +178,9 @@ class hahaha_system_setting
 		$system_setting->Project->Hahaha->Assets = "assets/";
 		$system_setting->Project->Hahaha->Uploads = "uploads/";
 		//
-		$system_setting->Project->Hahaha->Index = __DIR__ . "/../../project/hahaha/public/index.php";
-		$system_setting->Project->Hahaha->Root = realpath(__DIR__ . "/../../../project/hahaha");
-		$system_setting->Project->Hahaha->Public = realpath(__DIR__ . "/../../../project/hahaha/public");
+		$system_setting->Project->Hahaha->Index = realpath(__DIR__ . "/../../project/hahaha/public/index.php");
+		$system_setting->Project->Hahaha->Root = realpath(__DIR__ . "/../../project/hahaha");
+		$system_setting->Project->Hahaha->Public = realpath(__DIR__ . "/../../project/hahaha/public");
 		// 絕對路徑
 		$system_setting->Project->Hahaha->Url = empty($system_setting->Project->Hahaha->Port) ? 
 			$url . "/" : 
@@ -221,9 +221,9 @@ class hahaha_system_setting
 		$system_setting->Project->Backend->Assets = "assets/";
 		$system_setting->Project->Backend->Uploads = "uploads/";
 		//
-		$system_setting->Project->Backend->Index = __DIR__ . "/../../project/backend/public/index.php";
-		$system_setting->Project->Backend->Root = realpath(__DIR__ . "/../../../project/backend");
-		$system_setting->Project->Backend->Public = realpath(__DIR__ . "/../../../project/backend/public");
+		$system_setting->Project->Backend->Index = realpath(__DIR__ . "/../../project/backend/public/index.php");
+		$system_setting->Project->Backend->Root = realpath(__DIR__ . "/../../project/backend");
+		$system_setting->Project->Backend->Public = realpath(__DIR__ . "/../../project/backend/public");
 		// 絕對路徑
 		$system_setting->Project->Backend->Url = empty($system_setting->Project->Backend->Port) ? 
 			$url . "/" : 
@@ -264,9 +264,9 @@ class hahaha_system_setting
 		$system_setting->Project->Api->Assets = "assets/";
 		$system_setting->Project->Api->Uploads = "uploads/";
 		//
-		$system_setting->Project->Api->Index = __DIR__ . "/../../project/api/public/index.php";
-		$system_setting->Project->Api->Root = realpath(__DIR__ . "/../../../project/api");
-		$system_setting->Project->Api->Public = realpath(__DIR__ . "/../../../project/api/public");
+		$system_setting->Project->Api->Index = realpath(__DIR__ . "/../../project/api/public/index.php");
+		$system_setting->Project->Api->Root = realpath(__DIR__ . "/../../project/api");
+		$system_setting->Project->Api->Public = realpath(__DIR__ . "/../../project/api/public");
 		// 絕對路徑
 		$system_setting->Project->Api->Url = empty($system_setting->Project->Api->Port) ? 
 			$url . "/" : 

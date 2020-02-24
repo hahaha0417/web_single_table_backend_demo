@@ -1,0 +1,15 @@
+ -------------------------------------- 
+HTML Id or Class取法
+ -------------------------------------- 
+不要直接用物件取得const，假設物件刪除或其他，變成要重新改，不會比較省力
+取得table元件有兩種方法
+dd($target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP . "_" . $target_table_class_::BUTTON_ADD);
+dd($target_table_->Index[$target_table_class_::B_TOP][0][key::ITEMS][$button_identify_][key::ID]);
+用第二種會查死
+基本上直接用上面那種，因為id & class是唯一，如果元件換位置，ID要跟著改，這裡代稱也要順便改，
+盡量不要直接寫字串(當然臨時是沒問題的)，因為改完後，要查到對應的字串進行正確的修改，
+很麻煩，你怎麼知道哪邊哪個欄位，對應哪個表的哪個欄位，哪個ID是由那些const組成，直接給const比較好對應，避免要查const
+
+ -------------------------------------- 
+
+ -------------------------------------- 

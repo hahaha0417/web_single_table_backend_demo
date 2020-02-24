@@ -133,7 +133,7 @@ class hahaha_table_accounts
 				key::VALIDATE => validate::EMAIL,				
 			],
 			self::GENDER => [
-				key::TYPE => type::REDIOBOX,
+				key::TYPE => type::RADIOBOX,
 			],
 			self::STATUS => [
 				key::TYPE => type::TEXT,
@@ -198,7 +198,7 @@ class hahaha_table_accounts
 						key::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::REDIOBOX,
+						key::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
 						key::TYPE => type::TEXT,
@@ -251,7 +251,7 @@ class hahaha_table_accounts
 						key::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::REDIOBOX,
+						key::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
 						key::TYPE => type::TEXT,
@@ -303,7 +303,7 @@ class hahaha_table_accounts
 						key::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::REDIOBOX,
+						key::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
 						key::TYPE => type::TEXT,
@@ -367,7 +367,7 @@ class hahaha_table_accounts
 					key::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::REDIOBOX,
+					key::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
 					key::TYPE => type::TEXT,
@@ -411,7 +411,7 @@ class hahaha_table_accounts
 					key::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::REDIOBOX,
+					key::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
 					key::TYPE => type::TEXT,

@@ -46,6 +46,17 @@ class hahaha_define_table_class
     // -------------------------------------- 
     const DISPLAY_NONE = "display_none";
     // -------------------------------------- 
+    // required 0 不加標籤 1 加標籤
+    // -------------------------------------- 
+    const REQUIRED = "required";
+    // -------------------------------------- 
+    // exist_check_success 0 不加標籤 1 加標籤
+    // -------------------------------------- 
+    const EXIST_CHECK_SUCCESS = "exist_check_success";
+    // -------------------------------------- 
+    // exist_check_error 0 不加標籤 1 加標籤
+    // -------------------------------------- 
+    const EXIST_CHECK_ERROR = "exist_check_error";
 
 	function __construct()
 	{

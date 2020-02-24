@@ -213,6 +213,13 @@ hahaha_setting_table.php
 因為我有php hahaha framework，因此我就用原生PHP的方式產生CSS & JS，就不使用Laravel Blade的方式來做，避免我移植到我的php hahaha framework還要寫一次這個
 
  -------------------------------------- 
+DB資料利用generator生成PHP檔，Opcache直接載入
+ -------------------------------------- 
+這可以利用command從DB抓，並利用generator產生php檔，但由於套版不一定要很快，所以通常
+直接寫 or 去DB Query取得就好，不需要事先規劃，而且此法通常用於php-fpm or swoole
+目前沒有需要特別規畫這個，有做到那裏在說，Opcache太多東西，會導致第一次太久...
+
+ -------------------------------------- 
 願景
  -------------------------------------- 
 

@@ -14,17 +14,25 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 */
 
-$(function(){  
+$(function() {  
 
 });
 
 // --------------------------------------------------- 
 // panel resize
 // --------------------------------------------------- 
-$(function(){  
-    $(window).resize(function(){
-        // HTML 不是可變，所以不用參數傳進來        
+$(function() {  
+    $(window).resize(function() {
+        // add panel
         $("#index_item_add_panel").css("left", ($(window).width() - $("#index_item_add_panel").width()) / 2);
         $("#index_item_add_panel").css("top", ($(window).height() - $("#index_item_add_panel").height()) / 2);
+
     });
+
+    $(':input').labelauty({
+        minimum_width:"40px",
+
+    });
+    
+
 });

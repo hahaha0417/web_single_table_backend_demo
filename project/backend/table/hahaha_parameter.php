@@ -15,7 +15,7 @@ namespace hahaha;
 */
 class hahaha_parameter
 {	
-	use hahaha_instance_trait;
+	use \hahahasublib\hahaha_instance_trait;
 
 	function __construct()
 	{
@@ -24,8 +24,14 @@ class hahaha_parameter
 	
 	public function Initial()
 	{
+		$this->Initial_Ha($this);
+	}
+
+	public function Initial_Ha($parameter)
+	{
 		
 	}
+
 
 	
 }

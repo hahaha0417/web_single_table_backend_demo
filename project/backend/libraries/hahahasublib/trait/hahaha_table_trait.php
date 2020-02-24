@@ -3,6 +3,7 @@
 namespace hahaha;
 
 use  hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_tag as tag;
 
 trait hahaha_table_trait
 {
@@ -102,6 +103,7 @@ trait hahaha_table_trait
 				{				
 					// 一個欄位，從Fields撈出對應key，合併，存入$index
 					$field_target_ = &$fields_target_[$key_field];
+
 					if(!empty($this->Settings_Fields[$key_field]))
 					{
 						// 有預設值，合併
@@ -114,6 +116,8 @@ trait hahaha_table_trait
 						if(!empty($field_target_[$value_list]))
 						{
 							$value_list_ = &$field_target_[$value_list];
+							$item_target_ = &$items_target_[$key_item];
+	
 							$str_ = "";
 							$last_ = count($value_list_) - 1;
 							$i = 0;
@@ -124,22 +128,28 @@ trait hahaha_table_trait
 									//  true才設
 									if($i != $last_)
 									{
-										$str_ .= "{$value_str} ";
+										$str_ .= "{$key_str} ";
 									}
 									else
 									{
-										$str_ .= "{$value_str}";
+										$str_ .= "{$key_str}";
 									}
+
 								}
 								$i++;								
 							}
 							$field_target_[$value_list] = $str_;
+
+							
 						}
 						else
 						{
 							unset($field_target_[$key_list]);
 						}
 					}
+					
+					$item_target_ = &$items_target_[$key_item];
+	
 					// style
 					foreach($style_list_ as $key_list => &$value_list)
 					{
@@ -151,7 +161,7 @@ trait hahaha_table_trait
 							$i = 0;
 							foreach($value_list_ as $key_str => &$value_str)
 							{
-								if($value_str)
+								if($value_str != tag::NO_USE)
 								{
 									//  true才設
 									if($i != $last_)
@@ -173,8 +183,7 @@ trait hahaha_table_trait
 						}
 					}					
 				}
-
-				$item_target_ = &$items_target_[$key_item];
+			
 				// class
 				foreach($class_list_ as $key_list => &$value_list)
 				{
@@ -191,11 +200,11 @@ trait hahaha_table_trait
 								//  true才設
 								if($i != $last_)
 								{
-									$str_ .= "{$value_str} ";
+									$str_ .= "{$key_str} ";
 								}
 								else
 								{
-									$str_ .= "{$value_str}";
+									$str_ .= "{$key_str}";
 								}
 							}
 							$i++;								
@@ -218,7 +227,7 @@ trait hahaha_table_trait
 						$i = 0;
 						foreach($value_list_ as $key_str => &$value_str)
 						{
-							if($value_str)
+							if($value_str != tag::NO_USE)
 							{
 								//  true才設
 								if($i != $last_)
@@ -241,7 +250,7 @@ trait hahaha_table_trait
 				}
 			}
 		}
-		
+	
 		return $this;
 	}
 

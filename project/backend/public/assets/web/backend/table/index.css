@@ -243,10 +243,13 @@ table.add_tab tr td span i{
     font-size: 16px;
     vertical-align: center;
 }
-.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-unchecked-image, input.labelauty + label > span.labelauty-checked-image{
+
+.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-unchecked-image, 
+.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-checked-image {
     vertical-align: 0;
     margin-top: 15px;
 }
+
 
 .index_result_content table.list_tab tr td input[type='text']{
 	/* width: 100%; */

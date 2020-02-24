@@ -76,9 +76,9 @@ class hahaha_define_table_type
     const LABEL = "label";
     // -------------------------------------- 
     // text
-    // -------------------------------------- 
-    
+    // --------------------------------------     
     const TEXT = "text";
+    const TEXT_EXIST_CHECK = "text_exist_check";
     // -------------------------------------- 
     // password
     // -------------------------------------- 
@@ -93,9 +93,9 @@ class hahaha_define_table_type
     const CHECKBOX = "checkbox";
     const CHECKBOX_SELECTED = "checkbox_selected";
     // -------------------------------------- 
-    // rediobox
+    // radiobox
     // -------------------------------------- 
-    const REDIOBOX = "rediobox";
+    const RADIOBOX = "radiobox";
     // -------------------------------------- 
     // image
     // -------------------------------------- 
