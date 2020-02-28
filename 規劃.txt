@@ -220,6 +220,67 @@ DB資料利用generator生成PHP檔，Opcache直接載入
 目前沒有需要特別規畫這個，有做到那裏在說，Opcache太多東西，會導致第一次太久...
 
  -------------------------------------- 
+table key::PANEL 參數
+ -------------------------------------- 
+key::USE => use_::B_BLOCK,
+key::CONTENT => [
+	// 原則上一個block對應一個區塊，盡量不要交叉使用
+	// 這裡格式基於前端寫法(原則上簡單撰寫 or 基於前端視覺直接對應格式)
+	// 當前端確認後，才會有固定格式，而不是先規畫格式，強制前端配合
+	// 因此我這樣寫是OK的，因為前端我只對應到一個panel，我簡單寫而已
+	// 固定用array包是因為，架構統一格式，避免要查說明
+	// 要要求前端改提供的格式，請要有明確理由(例如他太亂)
+	// 要動態的對應，原則上請做成模組，不要在這邊填array
+	self::B_PANEL_ADD
+],
+key::USE => use_::SETTING,
+key::CONTENT => [\XXX\hahaha_table_setting_panel_detail::class, 'hahaha'],
+mix 沒事不要用，會亂，請先說清楚要幹嘛
+確認製程上沒問題才放行
+key::USE => use::MIX;
+key::CONTENT => [
+	[
+		use::B_BLOCK => self::B_PANEL_ADD
+	],
+	[
+		use::SETTING => \XXX\hahaha_table_setting_panel_detail::class, 'hahaha'
+	],
+],
+取得方式限制用reference，避免二次複製
+$data = [];
+\XXX\hahaha_table_setting_panel_detail::Instance()->hahaha($data);
+這樣得到需要的東西
+
+假設有要處理預設內容，因為會變成三層，太複雜了，原則上只Merge一次(兩層合併)，
+假設有很複雜的東西，採取整理成模組直接使用，因此使用上為 : 
+不管裡面幾層，總之我這樣呼叫必須直接能用，如不能用找這模組做的人，他必須提供保證能用
+基本上模組作法就是請他根據我的項目，不管怎樣整理，請提供我直接可以使用的array
+不然則使用我預設的寫法
+\XXX\hahaha_panel_detail::Instance()->HAHAHA(),
+
+ -------------------------------------- 
+插入花樣問題
+ -------------------------------------- 
+這些如要用，原則上要依順序顯示，避免還要看code
+key::PRE => [
+
+],
+key::POST => [
+	
+],
+屬性不須順序，但KEY必須有意義，例如PRE_SEPERATOR，代表在前方
+但是這種取多了會很多Custom的Key，打架構的人盡量少用易混亂的東西
+key::PROPERTY => [
+	property::a => true
+],
+簡單的直接用key寫就好，例如
+key::SEPERATOR => true,
+//
+key::SUB => true
+key::NODE => node::NODE_1
+
+
+ -------------------------------------- 
 願景
  -------------------------------------- 
 

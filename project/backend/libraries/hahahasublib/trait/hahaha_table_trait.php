@@ -250,7 +250,7 @@ trait hahaha_table_trait
 				}
 			}
 		}
-	
+		
 		return $this;
 	}
 
@@ -388,7 +388,7 @@ trait hahaha_table_trait
 	{
 		// 這是一定要merge的，如果選項則命名為Optional_Addition
 		$db_fields_addition_ = &$this->Settings_DB_Fields_Addition;
-
+		
 		foreach($db_fields_addition_ as $key_field => &$field)
 		{
 			if(!empty($field[key::DB_FIELD]))
@@ -398,7 +398,7 @@ trait hahaha_table_trait
 				if(!empty($db_field_[key::IS_FIELD]) && $db_field_[key::IS_FIELD])
 				{
 					// 是DB欄位
-					if(!empty($db_field_[key::FIELD]))
+					if(!empty($db_field_[key::NAME]))
 					{
 						// 用欄位
 						$fields[$key_field] = $db_field_[key::NAME];
@@ -435,7 +435,7 @@ trait hahaha_table_trait
 							// 是DB欄位
 							if(empty($fields[$key_field]))
 							{
-								if(!empty($db_field_[key::FIELD]))
+								if(!empty($db_field_[key::NAME]))
 								{
 									// 用欄位
 									$fields[$key_field] = $db_field_[key::NAME];
@@ -451,7 +451,6 @@ trait hahaha_table_trait
 				}
 			}
 		}
-	
-		return $this;
+
 	}
 }

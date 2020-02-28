@@ -13,6 +13,7 @@ use hahaha\define\hahaha_define_table_class as class_;
 use hahaha\define\hahaha_define_table_direction as direction;
 use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
 
 use EntityManager;
@@ -67,6 +68,9 @@ class hahaha_table_accounts
 	const UPDATED_AT = "updated_at";
 	//
 	const CHECKBOX_SELECTED = "checkbox_selected";
+	// 滑過顯示PANEL_DETAIL面板的BUTTON_ICON
+	const PREPEND_DETAIL = "prepend_detail";
+	// 產生B_PANEL_DETAIL項目的PANEL_DETAIL
 	const PANEL_DETAIL = "panel_detail";
 	const BUTTON_DELETE = "button_delete";
 	const BUTTON_EDIT = "button_edit";
@@ -75,8 +79,11 @@ class hahaha_table_accounts
 	const BUTTON_SELECTED_DELETE = "button_selected_delete";
 	const BUTTON_ALL_SAVE = "button_all_save";
 	const BUTTON_ALL_REFRESH = "button_all_refresh";
-
-	
+	//
+	const PANEL_ADD_BUTTON_ADD = self::B_PANEL_ADD . "_" . "button_add";
+	const PANEL_ADD_BUTTON_CANCEL = self::B_PANEL_ADD . "_" . "button_cancel";
+	//
+	const PANEL_DETAIL_BUTTON_CHANGE_PASSWORD = self::B_PANEL_DETAIL . "_" . "button_change_password";
 	// ----------------------------------------------- 
 	// 設定檔
 	// ----------------------------------------------- 	
@@ -122,6 +129,7 @@ class hahaha_table_accounts
 		$this->Settings($this->Settings);
 		$this->Settings_DB_Fields_Addition($this->Settings_DB_Fields_Addition);
 		$this->Settings_Fields($this->Settings_Fields);
+		// Setting Preset
 		$this->Settings_Index($this->Settings_Index);
 		$this->Settings_Preview($this->Settings_Preview);
 		$this->Settings_Edit($this->Settings_Edit);
@@ -166,7 +174,19 @@ class hahaha_table_accounts
 					key::IS_FIELD => true,
 					// key::NAME => self::ID,
 				],				
-			],			
+			],	
+			self::CREATED_AT => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					key::NAME => 'createdAt',
+				],				
+			],		
+			self::UPDATED_AT => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					key::NAME => 'updatedAt',
+				],				
+			],				
         ];
         
     }
@@ -203,7 +223,7 @@ class hahaha_table_accounts
 				key::CLASSES => [
 					class_::DISABLED => true,
 				],
-				key::PLACEHOLDER => __('backend.id') . " : " . "integer",
+				key::PLACEHOLDER => __('backend.help') . " : " . "integer",
 			],
 			self::ACCOUNT => [					// 帳號不可以改
 				key::ID => self::IDENTIFY . "_" . self::ACCOUNT,
@@ -215,7 +235,7 @@ class hahaha_table_accounts
 				key::CLASSES => [
 					class_::DISABLED => true,
 				],
-				key::PLACEHOLDER => __('backend.account') . " : " . "hahaha",
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD => [
 				key::ID => self::IDENTIFY . "_" . self::PASSWORD,
@@ -224,25 +244,25 @@ class hahaha_table_accounts
 				],
 				key::TITLE => __('backend.password'),
 				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.password') . " : " . "hahaha",
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_CONFIRM => [
 				key::ID => self::IDENTIFY . "_" . self::PASSWORD_CONFIRM,
 				key::TITLE => __('backend.password_confirm'),
 				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.password_confirm') . " : " . "hahaha",
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW => [
 				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW,
 				key::TITLE => __('backend.password_new'),
 				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.password_new') . " : " . "hahaha",
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW_CONFIRM => [
 				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW_CONFIRM,
-				key::TITLE => __('backend.password_new_confirm'),
+				key::TITLE => __('backend.password_confirm_new'),
 				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.password_new_confirm') . " : " . "hahaha",
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::EMAIL => [
 				key::ID => self::IDENTIFY . "_" . self::EMAIL,
@@ -252,7 +272,7 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.email'),
 				key::TYPE => type::TEXT,
 				key::VALIDATE => validate::EMAIL,
-				key::PLACEHOLDER => __('backend.email') . " : " . "hahaha0417@hotmail.com",				
+				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha0417@hotmail.com",				
 			],
 			self::GENDER => [
 				key::ID => self::IDENTIFY . "_" . self::GENDER,
@@ -272,12 +292,13 @@ class hahaha_table_accounts
 				key::ACTIONS => [
 					action::AUTO_UPDATE => true,
 				],	
-				key::PLACEHOLDER => __('backend.status') . " : " . "-1 停權 0 為驗證 1 驗證",	
+				key::PLACEHOLDER => __('backend.help') . " : " . "-1 停權 0 未驗證 1 驗證",	
 			],
 			self::CREATED_AT => [
 				key::ID => self::IDENTIFY . "_" . self::CREATED_AT,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
+					key::NAME => 'createdAt',
 				],
 				key::TITLE => __('backend.created_at'),
 				key::TYPE => type::TEXT,
@@ -289,6 +310,7 @@ class hahaha_table_accounts
 				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
+					key::NAME => 'updatedAt',
 				],
 				key::TITLE => __('backend.updated_at'),
 				key::TYPE => type::TEXT,
@@ -301,6 +323,11 @@ class hahaha_table_accounts
 				key::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
 				key::TITLE => __('backend.selected'),
 				key::TYPE => type::CHECKBOX_SELECTED,
+			],
+			self::PREPEND_DETAIL => [
+				key::ID => self::IDENTIFY . "_" . self::PREPEND_DETAIL,
+				key::TITLE => __('backend.detail'),
+				key::TYPE => type::BUTTON_ICON,
 			],
 			self::PANEL_DETAIL => [
 				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
@@ -342,11 +369,11 @@ class hahaha_table_accounts
 			//
 			self::BUTTON_ADD => [
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
-				key::TITLE => __('backend.new'),
+				key::TITLE => __('backend.add'),
 				key::TYPE => type::BUTTON_ICON,
 				// class
 				key::CLASSES => [
-					self::IDENTIFY . "_" . self::BUTTON_ADD,
+					self::IDENTIFY . "_" . self::BUTTON_ADD => true,
 				],
 				key::CLASSES_1 => [
 					"btn btn-dark" => true,
@@ -365,7 +392,7 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.selected_delete'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
+					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE => true,
 				],
 				key::CLASSES_1 => [
 					"btn btn-dark" => true,
@@ -383,7 +410,7 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.all_save'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
+					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
 				key::CLASSES_1 => [
 					"btn btn-dark" => true,
@@ -401,7 +428,7 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.all_refresh'),
 				key::TYPE => type::BUTTON_ICON,
 				key::CLASSES => [
-					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
+					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
 				key::CLASSES_1 => [
 					"btn btn-dark" => true,
@@ -409,6 +436,67 @@ class hahaha_table_accounts
 				key::CLASSES_2 => [
 					"fas fa-refresh" => true,
 				],
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			//
+			self::PANEL_ADD_BUTTON_ADD => [
+				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+				key::TITLE => __('backend.add'),
+				key::TYPE => type::BUTTON_ICON,
+				// class
+				key::CLASSES => [
+					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD => true,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark" => true,
+				],
+				key::CLASSES_2 => [
+					"fas fa-plus" => true,
+				],
+				// class
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			self::PANEL_ADD_BUTTON_CANCEL => [
+				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+				key::TITLE => __('backend.cancel'),
+				key::TYPE => type::BUTTON_ICON,
+				// class
+				key::CLASSES => [
+					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL => true,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark" => true,
+				],
+				key::CLASSES_2 => [
+					"fas fa-times" => true,
+				],
+				// class
+				key::STYLES => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+			],
+			self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
+				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
+				key::TITLE => __('backend.cancel'),
+				key::TYPE => type::BUTTON_ICON,
+				// class
+				key::CLASSES => [
+					self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => true,
+				],
+				key::CLASSES_1 => [
+					"btn btn-dark" => true,
+				],
+				key::CLASSES_2 => [
+					"fas fa-times" => true,
+				],
+				// class
 				key::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
@@ -514,7 +602,7 @@ class hahaha_table_accounts
 				// ],
 
 				// --------------------------------------------------- 
-				// 主要區塊
+				// 主要區塊 - 多筆 - table
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
@@ -541,19 +629,30 @@ class hahaha_table_accounts
 								key::TITLE => __('backend.account'),
 								key::TYPE => type::TEXT,
 							],
-							self::PANEL_DETAIL => [
+							self::PREPEND_DETAIL => [
 								key::TITLE => __('backend.detail'),
-								key::TYPE => type::PANEL,
-								key::CLASSES => [
-									"index_item_prepend_" . self::ACCOUNT => true,
+								key::TYPE => type::BUTTON_ICON,
+								key::CLASSES_1 => [
+									"btn-secondary input-group-text" => true,
+								],
+								key::CLASSES_2 => [
+									"fab fa-elementor" => true,
 								],
 								key::STYLES => [
 									// 這設定label的style沒有錯
 									"font-size" => "1.5em", 
 									"color" => "Tomato",
 								],
-								// 如有要子屬性，則新增，key::Nodes，裡面遞迴，不一定要按照HTML方式建立結構，因為，不一定每個地方都要設參數
-
+							],
+							self::PANEL_DETAIL => [
+								key::TITLE => __('backend.detail'),
+								key::TYPE => type::PANEL,
+								key::ITEMS => [],
+								key::USE_ => use_::B_BLOCK,
+								key::CONTENT => [
+									// 因為前端沒很複雜，這裡簡單寫
+									self::B_PANEL_DETAIL
+								],
 							],
 						],
 						key::STYLES => [
@@ -675,7 +774,7 @@ class hahaha_table_accounts
 				// --------------------------------------------------- 
 
 				// --------------------------------------------------- 
-				// 新增面板
+				// 新增面板 - 單一
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
@@ -716,6 +815,15 @@ class hahaha_table_accounts
 								key::TITLE => __('backend.password'),
 								key::TYPE => type::PASSWORD,
 							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.password_confirm'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
 							self::PASSWORD_CONFIRM => [
 								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD_CONFIRM,
 								key::TITLE => __('backend.password_confirm'),
@@ -748,8 +856,6 @@ class hahaha_table_accounts
 						key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
-							
-
 							self::GENDER => [
 								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER,
 								key::DB_FIELD => [
@@ -757,13 +863,27 @@ class hahaha_table_accounts
 								],
 								key::TITLE => __('backend.gender'),
 								key::TYPE => type::RADIOBOX,
+								key::STYLES_1 => [
+									"height" => "40px"
+								],
+								
+								key::OPTIONS => [
+									[
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
+										key::TITLE => __('backend.male'),
+									],
+									[
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "female",
+										key::TITLE => __('backend.female'),
+									],
+								],
 							],
 						],
 						key::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.email'),
+						key::TITLE => __('backend.status'),
 						key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
@@ -782,20 +902,123 @@ class hahaha_table_accounts
 						key::STYLES => [
 						],
 					],
+					[
+						// key::TITLE => __('backend.item'),
+						key::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PANEL_ADD_BUTTON_ADD => [
+								// 因為ID重複，所以加上Top
+								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+							],
+							self::PANEL_ADD_BUTTON_CANCEL => [
+								// 因為ID重複，所以加上Top
+								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+							],
+						],
+						key::STYLES => [
+						],
+					],				
 				],
                 // --------------------------------------------------- 
-				// 細節面板
+				// 細節面板 - 多筆 - table附加面板
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
                 self::B_PANEL_DETAIL => [
-					
+					// 不一定應該在這邊提供更改密碼，這裡是為了打架構測試所以才加的
+					[
+						key::TITLE => __('backend.password_new'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PASSWORD_NEW => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.password_new_confirm'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PASSWORD_CONFIRM => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW_CONFIRM,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						// key::TITLE => __('backend.item'),
+						key::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
+								// 因為ID重複，所以加上Top
+								key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
+							],
+						],
+						key::STYLES => [
+						],
+					],	
+					//
+					[
+						key::TITLE => __('backend.gender'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::GENDER => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER,
+								key::TYPE => type::RADIOBOX,
+								key::STYLES_1 => [
+									"height" => "40px"
+								],
+								
+								key::OPTIONS => [
+									[
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
+										key::TITLE => __('backend.male'),
+									],
+									[
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
+										key::TITLE => __('backend.female'),
+									],
+								],
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.created_at'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::CREATED_AT => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.updated_at'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::UPDATED_AT => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+							],
+						],
+						key::STYLES => [
+						],
+					],
 				],
-				
-              
 			],
         ];
-        
 	}
 
 	/*

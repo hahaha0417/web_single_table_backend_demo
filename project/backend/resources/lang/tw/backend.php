@@ -46,7 +46,8 @@ return [
     'db_table' => '資料表',
     'id' => '編號',
     'account' => '帳號',
-    'password' => '確認密碼',
+    'password' => '密碼',
+    'password_confirm' => '確認密碼',
     'password_new' => '新密碼',
     'password_new_confirm' => '確認新密碼',
     'email' => '信箱',
@@ -58,7 +59,7 @@ return [
     'selected' => '選擇',
     'detail' => '細節',
     'edit' => '編輯',
-    'new' => '新增',
+    'new' => '新',
     'selected_delete' => '選擇刪除',
     'all_save' => '全部儲存',
     'all_refresh' => '全部刷新',
@@ -66,6 +67,11 @@ return [
     'button' => '按鈕',
     'item' => '項目',
     'all' => '全部',
+    'male' => '男',
+    'female' => '女',
+    'add' => '新增', 
+    'cancel' => '取消', 
+    'help' => '說明',
 
 ];
  

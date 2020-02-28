@@ -56,7 +56,7 @@ class table_index_css extends hahaha_generator_web_script
         // ------------------------------------------------------------ 
         $this->CSS_Begin($content, $dynamic, $tab, $tab_count);
         // ------------------------------------------------------------ 
-        \p_ha::Line($content, $tab_, '@charset "utf-8"');
+        \p_ha::Line($content, $tab_, '@charset "utf-8";');
         \p_ha::Line($content, $tab_, ' ');
         // ------------------------------------------------------------ 
         $this->Header($content, $dynamic, $tab, $tab_count);  
@@ -93,6 +93,8 @@ class table_index_css extends hahaha_generator_web_script
     public function Class_Index_Item_Panel_Add(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {
         $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $option_ = \pub\hahaha_option::Instance();
+        
         $use_ = &$parameter_->Use;
         // ------------------------------------------------------------ 
         \p_ha::Line($content, $tab, "/* ");
@@ -105,8 +107,8 @@ class table_index_css extends hahaha_generator_web_script
         \p_ha::Line($content, $tab, "background: rgba(190,255,190,0.8); ");
         \p_ha::Line($content, $tab, "position: fixed; ");
         \p_ha::Line($content, $tab, "z-index: 1000; ");
-        \p_ha::Line($content, $tab, "width: 1000px; ");
-        \p_ha::Line($content, $tab, "height: 400px; ");
+        \p_ha::Line($content, $tab, "width: {$option_->Project->Backend->Panel_Add->Width}; ");
+        \p_ha::Line($content, $tab, "height: {$option_->Project->Backend->Panel_Add->Height}; ");
         \p_ha::Line($content, $tab, "left: 0; ");
         \p_ha::Line($content, $tab, "top: 0; ");
         \p_ha::Line($content, $tab, "display: none; ");
@@ -124,6 +126,7 @@ class table_index_css extends hahaha_generator_web_script
         \p_ha::Line($content, $tab, "padding: 25px 25px; ");
         \p_ha::Line($content, $tab, "float: left; ");
         \p_ha::Line($content, $tab, "position: relative; ");
+        \p_ha::Line($content, $tab, "overflow: auto; ");
         \p_ha::Line($content, $tab, "width: 100%; ");
         \p_ha::Line($content, $tab, "height: 100%; ");
         // ------------------------------------------------------------    

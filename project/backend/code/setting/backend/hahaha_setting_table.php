@@ -90,7 +90,7 @@ class hahaha_setting_table
 		$Routes = [
 			"hahaha" => [
 				"group" => [
-					"middleware" => ["web", "backend.login"],
+				"middleware" => ["web", "backend.login"],
 					"prefix" => "backend/table",
 					"namespace" => "Backend\Table",
 				],

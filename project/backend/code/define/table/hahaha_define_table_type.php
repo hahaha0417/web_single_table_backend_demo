@@ -39,10 +39,12 @@ class hahaha_define_table_type
     // -------------------------------------- 
 
     // -------------------------------------- 
-    // b_block_normal
+    // b_block
     // -------------------------------------- 
     // -------------------------------------- 
     const B_BLOCK_NORMAL = "b_block_normal";
+
+    const B_BLOCK_SHORT_WRAP = "b_block_short_wrap";
     const B_BLOCK_SEPERATOR = "b_block_seperator";
 
     // -------------------------------------- 
@@ -117,9 +119,30 @@ class hahaha_define_table_type
     // -------------------------------------- 
     const EDITOR = "editor";
     // -------------------------------------- 
+
+    // -------------------------------------- 
     // panel
+    // --------------------------------------
+    // key::USE => use_::B_BLOCK,
+    // key::CONTENT => [self::B_PANEL_ADD],
+    // key::USE => use_::SETTING,
+    // key::CONTENT => [\XXX\hahaha_table_setting_panel_detail::class, 'hahaha'],
+    // mix 沒事不要用，會亂，請先說清楚要幹嘛
+    // 確認製程上沒問題才放行
+    // key::USE => use::MIX;
+    // key::CONTENT => [
+    // 	[
+    // 		use::B_BLOCK => self::B_PANEL_ADD
+    // 	],
+    // 	[
+    // 		use::SETTING => \XXX\hahaha_table_setting_panel_detail::class, 'hahaha'
+    // 	],
+    // ],
+    //
     // -------------------------------------- 
     const PANEL = "panel";
+    // -------------------------------------- 
+
     // -------------------------------------- 
     // seperator
     // -------------------------------------- 

@@ -30,7 +30,17 @@ class hahaha_option
 	*/
 	public function Initial_Ha($option)
 	{		
+		$option->Project = new \stdClass;
+
 		
+		// project/front
+		$option->Project->Front = new \stdClass;
+		// project/backend
+		$option->Project->Backend = new \stdClass;
+		$option->Project->Backend->Panel_Add = new \stdClass;
+		$option->Project->Backend->Panel_Add->Width = "97%";
+		$option->Project->Backend->Panel_Add->Height = "97%";
+	
 	}
 }
 

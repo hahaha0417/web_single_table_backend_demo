@@ -70,7 +70,7 @@ class hahaha_system_setting
 		$system_setting->Project = new \stdClass;
 
 		$url = "http://127.0.0.1";
-		if(!empty($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['REQUEST_NAME']))
+		if(!empty($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['SERVER_NAME']))
 		{
 			$url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'];
 		}

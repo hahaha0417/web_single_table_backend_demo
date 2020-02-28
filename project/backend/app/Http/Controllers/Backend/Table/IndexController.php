@@ -95,7 +95,7 @@ class IndexController extends BaseIndexController
         $data_list = [];
         
         $data_link = [];
-
+        //dd($target_table);
         $result_ = $target_repository_->findByPagination($data_list, 
             $data_link,
             $target_setting_table, 

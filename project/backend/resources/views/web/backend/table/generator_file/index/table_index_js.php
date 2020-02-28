@@ -79,52 +79,59 @@ class table_index_js extends hahaha_generator_web_script
     public function Script_Custom(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {
         $parameter_ = \hahaha\hahaha_parameter::Instance();
-        // ------------------------------------------------------------ 
+        // ------------------------------------------------------------
+        // Add Button & Add Panel
+        // ------------------------------------------------------------   
         $this->Class_Index_Item_Button_Add($content, $dynamic, $tab, $tab_count); 
-        // ------------------------------------------------------------    
+        $this->Class_Index_Item_Panel_Add_Button_Cancel($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------
+        // Table
+        // ------------------------------------------------------------   
+
+        // ------------------------------------------------------------   
+        // Window
+        // ------------------------------------------------------------  
+        $this->Window_Resize($content, $dynamic, $tab, $tab_count); 
+        
     }
 
+    // ------------------------------------------------------------ 
+    // click
+    // ------------------------------------------------------------ 
     public function Class_Index_Item_Button_Add(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {
         $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $option_ = \pub\hahaha_option::Instance();
         $use_ = &$parameter_->Use;
+        $panel_add_width_ = str_replace('%', '', $option_->Project->Backend->Panel_Add->Width) / 100;
+        $panel_add_height_ = str_replace('%', '', $option_->Project->Backend->Panel_Add->Height) / 100;
         //
-        // $target_table_ = &$parameter_->Target_Table;
-        // $target_setting_table_ = &$parameter_->Target_Setting_Table;
-        // // table class 名
-        // $target_table_class_ = $target_setting_table_['table'];
         // ------------------------------------------------------------         
         $this->jQuery_Ready_Begin($content, $dynamic, $tab, $tab_count); 
         // ------------------------------------------------------------ 
-        // 不要直接用物件取得const，假設物件刪除或其他，變成要重新改，不會比較省力
-        // 取得table元件有兩種方法
-        // dd($target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP . "_" . $target_table_class_::BUTTON_ADD);
-        // dd($target_table_->Index[$target_table_class_::B_TOP][0][key::ITEMS][$button_identify_][key::ID]);
-        // 用第二種會查死
-        // 基本上直接用上面那種，因為id & class是唯一，如果元件換位置，ID要跟著改，這裡代稱也要順便改，
-        // 盡量不要直接寫字串(當然臨時是沒問題的)，因為改完後，要查到對應的字串進行正確的修改，
-        // 很麻煩，你怎麼知道哪邊哪個欄位，對應哪個表的哪個欄位，哪個ID是由那些const組成，直接給const比較好對應，避免要查const
-    
+
         // ------------------------------------------------------------ 
         // click
         // ------------------------------------------------------------ 
-        \p_ha::Line($content, $tab, "$('$use_->Class_Button_Add_Identify').click(function() { ");
-        // add_panel
-        
+        \p_ha::Line($content, $tab, "$('{$use_->Class_Button_Add_Identify}').click(function() { ");
+        \p_ha::Tab($tab, ++$tab_count); 
         // ------------------------------------------------------------ 
         // 置中
-    //    $("#index_item_add_panel").css("left", ($(window).width() - $("#index_item_add_panel").width()) / 2);
-    //    $("#index_item_add_panel").css("top", ($(window).height() - $("#index_item_add_panel").height()) / 2);
-//    dd($use_->Id_Add_Panel_Identify_); 
-     //   $items_ = 
-// dd($add_panel_);
-
-        // \p_ha::Line($content, $tab, "alert(4); ");
-
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('width', $(window).width() * {$panel_add_width_}); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('height', $(window).height() * {$panel_add_height_}); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('left', ($(window).width() - $('{$use_->Id_Panel_Add_Identify}').width()) / 2); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('top', ($(window).height() - $('{$use_->Id_Panel_Add_Identify}').height()) / 2); ");
+        // 顯示    
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').show(); ");
+        \p_ha::Tab($tab, --$tab_count); 
         \p_ha::Line($content, $tab, "}); ");
+        // ------------------------------------------------------------ 
+     
         // ------------------------------------------------------------ 
         $this->jQuery_Ready_End($content, $dynamic, $tab, $tab_count); 
         // ------------------------------------------------------------   
+
+
         
         // 
         //     var index = $("#index_page_select").attr("index");
@@ -200,7 +207,73 @@ class table_index_js extends hahaha_generator_web_script
         //     // } 
     
         // 
-        
+      
+     
+    }
+
+    // ------------------------------------------------------------ 
+    // panel add button cancel
+    // ------------------------------------------------------------ 
+    public function Class_Index_Item_Panel_Add_Button_Cancel(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    {
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $use_ = &$parameter_->Use;
+        //
+
+        // ------------------------------------------------------------         
+        $this->jQuery_Ready_Begin($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------ 
+
+        // ------------------------------------------------------------ 
+        // click
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, "$('{$use_->Class_Panel_Add_Button_Cancel_Identify}').click(function() { ");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // 隱藏
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').hide(); ");
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "}); ");
+
+        // ------------------------------------------------------------ 
+        $this->jQuery_Ready_End($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------   
+
+    }
+
+    // ------------------------------------------------------------ 
+    // ------------------------------------------------------------ 
+    // Window
+    // ------------------------------------------------------------ 
+    // ------------------------------------------------------------ 
+
+    // ------------------------------------------------------------ 
+    // resize
+    // ------------------------------------------------------------ 
+    public function Window_Resize(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    {
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $option_ = \pub\hahaha_option::Instance();
+        $use_ = &$parameter_->Use;
+        $panel_add_width_ = str_replace('%', '', $option_->Project->Backend->Panel_Add->Width) / 100;
+        $panel_add_height_ = str_replace('%', '', $option_->Project->Backend->Panel_Add->Height) / 100;
+        //
+
+        // ------------------------------------------------------------         
+        $this->jQuery_Ready_Begin($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, "$(window).resize(function() { ");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // 置中
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('width', $(window).width() * {$panel_add_width_}); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('height', $(window).height() * {$panel_add_height_}); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('left', ($(window).width() - $('{$use_->Id_Panel_Add_Identify}').width()) / 2); ");
+        \p_ha::Line($content, $tab, "$('{$use_->Id_Panel_Add_Identify}').css('top', ($(window).height() - $('{$use_->Id_Panel_Add_Identify}').height()) / 2); ");
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "}); ");
+        // ------------------------------------------------------------ 
+        $this->jQuery_Ready_End($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------   
+
     }
 
 }
