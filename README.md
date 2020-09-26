@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png' width='35%'><img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png' width='50%' style='margin-right=0px;'>
+<img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png' width='35%' style='padding-left:50px'><img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png' width='50%' style='padding-left:50px'>
 
 <br>
 <br>
