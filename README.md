@@ -7,8 +7,10 @@
 <br>
 <br>
 
-![bbb](https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png){: width=50% style="float:left; padding:16px"}
-![aaa](https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png){: width=50% style="float:right; padding:16px"}
+.left_image { float:left; }
+.right_image { float:right; }
+<img class='left_image' src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png' width=50%><img class='right_image' src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png' width=50%> 
+
 
 <br>
 <br>
