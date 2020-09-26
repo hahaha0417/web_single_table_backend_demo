@@ -8,7 +8,7 @@
 <br>
 
 
-<img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png' width='50%'><img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png' width=530%'> 
+<img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/laravel.png' width='50%'><img src='https://github.com/hahaha0417/web_single_table_backend_demo/blob/master/p_h_p%20framework.png' width=50%'> 
 
 
 <br>
