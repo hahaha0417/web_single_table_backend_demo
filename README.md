@@ -1,6 +1,8 @@
 # web_single_table_backend
 單表式後台網站
 
+License MIT
+
 包含單表式後台
 依據單表式後台，套版或建立API
 
