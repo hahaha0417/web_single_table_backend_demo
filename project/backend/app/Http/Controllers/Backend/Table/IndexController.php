@@ -63,7 +63,7 @@ class IndexController extends BaseIndexController
         $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
         $global_pub_ = \pub\hahaha_global::Instance();
         $project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
-
+ 
         $target_setting_table = null;
         $url_token_ = explode("?", $_SERVER['REQUEST_URI']);
         foreach($tables_ as $key => &$table)

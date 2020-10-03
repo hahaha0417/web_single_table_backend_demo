@@ -50,6 +50,7 @@ return [
     'password_confirm' => '確認密碼',
     'password_new' => '新密碼',
     'password_new_confirm' => '確認新密碼',
+    'change_password' => '更改密碼',
     'email' => '信箱',
     'gender' => '性別',
     'status' => '狀態',

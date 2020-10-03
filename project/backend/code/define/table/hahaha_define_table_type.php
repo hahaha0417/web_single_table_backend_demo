@@ -76,6 +76,7 @@ class hahaha_define_table_type
     // label
     // -------------------------------------- 
     const LABEL = "label";
+    const LABEL_BY_OPTION_VALUE = "label_by_option_value";
     // -------------------------------------- 
     // text
     // --------------------------------------     

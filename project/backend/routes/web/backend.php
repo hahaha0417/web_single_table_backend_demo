@@ -42,6 +42,7 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
     Route::get('/cover', 'IndexController@cover');
     Route::get('/note', 'IndexController@note');
     // 預設頁面路徑
+    // http://127.0.0.1:8704/backend/page/backend_accounts_list，靜態頁面
     Route::get('/page/{name}', 'IndexController@page');   
 });
 //------------------------------------------------------------------------------------------------------
@@ -63,6 +64,8 @@ foreach($stages_ as $key => &$stage)
     {
         // 有設定，格式相同，所以使用group
         Route::group($routes_['group'], function() use($tables_, $controllers_) {
+            // http://127.0.0.1:8704/backend/table/backend/accounts/list，內部頁面
+            // ---------------------------------------------------------- 
             // 每個table為一個站，目前格式一樣/{stage}/{class}/{item}/(這樣是一個node)
             // 註冊動態路由
             // stage - 站 class - 資料表分類 item - 資料表名

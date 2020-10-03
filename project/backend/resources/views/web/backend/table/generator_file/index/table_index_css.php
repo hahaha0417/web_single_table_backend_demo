@@ -9,6 +9,8 @@ use hahaha\define\hahaha_define_table_class as class_;
 
 /*
 單表式後台generator，css腳本
+
+注意 : 請直接看生產出來的檔案，如果要看Code的話，這裡不要求一定要排版，因為排版後其實也是看不懂(因為會串接變數)
 */
 class table_index_css extends hahaha_generator_web_script
 {
@@ -84,10 +86,9 @@ class table_index_css extends hahaha_generator_web_script
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         // ------------------------------------------------------------ 
         $this->Class_Index_Item_Panel_Add($content, $dynamic, $tab, $tab_count);   
+        $this->Class_Index_Item_Panel_Detail($content, $dynamic, $tab, $tab_count);  
         // ------------------------------------------------------------  
 
-
-   
     }
 
     public function Class_Index_Item_Panel_Add(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
@@ -171,6 +172,98 @@ class table_index_css extends hahaha_generator_web_script
 
         // ------------------------------------------------------------ 
         \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Add_Identify} " . "." . class_::EXIST_CHECK_ERROR . " {");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "display: none; ");
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------  
+
+    }
+
+    public function Class_Index_Item_Panel_Detail(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    {
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $option_ = \pub\hahaha_option::Instance();
+        
+        $use_ = &$parameter_->Use;
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, "/* ");
+        \p_ha::Line($content, $tab, "新增面板 ");
+        \p_ha::Line($content, $tab, "*/ ");
+        // ------------------------------------------------------------              
+        \p_ha::Line($content, $tab, ".index_content {$use_->Id_Panel_Detail_Identify} { ");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "background: rgba(190,255,190,0.8); ");
+        \p_ha::Line($content, $tab, "position: fixed; ");
+        \p_ha::Line($content, $tab, "z-index: 1000; ");
+        \p_ha::Line($content, $tab, "width: {$option_->Project->Backend->Panel_Detail->Width}; ");
+        \p_ha::Line($content, $tab, "height: {$option_->Project->Backend->Panel_Detail->Height}; ");
+        \p_ha::Line($content, $tab, "left: {$option_->Project->Backend->Panel_Detail->Left}; ");
+        \p_ha::Line($content, $tab, "top: 0px; ");
+        \p_ha::Line($content, $tab, "display: none; ");
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------      
+
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} {$use_->Class_Panel_Detail_Identify}_content {");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "background: rgba(190,255,190,0.8); ");
+        \p_ha::Line($content, $tab, "padding: 25px 25px; ");
+        \p_ha::Line($content, $tab, "float: left; ");
+        \p_ha::Line($content, $tab, "position: relative; ");
+        \p_ha::Line($content, $tab, "overflow: auto; ");
+        \p_ha::Line($content, $tab, "width: 100%; ");
+        \p_ha::Line($content, $tab, "height: 100%; ");
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------      
+        
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} {$use_->Class_Panel_Detail_Identify}_content {$use_->Class_Panel_Detail_Identify}_comment {");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "resize: none; ");
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------  
+        
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} {$use_->Class_Panel_Detail_Identify}_content label" . "." . class_::REQUIRED . "::before {");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "content: \" *\"; ");
+        \p_ha::Line($content, $tab, "color: red; ");        
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------  
+
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} " . "." . class_::EXIST_CHECK_SUCCESS . " {");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // ------------------------------------------------------------    
+        \p_ha::Line($content, $tab, "display: none; ");
+        // ------------------------------------------------------------    
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "} ");    
+        \p_ha::Line($content, $tab, " ");    
+        // ------------------------------------------------------------    
+
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} " . "." . class_::EXIST_CHECK_ERROR . " {");
         \p_ha::Tab($tab, ++$tab_count); 
         // ------------------------------------------------------------    
         \p_ha::Line($content, $tab, "display: none; ");

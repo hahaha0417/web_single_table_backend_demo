@@ -119,7 +119,7 @@ class hahaha_generator_web_script extends hahaha_generator_web_script_base
 
         \p_ha::Line($content, $tab_, '/*');
         \p_ha::Line($content, $tab_, '---------------------------------------------------------------------------------------------- ');
-        \p_ha::Line($content, $tab_, 'License : 金融 & 黨國及相關組織禁用，其餘參考MIT');
+        \p_ha::Line($content, $tab_, 'License : MIT');
         \p_ha::Line($content, $tab_, '---------------------------------------------------------------------------- ');
         \p_ha::Line($content, $tab_, ' ');
         \p_ha::Line($content, $tab_, '---------------------------------------------------------------------------------------------- ');

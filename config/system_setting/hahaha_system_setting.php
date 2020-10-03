@@ -13,6 +13,8 @@ class hahaha_system_setting
 	// 是否初始化 0 no 1 yes
 	public $Initial;
 
+	
+
 	function __construct()
 	{
 		$this->Initial = false;
@@ -214,6 +216,11 @@ class hahaha_system_setting
 		{
 			$system_setting->Project->Backend->Port = "8544";
 		}
+		//
+		$system_setting->Project->Backend->Generate_Script = new \stdClass;
+		$system_setting->Project->Backend->Generate_Script->Enabled = true;
+		// overwrite是強制覆蓋
+		$system_setting->Project->Backend->Generate_Script->Overwrite = true;
 		//
 		$system_setting->Project->Backend->Node = "/backend";
 		$system_setting->Project->Backend->Images = "images/";

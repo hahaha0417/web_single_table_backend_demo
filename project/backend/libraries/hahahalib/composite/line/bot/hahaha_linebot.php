@@ -92,7 +92,6 @@ class hahaha_linebot
         $channel_secret
     )
     {
-        $option_ = \hahaha\hahaha_option::Instance();
         $this->Linebot_ = new \LINE\LINEBot( 
             new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channel_access_token), 
             ['channelSecret' => $channel_secret]

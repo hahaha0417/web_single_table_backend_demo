@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeder\oublish;
+namespace Seeder\Publish;
 
 use Illuminate\Database\Seeder;
 use DB;

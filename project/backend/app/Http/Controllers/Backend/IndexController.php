@@ -66,15 +66,22 @@ class IndexController extends CommonController
         $nav = &$setting_index_->Nav;
         $menu = &$setting_index_->Menu;
         $tail = &$setting_index_->Tail;
+
+        $temp_name = explode('_', $name);
+        if(is_array($temp_name)) 
+        {
+            $menu_target = $name;
+            $level = count($temp_name);
+        } 
         
         $page_url = \p_ha::V_Url('cover'); 
         // 順便記錄打開順序，目前只有四層
         $menu_open = [];
-        $menu_target = $name;
+        
         foreach($menu as $key => &$value)
         {
             // 第一層
-            if(!empty($value['name']) && $value['name'] == $name)
+            if(!empty($value['name']) && $value['name'] == $name && empty($value['menu']))
             {
                 $page_url = &$value['url']; 
                 // 替換掉default_page預設路徑
@@ -88,7 +95,7 @@ class IndexController extends CommonController
                 // 第二層
                 foreach($value['menu'] as $key2 => &$value2)
                 {
-                    if(!empty($value2['name']) && $value2['name'] == $name)
+                    if(!empty($value2['name']) && $value2['name'] == $name && $level == 1)
                     {
                         $page_url = &$value2['url']; 
                         // 替換掉default_page預設路徑
@@ -102,7 +109,7 @@ class IndexController extends CommonController
                     {
                         foreach($value2['menu'] as $key3 => &$value3)
                         {
-                            if(!empty($value3['name']) && $value3['name'] == $name)
+                            if(!empty($value3['name']) && $value3['name'] == $name && $level == 2)
                             {
                                 $page_url = &$value3['url']; 
                                 // 替換掉default_page預設路徑
@@ -117,7 +124,7 @@ class IndexController extends CommonController
                             {
                                 foreach($value3['menu'] as $key4 => &$value4)
                                 {
-                                    if(!empty($value4['name']) && $value4['name'] == $name)
+                                    if(!empty($value4['name']) && $value4['name'] == $name && $level == 3)
                                     {
                                         $page_url = &$value4['url']; 
                                         // 替換掉default_page預設路徑

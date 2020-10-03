@@ -6,15 +6,18 @@ use hahahasublib\hahaha_instance_trait;
 use hahaha\hahaha_table_trait;
 
 use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_key as key;
 use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
 use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_node as node;
 use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+
 
 use EntityManager;
 
@@ -69,9 +72,7 @@ class hahaha_table_accounts
 	//
 	const CHECKBOX_SELECTED = "checkbox_selected";
 	// 滑過顯示PANEL_DETAIL面板的BUTTON_ICON
-	const PREPEND_DETAIL = "prepend_detail";
 	// 產生B_PANEL_DETAIL項目的PANEL_DETAIL
-	const PANEL_DETAIL = "panel_detail";
 	const BUTTON_DELETE = "button_delete";
 	const BUTTON_EDIT = "button_edit";
 	//
@@ -82,6 +83,13 @@ class hahaha_table_accounts
 	//
 	const PANEL_ADD_BUTTON_ADD = self::B_PANEL_ADD . "_" . "button_add";
 	const PANEL_ADD_BUTTON_CANCEL = self::B_PANEL_ADD . "_" . "button_cancel";
+	//
+	const BUTTON_PREPEND_DETAIL = "button_prepend_detail";
+	const PANEL_DETAIL = self::B_PANEL_DETAIL . "_" . "panel_detail";
+	// 
+
+	//
+	//
 	//
 	const PANEL_DETAIL_BUTTON_CHANGE_PASSWORD = self::B_PANEL_DETAIL . "_" . "button_change_password";
 	// ----------------------------------------------- 
@@ -96,6 +104,11 @@ class hahaha_table_accounts
 	settings fields
 	*/
 	public $Settings_Fields = [];
+
+	/*
+	settings options
+	*/
+	public $Settings_Options = [];
 
 	/*
 	settings index
@@ -125,10 +138,17 @@ class hahaha_table_accounts
 	public function Initial()
 	{
 		// 可以給其他人設定
+		// ---------------------------------------------------- 
+		// 一定要初始化
+		// ---------------------------------------------------- 
 		// 初始化設定檔
 		$this->Settings($this->Settings);
+		$this->Settings_Options($this->Settings_Options);
+		// 
 		$this->Settings_DB_Fields_Addition($this->Settings_DB_Fields_Addition);
 		$this->Settings_Fields($this->Settings_Fields);
+		
+		// ---------------------------------------------------- 
 		// Setting Preset
 		$this->Settings_Index($this->Settings_Index);
 		$this->Settings_Preview($this->Settings_Preview);
@@ -162,6 +182,27 @@ class hahaha_table_accounts
 	}
 
 	/*
+	設定選項
+	*/
+	public function Settings_Options(&$settings_options)
+	{
+		// 對應DB值
+		$settings_options = [
+			self::GENDER => [
+				'male' => [
+					key::VALUE => '1',					
+					key::TITLE => __('backend.male'),
+				],	
+				'female' => [
+					key::VALUE => '0',
+					key::TITLE => __('backend.female'),
+				],
+							
+			],
+		];
+	}
+
+	/*
 	fields - DB table additional fields
 	因為未來要移植php hahaha framework，所以不放在config
 	*/
@@ -172,18 +213,23 @@ class hahaha_table_accounts
 			self::ID => [
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
+					// key::TYPE => db_field_type::STRING,
 					// key::NAME => self::ID,
 				],				
 			],	
 			self::CREATED_AT => [
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
-					key::NAME => 'createdAt',
+					// key::TYPE => db_field_type::DATETIME,
+					// 指定
+					key::NAME => 'createdAt', 
 				],				
 			],		
 			self::UPDATED_AT => [
 				key::DB_FIELD => [
 					key::IS_FIELD => true,
+					// key::TYPE => db_field_type::DATETIME,
+					// 指定
 					key::NAME => 'updatedAt',
 				],				
 			],				
@@ -324,8 +370,9 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.selected'),
 				key::TYPE => type::CHECKBOX_SELECTED,
 			],
-			self::PREPEND_DETAIL => [
-				key::ID => self::IDENTIFY . "_" . self::PREPEND_DETAIL,
+			// ------------------------- 
+			self::BUTTON_PREPEND_DETAIL => [
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
 				key::TITLE => __('backend.detail'),
 				key::TYPE => type::BUTTON_ICON,
 			],
@@ -334,6 +381,7 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.detail'),
 				key::TYPE => type::PANEL,
 			],
+			// ------------------------- 
 			self::BUTTON_DELETE => [
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
 				// 不顯示字
@@ -484,7 +532,7 @@ class hahaha_table_accounts
 			],
 			self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
 				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
-				key::TITLE => __('backend.cancel'),
+				key::TITLE => __('backend.change_password'),
 				key::TYPE => type::BUTTON_ICON,
 				// class
 				key::CLASSES => [
@@ -494,7 +542,7 @@ class hahaha_table_accounts
 					"btn btn-dark" => true,
 				],
 				key::CLASSES_2 => [
-					"fas fa-times" => true,
+					"far fa-arrow-alt-circle-right" => true,
 				],
 				// class
 				key::STYLES => [
@@ -504,7 +552,9 @@ class hahaha_table_accounts
 			],
         ];
         
-    }
+	}
+	
+
     
     /*
 	index - 首頁
@@ -629,7 +679,7 @@ class hahaha_table_accounts
 								key::TITLE => __('backend.account'),
 								key::TYPE => type::TEXT,
 							],
-							self::PREPEND_DETAIL => [
+							self::BUTTON_PREPEND_DETAIL => [
 								key::TITLE => __('backend.detail'),
 								key::TYPE => type::BUTTON_ICON,
 								key::CLASSES_1 => [
@@ -678,7 +728,17 @@ class hahaha_table_accounts
 						key::GROUP => group::INPUT_GROUP,
 						key::ITEMS => [
 							self::GENDER => [
-								key::TYPE => type::LABEL,
+								 key::TYPE => type::LABEL_BY_OPTION_VALUE,
+								// key::TYPE => type::RADIOBOX,
+								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+									"female" => [
+										key::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "female",
+									],
+									"male" => [
+										key::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "male",
+									],
+									
+								]),
 								key::STYLES => [
 									"width" => "45px",
 								],
@@ -686,6 +746,7 @@ class hahaha_table_accounts
 						],
 						key::STYLES => [
 							"width" => "45px",
+							// "width" => "180px",
 						],
 					],
 					[
@@ -865,18 +926,16 @@ class hahaha_table_accounts
 								key::TYPE => type::RADIOBOX,
 								key::STYLES_1 => [
 									"height" => "40px"
-								],
-								
-								key::OPTIONS => [
-									[
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
-										key::TITLE => __('backend.male'),
-									],
-									[
+								],								
+								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+									"female" => [
 										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "female",
-										key::TITLE => __('backend.female'),
 									],
-								],
+									"male" => [
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
+									],
+									
+								]),
 							],
 						],
 						key::STYLES => [
@@ -952,12 +1011,14 @@ class hahaha_table_accounts
 						],
 					],
 					[
-						// key::TITLE => __('backend.item'),
+						//key::TITLE => __('backend.change_password'),
 						key::TYPE => type::B_BLOCK_SHORT_WRAP,
+						// key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
 							self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
 								// 因為ID重複，所以加上Top
+								key::TITLE => __('backend.change_password'),
 								key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
 							],
 						],
@@ -974,19 +1035,21 @@ class hahaha_table_accounts
 								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER,
 								key::TYPE => type::RADIOBOX,
 								key::STYLES_1 => [
-									"height" => "40px"
+									"height" => "40px",
+									"line-height" => "50px",
 								],
 								
-								key::OPTIONS => [
-									[
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
-										key::TITLE => __('backend.male'),
-									],
-									[
+								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+									"female" => [
 										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
-										key::TITLE => __('backend.female'),
+										key::STYLES_1 => "height:40px;",
 									],
-								],
+									"male" => [
+										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
+										key::STYLES_1 => "height:40px;",
+									],
+									
+								]),
 							],
 						],
 						key::STYLES => [

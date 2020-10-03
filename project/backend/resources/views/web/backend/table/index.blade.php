@@ -5,46 +5,82 @@
 {{-- 決定 : name --}}
 {{-- 
     ----------------------------------------------------------------------------
-    說明 : 
+    說明
     ----------------------------------------------------------------------------   
+    欄位是否要模組化，等草稿定稿再做模組化，避免考慮不完全
+
+    模組化須注意 : 
+    1. 樣式
+    2. 功能
+    3. 現在收入狀況
+    4. 接口
+    5. 變成整個大模塊，並且保證我有任意使用權
     
+    ----------------------------------------------------------------------------
+    注意 
+    ----------------------------------------------------------------------------
+    本專案強調是後台"簡易快速開發"，而不是後台"任意客製化"，不要做錯東西
+    這裡強調"模組化可以放reference"(需提供正常運作保證)，但是"實際開發不一定要用reference"(由開發的人自行承擔)
+    由於目前沒有確定可以正常賺錢，因此不直接進行獨立的模塊化
+    ----------------------------------------------------------------------------
+    注意 
+    ----------------------------------------------------------------------------
+    模塊後規劃放在laravel single table backend framework內，除非完成了確定不改
+    不然會被人搞，要求要相容舊的接口
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
 <?
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
 use hahaha\define\hahaha_define_table_direction as direction;
 use hahaha\define\hahaha_define_table_group as group;
 use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
 
 <?
 $target_table_class_ = $target_setting_table['table'];
+// 這從controller傳來
 $parameter_ = \hahaha\hahaha_parameter::Instance();
 $use_ = &$parameter_->Use;
 //
 $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
+$target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);                                                                                        
 // table class 名
 $target_table_class_ = $target_setting_table_['table'];
 //
 $use_->Identify = $target_table_class_::IDENTIFY;
 $use_->Class_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_ADD;
-
+// -------------------------------------------------- 
 $use_->Id_Panel_Add_Button_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_ADD;
 $use_->Class_Panel_Add_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_ADD;
 $use_->Id_Panel_Add_Button_Cancel_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
 $use_->Class_Panel_Add_Button_Cancel_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
 
 $use_->Panel_Add_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
-$use_->Id_Panel_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
+$use_->Id_Panel_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD; 
 $use_->Class_Panel_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
 $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
+// -------------------------------------------------- 
+$use_->Prepend_Detail_Button_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
+$use_->Id_Prepend_Detail_Button_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
+$use_->Class_Prepend_Detail_Button_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
 
+$use_->Panel_Detail_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
+$use_->Id_Panel_Detail_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
+$use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
+// $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAIL];
+// -------------------------------------------------- 
 ?>
 
 <!DOCTYPE html>
@@ -94,31 +130,52 @@ $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
         
         {{-- 自動生成文件 --}}
         <?
-            // generator 
-            $list_ = [
-                \hahaha\backend\table_index_css::Instance(),         
-                \hahaha\backend\table_index_js::Instance(),
-            ];
-            // 必須初始化，不然沒指標
-            $static_content_ = [];
-            $dynamic_content_ = [];
-            //
-            $generator_ = \hahaha\hahaha_generator_web::Instance();
-        
-            $generator_->Generate($list_,
-                $static_content_,
-                $dynamic_content_
-            );
             $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
+            if($system_setting_pub_->Project->Backend->Generate_Script->Enabled)
+            {
+                // generator 
+                $list_ = [
+                    \hahaha\backend\table_index_css::Instance(),         
+                    \hahaha\backend\table_index_js::Instance(),
+                ];
+                // 必須初始化，不然沒指標 
+                $static_content_ = [];
+                $dynamic_content_ = [];
+                //
+                $generator_ = \hahaha\hahaha_generator_web::Instance();
+                
+                $table_file_ = $system_setting_pub_->Project->Backend->Public . "/" . $system_setting_pub_->Project->Backend->Assets . 'web/backend/table/index/table';
+                $file_list_ = [
+                    $table_file_ . '/' . $target_table_identify . '.css',
+                    $table_file_ . '/' . $target_table_identify . '.js',
+                ];  
+                
+                if(!$system_setting_pub_->Project->Backend->Generate_Script->Overwrite)
+                {
+                    foreach($file_list_ as $key => $file)
+                    {
+                        if(file_exists($file))  
+                        {
+                            // 已經有就不處理，unset
+                            unset($list_[$key]);
+                            unset($file_list_[$key]);
+                        }                  
+                    }
+                }
+                
+                if(!empty($file_list_))
+                {
+                    $generator_->Generate($list_,
+                        $static_content_,
+                        $dynamic_content_
+                    ); 
+                    $generator_->Save($static_content_, 
+                        $file_list_
+                    );
+                }
+                
+            }
             
-            $table_file_ = $system_setting_pub_->Project->Backend->Public . "/" . $system_setting_pub_->Project->Backend->Assets . 'web/backend/table/index/table';
-            $file_list_ = [
-                $table_file_ . '/' . $target_table_identify . '.css',
-                $table_file_ . '/' . $target_table_identify . '.js',
-            ];        
-            $generator_->Save($static_content_, 
-                $file_list_
-            );
             // 注意 : CSS必須在index.css前面，JS也必須在index.js前面，以進行覆蓋
             // 其他模組化的，等到我的框架時，再用我的模組，統一前置
             // $generator_->Render($dynamic_content_);
@@ -169,6 +226,9 @@ $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
                 /* 字太長延長 */
                 width: 400px;
             }
+
+            
+
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
     </head>
@@ -249,218 +309,17 @@ $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <div class="index_result_wrap">
                     <div class="index_result_content">
-                        <div id="{{$use_->Panel_Add_Identify}}" class="{{$use_->Panel_Add_Identify}}">
-                            <div class="{{$use_->Panel_Add_Identify}}_content">
-                                @foreach($use_->Panel_Add as $key_item => $item)  
-                                    @if(!empty($item[key::GROUP]))
-                                        @if($item[key::GROUP] == group::FORM_GROUP_ROW) 
-                                            <div class="form-group row">
-                                                @if($item[key::TYPE] == type::B_BLOCK_SHORT_WRAP) 
-                                                    <div class="short_wrap">
-                                                @endif
-                                                @foreach($item[key::ITEMS] as $key_field => $field)  
-                                                    @if($field[key::TYPE] == type::TEXT)   
-                                                        <label for="{{$field[key::ID]}}" 
-                                                            @if(!empty($field[key::CLASSES_1])) 
-                                                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                                                            @else 
-                                                                class="col-sm-3 col-form-label" 
-                                                            @endif    
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}_label" 
-                                                            @endif 
-                                                        >{{$field[key::TITLE]}} :    
-                                                        </label>                                                            
-                                                        <input type="text" 
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}" 
-                                                            @endif 
-                                                            @if(!empty($field[key::STYLES])) 
-                                                                style="{{$field[key::STYLES]}}" 
-                                                            @endif 
-                                                            type="text" 
-                                                            @if(!empty($field[key::CLASSES])) 
-                                                                class="{{$field[key::CLASSES]}} form-control col-sm-4" 
-                                                            @else 
-                                                                class="form-control col-sm-4" 
-                                                            @endif    
-                                                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                                                @else 
-                                                                    name="{{$key_field}}"
-                                                                @endif
-                                                            @else
-                                                            @endif   
-                                                            @if(!empty($field[key::PLACEHOLDER])) 
-                                                                placeholder="{{$field[key::PLACEHOLDER]}}" 
-                                                            @else 
-                                                                placeholder="" 
-                                                            @endif   
-                                                            value=""
-                                                        >
-                                                    @elseif($field[key::TYPE] == type::TEXT_EXIST_CHECK)
-                                                        <? // 有Exist檢查 ?>
-                                                        <label for="{{$field[key::ID]}}" 
-                                                            @if(!empty($field[key::CLASSES_1])) 
-                                                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                                                            @else 
-                                                                class="col-sm-3 col-form-label" 
-                                                            @endif    
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}_label" 
-                                                            @endif 
-                                                        >{{$field[key::TITLE]}} :    
-                                                        </label>                                                            
-                                                        <input type="text" 
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}" 
-                                                            @endif 
-                                                            @if(!empty($field[key::STYLES])) 
-                                                                style="{{$field[key::STYLES]}}" 
-                                                            @endif 
-                                                            type="text" 
-                                                            @if(!empty($field[key::CLASSES])) 
-                                                                class="{{$field[key::CLASSES]}} form-control col-sm-4" 
-                                                            @else 
-                                                                class="form-control col-sm-4" 
-                                                            @endif    
-                                                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                                                @else 
-                                                                    name="{{$key_field}}"
-                                                                @endif
-                                                            @else
-                                                            @endif   
-                                                            @if(!empty($field[key::PLACEHOLDER])) 
-                                                                placeholder="{{$field[key::PLACEHOLDER]}}" 
-                                                            @else 
-                                                                placeholder="" 
-                                                            @endif   
-                                                            value=""
-                                                        >
-                                                        <div id="{{$field[key::ID]}}_exist_check" class="{{class_::EXIST_CHECK_SUCCESS}}">
-                                                            <div style="font-size:1.5em; color:green">
-                                                                <i class="fas fa-check"></i>
-                                                            </div>
-                                                        </div>     
-                                                        <div id="{{$field[key::ID]}}_exist_check_error" class="{{class_::EXIST_CHECK_ERROR}}">
-                                                            <div style="font-size:1.5em; color:red">
-                                                                <i class="fas fa-times"></i>
-                                                            </div>
-                                                        </div> 
-                                                    @elseif($field[key::TYPE] == type::PASSWORD) 
-                                                        <label for="{{$field[key::ID]}}" 
-                                                            @if(!empty($field[key::CLASSES_1])) 
-                                                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                                                            @else 
-                                                                class="col-sm-3 col-form-label" 
-                                                            @endif    
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}_label" 
-                                                            @endif 
-                                                        >{{$field[key::TITLE]}} :    
-                                                        </label>                                                            
-                                                        <input type="password" 
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}" 
-                                                            @endif 
-                                                            @if(!empty($field[key::STYLES])) 
-                                                                style="{{$field[key::STYLES]}}" 
-                                                            @endif 
-                                                            type="text" 
-                                                            @if(!empty($field[key::CLASSES])) 
-                                                                class="{{$field[key::CLASSES]}} form-control col-sm-4" 
-                                                            @else 
-                                                                class="form-control col-sm-4" 
-                                                            @endif    
-                                                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                                                @else 
-                                                                    name="{{$key_field}}"
-                                                                @endif
-                                                            @else
-                                                            @endif   
-                                                            @if(!empty($field[key::PLACEHOLDER])) 
-                                                                placeholder="{{$field[key::PLACEHOLDER]}}" 
-                                                            @else 
-                                                                placeholder="" 
-                                                            @endif   
-                                                            value=""
-                                                        >
-                                                    @elseif($field[key::TYPE] == type::RADIOBOX)   
-                                                        <label for="{{$field[key::ID]}}" 
-                                                            @if(!empty($field[key::CLASSES_1])) 
-                                                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                                                            @else 
-                                                                class="col-sm-3 col-form-label" 
-                                                            @endif    
-                                                            @if(!empty($field[key::ID])) 
-                                                                id="{{$field[key::ID]}}_label" 
-                                                            @endif 
-                                                        >{{$field[key::TITLE]}} :    
-                                                        </label>   
-                                                        @foreach($field[key::OPTIONS] as $key_option => $option)    
-                                                            <label for="{{$option[key::ID]}}" 
-                                                                @if(!empty($field[key::CLASSES_1])) 
-                                                                    class="col-sm-1 col-form-label {{$field[key::CLASSES_1]}}" 
-                                                                @else 
-                                                                    class="col-sm-1 col-form-label" 
-                                                                @endif    
-                                                                @if(!empty($option[key::ID])) 
-                                                                    id="{{$option[key::ID]}}_label" 
-                                                                @endif 
-                                                            >{{$option[key::TITLE]}}    
-                                                            </label>  
-                                                            <input type="radio" 
-                                                                @if(!empty($option[key::ID])) 
-                                                                    id="{{$option[key::ID]}}" 
-                                                                @endif 
-                                                                @if(!empty($option[key::STYLES_1])) 
-                                                                    style="{{$option[key::STYLES_1]}}" 
-                                                                @endif 
-                                                                type="text" 
-                                                                @if(!empty($option[key::CLASSES])) 
-                                                                    class="{{$option[key::CLASSES]}} form-control col-sm-1" 
-                                                                @else 
-                                                                    class="form-control col-sm-1" 
-                                                                @endif    
-                                                                @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                        name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                                                    @else 
-                                                                        name="{{$key_field}}"
-                                                                    @endif
-                                                                @else
-                                                                @endif   
-                                                                @if(!empty($field[key::PLACEHOLDER])) 
-                                                                    placeholder="{{$field[key::PLACEHOLDER]}}" 
-                                                                @else 
-                                                                    placeholder="" 
-                                                                @endif   
-                                                                value=""
-                                                                data-labelauty=" "
-                                                            >
-                                                        @endforeach
-                                                    @elseif($field[key::TYPE] == type::BUTTON_ICON)  
-                                                        <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                                                            <div style="{{$field[key::STYLES]}}">
-                                                                <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                                @if($item[key::TYPE] == type::B_BLOCK_SHORT_WRAP) 
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        @endif
-                                    @endif 
-                                @endforeach
-                            </div>
-                        </div>
+                        <? // -------------------------------------------------------------------------------------------------------------- ?>
+                        <?php 
+                        // 因為模板array會複製，所以用物件傳
+                        $block = new \hahaha\hahaha_parameter;
+                        $block->identify = &$use_->Panel_Add_Identify;
+                        $block->id = &$use_->Id_Panel_Add_Identify;
+                        $block->class = &$use_->Class_Panel_Add_Identify;
+                        $block->panel = &$use_->Panel_Add;
+                        ?>
+                        @include("web.backend.table.common.block.block", ["block"]) 
+                        <? // -------------------------------------------------------------------------------------------------------------- ?>
                     </div>
                 </div>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -469,418 +328,29 @@ $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
                 <div class="index_result_wrap">
                     <div class="index_result_content">
                         <table class="list_tab table table-sm">
-                            <tr id="index_item_all" class="index_item">                                   
-                                @foreach($target_table->Index['main'] as $key_item => $item) 
-                                    <th @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
-                                        @if($item[key::TYPE] == type::LABEL)           
-                                            {{$item[key::TITLE]}}
-                                        @elseif($item[key::TYPE] == type::CHECKBOX_SELECTED)
-                                            <input id="{{$item[key::ID]}}"
-                                                @if(!empty($field[key::CLASSES])) 
-                                                    class="{{$field[key::CLASSES]}} form-control" 
-                                                @else 
-                                                    class="form-control" 
-                                                @endif 
-                                                type="checkbox" name="checkbox" data-labelauty=" "
-                                            >
-                                        @else 
-                                            {{$item[key::TITLE]}}
-                                        @endif   
-                                    </th> 
-                                @endforeach                                                                   
+                            <tr id="index_item_all" class="index_item">   
+                                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                                <?php 
+                                // 因為模板array會複製，所以用物件傳
+                                $fields = new \hahaha\hahaha_parameter;
+                                $fields = &$target_table->Index['main'];
+                                ?>
+                                @include("web.backend.table.common.table.th", ["fields"]) 
+                                <? // -------------------------------------------------------------------------------------------------------------- ?>  
                             </tr>
                             @foreach($data_list as $key_data => $data)                            
                                 <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
-                                    {{-- laravel套版不要用reference，@foreach($item[key::ITEMS] as $key_field => $field)，會找不到$item[key::ITEMS] --}}
-                                    @foreach($target_table->Index['main'] as $key_item => $item)  
-                                        <td @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
-                                            @if(!empty($item[key::GROUP]))
-                                                @if($item[key::GROUP] == group::INPUT_GROUP) 
-                                                    <div class="input-group">
-                                                @endif
-                                            @endif
-                                            {{--  對應欄位  --}}
-                                            @foreach($item[key::ITEMS] as $key_field => $field) 
-                                                @if($field[key::TYPE] == type::LABEL)          
-                                                    {{--  有欄位才填  --}}
-                                                    @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                        @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                            {{$data[$field[key::DB_FIELD][key::NAME]]}}
-                                                        @else 
-                                                            {{$data[$key_field]}}
-                                                        @endif
-                                                    @else
-                                                    @endif
-                                                @elseif($field[key::TYPE] == type::TEXT)                                                       
-                                                    <input  
-                                                        @if(!empty($field[key::ID])) 
-                                                            id="{{$field[key::ID]}}_{{$key_data}}" 
-                                                        @endif 
-                                                        @if(!empty($field[key::STYLES])) 
-                                                            style="{{$field[key::STYLES]}}" 
-                                                        @endif 
-                                                        type="text" 
-                                                        @if(!empty($field[key::CLASSES])) 
-                                                            class="{{$field[key::CLASSES]}} form-control" 
-                                                        @else 
-                                                            class="form-control" 
-                                                        @endif                                                             
-                                                        placeholder="" 
-                                                        
-                                                        {{--  有欄位才填  --}}
-                                                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                            @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
-                                                            @else 
-                                                                value="{{$data[$key_field]}}"
-                                                            @endif
-                                                        @else
-                                                        @endif
-
-                                                        @if(!empty($field[key::HINT])) 
-                                                            data-toggle="tooltip" 
-                                                            @if(!empty($field[key::HINT][key::DIRECTION])) 
-                                                                data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
-                                                            @else
-                                                                data-placement="top"
-                                                            @endif 
-                                                            @if(!empty($field[key::HINT][key::TITLE])) 
-                                                                title="{{$field[key::HINT][key::TITLE]}}"
-                                                            @endif 
-                                                        @endif 
-                                                        >
-                                                @elseif($field[key::TYPE] == type::IMAGE)   
-                                                    <img 
-                                                        @if(!empty($field[key::ID])) 
-                                                            id="{{$field[key::ID]}}_thumbnail_{{$key_data}}"
-                                                            class="{{$field[key::ID]}}_thumbnail"
-                                                        @endif    
-                                                      
-                                                        {{--  有欄位才填  --}}
-                                                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                                            @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                                                src="{{\p_ha::IMAGES($data[$field[key::DB_FIELD][key::NAME]], $target_setting_table['stage']) }}"
-                                                            @else 
-                                                                src="{{\p_ha::IMAGES($data[$key_field], $target_setting_table['stage']) }}"
-                                                            @endif
-                                                        @else
-                                                        @endif
-
-                                                        @if(!empty($field[key::STYLES])) 
-                                                            style="{{$field[key::STYLES]}}" 
-                                                        @endif 
-                                                    >
-                                                @elseif($field[key::TYPE] == type::UPLOAD) 
-                                                    <div 
-                                                        @if(!empty($field[key::ID])) 
-                                                            id="{{$field[key::ID]}}_upload_{{$key_data}}"
-                                                            class="{{$field[key::ID]}}_upload"
-                                                            name="{{$field[key::ID]}}_upload_{{$key_data}}"
-                                                        @endif       
-                                                        @if(!empty($field[key::STYLES])) 
-                                                            style="{{$field[key::STYLES]}}" 
-                                                        @endif 
-                                                            type="file"
-                                                        >
-                                                    </div>  
-                                                @elseif($field[key::TYPE] == type::BUTTON_ICON)     
-                                                    <div
-                                                        @if(!empty($field[key::ID])) 
-                                                            id="{{$field[key::ID]}}_{{$key_data}}"
-                                                            class="{{$field[key::ID]}} {{$field[key::CLASSES_1]}}"
-                                                            name="{{$field[key::ID]}}_{{$key_data}}"
-                                                        @endif       
-                                                        @if(!empty($field[key::STYLES])) 
-                                                            style="{{$field[key::STYLES]}}" 
-                                                        @endif 
-                                                        >
-                                                        <i class="{{$field[key::CLASSES_2]}}"></i>
-                                                    </div>
-                                                @elseif($field[key::TYPE] == type::PANEL) 
-                                                    <? // -------------------------------------------------------------------------------------------------------------- ?>
-                                                    <? // 細節面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
-                                                    <? // -------------------------------------------------------------------------------------------------------------- ?>
-                                                    @if(!empty($field[key::USE_]) && $field[key::USE_] == use_::B_BLOCK)
-                                                        <?
-                                                            $items_panel_ = &$target_table->Index[
-                                                                $field[key::CONTENT][0]
-                                                            ]; 
-                                                            
-                                                        ?>
-                                                    @elseif(!empty($field[key::USE_]) && $field[key::USE_] == use_::SETTING)
-                                                        {{--  有用到再補  --}}
-                                                    @elseif(!empty($field[key::USE_]) && $field[key::USE_] == use_::MIX)
-                                                        {{--  有用到再補  --}}
-                                                    @endif
-                                                    <div id="{{$field[key::ID]}}_{{$key_data}}" class="{{$field[key::ID]}}">
-                                                        <div class="{{$field[key::ID]}}_content">
-                                                            @foreach($items_panel_ as $key_item_panel => $item_panel)
-                                                                @if(!empty($item_panel[key::GROUP]))
-                                                                    @if($item_panel[key::GROUP] == group::FORM_GROUP_ROW) 
-                                                                   
-                                                                        <div class="form-group row">
-                                                                            @if($item[key::TYPE] == type::B_BLOCK_SHORT_WRAP) 
-                                                                                <div class="short_wrap">
-                                                                            @endif
-                                                                            @foreach($item_panel[key::ITEMS] as $key_field_panel => $field_panel)
-                                                                                @if($field_panel[key::TYPE] == type::TEXT)   
-                                                                                    <label for="{{$field_panel[key::ID]}}" 
-                                                                                        @if(!empty($field_panel[key::CLASSES_1])) 
-                                                                                            class="col-sm-3 col-form-label {{$field_panel[key::CLASSES_1]}}" 
-                                                                                        @else 
-                                                                                            class="col-sm-3 col-form-label" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}_label" 
-                                                                                        @endif 
-                                                                                    >{{$field_panel[key::TITLE]}} :    
-                                                                                    </label>                                                            
-                                                                                    <input type="text" 
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}" 
-                                                                                        @endif 
-                                                                                        @if(!empty($field_panel[key::STYLES])) 
-                                                                                            style="{{$field_panel[key::STYLES]}}" 
-                                                                                        @endif 
-                                                                                        type="text" 
-                                                                                        @if(!empty($field_panel[key::CLASSES])) 
-                                                                                            class="{{$field_panel[key::CLASSES]}} form-control col-sm-4" 
-                                                                                        @else 
-                                                                                            class="form-control col-sm-4" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::DB_FIELD]) && !empty($field_panel[key::DB_FIELD][key::IS_FIELD]) )
-                                                                                            @if(!empty($field_panel[key::DB_FIELD][key::NAME]))
-                                                                                                name="{{$field_panel[key::DB_FIELD][key::NAME]}}"
-                                                                                            @else 
-                                                                                                name="{{$key_field_panel}}"
-                                                                                            @endif
-                                                                                        @else
-                                                                                        @endif   
-                                                                                        @if(!empty($field_panel[key::PLACEHOLDER])) 
-                                                                                            placeholder="{{$field_panel[key::PLACEHOLDER]}}" 
-                                                                                        @else 
-                                                                                            placeholder="" 
-                                                                                        @endif   
-                                                                                        value=""
-                                                                                    >
-                                                                                @elseif($field_panel[key::TYPE] == type::TEXT_EXIST_CHECK)
-                                                                                    <? // 有Exist檢查 ?>
-                                                                                    <label for="{{$field_panel[key::ID]}}" 
-                                                                                        @if(!empty($field_panel[key::CLASSES_1])) 
-                                                                                            class="col-sm-3 col-form-label {{$field_panel[key::CLASSES_1]}}" 
-                                                                                        @else 
-                                                                                            class="col-sm-3 col-form-label" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}_label" 
-                                                                                        @endif 
-                                                                                    >{{$field_panel[key::TITLE]}} :    
-                                                                                    </label>                                                            
-                                                                                    <input type="text" 
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}" 
-                                                                                        @endif 
-                                                                                        @if(!empty($field_panel[key::STYLES])) 
-                                                                                            style="{{$field_panel[key::STYLES]}}" 
-                                                                                        @endif 
-                                                                                        type="text" 
-                                                                                        @if(!empty($field_panel[key::CLASSES])) 
-                                                                                            class="{{$field_panel[key::CLASSES]}} form-control col-sm-4" 
-                                                                                        @else 
-                                                                                            class="form-control col-sm-4" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::DB_FIELD]) && !empty($field_panel[key::DB_FIELD][key::IS_FIELD]) )
-                                                                                            @if(!empty($field_panel[key::DB_FIELD][key::NAME]))
-                                                                                                name="{{$field_panel[key::DB_FIELD][key::NAME]}}"
-                                                                                            @else 
-                                                                                                name="{{$key_field_panel}}"
-                                                                                            @endif
-                                                                                        @else
-                                                                                        @endif   
-                                                                                        @if(!empty($field_panel[key::PLACEHOLDER])) 
-                                                                                            placeholder="{{$field_panel[key::PLACEHOLDER]}}" 
-                                                                                        @else 
-                                                                                            placeholder="" 
-                                                                                        @endif   
-                                                                                        value=""
-                                                                                    >
-                                                                                    <div id="{{$field_panel[key::ID]}}_exist_check" class="{{class_::EXIST_CHECK_SUCCESS}}">
-                                                                                        <div style="font-size:1.5em; color:green">
-                                                                                            <i class="fas fa-check"></i>
-                                                                                        </div>
-                                                                                    </div>     
-                                                                                    <div id="{{$field_panel[key::ID]}}_exist_check_error" class="{{class_::EXIST_CHECK_ERROR}}">
-                                                                                        <div style="font-size:1.5em; color:red">
-                                                                                            <i class="fas fa-times"></i>
-                                                                                        </div>
-                                                                                    </div> 
-                                                                                @elseif($field_panel[key::TYPE] == type::PASSWORD) 
-                                                                                    <label for="{{$field_panel[key::ID]}}" 
-                                                                                        @if(!empty($field_panel[key::CLASSES_1])) 
-                                                                                            class="col-sm-3 col-form-label {{$field_panel[key::CLASSES_1]}}" 
-                                                                                        @else 
-                                                                                            class="col-sm-3 col-form-label" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}_label" 
-                                                                                        @endif 
-                                                                                    >{{$field_panel[key::TITLE]}} :    
-                                                                                    </label>                                                            
-                                                                                    <input type="password" 
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}" 
-                                                                                        @endif 
-                                                                                        @if(!empty($field_panel[key::STYLES])) 
-                                                                                            style="{{$field_panel[key::STYLES]}}" 
-                                                                                        @endif 
-                                                                                        type="text" 
-                                                                                        @if(!empty($field_panel[key::CLASSES])) 
-                                                                                            class="{{$field_panel[key::CLASSES]}} form-control col-sm-4" 
-                                                                                        @else 
-                                                                                            class="form-control col-sm-4" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::DB_FIELD]) && !empty($field_panel[key::DB_FIELD][key::IS_FIELD]) )
-                                                                                            @if(!empty($field_panel[key::DB_FIELD][key::NAME]))
-                                                                                                name="{{$field_panel[key::DB_FIELD][key::NAME]}}"
-                                                                                            @else 
-                                                                                                name="{{$key_field_panel}}"
-                                                                                            @endif
-                                                                                        @else
-                                                                                        @endif   
-                                                                                        @if(!empty($field_panel[key::PLACEHOLDER])) 
-                                                                                            placeholder="{{$field_panel[key::PLACEHOLDER]}}" 
-                                                                                        @else 
-                                                                                            placeholder="" 
-                                                                                        @endif   
-                                                                                        value=""
-                                                                                    >
-                                                                                @elseif($field_panel[key::TYPE] == type::RADIOBOX)   
-                                                                                    <label for="{{$field_panel[key::ID]}}" 
-                                                                                        @if(!empty($field_panel[key::CLASSES_1])) 
-                                                                                            class="col-sm-3 col-form-label {{$field_panel[key::CLASSES_1]}}" 
-                                                                                        @else 
-                                                                                            class="col-sm-3 col-form-label" 
-                                                                                        @endif    
-                                                                                        @if(!empty($field_panel[key::ID])) 
-                                                                                            id="{{$field_panel[key::ID]}}_label" 
-                                                                                        @endif 
-                                                                                    >{{$field_panel[key::TITLE]}} :    
-                                                                                    </label>   
-                                                                                    @foreach($field_panel[key::OPTIONS] as $key_option => $option)    
-                                                                                        <label for="{{$option[key::ID]}}" 
-                                                                                            @if(!empty($field_panel[key::CLASSES_1])) 
-                                                                                                class="col-sm-1 col-form-label {{$field_panel[key::CLASSES_1]}}" 
-                                                                                            @else 
-                                                                                                class="col-sm-1 col-form-label" 
-                                                                                            @endif    
-                                                                                            @if(!empty($option[key::ID])) 
-                                                                                                id="{{$option[key::ID]}}_label" 
-                                                                                            @endif 
-                                                                                        >{{$option[key::TITLE]}}    
-                                                                                        </label>  
-                                                                                        <input type="radio" 
-                                                                                            @if(!empty($option[key::ID])) 
-                                                                                                id="{{$option[key::ID]}}" 
-                                                                                            @endif 
-                                                                                            @if(!empty($option[key::STYLES_1])) 
-                                                                                                style="{{$option[key::STYLES_1]}}" 
-                                                                                            @endif 
-                                                                                            type="text" 
-                                                                                            @if(!empty($option[key::CLASSES])) 
-                                                                                                class="{{$option[key::CLASSES]}} form-control col-sm-1" 
-                                                                                            @else 
-                                                                                                class="form-control col-sm-1" 
-                                                                                            @endif    
-                                                                                            @if(!empty($field_panel[key::DB_FIELD]) && !empty($field_panel[key::DB_FIELD][key::IS_FIELD]) )
-                                                                                                @if(!empty($field_panel[key::DB_FIELD][key::NAME]))
-                                                                                                    name="{{$field_panel[key::DB_FIELD][key::NAME]}}"
-                                                                                                @else 
-                                                                                                    name="{{$key_field_panel}}"
-                                                                                                @endif
-                                                                                            @else
-                                                                                            @endif   
-                                                                                            @if(!empty($field_panel[key::PLACEHOLDER])) 
-                                                                                                placeholder="{{$field_panel[key::PLACEHOLDER]}}" 
-                                                                                            @else 
-                                                                                                placeholder="" 
-                                                                                            @endif   
-                                                                                            value=""
-                                                                                            data-labelauty=" "
-                                                                                        >
-                                                                                    @endforeach
-                                                                                @elseif($field_panel[key::TYPE] == type::BUTTON_ICON)  
-                                                                                    <div id="{{$field_panel['id']}}" class="{{$field_panel[key::CLASSES]}} {{$field_panel[key::CLASSES_1]}}">
-                                                                                        <div style="{{$field_panel[key::STYLES]}}">
-                                                                                            <i class="{{$field_panel[key::CLASSES_2]}}">{{$field_panel['title']}}</i>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                @endif
-                                                                            @endforeach
-                                                                            @if($item_panel[key::TYPE] == type::B_BLOCK_SHORT_WRAP) 
-                                                                                </div>
-                                                                            @endif
-                                                                        </div>
-                                                                    @endif
-                                                                @endif 
-                                                            @endforeach
-                                                    
-                                                            {{--  <div class="row">
-                                                                <div class="col-sm">
-                                                                    <img id="index_item_panel_image_thumbnail_{{$loop->index}}" class="index_item_panel_image_thumbnail" src="{{url($value['image'])}}" style="width: auto;height: 200px;"/>
-                                                                </div>
-                                                            </div>
-                                                            <div style="height:5px;">&nbsp;</div>
-                                                            <div class="row">
-                                                                <label for="index_item_panel_item_{{$loop->index}}" class="col-sm-3 col-form-label">項目 : </label>
-                                                                <div class="col">
-                                                                    <input style="width:530px;" id="index_item_panel_item_{{$loop->index}}" style="" type="text" class="index_item_panel_item form-control" placeholder="項目" value="{{$value['item']}}">  
-                                                                </div>   
-                                                            </div>
-                                                            <div style="height:5px;">&nbsp;</div>
-                                                            <div class="row">
-                                                                <label for="index_item_panel_image_{{$loop->index}}" class="col-sm-3 col-form-label">圖片 : </label>
-                                                                <div class="col">
-                                                                    <input style="width:530px;" id="index_item_panel_image_{{$loop->index}}" style="" type="text" class="index_item_panel_image form-control" placeholder="圖片" value="{{$value['image']}}">  
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <div id="index_item_panel_image_refresh_{{$loop->index}}" style="font-size:1em; color:Tomato" class="index_item_panel_image_refresh btn btn-dark">
-                                                                        <i class="fas fa-refresh"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div id="index_item_panel_create_time_{{$loop->index}}" class="col">{{$value['create_time']}}</div>
-                                                                
-                                                            </div>
-                                                            <div class="row">
-                                                                <div id="index_item_panel_update_time_{{$loop->index}}" class="col">{{$value['update_time']}}</div>                                                
-                                                            </div>  --}}
-                                                        </div>
-                                                    </div> 
-                                                   
-                                                @elseif($field[key::TYPE] == type::CHECKBOX_SELECTED)  
-                                                    <input 
-                                                        @if(!empty($field[key::ID])) 
-                                                            id="{{$field[key::ID]}}_{{$key_data}}"  
-                                                        @endif 
-                                                        @if(!empty($field[key::CLASSES])) 
-                                                            class="{{$field[key::CLASSES]}} form-control" 
-                                                        @else 
-                                                            class="form-control" 
-                                                        @endif 
-                                                        type="checkbox" name="checkbox" data-labelauty=" ">
-                                                @else 
-
-                                                @endif            
-                                            @endforeach  
-                                            @if(!empty($item[key::GROUP]))
-                                                @if($item[key::GROUP] == group::INPUT_GROUP) 
-                                                    </div>
-                                                @endif
-                                            @endif
-                                        </td>                                         
-                                    @endforeach    
-                                                                 
+                                    <? // -------------------------------------------------------------------------------------------------------------- ?>
+                                    <?php 
+                                    // 因為模板array會複製，所以用物件傳
+                                    $block = new \hahaha\hahaha_parameter;
+                                    $block->fields = &$target_table->Index['main'];
+                                    $block->key_data = &$key_data;
+                                    $block->data = &$data;
+                                    $block->option = &$option;
+                                    ?>
+                                    @include("web.backend.table.common.table.td", ["block"]) 
+                                    <? // -------------------------------------------------------------------------------------------------------------- ?>   
                                 </tr> 
                             @endforeach                   
                         </table>

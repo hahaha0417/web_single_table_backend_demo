@@ -2,6 +2,13 @@
 
 namespace repositories\backend;
 
+use hahaha\hahaha_repositories_single_table_basic_trait;
+use hahaha\hahaha_repositories_single_table_composite_trait;
+use hahaha\hahaha_convert_doctrine_dql;
+use Doctrine\ORM\Query;
+use Registry;
+use EntityManager;
+
 /**
  * AccountsLoginRecords
  *
@@ -10,4 +17,8 @@ namespace repositories\backend;
  */
 class AccountsLoginRecords extends \Doctrine\ORM\EntityRepository
 {
+    use hahaha_repositories_single_table_basic_trait;
+    use hahaha_repositories_single_table_composite_trait;
+
+    public $Alias = "a";
 }

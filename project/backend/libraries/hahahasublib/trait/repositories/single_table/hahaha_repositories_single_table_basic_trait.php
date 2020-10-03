@@ -11,7 +11,8 @@ use Registry;
 use EntityManager;
 
 /*
-// 不要用，他會parser檔案，導致慢很多，可以的話用填表法代替
+// 他會cache，基本上只要cache到redis or memcached，可以正常使用
+// 只要有使用到Entity，就會parser檔案(因為要做type轉換)，這沒辦法避免
 $class_meta_ = EntityManager::getClassMetadata($setting_table['entity']);
 $table_name_ = $class_meta_->getTableName();
 */
@@ -51,6 +52,10 @@ trait hahaha_repositories_single_table_basic_trait
         $limit = null
     ) 
     {
+        if(empty($fields))
+        {
+            return true;
+        }
         //
         $alias_ = &$setting_table['alias'];
 

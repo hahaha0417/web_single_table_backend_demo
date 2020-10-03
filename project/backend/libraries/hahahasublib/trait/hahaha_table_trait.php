@@ -183,6 +183,8 @@ trait hahaha_table_trait
 						}
 					}					
 				}
+
+				$item_target_ = &$items_target_[$key_item];
 			
 				// class
 				foreach($class_list_ as $key_list => &$value_list)
@@ -215,7 +217,10 @@ trait hahaha_table_trait
 					{
 						unset($item_target_[$key_list]);
 					}
-				}				
+				}	
+				
+				$item_target_ = &$items_target_[$key_item];
+				
 				// style
 				foreach($style_list_ as $key_list => &$value_list)
 				{

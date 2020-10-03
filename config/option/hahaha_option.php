@@ -40,6 +40,11 @@ class hahaha_option
 		$option->Project->Backend->Panel_Add = new \stdClass;
 		$option->Project->Backend->Panel_Add->Width = "97%";
 		$option->Project->Backend->Panel_Add->Height = "97%";
+
+		$option->Project->Backend->Panel_Detail = new \stdClass;
+		$option->Project->Backend->Panel_Detail->Left = "1.5%";
+		$option->Project->Backend->Panel_Detail->Width = "97%";
+		$option->Project->Backend->Panel_Detail->Height = "400px";
 	
 	}
 }
