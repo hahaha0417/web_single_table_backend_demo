@@ -184,6 +184,17 @@ class hahaha_setting_table
 			// 清單有必要維持簡潔，因此這裡用instance()->main("xxx")，取得設置項目
 
 			// 因為初始化要時間，因此要用到時再new or Instance
+			// --------------------------------------------------- 
+			// 設定區
+			// --------------------------------------------------- 
+			// 基於一致性，設定檔格式是相同的
+			// 基本上就是entity & table & controller的action一組
+			// 1. 基本上採附加的方式(寫trait附加)，附加的情況就以我的判斷為主，例如我覺得不妥，就必須移除或放置在其他地方
+			// 2. 如從根本上就不一致，請另外弄一組，例如accounts/list整個做法不同，請另外弄一個entity & repositories，搭配自己的table & view，
+			//  - 寫在另一塊(避免髒掉)，ex. code2(因為專案的關係，我不打算再往裡面放一層，預設規劃裡面是沒有額外的另一組，另外寫一個資料夾自行處理比較好)，至於要不要使用我的東西，請自行決定，也可以複製一份自己維護(意思Github不會出現那包東西，有需要請另外安裝，不管是不是套件)
+			// 3. 因為架構上規劃，我這邊附加的，不直接使用其他實作塊的東西，避免關聯亂掉
+			// 4. 以上是我的規定，因為是MIT，如要自行搬移結構也可，但是要更新專案版本，太難搬，請自行負責
+			// --------------------------------------------------- 
 			"hahaha" => [
 				"accounts" => [					
 					"node" => "accounts/list",
@@ -191,8 +202,12 @@ class hahaha_setting_table
 					"description" => "紀錄著會員資訊",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/list"),
+					// --------------------------------------------- 
+					// 主要模塊
+					// --------------------------------------------- 
 					"entity" => '\entities\backend\Accounts',
 					"table" => '\hahaha\backend\hahaha_table_accounts',
+					// --------------------------------------------- 
 					"connection" => 'backend',
 					"stage" => 'backend',
 					"alias" => "a",
@@ -203,8 +218,12 @@ class hahaha_setting_table
 					"description" => "紀錄著會員詳細資訊",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/detail"),
+					// --------------------------------------------- 
+					// 主要模塊
+					// --------------------------------------------- 
 					"entity" => '\entities\backend\AccountsDetail',
 					"table" => '\hahaha\backend\hahaha_table_accounts_detail',
+					// --------------------------------------------- 
 					"connection" => 'backend',
 					"stage" => 'backend',
 					"alias" => "ad",
@@ -215,8 +234,12 @@ class hahaha_setting_table
 					"description" => "紀錄著會員登入紀錄",
 					"namespace" => "",
 					"url" => \p_ha::V_Url("table/backend/accounts/login_records"),
+					// --------------------------------------------- 
+					// 主要模塊
+					// --------------------------------------------- 
 					"entity" => '\entities\backend\AccountsLoginRecords',
 					"table" => '\hahaha\backend\hahaha_table_accounts_login_records',
+					// --------------------------------------------- 
 					"connection" => 'backend',
 					"stage" => 'backend',
 					"alias" => "alr",
@@ -227,8 +250,12 @@ class hahaha_setting_table
 					"description" => "紀錄著會員關係",
 					"namespace" => "",				
 					"url" => \p_ha::V_Url("table/backend/accounts/relations"),
+					// --------------------------------------------- 
+					// 主要模塊
+					// --------------------------------------------- 
 					"entity" => '\entities\backend\AccountsRelations',
 					"table" => '\hahaha\backend\hahaha_table_accounts_relations',
+					// --------------------------------------------- 
 					"connection" => 'backend',
 					"stage" => 'backend',
 					"alias" => "ar",

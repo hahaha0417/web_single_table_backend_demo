@@ -15,6 +15,8 @@ use EntityManager;
 // 只要有使用到Entity，就會parser檔案(因為要做type轉換)，這沒辦法避免
 $class_meta_ = EntityManager::getClassMetadata($setting_table['entity']);
 $table_name_ = $class_meta_->getTableName();
+
+注意 : 因為是single table，所以這裡不join foreign key
 */
 trait hahaha_repositories_single_table_basic_trait
 {
@@ -48,6 +50,7 @@ trait hahaha_repositories_single_table_basic_trait
     public function findByFields(&$result, 
         &$setting_table,
         &$fields = ['*'], 
+        &$filter = [],
         $offset = null, 
         $limit = null
     ) 
@@ -77,10 +80,11 @@ trait hahaha_repositories_single_table_basic_trait
         {
             $qb_->setMaxResults($limit);
         }  
+        $class_meta_ = EntityManager::getClassMetadata($setting_table['entity']);
+        $convert_doctrine_dql_->Filter($qb_, $filter, $alias_);
 
         $query_ = $qb_->getQuery()
             ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true);
-
         $result = $query_->getArrayResult();
 
         if(!$result)

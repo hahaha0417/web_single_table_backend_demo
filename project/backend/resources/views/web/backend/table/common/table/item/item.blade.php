@@ -54,7 +54,7 @@ use Spatie\Url\Url;
     $key_field = &$item->key_field;
     $field = &$item->field;
     $key_data = &$item->key_data;
-    $data = &$item->data;
+    $data_ = &$item->data;
     //
     // 這從controller傳來
     $parameter_ = \hahaha\hahaha_parameter::Instance();
@@ -240,15 +240,74 @@ use Spatie\Url\Url;
     <div
         @if(!empty($field[key::ID])) 
             id="{{$field[key::ID]}}_{{$key_data}}"
-            class="{{$field[key::ID]}} {{$field[key::CLASSES_1]}}"
+            class="{{$field[key::ID]}} 
+                @if(!empty($field[key::CLASSES]))
+                    {{$field[key::CLASSES]}} 
+                @endif 
+                @if(!empty($field[key::CLASSES_1]))
+                    {{$field[key::CLASSES_1]}}"
+                @endif 
             name="{{$field[key::ID]}}_{{$key_data}}"
-        @endif       
-        @if(!empty($field[key::STYLES])) 
-            style="{{$field[key::STYLES]}}" 
-        @endif 
+            style="
+            @if(!empty($field[key::STYLES])) 
+                {{$field[key::STYLES]}}
+            @endif 
+            " 
+        @endif   
         >
-        <i class="{{$field[key::CLASSES_2]}}"></i>
+        <i class="
+        @if(!empty($field[key::CLASSES_2]))
+            {{$field[key::CLASSES_2]}}
+        @endif 
+        ">
+            @if(!empty($field[key::TITLE]) ) 
+                {{$field[key::TITLE]}} 
+            @endif
+        </i>
     </div>
+@elseif($field[key::TYPE] == type::BUTTON_ICON_LINK)  
+<?php
+$actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
+$url_ = Url::fromString($actual_link_);   
+?>
+    <a href="
+        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+            {{$url_}}/edit/{{$data[$field[key::DB_FIELD][ $field[key::INDEX] ]]}}
+        @else 
+            {{$url_}}/edit/{{$data[ $field[key::INDEX] ]}}
+        @endif    
+    ">
+
+        <div
+            @if(!empty($field[key::ID])) 
+                id="{{$field[key::ID]}}_{{$key_data}}"
+                class="{{$field[key::ID]}} 
+                    @if(!empty($field[key::CLASSES]))
+                        {{$field[key::CLASSES]}} 
+                    @endif 
+                    @if(!empty($field[key::CLASSES_1]))
+                        {{$field[key::CLASSES_1]}}"
+                    @endif 
+                name="{{$field[key::ID]}}_{{$key_data}}"
+                style="
+                    @if(!empty($field[key::STYLES])) 
+                        {{$field[key::STYLES]}}
+                    @endif 
+                " 
+            @endif       
+            
+            >
+            <i class="
+            @if(!empty($field[key::CLASSES_2]))
+                {{$field[key::CLASSES_2]}}
+            @endif 
+            ">
+                @if(!empty($field[key::TITLE]) ) 
+                    {{$field[key::TITLE]}} 
+                @endif
+            </i>
+        </div>
+    </a>
 @elseif($field[key::TYPE] == type::RADIOBOX)   
     
     @foreach($field[key::OPTIONS] as $key_option => $option)    
@@ -309,7 +368,7 @@ use Spatie\Url\Url;
     <? // -------------------------------------------------------------------------------------------------------------- ?>
     @if(!empty($field[key::USE_]) && $field[key::USE_] == use_::B_BLOCK)
         <?
-            $items_panel_ = &$target_table->Index[
+            $items_panel_ = &$target_table_->Index[
                 $field[key::CONTENT][0]
             ]; 
             
@@ -326,11 +385,18 @@ use Spatie\Url\Url;
                     // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
                     // 架構的地方用reference，維護的地方不用，避免有話說
                     // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
+                    // 暫存
+                    $item_temp_ = &$item;
+                    //
                     $item = new \hahaha\hahaha_parameter;
                     $item->key_item = &$key_item_panel;
                     $item->item = &$item_panel;
+                    $item->data = &$data_;  
+                    // 暫存
+                    $item = &$item_temp_;
+                    //   
                 ?>
-                @include("web.backend.table.common.item.item", ["item"])   
+                @include("web.backend.table.common.panel.item")   
             @endforeach
     
         </div>

@@ -85,9 +85,9 @@ class AccountsDetail
     private $updatedAt;
 
     /**
-     * @var \entities\front\Accounts
+     * @var \entities\backend\Accounts
      *
-     * @ORM\ManyToOne(targetEntity="entities\front\Accounts")
+     * @ORM\ManyToOne(targetEntity="entities\backend\Accounts")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="accounts_id", referencedColumnName="id")
      * })
@@ -95,6 +95,35 @@ class AccountsDetail
     private $accounts;
 
 
+    // ------------------------------------------------------------------------------------------- 
+    // 客製化區
+    // ------------------------------------------------------------------------------------------- 
+
+    /*
+    // 可以這樣直接修改子 table關聯
+    $aaa = EntityManager::find("\\entities\\backend\\AccountsDetail", 3);
+    // $aaa->accountsId = 2;
+    $aaa->setAccountsId(2);
+    EntityManager::persist($aaa);
+    EntityManager::flush();
+    */
+    /**
+     *  ---------------------------------------------------- 
+     *  因為是single table，所以foreign key自己手動補
+     *  基本上generator只是產出大概，還是要自己加
+     * 
+     *  ---------------------------------------------------- 
+     * @var string|null
+     *
+     * @ORM\Column(name="accounts_id", type="bigint", nullable=false, options={"comment"="帳號id"})
+     */
+    private $accountsId;
+
+
+
+    public function __construct() {
+        $this->accounts = new \entities\backend\Accounts;
+    }
 
     /**
      * Get id.
@@ -325,11 +354,11 @@ class AccountsDetail
     /**
      * Set accounts.
      *
-     * @param \entities\front\Accounts|null $accounts
+     * @param \entities\backend\Accounts|null $accounts
      *
      * @return AccountsDetail
      */
-    public function setAccounts(\entities\front\Accounts $accounts = null)
+    public function setAccounts(\entities\backend\Accounts $accounts = null)
     {
         $this->accounts = $accounts;
 
@@ -339,10 +368,29 @@ class AccountsDetail
     /**
      * Get accounts.
      *
-     * @return \entities\front\Accounts|null
+     * @return \entities\backend\Accounts|null
      */
     public function getAccounts()
     {
         return $this->accounts;
     }
+
+    // ------------------------------------------------------------------------------------------- 
+    // 客製化區
+    // ------------------------------------------------------------------------------------------- 
+
+    public function setAccountsId($accountsId = null)
+    {
+        $this->accountsId = $accountsId;
+
+        return $this;
+    }
+
+    public function getAccountsId()
+    {
+        return $this->accountsId;
+    }
+
+
+
 }

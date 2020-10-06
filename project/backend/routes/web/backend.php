@@ -43,6 +43,9 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
     Route::get('/note', 'IndexController@note');
     // 預設頁面路徑
     // http://127.0.0.1:8704/backend/page/backend_accounts_list，靜態頁面
+    // edit
+    // Route::get('/page/{name}/edit/{}', 'IndexController@page');   
+    // index
     Route::get('/page/{name}', 'IndexController@page');   
 });
 //------------------------------------------------------------------------------------------------------

@@ -16,21 +16,21 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 */
 
-.index_edit_title{
+.edit_title{
     height: auto;
     float: left;
     position: relative;
     margin:50px 0 0 50px;
-    /* display:none; */
+    /* display:none; */ 
 }
 
-.index_edit_title .hr_title{
+.edit_title .hr_title{
     border: 1px solid #ccc;
     width: 98%;
 }
 
 @media (min-width: 768px) {
-    .index_edit_title .hr_title{
+    .edit_title .hr_title{
         border: 1px solid #ccc;
         width: 700px;
     }  
@@ -38,7 +38,7 @@
 }
 
 
-.index_edit_space{
+.edit_space{
     width: 96%;
     height: auto;
     float: left;
@@ -47,7 +47,7 @@
    
 }
 
-.index_edit_content{
+.edit_content{
     width: 96%;
     height: auto;
     float: left;
@@ -56,19 +56,19 @@
    
 }
 
-.index_edit_content .hr1{
+.edit_content .hr1{
     border: 1px solid #ccc;
 }
 
-.index_edit_content textarea{
+.edit_content textarea{
 	resize: none;
 }
 
-.index_edit_content .index_item_page_check,.index_edit_content .index_item_item_check,.index_edit_content .index_item_id_check{
+.edit_content .index_item_page_check,.edit_content .index_item_item_check,.edit_content .index_item_id_check{
 	display: none;
 }
 
-.index_edit_content .index_item_page_error,.index_edit_content .index_item_item_error,.index_edit_content .index_item_id_error{
+.edit_content .index_item_page_error,.edit_content .index_item_item_error,.edit_content .index_item_id_error{
 	display: none;
 }
 

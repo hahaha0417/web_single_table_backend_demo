@@ -26,7 +26,7 @@ License : MIT
 /* 
 新增面板 
 */ 
-.index_content #index_item_panel_add { 
+.index_content #accounts_detail_panel_add { 
 	background: rgba(190,255,190,0.8); 
 	position: fixed; 
 	z-index: 1000; 
@@ -37,7 +37,7 @@ License : MIT
 	display: none; 
 } 
  
-.index_content .index_item_panel_add .index_item_panel_add_content {
+.index_content .accounts_detail_panel_add .accounts_detail_panel_add_content {
 	background: rgba(190,255,190,0.8); 
 	padding: 25px 25px; 
 	float: left; 
@@ -47,38 +47,38 @@ License : MIT
 	height: 100%; 
 } 
  
-.index_content .index_item_panel_add .index_item_panel_add_content .index_item_panel_add_comment {
+.index_content .accounts_detail_panel_add .accounts_detail_panel_add_content .accounts_detail_panel_add_comment {
 	resize: none; 
 } 
  
-.index_content .index_item_panel_add .index_item_panel_add_content label.required::before {
+.index_content .accounts_detail_panel_add .accounts_detail_panel_add_content label.required::before {
 	content: " *"; 
 	color: red; 
 } 
  
-.index_content .index_item_panel_add .exist_check_success {
+.index_content .accounts_detail_panel_add .exist_check_success {
 	display: none; 
 } 
  
-.index_content .index_item_panel_add .exist_check_error {
+.index_content .accounts_detail_panel_add .exist_check_error {
 	display: none; 
 } 
  
 /* 
 新增面板 
 */ 
-.index_content #index_item_panel_detail { 
+.index_content #accounts_detail_panel_detail { 
 	background: rgba(190,255,190,0.8); 
 	position: fixed; 
 	z-index: 1000; 
 	width: 97%; 
-	height: 97%; 
-	left: 0; 
-	top: 0; 
+	height: 400px; 
+	left: 1.5%; 
+	top: 0px; 
 	display: none; 
 } 
  
-.index_content .index_item_panel_detail .index_item_panel_detail_content {
+.index_content .accounts_detail_panel_detail .accounts_detail_panel_detail_content {
 	background: rgba(190,255,190,0.8); 
 	padding: 25px 25px; 
 	float: left; 
@@ -88,20 +88,20 @@ License : MIT
 	height: 100%; 
 } 
  
-.index_content .index_item_panel_detail .index_item_panel_detail_content .index_item_panel_detail_comment {
+.index_content .accounts_detail_panel_detail .accounts_detail_panel_detail_content .accounts_detail_panel_detail_comment {
 	resize: none; 
 } 
  
-.index_content .index_item_panel_detail .index_item_panel_detail_content label.required::before {
+.index_content .accounts_detail_panel_detail .accounts_detail_panel_detail_content label.required::before {
 	content: " *"; 
 	color: red; 
 } 
  
-.index_content .index_item_panel_detail .exist_check_success {
+.index_content .accounts_detail_panel_detail .exist_check_success {
 	display: none; 
 } 
  
-.index_content .index_item_panel_detail .exist_check_error {
+.index_content .accounts_detail_panel_detail .exist_check_error {
 	display: none; 
 } 
  

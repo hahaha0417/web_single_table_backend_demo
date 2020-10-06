@@ -145,7 +145,7 @@ class hahaha_setting_table
 				],
 				"edit" => [
 					"method" => "get",
-					"node" => "/edit/{id}",
+					"node" => "/edit/{id}", 
 					"controller" => "IndexController",
 					"action" => "edit",
 				],
@@ -196,7 +196,7 @@ class hahaha_setting_table
 							"main" => [
 
 							],
-							"panel" => [
+							"detail" => [
 
 							],
 							"new" => [

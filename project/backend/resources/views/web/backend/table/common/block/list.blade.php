@@ -30,7 +30,6 @@
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
-
 <?
 use hahaha\define\hahaha_define_table_action as action;
 use hahaha\define\hahaha_define_table_class as class_;
@@ -47,31 +46,17 @@ use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
 
-{{-- laravel套版不要用reference，@foreach($value_item[key::ITEMS] as $key_field => $field)，會找不到$value_item[key::ITEMS] --}}
-@foreach($block->fields as $key_item => $value_item)  
-    <td @if(!empty($value_item[key::STYLES])) style="{{$value_item[key::STYLES]}}" @endif>
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
-                <div class="input-group">
-            @endif
-        @endif        
-        @foreach($value_item[key::ITEMS] as $key_field => $value_field) 
-            <?php 
-                // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
-                // 架構的地方用reference，維護的地方不用，避免有話說
-                // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
-                $item = new \hahaha\hahaha_parameter;
-                $item->key_field = &$key_field;
-                $item->field = &$value_field;
-                $item->key_data = &$block->key_data;
-                $item->data = &$block->data;
-            ?>
-            @include("web.backend.table.common.table.item.item")                
-        @endforeach  
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
-                </div>
-            @endif
-        @endif
-    </td>                                         
-@endforeach   
+@foreach($list->list as $key_item => $value_item)  
+    <?php 
+        // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
+        // 架構的地方用reference，維護的地方不用，避免有話說
+        // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
+        $item = new \hahaha\hahaha_parameter;
+        $item->key_item = &$key_item;
+        $item->item = &$value_item;
+    ?>
+    <?php // 格式和panel item不同，不能混用，有空再看能不能整合 ?>
+    @include("web.backend.table.common.block.item")   
+@endforeach
+
+

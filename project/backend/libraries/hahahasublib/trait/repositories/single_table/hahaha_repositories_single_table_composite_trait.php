@@ -27,6 +27,7 @@ trait hahaha_repositories_single_table_composite_trait
         &$data_link,
         &$setting_table,
         &$fields = ['*'], 
+        &$filter = [],
         $page = 1, 
         $size = 10
     ) 
@@ -42,6 +43,7 @@ trait hahaha_repositories_single_table_composite_trait
         $result_ = $this->findByFields($data_list, 
             $setting_table,
             $fields, 
+            $filter,
             $offset_, 
             $limit_
         ); 
@@ -55,4 +57,6 @@ trait hahaha_repositories_single_table_composite_trait
 
 		return $result_;				
     }
+
+
 }

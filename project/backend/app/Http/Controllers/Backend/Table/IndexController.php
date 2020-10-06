@@ -16,6 +16,21 @@
 */
 namespace App\Http\Controllers\Backend\Table;
 
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_operator as op;
+use hahaha\define\hahaha_define_table_tag as tag;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+use Spatie\Url\Url;
+
 use App\Http\Controllers\Backend\Base\Table\IndexController as BaseIndexController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -37,13 +52,24 @@ use Config;
 // 3. 使用hahaha修改的Model_Ha，只需餵入資料庫名稱生成物件即可處理不同資料庫 : 多個資料庫動態生成時採用
 class IndexController extends BaseIndexController
 {
-
-    /*
-    // stage - 站 class - 資料表分類 item - 資料表名
-
-    */
     public function index($stage, $class, $item)
     {  
+//         // $scientist = new \entities\backend\AccountsDetail;
+        
+//         // $scientist->accountsId = 1;
+
+//         // $aaa = EntityManager::find("\\entities\\backend\\Accounts", 1);
+        
+//         // $scientist->setAccounts($aaa);
+//         // EntityManager::persist($scientist);
+//         // EntityManager::flush();
+
+//         $aaa = EntityManager::find("\\entities\\backend\\AccountsDetail", 3);
+//         $aaa->setAccountsId(3);
+//         EntityManager::persist($aaa);
+//         EntityManager::flush();
+// return;
+
         $input_ = request()->all();
         $page_ = request()->get('page');
         if(empty($page_))
@@ -87,8 +113,7 @@ class IndexController extends BaseIndexController
 
         // table物件
         $target_table = $target_setting_table['table']::Instance()
-            ->Initial_Index()
-            ->Initial_Fields_Index();;
+            ->Initial_Index();
             
         $target_repository_ = EntityManager::getRepository($target_setting_table['entity']);
         
@@ -96,10 +121,41 @@ class IndexController extends BaseIndexController
         
         $data_link = [];
         //dd($target_table);
+
+        // -------------------------------------------------------------------- 
+        // -------------------------------------------------------------------- 
+        // Fields_Index DB用
+        // Index 主區塊用
+        // -------------------------------------------------------------------- 
+        // -------------------------------------------------------------------- 
+
+        // -------------------------------------------------------------------- 
+        // Initial_Fields_Index屬二次附加的東西
+        // 因為是架構基石，不做太多客製化設計，如要客製化(如['*'])，請再另外做一個通用組合模組
+        // ex Initial_Fields(xxx::INDEX, key::FIELD_ALL);
+        // 或者是 Inital_Page($parameter_, xxx::INDEX, key::FIELD_ALL)，初始化腳本
+        // 這樣我其他頁也可以用，不需要強調這個小細節
+        // -------------------------------------------------------------------- 
+        // 注意 : 那兩個trait可能用一用，我可能要拆出來放到hahahalib，或者做成通用包，除非我確定要整入(php hahaha framework or p"h"p framework 的single table)，不然先分開
+        // 注意 : 基本上用這個套版的不會沒事動到我這塊，有也只是插入一些小的函式片段(未來可能挖空，其實這可以自己加。共用模組不會超過5 ~ 10個，繼承出簡易替換也行)，不要影響到我移植的方便性
+        // 注意 : 只要架構裡，我是全部用原生php寫的class，可能會移植給 php hahaha framework or p"h"p framework 的single table 直接使用，不要亂改我接口
+        // --------------------------------------------------------------------        
+        if(1)
+        {
+            $fields = &$target_table->Initial_Fields_Index()->Fields_Index;    
+        }
+        else 
+        {
+            // 填$fields = [*];，不用Initial_Fields_Index
+            $fields = ['*'];    
+        }
+        $filters = [];
+        // -------------------------------------------------------------------- 
         $result_ = $target_repository_->findByPagination($data_list, 
             $data_link,
             $target_setting_table, 
-            $target_table->Fields_Index, 
+            $fields,  
+            $filters,  
             $page_, 
             $size_
         );
@@ -115,8 +171,6 @@ class IndexController extends BaseIndexController
 
         $target_table_identify = implode('_', explode('/', $target_setting_table['stage']) ) . '_' . implode('_', explode('/', $target_setting_table['node']));
       
-        $page = "all";
-
         // 因為generator要用，這裡準備參數
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         // 輸入
@@ -131,19 +185,16 @@ class IndexController extends BaseIndexController
         $parameter_->Target_Setting_Table = &$target_setting_table;
         $parameter_->Target_Table_Identify = &$target_table_identify;
         $parameter_->Target_Table = &$target_table;
-        $parameter_->Data_List = &$data_list;
-        $parameter_->Data_Link = &$data_link;
-        $parameter_->Page = &$page;
+        $parameter_->Index = [
+            key::DATA_LIST => &$data_list,
+            key::DATA_LINK => &$data_link,
+        ];
         //
 
-        return view('web.backend.table.index', compact('target_setting_table', 'target_table_identify', 'target_table', 'data_list', 'data_link', 'page'));    
+        return view('web.backend.table.index');    
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         // 如有必要，再建此頁
@@ -160,73 +211,158 @@ class IndexController extends BaseIndexController
         // return view('web.backend.index.edit', compact('page', 'item', 'id'));  
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store()
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit($stage, $class, $item, $id)
     {       
-        $item = Index::where(['id'=>$id])->first();    
+        $input_ = request()->all();
 
-        $auto_complete_tag;     
-        
-        $page_auto_complete_tag = Index::select("page")->distinct()->orderBy('page', 'asc')->get()->toArray();
-
-        if($item['item'] != null){
-            $item_auto_complete_tag = Index::select("item")->where(["page" => $item['page']])->distinct()->orderBy('item', 'asc')->get()->toArray();       
-        }
-        else{
-            $item_auto_complete_tag = Index::select("item")->distinct()->orderBy('item', 'asc')->get()->toArray();
-        }
-        // dd($page_auto_complete_tag);
-        // return;
+        // 找到設定
+        $setting_table_class_ = "\\hahaha\\$stage\\hahaha_setting_table";
+        $setting_tables_ = $setting_table_class_::Instance();	
+        // 取出設定檔	
+        $routes_ = &$setting_tables_->Routes[$setting_tables_->Settings['default']['route']];
+        $controllers_ = &$setting_tables_->Controllers[$setting_tables_->Settings['default']['controller']];
+        $tables_ = &$setting_tables_->Tables[$setting_tables_->Settings['default']['table']];
+        // 
+        $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
+        $global_pub_ = \pub\hahaha_global::Instance();
+        $project_ = $system_setting_pub_->Project->{$global_pub_->Node->Name};
+ 
+        $target_setting_table = null;
+        $url_token_ = explode("?", $_SERVER['REQUEST_URI']);
+        foreach($tables_ as $key => &$table)
+        {
+            $url_ = "{$project_->Node}/table/{$stage}/{$table['node']}/edit/{$id}";
             
-        // $item_item = Item::where(['id'=>$id])->orderBy('item', 'asc')->orderBy('order_', 'asc')->get();
-        return view('web.backend.index.edit', compact('item', 'page_auto_complete_tag', 'item_auto_complete_tag'));  
+            if($url_ == $url_token_[0])
+            {
+                // 找到table setting檔
+                $target_setting_table = &$table;
+                break;
+
+            }
+        }
+        
+        if(empty($target_setting_table))
+        { 
+            // 有空做成自己的error頁面
+            return abort(404, 'Page not found');
+        }
+
+        // table物件
+        $target_table = $target_setting_table['table']::Instance()
+            ->Initial_Edit();
+            
+        $target_repository_ = EntityManager::getRepository($target_setting_table['entity']);
+        
+        $data_list = [];
+        
+        $data_link = [];
+        //dd($target_table);
+
+        // -------------------------------------------------------------------- 
+        // -------------------------------------------------------------------- 
+        // Fields_Edit DB用
+        // Edit 主區塊用
+        // -------------------------------------------------------------------- 
+        // -------------------------------------------------------------------- 
+
+        // -------------------------------------------------------------------- 
+        // Initial_Fields_Index屬二次附加的東西
+        // 因為是架構基石，不做太多客製化設計，如要客製化(如['*'])，請再另外做一個通用組合模組
+        // ex Initial_Fields(xxx::INDEX, key::FIELD_ALL);
+        // 或者是 Inital_Page($parameter_, xxx::INDEX, key::FIELD_ALL)，初始化腳本
+        // 這樣我其他頁也可以用，不需要強調這個小細節
+        // -------------------------------------------------------------------- 
+        // 注意 : 那兩個trait可能用一用，我可能要拆出來放到hahahalib，或者做成通用包，除非我確定要整入(php hahaha framework or p"h"p framework 的single table)，不然先分開
+        // 注意 : 基本上用這個套版的不會沒事動到我這塊，有也只是插入一些小的函式片段(未來可能挖空，其實這可以自己加。共用模組不會超過5 ~ 10個，繼承出簡易替換也行)，不要影響到我移植的方便性
+        // 注意 : 只要架構裡，我是全部用原生php寫的class，可能會移植給 php hahaha framework or p"h"p framework 的single table 直接使用，不要亂改我接口
+        // --------------------------------------------------------------------        
+        if(0)
+        {
+            $fields = &$target_table->Initial_Fields_Edit()->Fields_Edit;    
+        }
+        else 
+        {
+            // 填$fields = [*];，不用Initial_Fields_Index
+            $fields = ['*'];    
+        }
+        // --------------------------------------------------------------------     
+        $filters = [
+            key::NONE => ["id", "=", $id],     
+        ];
+        $result_ = $target_repository_->findByFields($data_list, 
+            $target_setting_table, 
+            $fields,
+            $filters
+        ); 
+
+        // 如資料連結有額外需求，在得到後進行二次轉換
+        // $data_link = convert($data_link);
+        
+        if(!$result_)
+        {
+            // 有空做成自己的error頁面
+            return abort(404, 'findByPagination error');
+        }
+
+        if(empty($data_list) )
+        {
+            // 有空做成自己的error頁面
+            return abort(404, 'No data error');
+        }
+
+        if(count($data_list) != 1)
+        {
+            // 有空做成自己的error頁面
+            return abort(404, 'Data not one error');
+        }
+        // 這樣是一筆
+        $data = &$data_list[0];
+
+        $target_table_identify = implode('_', explode('/', $target_setting_table['stage']) ) . '_' . implode('_', explode('/', $target_setting_table['node']));
+      
+
+        // 因為generator要用，這裡準備參數
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        // 輸入
+        $parameter_->Input = new \hahaha\hahaha_parameter;
+        // 輸出
+        $parameter_->Output = new \hahaha\hahaha_parameter;
+        // 暫記參數
+        $parameter_->Extra = new \hahaha\hahaha_parameter;
+        // 使用的資料
+        $parameter_->Use = new \hahaha\hahaha_parameter;
+        // property
+        $parameter_->Target_Setting_Table = &$target_setting_table;
+        $parameter_->Target_Table_Identify = &$target_table_identify;
+        $parameter_->Target_Table = &$target_table;
+        $parameter_->Edit = [
+            key::DATA => $data,
+        ];
+        //
+
+        return view('web.backend.table.edit'); 
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $item = Index::where(['id'=>$id])->first();

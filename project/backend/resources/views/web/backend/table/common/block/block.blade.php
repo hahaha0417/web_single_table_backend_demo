@@ -53,10 +53,15 @@ use Spatie\Url\Url;
         // 架構的地方用reference，維護的地方不用，避免有話說
         // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
         $list = new \hahaha\hahaha_parameter;
-        $list->list = &$block->panel;
+        $list->list = &$block->block;
         ?>
-        @include("web.backend.table.common.list.list", ["list"])  
+        @include("web.backend.table.common.block.list")  
+
+      
     </div>
 </div>
+
+
+
 
 

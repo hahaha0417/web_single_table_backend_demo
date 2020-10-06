@@ -10,6 +10,7 @@ use hahaha\define\hahaha_define_table_direction as direction;
 use hahaha\define\hahaha_define_table_group as group;
 use hahaha\define\hahaha_define_table_key as key;
 use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_operator as op;
 use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;

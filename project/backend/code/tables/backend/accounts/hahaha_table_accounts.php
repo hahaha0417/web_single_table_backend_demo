@@ -3,8 +3,11 @@
 namespace hahaha\backend;
 
 use hahahasublib\hahaha_instance_trait;
+//
 use hahaha\hahaha_table_trait;
-
+//
+use hahaha\hahaha_table_base;
+// 
 use hahaha\define\hahaha_define_table_action as action;
 use hahaha\define\hahaha_define_table_class as class_;
 use hahaha\define\hahaha_define_table_css as css;
@@ -28,36 +31,31 @@ use EntityManager;
 
 如果有完整一套組合，請繼承出去修改，hahaha提供的格式，請勿直接亂改
 基本上完全相異的做法，開一個新專案是比較好的選擇，避免composer要取聯集，載入太多東西
+ ----------------------------------------- 
+附加請繼承 hahaha_table_base 或用trait附加
+ ----------------------------------------- 
 */
-class hahaha_table_accounts
+class hahaha_table_accounts extends hahaha_table_base
 {	
 	use hahaha_instance_trait;
-	use hahaha_table_trait;
-	
-	// 寫成標籤，避免要檢查字串
-	// const 必須對應DB field，如怕不安全，則在array裡加key::DB_Field => [key::Field => true, key::Name => "id"]，以便自動產生query
-	// 沒設用key name，有設用field
-	// 可以用這個取得entity name的field name
-	// $em->getClassMetadata('Entities\MyEntity')->getColumnNames()
-	// $em->getClassMetadata('Entities\MyEntity')->getColumnName('id');
+
 	// ---------------------------------- 
-	// 不用這個是因為使用上字太多，不是不好看，沒有比"_"好
-	// self::_
-	// const _ = "_";
-	//
-	const IDENTIFY = "index_item";
-	//
-	const HAHAHA = "hahaha";
-	// block
-	const B_TOP = "top";
-	const B_MAIN = "main";
-	const B_BOTTOM = "bottom";
-	const B_LINK = "link";
-	const B_PANEL_ADD = "panel_add";
-	const B_PANEL_DETAIL = "panel_detail";
+	// 整理後使用物件在這
+	// ---------------------------------- 
+	use hahaha_table_trait;
+	// ---------------------------------- 
 
+	// ---------------------------------- 
+	// 所有頁面共用IDENTIFY
+	// ---------------------------------- 	
+	const IDENTIFY = "accounts";
+	// ---------------------------------- 
 
-	//
+	// ---------------------------------- 
+	// db - 欄位
+	// ---------------------------------- 
+	// 有空自己寫個標籤產生器
+	// ---------------------------------- 
 	const ID = "id";
 	const ACCOUNT = "account";
 	const PASSWORD = "password";
@@ -69,101 +67,16 @@ class hahaha_table_accounts
 	const STATUS = "status";	
 	const CREATED_AT = "created_at";
 	const UPDATED_AT = "updated_at";
-	//
-	const CHECKBOX_SELECTED = "checkbox_selected";
-	// 滑過顯示PANEL_DETAIL面板的BUTTON_ICON
-	// 產生B_PANEL_DETAIL項目的PANEL_DETAIL
-	const BUTTON_DELETE = "button_delete";
-	const BUTTON_EDIT = "button_edit";
-	//
-	const BUTTON_ADD = "button_add";
-	const BUTTON_SELECTED_DELETE = "button_selected_delete";
-	const BUTTON_ALL_SAVE = "button_all_save";
-	const BUTTON_ALL_REFRESH = "button_all_refresh";
-	//
-	const PANEL_ADD_BUTTON_ADD = self::B_PANEL_ADD . "_" . "button_add";
-	const PANEL_ADD_BUTTON_CANCEL = self::B_PANEL_ADD . "_" . "button_cancel";
-	//
-	const BUTTON_PREPEND_DETAIL = "button_prepend_detail";
-	const PANEL_DETAIL = self::B_PANEL_DETAIL . "_" . "panel_detail";
-	// 
-
-	//
-	//
-	//
-	const PANEL_DETAIL_BUTTON_CHANGE_PASSWORD = self::B_PANEL_DETAIL . "_" . "button_change_password";
-	// ----------------------------------------------- 
-	// 設定檔
-	// ----------------------------------------------- 	
-    /*
-	settings
-	*/
-	public $Settings = [];
-
-	/*
-	settings fields
-	*/
-	public $Settings_Fields = [];
-
-	/*
-	settings options
-	*/
-	public $Settings_Options = [];
-
-	/*
-	settings index
-	*/
-	public $Settings_Index = [];
-
-	/*
-	settings preview
-	*/
-	public $Settings_Preview = [];
-
-	/*
-	settings edit
-	*/
-	public $Settings_Edit = [];
-
-	/*
-	settings 附加的DB欄位，用來DB撈資料附加要求欄位
-	*/
-	public $Settings_DB_Fields_Addition = [];
-
-	function __construct()
-	{
-		$this->Initial();
-	}
-
-	public function Initial()
-	{
-		// 可以給其他人設定
-		// ---------------------------------------------------- 
-		// 一定要初始化
-		// ---------------------------------------------------- 
-		// 初始化設定檔
-		$this->Settings($this->Settings);
-		$this->Settings_Options($this->Settings_Options);
-		// 
-		$this->Settings_DB_Fields_Addition($this->Settings_DB_Fields_Addition);
-		$this->Settings_Fields($this->Settings_Fields);
-		
-		// ---------------------------------------------------- 
-		// Setting Preset
-		$this->Settings_Index($this->Settings_Index);
-		$this->Settings_Preview($this->Settings_Preview);
-		$this->Settings_Edit($this->Settings_Edit);
-		// 初始化使用設定，要用到才做初始化(為了快)
-		// $this->Initial_Index($this->Index);
-		// $this->Initial_Preview($this->Preview);
-		// $this->Initial_Edit($this->Edit);
-		// $this->Initial_Fields_Index($this->Fields_Index);
-		// $this->Initial_Fields_Preview($this->Fields_Preview);
-		// $this->Initial_Fields_Edit($this->Fields_Edit);
+	// ---------------------------------- 
 	
-	}
+	// -------------------------------------------------------- 
+	// 全域
+	// -------------------------------------------------------- 	
 
 	/*
+	// -------------------------------------- 
+	// 主設定
+	// -------------------------------------- 
 	settings - 設定
 	因為未來要移植php hahaha framework，所以不放在config
 	*/
@@ -181,8 +94,14 @@ class hahaha_table_accounts
         
 	}
 
+	// -------------------------------------------------------- 
+	// 基本
+	// -------------------------------------------------------- 	
+
 	/*
-	設定選項
+	// -------------------------------------- 
+	選項
+	// -------------------------------------- 
 	*/
 	public function Settings_Options(&$settings_options)
 	{
@@ -201,43 +120,11 @@ class hahaha_table_accounts
 			],
 		];
 	}
-
-	/*
-	fields - DB table additional fields
-	因為未來要移植php hahaha framework，所以不放在config
-	*/
-	public function Settings_DB_Fields_Addition(&$settings_db_fields_addition)
-	{
-		// 因為同一個節點，這是共用設定
-		$settings_db_fields_addition = [
-			self::ID => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::STRING,
-					// key::NAME => self::ID,
-				],				
-			],	
-			self::CREATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
-					// 指定
-					key::NAME => 'createdAt', 
-				],				
-			],		
-			self::UPDATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
-					// 指定
-					key::NAME => 'updatedAt',
-				],				
-			],				
-        ];
-        
-    }
 	
 	/*
+	// -------------------------------------- 
+	欄位
+	// -------------------------------------- 
 	fields - table fields
 	因為未來要移植php hahaha framework，所以不放在config
 	
@@ -256,6 +143,21 @@ class hahaha_table_accounts
 	*/
 	public function Settings_Fields(&$settings_fields)
 	{
+		// -------------------------------------- 
+		// 因為有規則，可以寫規則來設定
+		// 有空再補
+		// -------------------------------------- 
+		// 將這邊改成list做設定
+
+		// $key = self::ID;
+		// $item = []; 
+		// $setting = [
+		// 	key::TYPE => type::TEXT,
+		// ];
+		// $this->xxx($key, $item, $setting);
+		// $settings_fields[$key] = &$item;
+		// -------------------------------------- 
+
 		// 因為同一個節點，這是共用設定
 		$settings_fields = [
 			self::ID => [
@@ -370,10 +272,13 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.selected'),
 				key::TYPE => type::CHECKBOX_SELECTED,
 			],
+			// ---------------------------------------------------------------------------- 
+			// 功能
+			// ----------------------------------------------------------------------------
 			// ------------------------- 
 			self::BUTTON_PREPEND_DETAIL => [
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
-				key::TITLE => __('backend.detail'),
+				// key::TITLE => __('backend.detail'),
 				key::TYPE => type::BUTTON_ICON,
 			],
 			self::PANEL_DETAIL => [
@@ -381,7 +286,6 @@ class hahaha_table_accounts
 				key::TITLE => __('backend.detail'),
 				key::TYPE => type::PANEL,
 			],
-			// ------------------------- 
 			self::BUTTON_DELETE => [
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
 				// 不顯示字
@@ -402,7 +306,8 @@ class hahaha_table_accounts
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
 				// 不顯示字
 				// key::TITLE => __('backend.edit'),
-				key::TYPE => type::BUTTON_ICON,
+				key::TYPE => type::BUTTON_ICON_LINK,
+				key::INDEX => self::ID,
 				key::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
@@ -550,20 +455,127 @@ class hahaha_table_accounts
 					"color" => "Tomato",
 				],
 			],
-        ];
+		];
+				
+		// -------------------------------------- 
+		// 附加list法塞入，沒規定一定要用哪個，對於主要維護者而言，這不是很重要，這又不會常常改
+		// 主要維護者反而怕牽一髮而動全身的改法
+		// -------------------------------------- 
         
 	}
 	
+	/*
+	// -------------------------------------- 
+	附加欄位
+	// -------------------------------------- 
+	fields - DB table additional fields
+	因為未來要移植php hahaha framework，所以不放在config
+	*/
+	public function Settings_DB_Fields_Addition(&$settings_db_fields_addition)
+	{
+		// -------------------------------------- 
+		// 因為有規則，可以寫規則來設定
+		// 有空再補
+		// -------------------------------------- 
+		// 將這邊改成list做設定
 
+		// $key = self::ID;
+		// $item = []; 
+		// $setting = [
+		// 	key::DB_FIELD => [
+		// 		key::IS_FIELD => true,
+		// 		// key::TYPE => db_field_type::STRING,
+		// 		// key::NAME => self::ID,
+		// 	],		
+		// ];
+		// $this->xxx($key, $item, $setting);
+		// $settings_fields[$key] = &$item;
+		// -------------------------------------- 
+
+		// 因為同一個節點，這是共用設定
+		$settings_db_fields_addition = [
+			self::ID => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					// key::TYPE => db_field_type::STRING,
+					// key::NAME => self::ID,
+				],				
+			],	
+			self::CREATED_AT => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					// key::TYPE => db_field_type::DATETIME,
+					// 指定
+					key::NAME => 'createdAt', 
+				],				
+			],		
+			self::UPDATED_AT => [
+				key::DB_FIELD => [
+					key::IS_FIELD => true,
+					// key::TYPE => db_field_type::DATETIME,
+					// 指定
+					key::NAME => 'updatedAt',
+				],				
+			],				
+        ];
+ 
+		// -------------------------------------- 
+		// 附加list法塞入，沒規定一定要用哪個，對於主要維護者而言，這不是很重要，這又不會常常改
+		// 主要維護者反而怕牽一髮而動全身的改法
+		// -------------------------------------- 
+        
+	}
+	// -------------------------------------------------------- 
+	// 頁面
+	// -------------------------------------------------------- 	
     
-    /*
+	/*
+	// -------------------------------------- 
 	index - 首頁
+	// -------------------------------------- 
 	因為未來要移植php hahaha framework，所以不放在config
 
 	注意 : 格式要統一
 	*/
 	public function Settings_Index(&$settings_index)
 	{
+		// -------------------------------------- 
+		// 這裡基本上會合併預設值，因此已經最簡
+		// 
+		// -------------------------------------- 
+		// bootstrap樣式應該要這樣做
+		//
+		// self::BUTTON_PREPEND_DETAIL => [
+		// 	// key::TITLE => __('backend.detail'),
+		// 	key::TYPE => type::BUTTON_ICON,
+		// 	key::CLASSES_1 => [
+		// 		"btn-secondary input-group-text" => true,
+		// 	],
+		// 	key::CLASSES_2 => [
+		// 		"fab fa-elementor" => true,
+		// 	],
+		// 	key::STYLES => [
+		// 		// 這設定label的style沒有錯
+		// 		"font-size" => "1.5em", 
+		// 		"color" => "Tomato",
+		// 	],
+		// ],
+		// =============================>
+		// 直接做成專屬樣式，不要搞花招
+		//
+		// self::BUTTON_PREPEND_DETAIL => [
+		// 	// key::TITLE => __('backend.detail'),
+		// 	key::TYPE => type::BUTTON_ICON_BOOTSTRAP,
+		// 	key::ICON => "input-group-text",
+		// 	key::BUTTON => BUTTON::SECONDARY,
+		// 	// key::STYLES => [
+		// 	// 	// 這設定label的style沒有錯
+		// 	// 	"font-size" => "1.5em", 
+		// 	// 	"color" => "Tomato",
+		// 	// ],
+		// ],
+		// -------------------------------------- 
+
 		// 因為同一個節點，這是共用設定
 		$settings_index = [
 			// --------------------------------------------------- 
@@ -680,7 +692,7 @@ class hahaha_table_accounts
 								key::TYPE => type::TEXT,
 							],
 							self::BUTTON_PREPEND_DETAIL => [
-								key::TITLE => __('backend.detail'),
+								// key::TITLE => __('backend.detail'),
 								key::TYPE => type::BUTTON_ICON,
 								key::CLASSES_1 => [
 									"btn-secondary input-group-text" => true,
@@ -864,16 +876,16 @@ class hahaha_table_accounts
 						],
 					],
 					[
-						key::TITLE => __('backend.password'),
+						key::TITLE => __('backend.password_new'),
 						key::TYPE => type::LABEL,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
-							self::PASSWORD => [
+							self::PASSWORD_NEW => [
 								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD,
 								key::DB_FIELD => [
-									key::IS_FIELD => true,
+									// key::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.password'),
+								key::TITLE => __('backend.password_new'),
 								key::TYPE => type::PASSWORD,
 							],
 						],
@@ -1085,128 +1097,247 @@ class hahaha_table_accounts
 	}
 
 	/*
-	preview - 預覽葉
+	// -------------------------------------- 
+	preview - 預覽頁
+	// -------------------------------------- 
 	因為未來要移植php hahaha framework，所以不放在config
 	*/
 	public function Settings_Preview(&$settings_preview)
 	{
-		// 因為同一個節點，所以所有資料表共用一個router
-		$settings_preview = [
-			self::HAHAHA => [
-				self::ID => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
-					],
-				],
-				self::ACCOUNT => [					// 帳號不可以改
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
-					],
-				],
-				self::PASSWORD => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_CONFIRM => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_NEW => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_NEW_CONFIRM => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::EMAIL => [
-					key::TYPE => type::TEXT,
-					key::VALIDATE => validate::EMAIL,				
-				],
-				self::GENDER => [
-					key::TYPE => type::RADIOBOX,
-				],
-				self::STATUS => [
-					key::TYPE => type::TEXT,
-					key::ACTIONS => [
-						action::AUTO_UPDATE => true,
-					],	
-				],
-				self::CREATED_AT => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
-					],
-				],
-				self::UPDATED_AT => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
-					],
-				],
-			],
-		];
+		// 因為同一個節點，這是共用設定
+		// 同首頁
+		$settings_preview = &$this->Settings_Preview;
 
 	}
 
 	/*
+	// -------------------------------------- 
 	edit - 編輯頁
+	// -------------------------------------- 
 	*/
 	public function Settings_Edit(&$settings_edit)
 	{
-		// 因為同一個節點，所以所有資料表共用一個model
+		// 因為同一個節點，這是共用設定
 		$settings_edit = [
-			self::HAHAHA => [
-				self::ID => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
+			// --------------------------------------------------- 
+			// hahaha的版本的設定集，寫死，避免要處理很細
+			// --------------------------------------------------- 			
+			// --------------------------------------------------- 
+			self::HAHAHA => [		
+				// --------------------------------------------------- 
+				// --------------------------------------------------- 
+				// 主要畫面區
+				// --------------------------------------------------- 	
+				// --------------------------------------------------- 
+				// 這裡不做太複雜，如果前端需要搬移設計
+				// 基本上如我前台首頁做法(page & item)
+				// 如要多層嵌套，基本上只要牽扯到動態資料，模組最多2~3個維度，也就是2層 + 彈出面板
+				// 不會有動態資料需要多層嵌套(這不是視窗程式，視窗程式也不會多層動態，那改起來太累了，一定是固定架構)
+				// 靜態資料，則可以拆分模組，多個模組整在一起會很難維護，原則上很多零散模組，則分開管理，避免太亂
+				// --------------------------------------------------- 
+								
+				// --------------------------------------------------- 
+				// 上方區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+            
+				// --------------------------------------------------- 
+				// 上方區塊 - 2維嵌套
+				// --------------------------------------------------- 
+				// 每行有多項Items，樣式如下面那樣，有空再做
+				// --------------------------------------------------- 
+           
+				// --------------------------------------------------- 
+				// 主要區塊 - 多筆 - table
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+                self::B_MAIN => [
+					[
+						key::TITLE => __('backend.account'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::ACCOUNT => [					// 帳號不可以改
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ACCOUNT,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.account'),
+								key::TYPE => type::TEXT_EXIST_CHECK,
+								key::CLASSES => [
+									class_::DISABLED => false,
+								], 
+								key::CLASSES_1 => [
+									class_::REQUIRED => true,
+								], 
+							],
+						],
+						key::STYLES => [
+						],
 					],
-				],
-				self::ACCOUNT => [					// 帳號不可以改
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
+					[
+						key::TITLE => __('backend.password_new'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PASSWORD_NEW => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.password_new'),
+								key::TYPE => type::PASSWORD,
+							],
+						],
+						key::STYLES => [
+						],
 					],
-				],
-				self::PASSWORD => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_CONFIRM => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_NEW => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::PASSWORD_NEW_CONFIRM => [
-					key::TYPE => type::PASSWORD,
-				],
-				self::EMAIL => [
-					key::TYPE => type::TEXT,
-					key::VALIDATE => validate::EMAIL,				
-				],
-				self::GENDER => [
-					key::TYPE => type::RADIOBOX,
-				],
-				self::STATUS => [
-					key::TYPE => type::TEXT,
-					key::ACTIONS => [
-						action::AUTO_UPDATE => true,
-					],	
-				],
-				self::CREATED_AT => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
+					[
+						key::TITLE => __('backend.password_confirm'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PASSWORD_CONFIRM => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD_CONFIRM,
+								key::TITLE => __('backend.password_confirm'),
+								key::TYPE => type::PASSWORD,
+							],
+						],
+						key::STYLES => [
+						],
 					],
-				],
-				self::UPDATED_AT => [
-					key::TYPE => type::TEXT,
-					key::CLASSES => [
-						class_::DISABLED => true,
+					[
+						key::TITLE => __('backend.email'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::EMAIL => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::EMAIL,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.email'),
+								key::TYPE => type::TEXT,
+								key::VALIDATE => validate::EMAIL,				
+							],
+						],
+						key::STYLES => [
+						],
 					],
+					[
+						key::TITLE => __('backend.gender'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::GENDER => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.gender'),
+								key::TYPE => type::RADIOBOX,
+								key::STYLES_1 => [
+									"height" => "40px"
+								],								
+								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+									"female" => [
+										key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "female",
+									],
+									"male" => [
+										key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "male",
+									],
+									
+								]),
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.status'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::STATUS => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::STATUS,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.status'),
+								key::TYPE => type::TEXT,
+								key::ACTIONS => [
+									action::AUTO_UPDATE => true,
+								],	
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.created_at'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::CREATED_AT => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						key::TITLE => __('backend.updated_at'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::UPDATED_AT => [
+								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+							],
+						],
+						key::STYLES => [
+						],
+					],
+					[
+						// key::TITLE => __('backend.item'),
+						key::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::PANEL_ADD_BUTTON_ADD => [
+								// 因為ID重複，所以加上Top
+								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+							],
+							self::PANEL_ADD_BUTTON_CANCEL => [
+								// 因為ID重複，所以加上Top
+								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+							],
+						],
+						key::STYLES => [
+						],
+					],					
 				],
+				// --------------------------------------------------- 
+				// 下方區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+              			
+				// --------------------------------------------------- 
+				// 連結區塊 - 一維嵌套
+				// --------------------------------------------------- 
+				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+              
+				// --------------------------------------------------- 
+				// --------------------------------------------------- 
+				// 面板區
+				// --------------------------------------------------- 	
+				// --------------------------------------------------- 
+
+			
 			],
         ];
-        
 	}
 
 

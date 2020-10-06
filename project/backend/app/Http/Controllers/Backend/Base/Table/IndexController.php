@@ -34,201 +34,32 @@ use Redirect;
 // 3. 使用hahaha修改的Model_Ha，只需餵入資料庫名稱生成物件即可處理不同資料庫 : 多個資料庫動態生成時採用
 class IndexController extends CommonController
 {
-    /*
-    // stage - 站 class - 資料表分類 item - 資料表名
-
-    */
     public function index($stage, $class, $item)
     {
-        // 資料庫畫面欄位原則上不建立在此頁面，因為使用者通常不會沒事同時修改多個Index資料庫
-        // 可以建立在 http://114.32.144.211:8081/backend 的選單或該頁面的某個iframe頁面上
-
-        // 原則上關於首頁的某頁，如果是少部分資料才可以建立在此資料庫，避免太髒太亂，
-        // 又或者新開資料庫如 hahaha_front_index_index_other ，分開存放
-        $index = Input::get('i_index', 'all');
-        $page = Input::get('i_page', 'all');
-        $item = Input::get('i_item', 'all');
-        
-        $data_count = 10;
-        
-        $index_list;
-        $page_list;
-        $item_list;        
-        $data_list;
-        
-        if($index == "all" && $page == "all" && $item == "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->distinct()->orderBy('order_', 'asc')->get();
-            $page_list = Index::select("page")->distinct()->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        }
-        else if($index != "all" && $page == "all" && $item == "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->where(["title_name" => $index])->distinct()->orderBy('order_', 'asc')->get();
-            $page_list = Index::where(["page" => $index, "item" => "nav"])->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->where(["page" => $index])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $index])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        }
-        else if($index == "all" && $page != "all" && $item == "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->distinct()->orderBy('page', 'asc')->get();
-            $page_list = Index::select("page")->distinct()->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->where(["page" => $page])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $page])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        }
-        else if($index != "all" && $page != "all" && $item == "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->where(["title_name" => $index])->distinct()->orderBy('order_', 'asc')->get();
-            $page_list = Index::where(["page" => $index, "item" => "nav"])->orderBy('page', 'asc')->get();            
-            $item_list = Index::select("item")->where(["page" => $index, "page" => $page])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $page])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        }
-        else if($index == "all" && $page == "all" && $item != "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->distinct()->orderBy('page', 'asc')->get();
-            $page_list = Index::select("page")->distinct()->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["item" => $item])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        
-            // 尋找有無item
-            // if($item_list->has($item)){                
-            //     // return view('web.backend.index.index', compact('index', 'page', 'item', 'index_list', 'page_list', 'item_list', 'data_list'));    
-            // }
-            // else{
-            //     return redirect('backend/index/index')->withInput(Input::except('i_item'));                              
-            // }
-        }
-        else if($index != "all" && $page == "all" && $item != "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->where(["title_name" => $index])->distinct()->orderBy('order_', 'asc')->get();
-            $page_list = Index::where(["page" => $index, "item" => "nav"])->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->where(["page" => $index])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $index, "item" => $item])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-            
-            // 尋找有無item
-            // if($item_list->has($item)){                
-            //     // return view('web.backend.index.index', compact('index', 'page', 'item', 'index_list', 'page_list', 'item_list', 'data_list'));    
-            // }
-            // else{
-            //     return redirect('backend/index/index')->withInput(Input::except('i_item'));                              
-            // }
-        }
-        else if($index == "all" && $page != "all" && $item != "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->distinct()->orderBy('page', 'asc')->get();
-            $page_list = Index::select("page")->distinct()->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->where(["page" => $page])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $page, "item" => $item])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-        
-            // 尋找有無item
-            if($item_list->contains('item', $item)){                
-                // return view('web.backend.index.index', compact('index', 'page', 'item', 'index_list', 'page_list', 'item_list', 'data_list'));    
-            }
-            else{
-                //  要用網址方式傳，withInput，是直接存在Input攜帶
-                return redirect('backend/index/index'."?i_page=".$page);                            
-            }
-        }
-        else if($index != "all" && $page != "all" && $item != "all"){
-            $index_list = Index::where(["page" => "root", "item" => "index"])->where(["title_name" => $index])->distinct()->orderBy('order_', 'asc')->get();
-            $page_list = Index::where(["page" => $index, "item" => "nav"])->orderBy('page', 'asc')->get();
-            $item_list = Index::select("item")->where(["page" => $page])->distinct()->orderBy('item', 'asc')->get();
-            $data_list = Index::where(["page" => $page, "item" => $item])->orderBy('page', 'asc')->orderBy('item', 'asc')->orderBy('order_', 'asc')->orderBy('title', 'asc')->paginate($data_count)->appends(request()->query());
-            
-            // 尋找有無item
-            if($item_list->contains('item', $item)){                
-                // return view('web.backend.index.index', compact('index', 'page', 'item', 'index_list', 'page_list', 'item_list', 'data_list'));    
-            }
-            else{                
-                //  要用網址方式傳，withInput，是直接存在Input攜帶
-                return redirect('backend/index/index'."?i_index=".$index."&i_page=".$page);                             
-            }
-        }
-
-        
-                
-        // 去除重複的資料
-        // distinct()
-        
-        // dd($data_list);
-        // return;
-
-        //
-        return view('web.backend.index.index', compact('index', 'page', 'item', 'index_list', 'page_list', 'item_list', 'data_list'));    
+         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        // 如有必要，再建此頁
-        // $id = date('Y-m-d_H-i-s').'_'.mt_rand(1000,9999);
-        // $result = Temp::where(['id'=>$id]);    
-
-        // while($result->count()){            
-        //     $id = date('Y-m-d_H-i-s').'_'.mt_rand(1000,9999);
-        //     $result = Temp::where(['id'=>$id]);
-        // }
-        // // new id
-        // Temp::create(['id' => $id, 'stage' => 'index', 'action' => 'create']);
-
-        // return view('web.backend.index.edit', compact('page', 'item', 'id'));  
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($stage, $class, $item, $id)
     {       
-        $item = Index::where(['id'=>$id])->first();    
-
-        $auto_complete_tag;     
-        
-        $page_auto_complete_tag = Index::select("page")->distinct()->orderBy('page', 'asc')->get()->toArray();
-
-        if($item['item'] != null){
-            $item_auto_complete_tag = Index::select("item")->where(["page" => $item['page']])->distinct()->orderBy('item', 'asc')->get()->toArray();       
-        }
-        else{
-            $item_auto_complete_tag = Index::select("item")->distinct()->orderBy('item', 'asc')->get()->toArray();
-        }
-        // dd($page_auto_complete_tag);
-        // return;
-            
-        // $item_item = Item::where(['id'=>$id])->orderBy('item', 'asc')->orderBy('order_', 'asc')->get();
-        return view('web.backend.index.edit', compact('item', 'page_auto_complete_tag', 'item_auto_complete_tag'));  
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         //
     }

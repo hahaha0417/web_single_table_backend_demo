@@ -155,8 +155,7 @@ class hahaha_define_table_type
     // addition key : 
     // key::ICON    
     const BUTTON_ICON = "button_icon";
-    // addition key : 
-    // key::ICON    
+    const BUTTON_ICON_LINK = "button_icon_link";
     const BUTTON_ICON_TEXT = "button_icon_text";
     const BUTTON_SEPERATOR = "button_seperator";
     // -------------------------------------- 

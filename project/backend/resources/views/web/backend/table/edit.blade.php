@@ -5,13 +5,94 @@
 {{-- 決定 : name --}}
 {{-- 
     ----------------------------------------------------------------------------
-    說明 : 
+    說明
     ----------------------------------------------------------------------------   
+    欄位是否要模組化，等草稿定稿再做模組化，避免考慮不完全
+
+    模組化須注意 : 
+    1. 樣式
+    2. 功能
+    3. 現在收入狀況
+    4. 接口
+    5. 變成整個大模塊，並且保證我有任意使用權
     
+    ----------------------------------------------------------------------------
+    注意 
+    ----------------------------------------------------------------------------
+    本專案強調是後台"簡易快速開發"，而不是後台"任意客製化"，不要做錯東西
+    這裡強調"模組化可以放reference"(需提供正常運作保證)，但是"實際開發不一定要用reference"(由開發的人自行承擔)
+    由於目前沒有確定可以正常賺錢，因此不直接進行獨立的模塊化
+    ----------------------------------------------------------------------------
+    注意 
+    ----------------------------------------------------------------------------
+    模塊後規劃放在laravel single table backend framework內，除非完成了確定不改
+    不然會被人搞，要求要相容舊的接口
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
+<?
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_tag as tag;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+use Spatie\Url\Url;
+?>
+
+<?
+// $target_table_class_ = $target_setting_table['table'];
+// 這從controller傳來
+$parameter_ = \hahaha\hahaha_parameter::Instance();
+$use_ = &$parameter_->Use;
+//
+$target_table_ = &$parameter_->Target_Table;
+$target_setting_table_ = &$parameter_->Target_Setting_Table;
+$target_table_identify_ = &$parameter_->Target_Table_Identify;
+$target_table_ = &$parameter_->Target_Table;
+$data_ = &$parameter_->Edit[key::DATA];
+
+
+$target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);                                                                                        
+// table class 名
+$target_table_class_ = $target_setting_table_['table'];
+// -------------------------------------------------- 
+// 這裡是設定，到時候包成函式
+// -------------------------------------------------- 
+$use_->Identify = $target_table_class_::IDENTIFY;
+$use_->Class_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_ADD;
+// -------------------------------------------------- 
+
+// -------------------------------------------------- 
+$use_->Block_Top_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
+$use_->Id_Block_Top_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP; 
+$use_->Class_Block_Top_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
+$use_->Block_Top = &$target_table_->Index[$target_table_class_::B_TOP];
+// -------------------------------------------------- 
+$use_->Block_Main_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_MAIN;
+$use_->Id_Block_Main_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_MAIN; 
+$use_->Class_Block_Main_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_MAIN;
+$use_->Block_Main = &$target_table_->Edit[$target_table_class_::B_MAIN];
+
+// -------------------------------------------------- 
+
+
+// -------------------------------------------------- 
+$use_->Block_Bottom_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
+$use_->Id_Block_Bottom_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM; 
+$use_->Class_Block_Bottom_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
+$use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
+// -------------------------------------------------- 
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,40 +105,112 @@
                     
         @include('web.common.main_css')
         @include('web.common.sub_css')
-    
-        {{-- CKEditor --}}        
-        {{--  http://www.grotte-de-han.be/web/bundles/snowcapadmin/vendor/ckeditor/samples/plugins/wysiwygarea/fullpage.html  --}}  
-        {{--  https://ckeditor.com/ckeditor-4/download/  --}}
-        {{--  https://cdn.ckeditor.com/  --}}
-        <script src="{{asset("assets/plugin/ckeditor/ckeditor.js")}}"></script>
-        {{--  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>  --}}
+        {{--  Checkbox  --}}
+        {{--  https://www.html5tricks.com/10-pretty-checkbox-radiobox.html  --}}
+        <link rel="stylesheet" href="{{\p_ha::Assets('plugin/checkbox/labelauty/css/jquery-labelauty.css')}}">
+        <script src="{{\p_ha::Assets('plugin/checkbox/labelauty/js/jquery-labelauty.js')}}"></script>
         {{--  jQuery Upload File  --}}
         {{--  http://hayageek.com/docs/jquery-upload-file.php#doc  --}}
-        <link href="/assets/plugin/jquery-upload-file/css/uploadfile.css" rel="stylesheet">
+        <link href="{{\p_ha::Assets('plugin/jquery-upload-file/css/uploadfile.css')}}" rel="stylesheet">
         {{--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  --}}
-        <script src="/assets/plugin/jquery-upload-file/js/jquery.uploadfile.min.js"></script>
+        <script src="{{\p_ha::Assets('plugin/jquery-upload-file/js/jquery.uploadfile.min.js')}}"></script>
         {{--  layer  --}}
         {{--  http://layer.layui.com/  --}}
-        <script src="{{asset("assets/plugin/layer/layer/layer.js")}}"></script>
+        <script src="{{\p_ha::Assets('plugin/layer/layer/layer.js')}}"></script>
         {{-- Boostrap Autocomplete --}}
         <script src="https://gitcdn.link/repo/xcash/bootstrap-autocomplete/master/dist/latest/bootstrap-autocomplete.min.js"></script>
         {{--  --}}     
         {{--    --}}
         <script>
             {{--  此法不要用在plugin裡面，要請在index.js初始化  --}}
-            {{--  這兩法相同  --}}
-            {{--  var page_auto_complete_tag = {!! json_encode($page_auto_complete_tag) !!};   --}}
-            var page_auto_complete_tag =  @json($page_auto_complete_tag);
-            var item_auto_complete_tag =  @json($item_auto_complete_tag);
+            {{-- var item_list_ = {!! $item_list !!};
+            var edit_ = "{{ $index }}";
+            var page_ = "{{ $page }}";
+             --}}
+        </script>  
+         
+        {{--  主要文件  --}}
+        {{--  因為參數式內容需要，所以需要產生需要的CSS & JS  
+            因為表是動態內容，每個表會對應一組CSS & JS，存放在對應的
+            // \p_ha::Assets('web/backend/table/index/*')路徑下
+            命名為hahaha/backend_accounts_list.css & hahaha/backend/accounts_list.js
+            {key} / {stage} / {node}("/"換成"_")
+            --}}        
+        {{--    --}}
+
+        
+        {{-- 自動生成文件 --}}
+        <?
+            $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
+            if($system_setting_pub_->Project->Backend->Generate_Script->Enabled)
+            {
+                // generator 
+                $list_ = [
+                    \hahaha\backend\table_edit_css::Instance(),         
+                    \hahaha\backend\table_edit_js::Instance(),
+                ];
+                // 必須初始化，不然沒指標 
+                $static_content_ = [];
+                $dynamic_content_ = [];
+                //
+                $generator_ = \hahaha\hahaha_generator_web::Instance();
+                
+                $table_file_ = $system_setting_pub_->Project->Backend->Public . "/" . $system_setting_pub_->Project->Backend->Assets . 'web/backend/table/edit/table';
+                $file_list_ = [
+                    $table_file_ . '/' . $target_table_identify_ . '.css',
+                    $table_file_ . '/' . $target_table_identify_ . '.js',
+                ];  
+                
+                if(!$system_setting_pub_->Project->Backend->Generate_Script->Overwrite)
+                {
+                    foreach($file_list_ as $key => $file)
+                    {
+                        if(file_exists($file))  
+                        {
+                            // 已經有就不處理，unset
+                            unset($list_[$key]);
+                            unset($file_list_[$key]);
+                        }                  
+                    }
+                }
+                
+                if(!empty($file_list_))
+                {
+                    $generator_->Generate($list_,
+                        $static_content_,
+                        $dynamic_content_
+                    ); 
+                    $generator_->Save($static_content_, 
+                        $file_list_
+                    );
+                }
+                
+            }
             
-        </script>   
-        {{--    --}}
-        <link rel="stylesheet" href="{{asset("assets/web/backend/index/edit.css")}}">
-        <script src="{{asset("assets/web/backend/index/edit.js")}}"></script>
-        {{--    --}}
+            // 注意 : CSS必須在index.css前面，JS也必須在index.js前面，以進行覆蓋
+            // 其他模組化的，等到我的框架時，再用我的模組，統一前置
+            // $generator_->Render($dynamic_content_);
+            
+        ?>
+       
+        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/table/edit/table/{$target_table_identify_}.css")}}">
+        <script src="{{\p_ha::Assets("web/backend/table/edit/table/{$target_table_identify_}.js")}}"></script>
+        {{-- 客製化文件 --}}
+        <link rel="stylesheet" href="{{\p_ha::Assets('web/backend/table/edit.css')}}">
+        <script src="{{\p_ha::Assets('web/backend/table/edit.js')}}"></script>
+        <script src="{{\p_ha::Assets('cross_origin/iframe_resize_height.js')}}"></script>
+
+        
+        {{--  附加  --}}
+        
+
+        
         <script>
             $(function(){    
-                    
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                  })
+                
             });
             
         </script>
@@ -70,264 +223,128 @@
                 max-width: 100%;
             }
             
+            .sidebar-menu.sidebar-mini {
+                /* 會被iframe遮住 */
+                z-index: 5000;
+            }
+            .sidebar-menu.sidebar-mini .main-menu ul li .submenu{
+                /* 字太長延長 */
+                width: 400px;
+                right: -400px;
+            }
+
+            .sidebar-menu.sidebar-mini .main-menu ul li .submenu li {
+                /* 字太長延長 */
+                width: 400px;
+            }
+
+            
+
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
-        
-        
-
     </head>
     <body>    
-        <div class="index_edit_title">
-            {{--  title 東西從global title撈  --}}
-            <h1 style="font-weight:bold;">Index</h1>
+        {{--  有需要再模組化，基本上只是分塊整入index資料夾，用@include填入  --}}
+        {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
+
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <? // 標題面板 ?>
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <div class="edit_title">
+            <h1 style="font-weight:bold;">{{__('backend.db_table_edit')}}</h1>
             <hr class="hr_title" />
-            <h3 style="font-weight:bold;">編輯項目</h3>
-            Item
+            
+            <h3 style="font-weight:bold;">{{$target_setting_table_['title']}}</h3>
+            {{$target_setting_table_['description']}}
             <hr class="hr_title" />
-            
         </div> 
-        <p>
-        {{--  間隔  --}}
-        <div class="index_edit_space">
-            <br><br>
-        </div>
-
-        {{--  置頂HTML樣板產生器，用於content欄位  --}}
-
-        {{csrf_field()}}
-        <div id="unique_item" unique_id="{{$item['id']}}" unique_page="{{$item['page']}}" unique_item="{{$item['item']}}"></div>
-        {{--  如果要子項目搬移或複製，原則上在這頁處理  --}}
-        {{--  因為在index就算給您id，也沒有人知道該id子項目是什麼，如果要確認，一定會進來edit看  --}}
-        {{--  所以正常會開出兩個edit頁面觀看，因此在這頁做操作設計  --}}
-        <div class="index_edit_content">            
-            {{--  <form action="{{url("#")}}" method="post" enctype="multipart/form-data">  --}}
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <? // 內容面板 ?>
+        <? // -------------------------------------------------------------------------------------------------------------- ?>
+        <div class="edit_content">
                 
-                <div class="form-group row">
-                    <label for="index_item_page" class="col-sm-3 col-form-label">頁面(Page) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_page" name="index_item_page" placeholder="頁面" value="{{$item['page']}}">
-                    <div id="index_item_page_check" class="index_item_page_check">
-                        <div style="font-size:1.5em; color:green">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>     
-                    <div id="index_item_page_error" class="index_item_page_error">
-                        <div style="font-size:1.5em; color:red">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div>   
+        </div>     
+        <div class="edit_content">
+            <form action="#" method="post">
+                {{csrf_field()}}
+                {{--  分隔線  --}}
+                <div class="edit_result_wrap">
                 </div>
-                <div class="form-group row">
-                    <label for="index_item_item" class="col-sm-3 col-form-label">項目(Item) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_item" name="index_item_item" placeholder="項目" value="{{$item['item']}}">
-                    <div id="index_item_item_check" class="index_item_item_check">
-                        <div style="font-size:1.5em; color:green">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>     
-                    <div id="index_item_item_error" class="index_item_item_error">
-                        <div style="font-size:1.5em; color:red">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div> 
-                </div>
-                <div class="form-group row">       
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                    <label for="index_item_item_describe" class="col-sm-3 col-form-label">描述(Describe) :      </label>
-                    <textarea class="index_item_item_describe form-control col-sm-4" id="index_item_item_describe" name="index_item_item_describe" rows="5" cols="50" placeholder="描述">{{$item['item_describe']}}</textarea>
-                    <div class="w-100"></div>  
-
-                               
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_id" class="col-sm-3 col-form-label">識別項(ID) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_id" name="index_item_id" placeholder="識別項 : index_xxx_xxx" value="{{$item['id']}}">
-                    <div id="index_item_id_check" class="index_item_id_check">
-                        <div style="font-size:1.5em; color:green">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>     
-                    <div id="index_item_id_error" class="index_item_id_error">
-                        <div style="font-size:1.5em; color:red">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div> 
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_title" class="col-sm-3 col-form-label">標題(Title) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_title" name="index_item_title" placeholder="標題" value="{{$item['title']}}">
-                </div>
-                <div class="form-group row">       
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                    <label for="index_item_title_name" class="col-sm-3 col-form-label">名稱(Name) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_title_name" name="index_item_title_name" placeholder="標題 - 名稱" value="{{$item['title_name']}}">
-                    <div class="w-100"></div>  
-
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                      
-                    <div class="w-100"></div>   
-                    
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>          
-                    <label for="index_item_title_image" class="col-sm-3 col-form-label">圖片(Image) :      </label> 
-                    <input type="text" class="form-control col-sm-4" id="index_item_title_image" name="index_item_title_image" placeholder="標題 - 圖片" value="{{$item['title_image']}}">
-                    <div class="col-sm-2">
-                        <div id="index_item_title_image_refresh" style="font-size:1em; color:Tomato" class="index_item_title_image_refresh btn btn-dark">
-                            <i class="fas fa-refresh"></i>
+                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                <? // 置頂區塊 ?>
+                <? // 此為挖洞，非客製化 ?>
+                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                @if(!empty($use_->Block_Top) )
+                    <div class="edit_result_wrap">
+                        <div class="edit_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Block_Top_Identify;
+                            $block->id = &$use_->Id_Block_Top_Identify;
+                            $block->class = &$use_->Class_Block_Top_Identify;
+                            $block->block = &$use_->Block_Top;
+                            ?>
+                            @include("web.backend.table.common.block.block") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
-                    <div class="w-100"></div>   
-                    
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>      
-                    <div id="index_item_title_image_upload" class="col-sm-6" name="index_item_title_image_upload" type="file"></div>    
-                    <div class="w-100"></div>   
-                    
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>    
-                    <img src="{{url($item['title_image'])}}" id="index_item_title_image_thumbnail" class="col-sm-6" style="max-width: 350px;max-height: 100px;"/>                  
-                </div>
-                <div>                    
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_image" class="col-sm-3 col-form-label">圖片(圖片) :      </label>
-                    <input type="text" class="form-control col-sm-3" id="index_item_image" name="index_item_image" placeholder="圖片" value="{{$item['image']}}">
-                    <div class="col-sm-2">
-                        <div id="index_item_image_refresh" style="font-size:1em; color:Tomato" class="index_item_image_refresh btn btn-dark">
-                            <i class="fas fa-refresh"></i>
+                @endif
+                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                <? // 內容面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
+                <? // 此為挖洞，非客製化 ?>
+                <? // 彈出面板，所以border-bottom:unset;padding:unset; ?>
+                <? // -------------------------------------------------------------------------------------------------------------- ?>                 
+                @if(!empty($use_->Block_Main) )
+                    <div class="edit_result_wrap" style="border-bottom:unset;padding:unset;">
+                        <div class="edit_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Block_Main_Identify;
+                            $block->id = &$use_->Id_Block_Main_Identify;
+                            $block->class = &$use_->Class_Block_Main_Identify;
+                            $block->panel = &$use_->Block_Main;  
+                            $block->data = &$data_;                          
+                            ?>
+                            @include("web.backend.table.common.panel.panel") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
-                    <div id="index_item_image_upload" class="col-sm-6" name="index_item_image_upload" type="file"></div> 
-                    <div class="w-100"></div>   
-                    <img src="{{url($item['image'])}}" id="index_item_image_thumbnail" class="col-sm-6" style="max-width: 350px;max-height: 100px;"/>   
-                </div>                
-                <div class="form-group row">
-                    <label for="index_item_url" class="col-sm-3 col-form-label">連結(Url) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_url" name="index_item_url" placeholder="連結" value="{{$item['url']}}">
-                </div>
+                @endif
 
-
-                <div class="form-group row">    
-                    <label for="index_item_describe" class="col-sm-3 col-form-label">描述(Describe) :      </label>
-                    <textarea class="index_item_describe form-control col-sm-4" id="index_item_describe" name="index_item_describe" rows="5" cols="50" placeholder="描述">{{$item['describe_']}}</textarea>
-                </div>
-                <div class="form-group row">    
-                    <label for="index_item_content" class="col-sm-3 col-form-label">內容(Content) :      </label>
-                    <textarea class="index_item_content form-control col-sm-8" id="index_item_content" name="index_item_content" rows="25" cols="100" placeholder="內容">{{$item['content']}}</textarea>
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_comment" class="col-sm-3 col-form-label">備註(Comment) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_comment" name="index_item_comment" placeholder="備註" value="{{$item['comment']}}">
-                </div>
-                <div class="form-group row">       
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>   
-                    <div style="border-left:5px solid rgba(100,200,100,1);">&nbsp;  </div>   
-                    <label for="index_item_comment_detail" class="col-sm-3 col-form-label">細節(Detail) :      </label>
-                    <textarea class="index_item_comment_detail form-control col-sm-4" id="index_item_comment_detail" name="index_item_comment_detail" rows="5" cols="50" placeholder="備註 - 細節">{{$item['comment_detail']}}</textarea>
-                    <div class="w-100"></div>  
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_order" class="col-sm-3 col-form-label">排序(Order) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_order" name="index_item_order" placeholder="0~1000" value="{{$item['order_']}}">
-                </div>
-                <div class="form-group row" style="width:1000px;">                    
-                    <button type="button" id="index_item_update" name="index_item_update" class="btn btn-dark btn-lg btn-block">更新</button>
-                </div>
-                
-            {{--  </form>  --}}
-
-            <br><br>
-            
-            <hr class="hr1" />
-    
-            <br><br>
-            
-        </div>      
-        
-        <div class="index_edit_content">        
-            <div class="row">                
-                <div class="form-group col-sm">     
-                    <label for="index_item_item_select">項目</label>              
-                    <select  class="form-control" size="8" id="index_item_item_select" name="index_item_item_select">           
-                        {{-- @if(isset($item_item))             
-                            @foreach($item_item as $key => $value)          
-                                <option no_="{{$value['no']}}" name="{{$value['item']}}" order="{{$value['order_']}}">{{$value['order_']}} - {{$value['itel']}}</option>                                                   
-                            @endforeach
-                        @endif  --}}
-                        {{-- <option name="{{$value['title_name']}}" order="{{$value['order_']}}" SELECTED>{{$value['order_']}} - {{$value['title']}} - url : {{ $value['url'] }}</option> --}}
-                    </select>
-                </div>
-                <div class="form-group col-sm">
-                    <div style="width: 80px; height: 120px; margin: 35px 0;">
-                        <button type="button" id="index_item_item_add" name="index_item_item_add" style="width:80px;height:60px" class="btn btn-dark btn-lg">新增</button>
-                        <button type="button" id="index_item_item_delete" name="index_item_item_delete" style="width:80px;height:60px" class="btn btn-dark btn-lg">刪除</button>
-                    </div>
-                </div>                
-            </div>
-            <p>
-            {{--  <form action="{{url("#")}}" method="post" enctype="multipart/form-data">  --}}
-                <div class="form-group row">
-                    <label for="index_item_item_order" class="col-sm-3 col-form-label">排序(Order) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_item_order" name="index_item_item_order" placeholder="0~1000" value="0">
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_item_item" class="col-sm-3 col-form-label">項目(Item) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_item_item" name="index_item_item_item" placeholder="項目">
-                </div>                
-                <div>                    
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_item_image" class="col-sm-3 col-form-label">圖片(圖片) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_item_image" name="index_item_item_image" placeholder="圖片路徑">
-                    <div class="col-sm-2">
-                        <div id="index_item_item_image_refresh" style="font-size:1em; color:Tomato" class="index_item_item_image_refresh btn btn-dark">
-                            <i class="fas fa-refresh"></i>
+                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                <? // 置底區塊 ?>
+                <? // 此為挖洞，非客製化 ?>
+                <? // -------------------------------------------------------------------------------------------------------------- ?>
+                @if(!empty($use_->Block_Bottom) )
+                    <div class="edit_result_wrap">
+                        <div class="edit_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Block_Bottom_Identify;
+                            $block->id = &$use_->Id_Block_Bottom_Identify;
+                            $block->class = &$use_->Class_Block_Bottom_Identify;
+                            $block->block = &$use_->Block_Bottom;
+                            ?>
+                            @include("web.backend.table.common.block.block") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
-                    <div id="index_item_item_image_upload" class="col-sm-6" name="index_item_item_image_upload" type="file"></div> 
-                    <div class="w-100"></div>   
-                    <img src="" id="index_item_item_image_thumbnail" class="col-sm-6" style="max-width: 350px;max-height: 100px;"/>       
-                </div>                
-                <div class="form-group row">    
-                    <label for="index_item_item_content" class="col-sm-3 col-form-label">內容(Content) :      </label>
-                    <textarea class="index_item_item_content form-control col-sm-8" id="index_item_item_content" name="index_item_item_content" rows="25" cols="100" placeholder="內容"></textarea>
-                </div>
-                <div class="form-group row">
-                    <label for="index_item_item_comment" class="col-sm-3 col-form-label">備註(Comment) :      </label>
-                    <input type="text" class="form-control col-sm-4" id="index_item_item_comment" name="index_item_item_comment" placeholder="備註" value="">
-                </div>
-                <div class="form-group row" style="width:1000px;">                    
-                    <button type="button" id="index_item_item_update" name="index_item_item_update" class="btn btn-dark btn-lg btn-block">更新</button>
-                </div>
-            {{--  </form>  --}}
-
-            <br><br>
-            
-            <hr class="hr1" />
-    
-            <br><br>
-            
-        </div> 
-        <div class="index_edit_content">
-            <div class="form-group row" style="width:1000px;">                    
-                <button type="button" id="index_item_all_update" name="index_item_all_update" class="btn btn-dark btn-lg btn-block">全部更新</button>
-                <button type="button" id="index_item_all_close" name="index_item_all_close" class="btn btn-dark btn-lg btn-block">關閉</button>
-            </div>
-
-            <br><br>
-            
-            <hr class="hr1" />
-    
-            <br><br>
-        </div>          
-        
-        
-        
-        
+                @endif
+            </form>         
+        </div>         
+               
+      
+         
     </body>
+    
     <script>
+            
         $(function(){
             // 最後一次載入
             lazyload();      

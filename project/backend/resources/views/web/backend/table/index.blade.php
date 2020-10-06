@@ -48,17 +48,24 @@ use Spatie\Url\Url;
 ?>
 
 <?
-$target_table_class_ = $target_setting_table['table'];
+// $target_table_class_ = $target_setting_table['table'];
 // 這從controller傳來
 $parameter_ = \hahaha\hahaha_parameter::Instance();
 $use_ = &$parameter_->Use;
 //
 $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
+$target_table_identify_ = &$parameter_->Target_Table_Identify;
+$target_table_ = &$parameter_->Target_Table;
+$data_list_ = &$parameter_->Index[key::DATA_LIST];
+$data_link_ = &$parameter_->Index[key::DATA_LINK];
+
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);                                                                                        
 // table class 名
 $target_table_class_ = $target_setting_table_['table'];
-//
+// -------------------------------------------------- 
+// 這裡是設定，到時候包成函式
+// -------------------------------------------------- 
 $use_->Identify = $target_table_class_::IDENTIFY;
 $use_->Class_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_ADD;
 // -------------------------------------------------- 
@@ -66,11 +73,22 @@ $use_->Id_Panel_Add_Button_Add_Identify = "#" . $target_table_class_::IDENTIFY .
 $use_->Class_Panel_Add_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_ADD;
 $use_->Id_Panel_Add_Button_Cancel_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
 $use_->Class_Panel_Add_Button_Cancel_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
-
+// -------------------------------------------------- 
+$use_->Block_Top_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
+$use_->Id_Block_Top_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP; 
+$use_->Class_Block_Top_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
+$use_->Block_Top = &$target_table_->Index[$target_table_class_::B_TOP];
+// -------------------------------------------------- 
 $use_->Panel_Add_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
 $use_->Id_Panel_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD; 
 $use_->Class_Panel_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
 $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
+
+// -------------------------------------------------- 
+$use_->Block_Bottom_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
+$use_->Id_Block_Bottom_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM; 
+$use_->Class_Block_Bottom_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
+$use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
 // -------------------------------------------------- 
 $use_->Prepend_Detail_Button_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
 $use_->Id_Prepend_Detail_Button_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
@@ -81,6 +99,7 @@ $use_->Id_Panel_Detail_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $
 $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
 // $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAIL];
 // -------------------------------------------------- 
+
 ?>
 
 <!DOCTYPE html>
@@ -146,8 +165,8 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                 
                 $table_file_ = $system_setting_pub_->Project->Backend->Public . "/" . $system_setting_pub_->Project->Backend->Assets . 'web/backend/table/index/table';
                 $file_list_ = [
-                    $table_file_ . '/' . $target_table_identify . '.css',
-                    $table_file_ . '/' . $target_table_identify . '.js',
+                    $table_file_ . '/' . $target_table_identify_ . '.css',
+                    $table_file_ . '/' . $target_table_identify_ . '.js',
                 ];  
                 
                 if(!$system_setting_pub_->Project->Backend->Generate_Script->Overwrite)
@@ -182,8 +201,8 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
             
         ?>
        
-        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify}.css")}}">
-        <script src="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify}.js")}}"></script>
+        <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify_}.css")}}">
+        <script src="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify_}.js")}}"></script>
         {{-- 客製化文件 --}}
         <link rel="stylesheet" href="{{\p_ha::Assets('web/backend/table/index.css')}}">
         <script src="{{\p_ha::Assets('web/backend/table/index.js')}}"></script>
@@ -240,11 +259,11 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
         <? // 標題面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <div class="index_title">
-            <h1 style="font-weight:bold;">{{__('backend.db_table')}}</h1>
+            <h1 style="font-weight:bold;">{{__('backend.db_table_list')}}</h1>
             <hr class="hr_title" />
             
-            <h3 style="font-weight:bold;">{{$target_setting_table['title']}}</h3>
-            {{$target_setting_table['description']}}
+            <h3 style="font-weight:bold;">{{$target_setting_table_['title']}}</h3>
+            {{$target_setting_table_['description']}}
             <hr class="hr_title" />
         </div> 
         <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -260,197 +279,176 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                 <div class="index_result_wrap">
                 </div>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <? // 置頂面板 ?>
+                <? // 置頂區塊 ?>
+                <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <div class="index_result_wrap">
-                    <!--快捷导航 开始-->
-                    <div class="index_result_content">
-                        @foreach($target_table->Index['top'] as $key_item => $item)                              
-                            @if($item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
-                                <div @if(!empty($item[key::GROUP])) class="{{$item[key::GROUP]}}" @endif>
-                                    @foreach($item[key::ITEMS] as $key_field => $field)                                     
-                                        @if($field[key::TYPE] == type::BUTTON_ICON)                                   
-                                            {{--  
-                                                不採用一個屬性一個key，因為這樣太麻煩了，例如ICON給一個key::ICON，BUTTON給一個key::BUTTON
-                                                基本上只有要做的很完整的模組，我才會給特定key，但是假設很完整，為何不做成一個Module，目前覺得，如果是一個Module，Module應該提供Object Builder(不管是參數Builder還是元件Builder)
-                                                大概意思是，假設規劃很多，請做成一個模組，讓我用模組的方式建立，例如$obj->Parameter_Array() or $obj->HTML 
-                                                當然可以訂少數的Custom Key，但是原則上屬性的key僅限於放行比較通用的屬性
-                                                
-                                                大概意思是做得很完整，我會希望做成一個class，讓我可以快速導入，而不是我慢慢看code研究
-
-                                                總之，這裡有兩個class，基本上是簡易模組，除非有很複雜的模組(例如5層+，但可能放行完我會要求說把它弄成上面的Module做使用)，不然這邊就是key::Classed有五種
-                                                五種內的用5種key::STYLES or key::CLASSES
-                                            --}}
-                                            {{--  
-                                                範例 : 
-                                            <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
-                                                <div style="font-size:1.5em; color:Tomato">
-                                                    <i class="fas fa-minus">選擇刪除</i>
-                                                </div>
-                                            </div>  
-                                            --}}
-                                            <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                                                <div style="{{$field[key::STYLES]}}">
-                                                    <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>                                    
-                            @endif
-                        @endforeach
-                        {{-- 全部default設置或是全部項目default設置 --}}
+                @if(!empty($use_->Block_Top) )
+                    <div class="index_result_wrap">
+                        <div class="index_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Block_Top_Identify;
+                            $block->id = &$use_->Id_Block_Top_Identify;
+                            $block->class = &$use_->Class_Block_Top_Identify;
+                            $block->block = &$use_->Block_Top;
+                            ?>
+                            @include("web.backend.table.common.block.block") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                        </div>
                     </div>
-                    <!--快捷导航 结束-->
-                </div>     
-                {{-- ------------------------------------------------------------------------------ --}}
+                @endif
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // Add置中面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
+                <? // 此為挖洞，非客製化 ?>
+                <? // 彈出面板，所以border-bottom:unset;padding:unset; ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <div class="index_result_wrap">
-                    <div class="index_result_content">
-                        <? // -------------------------------------------------------------------------------------------------------------- ?>
-                        <?php 
-                        // 因為模板array會複製，所以用物件傳
-                        $block = new \hahaha\hahaha_parameter;
-                        $block->identify = &$use_->Panel_Add_Identify;
-                        $block->id = &$use_->Id_Panel_Add_Identify;
-                        $block->class = &$use_->Class_Panel_Add_Identify;
-                        $block->panel = &$use_->Panel_Add;
-                        ?>
-                        @include("web.backend.table.common.block.block", ["block"]) 
-                        <? // -------------------------------------------------------------------------------------------------------------- ?>
+                @if(!empty($use_->Panel_Add) )
+                    <div class="index_result_wrap" style="border-bottom:unset;padding:unset;">
+                        <div class="index_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Panel_Add_Identify;
+                            $block->id = &$use_->Id_Panel_Add_Identify;
+                            $block->class = &$use_->Class_Panel_Add_Identify;
+                            $block->panel = &$use_->Panel_Add;
+                            ?>
+                            @include("web.backend.table.common.panel.panel") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // 內容面板 ?>
+                <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <div class="index_result_wrap">
-                    <div class="index_result_content">
-                        <table class="list_tab table table-sm">
-                            <tr id="index_item_all" class="index_item">   
-                                <? // -------------------------------------------------------------------------------------------------------------- ?>
-                                <?php 
-                                // 因為模板array會複製，所以用物件傳
-                                $fields = new \hahaha\hahaha_parameter;
-                                $fields = &$target_table->Index['main'];
-                                ?>
-                                @include("web.backend.table.common.table.th", ["fields"]) 
-                                <? // -------------------------------------------------------------------------------------------------------------- ?>  
-                            </tr>
-                            @foreach($data_list as $key_data => $data)                            
-                                <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
+                @if(!empty($data_list_) )
+                    <div class="index_result_wrap">
+                        <div class="index_result_content">
+                            <table class="list_tab table table-sm">
+                                <tr id="index_item_all" class="index_item">   
                                     <? // -------------------------------------------------------------------------------------------------------------- ?>
                                     <?php 
                                     // 因為模板array會複製，所以用物件傳
-                                    $block = new \hahaha\hahaha_parameter;
-                                    $block->fields = &$target_table->Index['main'];
-                                    $block->key_data = &$key_data;
-                                    $block->data = &$data;
-                                    $block->option = &$option;
+                                    $fields = new \hahaha\hahaha_parameter;
+                                    $fields = &$target_table_->Index['main'];
                                     ?>
-                                    @include("web.backend.table.common.table.td", ["block"]) 
-                                    <? // -------------------------------------------------------------------------------------------------------------- ?>   
-                                </tr> 
-                            @endforeach                   
-                        </table>
+                                    @include("web.backend.table.common.table.th", ["fields"]) 
+                                    <? // -------------------------------------------------------------------------------------------------------------- ?>  
+                                </tr>
+                                @foreach($data_list_ as $key_data => $data)                            
+                                    <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
+                                        <? // -------------------------------------------------------------------------------------------------------------- ?>
+                                        <?php 
+                                        // 因為模板array會複製，所以用物件傳
+                                        $block = new \hahaha\hahaha_parameter;
+                                        $block->fields = &$target_table_->Index['main'];
+                                        $block->key_data = &$key_data;
+                                        $block->data = &$data;
+                                        $block->option = &$option;
+                                        ?>
+                                        @include("web.backend.table.common.table.td") 
+                                        <? // -------------------------------------------------------------------------------------------------------------- ?>   
+                                    </tr> 
+                                @endforeach                   
+                            </table>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <? // 置底面板 ?>
+                <? // 置底區塊 ?>
+                <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <div class="index_result_wrap"> 
-                    @foreach($target_table->Index['bottom'] as $key_item => $item)                              
-                            @if($item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
-                                <div @if(!empty($item[key::GROUP])) class="{{$item[key::GROUP]}}" @endif>
-                                    @foreach($item[key::ITEMS] as $key_field => $field)                                     
-                                        @if($field[key::TYPE] == type::BUTTON_ICON)                                   
-                                            {{--  
-                                                範例 : 
-                                            <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
-                                                <div style="font-size:1.5em; color:Tomato">
-                                                    <i class="fas fa-minus">選擇刪除</i>
-                                                </div>
-                                            </div>  
-                                            --}}
-                                            <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                                                <div style="{{$field[key::STYLES]}}">
-                                                    <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>                                    
-                            @endif
-                        @endforeach          
-                </div>
+                @if(!empty($use_->Block_Bottom) )
+                    <div class="index_result_wrap">
+                        <div class="index_result_content">
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                            <?php 
+                            // 因為模板array會複製，所以用物件傳
+                            $block = new \hahaha\hahaha_parameter;
+                            $block->identify = &$use_->Block_Bottom_Identify;
+                            $block->id = &$use_->Id_Block_Bottom_Identify;
+                            $block->class = &$use_->Class_Block_Bottom_Identify;
+                            $block->block = &$use_->Block_Bottom;
+                            ?>
+                            @include("web.backend.table.common.block.block") 
+                            <? // -------------------------------------------------------------------------------------------------------------- ?>
+                        </div>
+                    </div>
+                @endif
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // link面板 ?>
+                <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                <div class="index_result_wrap">                    
-                    <div style="height:5px">&nbsp;</div>
-                    <div class="page_list">
-                        {{--  laravel樣式，有需要再模組化  --}}
-                        <?
-                        $page_ = $data_link['page'];
-                        $count_ = $data_link['count'];
-                        $range_ = $data_link['range'];
-                        //
-                        $range_start_ = $page_ - $range_;
-                        $range_end_ = $page_ + $range_;
-                        $out_start_flag_ = false;
-                        $out_end_flag_ = false;
+                @if($data_link_['count'] != 0)
+                    <div class="index_result_wrap">                    
+                        <div style="height:5px">&nbsp;</div>
+                        <div class="page_list">
+                            {{--  laravel樣式，有需要再模組化  --}}
+                            <?
+                            $page_ = $data_link_['page'];
+                            $count_ = $data_link_['count'];
+                            $range_ = $data_link_['range'];
+                            //
+                            $range_start_ = $page_ - $range_;
+                            $range_end_ = $page_ + $range_;
+                            $out_start_flag_ = false;
+                            $out_end_flag_ = false;
 
-                        $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
-                        $url_ = Url::fromString($actual_link_);                         
-                        ?>
-                        <ul class="pagination" role="navigation">
-                            @if(1 == $page_)
-                                <li class="page-item disabled" aria-disabled="true" aria-label="« First">
-                                    <span class="page-link" aria-hidden="true">‹‹</span>
-                                </li> 
-                                <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
-                                    <span class="page-link" aria-hidden="true">‹</span>
-                                </li> 
-                            @else
-                                <li class="page-item" aria-disabled="true" aria-label="« First">
-                                    <a class="page-link" href="{{$url_->withQueryParameter('page', 1)}}" rel="next" aria-label="« First">‹‹</a>
-                                </li>    
-                                <li class="page-item" aria-disabled="true" aria-label="« Previous">
-                                    <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ - 1)}}" rel="next" aria-label="« Previous">‹</a>
-                                </li>                        
-                            @endif
-                            @for ($i = 1; $i <= $count_; $i++)
-                                @if($page_ == $i)
-                                    <li class="page-item active" aria-current="page"><span class="page-link">{{$i}}</span></li>
-                                @elseif($i >= $range_start_ && $i <= $range_end_)
-                                    <li class="page-item"><a class="page-link" href="{{$url_->withQueryParameter('page', $i)}}">{{$i}}</a></li>
-                                @elseif(!$out_start_flag_ && $i < $range_start_)
-                                    <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
-                                    <? $out_start_flag_ = true; ?>                                        
-                                @elseif(!$out_end_flag_ && $i > $range_end_)
-                                    <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
-                                    <? $out_end_flag_ = true; ?>
+                            $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
+                            $url_ = Url::fromString($actual_link_);                         
+                            ?>
+                            <ul class="pagination" role="navigation">
+                                @if(1 == $page_)
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="« First">
+                                        <span class="page-link" aria-hidden="true">‹‹</span>
+                                    </li> 
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
+                                        <span class="page-link" aria-hidden="true">‹</span>
+                                    </li> 
+                                @else
+                                    <li class="page-item" aria-disabled="true" aria-label="« First">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', 1)}}" rel="next" aria-label="« First">‹‹</a>
+                                    </li>    
+                                    <li class="page-item" aria-disabled="true" aria-label="« Previous">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ - 1)}}" rel="next" aria-label="« Previous">‹</a>
+                                    </li>                        
                                 @endif
-                            @endfor
-                            @if($count_ == $page_)
-                                <li class="page-item disabled" aria-disabled="true" aria-label="Next »">
-                                    <span class="page-link" aria-hidden="true">›</span>
-                                </li> 
-                                <li class="page-item disabled" aria-disabled="true" aria-label="End »">
-                                    <span class="page-link" aria-hidden="true">››</span>
-                                </li> 
-                            @else
-                                <li class="page-item" aria-disabled="true" aria-label="Next »">
-                                    <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ + 1)}}" rel="next" aria-label="Next »">›</a>
-                                </li>            
-                                <li class="page-item" aria-disabled="true" aria-label="End »">
-                                    <a class="page-link" href="{{$url_->withQueryParameter('page', $count_)}}" rel="next" aria-label="End »">››</a>
-                                </li>                 
-                            @endif
-                        </ul>
+                                @for ($i = 1; $i <= $count_; $i++)
+                                    @if($page_ == $i)
+                                        <li class="page-item active" aria-current="page"><span class="page-link">{{$i}}</span></li>
+                                    @elseif($i >= $range_start_ && $i <= $range_end_)
+                                        <li class="page-item"><a class="page-link" href="{{$url_->withQueryParameter('page', $i)}}">{{$i}}</a></li>
+                                    @elseif(!$out_start_flag_ && $i < $range_start_)
+                                        <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
+                                        <? $out_start_flag_ = true; ?>                                        
+                                    @elseif(!$out_end_flag_ && $i > $range_end_)
+                                        <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
+                                        <? $out_end_flag_ = true; ?>
+                                    @endif
+                                @endfor
+                                @if($count_ == $page_)
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="Next »">
+                                        <span class="page-link" aria-hidden="true">›</span>
+                                    </li> 
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="End »">
+                                        <span class="page-link" aria-hidden="true">››</span>
+                                    </li> 
+                                @else
+                                    <li class="page-item" aria-disabled="true" aria-label="Next »">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ + 1)}}" rel="next" aria-label="Next »">›</a>
+                                    </li>            
+                                    <li class="page-item" aria-disabled="true" aria-label="End »">
+                                        <a class="page-link" href="{{$url_->withQueryParameter('page', $count_)}}" rel="next" aria-label="End »">››</a>
+                                    </li>                 
+                                @endif
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif  
             </form>         
         </div>         
                

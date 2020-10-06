@@ -30,7 +30,6 @@
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
-
 <?
 use hahaha\define\hahaha_define_table_action as action;
 use hahaha\define\hahaha_define_table_class as class_;
@@ -47,31 +46,40 @@ use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
 
-{{-- laravel套版不要用reference，@foreach($value_item[key::ITEMS] as $key_field => $field)，會找不到$value_item[key::ITEMS] --}}
-@foreach($block->fields as $key_item => $value_item)  
-    <td @if(!empty($value_item[key::STYLES])) style="{{$value_item[key::STYLES]}}" @endif>
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
-                <div class="input-group">
-            @endif
-        @endif        
-        @foreach($value_item[key::ITEMS] as $key_field => $value_field) 
-            <?php 
-                // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
-                // 架構的地方用reference，維護的地方不用，避免有話說
-                // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
-                $item = new \hahaha\hahaha_parameter;
-                $item->key_field = &$key_field;
-                $item->field = &$value_field;
-                $item->key_data = &$block->key_data;
-                $item->data = &$block->data;
-            ?>
-            @include("web.backend.table.common.table.item.item")                
-        @endforeach  
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
+<?php 
+// 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
+// 架構的地方用reference，維護的地方不用，避免有話說
+// 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
+
+//
+// 這從controller傳來
+$parameter_ = \hahaha\hahaha_parameter::Instance();
+$use_ = &$parameter_->Use;
+//
+//
+$target_table_ = &$parameter_->Target_Table;
+$target_setting_table_ = &$parameter_->Target_Setting_Table;
+$target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);  
+?>
+
+@if($item->item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
+    <div @if(!empty($item->item[key::GROUP])) class="{{$item->item[key::GROUP]}}" @endif>
+        @foreach($item->item[key::ITEMS] as $key_field => $field)                                     
+            @if($field[key::TYPE] == type::BUTTON_ICON)                                   
+                {{--  
+                    範例 : 
+                <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
+                    <div style="font-size:1.5em; color:Tomato">
+                        <i class="fas fa-minus">選擇刪除</i>
+                    </div>
+                </div>  
+                --}}
+                <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
+                    <div style="{{$field[key::STYLES]}}">
+                        <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
+                    </div>
                 </div>
             @endif
-        @endif
-    </td>                                         
-@endforeach   
+        @endforeach
+    </div>                                    
+@endif

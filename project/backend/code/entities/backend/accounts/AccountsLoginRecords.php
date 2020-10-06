@@ -57,9 +57,9 @@ class AccountsLoginRecords
     private $updatedAt;
 
     /**
-     * @var \entities\front\Accounts
+     * @var \entities\backend\Accounts
      *
-     * @ORM\ManyToOne(targetEntity="entities\front\Accounts")
+     * @ORM\ManyToOne(targetEntity="entities\backend\Accounts")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="accounts_id", referencedColumnName="id")
      * })
@@ -201,11 +201,11 @@ class AccountsLoginRecords
     /**
      * Set accounts.
      *
-     * @param \entities\front\Accounts|null $accounts
+     * @param \entities\backend\Accounts|null $accounts
      *
      * @return AccountsLoginRecords
      */
-    public function setAccounts(\entities\front\Accounts $accounts = null)
+    public function setAccounts(\entities\backend\Accounts $accounts = null)
     {
         $this->accounts = $accounts;
 
@@ -215,7 +215,7 @@ class AccountsLoginRecords
     /**
      * Get accounts.
      *
-     * @return \entities\front\Accounts|null
+     * @return \entities\backend\Accounts|null
      */
     public function getAccounts()
     {
