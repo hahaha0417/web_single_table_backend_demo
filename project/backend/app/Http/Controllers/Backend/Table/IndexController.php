@@ -54,6 +54,10 @@ class IndexController extends BaseIndexController
 {
     public function index($stage, $class, $item)
     {  
+        \hahahalib\hahaha_socket_udp_server::Instance(); 
+        \hahahalib\hahaha_socket_tcp_server::Instance();
+        \hahahalib\hahaha_socket_udp_client::Instance();
+        \hahahalib\hahaha_socket_tcp_client::Instance();
 //         // $scientist = new \entities\backend\AccountsDetail;
         
 //         // $scientist->accountsId = 1;
