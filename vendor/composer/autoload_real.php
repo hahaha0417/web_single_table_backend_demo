@@ -13,6 +13,9 @@ class ComposerAutoloaderInitec5352c114ea0b700ed092c5af587386
         }
     }
 
+    /**
+     * @return \Composer\Autoload\ClassLoader
+     */
     public static function getLoader()
     {
         if (null !== self::$loader) {

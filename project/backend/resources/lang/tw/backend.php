@@ -76,6 +76,8 @@ return [
     'add' => '新增', 
     'cancel' => '取消', 
     'help' => '說明',
+    'tool' => '工具',
+    'table_field' => '資料表欄位',
 
 ];
  

@@ -72,7 +72,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        // 因為設計上整個可以merge成一個專案
+        // 後台以後台為主
+        // 私有API為 backend/api(O)
+        // 沒有前台，就算有是附加頁面(其實也可以兩個前台，沒規定的可以隨便取，碰到核心架構的請另外命名) backend/front(X)
+        // 後台為 backend(O)
+        Route::prefix('backend/api')
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));

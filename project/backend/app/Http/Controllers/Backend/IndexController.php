@@ -57,95 +57,210 @@ class IndexController extends CommonController
 
     /*
     指定頁面
+
+    table
+    http://127.0.0.1:8700/backend/page/table/backend_accounts_list
+    tool
+    http://127.0.0.1:8700/backend/page/tool/table_field
     */
-    public function page($name)
+    public function page($class, $name)
     {
-        $global_pub_ = \p_ha\_Global::Get();
-        // index 設定檔
-        $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
-        $nav = &$setting_index_->Nav;
-        $menu = &$setting_index_->Menu;
-        $tail = &$setting_index_->Tail;
+        $mapping_ = [
+            "table" => "table",
+            "tool" => "class",
+        ];
 
-        $temp_name = explode('_', $name);
-        if(is_array($temp_name)) 
+        if(empty($mapping_[$class]))
         {
-            $menu_target = $name;
-            $level = count($temp_name);
-        } 
-        
-        $page_url = \p_ha::V_Url('cover'); 
-        // 順便記錄打開順序，目前只有四層
-        $menu_open = [];
-        
-        foreach($menu as $key => &$value)
-        {
-            // 第一層
-            if(!empty($value['name']) && $value['name'] == $name && empty($value['menu']))
-            {
-                $page_url = &$value['url']; 
-                // 替換掉default_page預設路徑
-                $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value['name']}");
+            return;
+        }
 
-                //$menu_open[$key] = true;                
-                break 1;
-            }
-            else if(!empty($value['menu']) && is_array($value['menu']))
+        $page_type_ = &$mapping_[$class];
+
+        if($page_type_ == "table")
+        {
+            $global_pub_ = \p_ha\_Global::Get();
+            // index 設定檔
+            $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
+            $nav = &$setting_index_->Nav;
+            $menu = &$setting_index_->Menu;
+            $tail = &$setting_index_->Tail;
+
+            $temp_name = explode('_', $name);
+            if(is_array($temp_name)) 
             {
-                // 第二層
-                foreach($value['menu'] as $key2 => &$value2)
+                $menu_target = $name;
+                $level = count($temp_name);
+            } 
+            
+            $page_url = \p_ha::V_Url('cover'); 
+            // 順便記錄打開順序，目前只有四層
+            $menu_open = [];
+            
+            foreach($menu as $key => &$value)
+            {
+                // 第一層
+                if(!empty($value['name']) && $value['name'] == $name && empty($value['menu']))
                 {
-                    if(!empty($value2['name']) && $value2['name'] == $name && $level == 1)
-                    {
-                        $page_url = &$value2['url']; 
-                        // 替換掉default_page預設路徑
-                        $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value2['name']}");
+                    $page_url = &$value['url']; 
+                    // 替換掉default_page預設路徑
+                    $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value['name']}");
 
-                        $menu_open[$key] = true;
-                        //$menu_open[$key2] = true;
-                        break 2;
-                    }
-                    else if(!empty($value2['menu']) && is_array($value2['menu']))
+                    //$menu_open[$key] = true;                
+                    break 1;
+                }
+                // else if(!empty($value['menu']) && is_array($value['menu']))
+                // 分類
+                else if($value['name'] == $class && !empty($value['menu']) && is_array($value['menu']))
+                {
+                    // 第二層
+                    foreach($value['menu'] as $key2 => &$value2)
                     {
-                        foreach($value2['menu'] as $key3 => &$value3)
+                        if(!empty($value2['name']) && $value2['name'] == $name && $level == 1)
                         {
-                            if(!empty($value3['name']) && $value3['name'] == $name && $level == 2)
-                            {
-                                $page_url = &$value3['url']; 
-                                // 替換掉default_page預設路徑
-                                $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value3['name']}");
+                            $page_url = &$value2['url']; 
+                            // 替換掉default_page預設路徑
+                            $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value2['name']}");
 
-                                $menu_open[$key] = true;
-                                $menu_open[$key2] = true;
-                                //$menu_open[$key3] = true;
-                                break 3;
-                            }
-                            else if(!empty($value3['menu']) && is_array($value3['menu']))
-                            {
-                                foreach($value3['menu'] as $key4 => &$value4)
-                                {
-                                    if(!empty($value4['name']) && $value4['name'] == $name && $level == 3)
-                                    {
-                                        $page_url = &$value4['url']; 
-                                        // 替換掉default_page預設路徑
-                                        $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$value4['name']}");
-
-                                        $menu_open[$key] = true;
-                                        $menu_open[$key2] = true;
-                                        $menu_open[$key3] = true;
-                                        //$menu_open[$key4] = true;
-                                        break 4;
-                                    }
-                                    else if(!empty($value4['menu']) && is_array($value4))
-                                    {
-                                    }
-                                }
-                            }                            
+                            $menu_open[$key] = true;
+                            //$menu_open[$key2] = true;
+                            break 2;
                         }
-                    }                    
+                        else if(!empty($value2['menu']) && is_array($value2['menu']))
+                        {
+                            foreach($value2['menu'] as $key3 => &$value3)
+                            {
+                                if(!empty($value3['name']) && $value3['name'] == $name && $level == 2)
+                                {
+                                    $page_url = &$value3['url']; 
+                                    // 替換掉default_page預設路徑
+                                    $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value3['name']}");
+
+                                    $menu_open[$key] = true;
+                                    $menu_open[$key2] = true;
+                                    //$menu_open[$key3] = true;
+                                    break 3;
+                                }
+                                else if(!empty($value3['menu']) && is_array($value3['menu']))
+                                {
+                                    foreach($value3['menu'] as $key4 => &$value4)
+                                    {
+                                        if(!empty($value4['name']) && $value4['name'] == $name && $level == 3)
+                                        {
+                                            $page_url = &$value4['url']; 
+                                            // 替換掉default_page預設路徑
+                                            $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value4['name']}");
+
+                                            $menu_open[$key] = true;
+                                            $menu_open[$key2] = true;
+                                            $menu_open[$key3] = true;
+                                            //$menu_open[$key4] = true;
+                                            break 4;
+                                        }
+                                        else if(!empty($value4['menu']) && is_array($value4))
+                                        {
+                                        }
+                                    }
+                                }                            
+                            }
+                        }                    
+                    }
+                }
+            }
+        }   
+        else if($page_type_ == "class")
+        {
+            $global_pub_ = \p_ha\_Global::Get();
+            // index 設定檔
+            $setting_index_ = \hahaha\backend\hahaha_setting_index::Instance();
+            $nav = &$setting_index_->Nav;
+            $menu = &$setting_index_->Menu;
+            $tail = &$setting_index_->Tail;
+
+            $temp_name = explode('_', $name);
+            if(is_array($temp_name)) 
+            {
+                $menu_target = $name;
+                $level = count($temp_name);
+            } 
+            
+            $page_url = \p_ha::V_Url('cover'); 
+            // 順便記錄打開順序，目前只有四層
+            $menu_open = [];
+            
+            foreach($menu as $key => &$value)
+            {
+                // 第一層
+                if(!empty($value['name']) && $value['name'] == $name && empty($value['menu']))
+                {
+                    $page_url = &$value['url']; 
+                    // 替換掉default_page預設路徑
+                    $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value['name']}");
+
+                    //$menu_open[$key] = true;                
+                    break 1;
+                }
+                // else if(!empty($value['menu']) && is_array($value['menu']))
+                // 分類
+                else if($value['name'] == $class && !empty($value['menu']) && is_array($value['menu']))
+                {
+                    // 第二層
+                    foreach($value['menu'] as $key2 => &$value2)
+                    {
+                        if(!empty($value2['name']) && $value2['name'] == $name && $level == 2)
+                        {
+                            $page_url = &$value2['url']; 
+                            // 替換掉default_page預設路徑
+                            $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value2['name']}");
+
+                            $menu_open[$key] = true;
+                            //$menu_open[$key2] = true;
+                            break 2;
+                        }
+                        else if(!empty($value2['menu']) && is_array($value2['menu']))
+                        {
+                            foreach($value2['menu'] as $key3 => &$value3)
+                            {
+                                if(!empty($value3['name']) && $value3['name'] == $name && $level == 3)
+                                {
+                                    $page_url = &$value3['url']; 
+                                    // 替換掉default_page預設路徑
+                                    $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value3['name']}");
+
+                                    $menu_open[$key] = true;
+                                    $menu_open[$key2] = true;
+                                    //$menu_open[$key3] = true;
+                                    break 3;
+                                }
+                                else if(!empty($value3['menu']) && is_array($value3['menu']))
+                                {
+                                    foreach($value3['menu'] as $key4 => &$value4)
+                                    {
+                                        if(!empty($value4['name']) && $value4['name'] == $name && $level == 4)
+                                        {
+                                            $page_url = &$value4['url']; 
+                                            // 替換掉default_page預設路徑
+                                            $menu[__('backend.default_page')]['url'] = \p_ha::V_Url("page/{$class}/{$value4['name']}");
+
+                                            $menu_open[$key] = true;
+                                            $menu_open[$key2] = true;
+                                            $menu_open[$key3] = true;
+                                            //$menu_open[$key4] = true;
+                                            break 4;
+                                        }
+                                        else if(!empty($value4['menu']) && is_array($value4))
+                                        {
+                                        }
+                                    }
+                                }                            
+                            }
+                        }                    
+                    }
                 }
             }
         }
+
+        
    
         return view('web.backend.index', compact('nav', 'menu', 'tail', 'page_url', 'menu_open', 'menu_target'));
 

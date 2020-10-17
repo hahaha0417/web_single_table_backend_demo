@@ -269,6 +269,16 @@ class hahaha_setting_index
 		$backend_settings_ = \hahaha\backend\hahaha_setting_table::Instance();
 		$backend_tables_ = &$backend_settings_->Tables[$backend_settings_->Settings['default']['table']];
 
+		// --------------------------------------------- 
+		/*
+		'url' => "/backend/tool/table_field",
+		注意 : url page不是這樣改'url' => "/backend/page/tool/table_field",
+		因為是iframe設計，所以url不能load page，會變成遞迴(自己呼叫自己)
+		
+		基本上切換原則上用cookie記(因為server不需要知道client端怎樣操作頁面，不重要的存在cookie，何況還可以不同分頁紀錄不同操作)，減低server負擔(server可以讀到cookie)
+		
+		*/
+		// --------------------------------------------- 
 		$Menu = [
 			__('backend.index.menu.home') => [
 				'name' => 'home',
@@ -307,6 +317,9 @@ class hahaha_setting_index
 				// -- Accounts
 				// 第一層
 				'name' => 'table',
+				// ---------------------------------- 
+				'page' => 'table',
+				// ---------------------------------- 
 				'type' => 'menu',
 				'url' => null,
 				'target' => '_self',
@@ -458,6 +471,83 @@ class hahaha_setting_index
 				'active' => 'false',
 				'background' => 'rgba(90,255,150,0.5)',
 				'mini' => 'Note',
+			],
+			__('backend.tool') => [
+				// 目前，最多四層，如果不夠用串的
+				// ex.
+				// Front
+				// -- Accounts
+				// 第一層
+				'name' => 'tool',
+				// ---------------------------------- 
+				'page' => 'class',
+				// ---------------------------------- 
+				'type' => 'menu',
+				'url' => null,
+				'target' => '_self',
+				'icon' => 'fa-envelope',
+				'active' => 'false',
+				'background' => 'rgba(255,255,0,0.5)',
+				'mini' => __('backend.index.menu.table'),
+				'menu' => [		
+					__('backend.table_field') => [
+						// 'name' => 'table_field',
+						'name' => 'table_field',
+						'type' => 'item',
+						'url' => "/backend/tool/table_field",
+						'target' => 'index_content_frame',
+						'background' => '',
+					],			
+					// __('backend.index.menu.backend') => [
+					// 	'name' => 'backend',
+					// 	'type' => 'menu',
+					// 	'url' => '/',
+					// 	'target' => '_self',
+					// 	//'icon' => 'fa-angle-double-down',
+					// 	'menu' => [
+					// 		// // 第三層
+					// 		// __('backend.index.menu.account') => [
+					// 		// 	'name' => 'backend_accouts',
+					// 		// 	'type' => 'menu',
+					// 		// 	'url' => null,
+					// 		// 	'target' => 'index_content_frame',
+					// 		// 	'background' => '',								
+					// 		// 	'menu' => [
+					// 		// 		// 第四層
+					// 		// 		__('backend.index.menu.list') => [
+					// 		// 			'name' => 'backend_accounts_list',
+					// 		// 			'type' => 'item',
+					// 		// 			'url' => $backend_tables_['accounts']['url'],
+					// 		// 			'target' => 'index_content_frame',
+					// 		// 			'background' => '',
+					// 		// 		],
+					// 		// 		__('backend.index.menu.detail') => [
+					// 		// 			'name' => 'backend_accounts_detail',
+					// 		// 			'type' => 'item',
+					// 		// 			'url' => $backend_tables_['accounts_detail']['url'],
+					// 		// 			'target' => 'index_content_frame',
+					// 		// 			'background' => '',
+					// 		// 		],
+					// 		// 		__('backend.index.menu.login_record') => [
+					// 		// 			'name' => 'backend_accounts_login_record',
+					// 		// 			'type' => 'item',
+					// 		// 			'url' => $backend_tables_['accounts_login_records']['url'],
+					// 		// 			'target' => 'index_content_frame',
+					// 		// 			'background' => '',
+					// 		// 		],
+					// 		// 		'| --  ' . __('backend.index.menu.relation') => [
+					// 		// 			'name' => 'backend_accoutns_account_relation',
+					// 		// 			'type' => 'item',
+					// 		// 			'url' => $backend_tables_['accounts_relations']['url'],
+					// 		// 			'target' => 'index_content_frame',
+					// 		// 			'background' => '',
+					// 		// 		],
+					// 		// 	],
+					// 		// ],
+					// 	],
+					// ],
+					
+				],
 			],
 		];
 	}

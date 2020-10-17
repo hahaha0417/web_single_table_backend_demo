@@ -16,6 +16,26 @@
 用腳本複製完會順便執行composer autoload
 */
 
+/*
+路由命名
+
+基本上這些子專案可以merge成一個專案(手動搬，可以看到我後台backend是放在子資料夾backend，而不是直接放在root)，因此是依照這個設計當作核心架構規劃
+保留字為
+/
+/backend
+/api
+/fast_api
+...etc(下面那些跳轉)
+
+基本上backend的api寫在/api專案裡
+backend/api是屬於後台內部用的api才寫在這
+
+其他屬附加專案或架構，沒規定的可以隨便取，但碰到核心架構的請另外命名，而不是要求核心架構用其他名稱)
+ ----------------------------------------------------------- 
+架構設計主要是for User，而不是專案分工誰比較大用關鍵字，通常關鍵字由負責的人決定，也由他負責(因為他要求這樣做的)
+ ----------------------------------------------------------- 
+*/
+
 // 因為這是入口，直接require即可，有需要再包成檔案載入
 require __DIR__.'/../libraries/hahahasublib/trait/hahaha_instance_trait.php';
 require __DIR__.'/../config/system_setting/hahaha_system_setting.php';

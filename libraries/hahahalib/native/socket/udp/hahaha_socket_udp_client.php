@@ -53,13 +53,30 @@ class hahaha_socket_udp_client{
 	// 選項查詢
 	https://www.php.net/manual/en/function.socket-create.php
 	*/
-	public function Create($domain = AF_INET, $type = SOCK_STREAM)
+	public function Create($domain = AF_INET)
 	{
-		$this->Socket_ = socket_create($domain, $type, SOL_TCP);
+		$this->Socket_ = socket_create($domain, SOCK_DGRAM, SOL_UDP);
 		return $this->Socket_;
 				
-	}		
+	}	
 
+	public function Connect($ip, $port)
+	{
+		return socket_connect($this->Socket_, $ip, $port);
+		
+	}
+
+	public function Shutdown()
+	{
+		socket_shutdown($this->Socket_);
+	
+	}
+	
+	public function Close()
+	{
+		socket_close($this->Socket_);
+	
+	}
 	
 	
 	//-----------------------------------------------------------

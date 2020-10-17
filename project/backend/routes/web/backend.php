@@ -47,6 +47,23 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
     // Route::get('/page/{name}/edit/{}', 'IndexController@page');   
     // index
     Route::get('/page/{name}', 'IndexController@page');   
+
+});
+
+// page
+Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', 'namespace' => 'Backend'], function() {
+    // table
+    // http://127.0.0.1:8700/backend/page/table/backend_accounts_list
+    // tool
+    // http://127.0.0.1:8700/backend/page/tool/table_field
+    Route::get('page/{class}/{name}', 'IndexController@page');   
+
+});
+
+// Tool
+Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend/tool', 'namespace' => 'Backend\Tool'], function() {
+    // tool
+    Route::get('/table_field', 'ToolController@table_field');
 });
 //------------------------------------------------------------------------------------------------------
 // 資料表

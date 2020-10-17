@@ -195,6 +195,8 @@ class IndexController extends BaseIndexController
         ];
         //
 
+        //
+
         return view('web.backend.table.index');    
     }
 

@@ -98,6 +98,8 @@ trait hahaha_socket_trait
 	MSG_PEEK	Receive data from the beginning of the receive queue without removing it from the queue.
 	MSG_WAITALL	Block until at least len are received. However, if a signal is caught or the remote host disconnects, the function may return less data.
 	MSG_DONTWAIT	With this flag set, the function returns even if it would normally have blocked.
+	
+	這個在windows不能用，linux不確定
 	*/
 	public function Receive_Message(&$socket, &$message, $flags = MSG_WAITALL)
 	{
@@ -126,24 +128,32 @@ trait hahaha_socket_trait
 	MSG_EOR	Indicate a record mark. The sent data completes the record.
 	MSG_EOF	Close the sender side of the socket and include an appropriate notification of this at the end of the sent data. The sent data completes the transaction.
 	MSG_DONTROUTE	Bypass routing, use direct interface.
+
+	https://www.php.net/manual/en/sockets.constants.php
+	MSG_EOF (integer)
+	Not available on Windows platforms.
 	*/
-	public function Send(&$socket, &$buffer, $length = 1024, $flags = MSG_EOF)
+	public function Send(&$socket, &$buffer, $length = 1024, $flags = 0)
 	{
-		return socket_send($socket, $buffer, $length, $flags);
+		return socket_send($socket, $buffer, $length, 0);
 		
 	}
 	
 	/*
 	https://www.php.net/manual/en/function.socket-recvfrom.php
 	
-	SG_OOB	Send OOB (out-of-band) data.
+	MSG_OOB	Send OOB (out-of-band) data.
 	MSG_EOR	Indicate a record mark. The sent data completes the record.
 	MSG_EOF	Close the sender side of the socket and include an appropriate notification of this at the end of the sent data. The sent data completes the transaction.
 	MSG_DONTROUTE	Bypass routing, use direct interface.
 	
 	port = 0
+
+	https://www.php.net/manual/en/sockets.constants.php
+	MSG_EOF (integer)
+	Not available on Windows platforms.
 	*/
-	public function Send_To($address, $port, &$buffer, $length = 1024, $flags = MSG_WAITALL)
+	public function Send_To($address, $port, &$buffer, $length = 1024, $flags = 0)
 	{
 		return socket_sendto($this->Socket_, $buffer, $length, $flags, $address, $port);
 		
@@ -152,12 +162,18 @@ trait hahaha_socket_trait
 	/*
 	https://www.php.net/manual/en/function.socket-recvmsg.php
 	
-	SG_OOB	Send OOB (out-of-band) data.
+	MSG_OOB	Send OOB (out-of-band) data.
 	MSG_EOR	Indicate a record mark. The sent data completes the record.
 	MSG_EOF	Close the sender side of the socket and include an appropriate notification of this at the end of the sent data. The sent data completes the transaction.
 	MSG_DONTROUTE	Bypass routing, use direct interface.
+
+	https://www.php.net/manual/en/sockets.constants.php
+	MSG_EOF (integer)
+	Not available on Windows platforms.
+	
+	這個在windows不能用，linux不確定
 	*/
-	public function Send_Message(&$socket, &$message, $flags = MSG_WAITALL)
+	public function Send_Message(&$socket, &$message, $flags = 0)
 	{
 		return socket_sendmsg($socket, $message, $flags);
 		
