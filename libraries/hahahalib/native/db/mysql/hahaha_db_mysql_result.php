@@ -37,7 +37,7 @@ class hahaha_db_mysql_result{
 	{
 		while ($data = $mysql_result->fetch_assoc())
 		{
-			$result[] = &$data;
+			$result[] = $data;
 		}
 		
 	}
