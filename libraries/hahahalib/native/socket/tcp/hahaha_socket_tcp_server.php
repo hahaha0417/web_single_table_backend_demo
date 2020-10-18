@@ -53,9 +53,9 @@ class hahaha_socket_tcp_server{
 	// 選項查詢
 	https://www.php.net/manual/en/function.socket-create.php
 	*/
-	public function Create($domain = AF_INET)
+	public function Create($domain = AF_INET, $type = SOCK_STREAM)
 	{
-		$this->Socket_ = socket_create($domain, , SOCK_DGRAM, SOL_TCP);
+		$this->Socket_ = socket_create($domain, $type, SOL_TCP);
 		return $this->Socket_;
 		
 	}		
