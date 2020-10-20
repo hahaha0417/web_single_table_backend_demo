@@ -43,6 +43,7 @@ use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_setting as setting;
 use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
@@ -65,7 +66,17 @@ use Spatie\Url\Url;
     $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);            
 ?>
 
-@if($field[key::TYPE] == type::LABEL)          
+@if($field[key::TYPE] == type::LABEL)  
+<div
+    @if(!empty($field[key::CLASSES])) 
+        class="{{$field[key::CLASSES]}}" 
+    @else 
+        class="" 
+    @endif 
+    @if(!empty($field[key::STYLES])) 
+        style="{{$field[key::STYLES]}}" 
+    @endif 
+>        
     {{--  有欄位才填  --}}
     @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
         @if(!empty($field[key::DB_FIELD][key::NAME]))
@@ -79,7 +90,18 @@ use Spatie\Url\Url;
         @endif
     @else
     @endif
-@elseif($field[key::TYPE] == type::LABEL_BY_OPTION_VALUE)          
+</div>
+@elseif($field[key::TYPE] == type::LABEL_BY_OPTION_VALUE)     
+<div
+    @if(!empty($field[key::CLASSES])) 
+        class="{{$field[key::CLASSES]}}" 
+    @else 
+        class="" 
+    @endif 
+    @if(!empty($field[key::STYLES])) 
+        style="{{$field[key::STYLES]}}" 
+    @endif 
+>      
     {{--  有欄位才填  --}}
     @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
         @if(!empty($field[key::DB_FIELD][key::NAME]))
@@ -109,6 +131,7 @@ use Spatie\Url\Url;
         @endif
     @else
     @endif
+</div>
 @elseif($field[key::TYPE] == type::TEXT)                                                       
     <input  
         @if(!empty($field[key::ID])) 
@@ -153,14 +176,23 @@ use Spatie\Url\Url;
                 title="{{$field[key::HINT][key::TITLE]}}"
             @endif 
         @endif 
+
+        @if(!empty($field[key::READONLY])) 
+            readonly
+        @endif
     >
 @elseif($field[key::TYPE] == type::PASSWORD) 
     <label for="{{$field[key::ID]}}" 
-        @if(!empty($field[key::CLASSES_1])) 
-            class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-        @else 
-            class="col-sm-3 col-form-label" 
-        @endif    
+        class="col-sm-3 col-form-label 
+            @if(!empty($field[key::CLASSES_LABEL]))
+                {{$field[key::CLASSES_LABEL]}} 
+            @endif 
+        "    
+        style="
+            @if(!empty($field[key::STYLES_LABEL]))
+                {{$field[key::STYLES_LABEL]}}
+            @endif 
+        "  
         @if(!empty($field[key::ID])) 
             id="{{$field[key::ID]}}_label" 
         @endif 
@@ -201,38 +233,53 @@ use Spatie\Url\Url;
             @endif
         @else
         @endif
+
+        @if(!empty($field[key::READONLY])) 
+            readonly
+        @endif
     >
 @elseif($field[key::TYPE] == type::IMAGE)   
     <img 
-        @if(!empty($field[key::ID])) 
-            id="{{$field[key::ID]}}_thumbnail_{{$key_data}}"
-            class="{{$field[key::ID]}}_thumbnail"
-        @endif    
+        id="{{$field[key::ID]}}_thumbnail_{{$key_data}}"
+        class="{{$field[key::ID]}} image
+        @if(!empty($field[key::CLASSES]))
+            {{$field[key::CLASSES]}} 
+        @endif 
+        "    
         
         {{--  有欄位才填  --}}
         @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
             @if(!empty($field[key::DB_FIELD][key::NAME]))
-                src="{{\p_ha::IMAGES($data[$field[key::DB_FIELD][key::NAME]], $target_setting_table['stage']) }}"
+                src="{{\p_ha::V_IMAGES($data[$field[key::DB_FIELD][key::NAME]], $target_setting_table_['stage']) }}"
             @else 
-                src="{{\p_ha::IMAGES($data[$key_field], $target_setting_table['stage']) }}"
+                src="{{\p_ha::V_IMAGES($data[$key_field], $target_setting_table_['stage']) }}"
             @endif
         @else
         @endif
 
+        style="
         @if(!empty($field[key::STYLES])) 
-            style="{{$field[key::STYLES]}}" 
+            {{$field[key::STYLES]}}
         @endif 
+        " 
     >
 @elseif($field[key::TYPE] == type::UPLOAD) 
     <div 
-        @if(!empty($field[key::ID])) 
-            id="{{$field[key::ID]}}_upload_{{$key_data}}"
-            class="{{$field[key::ID]}}_upload"
-            name="{{$field[key::ID]}}_upload_{{$key_data}}"
-        @endif       
-        @if(!empty($field[key::STYLES])) 
-            style="{{$field[key::STYLES]}}" 
+        id="{{$field[key::ID]}}_{{$key_data}}"
+            
+        name="{{$field[key::ID]}}_{{$key_data}}"
+
+        class="{{$field[key::ID]}} upload
+        @if(!empty($field[key::CLASSES]))
+            {{$field[key::CLASSES]}} 
         @endif 
+        "     
+        style="{{$field[key::STYLES]}}
+        @if(!empty($field[key::STYLES])) 
+            {{$field[key::STYLES]}}
+        @endif 
+        " 
+
             type="file"
         >
     </div>  
@@ -244,22 +291,37 @@ use Spatie\Url\Url;
                 @if(!empty($field[key::CLASSES]))
                     {{$field[key::CLASSES]}} 
                 @endif 
-                @if(!empty($field[key::CLASSES_1]))
-                    {{$field[key::CLASSES_1]}}"
+                @if(!empty($field[key::CLASSES_BUTTON]))
+                    {{$field[key::CLASSES_BUTTON]}}
                 @endif 
             name="{{$field[key::ID]}}_{{$key_data}}"
             style="
-            @if(!empty($field[key::STYLES])) 
-                {{$field[key::STYLES]}}
-            @endif 
+                @if(!empty($field[key::STYLES])) 
+                    {{$field[key::STYLES]}}
+                @endif 
+                @if(!empty($field[key::STYLES_BUTTON]))
+                    {{$field[key::STYLES_BUTTON]}}
+                @endif 
             " 
         @endif   
         >
         <i class="
-        @if(!empty($field[key::CLASSES_2]))
-            {{$field[key::CLASSES_2]}}
-        @endif 
-        ">
+            @if(!empty($field[key::CLASSES_2]))
+                {{$field[key::CLASSES_2]}}
+            @endif 
+            @if(!empty($field[key::CLASSES_ICON]))
+                {{$field[key::CLASSES_ICON]}}
+            @endif 
+        "
+        style="
+            @if(!empty($field[key::STYLES_2]))
+                {{$field[key::STYLES_2]}}
+            @endif 
+            @if(!empty($field[key::STYLES_ICON]))
+                {{$field[key::STYLES_ICON]}}
+            @endif 
+        "
+        >
             @if(!empty($field[key::TITLE]) ) 
                 {{$field[key::TITLE]}} 
             @endif
@@ -275,33 +337,66 @@ $url_ = Url::fromString($actual_link_);
             {{$url_}}/edit/{{$data[$field[key::DB_FIELD][ $field[key::INDEX] ]]}}
         @else 
             {{$url_}}/edit/{{$data[ $field[key::INDEX] ]}}
-        @endif    
-    ">
+        @endif  
+    "
+        class="{{$field[key::ID]}} 
+            @if(!empty($field[key::CLASSES]))
+                {{$field[key::CLASSES]}} 
+            @endif 
+            @if(!empty($field[key::CLASSES_LINK]))
+                {{$field[key::CLASSES_LINK]}} 
+            @endif 
+        "
+        style="
+            @if(!empty($field[key::STYLES])) 
+                {{$field[key::STYLES]}}
+            @endif 
+            @if(!empty($field[key::STYLES_LINK])) 
+                {{$field[key::STYLES_LINK]}}
+            @endif 
+        "   
+    >
 
         <div
             @if(!empty($field[key::ID])) 
                 id="{{$field[key::ID]}}_{{$key_data}}"
                 class="{{$field[key::ID]}} 
-                    @if(!empty($field[key::CLASSES]))
-                        {{$field[key::CLASSES]}} 
-                    @endif 
                     @if(!empty($field[key::CLASSES_1]))
-                        {{$field[key::CLASSES_1]}}"
+                        {{$field[key::CLASSES_1]}}
                     @endif 
+                    @if(!empty($field[key::CLASSES_BUTTON]))
+                        {{$field[key::CLASSES_BUTTON]}}
+                    @endif 
+                "
                 name="{{$field[key::ID]}}_{{$key_data}}"
                 style="
-                    @if(!empty($field[key::STYLES])) 
-                        {{$field[key::STYLES]}}
+                    @if(!empty($field[key::STYLES_1])) 
+                        {{$field[key::STYLES_1]}}
+                    @endif 
+                    @if(!empty($field[key::STYLES_BUTTON]))
+                        {{$field[key::STYLES_BUTTON]}}
                     @endif 
                 " 
             @endif       
             
             >
             <i class="
-            @if(!empty($field[key::CLASSES_2]))
-                {{$field[key::CLASSES_2]}}
-            @endif 
-            ">
+                @if(!empty($field[key::CLASSES_2]))
+                    {{$field[key::CLASSES_2]}}
+                @endif 
+                @if(!empty($field[key::CLASSES_ICON]))
+                    {{$field[key::CLASSES_ICON]}}
+                @endif 
+            "
+            style="
+                @if(!empty($field[key::STYLES_2]))
+                    {{$field[key::STYLES_2]}}
+                @endif 
+                @if(!empty($field[key::STYLES_ICON]))
+                    {{$field[key::STYLES_ICON]}}
+                @endif
+            "
+            >
                 @if(!empty($field[key::TITLE]) ) 
                     {{$field[key::TITLE]}} 
                 @endif
@@ -312,11 +407,16 @@ $url_ = Url::fromString($actual_link_);
     
     @foreach($field[key::OPTIONS] as $key_option => $option)    
         <label for="{{$option[key::ID]}}_{{$key_data}}" 
-            @if(!empty($field[key::CLASSES_1])) 
-                class="col-sm-2 col-form-label {{$field[key::CLASSES_1]}}" 
-            @else 
-                class="col-sm-2 col-form-label" 
-            @endif    
+            class="col-sm-3 col-form-label 
+                @if(!empty($field[key::CLASSES_LABEL]))
+                    {{$field[key::CLASSES_LABEL]}} 
+                @endif 
+            "    
+            style="
+                @if(!empty($field[key::STYLES_LABEL]))
+                    {{$field[key::STYLES_LABEL]}}
+                @endif 
+            " 
             @if(!empty($option[key::ID])) 
                 id="{{$option[key::ID]}}_label_{{$key_data}}" 
             @endif 
@@ -326,8 +426,8 @@ $url_ = Url::fromString($actual_link_);
             @if(!empty($option[key::ID])) 
                 id="{{$option[key::ID]}}_{{$key_data}}" 
             @endif 
-            @if(!empty($option[key::STYLES_1])) 
-                style="{{$option[key::STYLES_1]}}" 
+            @if(!empty($option[key::STYLES])) 
+                style="{{$option[key::STYLES]}}" 
             @endif 
             type="text" 
             @if(!empty($option[key::CLASSES])) 
@@ -403,6 +503,16 @@ $url_ = Url::fromString($actual_link_);
     </div> 
     
 @elseif($field[key::TYPE] == type::CHECKBOX_SELECTED)  
+<div
+@if(!empty($field[key::CLASSES_1])) 
+    class="{{$field[key::CLASSES_1]}}" 
+@else 
+    class="" 
+@endif 
+@if(!empty($field[key::STYLES_1])) 
+    style="{{$field[key::STYLES_1]}}" 
+@endif 
+>
     <input 
         @if(!empty($field[key::ID])) 
             id="{{$field[key::ID]}}_{{$key_data}}"  
@@ -412,7 +522,11 @@ $url_ = Url::fromString($actual_link_);
         @else 
             class="form-control" 
         @endif 
+        @if(!empty($field[key::STYLES])) 
+            style="{{$field[key::STYLES]}}" 
+        @endif 
         type="checkbox" name="checkbox" data-labelauty=" ">
+</div>
 @else 
 
 @endif  

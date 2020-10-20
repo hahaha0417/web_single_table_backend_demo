@@ -4,6 +4,22 @@ namespace hahaha\backend;
 
 use hahahasublib\hahaha_instance_trait;
 
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_operator as op;
+use hahaha\define\hahaha_define_table_tag as tag;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_target as target;
+// db_field
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+
 /*
 首頁自定義欄位
 
@@ -58,7 +74,7 @@ class hahaha_setting_index
 	{
 		// 因為同一個節點，這是共用設定
 		$Settings = [
-			"default" => [
+			key::DEFAULT => [
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// iFrame有Cross Origin問題請小心，我有將他複製到所有專案下的/public/assets/cross_origin/
 				// 因此所以站都應該讀的到(都要有該資料夾)
@@ -84,8 +100,8 @@ class hahaha_setting_index
 	右方清單
 	- type 項目
 	--- 'type' => 'label', 標籤
-	--- 'type' => 'item', 項目
-	--- 'type' => 'menu', 清單
+	--- 'type' => type::ITEM, 項目
+	--- 'type' => type::MENU, 清單
 	- link 項目
 	--- 'target' => 'web' 直接連結
 	--- 'target' => '_self' 站內
@@ -130,7 +146,7 @@ class hahaha_setting_index
 	// 	// 'icon' => "fa-angle-double-down",
 	// 	// 'icon' => "fa-angle-double-down",
 	// 	// 'icon' => "fa-angle-double-down",
-	// 	// 'menu' => array(
+	// 	// type::MENU => array(
 
 	// 	// ),
 	// 	// 'menu2' => array(
@@ -140,29 +156,29 @@ class hahaha_setting_index
 
 	// 'Dashboard' => [
 	// 	// 主控版	
-	//     'type' => 'item',
+	//     'type' => type::ITEM,
 	//     // 'url' => '/',
 	//     'target' => '_self',
 	//     'icon' => "fa-desktop",
 	//     'active' => 'false',
 	//     'background' => 'rgba(190,155,255,0.5)',
 	//     'mini' => 'Board',
-	//     'menu' => [
+	//     type::MENU => [
 	//     ],
 	// ],
 
 	// 'Index' => array(
 	// 	// 快捷清單
-	//     'type' => 'menu',
+	//     'type' => type::MENU,
 	//     'url' => '/backend/index',
 	//     'target' => 'index_content_frame',
 	//     'icon' => "fa-home",
 	//     'active' => 'false',
 	//     'background' => 'rgba(90,255,150,0.5)',
 	//     'mini' => 'Index',
-	//     'menu' => array(
+	//     type::MENU => array(
 	//         'Index' => [
-	//             'type' => 'item',
+	//             'type' => type::ITEM,
 	//             'url' => 'backend/index/index',
 	//             'target' => 'index_content_frame',
 	//             'background' => 'rgba(90,255,150,0.5)',
@@ -173,7 +189,7 @@ class hahaha_setting_index
 
 	// 'Index' => [
 	// 	// 首頁
-	// 	'type' => 'item',
+	// 	'type' => type::ITEM,
 	// 	'url' => 'backend/index/index',
 	// 	'target' => 'index_content_frame',
 	// 	'icon' => "fa-info",
@@ -184,16 +200,16 @@ class hahaha_setting_index
 
 	// 'Class' => [
 	// 	// 導覽頁
-	// 	'type' => 'menu',
+	// 	'type' => type::MENU,
 	// 	'url' => null,
 	// 	'target' => '_self',
 	// 	'icon' => 'fa-tags',
 	// 	'active' => 'false',
 	// 	'background' => 'rgba(150,255,255,0.5)',
 	// 	'mini' => 'Class',
-	// 	'menu' => [
+	// 	type::MENU => [
 	// 		'All' => [
-	// 			'type' => 'item',
+	// 			'type' => type::ITEM,
 	// 			'url' => 'backend/class/all',
 	// 			'target' => 'index_content_frame',
 	// 			'background' => '',
@@ -205,43 +221,43 @@ class hahaha_setting_index
 
 	// 'Global' => [
 	//	全域設定	
-	//     'type' => 'menu',
+	//     'type' => type::MENU,
 	//     'url' => '/',
 	//     'target' => '_self',
 	//     //'icon' => "fa-angle-double-down",
-	//     'menu' => array(
+	//     type::MENU => array(
 	//         // other
 	//         'Module' => [
-	//             'type' => 'item',
+	//             'type' => type::ITEM,
 	//             'url' => '/map/global/module',
 	//             'target' => 'index_content_frame',
 	//             'background' => '',
 	//             //'icon' => 'fa-angle-double-down',
 	//             // dir
-	//             // 'menu' => array(
+	//             // type::MENU => array(
 	//             //     'Root' => [
-	//             //         'type' => 'item',
+	//             //         'type' => type::ITEM,
 	//             //         'url' => '#',
 	//             //         'target' => 'frame',
 	//             //         //'icon' => 'fa-angle-double-down',
 	//             //         // dir
 	//             //     ],
 	//             //     'Home' => [
-	//             //         'type' => 'item',
+	//             //         'type' => type::ITEM,
 	//             //         'url' => '#',
 	//             //         'target' => 'frame',
 	//             //         //'icon' => 'fa-angle-double-down',
 	//             //         // page
 	//             //     ],
 	//             //     'Product' => [
-	//             //         'type' => 'item',
+	//             //         'type' => type::ITEM,
 	//             //         'url' => '#',
 	//             //         'target' => 'frame',
 	//             //         //'icon' => "fa-angle-double-down",
 	//             //         // node
 	//             //     ],
 	//             //     'Device' => [
-	//             //         'type' => 'item',
+	//             //         'type' => type::ITEM,
 	//             //         'url' => '#',
 	//             //         'target' => 'frame',
 	//             //         //'icon' => 'fa-angle-double-down',
@@ -250,7 +266,7 @@ class hahaha_setting_index
 	//             // ),
 	//         ],
 	//         'Global' => [
-	//             'type' => 'item',
+	//             'type' => type::ITEM,
 	//             'url' => '/map/global/global',
 	//             'target' => 'index_content_frame',
 	//             'background' => '',
@@ -281,34 +297,34 @@ class hahaha_setting_index
 		// --------------------------------------------- 
 		$Menu = [
 			__('backend.index.menu.home') => [
-				'name' => 'home',
-				'type' => 'item',
-				'url' => \p_ha::Self_Url('/'),
-				'target' => '_self',
-				'icon' => "fa-home",
-				'active' => 'false',
-				'background' => 'rgba(90,255,150,0.5)',
-				'mini' => 'Home',				
+				key::NAME => 'home',
+				key::TYPE => type::ITEM,
+				key::URL => \p_ha::Self_Url('/'),
+				key::TARGET => target::SELF,
+				key::ICON => "fa-home",
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key::MINI => 'Home',				
 			],		
 			__('backend.cover') => [
-				'name' => 'cover',
-				'type' => 'item',
-				'url' => \p_ha::V_Url('cover'),
-				'target' => 'index_content_frame',
-				'icon' => "fa-desktop",
-				'active' => 'false',
-				'background' => 'rgba(90,255,150,0.5)',
-				'mini' => 'Note',
+				key::NAME => 'cover',
+				key::TYPE => type::ITEM,
+				key::URL => \p_ha::V_Url('cover'),
+				key::TARGET => 'index_content_frame',
+				key::ICON => "fa-desktop",
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key::MINI => 'Note',
 			],
 			__('backend.index.menu.note') => [
-				'name' => 'note',
-				'type' => 'item',
-				'url' => \p_ha::V_Url('note'),
-				'target' => 'index_content_frame',
-				'icon' => "fa-sticky-note",
-				'active' => 'false',
-				'background' => 'rgba(90,255,150,0.5)',
-				'mini' => 'Note',
+				key::NAME => 'note',
+				key::TYPE => type::ITEM,
+				key::URL => \p_ha::V_Url('note'),
+				key::TARGET => 'index_content_frame',
+				key::ICON => "fa-sticky-note",
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key::MINI => 'Note',
 			],
 			__('backend.index.menu.table') => [
 				// 目前，最多四層，如果不夠用串的
@@ -316,59 +332,59 @@ class hahaha_setting_index
 				// Front
 				// -- Accounts
 				// 第一層
-				'name' => 'table',
+				key::NAME => 'table',
 				// ---------------------------------- 
-				'page' => 'table',
+				key::PAGE => 'table',
 				// ---------------------------------- 
-				'type' => 'menu',
-				'url' => null,
-				'target' => '_self',
-				'icon' => 'fa-envelope',
-				'active' => 'false',
-				'background' => 'rgba(255,255,0,0.5)',
-				'mini' => __('backend.index.menu.table'),
-				'menu' => [
+				key::TYPE => type::MENU,
+				key::URL => null,
+				key::TARGET => target::SELF,
+				key::ICON => 'fa-envelope',
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(255,255,0,0.5)',
+				key::MINI => __('backend.index.menu.table'),
+				key::MENU => [
 					// 第二層
 					// __('backend.index.menu.front') => [
 					// 	'name' => 'front',
-					// 	'type' => 'menu',
+					// 	'type' => type::MENU,
 					// 	'url' => null,
 					// 	'target' => '_self',
 					// 	//'icon' => 'fa-angle-double-down',
-					// 	'menu' => [
+					// 	type::MENU => [
 					// 		// 第三層
 					// 		__('backend.index.menu.account') => [
 					// 			'name' => 'front_account',
-					// 			'type' => 'menu',
+					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
 					// 			'background' => '',								
-					// 			'menu' => [
+					// 			type::MENU => [
 					// 				// 第四層
 					// 				__('backend.index.menu.list') => [
 					// 					'name' => 'front_account_list',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/accounts/list'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
 					// 				],
 					// 				__('backend.index.menu.detail') => [
 					// 					'name' => 'front_account_detail',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/accounts/detail'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
 					// 				],
 					// 				__('backend.index.menu.login_record') => [
 					// 					'name' => 'front_account_login_record',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/accounts/login_record'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
 					// 				],
 					// 				'| --  ' . __('backend.index.menu.relation') => [
 					// 					'name' => 'front_account_relation',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/accounts/relation'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
@@ -377,15 +393,15 @@ class hahaha_setting_index
 					// 		],
 					// 		__('backend.index.menu.product') => [
 					// 			'name' => 'product',
-					// 			'type' => 'menu',
+					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
 					// 			'background' => '',								
-					// 			'menu' => [
+					// 			type::MENU => [
 					// 				// node
 					// 				__('backend.index.menu.list') => [
 					// 					'name' => 'front_product_list',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/products/list'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
@@ -394,15 +410,15 @@ class hahaha_setting_index
 					// 		],
 					// 		__('backend.index.menu.relation') => [
 					// 			'name' => 'front_relation',
-					// 			'type' => 'menu',
+					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
 					// 			'background' => '',								
-					// 			'menu' => [
+					// 			type::MENU => [
 					// 				// node									
 					// 				__('backend.index.menu.account') . ' X ' . __('backend.index.menu.product') . ' - ' . __('backend.index.menu.like') => [
 					// 					'name' => 'front_account_product_like',
-					// 					'type' => 'item',
+					// 					'type' => type::ITEM,
 					// 					'url' => \p_ha::V_Url('table/front/relation/accounts_products_like'),
 					// 					'target' => 'index_content_frame',
 					// 					'background' => '',
@@ -412,48 +428,48 @@ class hahaha_setting_index
 					// 	],
 					// ],
 					__('backend.index.menu.backend') => [
-						'name' => 'backend',
-						'type' => 'menu',
-						'url' => '/',
-						'target' => '_self',
-						//'icon' => 'fa-angle-double-down',
-						'menu' => [
+						key::NAME => 'backend',
+						key::TYPE => type::MENU,
+						key::URL => '/',
+						key::TARGET => target::SELF,
+						//key::ICON => 'fa-angle-double-down',
+						key::MENU => [
 							// 第三層
 							__('backend.index.menu.account') => [
-								'name' => 'backend_accouts',
-								'type' => 'menu',
-								'url' => null,
-								'target' => 'index_content_frame',
-								'background' => '',								
-								'menu' => [
+								key::NAME => 'backend_accouts',
+								key::TYPE => type::MENU,
+								key::URL => null,
+								key::TARGET => 'index_content_frame',
+								key::BACKGROUND => '',								
+								key::MENU => [
 									// 第四層
 									__('backend.index.menu.list') => [
-										'name' => 'backend_accounts_list',
-										'type' => 'item',
-										'url' => $backend_tables_['accounts']['url'],
-										'target' => 'index_content_frame',
-										'background' => '',
+										key::NAME => 'backend_accounts_list',
+										key::TYPE => type::ITEM,
+										key::URL => $backend_tables_['accounts']['url'],
+										key::TARGET => 'index_content_frame',
+										key::BACKGROUND => '',
 									],
 									__('backend.index.menu.detail') => [
-										'name' => 'backend_accounts_detail',
-										'type' => 'item',
-										'url' => $backend_tables_['accounts_detail']['url'],
-										'target' => 'index_content_frame',
-										'background' => '',
+										key::NAME => 'backend_accounts_detail',
+										key::TYPE => type::ITEM,
+										key::URL => $backend_tables_['accounts_detail']['url'],
+										key::TARGET => 'index_content_frame',
+										key::BACKGROUND => '',
 									],
 									__('backend.index.menu.login_record') => [
-										'name' => 'backend_accounts_login_record',
-										'type' => 'item',
-										'url' => $backend_tables_['accounts_login_records']['url'],
-										'target' => 'index_content_frame',
-										'background' => '',
+										key::NAME => 'backend_accounts_login_record',
+										key::TYPE => type::ITEM,
+										key::URL => $backend_tables_['accounts_login_records']['url'],
+										key::TARGET => 'index_content_frame',
+										key::BACKGROUND => '',
 									],
 									'| --  ' . __('backend.index.menu.relation') => [
-										'name' => 'backend_accoutns_account_relation',
-										'type' => 'item',
-										'url' => $backend_tables_['accounts_relations']['url'],
-										'target' => 'index_content_frame',
-										'background' => '',
+										key::NAME => 'backend_accoutns_account_relation',
+										key::TYPE => type::ITEM,
+										key::URL => $backend_tables_['accounts_relations']['url'],
+										key::TARGET => 'index_content_frame',
+										key::BACKGROUND => '',
 									],
 								],
 							],
@@ -462,15 +478,15 @@ class hahaha_setting_index
 				],
 			],
 			__('backend.default_page') => [
-				'name' => 'default_page',
-				'type' => 'item',
+				key::NAME => 'default_page',
+				key::TYPE => type::ITEM,
 				// 請注意settings初始化順序
-				'url' => $this->Settings['default']['page'],
-				'target' => '_self',
-				'icon' => "fa-desktop",
-				'active' => 'false',
-				'background' => 'rgba(90,255,150,0.5)',
-				'mini' => 'Note',
+				key::URL => $this->Settings['default']['page'],
+				key::TARGET => target::SELF,
+				key::ICON => "fa-desktop",
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key::MINI => 'Note',
 			],
 			__('backend.tool') => [
 				// 目前，最多四層，如果不夠用串的
@@ -478,66 +494,66 @@ class hahaha_setting_index
 				// Front
 				// -- Accounts
 				// 第一層
-				'name' => 'tool',
+				key::NAME => 'tool',
 				// ---------------------------------- 
-				'page' => 'class',
+				key::PAGE => 'class',
 				// ---------------------------------- 
-				'type' => 'menu',
-				'url' => null,
-				'target' => '_self',
-				'icon' => 'fa-envelope',
-				'active' => 'false',
-				'background' => 'rgba(255,255,0,0.5)',
-				'mini' => __('backend.index.menu.table'),
-				'menu' => [		
+				key::TYPE => type::MENU,
+				key::URL => null,
+				key::TARGET => target::SELF,
+				key::ICON => 'fa-envelope',
+				key::ACTIVE => 'false',
+				key::BACKGROUND => 'rgba(255,255,0,0.5)',
+				key::MINI => __('backend.index.menu.table'),
+				key::MENU => [		
 					__('backend.table_field') => [
 						// 'name' => 'table_field',
-						'name' => 'table_field',
-						'type' => 'item',
-						'url' => "/backend/tool/table_field",
-						'target' => 'index_content_frame',
-						'background' => '',
+						key::NAME => 'table_field',
+						key::TYPE => type::ITEM,
+						key::URL => "/backend/tool/table_field",
+						key::TARGET => 'index_content_frame',
+						key::BACKGROUND => '',
 					],			
 					// __('backend.index.menu.backend') => [
 					// 	'name' => 'backend',
-					// 	'type' => 'menu',
+					// 	'type' => type::MENU,
 					// 	'url' => '/',
 					// 	'target' => '_self',
 					// 	//'icon' => 'fa-angle-double-down',
-					// 	'menu' => [
+					// 	type::MENU => [
 					// 		// // 第三層
 					// 		// __('backend.index.menu.account') => [
 					// 		// 	'name' => 'backend_accouts',
-					// 		// 	'type' => 'menu',
+					// 		// 	'type' => type::MENU,
 					// 		// 	'url' => null,
 					// 		// 	'target' => 'index_content_frame',
 					// 		// 	'background' => '',								
-					// 		// 	'menu' => [
+					// 		// 	type::MENU => [
 					// 		// 		// 第四層
 					// 		// 		__('backend.index.menu.list') => [
 					// 		// 			'name' => 'backend_accounts_list',
-					// 		// 			'type' => 'item',
+					// 		// 			'type' => type::ITEM,
 					// 		// 			'url' => $backend_tables_['accounts']['url'],
 					// 		// 			'target' => 'index_content_frame',
 					// 		// 			'background' => '',
 					// 		// 		],
 					// 		// 		__('backend.index.menu.detail') => [
 					// 		// 			'name' => 'backend_accounts_detail',
-					// 		// 			'type' => 'item',
+					// 		// 			'type' => type::ITEM,
 					// 		// 			'url' => $backend_tables_['accounts_detail']['url'],
 					// 		// 			'target' => 'index_content_frame',
 					// 		// 			'background' => '',
 					// 		// 		],
 					// 		// 		__('backend.index.menu.login_record') => [
 					// 		// 			'name' => 'backend_accounts_login_record',
-					// 		// 			'type' => 'item',
+					// 		// 			'type' => type::ITEM,
 					// 		// 			'url' => $backend_tables_['accounts_login_records']['url'],
 					// 		// 			'target' => 'index_content_frame',
 					// 		// 			'background' => '',
 					// 		// 		],
 					// 		// 		'| --  ' . __('backend.index.menu.relation') => [
 					// 		// 			'name' => 'backend_accoutns_account_relation',
-					// 		// 			'type' => 'item',
+					// 		// 			'type' => type::ITEM,
 					// 		// 			'url' => $backend_tables_['accounts_relations']['url'],
 					// 		// 			'target' => 'index_content_frame',
 					// 		// 			'background' => '',

@@ -40,29 +40,47 @@ class hahaha_define_table_key
     // -------------------------------------- 
     // tags
     // --------------------------------------
-    // 重要的 
-    const CLASSES = "classes";
-    // 多層
-    const CLASSES_1 = "classes_1";
-    const CLASSES_2 = "classes_2";
-    const CLASSES_3 = "classes_3";
-    const CLASSES_4 = "classes_4";
-    const CLASSES_5 = "classes_5";
+    // main or input
+    const CLASSES = "classes"; 
+    // no decide
+    const CLASSES_1 = "classes_1"; 
+    const CLASSES_2 = "classes_2"; 
+    const CLASSES_3 = "classes_3"; 
+    const CLASSES_4 = "classes_4"; 
+    const CLASSES_5 = "classes_5"; 
+    // decide
+    const CLASSES_LABEL = "classes_label"; 
+    const CLASSES_OPTION = "classes_option"; 
+    const CLASSES_BUTTON = "classes_button"; 
+    const CLASSES_ICON = "classes_icon"; 
+    const CLASSES_LINK = "classes_link"; 
+
     // -------------------------------------- 
     // style
     // -------------------------------------- 
-    // 重要的 
-    const STYLES = "styles";
-    // 多層
-    const STYLES_1 = "styles_1";
-    const STYLES_2 = "styles_2";
-    const STYLES_3 = "styles_3";
-    const STYLES_4 = "styles_4";
-    const STYLES_5 = "styles_5";
+    // main or input
+    const STYLES = "styles"; 
+    // no decide
+    const STYLES_1 = "styles_1"; 
+    const STYLES_2 = "styles_2"; 
+    const STYLES_3 = "styles_3"; 
+    const STYLES_4 = "styles_4"; 
+    const STYLES_5 = "styles_5"; 
+    // decide
+    const STYLES_LABEL = "styles_label"; 
+    const STYLES_OPTION = "styles_option"; 
+    const STYLES_BUTTON = "styles_button"; 
+    const STYLES_ICON = "styles_icon"; 
+    const STYLES_LINK = "styles_link";
+
     // -------------------------------------- 
     // icon
     // -------------------------------------- 
     const ICON = "icon";
+    // -------------------------------------- 
+    // readonly
+    // -------------------------------------- 
+    const READONLY = "readonly";
     // -------------------------------------- 
     // key
     // -------------------------------------- 
@@ -163,7 +181,115 @@ class hahaha_define_table_key
     // data_list
     // --------------------------------------    
     const DATA_LIST = "data_list";    
+    // -------------------------------------- 
+    // url
+    // -------------------------------------- 
+    const URL = "url";
+    // -------------------------------------- 
+    // path
+    // -------------------------------------- 
+    const PATH = "path";
+
+    // -------------------------------------- 
+    // path
+    // -------------------------------------- 
+    const DESCRIPTION = "description"; 
+    // -------------------------------------- 
+    // path
+    // -------------------------------------- 
+    const NAMESPACE = "namespace"; 
+    // -------------------------------------- 
+    // entity
+    // -------------------------------------- 
+    const ENTITY = "entity"; 
+    // -------------------------------------- 
+    // table
+    // -------------------------------------- 
+    const TABLE = "table"; 
+    // -------------------------------------- 
+    // connection
+    // -------------------------------------- 
+    const CONNECTION = "connection"; 
+    // -------------------------------------- 
+    // path
+    // -------------------------------------- 
+    const stage = "stage"; 
+    // -------------------------------------- 
+    // alias
+    // -------------------------------------- 
+    const ALIAS = "alias"; 
+    // -------------------------------------- 
+    // route
+    // -------------------------------------- 
+    const ROUTE = "route"; 
+    // -------------------------------------- 
+    // model
+    // -------------------------------------- 
+    const MODEL = "model"; 
+    // -------------------------------------- 
+    // view
+    // -------------------------------------- 
+    const VIEW = "view"; 
+    // -------------------------------------- 
+    // controller
+    // -------------------------------------- 
+    const CONTROLLER = "controller"; 
+    // -------------------------------------- 
+    // target
+    // -------------------------------------- 
+    const TARGET = "target"; 
+    // -------------------------------------- 
+    // active
     // --------------------------------------  
+    const ACTIVE = "active"; 
+    // -------------------------------------- 
+    // background
+    // -------------------------------------- 
+    const BACKGROUND = "background"; 
+    // -------------------------------------- 
+    // mini
+    // -------------------------------------- 
+    const MINI = "mini"; 
+    // -------------------------------------- 
+    // default
+    // -------------------------------------- 
+    const DEFAULT = "default"; 
+    // -------------------------------------- 
+    // middle
+    // -------------------------------------- 
+    const MIDDLEWARE = "middle"; 
+    // -------------------------------------- 
+    // prefix
+    // -------------------------------------- 
+    const PREFIX = "prefix"; 
+    // -------------------------------------- 
+    // method
+    // -------------------------------------- 
+    const METHOD = "method"; 
+    // -------------------------------------- 
+    // action
+    // -------------------------------------- 
+    const ACTION = "action"; 
+    // -------------------------------------- 
+    // stage
+    // -------------------------------------- 
+    const STAGE = "stage"; 
+    // -------------------------------------- 
+    // item
+    // -------------------------------------- 
+    const ITEM = "item"; 
+    // -------------------------------------- 
+    // page
+    // -------------------------------------- 
+    const PAGE = "page"; 
+    // -------------------------------------- 
+    // menu
+    // -------------------------------------- 
+    const MENU = "menu"; 
+    // -------------------------------------- 
+    // setting
+    // -------------------------------------- 
+    const SETTINGS = "setting"; 
 
     
     // --------------------------------------  

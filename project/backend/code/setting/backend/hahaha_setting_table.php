@@ -4,6 +4,22 @@ namespace hahaha\backend;
 
 use hahahasublib\hahaha_instance_trait;
 
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_class as class_;
+use hahaha\define\hahaha_define_table_css as css;
+use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_table_operator as op;
+use hahaha\define\hahaha_define_table_tag as tag;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_target as target;
+// db_field
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+
 /*
 首頁自定義欄位
 
@@ -72,11 +88,11 @@ class hahaha_setting_table
 		$Settings = [
 			"default" => [
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
-				"route" => "hahaha",
-				"model" => "hahaha",
-				"view" => "hahaha",
-				"controller" => "hahaha",
-				"table" => "hahaha",
+				key::ROUTE => "hahaha",
+				key::MODEL => "hahaha",
+				key::VIEW => "hahaha",
+				key::CONTROLLER => "hahaha",
+				key::TABLE => "hahaha",
 			],
 		];
 	}
@@ -89,10 +105,10 @@ class hahaha_setting_table
 		// 因為同一個節點，所以所有資料表共用一個router
 		$Routes = [
 			"hahaha" => [
-				"group" => [
-				"middleware" => ["web", "backend.login"],
-					"prefix" => "backend/table",
-					"namespace" => "Backend\Table",
+				key::GROUP => [
+				key::MIDDLEWARE => ["web", "backend.login"],
+					key::PREFIX => "backend/table",
+					key::NAMESPACE => "Backend\Table",
 				],
 			],
 		];
@@ -138,16 +154,16 @@ class hahaha_setting_table
 		$Controllers = [
 			"hahaha" => [
 				"index" => [
-					"method" => "get",
-					"node" => "/",
-					"controller" => "IndexController",
-					"action" => "index",
+					key::METHOD => "get",
+					key::NODE => "/",
+					key::CONTROLLER => "IndexController",
+					key::ACTION => "index",
 				],
 				"edit" => [
-					"method" => "get",
-					"node" => "/edit/{id}",
-					"controller" => "IndexController",
-					"action" => "edit",
+					key::METHOD => "get",
+					key::NODE => "/edit/{id}",
+					key::CONTROLLER => "IndexController",
+					key::ACTION => "edit",
 				],
 			],
 		];
@@ -197,68 +213,72 @@ class hahaha_setting_table
 			// --------------------------------------------------- 
 			"hahaha" => [
 				"accounts" => [					
-					"node" => "accounts/list",
-					"title" => "會員 / 列表",
-					"description" => "紀錄著會員資訊",
-					"namespace" => "",
-					"url" => \p_ha::V_Url("table/backend/accounts/list"),
+					key::NODE => "accounts/list",
+					key::TITLE => "會員 / 列表",
+					key::DESCRIPTION => "紀錄著會員資訊",
+					key::NAMESPACE => "",
+					key::URL => \p_ha::V_Url("table/backend/accounts/list"),
+					key::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					"entity" => '\entities\backend\Accounts',
-					"table" => '\hahaha\backend\hahaha_table_accounts',
+					key::ENTITY => '\entities\backend\Accounts',
+					key::TABLE => '\hahaha\backend\hahaha_table_accounts',
 					// --------------------------------------------- 
-					"connection" => 'backend',
-					"stage" => 'backend',
-					"alias" => "a",
+					key::CONNECTION => 'backend',
+					key::STAGE => 'Backend',
+					key::ALIAS => "a",
 				],
 				"accounts_detail" => [
-					"node" => "accounts/detail",
-					"title" => "會員 / 細節",
-					"description" => "紀錄著會員詳細資訊",
-					"namespace" => "",
-					"url" => \p_ha::V_Url("table/backend/accounts/detail"),
+					key::NODE => "accounts/detail",
+					key::TITLE => "會員 / 細節",
+					key::DESCRIPTION => "紀錄著會員詳細資訊",
+					key::NAMESPACE => "",
+					key::URL => \p_ha::V_Url("table/backend/accounts/detail"),
+					key::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					"entity" => '\entities\backend\AccountsDetail',
-					"table" => '\hahaha\backend\hahaha_table_accounts_detail',
+					key::ENTITY => '\entities\backend\AccountsDetail',
+					key::TABLE => '\hahaha\backend\hahaha_table_accounts_detail',
 					// --------------------------------------------- 
-					"connection" => 'backend',
-					"stage" => 'backend',
-					"alias" => "ad",
+					key::CONNECTION => 'backend',
+					key::STAGE => 'Backend',
+					key::ALIAS => "ad",
 				],
 				"accounts_login_records" => [
-					"node" => "accounts/login_records",
-					"title" => "會員 / 登入紀錄",
-					"description" => "紀錄著會員登入紀錄",
-					"namespace" => "",
-					"url" => \p_ha::V_Url("table/backend/accounts/login_records"),
+					key::NODE => "accounts/login_records",
+					key::TITLE => "會員 / 登入紀錄",
+					key::DESCRIPTION => "紀錄著會員登入紀錄",
+					key::NAMESPACE => "",
+					key::URL => \p_ha::V_Url("table/backend/accounts/login_records"),
+					key::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					"entity" => '\entities\backend\AccountsLoginRecords',
-					"table" => '\hahaha\backend\hahaha_table_accounts_login_records',
+					key::ENTITY => '\entities\backend\AccountsLoginRecords',
+					key::TABLE => '\hahaha\backend\hahaha_table_accounts_login_records',
 					// --------------------------------------------- 
-					"connection" => 'backend',
-					"stage" => 'backend',
-					"alias" => "alr",
+					key::CONNECTION => 'backend',
+					key::STAGE => 'Backend',
+					key::ALIAS => "alr",
 				],
 				"accounts_relations" => [
-					"node" => "accounts/relations",					
-					"title" => "會員 / 關係",
-					"description" => "紀錄著會員關係",
-					"namespace" => "",				
-					"url" => \p_ha::V_Url("table/backend/accounts/relations"),
+					key::NODE => "accounts/relations",					
+					key::TITLE => "會員 / 關係",
+					key::DESCRIPTION => "紀錄著會員關係",
+					key::NAMESPACE => "",				
+					key::URL => \p_ha::V_Url("table/backend/accounts/relations"),
+					key::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					"entity" => '\entities\backend\AccountsRelations',
-					"table" => '\hahaha\backend\hahaha_table_accounts_relations',
+					key::ENTITY => '\entities\backend\AccountsRelations',
+					key::TABLE => '\hahaha\backend\hahaha_table_accounts_relations',
 					// --------------------------------------------- 
-					"connection" => 'backend',
-					"stage" => 'backend',
-					"alias" => "ar",
+					key::CONNECTION => 'backend',
+					key::STAGE => 'Backend',
+					key::ALIAS => "ar",
 				],
 			],
 		];

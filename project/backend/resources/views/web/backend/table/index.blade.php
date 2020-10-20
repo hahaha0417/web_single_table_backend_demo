@@ -197,7 +197,7 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
             
             // 注意 : CSS必須在index.css前面，JS也必須在index.js前面，以進行覆蓋
             // 其他模組化的，等到我的框架時，再用我的模組，統一前置
-            // $generator_->Render($dynamic_content_);
+            $generator_->Render($dynamic_content_);
             
         ?>
        
@@ -293,6 +293,8 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                             $block->id = &$use_->Id_Block_Top_Identify;
                             $block->class = &$use_->Class_Block_Top_Identify;
                             $block->block = &$use_->Block_Top;
+                            $block->block_class = "top";
+                            $block->block_style = "";
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -315,6 +317,8 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                             $block->id = &$use_->Id_Panel_Add_Identify;
                             $block->class = &$use_->Class_Panel_Add_Identify;
                             $block->panel = &$use_->Panel_Add;
+                            $block->panel_class = "add";
+                            $block->panel_style = "";
                             ?>
                             @include("web.backend.table.common.panel.panel") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -373,6 +377,8 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                             $block->id = &$use_->Id_Block_Bottom_Identify;
                             $block->class = &$use_->Class_Block_Bottom_Identify;
                             $block->block = &$use_->Block_Bottom;
+                            $block->block_class = "bottom";
+                            $block->block_style = "";
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>

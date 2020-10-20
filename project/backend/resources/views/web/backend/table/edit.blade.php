@@ -285,6 +285,8 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                             $block->id = &$use_->Id_Block_Top_Identify;
                             $block->class = &$use_->Class_Block_Top_Identify;
                             $block->block = &$use_->Block_Top;
+                            $block->block_class = "top";
+                            $block->block_style = "";
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -307,7 +309,9 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                             $block->id = &$use_->Id_Block_Main_Identify;
                             $block->class = &$use_->Class_Block_Main_Identify;
                             $block->panel = &$use_->Block_Main;  
-                            $block->data = &$data_;                          
+                            $block->data = &$data_;   
+                            $block->panel_class = "main";
+                            $block->panel_style = "";                       
                             ?>
                             @include("web.backend.table.common.panel.panel") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -330,6 +334,8 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                             $block->id = &$use_->Id_Block_Bottom_Identify;
                             $block->class = &$use_->Class_Block_Bottom_Identify;
                             $block->block = &$use_->Block_Bottom;
+                            $block->block_class = "bottom";
+                            $block->block_style = "";  
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>

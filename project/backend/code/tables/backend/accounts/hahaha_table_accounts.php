@@ -19,6 +19,7 @@ use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_setting as setting;
 use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 
 
@@ -75,7 +76,7 @@ class hahaha_table_accounts extends hahaha_table_base
 	const CREATED_AT = "created_at";
 	const UPDATED_AT = "updated_at";
 	// ---------------------------------- 
-	
+	const BUTTON_DETAIL = "button_detail";
 	// -------------------------------------------------------- 
 	// 全域
 	// -------------------------------------------------------- 	
@@ -298,15 +299,18 @@ class hahaha_table_accounts extends hahaha_table_base
 				// 不顯示字
 				//key::TITLE => __('backend.delete'),
 				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_EDIT => [
@@ -315,18 +319,39 @@ class hahaha_table_accounts extends hahaha_table_base
 				// key::TITLE => __('backend.edit'),
 				key::TYPE => type::BUTTON_ICON_LINK,
 				key::INDEX => self::ID,
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-edit" => true,
 				],
-				key::STYLES => [
+				key::STYLES_BUTTON => [
+					"font-size" => "1.5em", 
+					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
+				],
+			],
+			// 
+			self::BUTTON_DETAIL => [
+				key::ID => self::IDENTIFY . "_" . self::BUTTON_DETAIL,
+				// 不顯示字
+				// key::TITLE => __('backend.edit'),
+				key::TYPE => type::BUTTON_ICON_LINK,
+				key::INDEX => self::ID,
+				key::CLASSES_BUTTON => [
+					"btn btn-dark" => true,
+				],
+				key::CLASSES_ICON => [
+					"fas fa-address-card" => true,
+				],
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
-			//
+			// ---- 
 			self::BUTTON_ADD => [
 				key::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
 				key::TITLE => __('backend.add'),
@@ -335,16 +360,19 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ADD => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_SELECTED_DELETE => [
@@ -354,15 +382,18 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_ALL_SAVE => [
@@ -372,15 +403,18 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-save" => true,
 				],
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_ALL_REFRESH => [
@@ -390,15 +424,18 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-refresh" => true,
 				],
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			//
@@ -410,16 +447,19 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::PANEL_ADD_BUTTON_CANCEL => [
@@ -430,16 +470,19 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"fas fa-times" => true,
 				],
 				// class
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 			self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
@@ -450,16 +493,19 @@ class hahaha_table_accounts extends hahaha_table_base
 				key::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => true,
 				],
-				key::CLASSES_1 => [
+				key::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key::CLASSES_ICON => [
 					"far fa-arrow-alt-circle-right" => true,
 				],
 				// class
-				key::STYLES => [
+				key::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
+				],
+				key::SETTINGS => [
+					setting::LABEL => false,
 				],
 			],
 		];
@@ -682,7 +728,9 @@ class hahaha_table_accounts extends hahaha_table_base
 						key::TYPE => type::CHECKBOX_SELECTED,
 						key::ITEMS => [
 							self::CHECKBOX_SELECTED => [
-								
+								key::STYLES_1 => [
+									"margin-top" => "5px",
+								],
 							],
 						],
 						key::STYLES => [
@@ -697,20 +745,29 @@ class hahaha_table_accounts extends hahaha_table_base
 							self::ACCOUNT => [					// 帳號不可以改
 								key::TITLE => __('backend.account'),
 								key::TYPE => type::TEXT,
+								key::STYLES => [
+									"margin-top" => "5px",
+								],
 							],
 							self::BUTTON_PREPEND_DETAIL => [
 								// key::TITLE => __('backend.detail'),
 								key::TYPE => type::BUTTON_ICON,
-								key::CLASSES_1 => [
+								key::CLASSES_BUTTON => [
 									"btn-secondary input-group-text" => true,
 								],
-								key::CLASSES_2 => [
+								key::CLASSES_ICON => [
 									"fab fa-elementor" => true,
 								],
 								key::STYLES => [
 									// 這設定label的style沒有錯
 									"font-size" => "1.5em", 
 									"color" => "Tomato",
+								],
+								key::STYLES_BUTTON => [
+									"margin-top" => "5px",
+								],
+								key::SETTINGS => [
+									setting::LABEL => false,
 								],
 							],
 							self::PANEL_DETAIL => [
@@ -727,6 +784,9 @@ class hahaha_table_accounts extends hahaha_table_base
 						key::STYLES => [
 							"width" => "200px",
 						],
+						key::STYLES_1 => [
+							"margin-top" => "5px",
+						],
 					],
 					[
 						key::TITLE => __('backend.email'),
@@ -734,12 +794,16 @@ class hahaha_table_accounts extends hahaha_table_base
 						key::ITEMS => [
 							self::EMAIL => [
 								key::TYPE => type::TEXT,
-								key::VALIDATE => validate::EMAIL,										
+								key::VALIDATE => validate::EMAIL,	
+								key::STYLES => [
+									"margin-top" => "5px",
+								],									
 							],
 						],
 						key::STYLES => [
 							"width" => "250px",
 						],
+						
 					],
 					[
 						key::TITLE => __('backend.gender'),
@@ -760,6 +824,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								]),
 								key::STYLES => [
 									"width" => "45px",
+									"margin-top" => "5px",
 								],
 							],
 						],
@@ -767,6 +832,7 @@ class hahaha_table_accounts extends hahaha_table_base
 							"width" => "45px",
 							// "width" => "180px",
 						],
+						
 					],
 					[
 						key::TITLE => __('backend.operator'),
@@ -777,20 +843,52 @@ class hahaha_table_accounts extends hahaha_table_base
 								key::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
-									"width" => "45px",
+									"width" => "50px",
+									"margin-right" => "0px", 
+								],
+								key::STYLES_1 => [
+									"margin-right" => "0px", 
+									"width" => "50px",
+								],
+								key::STYLES_2 => [
+									"margin-right" => "0px", 
 								],
 							],
 							self::BUTTON_EDIT => [
 								key::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
-									"width" => "45px",
+									"width" => "50px",
+									"margin-right" => "0px", 
+								],
+								key::STYLES_1 => [
+									"margin-right" => "0px", 
+									"width" => "50px",
+								],
+								key::STYLES_2 => [
+									"margin-right" => "0px", 
+								],
+							],
+							self::BUTTON_DETAIL => [
+								key::STYLES => [
+									"font-size" => "1em", 
+									"color" => "Tomato",
+									"width" => "50px",
+									"margin-right" => "0px", 
+								],
+								key::STYLES_1 => [
+									"margin-right" => "0px", 
+									"width" => "50px",
+								],
+								key::STYLES_2 => [
+									"margin-right" => "0px", 
 								],
 							],
 						],
 						key::STYLES => [
 							"width" => "92px",
 						],
+						
 					],
 					[
 						key::TITLE => __('backend.status'),
@@ -805,11 +903,15 @@ class hahaha_table_accounts extends hahaha_table_base
 									key::DIRECTION => direction::TOP,
 									key::TITLE => "-1 停用 0 未驗證 1 已驗證",
 								],
+								key::STYLES => [
+									"margin-top" => "5px",
+								],
 							],
 						],
 						key::STYLES => [
 							"width" => "45px",
 						],
+						
 					],					
 				],
 				// --------------------------------------------------- 
@@ -943,8 +1045,8 @@ class hahaha_table_accounts extends hahaha_table_base
 								],
 								key::TITLE => __('backend.gender'),
 								key::TYPE => type::RADIOBOX,
-								key::STYLES_1 => [
-									"height" => "40px"
+								key::STYLES => [
+									"display" => "block",
 								],								
 								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
@@ -974,6 +1076,9 @@ class hahaha_table_accounts extends hahaha_table_base
 								key::TYPE => type::TEXT,
 								key::ACTIONS => [
 									action::AUTO_UPDATE => true,
+								],
+								key::CLASSES => [
+									self::B_PANEL_ADD,
 								],	
 							],
 						],
@@ -993,6 +1098,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								// 因為ID重複，所以加上Top
 								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
 							],
+							
 						],
 						key::STYLES => [
 						],
@@ -1053,7 +1159,7 @@ class hahaha_table_accounts extends hahaha_table_base
 							self::GENDER => [
 								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER,
 								key::TYPE => type::RADIOBOX,
-								key::STYLES_1 => [
+								key::STYLES => [
 									"height" => "40px",
 									"line-height" => "50px",
 								],
@@ -1061,11 +1167,11 @@ class hahaha_table_accounts extends hahaha_table_base
 								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
 										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
-										key::STYLES_1 => "height:40px;",
+										key::STYLES => "height:40px;",
 									],
 									"male" => [
 										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
-										key::STYLES_1 => "height:40px;",
+										key::STYLES => "height:40px;",
 									],
 									
 								]),
@@ -1161,6 +1267,27 @@ class hahaha_table_accounts extends hahaha_table_base
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
                 self::B_MAIN => [
+					[
+						key::TITLE => __('backend.id'),
+						key::TYPE => type::LABEL,
+						key::GROUP => group::FORM_GROUP_ROW,
+						key::ITEMS => [
+							self::ID => [
+								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ID,
+								key::DB_FIELD => [
+									key::IS_FIELD => true,
+								],
+								key::TITLE => __('backend.id'),
+								key::TYPE => type::TEXT,
+								key::ACTIONS => [
+									// action::AUTO_UPDATE => true,
+								],	
+								key::READONLY => true, 
+							],
+						],
+						key::STYLES => [
+						],
+					],
 					[
 						key::TITLE => __('backend.account'),
 						key::TYPE => type::LABEL,
@@ -1311,13 +1438,13 @@ class hahaha_table_accounts extends hahaha_table_base
 						key::TYPE => type::B_BLOCK_SHORT_WRAP,
 						key::GROUP => group::FORM_GROUP_ROW,
 						key::ITEMS => [
-							self::PANEL_ADD_BUTTON_ADD => [
+							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+								key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
 							],
-							self::PANEL_ADD_BUTTON_CANCEL => [
+							self::BUTTON_ALL_REFRESH => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+								key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
 							],
 						],
 						key::STYLES => [

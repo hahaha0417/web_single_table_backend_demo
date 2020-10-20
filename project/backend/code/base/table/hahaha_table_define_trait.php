@@ -27,6 +27,7 @@ class hahaha_table_base
 	// ---------------------------------- 
 	// 其他 - 選項
 	// ---------------------------------- 
+	const UPLOAD = "upload";
 	const CHECKBOX_SELECTED = "checkbox_selected";
 	// 滑過顯示PANEL_DETAIL面板的BUTTON_ICON
 	// 產生B_PANEL_DETAIL項目的PANEL_DETAIL

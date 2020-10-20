@@ -42,6 +42,7 @@ use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_setting as setting;
 use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
@@ -61,6 +62,7 @@ $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);  
 $data = &$item->data;
+$key_data
 ?>
 
 @if(!empty($item->item[key::GROUP]))
@@ -71,246 +73,130 @@ $data = &$item->data;
             @endif
             @foreach($item->item[key::ITEMS] as $key_field => $field)  
                 <?php // 簡單用github同步維護即可，因為考量laravel開發者，所以這邊不做成php html模組(我php hahaha framework的single table，會根據這邊的功能，移植到那邊的hahaha_view or 另外模組) ?>
-                @if($field[key::TYPE] == type::TEXT)   
-                    <label for="{{$field[key::ID]}}" 
-                        @if(!empty($field[key::CLASSES_1])) 
-                            class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                        @else 
-                            class="col-sm-3 col-form-label" 
-                        @endif    
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}_label" 
-                        @endif 
-                    >{{$field[key::TITLE]}} :    
-                    </label>                                                            
-                    <input type="text" 
-                        @if(!empty($field[key::ID])) 
-                            @if(!empty($key_data))
-                                id="{{$field[key::ID]}}_{{$key_data}}" 
-                            @else
-                                id="{{$field[key::ID]}}" 
-                            @endif 
-                        @endif 
-                        @if(!empty($field[key::STYLES])) 
-                            style="{{$field[key::STYLES]}}" 
-                        @endif 
-                        type="text" 
-                        @if(!empty($field[key::CLASSES])) 
-                            class="{{$field[key::CLASSES]}} form-control col-sm-4" 
-                        @else 
-                            class="form-control col-sm-4" 
-                        @endif                                                             
-                        @if(!empty($field[key::PLACEHOLDER])) 
-                            placeholder="{{$field[key::PLACEHOLDER]}}" 
-                        @else 
-                            placeholder="" 
-                        @endif 
-                        {{--  有欄位才填  --}}                        
-                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                            @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
-                                @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
-                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
-                                @else
-                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
-                                @endif
-                            @elseif(!empty($data[$key_field]) ) 
-                                value="{{$data[$key_field]}}"
-                            @else
-                                value=""
-                            @endif
-                        @else
-                        @endif
+                @if($field[key::TYPE] == type::TEXT)  
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
 
-                        @if(!empty($field[key::HINT])) 
-                            data-toggle="tooltip" 
-                            @if(!empty($field[key::HINT][key::DIRECTION])) 
-                                data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
-                            @else
-                                data-placement="top"
-                            @endif 
-                            @if(!empty($field[key::HINT][key::TITLE])) 
-                                title="{{$field[key::HINT][key::TITLE]}}"
-                            @endif 
-                        @endif 
-                    >
-                @elseif($field[key::TYPE] == type::TEXT_EXIST_CHECK)
-                    <? // 有Exist檢查 ?>
-                    <label for="{{$field[key::ID]}}" 
-                        @if(!empty($field[key::CLASSES_1])) 
-                            class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                        @else 
-                            class="col-sm-3 col-form-label" 
-                        @endif    
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}_label" 
-                        @endif 
-                    >{{$field[key::TITLE]}} :    
-                    </label>                                                            
-                    <input type="text" 
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}" 
-                        @endif 
-                        @if(!empty($field[key::STYLES])) 
-                            style="{{$field[key::STYLES]}}" 
-                        @endif 
-                        type="text" 
-                        @if(!empty($field[key::CLASSES])) 
-                            class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
-                        @else 
-                            class="form-control col-sm-4" 
-                        @endif    
-                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                            @if(!empty($key_data) )
-                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
-                                @else 
-                                    name="{{$key_field}}_{{$key_data}}"
-                                @endif
-                            @else
-                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                @else 
-                                    name="{{$key_field}}"
-                                @endif
-                            @endif
-                        @else
-                        @endif   
-                        @if(!empty($field[key::PLACEHOLDER])) 
-                            placeholder="{{$field[key::PLACEHOLDER]}}" 
-                        @else 
-                            placeholder="" 
-                        @endif   
-                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                            @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
-                                @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
-                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
-                                @else
-                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
-                                @endif
-                            @elseif(!empty($data[$key_field]) ) 
-                                value="{{$data[$key_field]}}"
-                            @else
-                                value=""
-                            @endif
-                        @else
-                        @endif
-
-                        @if(!empty($field[key::HINT])) 
-                            data-toggle="tooltip" 
-                            @if(!empty($field[key::HINT][key::DIRECTION])) 
-                                data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
-                            @else
-                                data-placement="top"
-                            @endif 
-                            @if(!empty($field[key::HINT][key::TITLE])) 
-                                title="{{$field[key::HINT][key::TITLE]}}"
-                            @endif 
-                        @endif 
-                    >
-                    <div id="{{$field[key::ID]}}_exist_check" class="{{class_::EXIST_CHECK_SUCCESS}}">
-                        <div style="font-size:1.5em; color:green">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>     
-                    <div id="{{$field[key::ID]}}_exist_check_error" class="{{class_::EXIST_CHECK_ERROR}}">
-                        <div style="font-size:1.5em; color:red">
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div> 
-                @elseif($field[key::TYPE] == type::PASSWORD) 
-                    <label for="{{$field[key::ID]}}" 
-                        @if(!empty($field[key::CLASSES_1])) 
-                            class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                        @else 
-                            class="col-sm-3 col-form-label" 
-                        @endif    
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}_label" 
-                        @endif 
-                    >{{$field[key::TITLE]}} :    
-                    </label>                                                            
-                    <input type="password" 
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}" 
-                        @endif 
-                        @if(!empty($field[key::STYLES])) 
-                            style="{{$field[key::STYLES]}}" 
-                        @endif 
-                        type="text" 
-                        @if(!empty($field[key::CLASSES])) 
-                            class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
-                        @else 
-                            class="form-control col-sm-4" 
-                        @endif    
-                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                            @if(!empty($key_data) )
-                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
-                                @else 
-                                    name="{{$key_field}}_{{$key_data}}"
-                                @endif
-                            @else
-                                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
-                                @else 
-                                    name="{{$key_field}}"
-                                @endif
-                            @endif
-                        @else
-                        @endif   
-                        @if(!empty($field[key::PLACEHOLDER])) 
-                            placeholder="{{$field[key::PLACEHOLDER]}}" 
-                        @else 
-                            placeholder="" 
-                        @endif   
-                        {{--  有欄位才填  --}}
-                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                            @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
-                            @elseif(!empty($data[$key_field])) 
-                                value="{{$data[$key_field]}}"
-                            @else
-                                value=""
-                            @endif
-                        @else
-                        @endif
-                    >
-                @elseif($field[key::TYPE] == type::RADIOBOX)   
-                    <label for="{{$field[key::ID]}}" 
-                        @if(!empty($field[key::CLASSES_1])) 
-                            class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
-                        @else 
-                            class="col-sm-3 col-form-label" 
-                        @endif    
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}_label" 
-                        @endif 
-                    >{{$field[key::TITLE]}} :    
-                    </label>   
-                    @foreach($field[key::OPTIONS] as $key_option => $option)    
-                        <label for="{{$option[key::ID]}}" 
+                    @if($label)
+                        <label for="{{$field[key::ID]}}" 
                             @if(!empty($field[key::CLASSES_1])) 
-                                class="col-sm-1 col-form-label {{$field[key::CLASSES_1]}}" 
+                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
                             @else 
-                                class="col-sm-1 col-form-label" 
+                                class="col-sm-3 col-form-label" 
                             @endif    
-                            @if(!empty($option[key::ID])) 
-                                id="{{$option[key::ID]}}_label" 
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
                             @endif 
-                        >{{$option[key::TITLE]}}    
-                        </label>  
-                        <input type="radio" 
-                            @if(!empty($option[key::ID])) 
-                                id="{{$option[key::ID]}}" 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif  
+                        </label> 
+                    @endif   
+
+                    @if($input)                                                           
+                        <input type="text" 
+                            @if(!empty($field[key::ID])) 
+                                @if(!empty($key_data))
+                                    id="{{$field[key::ID]}}_{{$key_data}}" 
+                                @else
+                                    id="{{$field[key::ID]}}" 
+                                @endif 
                             @endif 
-                            @if(!empty($option[key::STYLES_1])) 
-                                style="{{$option[key::STYLES_1]}}" 
+                            @if(!empty($field[key::STYLES])) 
+                                style="{{$field[key::STYLES]}}" 
                             @endif 
                             type="text" 
-                            @if(!empty($option[key::CLASSES])) 
-                                class="{{$option[key::CLASSES]}} form-control col-sm-1" 
+                            @if(!empty($field[key::CLASSES])) 
+                                class="{{$field[key::CLASSES]}} form-control col-sm-4" 
                             @else 
-                                class="form-control col-sm-1" 
+                                class="form-control col-sm-4" 
+                            @endif                                                             
+                            @if(!empty($field[key::PLACEHOLDER])) 
+                                placeholder="{{$field[key::PLACEHOLDER]}}" 
+                            @else 
+                                placeholder="" 
+                            @endif 
+                            {{--  有欄位才填  --}}                        
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
+                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+                                        value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
+                                    @else
+                                        value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
+                                    @endif
+                                @elseif(!empty($data[$key_field]) ) 
+                                    value="{{$data[$key_field]}}"
+                                @else
+                                    value=""
+                                @endif
+                            @else
+                            @endif
+
+                            @if(!empty($field[key::HINT])) 
+                                data-toggle="tooltip" 
+                                @if(!empty($field[key::HINT][key::DIRECTION])) 
+                                    data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
+                                @else
+                                    data-placement="top"
+                                @endif 
+                                @if(!empty($field[key::HINT][key::TITLE])) 
+                                    title="{{$field[key::HINT][key::TITLE]}}"
+                                @endif 
+                            @endif 
+
+                            @if(!empty($field[key::READONLY])) 
+                                readonly
+                            @endif
+                        >
+                    @endif   
+                @elseif($field[key::TYPE] == type::TEXT_EXIST_CHECK)
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+
+                    <? // 有Exist檢查 ?>
+                    @if($label)
+                        <label for="{{$field[key::ID]}}" 
+                            @if(!empty($field[key::CLASSES_1])) 
+                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
+                            @else 
+                                class="col-sm-3 col-form-label" 
+                            @endif    
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif    
+                        </label>  
+                    @endif   
+
+                    @if($input)                                                          
+                        <input type="text" 
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}" 
+                            @endif 
+                            @if(!empty($field[key::STYLES])) 
+                                style="{{$field[key::STYLES]}}" 
+                            @endif 
+                            type="text" 
+                            @if(!empty($field[key::CLASSES])) 
+                                class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
+                            @else 
+                                class="form-control col-sm-4" 
                             @endif    
                             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                 @if(!empty($key_data) )
@@ -333,38 +219,512 @@ $data = &$item->data;
                             @else 
                                 placeholder="" 
                             @endif   
-                            value=""
-                            data-labelauty=" "
-
-                            @if(!empty($field[key::DB_FIELD][key::NAME]))
-                                @if(!empty($data[$field[key::DB_FIELD][key::NAME]]) && $option[key::VALUE] == $data[$field[key::DB_FIELD][key::NAME]])
-                                    checked
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
+                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+                                        value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
+                                    @else
+                                        value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
+                                    @endif
+                                @elseif(!empty($data[$key_field]) ) 
+                                    value="{{$data[$key_field]}}"
+                                @else
+                                    value=""
                                 @endif
                             @else
-                                @if(!empty($data[$key_field]) && $option[key::VALUE] == $data[$key_field])
-                                    checked
-                                @endif
+                            @endif
+
+                            @if(!empty($field[key::HINT])) 
+                                data-toggle="tooltip" 
+                                @if(!empty($field[key::HINT][key::DIRECTION])) 
+                                    data-placement="{{$field[key::HINT][key::DIRECTION]}}" 
+                                @else
+                                    data-placement="top"
+                                @endif 
+                                @if(!empty($field[key::HINT][key::TITLE])) 
+                                    title="{{$field[key::HINT][key::TITLE]}}"
+                                @endif 
+                            @endif 
+
+                            @if(!empty($field[key::READONLY])) 
+                                readonly
                             @endif
                         >
-                    @endforeach
-                @elseif($field[key::TYPE] == type::BUTTON_ICON)  
-                    <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                        <div style="{{$field[key::STYLES]}}">
-                            @if(!empty($field[key::TITLE]) ) 
-                                {{$field[key::TITLE]}} 
-                            @endif
+                    @endif  
+                    <div id="{{$field[key::ID]}}_exist_check" class="{{class_::EXIST_CHECK_SUCCESS}}">
+                        <div style="font-size:1.5em; color:green">
+                            <i class="fas fa-check"></i>
                         </div>
-                    </div>
-                @elseif($field[key::TYPE] == type::BUTTON_ICON_LINK)  
-                    <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                        <div style="{{$field[key::STYLES]}}">
-                            <i class="{{$field[key::CLASSES_2]}}">
+                    </div>     
+                    <div id="{{$field[key::ID]}}_exist_check_error" class="{{class_::EXIST_CHECK_ERROR}}">
+                        <div style="font-size:1.5em; color:red">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div> 
+                @elseif($field[key::TYPE] == type::PASSWORD) 
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+
+                    @if($label)
+                        <label for="{{$field[key::ID]}}" 
+                            @if(!empty($field[key::CLASSES_1])) 
+                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
+                            @else 
+                                class="col-sm-3 col-form-label" 
+                            @endif    
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif     
+                        </label>  
+                    @endif  
+
+                    @if($input)                                                          
+                        <input type="password" 
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}" 
+                            @endif 
+                            @if(!empty($field[key::STYLES])) 
+                                style="{{$field[key::STYLES]}}" 
+                            @endif 
+                            type="text" 
+                            @if(!empty($field[key::CLASSES])) 
+                                class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
+                            @else 
+                                class="form-control col-sm-4" 
+                            @endif    
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($key_data) )
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                                    @else 
+                                        name="{{$key_field}}_{{$key_data}}"
+                                    @endif
+                                @else
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}"
+                                    @else 
+                                        name="{{$key_field}}"
+                                    @endif
+                                @endif
+                            @else
+                            @endif   
+                            @if(!empty($field[key::PLACEHOLDER])) 
+                                placeholder="{{$field[key::PLACEHOLDER]}}" 
+                            @else 
+                                placeholder="" 
+                            @endif   
+                            {{--  有欄位才填  --}}
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                    value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
+                                @elseif(!empty($data[$key_field])) 
+                                    value="{{$data[$key_field]}}"
+                                @else
+                                    value=""
+                                @endif
+                            @else
+                            @endif
+
+                            @if(!empty($field[key::READONLY])) 
+                                readonly
+                            @endif
+                        >
+                    @endif  
+                @elseif($field[key::TYPE] == type::RADIOBOX)   
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $option = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::OPTION])) 
+                        <?php $option = $field[key::SETTINGS][setting::OPTION]; ?>
+                    @endif   
+
+                    @if($label)
+                        <label for="{{$field[key::ID]}}" 
+                            class="col-sm-3 col-form-label 
+                                @if(!empty($field[key::CLASSES_LABEL]))
+                                    {{$field[key::CLASSES_LABEL]}} 
+                                @endif 
+                            "    
+                            style="
+                                @if(!empty($field[key::STYLES_LABEL]))
+                                    {{$field[key::STYLES_LABEL]}}
+                                @endif 
+                            " 
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif  
+                        </label>   
+
+                    @endif   
+                    @if($option) 
+                        @foreach($field[key::OPTIONS] as $key_option => $option) 
+                            <?php $label = true; ?>
+                            @if(isset($option[key::SETTINGS]) && isset($option[key::SETTINGS][setting::LABEL])) 
+                                <?php $label = $option[key::SETTINGS][setting::LABEL]; ?>
+                            @endif    
+                            <?php $input = true; ?>
+                            @if(isset($field[key::SETTINGS]) && isset($option[key::SETTINGS][setting::INPUT])) 
+                                <?php $input = $option[key::SETTINGS][setting::INPUT]; ?>
+                            @endif    
+                            @if($label) 
+                                <label for="{{$option[key::ID]}}" 
+                                    class="col-sm-3 col-form-label 
+                                        @if(!empty($field[key::CLASSES_LABEL]))
+                                            {{$field[key::CLASSES_LABEL]}} 
+                                        @endif 
+                                    "    
+                                    style="
+                                        @if(!empty($field[key::STYLES_LABEL]))
+                                            {{$field[key::STYLES_LABEL]}}
+                                        @endif 
+                                    " 
+                                    @if(!empty($option[key::ID])) 
+                                        id="{{$option[key::ID]}}_label" 
+                                    @endif 
+                                >{{$option[key::TITLE]}}    
+                                </label> 
+                            @endif   
+                            @if($input)            
+                                <div
+                                    @if(!empty($field[key::CLASSES_OPTION])) 
+                                        class="{{$field[key::CLASSES_OPTION]}}" 
+                                    @else 
+                                        class="" 
+                                    @endif 
+                                    @if(!empty($field[key::STYLES_OPTION])) 
+                                        style="{{$field[key::STYLES_OPTION]}}" 
+                                    @endif 
+                                >
+                                    <input type="radio" 
+                                        @if(!empty($key_data))
+                                            id="{{$option[key::ID]}}_{{$key_data}}" 
+                                        @else
+                                            id="{{$option[key::ID]}}" 
+                                        @endif 
+                                        @if(!empty($option[key::STYLES])) 
+                                            style="{{$option[key::STYLES]}}" 
+                                        @endif 
+                                        type="text" 
+                                        @if(!empty($option[key::CLASSES])) 
+                                            class="{{$option[key::CLASSES]}} form-control col-sm-1" 
+                                        @else 
+                                            class="form-control col-sm-1" 
+                                        @endif    
+                                        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                            @if(!empty($key_data) )
+                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                                                @else 
+                                                    name="{{$key_field}}_{{$key_data}}"
+                                                @endif
+                                            @else
+                                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                                    name="{{$field[key::DB_FIELD][key::NAME]}}"
+                                                @else 
+                                                    name="{{$key_field}}"
+                                                @endif
+                                            @endif
+                                        @else
+                                        @endif   
+                                        @if(!empty($field[key::PLACEHOLDER])) 
+                                            placeholder="{{$field[key::PLACEHOLDER]}}" 
+                                        @else 
+                                            placeholder="" 
+                                        @endif   
+                                        value=""
+                                        data-labelauty=" "
+
+                                        @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                            @if(!empty($data[$field[key::DB_FIELD][key::NAME]]) && $option[key::VALUE] == $data[$field[key::DB_FIELD][key::NAME]])
+                                                checked
+                                            @endif
+                                        @else
+                                            @if(!empty($data[$key_field]) && $option[key::VALUE] == $data[$key_field])
+                                                checked
+                                            @endif
+                                        @endif
+                                    >
+                                </div> 
+                            @endif   
+                        @endforeach
+                    @endif   
+                @elseif($field[key::TYPE] == type::IMAGE) 
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+
+                    @if($label)
+                        <label for="{{$field[key::ID]}}" 
+                            @if(!empty($field[key::CLASSES_1])) 
+                                class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
+                            @else 
+                                class="col-sm-3 col-form-label" 
+                            @endif    
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif    
+                        </label> 
+                    @endif  
+                    @if($input)       
+                        <img 
+                            id="{{$field[key::ID]}}_thumbnail"
+                            class="col-sm-4 {{$field[key::ID]}} image
+                            @if(!empty($field[key::CLASSES]))
+                                {{$field[key::CLASSES]}} 
+                            @endif 
+                            "    
+                            
+                            {{--  有欄位才填  --}}
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                    src="{{\p_ha::V_IMAGES($data[$field[key::DB_FIELD][key::NAME]], $target_setting_table_['stage']) }}"
+                                @else 
+                                    src="{{\p_ha::V_IMAGES($data[$key_field], $target_setting_table_['stage']) }}"
+                                @endif
+                            @else
+                            @endif
+
+                            style="
+                            @if(!empty($field[key::STYLES])) 
+                                {{$field[key::STYLES]}}
+                            @endif 
+                            " 
+                        >
+                    @endif 
+                @elseif($field[key::TYPE] == type::UPLOAD) 
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+
+                    @if($label) 
+                        <label for="{{$field[key::ID]}}" 
+                            class="col-sm-3 col-form-label 
+                                @if(!empty($field[key::CLASSES_LABEL]))
+                                    {{$field[key::CLASSES_LABEL]}} 
+                                @endif 
+                            "    
+                            style="
+                                @if(!empty($field[key::STYLES_LABEL]))
+                                    {{$field[key::STYLES_LABEL]}}
+                                @endif 
+                            "  
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif    
+                        </label> 
+                    @endif   
+                    @if($input) 
+                        <div 
+                            id="{{$field[key::ID]}}"
+                                
+                            name="{{$field[key::ID]}}"
+
+                            class="col-sm-4 {{$field[key::ID]}} upload
+                            @if(!empty($field[key::CLASSES]))
+                                {{$field[key::CLASSES]}} 
+                            @endif 
+                            "     
+                            style="{{$field[key::STYLES]}}
+                            @if(!empty($field[key::STYLES])) 
+                                {{$field[key::STYLES]}}
+                            @endif 
+                            " 
+
+                            type="file"
+                            >
+                        </div> 
+                    @endif   
+                @elseif($field[key::TYPE] == type::BUTTON_ICON)  
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+
+                    @if($label) 
+                        <label for="{{$field[key::ID]}}" 
+                            class="col-sm-3 col-form-label 
+                                @if(!empty($field[key::CLASSES_LABEL]))
+                                    {{$field[key::CLASSES_LABEL]}} 
+                                @endif 
+                            "    
+                            style="
+                                @if(!empty($field[key::STYLES_LABEL]))
+                                    {{$field[key::STYLES_LABEL]}}
+                                @endif 
+                            "   
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif  
+                        </label> 
+                    @endif   
+                    @if($input) 
+                        <div
+                            @if(!empty($field[key::ID])) 
+                                @if(!empty($key_data))
+                                    id="{{$field[key::ID]}}_{{$key_data}}" 
+                                @else
+                                    id="{{$field[key::ID]}}" 
+                                @endif 
+                                
+                                class="{{$field[key::ID]}} 
+                                    @if(!empty($field[key::CLASSES_BUTTON]))
+                                        {{$field[key::CLASSES_BUTTON]}}
+                                    @endif 
+                                "
+                                @if(!empty($key_data))
+                                    name="{{$field[key::ID]}}_{{$key_data}}" 
+                                @else
+                                    name="{{$field[key::ID]}}" 
+                                @endif 
+                                style="
+                                    @if(!empty($field[key::STYLES_BUTTON])) 
+                                        {{$field[key::STYLES_BUTTON]}}
+                                    @endif 
+                                " 
+                            @endif       
+                            
+                            >
+                            <i class="
+                                @if(!empty($field[key::CLASSES_ICON]))
+                                    {{$field[key::CLASSES_ICON]}}
+                                @endif 
+                                @if(!empty($field[key::STYLES_ICON]))
+                                    {{$field[key::STYLES_ICON]}}
+                                @endif 
+                            ">
                                 @if(!empty($field[key::TITLE]) ) 
                                     {{$field[key::TITLE]}} 
                                 @endif
                             </i>
                         </div>
-                    </div>
+                    @endif   
+                @elseif($field[key::TYPE] == type::BUTTON_ICON_LINK)  
+                    <?php $label = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                        <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                    @endif    
+                    <?php $input = true; ?>
+                    @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                        <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                    @endif   
+<?php
+$actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
+$url_ = Url::fromString($actual_link_);   
+?>
+                    @if($label) 
+                        <label for="{{$field[key::ID]}}" 
+                            class="col-sm-3 col-form-label 
+                                @if(!empty($field[key::CLASSES_LABEL]))
+                                    {{$field[key::CLASSES_LABEL]}} 
+                                @endif 
+                            "    
+                            style="
+                                @if(!empty($field[key::STYLES_LABEL]))
+                                    {{$field[key::STYLES_LABEL]}}
+                                @endif 
+                            "  
+                            @if(!empty($field[key::ID])) 
+                                id="{{$field[key::ID]}}_label" 
+                            @endif 
+                        >
+                        @if(!empty($field[key::TITLE]))
+                            {{$field[key::TITLE]}}
+                        @endif     
+                        </label> 
+                    @endif   
+                    @if($input) 
+                        <a href="
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                {{$url_}}/edit/{{$data[$field[key::DB_FIELD][ $field[key::INDEX] ]]}}
+                            @else 
+                                {{$url_}}/edit/{{$data[ $field[key::INDEX] ]}}
+                            @endif  
+                        "
+                            class="{{$field[key::ID]}} 
+                                @if(!empty($field[key::CLASSES]))
+                                    {{$field[key::CLASSES]}} 
+                                @endif 
+                            "
+                            style="
+                                @if(!empty($field[key::STYLES])) 
+                                    {{$field[key::STYLES]}}
+                                @endif 
+                            "   
+                        >
+
+                            <div
+                                @if(!empty($field[key::ID])) 
+                                    id="{{$field[key::ID]}}_{{$key_data}}"
+                                    class="{{$field[key::ID]}} 
+                                        @if(!empty($field[key::CLASSES_BUTTON]))
+                                            {{$field[key::CLASSES_BUTTON]}}"
+                                        @endif 
+                                    name="{{$field[key::ID]}}_{{$key_data}}"
+                                    style="
+                                        @if(!empty($field[key::STYLES_BUTTON])) 
+                                            {{$field[key::STYLES_BUTTON]}}
+                                        @endif 
+                                    " 
+                                @endif       
+                                
+                                >
+                                <i class="
+                                    @if(!empty($field[key::CLASSES_ICON]))
+                                        {{$field[key::CLASSES_ICON]}}
+                                    @endif 
+                                    @if(!empty($field[key::STYLES_ICON]))
+                                        {{$field[key::STYLES_ICON]}}
+                                    @endif 
+                                ">
+                                    @if(!empty($field[key::TITLE]) ) 
+                                        {{$field[key::TITLE]}} 
+                                    @endif
+                                </i>
+                            </div>
+                        </a>
+                    @endif   
                 @endif
             @endforeach
             @if($item->item[key::TYPE] == type::B_BLOCK_SHORT_WRAP) 

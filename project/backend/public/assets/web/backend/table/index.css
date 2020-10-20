@@ -89,27 +89,27 @@
 	font-size: 12px;
 	color: #666;
 }
-.index_result_content .short_wrap a{
+.short_wrap a{
 	margin-right: 20px;
 }
-.index_result_content ul li{
+ul li{
 	line-height: 35px;
 	border-bottom: 1px dashed #eaeaea;
 }
-.index_result_content ul li label{
+ul li label{
 	color: #909090;
 	display: inline-block;
 	width: 150px;
 	padding-right: 10px;
 	text-align: right;
 }
-.index_result_content ul li span{
+ul li span{
 	font-size: 15px;
 }
-.index_result_content ul li span a{
+ul li span a{
 	display: inline-block;
 }
-.index_result_content ul li span a img{
+ul li span a img{
 	vertical-align: middle;
 }
 /* i.require{
@@ -189,29 +189,29 @@ table.add_tab tr td span i{
 .search_tab td{
 	padding: 0 5px;
 } */
-.index_result_content table.list_tab{
+table.list_tab{
 	border-collapse: collapse;
 	border: 1px solid #ddd;
 	font-size: 16px;
 	width: 100%;	
 }
-.index_result_content table.list_tab tr{
+table.list_tab tr{
     line-height: 35px;
    
 }
-.index_result_content table.list_tab tr:nth-child(odd){
+table.list_tab tr:nth-child(odd){
 	background: #f9f9f9;
 }
-.index_result_content table.list_tab tr:hover{
+table.list_tab tr:hover{
 	background: #f1f1f1;
 }
-.index_result_content table.list_tab tr.even-tr{
+table.list_tab tr.even-tr{
 	background: #e9fff2;
 }
-.index_result_content table.list_tab tr input{
+table.list_tab tr input{
 	margin-right: 0;
 }
-.index_result_content table.list_tab tr th{
+table.list_tab tr th{
 	font-weight: normal;
 	font-size: 16px;
 	text-align: left;
@@ -220,48 +220,42 @@ table.add_tab tr td span i{
     /* width: 20px; */
 	
 }
-.index_result_content table.list_tab tr td,table.list_tab tr th{
+table.list_tab tr td,table.list_tab tr th{
 	padding: 5px;
 	border-bottom: 1px solid #ddd;
 	border-right: 1px solid #e1e1e1;
 	
 }
-.index_result_content table.list_tab tr td.tc,table.list_tab tr th.tc{
+table.list_tab tr td.tc,table.list_tab tr th.tc{
 	text-align: center;
 }
-.index_result_content table.list_tab tr td a{
+table.list_tab tr td a{
 	margin-right: 10px;
 	float: left;
 }
-.index_result_content table.list_tab tr input[name='checkbox'].labelauty + label{
+.labelauty + label{
 	width: 40px;
 	text-align: center;
-    display: inline-block;
+    display: block;
     height: 40px;
     margin: 0;
     padding: 0;
     font-size: 16px;
-    vertical-align: center;
-}
-
-.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-unchecked-image, 
-.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-checked-image {
-    vertical-align: 0;
-    margin-top: 15px;
+    vertical-align: middle;
 }
 
 
-.index_result_content table.list_tab tr td input[type='text']{
+table.list_tab tr td input[type='text']{
 	/* width: 100%; */
 	text-align: center;
     display: inline-block;
 }
-.index_result_content table.list_tab tr td input[type='text'].md{
+table.list_tab tr td input[type='text'].md{
 	/* width: 200px; */
 	text-align: left;
 	display: inline-block;
 }
-.index_result_content table.list_tab tr td input[type='text'].lg{
+table.list_tab tr td input[type='text'].lg{
 	/* width: 580px; */
 	text-align: left;
 	display: inline-block;
@@ -282,12 +276,22 @@ table.add_tab tr td span i{
 input.labelauty + label {
 	width: 40px;
 	height: 40px;
+    text-align: center;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
 }
 
 input.labelauty + label > span.labelauty-unchecked-image, 
 input.labelauty + label > span.labelauty-checked-image {
-	margin-left: 10px;
-	margin-bottom: 8px;
+	vertical-align: middle;
+}
+
+.add input.labelauty + label > span.labelauty-unchecked-image, 
+.add input.labelauty + label > span.labelauty-checked-image {
+	margin-top: 10px;
 }
 
 .ui-autocomplete { position: absolute; cursor: default;z-index:9000;}  
@@ -313,4 +317,15 @@ footer
     background: initial;
 }
 
+.ajax-file-upload{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    line-height: 45px;
+
+}
 

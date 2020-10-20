@@ -54,26 +54,6 @@ class IndexController extends BaseIndexController
 {
     public function index($stage, $class, $item)
     {  
-        \hahahalib\hahaha_socket_udp_server::Instance(); 
-        \hahahalib\hahaha_socket_tcp_server::Instance();
-        \hahahalib\hahaha_socket_udp_client::Instance();
-        \hahahalib\hahaha_socket_tcp_client::Instance();
-//         // $scientist = new \entities\backend\AccountsDetail;
-        
-//         // $scientist->accountsId = 1;
-
-//         // $aaa = EntityManager::find("\\entities\\backend\\Accounts", 1);
-        
-//         // $scientist->setAccounts($aaa);
-//         // EntityManager::persist($scientist);
-//         // EntityManager::flush();
-
-//         $aaa = EntityManager::find("\\entities\\backend\\AccountsDetail", 3);
-//         $aaa->setAccountsId(3);
-//         EntityManager::persist($aaa);
-//         EntityManager::flush();
-// return;
-
         $input_ = request()->all();
         $page_ = request()->get('page');
         if(empty($page_))

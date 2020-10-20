@@ -51,21 +51,37 @@ trait hahaha_table_trait
 	public function Initial_Page(&$page = null, &$setting = null)
 	{
 		$class_list_ = [
+			// main or input
 			key::CLASSES,
+			// no decide
 			key::CLASSES_1,
 			key::CLASSES_2,
 			key::CLASSES_3,
 			key::CLASSES_4,
 			key::CLASSES_5,
+			// decide
+			key::CLASSES_LABEL,
+			key::CLASSES_OPTION,
+			key::CLASSES_BUTTON,
+			key::CLASSES_ICON,
+			key::CLASSES_LINK,
 		];
 
 		$style_list_ = [
+			// main or input
 			key::STYLES,
+			// no decide
 			key::STYLES_1,
 			key::STYLES_2,
 			key::STYLES_3,
 			key::STYLES_4,
 			key::STYLES_5,
+			// decide
+			key::STYLES_LABEL,
+			key::STYLES_OPTION,
+			key::STYLES_BUTTON,
+			key::STYLES_ICON,
+			key::STYLES_LINK,
 		];
 
 		
@@ -88,7 +104,7 @@ trait hahaha_table_trait
 					if(!empty($this->Settings_Fields[$key_field]))
 					{
 						// 有預設值，合併
-						$field_target_ = array_merge($this->Settings_Fields[$key_field], $field);
+						$field_target_ = array_replace_recursive($this->Settings_Fields[$key_field], $field);
 					}
 
 					// class

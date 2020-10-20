@@ -46,7 +46,7 @@ use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
 
-<div id="{{$block->identify}}" class="{{$block->identify}}">
+<div id="{{$block->identify}}" class="{{$block->identify}} {{$block->panel_class}}" style="{{$block->panel_style}}">
     <div class="{{$block->identify}}_content">
         <?php 
         // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源

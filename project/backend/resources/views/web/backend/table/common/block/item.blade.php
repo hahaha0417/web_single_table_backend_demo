@@ -42,6 +42,7 @@ use hahaha\define\hahaha_define_table_tag as tag;
 use hahaha\define\hahaha_define_table_type as type;
 use hahaha\define\hahaha_define_table_use as use_;
 use hahaha\define\hahaha_define_table_validate as validate;
+use hahaha\define\hahaha_define_table_setting as setting;
 use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 use Spatie\Url\Url;
 ?>
@@ -65,21 +66,85 @@ $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setti
 @if($item->item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
     <div @if(!empty($item->item[key::GROUP])) class="{{$item->item[key::GROUP]}}" @endif>
         @foreach($item->item[key::ITEMS] as $key_field => $field)                                     
-            @if($field[key::TYPE] == type::BUTTON_ICON)                                   
-                {{--  
-                    範例 : 
-                <div id="index_item_select_delete" class="index_item_select_delete btn btn-dark">
-                    <div style="font-size:1.5em; color:Tomato">
-                        <i class="fas fa-minus">選擇刪除</i>
+            @if($field[key::TYPE] == type::BUTTON_ICON)  
+                <?php $label = true; ?>
+                @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
+                    <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                @endif    
+                <?php $input = true; ?>
+                @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
+                    <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                @endif   
+
+                @if($label) 
+                    <label for="{{$field[key::ID]}}" 
+                        class="col-sm-3 col-form-label 
+                            @if(!empty($field[key::CLASSES_LABEL]))
+                                {{$field[key::CLASSES_LABEL]}} 
+                            @endif 
+                        "    
+                        style="
+                            @if(!empty($field[key::STYLES_LABEL]))
+                                {{$field[key::STYLES_LABEL]}}
+                            @endif 
+                        "   
+                        @if(!empty($field[key::ID])) 
+                            id="{{$field[key::ID]}}_label" 
+                        @endif 
+                    >
+                    @if(!empty($field[key::TITLE]))
+                        {{$field[key::TITLE]}}
+                    @endif  
+                    </label> 
+                @endif   
+                @if($input) 
+                    <div
+                        @if(!empty($field[key::ID])) 
+                            @if(!empty($key_data))
+                                id="{{$field[key::ID]}}_{{$key_data}}" 
+                            @else
+                                id="{{$field[key::ID]}}" 
+                            @endif 
+                            
+                            class="{{$field[key::ID]}} 
+                                @if(!empty($field[key::CLASSES]))
+                                    {{$field[key::CLASSES]}}
+                                @endif 
+                                @if(!empty($field[key::CLASSES_BUTTON]))
+                                    {{$field[key::CLASSES_BUTTON]}}
+                                @endif 
+                            "
+                            @if(!empty($key_data))
+                                name="{{$field[key::ID]}}_{{$key_data}}" 
+                            @else
+                                name="{{$field[key::ID]}}" 
+                            @endif 
+                            style="
+                                @if(!empty($field[key::STYLES])) 
+                                    {{$field[key::STYLES]}}
+                                @endif 
+                                @if(!empty($field[key::STYLES_BUTTON])) 
+                                    {{$field[key::STYLES_BUTTON]}}
+                                @endif 
+                            " 
+                        @endif       
+                        
+                        >
+                        <i class="
+                            @if(!empty($field[key::CLASSES_ICON]))
+                                {{$field[key::CLASSES_ICON]}}
+                            @endif 
+                            @if(!empty($field[key::STYLES_ICON]))
+                                {{$field[key::STYLES_ICON]}}
+                            @endif 
+                        ">
+                            @if(!empty($field[key::TITLE]) ) 
+                                {{$field[key::TITLE]}} 
+                            @endif
+                        </i>
                     </div>
-                </div>  
-                --}}
-                <div id="{{$field['id']}}" class="{{$field[key::CLASSES]}} {{$field[key::CLASSES_1]}}">
-                    <div style="{{$field[key::STYLES]}}">
-                        <i class="{{$field[key::CLASSES_2]}}">{{$field['title']}}</i>
-                    </div>
-                </div>
-            @endif
+                @endif  
+            @endif 
         @endforeach
     </div>                                    
 @endif
