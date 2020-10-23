@@ -1,0 +1,9 @@
+因為這裡只有
+backend & single database
+所以
+hahaha_table_accounts
+not
+hahaha_table_backend_accounts or hahaha_table_single_table_backend_accounts
+
+node的資料夾只是分類
+至於擺放請一致，由專案負責人決定並負責，請擺放一致，避免錯亂

@@ -56,7 +56,7 @@ class table_index_js extends hahaha_generator_web_script
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         // ------------------------------------------------------------ 
         // ------------------------------------------------------------ 
-        $this->CSS_Begin($content, $dynamic, $tab, $tab_count);
+        $this->JS_Begin($content, $dynamic, $tab, $tab_count);
         // ------------------------------------------------------------ 
         $this->Header($content, $dynamic, $tab, $tab_count);  
         $this->License($content, $dynamic, $tab, $tab_count); 
@@ -67,9 +67,19 @@ class table_index_js extends hahaha_generator_web_script
         // ------------------------------------------------------------ 
         $this->Footer($content, $dynamic, $tab, $tab_count); 
         // ------------------------------------------------------------ 
-        $this->CSS_End($content, $dynamic, $tab, $tab_count);   
+        
+
+        // ----------------------------------------------------- 
+        // Js                                    
+        // ----------------------------------------------------- 
+                                                                
+        // ----------------------------------------------------- 
+
         // ------------------------------------------------------------ 
-        // ------------------------------------------------------------    
+        $this->JS_End($content, $dynamic, $tab, $tab_count);   
+        // ------------------------------------------------------------  
+        // ------------------------------------------------------------  
+        
         
     }
 
@@ -85,6 +95,7 @@ class table_index_js extends hahaha_generator_web_script
         // Add Button & Add Panel
         // ------------------------------------------------------------   
         $this->Class_Index_Item_Button_Add($content, $dynamic, $tab, $tab_count); 
+        $this->Class_Index_Item_Panel_Add_Button_Add($content, $dynamic, $tab, $tab_count); 
         $this->Class_Index_Item_Panel_Add_Button_Cancel($content, $dynamic, $tab, $tab_count); 
         // ------------------------------------------------------------
         // Prepend Detail Button & Detail Panel
@@ -141,6 +152,35 @@ class table_index_js extends hahaha_generator_web_script
     }
 
     // ------------------------------------------------------------ 
+    // panel add button add
+    // ------------------------------------------------------------ 
+    public function Class_Index_Item_Panel_Add_Button_Add(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    {
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $use_ = &$parameter_->Use;
+        //
+        return;
+        // ------------------------------------------------------------         
+        $this->jQuery_Ready_Begin($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------ 
+
+        // ------------------------------------------------------------ 
+        // click
+        // ------------------------------------------------------------ 
+        \p_ha::Line($content, $tab, "$('{$use_->Class_Panel_Add_Button_Add_Identify}').click(function() { ");
+        \p_ha::Tab($tab, ++$tab_count); 
+        // 新增一筆
+        \p_ha::Line($content, $tab, "alert('OGC');");
+        \p_ha::Tab($tab, --$tab_count); 
+        \p_ha::Line($content, $tab, "}); ");
+
+        // ------------------------------------------------------------ 
+        $this->jQuery_Ready_End($content, $dynamic, $tab, $tab_count); 
+        // ------------------------------------------------------------   
+
+    }
+
+    // ------------------------------------------------------------ 
     // panel add button cancel
     // ------------------------------------------------------------ 
     public function Class_Index_Item_Panel_Add_Button_Cancel(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
@@ -170,7 +210,7 @@ class table_index_js extends hahaha_generator_web_script
     }
 
     // ------------------------------------------------------------ 
-    // panel add button cancel
+    // button prepend detail
     // ------------------------------------------------------------ 
     public function Class_Index_Item_Button_Prepend_Detail(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {

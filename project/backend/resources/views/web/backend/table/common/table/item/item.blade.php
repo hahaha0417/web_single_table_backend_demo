@@ -194,18 +194,17 @@ use Spatie\Url\Url;
             @endif 
         "  
         @if(!empty($field[key::ID])) 
-            id="{{$field[key::ID]}}_label" 
+            id="{{$field[key::ID]}}_label_{{$key_data}}" 
         @endif 
     >{{$field[key::TITLE]}} :    
     </label>                                                            
     <input type="password" 
         @if(!empty($field[key::ID])) 
-            id="{{$field[key::ID]}}" 
+            id="{{$field[key::ID]}}_{{$key_data}}" 
         @endif 
         @if(!empty($field[key::STYLES])) 
             style="{{$field[key::STYLES]}}" 
         @endif 
-        type="text" 
         @if(!empty($field[key::CLASSES])) 
             class="{{$field[key::CLASSES]}} form-control col-sm-4" 
         @else 
@@ -294,6 +293,7 @@ use Spatie\Url\Url;
                 @if(!empty($field[key::CLASSES_BUTTON]))
                     {{$field[key::CLASSES_BUTTON]}}
                 @endif 
+            "
             name="{{$field[key::ID]}}_{{$key_data}}"
             style="
                 @if(!empty($field[key::STYLES])) 
@@ -429,7 +429,6 @@ $url_ = Url::fromString($actual_link_);
             @if(!empty($option[key::STYLES])) 
                 style="{{$option[key::STYLES]}}" 
             @endif 
-            type="text" 
             @if(!empty($option[key::CLASSES])) 
                 class="{{$option[key::CLASSES]}} form-control col-sm-1" 
             @else 

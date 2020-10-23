@@ -100,6 +100,11 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
 // $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAIL];
 // -------------------------------------------------- 
 
+// ----------------------------------------------------- 
+// 設定                                      
+// ----------------------------------------------------- 
+                                                          
+// ----------------------------------------------------- 
 ?>
 
 <!DOCTYPE html>
@@ -113,20 +118,29 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                     
         @include('web.common.main_css')
         @include('web.common.sub_css')
+
+        
+        <script src="https://cdn.ckeditor.com/ckeditor5/<version>/classic/ckeditor.js"></script>
+        
+        {{--  jQuery Upload File  --}}
+        <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+        
         {{--  Checkbox  --}}
         {{--  https://www.html5tricks.com/10-pretty-checkbox-radiobox.html  --}}
-        <link rel="stylesheet" href="{{\p_ha::Assets('plugin/checkbox/labelauty/css/jquery-labelauty.css')}}">
-        <script src="{{\p_ha::Assets('plugin/checkbox/labelauty/js/jquery-labelauty.js')}}"></script>
-        {{--  jQuery Upload File  --}}
-        {{--  http://hayageek.com/docs/jquery-upload-file.php#doc  --}}
-        <link href="{{\p_ha::Assets('plugin/jquery-upload-file/css/uploadfile.css')}}" rel="stylesheet">
-        {{--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  --}}
-        <script src="{{\p_ha::Assets('plugin/jquery-upload-file/js/jquery.uploadfile.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.js" integrity="sha512-+PhiRvIK75jXs6iE9IUqtK0TM3ZMfdDFLts7M6jHt5fPaWbo3RSjrSj9cI+fcgUJPaxe3YnJspeaykVLzqKxBQ==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.css" integrity="sha512-kUG7TU0SCl79O+kc9nP0LJmp3P/YRfS/BtQsJ/GcJx8WzJjRzB1Yz6BmbHygOA81dUb6TefGowZvLtjSyyZCIQ==" crossorigin="anonymous" />
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
         {{--  layer  --}}
         {{--  http://layer.layui.com/  --}}
-        <script src="{{\p_ha::Assets('plugin/layer/layer/layer.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/layer/3.1.1/layer.min.js" integrity="sha512-0YosS8GSyQIZd2uWWNHG95QgN8kPN6WBmjjzakoTRfdCt0YCmJs2HHiiF6tmGwngN/fZ+JH93zFSkW2cv5uGWw==" crossorigin="anonymous"></script>
         {{-- Boostrap Autocomplete --}}
-        <script src="https://gitcdn.link/repo/xcash/bootstrap-autocomplete/master/dist/latest/bootstrap-autocomplete.min.js"></script>
+
+        
+
         {{--  --}}     
         {{--    --}}
         <script>
@@ -145,6 +159,18 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
             {key} / {stage} / {node}("/"換成"_")
             --}}        
         {{--    --}}
+
+        <script>
+            $(function(){    
+                $(function () {
+                    jQuery.noConflict(true);
+                    $('[data-toggle="tooltip"]').tooltip();
+                    jQuery.noConflict(false);
+                  })
+                
+            });
+            
+        </script>
 
         
         {{-- 自動生成文件 --}}
@@ -197,7 +223,7 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
             
             // 注意 : CSS必須在index.css前面，JS也必須在index.js前面，以進行覆蓋
             // 其他模組化的，等到我的框架時，再用我的模組，統一前置
-            $generator_->Render($dynamic_content_);
+            // $generator_->Render($dynamic_content_);
             
         ?>
        
@@ -207,21 +233,11 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
         <link rel="stylesheet" href="{{\p_ha::Assets('web/backend/table/index.css')}}">
         <script src="{{\p_ha::Assets('web/backend/table/index.js')}}"></script>
         <script src="{{\p_ha::Assets('cross_origin/iframe_resize_height.js')}}"></script>
-
+        
         
         {{--  附加  --}}
         
 
-        
-        <script>
-            $(function(){    
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                  })
-                
-            });
-            
-        </script>
         <style>
             .container {
                 /* https://pjchender.blogspot.tw/2017/10/bs-bootstrap-4-custom-container-and.html */
@@ -255,6 +271,18 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
         {{--  有需要再模組化，基本上只是分塊整入index資料夾，用@include填入  --}}
         {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
 
+        <? // ----------------------------------------------------- ?>
+        <? // 開始                                                  ?>
+        <? // ----------------------------------------------------- ?>
+        <? // 這用for loop 插入即可，不需要額外包，沒有要reuse         ?>
+        <? // ----------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 標題 - 開始                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <? // 標題面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -266,6 +294,19 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
             {{$target_setting_table_['description']}}
             <hr class="hr_title" />
         </div> 
+
+        <? // ----------------------------------------------------- ?>
+        <? // 標題 - 結束                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 內容 - 開始                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <? // 內容面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -282,6 +323,13 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                 <? // 置頂區塊 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+                
+                <? // ----------------------------------------------------- ?>
+                <? // Top - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 @if(!empty($use_->Block_Top) )
                     <div class="index_result_wrap">
                         <div class="index_result_content">
@@ -301,18 +349,32 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                         </div>
                     </div>
                 @endif
+
+                <? // ----------------------------------------------------- ?>
+                <? // Top - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // Add置中面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
-                <? // 此為挖洞，非客製化 ?>
+                <? // 此為挖洞，非客製化 ?> 
                 <? // 彈出面板，所以border-bottom:unset;padding:unset; ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // Add - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 @if(!empty($use_->Panel_Add) )
                     <div class="index_result_wrap" style="border-bottom:unset;padding:unset;">
                         <div class="index_result_content">
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
                             <?php 
                             // 因為模板array會複製，所以用物件傳
-                            $block = new \hahaha\hahaha_parameter;
+                            $block = new \hahaha\hahaha_parameter; 
                             $block->identify = &$use_->Panel_Add_Identify;
                             $block->id = &$use_->Id_Panel_Add_Identify;
                             $block->class = &$use_->Class_Panel_Add_Identify;
@@ -325,10 +387,24 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                         </div>
                     </div>
                 @endif
+
+                <? // ----------------------------------------------------- ?>
+                <? // Add - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // 內容面板 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // 內容 - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 @if(!empty($data_list_) )
                     <div class="index_result_wrap">
                         <div class="index_result_content">
@@ -362,10 +438,24 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                         </div>
                     </div>
                 @endif
+
+                <? // ----------------------------------------------------- ?>
+                <? // 內容 - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // 置底區塊 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // Bottom - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 @if(!empty($use_->Block_Bottom) )
                     <div class="index_result_wrap">
                         <div class="index_result_content">
@@ -385,10 +475,25 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                         </div>
                     </div>
                 @endif
+
+                <? // ----------------------------------------------------- ?>
+                <? // Bottom - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // link面板 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // Link - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
+                
                 @if($data_link_['count'] != 0)
                     <div class="index_result_wrap">                    
                         <div style="height:5px">&nbsp;</div>
@@ -455,21 +560,39 @@ $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" 
                         </div>
                     </div>
                 @endif  
+
+                <? // ----------------------------------------------------- ?>
+                <? // Link - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
             </form>         
         </div>         
                
-      
-         
+        <? // ----------------------------------------------------- ?>
+        <? // 內容 - 結束                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 結束                                                  ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+        
+        <script>
+            
+            $(function(){
+                // 最後一次載入
+                lazyload();      
+                                
+            });
+            
+        </script>
     </body>
     
-    <script>
-            
-        $(function(){
-            // 最後一次載入
-            lazyload();      
-                            
-        });
-        
-    </script>
+    
 </html>
 

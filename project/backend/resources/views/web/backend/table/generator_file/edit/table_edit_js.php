@@ -56,7 +56,7 @@ class table_edit_js extends hahaha_generator_web_script
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         // ------------------------------------------------------------ 
         // ------------------------------------------------------------ 
-        $this->CSS_Begin($content, $dynamic, $tab, $tab_count);
+        $this->JS_Begin($content, $dynamic, $tab, $tab_count);
         // ------------------------------------------------------------ 
         $this->Header($content, $dynamic, $tab, $tab_count);  
         $this->License($content, $dynamic, $tab, $tab_count); 
@@ -67,7 +67,16 @@ class table_edit_js extends hahaha_generator_web_script
         // ------------------------------------------------------------ 
         $this->Footer($content, $dynamic, $tab, $tab_count); 
         // ------------------------------------------------------------ 
-        $this->CSS_End($content, $dynamic, $tab, $tab_count);   
+        
+
+        // ----------------------------------------------------- 
+        // Js                                 
+        // ----------------------------------------------------- 
+                                                                
+        // ----------------------------------------------------- 
+
+        // ------------------------------------------------------------ 
+        $this->JS_End($content, $dynamic, $tab, $tab_count);   
         // ------------------------------------------------------------ 
         // ------------------------------------------------------------    
         

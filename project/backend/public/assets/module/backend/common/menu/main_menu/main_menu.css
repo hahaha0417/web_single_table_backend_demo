@@ -375,7 +375,7 @@
   .sidebar-menu .main-menu ul li a .submenu-icon:before {
     content: "\f105";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Free";
     font-size: 16px;
     font-weight: 600;
     

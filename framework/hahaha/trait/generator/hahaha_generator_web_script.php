@@ -20,7 +20,7 @@ class hahaha_generator_web_script extends hahaha_generator_web_script_base
     因為script有很多種，不一定是javascript
     專有名詞，所以J & S大寫
     */
-    public function JavaScript_Begin(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    public function JS_Begin(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {
         if($dynamic)
         {            
@@ -30,7 +30,7 @@ class hahaha_generator_web_script extends hahaha_generator_web_script_base
         
     }
 
-    public function JavaScript_End(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
+    public function JS_End(&$content, $dynamic = false, &$tab = "", &$tab_count = 0)
     {
         if($dynamic)
         {

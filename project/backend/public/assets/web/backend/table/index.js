@@ -78,7 +78,72 @@ $(function() {
         var upload = window.location.protocol + "//" + $(location).attr('host') + "/backend/index/index/deal";
         upload_file(upload, value, index);
     });
-     
+    
     
 
+
+
 });
+
+$(function() { 
+    $('.accounts_panel_add_button_add').click(function() { 
+        $.ajax({
+            type:"POST",
+            url:"/backend/table/backend/accounts/list/deal",
+            data:{
+                '_token': $("input[name=_token]").attr("value"),
+                'deal': 'item',
+                'method': 'image_refresh',
+                'item': item,
+                'id': id,
+                'target': "image",
+            },
+            success:function(response,status,xhr){  
+                // console.log(response);                         
+                if(response.status == 0){
+                    layer.msg(
+                        response.msg, 
+                        {
+                            icon: 6,
+                            area: ['360px', '100px'],
+                        }
+                    );
+
+                    // console.log($("#index_pic_board_select"));
+                    var image = $("#index_item_image").val();
+                    $("#index_item_image_thumbnail").attr('src', new URL(image, window.location.protocol + "//" + location.host));
+                }
+                else{
+                    layer.msg(
+                        response.msg, 
+                        {
+                            icon: 5,
+                            area: ['360px', '100px'],
+                        }
+                    );
+                }                             
+            },
+            error:function(response,status,xhr){     
+                // console.log(response);   
+                if(response.status == 0){
+                    layer.msg(
+                        response.msg, 
+                        {
+                            icon: 5,
+                            area: ['360px', '100px'],
+                        }
+                    );
+                }
+                else{
+                    layer.msg(
+                        response.msg, 
+                        {
+                            icon: 5,
+                            area: ['360px', '100px'],
+                        }
+                    );
+                }
+            },
+        });
+    }); 
+}); 

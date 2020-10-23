@@ -24,12 +24,34 @@
                     
         @include('web.common.main_css')
         @include('web.common.sub_css')
-    
+        
+        
+
+        {{-- <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script> --}}
+        {{--  jQuery Upload File  --}}
+        <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+        
+        {{--  Checkbox  --}}
+        {{--  https://www.html5tricks.com/10-pretty-checkbox-radiobox.html  --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.js" integrity="sha512-+PhiRvIK75jXs6iE9IUqtK0TM3ZMfdDFLts7M6jHt5fPaWbo3RSjrSj9cI+fcgUJPaxe3YnJspeaykVLzqKxBQ==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.css" integrity="sha512-kUG7TU0SCl79O+kc9nP0LJmp3P/YRfS/BtQsJ/GcJx8WzJjRzB1Yz6BmbHygOA81dUb6TefGowZvLtjSyyZCIQ==" crossorigin="anonymous" />
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+        {{--  layer  --}}
+        {{--  http://layer.layui.com/  --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/layer/3.1.1/layer.min.js" integrity="sha512-0YosS8GSyQIZd2uWWNHG95QgN8kPN6WBmjjzakoTRfdCt0YCmJs2HHiiF6tmGwngN/fZ+JH93zFSkW2cv5uGWw==" crossorigin="anonymous"></script>
+        {{-- Boostrap Autocomplete --}}
+        
+
         <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/index.css")}}">
         <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
         <script src="{{\p_ha::Assets("cross_origin/iframe_resize_height.js")}}"></script>
         
         <script>
+            
             $(function(){    
                     
             });

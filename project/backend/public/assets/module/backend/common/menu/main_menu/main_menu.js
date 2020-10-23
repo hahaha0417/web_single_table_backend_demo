@@ -238,12 +238,13 @@ $(function	()	{
 	});
 
 	// Popover
+	jQuery.noConflict(true);
     $("[data-toggle=popover]").popover();
 	
 	// Tooltip
     $("[data-toggle=tooltip]").tooltip();
     $("[rel=tooltip]").tooltip();
-    
+	jQuery.noConflict(false);
     // $(window).load(function() {
     //     $('body').removeClass('overflow-hidden');
     

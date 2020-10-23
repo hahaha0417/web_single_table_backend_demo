@@ -91,7 +91,11 @@ $use_->Class_Block_Bottom_Identify = "." . $target_table_class_::IDENTIFY . "_" 
 $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
 // -------------------------------------------------- 
 
-
+// ----------------------------------------------------- 
+// 設定                                      
+// ----------------------------------------------------- 
+                                                          
+// ----------------------------------------------------- 
 ?>
 
 <!DOCTYPE html>
@@ -105,20 +109,30 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                     
         @include('web.common.main_css')
         @include('web.common.sub_css')
+
+        {{-- <script src="{{\p_ha::Assets("plugin/ckeditor/ckeditor.js")}}"></script> --}}
+        {{-- <script src="http://127.0.0.1:8704/backend/assets/plugin/ckeditor/ckeditor.js"></script> --}}
+        {{-- <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script> --}}
+        
+        {{--  jQuery Upload File  --}}
+        <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+        
         {{--  Checkbox  --}}
         {{--  https://www.html5tricks.com/10-pretty-checkbox-radiobox.html  --}}
-        <link rel="stylesheet" href="{{\p_ha::Assets('plugin/checkbox/labelauty/css/jquery-labelauty.css')}}">
-        <script src="{{\p_ha::Assets('plugin/checkbox/labelauty/js/jquery-labelauty.js')}}"></script>
-        {{--  jQuery Upload File  --}}
-        {{--  http://hayageek.com/docs/jquery-upload-file.php#doc  --}}
-        <link href="{{\p_ha::Assets('plugin/jquery-upload-file/css/uploadfile.css')}}" rel="stylesheet">
-        {{--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  --}}
-        <script src="{{\p_ha::Assets('plugin/jquery-upload-file/js/jquery.uploadfile.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.js" integrity="sha512-+PhiRvIK75jXs6iE9IUqtK0TM3ZMfdDFLts7M6jHt5fPaWbo3RSjrSj9cI+fcgUJPaxe3YnJspeaykVLzqKxBQ==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/labelauty/1.1.4/jquery-labelauty.min.css" integrity="sha512-kUG7TU0SCl79O+kc9nP0LJmp3P/YRfS/BtQsJ/GcJx8WzJjRzB1Yz6BmbHygOA81dUb6TefGowZvLtjSyyZCIQ==" crossorigin="anonymous" />
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
         {{--  layer  --}}
         {{--  http://layer.layui.com/  --}}
-        <script src="{{\p_ha::Assets('plugin/layer/layer/layer.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/layer/3.1.1/layer.min.js" integrity="sha512-0YosS8GSyQIZd2uWWNHG95QgN8kPN6WBmjjzakoTRfdCt0YCmJs2HHiiF6tmGwngN/fZ+JH93zFSkW2cv5uGWw==" crossorigin="anonymous"></script>
         {{-- Boostrap Autocomplete --}}
-        <script src="https://gitcdn.link/repo/xcash/bootstrap-autocomplete/master/dist/latest/bootstrap-autocomplete.min.js"></script>
+
+        
+
         {{--  --}}     
         {{--    --}}
         <script>
@@ -137,6 +151,18 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
             {key} / {stage} / {node}("/"換成"_")
             --}}        
         {{--    --}}
+
+        <script>
+            $(function(){    
+                $(function () {
+                    jQuery.noConflict(true);
+                    $('[data-toggle="tooltip"]').tooltip();
+                    jQuery.noConflict(false);
+                })
+                
+            });
+            
+        </script>
 
         
         {{-- 自動生成文件 --}}
@@ -204,16 +230,6 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
         {{--  附加  --}}
         
 
-        
-        <script>
-            $(function(){    
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                  })
-                
-            });
-            
-        </script>
         <style>
             .container {
                 /* https://pjchender.blogspot.tw/2017/10/bs-bootstrap-4-custom-container-and.html */
@@ -250,6 +266,19 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <? // 標題面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 開始                                                  ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+        
+        <? // ----------------------------------------------------- ?>
+        <? // 標題 - 開始                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+        
         <div class="edit_title">
             <h1 style="font-weight:bold;">{{__('backend.db_table_edit')}}</h1>
             <hr class="hr_title" />
@@ -258,9 +287,23 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
             {{$target_setting_table_['description']}}
             <hr class="hr_title" />
         </div> 
+
+        <? // ----------------------------------------------------- ?>
+        <? // 標題 - 結束                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+        
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <? // 內容面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 內容 - 開始                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+        
         <div class="edit_content">
                 
         </div>     
@@ -274,6 +317,13 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                 <? // 置頂區塊 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // Top - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+                
                 @if(!empty($use_->Block_Top) )
                     <div class="edit_result_wrap">
                         <div class="edit_result_content">
@@ -293,11 +343,25 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                         </div>
                     </div>
                 @endif
+                
+                <? // ----------------------------------------------------- ?>
+                <? // Top - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // 內容面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // 彈出面板，所以border-bottom:unset;padding:unset; ?>
-                <? // -------------------------------------------------------------------------------------------------------------- ?>                 
+                <? // -------------------------------------------------------------------------------------------------------------- ?>  
+
+                <? // ----------------------------------------------------- ?>
+                <? // Main - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+                
                 @if(!empty($use_->Block_Main) )
                     <div class="edit_result_wrap" style="border-bottom:unset;padding:unset;">
                         <div class="edit_result_content">
@@ -319,10 +383,24 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                     </div>
                 @endif
 
+                <? // ----------------------------------------------------- ?>
+                <? // Main - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+              
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // 置底區塊 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
+
+                <? // ----------------------------------------------------- ?>
+                <? // Bottom - 開始                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+                
+                
                 @if(!empty($use_->Block_Bottom) )
                     <div class="edit_result_wrap">
                         <div class="edit_result_content">
@@ -342,21 +420,38 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                         </div>
                     </div>
                 @endif
+
+                <? // ----------------------------------------------------- ?>
+                <? // Bottom - 結束                                           ?>
+                <? // ----------------------------------------------------- ?>
+                <?                                                          ?>
+                <? // ----------------------------------------------------- ?>
+
             </form>         
         </div>         
                
-      
+        <? // ----------------------------------------------------- ?>
+        <? // 內容 - 結束                                           ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
+
+        <? // ----------------------------------------------------- ?>
+        <? // 結束                                                  ?>
+        <? // ----------------------------------------------------- ?>
+        <?                                                          ?>
+        <? // ----------------------------------------------------- ?>
          
+        <script>
+            
+            $(function(){
+                // 最後一次載入
+                lazyload();      
+                                
+            });
+            
+        </script>
     </body>
     
-    <script>
-            
-        $(function(){
-            // 最後一次載入
-            lazyload();      
-                            
-        });
-        
-    </script>
 </html>
 

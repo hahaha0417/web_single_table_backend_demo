@@ -22,73 +22,73 @@ $(function(){
     // FontAwesome
     // * https://ckeditor.com/cke4/addon/fontawesome
     
-    CKEDITOR.editorConfig = function( config ) { 
-        // config.allowedContent = true;    
-        // config.format_tags = 'p;h1;h2;h3;pre;div;h4;h5';
-        // --------------------------------------------------------------------------  
-        // 這寫在這裡沒用，要去修改config.js  
-        // config.extraPlugins = 'fontawesome';
-        // config.contentsCss = ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"];
-        // config.entities = true;
-        // config.toolbar = [
-        //     { name: 'insert', items: [ 'FontAwesome', 'Source' ] }
-        // ];
-        // --------------------------------------------------------------------------  
+    // CKEDITOR.editorConfig = function( config ) { 
+    //     // config.allowedContent = true;    
+    //     // config.format_tags = 'p;h1;h2;h3;pre;div;h4;h5';
+    //     // --------------------------------------------------------------------------  
+    //     // 這寫在這裡沒用，要去修改config.js  
+    //     // config.extraPlugins = 'fontawesome';
+    //     // config.contentsCss = ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"];
+    //     // config.entities = true;
+    //     // config.toolbar = [
+    //     //     { name: 'insert', items: [ 'FontAwesome', 'Source' ] }
+    //     // ];
+    //     // --------------------------------------------------------------------------  
         
-    };
+    // };
     
-    CKEDITOR.dtd.$removeEmpty['span'] = false;
-    CKEDITOR.dtd.$removeEmpty['i'] = false;	
-    // 這不對
-    // var url_fontawesome = new URL("assets/plugin/ckeditor/plugins/font-awesome/font-awesome/css/font-awesome.min.css", window.location.protocol + "//" + location.host);
-    // 
-    var editor_describe = CKEDITOR.replace('index_item_describe', 
-        {
-            allowedContent : true,    
-            format_tags : 'h1;h2;h3;pre;div;h4;h5',   
-            // 附加plugin用這裡
-            extraPlugins : 'fontawesome',            
-            contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
-            entities : true,
-            //
-        }
-    );
-    var editor_content = CKEDITOR.replace('index_item_content', 
-        {
-            allowedContent : true,    
-            format_tags : 'h1;h2;h3;pre;div;h4;h5',   
-            // 附加plugin用這裡
-            extraPlugins : 'fontawesome',            
-            contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
-            entities : true,
-            //
+    // CKEDITOR.dtd.$removeEmpty['span'] = false;
+    // CKEDITOR.dtd.$removeEmpty['i'] = false;	
+    // // 這不對
+    // // var url_fontawesome = new URL("assets/plugin/ckeditor/plugins/font-awesome/font-awesome/css/font-awesome.min.css", window.location.protocol + "//" + location.host);
+    // // 
+    // var editor_describe = CKEDITOR.replace('index_item_describe', 
+    //     {
+    //         allowedContent : true,    
+    //         format_tags : 'h1;h2;h3;pre;div;h4;h5',   
+    //         // 附加plugin用這裡
+    //         extraPlugins : 'fontawesome',            
+    //         contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
+    //         entities : true,
+    //         //
+    //     }
+    // );
+    // var editor_content = CKEDITOR.replace('index_item_content', 
+    //     {
+    //         allowedContent : true,    
+    //         format_tags : 'h1;h2;h3;pre;div;h4;h5',   
+    //         // 附加plugin用這裡
+    //         extraPlugins : 'fontawesome',            
+    //         contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
+    //         entities : true,
+    //         //
             
-        }
-    );   
-    var editor_item_content = CKEDITOR.replace('index_item_item_content', 
-        {
-            allowedContent : true,    
-            format_tags : 'h1;h2;h3;pre;div;h4;h5',   
-            // 附加plugin用這裡
-            extraPlugins : 'fontawesome',            
-            contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
-            entities : true,
-            //
+    //     }
+    // );   
+    // var editor_item_content = CKEDITOR.replace('index_item_item_content', 
+    //     {
+    //         allowedContent : true,    
+    //         format_tags : 'h1;h2;h3;pre;div;h4;h5',   
+    //         // 附加plugin用這裡
+    //         extraPlugins : 'fontawesome',            
+    //         contentsCss : ["/assets/plugin/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css"],
+    //         entities : true,
+    //         //
            
-        }
-    );  
+    //     }
+    // );  
     
-    editor_describe.config.resize_enabled = false;
-    editor_describe.config.width = '800px';
-    editor_describe.config.height = '100px';
+    // editor_describe.config.resize_enabled = false;
+    // editor_describe.config.width = '800px';
+    // editor_describe.config.height = '100px';
 
-    editor_content.config.resize_enabled = false;
-    editor_content.config.width = '800px';
-    editor_content.config.height = '400px';
+    // editor_content.config.resize_enabled = false;
+    // editor_content.config.width = '800px';
+    // editor_content.config.height = '400px';
 
-    editor_item_content.config.resize_enabled = false;
-    editor_item_content.config.width = '800px';
-    editor_item_content.config.height = '500px';
+    // editor_item_content.config.resize_enabled = false;
+    // editor_item_content.config.width = '800px';
+    // editor_item_content.config.height = '500px';
  
     // upload
     var index_item_title_image_upload;
@@ -245,43 +245,43 @@ $(function(){
             maxFileSize: 20*1024*1024,
         });
     }  
-    {   
-        var page_auto_complete_tag_use = [];        
-        $.each(page_auto_complete_tag, function( index, value ) { 
-            page_auto_complete_tag_use.push(value['page']);
-        }); 
-        $("#index_item_page").autocomplete({
-            source: page_auto_complete_tag_use
-        });
-    }
-    {
-        var item_auto_complete_tag_use = [];        
-        $.each(item_auto_complete_tag, function( index, value ) { 
-            if(value['item'] == "nav"){
-                item_auto_complete_tag_use.push(value['item']);
-                return false;
-            } 
-        }); 
-        $.each(item_auto_complete_tag, function( index, value ) { 
-            if(value['item'] == "pic_board"){
-                item_auto_complete_tag_use.push(value['item']);
-                return false;
-            } 
-        }); 
-        $.each(item_auto_complete_tag, function( index, value ) {             
-            if(value['item'] == "nav"){
-                return;
-            }
-            else if(value == "pic_board"){
-                return;
-            }
-            item_auto_complete_tag_use.push(value['item']);
-        });
+    // {   
+    //     var page_auto_complete_tag_use = [];        
+    //     $.each(page_auto_complete_tag, function( index, value ) { 
+    //         page_auto_complete_tag_use.push(value['page']);
+    //     }); 
+    //     $("#index_item_page").autocomplete({
+    //         source: page_auto_complete_tag_use
+    //     });
+    // }
+    // {
+    //     var item_auto_complete_tag_use = [];        
+    //     $.each(item_auto_complete_tag, function( index, value ) { 
+    //         if(value['item'] == "nav"){
+    //             item_auto_complete_tag_use.push(value['item']);
+    //             return false;
+    //         } 
+    //     }); 
+    //     $.each(item_auto_complete_tag, function( index, value ) { 
+    //         if(value['item'] == "pic_board"){
+    //             item_auto_complete_tag_use.push(value['item']);
+    //             return false;
+    //         } 
+    //     }); 
+    //     $.each(item_auto_complete_tag, function( index, value ) {             
+    //         if(value['item'] == "nav"){
+    //             return;
+    //         }
+    //         else if(value == "pic_board"){
+    //             return;
+    //         }
+    //         item_auto_complete_tag_use.push(value['item']);
+    //     });
 
-        $("#index_item_item").autocomplete({
-            source: item_auto_complete_tag_use
-        });
-    }
+    //     $("#index_item_item").autocomplete({
+    //         source: item_auto_complete_tag_use
+    //     });
+    // }
     {
         $("#index_item_image_refresh").click(function(){                         
             var item = {

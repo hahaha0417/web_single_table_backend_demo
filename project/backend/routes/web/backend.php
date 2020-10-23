@@ -96,7 +96,7 @@ foreach($stages_ as $key => &$stage)
             {
                 if($controller['method'] == 'get')
                 {
-                    Route::get("/{stage}/{class}/{item}{$controller['node']}", "{$controller['controller']}@{$controller['action']}");
+                    Route::get("/{stage}/{class}/{item}{$controller['node']}", "{$controller['controller']}@{$controller['action']}"); 
                 }
                 else if($controller['method'] == 'post')
                 {

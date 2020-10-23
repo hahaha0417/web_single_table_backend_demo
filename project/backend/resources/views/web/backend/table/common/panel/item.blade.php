@@ -112,7 +112,6 @@ $key_data
                             @if(!empty($field[key::STYLES])) 
                                 style="{{$field[key::STYLES]}}" 
                             @endif 
-                            type="text" 
                             @if(!empty($field[key::CLASSES])) 
                                 class="{{$field[key::CLASSES]}} form-control col-sm-4" 
                             @else 
@@ -192,7 +191,6 @@ $key_data
                             @if(!empty($field[key::STYLES])) 
                                 style="{{$field[key::STYLES]}}" 
                             @endif 
-                            type="text" 
                             @if(!empty($field[key::CLASSES])) 
                                 class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
                             @else 
@@ -277,8 +275,10 @@ $key_data
                                 class="col-sm-3 col-form-label {{$field[key::CLASSES_1]}}" 
                             @else 
                                 class="col-sm-3 col-form-label" 
-                            @endif    
-                            @if(!empty($field[key::ID])) 
+                            @endif   
+                            @if(!empty($key_data))
+                                id="{{$field[key::ID]}}_label_{{$key_data}}" 
+                            @else
                                 id="{{$field[key::ID]}}_label" 
                             @endif 
                         >
@@ -290,13 +290,14 @@ $key_data
 
                     @if($input)                                                          
                         <input type="password" 
-                            @if(!empty($field[key::ID])) 
+                            @if(!empty($key_data))
+                                id="{{$field[key::ID]}}_{{$key_data}}" 
+                            @else
                                 id="{{$field[key::ID]}}" 
                             @endif 
                             @if(!empty($field[key::STYLES])) 
                                 style="{{$field[key::STYLES]}}" 
                             @endif 
-                            type="text" 
                             @if(!empty($field[key::CLASSES])) 
                                 class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
                             @else 
@@ -420,7 +421,6 @@ $key_data
                                         @if(!empty($option[key::STYLES])) 
                                             style="{{$option[key::STYLES]}}" 
                                         @endif 
-                                        type="text" 
                                         @if(!empty($option[key::CLASSES])) 
                                             class="{{$option[key::CLASSES]}} form-control col-sm-1" 
                                         @else 
