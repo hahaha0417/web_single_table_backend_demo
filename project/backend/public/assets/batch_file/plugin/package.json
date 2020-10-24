@@ -1,18 +1,26 @@
 {
   "name": "plugin",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "jquery": "^3.5.1",
-    "labelauty": "^1.1.3",
-    "layer": "^0.1.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "ckeditor4": "^4.15.0",
+    "ckeditor5": "^23.0.0",
+    "jquery": "^3.5.1",
+    "jquery-autocomplete": "^1.2.8",
+    "jquery-file-upload": "^4.0.11",
+    "labelauty": "^1.1.3",
+    "layer": "^0.1.0",
+    "lazyload": "^2.0.0-rc.2",
+    "owl.carousel": "^2.3.4",
+    "slider-pro": "^1.5.0",
+    "slim-scroll": "^1.3.18"
+  },
+  "description": ""
 }
