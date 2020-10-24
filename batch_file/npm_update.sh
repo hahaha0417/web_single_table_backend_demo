@@ -7,19 +7,19 @@ BASEDIR=$(dirname "$0")
 # 更新
 # -- 主專案
 cd "$BASEDIR"/../hahaha
-composer dump-autoload
+npm update
 # -- 附屬專案
 cd "$BASEDIR"/../project/fast_api
-composer dump-autoload
+npm update
 # -- 前台
 cd "$BASEDIR"/../project/front
-composer dump-autoload
+npm update
 # -- 後台
 cd "$BASEDIR"/../project/backend
-composer dump-autoload
+npm update
 # -- api
 cd "$BASEDIR"/../project/api
-composer dump-autoload
+npm update
 
 # pwd
 # read

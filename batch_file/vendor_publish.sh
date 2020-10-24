@@ -10,7 +10,7 @@ cd "$BASEDIR"/../hahaha
 php artisan vendor:publish --tag="config"
 php artisan vendor:publish --tag="cors"
 # -- 附屬專案
-cd "$BASEDIR"/../project/hahaha
+cd "$BASEDIR"/../project/fast_api
 # php artisan vendor:publish --tag="config"
 # php artisan vendor:publish --tag="cors"
 # -- 前台

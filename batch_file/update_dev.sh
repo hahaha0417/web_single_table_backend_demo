@@ -9,7 +9,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR"/../hahaha
 composer update
 # -- 附屬專案
-cd "$BASEDIR"/../project/hahaha
+cd "$BASEDIR"/../project/fast_api
 composer update
 # -- 前台
 cd "$BASEDIR"/../project/front

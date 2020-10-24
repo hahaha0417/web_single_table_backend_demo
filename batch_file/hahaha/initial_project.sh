@@ -11,7 +11,7 @@ cd "$BASEDIR"/project/
 ./hahaha.sh
 # -- 附屬專案
 cd "$BASEDIR"/project/project
-./hahaha.sh
+./fast_api.sh
 # -- 前台
 cd "$BASEDIR"/project/project
 ./front.sh

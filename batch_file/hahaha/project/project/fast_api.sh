@@ -6,26 +6,26 @@ BASEDIR=$(cd `dirname $0`;pwd)
 # cd "$BASEDIR"/../../../../project
 
 # 更新
-# -- hahaha
+# -- fast_api
 cd "$BASEDIR"/../../../../project
-git clone https://github.com/hahaha0417/php_hahaha_framework.git hahaha
+git clone https://github.com/hahaha0417/php_hahaha_framework.git fast_api
 # 刪除多餘檔案
 rm -R ./vendor
 rm composer.json
 rm composer.lock
 #
-cd hahaha
+cd fast_api
 cp -Rf ./template/* ./
 composer update
 # 初始化
 cd "$BASEDIR"/../../../../
-cp -Rf ./env_setting/hahaha/* ./project/hahaha
+cp -Rf ./env_setting/fast_api/* ./project/fast_api
 # ./resources/public要的自己複製，因為裡面包含前台 & 後台，可能有些人只要一種
 
 # ----------------------------------- 
 # 安裝套件
 # ----------------------------------- 
-cd "$BASEDIR"/../../../../project/hahaha
+cd "$BASEDIR"/../../../../project/fast_api
 # ----------------------------------- 
 # Third Party
 # ----------------------------------- 
