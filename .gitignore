@@ -1,1 +1,15 @@
 hahaha.code-workspace
+node_modules
+public/hot
+public/storage
+public/assets/plugin/plugin
+public/uploads
+storage/*.key
+vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log

@@ -14,9 +14,23 @@
 
 
 {{--  請手動整理至上方  --}}
-{{-- slimScroll --}}
 {{-- http://rocha.la/jQuery-slimScroll --}}
-<script type="text/javascript" src="{{\p_ha::Assets("plugin/slimScroll/jquery.slimscroll.min.js")}}"></script>
+@if(Config::get('app.online_script'))
+    {{-- jquery-slimscroll --}}
+    @if(Config::get('app.debug'))
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.js" integrity="sha512-37SbZHAnGzLuZV850k61DfQdZ5cnahfloYHizjpEwDgZGw49+D6oswdI8EX3ogzKelDLjckhvlK0QZsY/7oxYg==" crossorigin="anonymous"></script>
+    @else
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" integrity="sha512-cJMgI2OtiquRH4L9u+WQW+mz828vmdp9ljOcm/vKTQ7+ydQUktrPVewlykMgozPP+NUBbHdeifE6iJ6UVjNw5Q==" crossorigin="anonymous"></script>
+    @endif
+@else
+    {{-- jquery-slimscroll --}}
+    @if(Config::get('app.debug'))
+        <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-slimscroll/jquery.slimscroll.js")}}"></script>
+    @else
+        <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
+    @endif
+@endif
+
 {{--  --}}
 
 <script src="{{\p_ha::Assets("module/backend/common/menu/main_menu/main_menu.js")}}"></script>

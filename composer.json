@@ -1,11 +1,29 @@
 {
+
+    "type": "project",
+    "description": "laravel_web_single_table_backend",
+    "keywords": [
+        "framework",
+        "hahaha"
+    ],
+    "license": "MIT",
     "require": {
-        "laravel/socialite": "^4.3",
-        "barryvdh/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^6.5",
-        "nesbot/carbon": "^2.29",
-        "predis/predis": "^1.1",
-        "signe/redlock-php": "^1.1",
-        "laravel-doctrine/orm": "^1.5"
+        
+    },
+    "require-dev": {
+
+    },
+    "config": {
+
+    },
+    "extra": {
+    
+    },
+    "autoload": {
+
+        "classmap": [
+            "libraries"
+        ]
     }
+  
 }
