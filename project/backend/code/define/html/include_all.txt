@@ -1,0 +1,31 @@
+因為沒辦法用require file簡易導入，似乎是因為scope的關係
+我又不可能將include all設定成特定namespace
+
+所以採用直接複製貼上法使用
+
+// ----------------------------------------------------------- 
+// single
+// ----------------------------------------------------------- 
+// ----------------------------------
+// html
+// ---------------------------------- 
+use hahaha\define\hahaha_define_html_attribute as attr;
+use hahaha\define\hahaha_define_html_class as class_;
+use hahaha\define\hahaha_define_html_property as prop;
+use hahaha\define\hahaha_define_html_style as style;
+use hahaha\define\hahaha_define_html_tag as tag;
+
+
+// ----------------------------------------------------------- 
+// mix
+// ----------------------------------------------------------- 
+// ----------------------------------
+// html
+// ---------------------------------- 
+use hahaha\define\hahaha_define_html_attribute as html_attr;
+use hahaha\define\hahaha_define_html_class as html_class;
+use hahaha\define\hahaha_define_html_property as html_prop;
+use hahaha\define\hahaha_define_html_style as html_style;
+use hahaha\define\hahaha_define_html_tag as html_tag;
+
+約20+才放入子namespace

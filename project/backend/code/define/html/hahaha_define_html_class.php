@@ -5,8 +5,9 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_operator as operator;
-use hahaha\define\hahaha_define_table_operator as op;
+use hahaha\define\hahaha_define_html_class as class_;
+
+use hahaha\define\hahaha_define_html_class as html_class;
 */
 
 /*
@@ -14,7 +15,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_operator
+class hahaha_define_html_class
 {	
     use hahaha_instance_trait;
 
@@ -26,32 +27,38 @@ class hahaha_define_table_operator
     // 因為有類型衝突，有衝突的加_，ex. INT_
     // 這裡是標籤，不是實際設定，例如integer對應某項laravel的validate設定組
 
-
-    // https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/query-builder.html
-    // 有空再列
     // -------------------------------------- 
+    // visible 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    // operator
+    const VISIBLED = "visibled";
     // -------------------------------------- 
-
+    // visible 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    // between
+    const INVISIBLED = "invisibled";
     // -------------------------------------- 
-    const BETWEEN = "between";
+    // enable 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    // in
+    const ENABLED = "enabled";
     // -------------------------------------- 
-    const IN = "in";
-    const NOT_IN = "not in";
+    // disabled 0 不加標籤 1 加標籤
     // -------------------------------------- 
-    // AND_X - 命令處理組合方式，非andx
+    const DISABLED = "disabled";
     // -------------------------------------- 
-    const AND_X = "and_x";
+    // display_none false 不更新 true 自動更新
     // -------------------------------------- 
-    // OR_X - 命令處理組合方式，非orx
+    const DISPLAY_NONE = "display_none";
     // -------------------------------------- 
-    const OR_X = "or_x";
+    // required 0 不加標籤 1 加標籤
     // -------------------------------------- 
+    const REQUIRED = "required";
+    // -------------------------------------- 
+    // exist_check_success 0 不加標籤 1 加標籤
+    // -------------------------------------- 
+    const EXIST_CHECK_SUCCESS = "exist_check_success";
+    // -------------------------------------- 
+    // exist_check_error 0 不加標籤 1 加標籤
+    // -------------------------------------- 
+    const EXIST_CHECK_ERROR = "exist_check_error";
 
 	function __construct()
 	{

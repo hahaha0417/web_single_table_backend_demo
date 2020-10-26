@@ -5,7 +5,7 @@ namespace hahaha\backend;
 use hahaha\hahaha_generator_web_script;
 use hahahasublib\hahaha_instance_trait;
 
-use hahaha\define\hahaha_define_table_class as class_;
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
 
 /*
 單表式後台generator，css腳本

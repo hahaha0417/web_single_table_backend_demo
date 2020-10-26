@@ -87,15 +87,25 @@ $(function() {
 
 $(function() { 
     $('.accounts_panel_add_button_add').click(function() { 
+        var item = {
+            "account" : $("#accounts_panel_add_account").val(),
+            "password_new" : $("#accounts_panel_add_password").val(),
+            "password_confirm" : $("#accounts_panel_add_password_confirm").val(),
+            "email" : $("#accounts_panel_add_email").val(),
+            "gender" : $(".accounts_panel_add_gender[name=gender]:checked").val(),
+            "status" : $("#accounts_panel_add_status").val(),
+        };
+        
+        console.log(item);
+        
         $.ajax({
             type:"POST",
             url:"/backend/table/backend/accounts/list/deal",
             data:{
                 '_token': $("input[name=_token]").attr("value"),
                 'deal': 'item',
-                'method': 'image_refresh',
+                'method': 'add',
                 'item': item,
-                'id': id,
                 'target': "image",
             },
             success:function(response,status,xhr){  

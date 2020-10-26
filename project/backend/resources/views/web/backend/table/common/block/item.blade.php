@@ -31,19 +31,7 @@
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 <?
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_setting as setting;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+\backend\alias\hahaha_alias_table_define::Alias("\\");
 use Spatie\Url\Url;
 ?>
 
@@ -114,11 +102,6 @@ $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setti
                                     {{$field[key::CLASSES_BUTTON]}}
                                 @endif 
                             "
-                            @if(!empty($key_data))
-                                name="{{$field[key::ID]}}_{{$key_data}}" 
-                            @else
-                                name="{{$field[key::ID]}}" 
-                            @endif 
                             style="
                                 @if(!empty($field[key::STYLES])) 
                                     {{$field[key::STYLES]}}

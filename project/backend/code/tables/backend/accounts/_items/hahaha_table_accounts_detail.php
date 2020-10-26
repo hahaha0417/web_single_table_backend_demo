@@ -8,22 +8,9 @@ use hahaha\hahaha_table_trait;
 //
 use hahaha\hahaha_table_base;
 // 
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_setting as setting;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
-
-
 use EntityManager;
+
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
 
 /*
 首頁自定義欄位
@@ -175,9 +162,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.id'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+		
 				key::PLACEHOLDER => __('backend.help') . " : " . "integer",
 			],
 			self::ACCOUNTS_ID => [
@@ -189,9 +174,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.accounts_id'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+	
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.accounts_id'),
 			],
 			self::NAME => [
@@ -203,9 +186,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.name'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.name'),
 			],
 			self::NICKNAME => [
@@ -217,9 +198,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.nickname'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+		
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.nickname'),
 			],
 			self::AVATAR => [
@@ -231,9 +210,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.avatar'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+		
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.avatar'),
 			],
 			self::IMAGE => [
@@ -245,9 +222,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.image'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.image'),
 			],
 			self::URL => [
@@ -259,9 +234,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.url'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.url'),
 			],
 			self::PHONE => [
@@ -273,9 +246,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.phone'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.phone'),
 			],
 			self::VERIFY_TOKEN => [
@@ -287,9 +258,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.verify_token'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.verify_token'),
 			],
 			self::CREATED_AT => [
@@ -300,9 +269,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.created_at'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 			],
 			self::UPDATED_AT => [
 				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
@@ -312,9 +279,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				],
 				key::TITLE => __('backend.updated_at'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+
 			],
 			//
 			self::CHECKBOX_SELECTED => [
@@ -811,7 +776,9 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 						key::ITEMS => [
 							self::ACCOUNTS_ID => [
 								key::TYPE => type::TEXT,
-								key::READONLY => true,
+								key::ATTRS => [
+									attr::READONLY => true,
+								],									
 								key::STYLES => [
 									"width" => "70%", 
 									"float" => "left", 
@@ -1002,119 +969,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
-                // self::B_PANEL_ADD => [
-				// 	[
-				// 		key::TITLE => __('backend.avatar'),
-				// 		key::TYPE => type::LABEL,
-				// 		key::GROUP => group::FORM_GROUP_ROW,
-				// 		key::ITEMS => [
-				// 			self::AVATAR => [					// 帳號不可以改
-				// 				key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::AVATAR,
-				// 				key::DB_FIELD => [
-				// 					key::IS_FIELD => true,
-				// 				],
-				// 				key::TITLE => __('backend.avatar'),
-				// 				key::TYPE => type::TEXT,
-				// 				key::CLASSES => [
-				// 					class_::DISABLED => false,
-				// 				], 
-				// 				key::CLASSES_1 => [
-				// 					class_::REQUIRED => true,
-				// 				], 
-				// 			],
-				// 		],
-				// 		key::STYLES => [
-				// 		],
-				// 	],
-				// 	[
-				// 		key::TITLE => __('backend.accounts_id'),
-				// 		key::TYPE => type::LABEL,
-				// 		key::GROUP => group::FORM_GROUP_ROW,
-				// 		key::ITEMS => [
-				// 			self::ACCOUNTS_ID => [					// 帳號不可以改
-				// 				key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::ACCOUNTS_ID,
-				// 				key::DB_FIELD => [
-				// 					key::IS_FIELD => true,
-				// 				],
-				// 				key::TITLE => __('backend.accounts_id'),
-				// 				key::TYPE => type::TEXT,
-				// 				key::CLASSES => [
-				// 					class_::DISABLED => true,
-				// 				], 
-				// 				key::CLASSES_1 => [
-				// 					class_::REQUIRED => true,
-				// 				], 
-				// 				key::READONLY => true,
-				// 			],
-				// 		],
-				// 		key::STYLES => [
-				// 		],
-				// 	],
-				// 	[
-				// 		key::TITLE => __('backend.name'),
-				// 		key::TYPE => type::LABEL,
-				// 		key::GROUP => group::FORM_GROUP_ROW,
-				// 		key::ITEMS => [
-				// 			self::NAME => [					// 帳號不可以改
-				// 				key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::NAME,
-				// 				key::DB_FIELD => [
-				// 					key::IS_FIELD => true,
-				// 				],
-				// 				key::TITLE => __('backend.name'),
-				// 				key::TYPE => type::TEXT,
-				// 				key::CLASSES => [
-				// 					class_::DISABLED => false,
-				// 				], 
-				// 				key::CLASSES_1 => [
-				// 					class_::REQUIRED => true,
-				// 				], 
-				// 			],
-				// 		],
-				// 		key::STYLES => [
-				// 		],
-				// 	],
-				// 	[
-				// 		key::TITLE => __('backend.image'),
-				// 		key::TYPE => type::LABEL,
-				// 		key::GROUP => group::FORM_GROUP_ROW,
-				// 		key::ITEMS => [
-				// 			self::AVATAR => [					// 帳號不可以改
-				// 				key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::IMAGE,
-				// 				key::DB_FIELD => [
-				// 					key::IS_FIELD => true,
-				// 				],
-				// 				key::TITLE => __('backend.image'),
-				// 				key::TYPE => type::TEXT,
-				// 				key::CLASSES => [
-				// 					class_::DISABLED => false,
-				// 				], 
-				// 				key::CLASSES_1 => [
-				// 					class_::REQUIRED => true,
-				// 				], 
-				// 			],
-				// 		],
-				// 		key::STYLES => [
-				// 		],
-				// 	],
-				// 	//
-				// 	[
-				// 		// key::TITLE => __('backend.item'),
-				// 		key::TYPE => type::B_BLOCK_SHORT_WRAP,
-				// 		key::GROUP => group::FORM_GROUP_ROW,
-				// 		key::ITEMS => [
-				// 			self::PANEL_ADD_BUTTON_ADD => [
-				// 				// 因為ID重複，所以加上Top
-				// 				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
-				// 			],
-				// 			self::PANEL_ADD_BUTTON_CANCEL => [
-				// 				// 因為ID重複，所以加上Top
-				// 				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
-				// 			],
-				// 		],
-				// 		key::STYLES => [
-				// 		],
-				// 	],				
-				// ],
+         
                 // --------------------------------------------------- 
 				// 細節面板 - 多筆 - table附加面板
 				// --------------------------------------------------- 
@@ -1290,7 +1145,9 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								key::READONLY => true, 
+								key::ATTRS => [
+									attr::READONLY => true,
+								],	
 							],
 						],
 						key::STYLES => [
@@ -1311,7 +1168,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								// key::READONLY => true, 
+								
 							],
 						],
 						key::STYLES => [
@@ -1332,7 +1189,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								// key::READONLY => true, 
+								
 							],
 						],
 						key::STYLES => [
@@ -1347,7 +1204,6 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::AVATAR,
 								key::TYPE => type::TEXT,
 								
-								// key::READONLY => true, 
 							],
 							self::UPLOAD => [
 								key::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
@@ -1377,7 +1233,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::SETTINGS => [
 									setting::LABEL => false,
 								], 
-								// key::READONLY => true, 
+								
 							],
 						],
 						key::STYLES => [
@@ -1392,7 +1248,6 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::IMAGE,
 								key::TYPE => type::TEXT,
 								
-								// key::READONLY => true, 
 							],
 							self::UPLOAD => [
 								key::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
@@ -1426,7 +1281,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::SETTINGS => [
 									setting::LABEL => false,
 								],
-								// key::READONLY => true, 
+								
 							],
 						],
 						key::STYLES => [
@@ -1447,7 +1302,6 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								// key::READONLY => true, 
 							],
 						],
 						key::STYLES => [
@@ -1468,7 +1322,6 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								// key::READONLY => true, 
 							],
 						],
 						key::STYLES => [
@@ -1489,7 +1342,6 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								// key::READONLY => true, 
 							],
 						],
 						key::STYLES => [

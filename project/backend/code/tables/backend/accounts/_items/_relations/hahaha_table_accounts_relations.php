@@ -8,21 +8,9 @@ use hahaha\hahaha_table_trait;
 //
 use hahaha\hahaha_table_base;
 // 
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
-
-
 use EntityManager;
+
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
 
 /*
 首頁自定義欄位

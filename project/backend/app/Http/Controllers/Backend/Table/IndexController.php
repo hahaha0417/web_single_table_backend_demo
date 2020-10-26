@@ -16,19 +16,8 @@
 */
 namespace App\Http\Controllers\Backend\Table;
 
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_operator as op;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+\backend\alias\hahaha_alias_table_define::Alias("App\\Http\\Controllers\\Backend\\Table\\");
+
 use Spatie\Url\Url;
 
 use hahaha\hahaha_controller_table_deal;
@@ -66,7 +55,8 @@ class IndexController extends CommonController
         // ----------------------------------------------------- 
         //         
         // ----------------------------------------------------- 
-
+\hahaha\backend\hahaha_table_accounts::Instance();
+\hahaha\backend\hahaha_table_accounts_detail::Instance();
         $input_ = request()->all();
         $page_ = request()->get('page');
         if(empty($page_))

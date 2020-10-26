@@ -4,8 +4,7 @@ namespace hahaha;
 
 use hahahasublib\hahaha_instance_trait;
 
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_operator as op;
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\");
 
 class hahaha_convert_doctrine_dql
 {

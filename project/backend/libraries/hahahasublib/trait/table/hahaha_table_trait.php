@@ -2,8 +2,71 @@
 
 namespace hahaha;
 
-use  hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_tag as tag;
+// ----------------------------------------------------------- 
+// mix
+// ----------------------------------------------------------- 
+// ----------------------------------
+// base
+// ---------------------------------- 
+// use hahaha\define\hahaha_define_base_direction as base_direction;
+// use hahaha\define\hahaha_define_base_key as base_key;
+// use hahaha\define\hahaha_define_base_node as base_node;
+// use hahaha\define\hahaha_define_base_validate as base_validate;
+// ----------------------------------
+// db
+// ---------------------------------- 
+// use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+// ----------------------------------
+// html
+// ---------------------------------- 
+// use hahaha\define\hahaha_define_html_attribute as html_attr;
+// use hahaha\define\hahaha_define_html_class as html_class;
+// use hahaha\define\hahaha_define_html_property as html_prop;
+// use hahaha\define\hahaha_define_html_style as html_style;
+// use hahaha\define\hahaha_define_html_tag as html_tag;
+// ----------------------------------
+// sql
+// ---------------------------------- 
+// use hahaha\define\hahaha_define_sql_operator as sql_op;
+// ----------------------------------
+// table
+// ---------------------------------- 
+use hahaha\define\hahaha_define_table_action as table_action;
+use hahaha\define\hahaha_define_table_group as table_group;
+use hahaha\define\hahaha_define_table_setting as table_setting;
+use hahaha\define\hahaha_define_table_target as table_target;
+use hahaha\define\hahaha_define_table_type as table_type;
+use hahaha\define\hahaha_define_table_use as table_use;
+// ----------------------------------
+// 
+// ---------------------------------- 
+// ----------------------------------------------------------- 
+// 特挑
+// ----------------------------------------------------------- 
+use hahaha\define\hahaha_define_base_direction as direction;
+use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_node as node;
+use hahaha\define\hahaha_define_base_validate as validate;
+// 
+use hahaha\define\hahaha_define_html_attribute as attr;
+use hahaha\define\hahaha_define_html_class as class_;
+use hahaha\define\hahaha_define_html_property as prop;
+use hahaha\define\hahaha_define_html_style as style;
+use hahaha\define\hahaha_define_html_tag as tag;
+//
+use hahaha\define\hahaha_define_table_db_field_type as field_type;
+// 
+use hahaha\define\hahaha_define_sql_operator as op;
+// -- 
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_setting as setting;
+use hahaha\define\hahaha_define_table_target as target;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+// ----------------------------------------------------------- 
+// 
+// ----------------------------------------------------------- 
 
 trait hahaha_table_trait
 {

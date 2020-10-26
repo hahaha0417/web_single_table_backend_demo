@@ -8,22 +8,9 @@ use hahaha\hahaha_table_trait;
 //
 use hahaha\hahaha_table_base;
 // 
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_setting as setting;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
-
-
 use EntityManager;
+
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
 
 /*
 首頁自定義欄位 
@@ -176,9 +163,7 @@ class hahaha_table_accounts extends hahaha_table_base
 				],
 				key::TITLE => __('backend.id'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+	
 				key::PLACEHOLDER => __('backend.help') . " : " . "integer",
 			],
 			self::ACCOUNT => [					// 帳號不可以改
@@ -188,9 +173,7 @@ class hahaha_table_accounts extends hahaha_table_base
 				],
 				key::TITLE => __('backend.account'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+		
 				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD => [
@@ -258,9 +241,7 @@ class hahaha_table_accounts extends hahaha_table_base
 				],
 				key::TITLE => __('backend.created_at'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+	
 			],
 			self::UPDATED_AT => [
 				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
@@ -270,9 +251,7 @@ class hahaha_table_accounts extends hahaha_table_base
 				],
 				key::TITLE => __('backend.updated_at'),
 				key::TYPE => type::TEXT,
-				key::CLASSES => [
-					class_::DISABLED => true,
-				],
+		
 			],
 			//
 			self::CHECKBOX_SELECTED => [
@@ -978,12 +957,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								],
 								key::TITLE => __('backend.account'),
 								key::TYPE => type::TEXT_EXIST_CHECK,
-								key::CLASSES => [
-									class_::DISABLED => false,
-								], 
-								key::CLASSES_1 => [
-									class_::REQUIRED => true,
-								], 
+						
 							],
 						],
 						key::STYLES => [
@@ -1287,7 +1261,9 @@ class hahaha_table_accounts extends hahaha_table_base
 								key::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								key::READONLY => true, 
+								key::ATTRS => [
+									attr::READONLY => true,
+								],	
 							],
 						],
 						key::STYLES => [
@@ -1305,12 +1281,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								],
 								key::TITLE => __('backend.account'),
 								key::TYPE => type::TEXT_EXIST_CHECK,
-								key::CLASSES => [
-									class_::DISABLED => false,
-								], 
-								key::CLASSES_1 => [
-									class_::REQUIRED => true,
-								], 
+					
 							],
 						],
 						key::STYLES => [

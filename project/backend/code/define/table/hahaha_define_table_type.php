@@ -6,6 +6,8 @@ use hahahasublib\hahaha_instance_trait;
 
 /*
 use hahaha\define\hahaha_define_table_type as type;
+
+use hahaha\define\hahaha_define_table_type as table_type;
 */
 
 /*

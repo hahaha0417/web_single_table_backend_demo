@@ -4,52 +4,51 @@ namespace hahaha\define;
 
 use hahahasublib\hahaha_instance_trait;
 
-/*
-use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_base_key as key;
 
-use hahaha\define\hahaha_define_table_use as table_use;
+/*
+use hahaha\define\hahaha_define_html_property as prop;
+
+use hahaha\define\hahaha_define_html_property as html_prop;
 */
 
 /*
 table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
-
-not USA
 */
-class hahaha_define_table_use
+class hahaha_define_html_property
 {	
     use hahaha_instance_trait;
+
+    
 
     /*
     注意 : 沒有要做完，有做到才補
     */
 
     // -------------------------------------- 
-    // panel
+    // 不使用
     // -------------------------------------- 
-    // 老問題，因為架構hahaha打的，所以基本上，關鍵字重複，以hahaha定的為主
-    // 如果hahaha更動，則請配合
+    const NO_USE = "ha[no_use]";
     // -------------------------------------- 
-
     // -------------------------------------- 
-    // b_block
+    // READONLY
     // -------------------------------------- 
-    const B_BLOCK = "b_block";
+    const READONLY = "readonly"; 
     // -------------------------------------- 
-    // setting
+    // DISABLED
     // -------------------------------------- 
-    const SETTING = "setting";
+    const DISABLED = "disabled"; 
     // -------------------------------------- 
-    // setting
+    // REQUIRED
     // -------------------------------------- 
-    const MIX = "mix"; 
-    // -------------------------------------- 
-
+    const REQUIRED = "required"; 
     // -------------------------------------- 
     // 屬性
     // -------------------------------------- 
     // -------------------------------------- 
+
 
 	function __construct()
 	{

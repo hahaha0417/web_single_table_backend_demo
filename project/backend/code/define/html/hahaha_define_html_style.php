@@ -5,9 +5,9 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_html_style as style;
 
-use hahaha\define\hahaha_define_table_action as table_action;
+use hahaha\define\hahaha_define_html_style as html_style;
 */
 
 /*
@@ -15,7 +15,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_action
+class hahaha_define_html_style
 {	
     use hahaha_instance_trait;
 
@@ -27,11 +27,17 @@ class hahaha_define_table_action
     // 因為有類型衝突，有衝突的加_，ex. INT_
     // 這裡是標籤，不是實際設定，例如integer對應某項laravel的validate設定組
 
-    // -------------------------------------- 
-    // auto_update false 不更新 true 自動更新
-    // -------------------------------------- 
-    const AUTO_UPDATE = "auto_update";
-    // -------------------------------------- 
+ 
+    
+
+    
+    // --------------------------------------  
+    // doctrine
+    // --------------------------------------
+    // key::NONE key::AND key::OR
+    // --------------------------------------  
+
+
 
 	function __construct()
 	{

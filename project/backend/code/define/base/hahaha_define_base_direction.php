@@ -5,7 +5,9 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_direction as direction;
+use hahaha\define\hahaha_define_base_direction as direction;
+
+use hahaha\define\hahaha_define_base_direction as base_direction;
 */
 
 /*
@@ -13,7 +15,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_direction
+class hahaha_define_base_direction
 {	
     use hahaha_instance_trait;
 

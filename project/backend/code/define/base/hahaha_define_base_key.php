@@ -5,7 +5,9 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_key as key;
+use hahaha\define\hahaha_define_base_key as key;
+
+use hahaha\define\hahaha_define_base_key as base_key;
 */
 
 /*
@@ -13,7 +15,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_key
+class hahaha_define_base_key
 {	
     use hahaha_instance_trait;
 
@@ -38,7 +40,25 @@ class hahaha_define_table_key
     // -------------------------------------- 
     const ACTIONS = "actions";
     // -------------------------------------- 
+    // attributes - HTML的屬性的key
+    // --------------------------------------
+    const ATTRIBUTES = "attributes";
+    // 縮寫
+    const ATTRS = self::ATTRIBUTES;
+    // -------------------------------------- 
+    // properties - 套件的屬性的value
+    // --------------------------------------
+    const PROPERTIES = "properties";
+    // 縮寫
+    const PROPS = self::PROPERTIES;
+    // -------------------------------------- 
     // tags
+    // --------------------------------------
+    const TAGS = "tags";
+
+
+    // -------------------------------------- 
+    // 
     // --------------------------------------
     // main or input
     const CLASSES = "classes"; 
@@ -210,6 +230,7 @@ class hahaha_define_table_key
     // table
     // -------------------------------------- 
     const TABLE = "table"; 
+    
     // -------------------------------------- 
     // connection
     // -------------------------------------- 

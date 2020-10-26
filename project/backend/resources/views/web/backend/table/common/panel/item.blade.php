@@ -31,19 +31,7 @@
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 <?
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_setting as setting;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+\backend\alias\hahaha_alias_table_define::Alias("\\");
 use Spatie\Url\Url;
 ?>
 
@@ -62,7 +50,7 @@ $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);  
 $data = &$item->data;
-$key_data
+
 ?>
 
 @if(!empty($item->item[key::GROUP]))
@@ -109,13 +97,32 @@ $key_data
                                     id="{{$field[key::ID]}}" 
                                 @endif 
                             @endif 
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($key_data) )
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                                    @else 
+                                        name="{{$key_field}}_{{$key_data}}"
+                                    @endif
+                                @else
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}"
+                                    @else 
+                                        name="{{$key_field}}"
+                                    @endif
+                                @endif
+                            @else
+                                name="{{$key_field}}"
+                            @endif   
                             @if(!empty($field[key::STYLES])) 
                                 style="{{$field[key::STYLES]}}" 
+                            @else 
+                                style=""
                             @endif 
                             @if(!empty($field[key::CLASSES])) 
-                                class="{{$field[key::CLASSES]}} form-control col-sm-4" 
+                                class="{{$field[key::CLASSES]}} {{$field[key::ID]}} form-control col-sm-4" 
                             @else 
-                                class="form-control col-sm-4" 
+                                class="form-control col-sm-4 {{$field[key::ID]}}" 
                             @endif                                                             
                             @if(!empty($field[key::PLACEHOLDER])) 
                                 placeholder="{{$field[key::PLACEHOLDER]}}" 
@@ -125,7 +132,7 @@ $key_data
                             {{--  有欄位才填  --}}                        
                             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                 @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
-                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == field_type::DATETIME)
                                         value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
                                     @else
                                         value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
@@ -136,6 +143,7 @@ $key_data
                                     value=""
                                 @endif
                             @else
+                                name="{{$key_field}}"
                             @endif
 
                             @if(!empty($field[key::HINT])) 
@@ -150,8 +158,14 @@ $key_data
                                 @endif 
                             @endif 
 
-                            @if(!empty($field[key::READONLY])) 
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::READONLY])) 
                                 readonly
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::DISABLED])) 
+                                disabled
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::REQUIRED])) 
+                                required
                             @endif
                         >
                     @endif   
@@ -192,9 +206,9 @@ $key_data
                                 style="{{$field[key::STYLES]}}" 
                             @endif 
                             @if(!empty($field[key::CLASSES])) 
-                                class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
+                                class="form-control col-sm-4 {{$field[key::ID]}} {{$field[key::CLASSES]}}" 
                             @else 
-                                class="form-control col-sm-4" 
+                                class="form-control col-sm-4 {{$field[key::ID]}}" 
                             @endif    
                             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                 @if(!empty($key_data) )
@@ -211,6 +225,7 @@ $key_data
                                     @endif
                                 @endif
                             @else
+                                name="{{$key_field}}"
                             @endif   
                             @if(!empty($field[key::PLACEHOLDER])) 
                                 placeholder="{{$field[key::PLACEHOLDER]}}" 
@@ -219,7 +234,7 @@ $key_data
                             @endif   
                             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                 @if(!empty($field[key::DB_FIELD][key::NAME]) && !empty($data[$field[key::DB_FIELD][key::NAME]]) )
-                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == field_type::DATETIME)
                                         value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
                                     @else
                                         value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
@@ -230,6 +245,7 @@ $key_data
                                     value=""
                                 @endif
                             @else
+                                name="{{$key_field}}"
                             @endif
 
                             @if(!empty($field[key::HINT])) 
@@ -244,8 +260,14 @@ $key_data
                                 @endif 
                             @endif 
 
-                            @if(!empty($field[key::READONLY])) 
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::READONLY])) 
                                 readonly
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::DISABLED])) 
+                                disabled
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::REQUIRED])) 
+                                required
                             @endif
                         >
                     @endif  
@@ -299,9 +321,9 @@ $key_data
                                 style="{{$field[key::STYLES]}}" 
                             @endif 
                             @if(!empty($field[key::CLASSES])) 
-                                class="form-control col-sm-4 {{$field[key::CLASSES]}}" 
+                                class="form-control col-sm-4 {{$field[key::ID]}} {{$field[key::CLASSES]}}" 
                             @else 
-                                class="form-control col-sm-4" 
+                                class="form-control col-sm-4 {{$field[key::ID]}}" 
                             @endif    
                             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                 @if(!empty($key_data) )
@@ -318,6 +340,7 @@ $key_data
                                     @endif
                                 @endif
                             @else
+                                name="{{$key_field}}"
                             @endif   
                             @if(!empty($field[key::PLACEHOLDER])) 
                                 placeholder="{{$field[key::PLACEHOLDER]}}" 
@@ -336,8 +359,14 @@ $key_data
                             @else
                             @endif
 
-                            @if(!empty($field[key::READONLY])) 
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::READONLY])) 
                                 readonly
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::DISABLED])) 
+                                disabled
+                            @endif
+                            @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::REQUIRED])) 
+                                required
                             @endif
                         >
                     @endif  
@@ -395,8 +424,10 @@ $key_data
                                             {{$field[key::STYLES_LABEL]}}
                                         @endif 
                                     " 
-                                    @if(!empty($option[key::ID])) 
-                                        id="{{$option[key::ID]}}_label" 
+                                    @if(!empty($key_data))
+                                        id="{{$option[key::ID]}}_label_{{$key_data}}_{{$key_option}}" 
+                                    @else
+                                        id="{{$option[key::ID]}}_label_{{$key_option}}" 
                                     @endif 
                                 >{{$option[key::TITLE]}}    
                                 </label> 
@@ -414,17 +445,19 @@ $key_data
                                 >
                                     <input type="radio" 
                                         @if(!empty($key_data))
-                                            id="{{$option[key::ID]}}_{{$key_data}}" 
+                                            id="{{$option[key::ID]}}_{{$key_data}}_{{$key_option}}" 
                                         @else
-                                            id="{{$option[key::ID]}}" 
+                                            id="{{$option[key::ID]}}_{{$key_option}}" 
                                         @endif 
                                         @if(!empty($option[key::STYLES])) 
                                             style="{{$option[key::STYLES]}}" 
+                                        @else 
+                                            style=""
                                         @endif 
                                         @if(!empty($option[key::CLASSES])) 
-                                            class="{{$option[key::CLASSES]}} form-control col-sm-1" 
+                                            class="form-control col-sm-1 {{$field[key::ID]}} {{$option[key::CLASSES]}}" 
                                         @else 
-                                            class="form-control col-sm-1" 
+                                            class="form-control col-sm-1 {{$field[key::ID]}}" 
                                         @endif    
                                         @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
                                             @if(!empty($key_data) )
@@ -441,13 +474,14 @@ $key_data
                                                 @endif
                                             @endif
                                         @else
+                                            name="{{$key_field}}"
                                         @endif   
                                         @if(!empty($field[key::PLACEHOLDER])) 
                                             placeholder="{{$field[key::PLACEHOLDER]}}" 
                                         @else 
                                             placeholder="" 
                                         @endif   
-                                        value=""
+                                        value="{{$option[key::VALUE]}}"
                                         data-labelauty=" "
 
                                         @if(!empty($field[key::DB_FIELD][key::NAME]))
@@ -493,10 +527,10 @@ $key_data
                     @if($input)       
                         <img 
                             id="{{$field[key::ID]}}_thumbnail"
-                            class="col-sm-4 {{$field[key::ID]}} image
-                            @if(!empty($field[key::CLASSES]))
-                                {{$field[key::CLASSES]}} 
-                            @endif 
+                            class="col-sm-4 {{$field[key::ID]}} image {{$field[key::ID]}}
+                                @if(!empty($field[key::CLASSES]))
+                                    {{$field[key::CLASSES]}} 
+                                @endif 
                             "    
                             
                             {{--  有欄位才填  --}}
@@ -551,17 +585,33 @@ $key_data
                         <div 
                             id="{{$field[key::ID]}}"
                                 
-                            name="{{$field[key::ID]}}"
+                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                @if(!empty($key_data) )
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                                    @else 
+                                        name="{{$key_field}}_{{$key_data}}"
+                                    @endif
+                                @else
+                                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                                        name="{{$field[key::DB_FIELD][key::NAME]}}"
+                                    @else 
+                                        name="{{$key_field}}"
+                                    @endif
+                                @endif
+                            @else
+                                name="{{$key_field}}"
+                            @endif   
 
-                            class="col-sm-4 {{$field[key::ID]}} upload
-                            @if(!empty($field[key::CLASSES]))
-                                {{$field[key::CLASSES]}} 
-                            @endif 
+                            class="col-sm-4 {{$field[key::ID]}} upload {{$field[key::ID]}}
+                                @if(!empty($field[key::CLASSES]))
+                                    {{$field[key::CLASSES]}} 
+                                @endif 
                             "     
                             style="{{$field[key::STYLES]}}
-                            @if(!empty($field[key::STYLES])) 
-                                {{$field[key::STYLES]}}
-                            @endif 
+                                @if(!empty($field[key::STYLES])) 
+                                    {{$field[key::STYLES]}}
+                                @endif 
                             " 
 
                             type="file"
@@ -676,12 +726,12 @@ $url_ = Url::fromString($actual_link_);
                     @endif   
                     @if($input) 
                         <a href="
-                            @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                                {{$url_}}/edit/{{$data[$field[key::DB_FIELD][ $field[key::INDEX] ]]}}
-                            @else 
-                                {{$url_}}/edit/{{$data[ $field[key::INDEX] ]}}
-                            @endif  
-                        "
+                                @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+                                    {{$url_}}/edit/{{$data[$field[key::DB_FIELD][ $field[key::INDEX] ]]}}
+                                @else 
+                                    {{$url_}}/edit/{{$data[ $field[key::INDEX] ]}}
+                                @endif  
+                            "
                             class="{{$field[key::ID]}} 
                                 @if(!empty($field[key::CLASSES]))
                                     {{$field[key::CLASSES]}} 
@@ -701,7 +751,6 @@ $url_ = Url::fromString($actual_link_);
                                         @if(!empty($field[key::CLASSES_BUTTON]))
                                             {{$field[key::CLASSES_BUTTON]}}"
                                         @endif 
-                                    name="{{$field[key::ID]}}_{{$key_data}}"
                                     style="
                                         @if(!empty($field[key::STYLES_BUTTON])) 
                                             {{$field[key::STYLES_BUTTON]}}

@@ -6,6 +6,8 @@ use hahahasublib\hahaha_instance_trait;
 
 /*
 use hahaha\define\hahaha_define_table_target as target;
+
+use hahaha\define\hahaha_define_table_target as table_target;
 */
 
 /*

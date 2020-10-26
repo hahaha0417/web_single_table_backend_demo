@@ -16,6 +16,8 @@
  */
 namespace App\Http\Controllers\Backend;
 
+
+
 use App\Http\Models\Backend\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -54,7 +56,7 @@ class IndexController extends CommonController
         return view('web.backend.index', compact('nav', 'menu', 'tail', 'page_url', 'menu_open', 'menu_target'));
 
     }
-
+ 
     /*
     指定頁面
 

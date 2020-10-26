@@ -32,19 +32,7 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
 <?
-use hahaha\define\hahaha_define_table_action as action;
-use hahaha\define\hahaha_define_table_class as class_;
-use hahaha\define\hahaha_define_table_css as css;
-use hahaha\define\hahaha_define_table_direction as direction;
-use hahaha\define\hahaha_define_table_group as group;
-use hahaha\define\hahaha_define_table_key as key;
-use hahaha\define\hahaha_define_table_node as node;
-use hahaha\define\hahaha_define_table_tag as tag;
-use hahaha\define\hahaha_define_table_type as type;
-use hahaha\define\hahaha_define_table_use as use_;
-use hahaha\define\hahaha_define_table_validate as validate;
-use hahaha\define\hahaha_define_table_setting as setting;
-use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
+\backend\alias\hahaha_alias_table_define::Alias("\\");
 use Spatie\Url\Url;
 ?>
 
@@ -80,7 +68,7 @@ use Spatie\Url\Url;
     {{--  有欄位才填  --}}
     @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
         @if(!empty($field[key::DB_FIELD][key::NAME]))
-            @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+            @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == field_type::DATETIME)
                 {{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}
             @else
                 {{$data[$field[key::DB_FIELD][key::NAME]]}}
@@ -145,7 +133,24 @@ use Spatie\Url\Url;
             class="{{$field[key::CLASSES]}} form-control" 
         @else 
             class="form-control" 
-        @endif                                                             
+        @endif   
+        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+            @if(!empty($key_data) )
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                @else 
+                    name="{{$key_field}}_{{$key_data}}"
+                @endif
+            @else
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}"
+                @else 
+                    name="{{$key_field}}"
+                @endif
+            @endif
+        @else
+            name="{{$key_field}}"
+        @endif                                                         
         @if(!empty($field[key::PLACEHOLDER])) 
             placeholder="{{$field[key::PLACEHOLDER]}}" 
         @else 
@@ -154,7 +159,7 @@ use Spatie\Url\Url;
         {{--  有欄位才填  --}}
         @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
             @if(!empty($field[key::DB_FIELD][key::NAME]))
-                @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == db_field_type::DATETIME)
+                @if($target_setting_table_meta_data_->fieldMappings[$field[key::DB_FIELD][key::NAME]][key::TYPE] == field_type::DATETIME)
                     value="{{$data[$field[key::DB_FIELD][key::NAME]]->format('Y-m-d H:i:s')}}"
                 @else
                     value="{{$data[$field[key::DB_FIELD][key::NAME]]}}"
@@ -177,8 +182,14 @@ use Spatie\Url\Url;
             @endif 
         @endif 
 
-        @if(!empty($field[key::READONLY])) 
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::READONLY])) 
             readonly
+        @endif
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::DISABLED])) 
+            disabled
+        @endif
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::REQUIRED])) 
+            required
         @endif
     >
 @elseif($field[key::TYPE] == type::PASSWORD) 
@@ -211,13 +222,22 @@ use Spatie\Url\Url;
             class="form-control col-sm-4" 
         @endif    
         @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-            @if(!empty($field[key::DB_FIELD][key::NAME]))
-                name="{{$field[key::DB_FIELD][key::NAME]}}"
-            @else 
-                name="{{$key_field}}"
+            @if(!empty($key_data) )
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                @else 
+                    name="{{$key_field}}_{{$key_data}}"
+                @endif
+            @else
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}"
+                @else 
+                    name="{{$key_field}}"
+                @endif
             @endif
         @else
-        @endif   
+            name="{{$key_field}}"
+        @endif 
         @if(!empty($field[key::PLACEHOLDER])) 
             placeholder="{{$field[key::PLACEHOLDER]}}" 
         @else 
@@ -233,17 +253,23 @@ use Spatie\Url\Url;
         @else
         @endif
 
-        @if(!empty($field[key::READONLY])) 
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::READONLY])) 
             readonly
+        @endif
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::DISABLED])) 
+            disabled
+        @endif
+        @if(!empty($field[key::ATTRIBUTES]) && !empty($field[key::ATTRIBUTES][attr::REQUIRED])) 
+            required
         @endif
     >
 @elseif($field[key::TYPE] == type::IMAGE)   
     <img 
         id="{{$field[key::ID]}}_thumbnail_{{$key_data}}"
         class="{{$field[key::ID]}} image
-        @if(!empty($field[key::CLASSES]))
-            {{$field[key::CLASSES]}} 
-        @endif 
+            @if(!empty($field[key::CLASSES]))
+                {{$field[key::CLASSES]}} 
+            @endif 
         "    
         
         {{--  有欄位才填  --}}
@@ -257,16 +283,32 @@ use Spatie\Url\Url;
         @endif
 
         style="
-        @if(!empty($field[key::STYLES])) 
-            {{$field[key::STYLES]}}
-        @endif 
+            @if(!empty($field[key::STYLES])) 
+                {{$field[key::STYLES]}}
+            @endif 
         " 
     >
 @elseif($field[key::TYPE] == type::UPLOAD) 
     <div 
         id="{{$field[key::ID]}}_{{$key_data}}"
             
-        name="{{$field[key::ID]}}_{{$key_data}}"
+        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+            @if(!empty($key_data) )
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                @else 
+                    name="{{$key_field}}_{{$key_data}}"
+                @endif
+            @else
+                @if(!empty($field[key::DB_FIELD][key::NAME]))
+                    name="{{$field[key::DB_FIELD][key::NAME]}}"
+                @else 
+                    name="{{$key_field}}"
+                @endif
+            @endif
+        @else
+            name="{{$key_field}}"
+        @endif 
 
         class="{{$field[key::ID]}} upload
         @if(!empty($field[key::CLASSES]))
@@ -294,7 +336,6 @@ use Spatie\Url\Url;
                     {{$field[key::CLASSES_BUTTON]}}
                 @endif 
             "
-            name="{{$field[key::ID]}}_{{$key_data}}"
             style="
                 @if(!empty($field[key::STYLES])) 
                     {{$field[key::STYLES]}}
@@ -306,21 +347,21 @@ use Spatie\Url\Url;
         @endif   
         >
         <i class="
-            @if(!empty($field[key::CLASSES_2]))
-                {{$field[key::CLASSES_2]}}
-            @endif 
-            @if(!empty($field[key::CLASSES_ICON]))
-                {{$field[key::CLASSES_ICON]}}
-            @endif 
-        "
-        style="
-            @if(!empty($field[key::STYLES_2]))
-                {{$field[key::STYLES_2]}}
-            @endif 
-            @if(!empty($field[key::STYLES_ICON]))
-                {{$field[key::STYLES_ICON]}}
-            @endif 
-        "
+                @if(!empty($field[key::CLASSES_2]))
+                    {{$field[key::CLASSES_2]}}
+                @endif 
+                @if(!empty($field[key::CLASSES_ICON]))
+                    {{$field[key::CLASSES_ICON]}}
+                @endif 
+            "
+            style="
+                @if(!empty($field[key::STYLES_2]))
+                    {{$field[key::STYLES_2]}}
+                @endif 
+                @if(!empty($field[key::STYLES_ICON]))
+                    {{$field[key::STYLES_ICON]}}
+                @endif 
+            "
         >
             @if(!empty($field[key::TITLE]) ) 
                 {{$field[key::TITLE]}} 
@@ -368,7 +409,6 @@ $url_ = Url::fromString($actual_link_);
                         {{$field[key::CLASSES_BUTTON]}}
                     @endif 
                 "
-                name="{{$field[key::ID]}}_{{$key_data}}"
                 style="
                     @if(!empty($field[key::STYLES_1])) 
                         {{$field[key::STYLES_1]}}
@@ -418,36 +458,45 @@ $url_ = Url::fromString($actual_link_);
                 @endif 
             " 
             @if(!empty($option[key::ID])) 
-                id="{{$option[key::ID]}}_label_{{$key_data}}" 
+                id="{{$option[key::ID]}}_label_{{$key_data}}_{{$key_option}}" 
             @endif 
         >{{$option[key::TITLE]}}    
         </label>  
         <input type="radio" 
             @if(!empty($option[key::ID])) 
-                id="{{$option[key::ID]}}_{{$key_data}}" 
+                id="{{$option[key::ID]}}_{{$key_data}}_{{$key_option}}" 
             @endif 
             @if(!empty($option[key::STYLES])) 
                 style="{{$option[key::STYLES]}}" 
             @endif 
             @if(!empty($option[key::CLASSES])) 
-                class="{{$option[key::CLASSES]}} form-control col-sm-1" 
+                class="form-control col-sm-1 {{$option[key::CLASSES]}}" 
             @else 
                 class="form-control col-sm-1" 
             @endif    
             @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
-                @if(!empty($field[key::DB_FIELD][key::NAME]))
-                    name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
-                @else 
-                    name="{{$key_field}}_{{$key_data}}"
+                @if(!empty($key_data) )
+                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                        name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+                    @else 
+                        name="{{$key_field}}_{{$key_data}}"
+                    @endif
+                @else
+                    @if(!empty($field[key::DB_FIELD][key::NAME]))
+                        name="{{$field[key::DB_FIELD][key::NAME]}}"
+                    @else 
+                        name="{{$key_field}}"
+                    @endif
                 @endif
             @else
-            @endif   
+                name="{{$key_field}}"
+            @endif 
             @if(!empty($field[key::PLACEHOLDER])) 
                 placeholder="{{$field[key::PLACEHOLDER]}}" 
             @else 
                 placeholder="" 
             @endif   
-            value=""
+            value="{{$option[key::VALUE]}}"
             data-labelauty=" "
 
             @if(!empty($field[key::DB_FIELD][key::NAME]))
@@ -524,7 +573,15 @@ $url_ = Url::fromString($actual_link_);
         @if(!empty($field[key::STYLES])) 
             style="{{$field[key::STYLES]}}" 
         @endif 
-        type="checkbox" name="checkbox" data-labelauty=" ">
+        @if(!empty($field[key::DB_FIELD]) && !empty($field[key::DB_FIELD][key::IS_FIELD]) )
+            @if(!empty($field[key::DB_FIELD][key::NAME]))
+                name="{{$field[key::DB_FIELD][key::NAME]}}_{{$key_data}}"
+            @else 
+                name="{{$key_field}}_{{$key_data}}"
+            @endif
+        @else
+        @endif   
+        type="checkbox" data-labelauty=" ">
 </div>
 @else 
 

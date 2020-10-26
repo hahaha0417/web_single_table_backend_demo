@@ -1,0 +1,34 @@
+因為沒辦法用require file簡易導入，似乎是因為scope的關係
+我又不可能將include all設定成特定namespace
+
+所以採用直接複製貼上法使用
+
+// ----------------------------------------------------------- 
+// single
+// ----------------------------------------------------------- 
+// ----------------------------------
+// base
+// ---------------------------------- 
+use hahaha\define\hahaha_define_base_direction as direction;
+use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_node as node;
+use hahaha\define\hahaha_define_base_validate as validate;
+
+
+
+// ----------------------------------------------------------- 
+// mix
+// ----------------------------------------------------------- 
+// ----------------------------------
+// base
+// ---------------------------------- 
+use hahaha\define\hahaha_define_base_direction as base_direction;
+use hahaha\define\hahaha_define_base_key as base_key;
+use hahaha\define\hahaha_define_base_node as base_node;
+use hahaha\define\hahaha_define_base_validate as base_validate;
+
+
+
+
+
+約20+才放入子namespace

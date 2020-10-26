@@ -5,7 +5,9 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_node as node;
+use hahaha\define\hahaha_define_base_node as node;
+
+use hahaha\define\hahaha_define_base_node as base_node;
 */
 
 /*
@@ -13,7 +15,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_node
+class hahaha_define_base_node
 {	
     use hahaha_instance_trait;
 

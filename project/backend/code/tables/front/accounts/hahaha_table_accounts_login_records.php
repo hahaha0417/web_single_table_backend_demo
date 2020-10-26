@@ -3,12 +3,14 @@
 namespace hahaha\front;
 
 use hahahasublib\hahaha_instance_trait;
+//
+use hahaha\hahaha_table_trait;
+//
+use hahaha\hahaha_table_base;
+// 
+use EntityManager;
 
-use  hahaha\define\hahaha_define_table_action as action;
-use  hahaha\define\hahaha_define_table_key as key;
-use  hahaha\define\hahaha_define_table_tag as tag;
-use  hahaha\define\hahaha_define_table_type as type;
-use  hahaha\define\hahaha_define_table_validate as validate;
+\backend\alias\hahaha_alias_table_define::Alias("hahaha\\front\\");
 
 /*
 首頁自定義欄位

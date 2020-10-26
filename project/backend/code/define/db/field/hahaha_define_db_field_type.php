@@ -5,7 +5,11 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
-use hahaha\define\hahaha_define_table_css as css;
+use hahaha\define\hahaha_define_table_db_field_type as type;
+
+use hahaha\define\hahaha_define_table_db_field_type as field_type;
+
+use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 */
 
 /*
@@ -13,7 +17,7 @@ table 定義
 
 因為怕寫錯要查麻煩，因此弄成對應表
 */
-class hahaha_define_table_css
+class hahaha_define_table_db_field_type
 {	
     use hahaha_instance_trait;
 
@@ -22,16 +26,22 @@ class hahaha_define_table_css
     */
 
     // -------------------------------------- 
-    // 不使用時值設這個
+    // 不使用
     // -------------------------------------- 
-    // use hahaha\define\hahaha_define_table_tag as tag;
-    // tag::NO_USE
+    const NO_USE = "ha[no_use]";
     // -------------------------------------- 
 
     // -------------------------------------- 
     // 屬性
     // -------------------------------------- 
     // -------------------------------------- 
+    const STRING = "string";
+    const BOOL = "bool";
+    const DATETIME = "datetime";
+
+
+
+
 
 	function __construct()
 	{
