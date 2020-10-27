@@ -86,7 +86,14 @@ $(function() {
 });
 
 $(function() { 
+    $("#accounts_panel_add_form").submit(function(e){
+        alert(333);
+        return false;
+    });
+   
     $('.accounts_panel_add_button_add').click(function() { 
+        
+        
         var item = {
             "account" : $("#accounts_panel_add_account").val(),
             "password_new" : $("#accounts_panel_add_password").val(),
@@ -95,6 +102,15 @@ $(function() {
             "gender" : $(".accounts_panel_add_gender[name=gender]:checked").val(),
             "status" : $("#accounts_panel_add_status").val(),
         };
+
+        return true;
+        
+        $("#accounts_panel_add_form").submit();
+        
+        alert(222);
+        
+  
+        return false;
         
         console.log(item);
         

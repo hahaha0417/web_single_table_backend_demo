@@ -32,7 +32,40 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
 <?
-\backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 不要用這個
+// \backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 用傳統的貼法，避免出現錯誤
+// 解法 : 
+// 1. php提供新include，可以insert代碼做整理 * 
+// 2. 插件可以幫我parser class_alias()，例如提供方法指定 
+/** 
+ * 特例(2) : 
+ * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
+ * 上面function獨立並只做class_alias
+ * 
+ **/
+// ------------------------------------------------------ 
+use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_direction as direction;
+use hahaha\define\hahaha_define_html_attribute as attr;
+use hahaha\define\hahaha_define_html_class as class_;
+use hahaha\define\hahaha_define_html_property as prop;
+use hahaha\define\hahaha_define_base_node as node;
+use hahaha\define\hahaha_define_base_validate as validate;
+use hahaha\define\hahaha_define_html_style as style;
+use hahaha\define\hahaha_define_html_tag as tag;
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_setting as setting;
+use hahaha\define\hahaha_define_table_target as target;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_db_field_type as field_type;
+use hahaha\define\hahaha_define_sql_operator as op;
+
+// ------------------------------------------------------
 use Spatie\Url\Url;
 ?>
 
@@ -130,7 +163,7 @@ use Spatie\Url\Url;
         @endif 
         type="text" 
         @if(!empty($field[key::CLASSES])) 
-            class="{{$field[key::CLASSES]}} form-control" 
+            class="form-control {{$field[key::CLASSES]}}" 
         @else 
             class="form-control" 
         @endif   
@@ -325,7 +358,8 @@ use Spatie\Url\Url;
         >
     </div>  
 @elseif($field[key::TYPE] == type::BUTTON_ICON)     
-    <div
+    <button
+        type="click"
         @if(!empty($field[key::ID])) 
             id="{{$field[key::ID]}}_{{$key_data}}"
             class="{{$field[key::ID]}} 
@@ -367,7 +401,7 @@ use Spatie\Url\Url;
                 {{$field[key::TITLE]}} 
             @endif
         </i>
-    </div>
+    </button>
 @elseif($field[key::TYPE] == type::BUTTON_ICON_LINK)  
 <?php
 $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
@@ -526,7 +560,7 @@ $url_ = Url::fromString($actual_link_);
     @elseif(!empty($field[key::USE_]) && $field[key::USE_] == use_::MIX)
         {{--  有用到再補  --}}
     @endif
-    <div id="{{$use_->Panel_Detail_Identify}}" class="{{$use_->Panel_Detail_Identify}}">
+    <div id="{{$use_->Panel_Detail_Identify}}_{{$key_data}}" class="{{$use_->Panel_Detail_Identify}}">
         <div class="{{$use_->Panel_Detail_Identify}}_content">
             @foreach($items_panel_ as $key_item_panel => $item_panel)
                 <?php 

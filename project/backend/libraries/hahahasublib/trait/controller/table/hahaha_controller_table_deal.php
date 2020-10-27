@@ -45,7 +45,7 @@ trait hahaha_controller_table_deal
 
 		// $deal = $input["deal"];
 		// $method = $input['method'];
-
+$ddd = $input;
 		$result = [];
 
 		// if($deal == 'item')

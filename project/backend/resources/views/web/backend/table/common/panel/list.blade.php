@@ -31,10 +31,52 @@
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 <?
-\backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 不要用這個
+// \backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 用傳統的貼法，避免出現錯誤
+// 解法 : 
+// 1. php提供新include，可以insert代碼做整理 * 
+// 2. 插件可以幫我parser class_alias()，例如提供方法指定 
+/** 
+ * 特例(2) : 
+ * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
+ * 上面function獨立並只做class_alias
+ * 
+ **/
+// ------------------------------------------------------ 
+use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_direction as direction;
+use hahaha\define\hahaha_define_html_attribute as attr;
+use hahaha\define\hahaha_define_html_class as class_;
+use hahaha\define\hahaha_define_html_property as prop;
+use hahaha\define\hahaha_define_base_node as node;
+use hahaha\define\hahaha_define_base_validate as validate;
+use hahaha\define\hahaha_define_html_style as style;
+use hahaha\define\hahaha_define_html_tag as tag;
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_setting as setting;
+use hahaha\define\hahaha_define_table_target as target;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_db_field_type as field_type;
+use hahaha\define\hahaha_define_sql_operator as op;
+
+// ------------------------------------------------------
 use Spatie\Url\Url;
 ?>
-
+<?php // 驗證電話 ?>
+{{-- <div class="row">
+    <div class="col-xs-4">
+        <input type="tel" class="form-control" title="Telephone prefix. Allows digits, + and space signs. At least 2. characters." pattern="[\+\s0-9]{2,6}" required="" />
+    </div>
+    <div class="col-xs-8">
+        <input type="tel" class="form-control" title="Telephone number. Allows at least 3 characters. Only digits and space signs are allowed" pattern="[\+\s0-9]{3,9}" required="" />
+    </div>
+</div>
+<br /> --}}
 @foreach($list->list as $key_item => $value_item)  
     <?php 
         // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源

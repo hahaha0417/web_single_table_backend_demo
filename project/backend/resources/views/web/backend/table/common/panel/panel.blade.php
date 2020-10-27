@@ -31,21 +31,60 @@
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 <?
-\backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 不要用這個
+// \backend\alias\hahaha_alias_table_define::Alias("\\");
+// ------------------------------------------------------ 
+// 用傳統的貼法，避免出現錯誤
+// 解法 : 
+// 1. php提供新include，可以insert代碼做整理 * 
+// 2. 插件可以幫我parser class_alias()，例如提供方法指定 
+/** 
+ * 特例(2) : 
+ * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
+ * 上面function獨立並只做class_alias
+ * 
+ **/
+// ------------------------------------------------------ 
+use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_direction as direction;
+use hahaha\define\hahaha_define_html_attribute as attr;
+use hahaha\define\hahaha_define_html_class as class_;
+use hahaha\define\hahaha_define_html_property as prop;
+use hahaha\define\hahaha_define_base_node as node;
+use hahaha\define\hahaha_define_base_validate as validate;
+use hahaha\define\hahaha_define_html_style as style;
+use hahaha\define\hahaha_define_html_tag as tag;
+use hahaha\define\hahaha_define_table_action as action;
+use hahaha\define\hahaha_define_table_group as group;
+use hahaha\define\hahaha_define_table_setting as setting;
+use hahaha\define\hahaha_define_table_target as target;
+use hahaha\define\hahaha_define_table_type as type;
+use hahaha\define\hahaha_define_table_use as use_;
+use hahaha\define\hahaha_define_table_db_field_type as field_type;
+use hahaha\define\hahaha_define_sql_operator as op;
+
+// ------------------------------------------------------
 use Spatie\Url\Url;
 ?>
 
 <div id="{{$block->identify}}" class="{{$block->identify}} {{$block->panel_class}}" style="{{$block->panel_style}}">
     <div class="{{$block->identify}}_content">
-        <?php 
-        // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
-        // 架構的地方用reference，維護的地方不用，避免有話說
-        // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
-        $list = new \hahaha\hahaha_parameter;
-        $list->list = &$block->panel;
-        $list->data = &$block->data;
-        ?>
-        @include("web.backend.table.common.panel.list")  
+        @if(isset($block->form) && $block->form)
+            <form id="{{$block->identify}}_form" method="post">
+        @endif
+            <?php 
+            // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
+            // 架構的地方用reference，維護的地方不用，避免有話說
+            // 注意 : 這裡不做多層嵌套，要做請另外用原生php function做成模組
+            $list = new \hahaha\hahaha_parameter;
+            $list->list = &$block->panel;
+            $list->data = &$block->data;
+            ?>
+            @include("web.backend.table.common.panel.list")  
+        @if(isset($block->form) && $block->form)
+            </form>
+        @endif
     </div>
 </div>
 
