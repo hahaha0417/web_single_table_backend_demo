@@ -14,8 +14,8 @@ use hahahasublib\hahaha_instance_trait;
 // 1. php提供新include，可以insert代碼做整理 * 
 // 2. 插件可以幫我parser class_alias()，例如提供方法指定 
 /** 
- * 特例(2) : 
- * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
+ * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析 
+ * ! Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
  * 上面function獨立並只做class_alias
  * 
  **/
@@ -189,7 +189,7 @@ class table_index_css extends hahaha_generator_web_script
         // ------------------------------------------------------------  
         
         // ------------------------------------------------------------ 
-        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Add_Identify} {$use_->Class_Panel_Add_Identify}_content label" . "." . class_::REQUIRED . "::before {");
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Add_Identify} {$use_->Class_Panel_Add_Identify}_content label" . "." . class_::REQUIRED . "::after {");
         \p_ha::Tab($tab, ++$tab_count); 
         // ------------------------------------------------------------    
         \p_ha::Line($content, $tab, "content: \" *\"; ");
@@ -281,7 +281,7 @@ class table_index_css extends hahaha_generator_web_script
         // ------------------------------------------------------------  
         
         // ------------------------------------------------------------ 
-        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} {$use_->Class_Panel_Detail_Identify}_content label" . "." . class_::REQUIRED . "::before {");
+        \p_ha::Line($content, $tab, ".index_content {$use_->Class_Panel_Detail_Identify} {$use_->Class_Panel_Detail_Identify}_content label" . "." . class_::REQUIRED . "::after{");
         \p_ha::Tab($tab, ++$tab_count); 
         // ------------------------------------------------------------    
         \p_ha::Line($content, $tab, "content: \" *\"; ");

@@ -26,7 +26,7 @@ class Accounts extends \entities\backend\Accounts implements \Doctrine\ORM\Proxy
     /**
      * @var boolean flag indicating if this object was already initialized
      *
-     * @see \Doctrine\Common\Persistence\Proxy::__isInitialized
+     * @see \Doctrine\Persistence\Proxy::__isInitialized
      */
     public $__isInitialized__ = false;
 
@@ -66,10 +66,10 @@ class Accounts extends \entities\backend\Accounts implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'id', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'account', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'password', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'email', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'gender', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'status', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'updatedAt'];
+            return ['__isInitialized__', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'id', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'account', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'password', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'email', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'gender', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'status', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'cooment', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'updatedAt'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'id', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'account', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'password', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'email', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'gender', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'status', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'updatedAt'];
+        return ['__isInitialized__', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'id', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'account', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'password', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'email', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'gender', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'status', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'cooment', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\Accounts' . "\0" . 'updatedAt'];
     }
 
     /**
@@ -176,6 +176,17 @@ class Accounts extends \entities\backend\Accounts implements \Doctrine\ORM\Proxy
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function accountLogin()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'accountLogin', []);
+
+        return parent::accountLogin();
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -299,6 +310,28 @@ class Accounts extends \entities\backend\Accounts implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCooment($cooment = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCooment', [$cooment]);
+
+        return parent::setCooment($cooment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCooment()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCooment', []);
+
+        return parent::getCooment();
     }
 
     /**

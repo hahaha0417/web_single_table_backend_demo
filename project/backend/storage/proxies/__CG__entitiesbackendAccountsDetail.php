@@ -26,7 +26,7 @@ class AccountsDetail extends \entities\backend\AccountsDetail implements \Doctri
     /**
      * @var boolean flag indicating if this object was already initialized
      *
-     * @see \Doctrine\Common\Persistence\Proxy::__isInitialized
+     * @see \Doctrine\Persistence\Proxy::__isInitialized
      */
     public $__isInitialized__ = false;
 
@@ -66,10 +66,10 @@ class AccountsDetail extends \entities\backend\AccountsDetail implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'id', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'name', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'nickname', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'avatar', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'image', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'url', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'phone', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'verifyToken', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'updatedAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accounts'];
+            return ['__isInitialized__', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'id', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'name', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'nickname', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'avatar', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'image', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'url', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'phone', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'verifyToken', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'updatedAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accounts', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accountsId'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'id', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'name', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'nickname', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'avatar', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'image', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'url', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'phone', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'verifyToken', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'updatedAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accounts'];
+        return ['__isInitialized__', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'id', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'name', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'nickname', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'avatar', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'image', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'url', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'phone', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'verifyToken', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'createdAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'updatedAt', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accounts', '' . "\0" . 'entities\\backend\\AccountsDetail' . "\0" . 'accountsId'];
     }
 
     /**
@@ -409,6 +409,28 @@ class AccountsDetail extends \entities\backend\AccountsDetail implements \Doctri
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccounts', []);
 
         return parent::getAccounts();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAccountsId($accountsId = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAccountsId', [$accountsId]);
+
+        return parent::setAccountsId($accountsId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAccountsId()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccountsId', []);
+
+        return parent::getAccountsId();
     }
 
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace entities\front;
+namespace entities\backend;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AccountsRelations
  *
- * @ORM\Table(name="accounts_relations", indexes={@ORM\Index(name="accounts_relations_accounts_id2_foreign", columns={"accounts_id2"}), @ORM\Index(name="accounts_relations_accounts_id1_accounts_id2_index", columns={"accounts_id1", "accounts_id2"}), @ORM\Index(name="IDX_29EDF1D12DC1DB71", columns={"accounts_id1"})})
- * @ORM\Entity(repositoryClass="repositories\front\AccountsRelations")
+ * @ORM\Table(name="accounts_relations", indexes={@ORM\Index(name="accounts_relations_accounts_id1_accounts_id2_index", columns={"accounts_id1", "accounts_id2"}), @ORM\Index(name="accounts_relations_accounts_id2_foreign", columns={"accounts_id2"}), @ORM\Index(name="IDX_29EDF1D12DC1DB71", columns={"accounts_id1"})})
+ * @ORM\Entity(repositoryClass="repositories\backend\AccountsRelations")
  */
 class AccountsRelations
 {
@@ -43,9 +43,9 @@ class AccountsRelations
     private $updatedAt;
 
     /**
-     * @var \entities\front\Accounts
+     * @var \entities\backend\Accounts
      *
-     * @ORM\ManyToOne(targetEntity="entities\front\Accounts")
+     * @ORM\ManyToOne(targetEntity="entities\backend\Accounts")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="accounts_id1", referencedColumnName="id")
      * })
@@ -53,9 +53,9 @@ class AccountsRelations
     private $accountsId1;
 
     /**
-     * @var \entities\front\Accounts
+     * @var \entities\backend\Accounts
      *
-     * @ORM\ManyToOne(targetEntity="entities\front\Accounts")
+     * @ORM\ManyToOne(targetEntity="entities\backend\Accounts")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="accounts_id2", referencedColumnName="id")
      * })
@@ -149,11 +149,11 @@ class AccountsRelations
     /**
      * Set accountsId1.
      *
-     * @param \entities\front\Accounts|null $accountsId1
+     * @param \entities\backend\Accounts|null $accountsId1
      *
      * @return AccountsRelations
      */
-    public function setAccountsId1(\entities\front\Accounts $accountsId1 = null)
+    public function setAccountsId1(\entities\backend\Accounts $accountsId1 = null)
     {
         $this->accountsId1 = $accountsId1;
 
@@ -163,7 +163,7 @@ class AccountsRelations
     /**
      * Get accountsId1.
      *
-     * @return \entities\front\Accounts|null
+     * @return \entities\backend\Accounts|null
      */
     public function getAccountsId1()
     {
@@ -173,11 +173,11 @@ class AccountsRelations
     /**
      * Set accountsId2.
      *
-     * @param \entities\front\Accounts|null $accountsId2
+     * @param \entities\backend\Accounts|null $accountsId2
      *
      * @return AccountsRelations
      */
-    public function setAccountsId2(\entities\front\Accounts $accountsId2 = null)
+    public function setAccountsId2(\entities\backend\Accounts $accountsId2 = null)
     {
         $this->accountsId2 = $accountsId2;
 
@@ -187,7 +187,7 @@ class AccountsRelations
     /**
      * Get accountsId2.
      *
-     * @return \entities\front\Accounts|null
+     * @return \entities\backend\Accounts|null
      */
     public function getAccountsId2()
     {

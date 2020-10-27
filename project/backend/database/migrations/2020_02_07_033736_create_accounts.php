@@ -22,7 +22,8 @@ class CreateAccounts extends Migration
             $table->string('password')->comment('密碼');
             $table->string('email')->comment('信箱');
             $table->tinyInteger('gender')->comment('性別 0 女 1 男');            
-            $table->integer('status')->comment('狀態 -1 停用 0 為驗證 1 驗證');
+            $table->integer('status')->comment('狀態 -1 停用 0 未驗證 1 驗證')->default(0);
+            $table->string('cooment')->nullable()->comment('備註');
             $table->timestamps();
             
         });

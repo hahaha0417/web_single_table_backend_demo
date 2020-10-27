@@ -123,6 +123,8 @@ trait hahaha_table_trait
 			key_::CLASSES_4,
 			key_::CLASSES_5,
 			// decide
+			key_::CLASSES_GROUP,
+			key_::CLASSES_FORM_GROUP,
 			key_::CLASSES_LABEL,
 			key_::CLASSES_OPTION,
 			key_::CLASSES_BUTTON,
@@ -140,6 +142,8 @@ trait hahaha_table_trait
 			key_::STYLES_4,
 			key_::STYLES_5,
 			// decide
+			key_::STYLES_GROUP,
+			key_::STYLES_FORM_GROUP,
 			key_::STYLES_LABEL,
 			key_::STYLES_OPTION,
 			key_::STYLES_BUTTON,

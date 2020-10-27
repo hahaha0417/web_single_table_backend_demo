@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="accounts")
  * @ORM\Entity(repositoryClass="repositories\backend\Accounts")
+ * 
  */
 class Accounts
 {
@@ -52,9 +53,16 @@ class Accounts
     /**
      * @var int
      *
-     * @ORM\Column(name="status", type="integer", nullable=false, options={"comment"="狀態 -1 停用 0 為驗證 1 驗證"})
+     * @ORM\Column(name="status", type="integer", nullable=false, options={"comment"="狀態 -1 停用 0 未驗證 1 驗證"})
      */
-    private $status;
+    private $status = '0';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="cooment", type="string", length=255, nullable=true, options={"comment"="備註"})
+     */
+    private $cooment;
 
     /**
      * @var \DateTime|null
@@ -70,7 +78,7 @@ class Accounts
      */
     private $updatedAt;
 
-
+    public function accountLogin(){}
 
     /**
      * Get id.
@@ -200,6 +208,30 @@ class Accounts
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set cooment.
+     *
+     * @param string|null $cooment
+     *
+     * @return Accounts
+     */
+    public function setCooment($cooment = null)
+    {
+        $this->cooment = $cooment;
+
+        return $this;
+    }
+
+    /**
+     * Get cooment.
+     *
+     * @return string|null
+     */
+    public function getCooment()
+    {
+        return $this->cooment;
     }
 
     /**

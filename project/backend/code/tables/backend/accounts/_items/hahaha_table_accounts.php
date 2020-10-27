@@ -19,8 +19,8 @@ use EntityManager;
 // 1. php提供新include，可以insert代碼做整理 * 
 // 2. 插件可以幫我parser class_alias()，例如提供方法指定 
 /** 
- * 特例(2) : 
- * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\"); 
+ * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析 
+ * ! Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\"); 
  * 上面function獨立並只做class_alias
  * 
  **/
@@ -994,6 +994,9 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::ATTRS => [
 									attr::REQUIRED => true,
 								],	
+								key_::CLASSES_LABEL => [
+									class_::REQUIRED => true,
+								],
 							],
 						],
 						key_::STYLES => [
@@ -1014,6 +1017,9 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::ATTRS => [
 									attr::REQUIRED => true,
 								],	
+								key_::CLASSES_LABEL => [
+									class_::REQUIRED => true,
+								],
 							],
 						],
 						key_::STYLES => [
@@ -1031,6 +1037,9 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::ATTRS => [
 									attr::REQUIRED => true,
 								],	
+								key_::CLASSES_LABEL => [
+									class_::REQUIRED => true,
+								],
 							],
 						],
 						key_::STYLES => [
@@ -1048,7 +1057,13 @@ class hahaha_table_accounts extends hahaha_table_base
 								],
 								key_::TITLE => __('backend.email'),
 								key_::TYPE => type::TEXT,
-								key_::VALIDATE => validate::EMAIL,				
+								key_::VALIDATE => validate::EMAIL,	
+								key_::ATTRS => [
+									attr::REQUIRED => true,
+								],	
+								key_::CLASSES_LABEL => [
+									class_::REQUIRED => true,
+								],			
 							],
 						],
 						key_::STYLES => [
@@ -1078,6 +1093,12 @@ class hahaha_table_accounts extends hahaha_table_base
 									],
 									
 								]),
+								key_::ATTRS => [
+									attr::REQUIRED => true,
+								],	
+								key_::CLASSES_LABEL => [
+									class_::REQUIRED => true,
+								],
 							],
 						],
 						key_::STYLES => [

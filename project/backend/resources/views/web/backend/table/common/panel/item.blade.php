@@ -40,8 +40,8 @@
 // 1. php提供新include，可以insert代碼做整理 * 
 // 2. 插件可以幫我parser class_alias()，例如提供方法指定 
 /** 
- * 特例(2) : 
- * @Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
+ * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析 
+ * ! Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
  * 上面function獨立並只做class_alias
  * 
  **/
@@ -88,7 +88,25 @@ $data = &$item->data;
 
 @if(!empty($item->item[key_::GROUP]))
     @if($item->item[key_::GROUP] == group::FORM_GROUP_ROW) 
-        <div class="form-group row"> 
+        <div             
+            class="form-group row 
+                @if(!empty($item->item[key_::CLASSES_GROUP])) 
+                    {{$item->item[key_::CLASSES_GROUP]}}
+                @endif 
+                @if(!empty($item->item[key_::CLASSES_FORM_GROUP])) 
+                    {{$item->item[key_::CLASSES_FORM_GROUP]}}
+                @endif 
+            " 
+            style="
+                @if(!empty($item->item[key_::STYLES_GROUP])) 
+                    {{$item->item[key_::STYLES_GROUP]}}
+                @endif
+                @if(!empty($item->item[key_::STYLES_FORM_GROUP])) 
+                    {{$item->item[key_::STYLES_FORM_GROUP]}}
+                @endif 
+            " 
+
+        > 
             @if($item->item[key_::TYPE] == type::B_BLOCK_SHORT_WRAP) 
                 <div class="short_wrap">
             @endif
@@ -106,8 +124,8 @@ $data = &$item->data;
 
                     @if($label)
                         <label for="{{$field[key_::ID]}}" 
-                            @if(!empty($field[key_::CLASSES_1])) 
-                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_1]}}" 
+                            @if(!empty($field[key_::CLASSES_LABEL])) 
+                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_LABEL]}}" 
                             @else 
                                 class="col-sm-3 col-form-label" 
                             @endif    
@@ -215,8 +233,8 @@ $data = &$item->data;
                     <? // 有Exist檢查 ?>
                     @if($label)
                         <label for="{{$field[key_::ID]}}" 
-                            @if(!empty($field[key_::CLASSES_1])) 
-                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_1]}}" 
+                            @if(!empty($field[key_::CLASSES_LABEL])) 
+                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_LABEL]}}" 
                             @else 
                                 class="col-sm-3 col-form-label" 
                             @endif    
@@ -326,8 +344,8 @@ $data = &$item->data;
 
                     @if($label)
                         <label for="{{$field[key_::ID]}}" 
-                            @if(!empty($field[key_::CLASSES_1])) 
-                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_1]}}" 
+                            @if(!empty($field[key_::CLASSES_LABEL])) 
+                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_LABEL]}}" 
                             @else 
                                 class="col-sm-3 col-form-label" 
                             @endif   
@@ -543,8 +561,8 @@ $data = &$item->data;
 
                     @if($label)
                         <label for="{{$field[key_::ID]}}" 
-                            @if(!empty($field[key_::CLASSES_1])) 
-                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_1]}}" 
+                            @if(!empty($field[key_::CLASSES_LABEL])) 
+                                class="col-sm-3 col-form-label {{$field[key_::CLASSES_LABEL]}}" 
                             @else 
                                 class="col-sm-3 col-form-label" 
                             @endif    

@@ -69,6 +69,8 @@ class hahaha_define_base_key
     const CLASSES_4 = "classes_4"; 
     const CLASSES_5 = "classes_5"; 
     // decide
+    const CLASSES_GROUP = "classes_group"; 
+    const CLASSES_FORM_GROUP = "classes_from_group"; 
     const CLASSES_LABEL = "classes_label"; 
     const CLASSES_OPTION = "classes_option"; 
     const CLASSES_BUTTON = "classes_button"; 
@@ -87,6 +89,8 @@ class hahaha_define_base_key
     const STYLES_4 = "styles_4"; 
     const STYLES_5 = "styles_5"; 
     // decide
+    const STYLES_GROUP = "styles_group"; 
+    const STYLES_FORM_GROUP = "styles_from_group"; 
     const STYLES_LABEL = "styles_label"; 
     const STYLES_OPTION = "styles_option"; 
     const STYLES_BUTTON = "styles_button"; 

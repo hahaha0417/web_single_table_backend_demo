@@ -51,7 +51,7 @@ License : MIT
 	resize: none; 
 } 
  
-.index_content .accounts_detail_panel_add .accounts_detail_panel_add_content label.required::before {
+.index_content .accounts_detail_panel_add .accounts_detail_panel_add_content label.required::after {
 	content: " *"; 
 	color: red; 
 } 
@@ -92,7 +92,7 @@ License : MIT
 	resize: none; 
 } 
  
-.index_content .accounts_detail_panel_detail .accounts_detail_panel_detail_content label.required::before {
+.index_content .accounts_detail_panel_detail .accounts_detail_panel_detail_content label.required::after{
 	content: " *"; 
 	color: red; 
 } 

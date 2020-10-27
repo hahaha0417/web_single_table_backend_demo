@@ -94,36 +94,12 @@ class AccountsDetail
      */
     private $accounts;
 
-
-    // ------------------------------------------------------------------------------------------- 
-    // 客製化區
-    // ------------------------------------------------------------------------------------------- 
-
-    /*
-    // 可以這樣直接修改子 table關聯
-    $aaa = EntityManager::find("\\entities\\backend\\AccountsDetail", 3);
-    // $aaa->accountsId = 2;
-    $aaa->setAccountsId(2);
-    EntityManager::persist($aaa);
-    EntityManager::flush();
-    */
     /**
-     *  ---------------------------------------------------- 
-     *  因為是single table，所以foreign key自己手動補
-     *  基本上generator只是產出大概，還是要自己加
-     * 
-     *  ---------------------------------------------------- 
      * @var string|null
      *
-     * @ORM\Column(name="accounts_id", type="bigint", nullable=false, options={"comment"="帳號id"})
+     * @ORM\Column(name="accounts_id", type="bigint", nullable=true)
      */
     private $accountsId;
-
-
-
-    public function __construct() {
-        $this->accounts = new \entities\backend\Accounts;
-    }
 
     /**
      * Get id.
@@ -375,10 +351,13 @@ class AccountsDetail
         return $this->accounts;
     }
 
-    // ------------------------------------------------------------------------------------------- 
-    // 客製化區
-    // ------------------------------------------------------------------------------------------- 
-
+    /**
+     * Set accountsId.
+     *
+     * @param int|null $accountsId
+     *
+     * @return AccountsDetail
+     */
     public function setAccountsId($accountsId = null)
     {
         $this->accountsId = $accountsId;
@@ -386,11 +365,13 @@ class AccountsDetail
         return $this;
     }
 
+    /**
+     * Get accountsId.
+     *
+     * @return int|null
+     */
     public function getAccountsId()
     {
         return $this->accountsId;
     }
-
-
-
 }

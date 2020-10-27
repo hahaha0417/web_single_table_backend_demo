@@ -22,7 +22,19 @@ models
 ./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\test123\' ---connection=mysql_read_only
 
 
-注意 : doctrine 3.0似乎orm:generate-entities棄用了(目前2.6)，要改用symfony/maker-bundle，但是目前laravel沒辦法用symfony/maker-bundle的bin/console，這到時候orm:generate-entities再上網查看要怎樣處理
+ ----------------------------- 
+注意
+ ----------------------------- 
+orm:generate-entities 3.0已經棄用，使用下面套件
+https://stackoverflow.com/questions/53104430/the-doctrinegenerateentities-command-has-been-deprecated
+composer require symfony/maker-bundle --dev
+ --------------------------------------------------------- 
+注意 : 經查證 3.0還沒釋出，所以沒辦法確定用法
+沒意外應該是這樣下
+.\vendor\bin\doctrine make:entity --regenerate
+等到確定再來查指令是不是在本身裡面
+.\vendor\bin\doctrine list
+ --------------------------------------------------------- 
 因為orm:convert-mapping只能強制覆蓋，orm:generate-entities基本上預設只會附加(--regenerate-entities=true則entity有異動會還原)，剩下的要自己處理
 這樣下不會產生備份檔，並且不會覆蓋修改過的entity的get & set
 ./vendor/bin/doctrine orm:generate-entities code --no-backup

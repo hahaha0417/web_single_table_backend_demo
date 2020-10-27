@@ -1,0 +1,72 @@
+ ----------------------------- 
+建表
+ ----------------------------- 
+php artisan migrate
+#php artisan migrate:refresh
+php artisan db:seed
+
+
+ ----------------------------- 
+建立 entities
+ ----------------------------- 
+先確保沒有錯誤 
+composer dumpload
+後台 config/doctrine.php，有設定
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\backend\' ---connection=backend
+前台 config/doctrine.php，有設定
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\front\' ---connection=front
+
+
+ ----------------------------- 
+產生 get set
+ ----------------------------- 
+注意 : doctrine 3.0似乎orm:generate-entities棄用了(目前2.6)，要改用symfony/maker-bundle，但是目前laravel沒辦法用symfony/maker-bundle的bin/console，這到時候orm:generate-entities再上網查看要怎樣處理
+因為orm:convert-mapping只能強制覆蓋，orm:generate-entities基本上預設只會附加(--regenerate-entities=true則entity有異動會還原)，剩下的要自己處理
+ ----------------------------- 
+這樣下不會產生備份檔，並且不會覆蓋修改過的entity的get & set
+./vendor/bin/doctrine orm:generate-entities code --no-backup 
+這樣下會產生備份檔，並且會覆蓋修改過的entity的get & set
+./vendor/bin/doctrine orm:generate-entities code --no-backup --regenerate-entities=true 
+
+ ----------------------------- 
+注意
+ ----------------------------- 
+orm:generate-entities 3.0已經棄用，使用下面套件
+https://stackoverflow.com/questions/53104430/the-doctrinegenerateentities-command-has-been-deprecated
+composer require symfony/maker-bundle --dev
+ --------------------------------------------------------- 
+注意 : 經查證 3.0還沒釋出，所以沒辦法確定用法
+沒意外應該是這樣下
+.\vendor\bin\doctrine make:entity --regenerate
+等到確定再來查指令是不是在本身裡面
+.\vendor\bin\doctrine list
+ --------------------------------------------------------- 
+
+ ----------------------------- 
+注意
+ ----------------------------- 
+@Intelephense:analysis -- 這樣會導致不能解析
+所以不要用這個
+
+
+ ----------------------------- 
+建立或更新 repositories
+ ----------------------------- 
+需在entiry 加上
+@ORM\Entity(repositoryClass="repositories\backend\Accounts")
+才會產生repositories
+./vendor/bin/doctrine orm:generate-repositories code
+
+
+ ----------------------------- 
+建立 proxy
+ ----------------------------- 
+php artisan doctrine:generate:proxies
+
+
+ ----------------------------- 
+entities 連續動作
+ ----------------------------- 
+./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\backend\' ---connection=backend
+./vendor/bin/doctrine orm:generate-entities code --no-backup 
+./vendor/bin/doctrine orm:generate-repositories code
