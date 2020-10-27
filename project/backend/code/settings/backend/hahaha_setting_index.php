@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -99,7 +99,7 @@ class hahaha_setting_index
 	{
 		// 因為同一個節點，這是共用設定
 		$Settings = [
-			key::DEFAULT => [
+			key_::DEFAULT => [
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// iFrame有Cross Origin問題請小心，我有將他複製到所有專案下的/public/assets/cross_origin/
 				// 因此所以站都應該讀的到(都要有該資料夾)
@@ -322,34 +322,34 @@ class hahaha_setting_index
 		// --------------------------------------------- 
 		$Menu = [
 			__('backend.index.menu.home') => [
-				key::NAME => 'home',
-				key::TYPE => type::ITEM,
-				key::URL => \p_ha::Self_Url('/'),
-				key::TARGET => target::SELF,
-				key::ICON => "fa-home",
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(90,255,150,0.5)',
-				key::MINI => 'Home',				
+				key_::NAME => 'home',
+				key_::TYPE => type::ITEM,
+				key_::URL => \p_ha::Self_Url('/'),
+				key_::TARGET => target::SELF,
+				key_::ICON => "fa-home",
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key_::MINI => 'Home',				
 			],		
 			__('backend.cover') => [
-				key::NAME => 'cover',
-				key::TYPE => type::ITEM,
-				key::URL => \p_ha::V_Url('cover'),
-				key::TARGET => 'index_content_frame',
-				key::ICON => "fa-desktop",
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(90,255,150,0.5)',
-				key::MINI => 'Note',
+				key_::NAME => 'cover',
+				key_::TYPE => type::ITEM,
+				key_::URL => \p_ha::V_Url('cover'),
+				key_::TARGET => 'index_content_frame',
+				key_::ICON => "fa-desktop",
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key_::MINI => 'Note',
 			],
 			__('backend.index.menu.note') => [
-				key::NAME => 'note',
-				key::TYPE => type::ITEM,
-				key::URL => \p_ha::V_Url('note'),
-				key::TARGET => 'index_content_frame',
-				key::ICON => "fa-sticky-note",
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(90,255,150,0.5)',
-				key::MINI => 'Note',
+				key_::NAME => 'note',
+				key_::TYPE => type::ITEM,
+				key_::URL => \p_ha::V_Url('note'),
+				key_::TARGET => 'index_content_frame',
+				key_::ICON => "fa-sticky-note",
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key_::MINI => 'Note',
 			],
 			__('backend.index.menu.table') => [
 				// 目前，最多四層，如果不夠用串的
@@ -357,18 +357,18 @@ class hahaha_setting_index
 				// Front
 				// -- Accounts
 				// 第一層
-				key::NAME => 'table',
+				key_::NAME => 'table',
 				// ---------------------------------- 
-				key::PAGE => 'table',
+				key_::PAGE => 'table',
 				// ---------------------------------- 
-				key::TYPE => type::MENU,
-				key::URL => null,
-				key::TARGET => target::SELF,
-				key::ICON => 'fa-envelope',
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(255,255,0,0.5)',
-				key::MINI => __('backend.index.menu.table'),
-				key::MENU => [
+				key_::TYPE => type::MENU,
+				key_::URL => null,
+				key_::TARGET => target::SELF,
+				key_::ICON => 'fa-envelope',
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(255,255,0,0.5)',
+				key_::MINI => __('backend.index.menu.table'),
+				key_::MENU => [
 					// 第二層
 					// __('backend.index.menu.front') => [
 					// 	'name' => 'front',
@@ -453,48 +453,48 @@ class hahaha_setting_index
 					// 	],
 					// ],
 					__('backend.index.menu.backend') => [
-						key::NAME => 'backend',
-						key::TYPE => type::MENU,
-						key::URL => '/',
-						key::TARGET => target::SELF,
-						//key::ICON => 'fa-angle-double-down',
-						key::MENU => [
+						key_::NAME => 'backend',
+						key_::TYPE => type::MENU,
+						key_::URL => '/',
+						key_::TARGET => target::SELF,
+						//key_::ICON => 'fa-angle-double-down',
+						key_::MENU => [
 							// 第三層
 							__('backend.index.menu.account') => [
-								key::NAME => 'backend_accouts',
-								key::TYPE => type::MENU,
-								key::URL => null,
-								key::TARGET => 'index_content_frame',
-								key::BACKGROUND => '',								
-								key::MENU => [
+								key_::NAME => 'backend_accouts',
+								key_::TYPE => type::MENU,
+								key_::URL => null,
+								key_::TARGET => 'index_content_frame',
+								key_::BACKGROUND => '',								
+								key_::MENU => [
 									// 第四層
 									__('backend.index.menu.list') => [
-										key::NAME => 'backend_accounts_list',
-										key::TYPE => type::ITEM,
-										key::URL => $backend_tables_['accounts']['url'],
-										key::TARGET => 'index_content_frame',
-										key::BACKGROUND => '',
+										key_::NAME => 'backend_accounts_list',
+										key_::TYPE => type::ITEM,
+										key_::URL => $backend_tables_['accounts']['url'],
+										key_::TARGET => 'index_content_frame',
+										key_::BACKGROUND => '',
 									],
 									__('backend.index.menu.detail') => [
-										key::NAME => 'backend_accounts_detail',
-										key::TYPE => type::ITEM,
-										key::URL => $backend_tables_['accounts_detail']['url'],
-										key::TARGET => 'index_content_frame',
-										key::BACKGROUND => '',
+										key_::NAME => 'backend_accounts_detail',
+										key_::TYPE => type::ITEM,
+										key_::URL => $backend_tables_['accounts_detail']['url'],
+										key_::TARGET => 'index_content_frame',
+										key_::BACKGROUND => '',
 									],
 									__('backend.index.menu.login_record') => [
-										key::NAME => 'backend_accounts_login_record',
-										key::TYPE => type::ITEM,
-										key::URL => $backend_tables_['accounts_login_records']['url'],
-										key::TARGET => 'index_content_frame',
-										key::BACKGROUND => '',
+										key_::NAME => 'backend_accounts_login_record',
+										key_::TYPE => type::ITEM,
+										key_::URL => $backend_tables_['accounts_login_records']['url'],
+										key_::TARGET => 'index_content_frame',
+										key_::BACKGROUND => '',
 									],
 									'| --  ' . __('backend.index.menu.relation') => [
-										key::NAME => 'backend_accoutns_account_relation',
-										key::TYPE => type::ITEM,
-										key::URL => $backend_tables_['accounts_relations']['url'],
-										key::TARGET => 'index_content_frame',
-										key::BACKGROUND => '',
+										key_::NAME => 'backend_accoutns_account_relation',
+										key_::TYPE => type::ITEM,
+										key_::URL => $backend_tables_['accounts_relations']['url'],
+										key_::TARGET => 'index_content_frame',
+										key_::BACKGROUND => '',
 									],
 								],
 							],
@@ -503,15 +503,15 @@ class hahaha_setting_index
 				],
 			],
 			__('backend.default_page') => [
-				key::NAME => 'default_page',
-				key::TYPE => type::ITEM,
+				key_::NAME => 'default_page',
+				key_::TYPE => type::ITEM,
 				// 請注意settings初始化順序
-				key::URL => $this->Settings['default']['page'],
-				key::TARGET => target::SELF,
-				key::ICON => "fa-desktop",
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(90,255,150,0.5)',
-				key::MINI => 'Note',
+				key_::URL => $this->Settings['default']['page'],
+				key_::TARGET => target::SELF,
+				key_::ICON => "fa-desktop",
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key_::MINI => 'Note',
 			],
 			__('backend.tool') => [
 				// 目前，最多四層，如果不夠用串的
@@ -519,25 +519,25 @@ class hahaha_setting_index
 				// Front
 				// -- Accounts
 				// 第一層
-				key::NAME => 'tool',
+				key_::NAME => 'tool',
 				// ---------------------------------- 
-				key::PAGE => 'class',
+				key_::PAGE => 'class',
 				// ---------------------------------- 
-				key::TYPE => type::MENU,
-				key::URL => null,
-				key::TARGET => target::SELF,
-				key::ICON => 'fa-envelope',
-				key::ACTIVE => 'false',
-				key::BACKGROUND => 'rgba(255,255,0,0.5)',
-				key::MINI => __('backend.index.menu.table'),
-				key::MENU => [		
+				key_::TYPE => type::MENU,
+				key_::URL => null,
+				key_::TARGET => target::SELF,
+				key_::ICON => 'fa-envelope',
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(255,255,0,0.5)',
+				key_::MINI => __('backend.index.menu.table'),
+				key_::MENU => [		
 					__('backend.table_field') => [
 						// 'name' => 'table_field',
-						key::NAME => 'table_field',
-						key::TYPE => type::ITEM,
-						key::URL => "/backend/tool/table_field",
-						key::TARGET => 'index_content_frame',
-						key::BACKGROUND => '',
+						key_::NAME => 'table_field',
+						key_::TYPE => type::ITEM,
+						key_::URL => "/backend/tool/table_field",
+						key_::TARGET => 'index_content_frame',
+						key_::BACKGROUND => '',
 					],			
 					// __('backend.index.menu.backend') => [
 					// 	'name' => 'backend',

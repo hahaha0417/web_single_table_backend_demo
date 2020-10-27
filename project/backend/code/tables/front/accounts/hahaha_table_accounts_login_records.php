@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -120,12 +120,12 @@ class hahaha_table_accounts_login_records
 	因為未來要移植php hahaha framework，所以不放在config
 	
 	"id" => [
-		key::TYPE => type::TEXT,
-		key::VALIDATE => validate::EMAIL,
-		key::ACTIONS => [
+		key_::TYPE => type::TEXT,
+		key_::VALIDATE => validate::EMAIL,
+		key_::ACTIONS => [
 			action::AUTO_UPDATE => false,
 		],				
-		key::TAGS => [
+		key_::TAGS => [
 			tag::VISLBLED => true,
 			tag::ENABLED => true,
 			tag::DISPLAY_NONE => false,
@@ -137,38 +137,38 @@ class hahaha_table_accounts_login_records
 		// 因為同一個節點，這是共用設定
 		$Fields = [
 			self::ID => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::ACCOUNTS_ID => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::IP => [
-				key::TYPE => type::TEXT,
+				key_::TYPE => type::TEXT,
 			],
 			self::LOGIN_TIME => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::DESCRIPTION => [
-				key::TYPE => type::TEXTAREA,			
+				key_::TYPE => type::TEXTAREA,			
 			],
 			self::CREATED_AT => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::UPDATED_AT => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
@@ -188,38 +188,38 @@ class hahaha_table_accounts_login_records
                 // 主要列表
                 "main" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::ACCOUNTS_ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::IP => [
-						key::TYPE => type::TEXT,
+						key_::TYPE => type::TEXT,
 					],
 					self::LOGIN_TIME => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::DESCRIPTION => [
-						key::TYPE => type::TEXTAREA,			
+						key_::TYPE => type::TEXTAREA,			
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -228,38 +228,38 @@ class hahaha_table_accounts_login_records
                 // detail panel
                 "detail" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::ACCOUNTS_ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::IP => [
-						key::TYPE => type::TEXT,
+						key_::TYPE => type::TEXT,
 					],
 					self::LOGIN_TIME => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::DESCRIPTION => [
-						key::TYPE => type::TEXTAREA,			
+						key_::TYPE => type::TEXTAREA,			
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -267,38 +267,38 @@ class hahaha_table_accounts_login_records
                 // new panel
                 "new" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::ACCOUNTS_ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::IP => [
-						key::TYPE => type::TEXT,
+						key_::TYPE => type::TEXT,
 					],
 					self::LOGIN_TIME => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::DESCRIPTION => [
-						key::TYPE => type::TEXTAREA,			
+						key_::TYPE => type::TEXTAREA,			
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -318,38 +318,38 @@ class hahaha_table_accounts_login_records
 		$Preview = [
 			"hahaha" => [
 				self::ID => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::ACCOUNTS_ID => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::IP => [
-					key::TYPE => type::TEXT,
+					key_::TYPE => type::TEXT,
 				],
 				self::LOGIN_TIME => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::DESCRIPTION => [
-					key::TYPE => type::TEXTAREA,			
+					key_::TYPE => type::TEXTAREA,			
 				],
 				self::CREATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::UPDATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
@@ -367,38 +367,38 @@ class hahaha_table_accounts_login_records
 		$Edit = [
 			"hahaha" => [
 				self::ID => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::ACCOUNTS_ID => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::IP => [
-					key::TYPE => type::TEXT,
+					key_::TYPE => type::TEXT,
 				],
 				self::LOGIN_TIME => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::DESCRIPTION => [
-					key::TYPE => type::TEXTAREA,			
+					key_::TYPE => type::TEXTAREA,			
 				],
 				self::CREATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::UPDATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],

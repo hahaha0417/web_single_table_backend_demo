@@ -44,7 +44,7 @@ use hahaha\define\hahaha_define_table_use as table_use;
 // 特挑
 // ----------------------------------------------------------- 
 use hahaha\define\hahaha_define_base_direction as direction;
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_node as node;
 use hahaha\define\hahaha_define_base_validate as validate;
 // 
@@ -115,36 +115,36 @@ trait hahaha_table_trait
 	{
 		$class_list_ = [
 			// main or input
-			key::CLASSES,
+			key_::CLASSES,
 			// no decide
-			key::CLASSES_1,
-			key::CLASSES_2,
-			key::CLASSES_3,
-			key::CLASSES_4,
-			key::CLASSES_5,
+			key_::CLASSES_1,
+			key_::CLASSES_2,
+			key_::CLASSES_3,
+			key_::CLASSES_4,
+			key_::CLASSES_5,
 			// decide
-			key::CLASSES_LABEL,
-			key::CLASSES_OPTION,
-			key::CLASSES_BUTTON,
-			key::CLASSES_ICON,
-			key::CLASSES_LINK,
+			key_::CLASSES_LABEL,
+			key_::CLASSES_OPTION,
+			key_::CLASSES_BUTTON,
+			key_::CLASSES_ICON,
+			key_::CLASSES_LINK,
 		];
 
 		$style_list_ = [
 			// main or input
-			key::STYLES,
+			key_::STYLES,
 			// no decide
-			key::STYLES_1,
-			key::STYLES_2,
-			key::STYLES_3,
-			key::STYLES_4,
-			key::STYLES_5,
+			key_::STYLES_1,
+			key_::STYLES_2,
+			key_::STYLES_3,
+			key_::STYLES_4,
+			key_::STYLES_5,
 			// decide
-			key::STYLES_LABEL,
-			key::STYLES_OPTION,
-			key::STYLES_BUTTON,
-			key::STYLES_ICON,
-			key::STYLES_LINK,
+			key_::STYLES_LABEL,
+			key_::STYLES_OPTION,
+			key_::STYLES_BUTTON,
+			key_::STYLES_ICON,
+			key_::STYLES_LINK,
 		];
 
 		
@@ -156,8 +156,8 @@ trait hahaha_table_trait
 			$items_target_ = &$page[$key];
 			foreach($items as $key_item => &$item)
 			{
-				$fields_target_ = &$items_target_[$key_item][key::ITEMS];
-				$fields_ = &$item[key::ITEMS];
+				$fields_target_ = &$items_target_[$key_item][key_::ITEMS];
+				$fields_ = &$item[key_::ITEMS];
 
 				foreach($fields_ as $key_field => &$field)
 				{				
@@ -481,7 +481,7 @@ trait hahaha_table_trait
 	}
 
 	/*
-	// 將&page所有分類項目的_items(key::FIELD => [key::IS_FIELD => true])，整理至$fields
+	// 將&page所有分類項目的_items(key_::FIELD => [key_::IS_FIELD => true])，整理至$fields
 	*/
 	public function Initial_Fields(&$page, &$fields)
 	{
@@ -490,17 +490,17 @@ trait hahaha_table_trait
 		
 		foreach($db_fields_addition_ as $key_field => &$field)
 		{
-			if(!empty($field[key::DB_FIELD]))
+			if(!empty($field[key_::DB_FIELD]))
 			{						
-				$db_field_ = &$field[key::DB_FIELD];
+				$db_field_ = &$field[key_::DB_FIELD];
 
-				if(!empty($db_field_[key::IS_FIELD]) && $db_field_[key::IS_FIELD])
+				if(!empty($db_field_[key_::IS_FIELD]) && $db_field_[key_::IS_FIELD])
 				{
 					// 是DB欄位
-					if(!empty($db_field_[key::NAME]))
+					if(!empty($db_field_[key_::NAME]))
 					{
 						// 用欄位
-						$fields[$key_field] = $db_field_[key::NAME];
+						$fields[$key_field] = $db_field_[key_::NAME];
 					}
 					else
 					{
@@ -526,19 +526,19 @@ trait hahaha_table_trait
 				$items_ = &$item['_items'];
 				foreach($items_ as $key_field => &$field)
 				{
-					if(!empty($field[key::DB_FIELD]))
+					if(!empty($field[key_::DB_FIELD]))
 					{						
-						$db_field_ = &$field[key::DB_FIELD];
+						$db_field_ = &$field[key_::DB_FIELD];
 
-						if(!empty($db_field_[key::IS_FIELD]) && $db_field_[key::IS_FIELD])
+						if(!empty($db_field_[key_::IS_FIELD]) && $db_field_[key_::IS_FIELD])
 						{
 							// 是DB欄位
 							if(empty($fields[$key_field]))
 							{
-								if(!empty($db_field_[key::NAME]))
+								if(!empty($db_field_[key_::NAME]))
 								{
 									// 用欄位
-									$fields[$key_field] = $db_field_[key::NAME];
+									$fields[$key_field] = $db_field_[key_::NAME];
 								}
 								else
 								{

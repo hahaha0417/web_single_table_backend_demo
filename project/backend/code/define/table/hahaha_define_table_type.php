@@ -146,14 +146,14 @@ class hahaha_define_table_type
     // -------------------------------------- 
     // panel
     // --------------------------------------
-    // key::USE => use_::B_BLOCK,
-    // key::CONTENT => [self::B_PANEL_ADD],
-    // key::USE => use_::SETTING,
-    // key::CONTENT => [\XXX\hahaha_table_setting_panel_detail::class, 'hahaha'],
+    // key_::USE => use_::B_BLOCK,
+    // key_::CONTENT => [self::B_PANEL_ADD],
+    // key_::USE => use_::SETTING,
+    // key_::CONTENT => [\XXX\hahaha_table_setting_panel_detail::class, 'hahaha'],
     // mix 沒事不要用，會亂，請先說清楚要幹嘛
     // 確認製程上沒問題才放行
-    // key::USE => use::MIX;
-    // key::CONTENT => [
+    // key_::USE => use::MIX;
+    // key_::CONTENT => [
     // 	[
     // 		use::B_BLOCK => self::B_PANEL_ADD
     // 	],
@@ -175,7 +175,7 @@ class hahaha_define_table_type
     // -------------------------------------- 
     const BUTTON = "button";
     // addition key : 
-    // key::ICON    
+    // key_::ICON    
     const BUTTON_ICON = "button_icon";
     const BUTTON_ICON_LINK = "button_icon_link";
     const BUTTON_ICON_TEXT = "button_icon_text";

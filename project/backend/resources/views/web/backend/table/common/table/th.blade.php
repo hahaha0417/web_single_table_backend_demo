@@ -47,7 +47,7 @@
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -70,20 +70,20 @@ use Spatie\Url\Url;
 ?>
 
 @foreach($fields as $key_item => $item) 
-    <th @if(!empty($item[key::STYLES])) style="{{$item[key::STYLES]}}" @endif>
-        @if($item[key::TYPE] == type::LABEL)           
-            {{$item[key::TITLE]}}
-        @elseif($item[key::TYPE] == type::CHECKBOX_SELECTED)
-            <input id="{{$item[key::ID]}}"
-                @if(!empty($field[key::CLASSES])) 
-                    class="{{$field[key::CLASSES]}} form-control" 
+    <th @if(!empty($item[key_::STYLES])) style="{{$item[key_::STYLES]}}" @endif>
+        @if($item[key_::TYPE] == type::LABEL)           
+            {{$item[key_::TITLE]}}
+        @elseif($item[key_::TYPE] == type::CHECKBOX_SELECTED)
+            <input id="{{$item[key_::ID]}}"
+                @if(!empty($field[key_::CLASSES])) 
+                    class="{{$field[key_::CLASSES]}} form-control" 
                 @else 
                     class="form-control" 
                 @endif 
                 type="checkbox" name="checkbox" data-labelauty=" "
             >
         @else 
-            {{$item[key::TITLE]}}
+            {{$item[key_::TITLE]}}
         @endif   
     </th> 
 @endforeach   

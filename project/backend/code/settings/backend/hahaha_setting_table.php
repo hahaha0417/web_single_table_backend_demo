@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -113,11 +113,11 @@ class hahaha_setting_table
 		$Settings = [
 			"default" => [
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
-				key::ROUTE => "hahaha",
-				key::MODEL => "hahaha",
-				key::VIEW => "hahaha",
-				key::CONTROLLER => "hahaha",
-				key::TABLE => "hahaha",
+				key_::ROUTE => "hahaha",
+				key_::MODEL => "hahaha",
+				key_::VIEW => "hahaha",
+				key_::CONTROLLER => "hahaha",
+				key_::TABLE => "hahaha",
 			],
 		];
 	}
@@ -130,10 +130,10 @@ class hahaha_setting_table
 		// 因為同一個節點，所以所有資料表共用一個router
 		$Routes = [
 			"hahaha" => [
-				key::GROUP => [
-				key::MIDDLEWARE => ["web", "backend.login"],
-					key::PREFIX => "backend/table",
-					key::NAMESPACE => "Backend\Table",
+				key_::GROUP => [
+				key_::MIDDLEWARE => ["web", "backend.login"],
+					key_::PREFIX => "backend/table",
+					key_::NAMESPACE => "Backend\Table",
 				],
 			],
 		];
@@ -182,29 +182,29 @@ class hahaha_setting_table
 			"hahaha" => [
 				// 基本
 				"index" => [
-					key::METHOD => "get",
-					key::NODE => "/",
-					key::CONTROLLER => "IndexController",
-					key::ACTION => "index",
-					key::MODULES => [
+					key_::METHOD => "get",
+					key_::NODE => "/",
+					key_::CONTROLLER => "IndexController",
+					key_::ACTION => "index",
+					key_::MODULES => [
 						"test" => "\\hahaha\\hahaha_module_table_index_test",
 					],
 				],
 				"edit" => [
-					key::METHOD => "get",
-					key::NODE => "/edit/{id}",
-					key::CONTROLLER => "IndexController",
-					key::ACTION => "edit",
-					key::MODULES => [
+					key_::METHOD => "get",
+					key_::NODE => "/edit/{id}",
+					key_::CONTROLLER => "IndexController",
+					key_::ACTION => "edit",
+					key_::MODULES => [
 						"test" => "\\hahaha\\hahaha_module_table_edit_test",
 					],
 				],
 				// 細節				
 				"deal" => [
-					key::METHOD => "post",
-					key::NODE => "/deal",
-					key::CONTROLLER => "IndexController",
-					key::ACTION => "deal",
+					key_::METHOD => "post",
+					key_::NODE => "/deal",
+					key_::CONTROLLER => "IndexController",
+					key_::ACTION => "deal",
 				],
 				
 			],
@@ -255,72 +255,72 @@ class hahaha_setting_table
 			// --------------------------------------------------- 
 			"hahaha" => [
 				"accounts" => [					
-					key::NODE => "accounts/list",
-					key::TITLE => "會員 / 列表",
-					key::DESCRIPTION => "紀錄著會員資訊",
-					key::NAMESPACE => "",
-					key::URL => \p_ha::V_Url("table/backend/accounts/list"),
-					key::PATH => "/",			// 是專案root
+					key_::NODE => "accounts/list",
+					key_::TITLE => "會員 / 列表",
+					key_::DESCRIPTION => "紀錄著會員資訊",
+					key_::NAMESPACE => "",
+					key_::URL => \p_ha::V_Url("table/backend/accounts/list"),
+					key_::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					key::ENTITY => '\entities\backend\Accounts',
-					key::TABLE => '\hahaha\backend\hahaha_table_accounts',
+					key_::ENTITY => '\entities\backend\Accounts',
+					key_::TABLE => '\hahaha\backend\hahaha_table_accounts',
 					// --------------------------------------------- 
-					key::CONNECTION => 'backend',
-					key::STAGE => 'Backend',
-					key::ALIAS => "a",
+					key_::CONNECTION => 'backend',
+					key_::STAGE => 'Backend',
+					key_::ALIAS => "a",
 				],
 				"accounts_detail" => [
-					key::NODE => "accounts/detail",
-					key::TITLE => "會員 / 細節",
-					key::DESCRIPTION => "紀錄著會員詳細資訊",
-					key::NAMESPACE => "",
-					key::URL => \p_ha::V_Url("table/backend/accounts/detail"),
-					key::PATH => "/",			// 是專案root
+					key_::NODE => "accounts/detail",
+					key_::TITLE => "會員 / 細節",
+					key_::DESCRIPTION => "紀錄著會員詳細資訊",
+					key_::NAMESPACE => "",
+					key_::URL => \p_ha::V_Url("table/backend/accounts/detail"),
+					key_::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					key::ENTITY => '\entities\backend\AccountsDetail',
-					key::TABLE => '\hahaha\backend\hahaha_table_accounts_detail',
+					key_::ENTITY => '\entities\backend\AccountsDetail',
+					key_::TABLE => '\hahaha\backend\hahaha_table_accounts_detail',
 					// --------------------------------------------- 
-					key::CONNECTION => 'backend',
-					key::STAGE => 'Backend',
-					key::ALIAS => "ad",
+					key_::CONNECTION => 'backend',
+					key_::STAGE => 'Backend',
+					key_::ALIAS => "ad",
 				],
 				"accounts_login_records" => [
-					key::NODE => "accounts/login_records",
-					key::TITLE => "會員 / 登入紀錄",
-					key::DESCRIPTION => "紀錄著會員登入紀錄",
-					key::NAMESPACE => "",
-					key::URL => \p_ha::V_Url("table/backend/accounts/login_records"),
-					key::PATH => "/",			// 是專案root
+					key_::NODE => "accounts/login_records",
+					key_::TITLE => "會員 / 登入紀錄",
+					key_::DESCRIPTION => "紀錄著會員登入紀錄",
+					key_::NAMESPACE => "",
+					key_::URL => \p_ha::V_Url("table/backend/accounts/login_records"),
+					key_::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					key::ENTITY => '\entities\backend\AccountsLoginRecords',
-					key::TABLE => '\hahaha\backend\hahaha_table_accounts_login_records',
+					key_::ENTITY => '\entities\backend\AccountsLoginRecords',
+					key_::TABLE => '\hahaha\backend\hahaha_table_accounts_login_records',
 					// --------------------------------------------- 
-					key::CONNECTION => 'backend',
-					key::STAGE => 'Backend',
-					key::ALIAS => "alr",
+					key_::CONNECTION => 'backend',
+					key_::STAGE => 'Backend',
+					key_::ALIAS => "alr",
 				],
 				"accounts_relations" => [
-					key::NODE => "accounts/relations",					
-					key::TITLE => "會員 / 關係",
-					key::DESCRIPTION => "紀錄著會員關係",
-					key::NAMESPACE => "",				
-					key::URL => \p_ha::V_Url("table/backend/accounts/relations"),
-					key::PATH => "/",			// 是專案root
+					key_::NODE => "accounts/relations",					
+					key_::TITLE => "會員 / 關係",
+					key_::DESCRIPTION => "紀錄著會員關係",
+					key_::NAMESPACE => "",				
+					key_::URL => \p_ha::V_Url("table/backend/accounts/relations"),
+					key_::PATH => "/",			// 是專案root
 					// --------------------------------------------- 
 					// 主要模塊
 					// --------------------------------------------- 
-					key::ENTITY => '\entities\backend\AccountsRelations',
-					key::TABLE => '\hahaha\backend\hahaha_table_accounts_relations',
+					key_::ENTITY => '\entities\backend\AccountsRelations',
+					key_::TABLE => '\hahaha\backend\hahaha_table_accounts_relations',
 					// --------------------------------------------- 
-					key::CONNECTION => 'backend',
-					key::STAGE => 'Backend',
-					key::ALIAS => "ar",
+					key_::CONNECTION => 'backend',
+					key_::STAGE => 'Backend',
+					key_::ALIAS => "ar",
 				],
 			],
 		];

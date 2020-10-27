@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -127,12 +127,12 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		$settings_options = [
 			self::GENDER => [
 				'male' => [
-					key::VALUE => '1',					
-					key::TITLE => __('backend.male'),
+					key_::VALUE => '1',					
+					key_::TITLE => __('backend.male'),
 				],	
 				'female' => [
-					key::VALUE => '0',
-					key::TITLE => __('backend.female'),
+					key_::VALUE => '0',
+					key_::TITLE => __('backend.female'),
 				],
 							
 			],
@@ -147,12 +147,12 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 	因為未來要移植php hahaha framework，所以不放在config
 	
 	"id" => [
-		key::TYPE => type::TEXT,
-		key::VALIDATE => validate::EMAIL,
-		key::ACTIONS => [
+		key_::TYPE => type::TEXT,
+		key_::VALIDATE => validate::EMAIL,
+		key_::ACTIONS => [
 			action::AUTO_UPDATE => false,
 		],				
-		key::CLASSES => [
+		key_::CLASSES => [
 			class_::VISLBLED => true,
 			class_::ENABLED => true,
 			class_::DISPLAY_NONE => false,
@@ -170,7 +170,7 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// $key = self::ID;
 		// $item = []; 
 		// $setting = [
-		// 	key::TYPE => type::TEXT,
+		// 	key_::TYPE => type::TEXT,
 		// ];
 		// $this->xxx($key, $item, $setting);
 		// $settings_fields[$key] = &$item;
@@ -179,294 +179,294 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// 因為同一個節點，這是共用設定
 		$settings_fields = [
 			self::ID => [
-				key::ID => self::IDENTIFY . "_" . self::ID,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::NAME => self::ID,
+				key_::ID => self::IDENTIFY . "_" . self::ID,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::NAME => self::ID,
 				],
-				key::TITLE => __('backend.id'),
-				key::TYPE => type::TEXT,
-				key::CLASSES => [
+				key_::TITLE => __('backend.id'),
+				key_::TYPE => type::TEXT,
+				key_::CLASSES => [
 					class_::DISABLED => true,
 				],
-				key::PLACEHOLDER => __('backend.help') . " : " . "integer",
+				key_::PLACEHOLDER => __('backend.help') . " : " . "integer",
 			],
 			self::ACCOUNT => [					// 帳號不可以改
-				key::ID => self::IDENTIFY . "_" . self::ACCOUNT,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::ACCOUNT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 				],
-				key::TITLE => __('backend.account'),
-				key::TYPE => type::TEXT,
-				key::CLASSES => [
+				key_::TITLE => __('backend.account'),
+				key_::TYPE => type::TEXT,
+				key_::CLASSES => [
 					class_::DISABLED => true,
 				],
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD => [
-				key::ID => self::IDENTIFY . "_" . self::PASSWORD,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::PASSWORD,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 				],
-				key::TITLE => __('backend.password'),
-				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
+				key_::TITLE => __('backend.password'),
+				key_::TYPE => type::PASSWORD,
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_CONFIRM => [
-				key::ID => self::IDENTIFY . "_" . self::PASSWORD_CONFIRM,
-				key::TITLE => __('backend.password_confirm'),
-				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
+				key_::ID => self::IDENTIFY . "_" . self::PASSWORD_CONFIRM,
+				key_::TITLE => __('backend.password_confirm'),
+				key_::TYPE => type::PASSWORD,
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW => [
-				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW,
-				key::TITLE => __('backend.password_new'),
-				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
+				key_::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW,
+				key_::TITLE => __('backend.password_new'),
+				key_::TYPE => type::PASSWORD,
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::PASSWORD_NEW_CONFIRM => [
-				key::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW_CONFIRM,
-				key::TITLE => __('backend.password_confirm_new'),
-				key::TYPE => type::PASSWORD,
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
+				key_::ID => self::IDENTIFY . "_" . self::PASSWORD_NEW_CONFIRM,
+				key_::TITLE => __('backend.password_confirm_new'),
+				key_::TYPE => type::PASSWORD,
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha",
 			],
 			self::EMAIL => [
-				key::ID => self::IDENTIFY . "_" . self::EMAIL,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::EMAIL,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 				],
-				key::TITLE => __('backend.email'),
-				key::TYPE => type::TEXT,
-				key::VALIDATE => validate::EMAIL,
-				key::PLACEHOLDER => __('backend.help') . " : " . "hahaha0417@hotmail.com",				
+				key_::TITLE => __('backend.email'),
+				key_::TYPE => type::TEXT,
+				key_::VALIDATE => validate::EMAIL,
+				key_::PLACEHOLDER => __('backend.help') . " : " . "hahaha0417@hotmail.com",				
 			],
 			self::GENDER => [
-				key::ID => self::IDENTIFY . "_" . self::GENDER,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::GENDER,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 				],
-				key::TITLE => __('backend.gender'),
-				key::TYPE => type::RADIOBOX,
+				key_::TITLE => __('backend.gender'),
+				key_::TYPE => type::RADIOBOX,
 			],
 			self::STATUS => [
-				key::ID => self::IDENTIFY . "_" . self::STATUS,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::STATUS,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 				],
-				key::TITLE => __('backend.status'),
-				key::TYPE => type::TEXT,
-				key::ACTIONS => [
+				key_::TITLE => __('backend.status'),
+				key_::TYPE => type::TEXT,
+				key_::ACTIONS => [
 					action::AUTO_UPDATE => true,
 				],	
-				key::PLACEHOLDER => __('backend.help') . " : " . "-1 停權 0 未驗證 1 驗證",	
+				key_::PLACEHOLDER => __('backend.help') . " : " . "-1 停權 0 未驗證 1 驗證",	
 			],
 			self::CREATED_AT => [
-				key::ID => self::IDENTIFY . "_" . self::CREATED_AT,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					key::NAME => 'createdAt',
+				key_::ID => self::IDENTIFY . "_" . self::CREATED_AT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					key_::NAME => 'createdAt',
 				],
-				key::TITLE => __('backend.created_at'),
-				key::TYPE => type::TEXT,
-				key::CLASSES => [
+				key_::TITLE => __('backend.created_at'),
+				key_::TYPE => type::TEXT,
+				key_::CLASSES => [
 					class_::DISABLED => true,
 				],
 			],
 			self::UPDATED_AT => [
-				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					key::NAME => 'updatedAt',
+				key_::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					key_::NAME => 'updatedAt',
 				],
-				key::TITLE => __('backend.updated_at'),
-				key::TYPE => type::TEXT,
-				key::CLASSES => [
+				key_::TITLE => __('backend.updated_at'),
+				key_::TYPE => type::TEXT,
+				key_::CLASSES => [
 					class_::DISABLED => true,
 				],
 			],
 			//
 			self::CHECKBOX_SELECTED => [
-				key::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
-				key::TITLE => __('backend.selected'),
-				key::TYPE => type::CHECKBOX_SELECTED,
+				key_::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
+				key_::TITLE => __('backend.selected'),
+				key_::TYPE => type::CHECKBOX_SELECTED,
 			],
 			// ------------------------- 
 			self::BUTTON_PREPEND_DETAIL => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
-				// key::TITLE => __('backend.detail'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
+				// key_::TITLE => __('backend.detail'),
+				key_::TYPE => type::BUTTON_ICON,
 			],
 			self::PANEL_DETAIL => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
-				key::TITLE => __('backend.detail'),
-				key::TYPE => type::PANEL,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
+				key_::TITLE => __('backend.detail'),
+				key_::TYPE => type::PANEL,
 			],
 			// ------------------------- 
 			self::BUTTON_DELETE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
 				// 不顯示字
-				//key::TITLE => __('backend.delete'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES_1 => [
+				//key_::TITLE => __('backend.delete'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::BUTTON_EDIT => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
 				// 不顯示字
-				// key::TITLE => __('backend.edit'),
-				key::TYPE => type::BUTTON_ICON_LINK,
-				key::INDEX => self::ID,
-				key::CLASSES_1 => [
+				// key_::TITLE => __('backend.edit'),
+				key_::TYPE => type::BUTTON_ICON_LINK,
+				key_::INDEX => self::ID,
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-edit" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			//
 			self::BUTTON_ADD => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
-				key::TITLE => __('backend.add'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
+				key_::TITLE => __('backend.add'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ADD => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::BUTTON_SELECTED_DELETE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
-				key::TITLE => __('backend.selected_delete'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
+				key_::TITLE => __('backend.selected_delete'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::BUTTON_ALL_SAVE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
-				key::TITLE => __('backend.all_save'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
+				key_::TITLE => __('backend.all_save'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-save" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::BUTTON_ALL_REFRESH => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
-				key::TITLE => __('backend.all_refresh'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
+				key_::TITLE => __('backend.all_refresh'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-refresh" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			//
 			self::PANEL_ADD_BUTTON_ADD => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
-				key::TITLE => __('backend.add'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+				key_::TITLE => __('backend.add'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::PANEL_ADD_BUTTON_CANCEL => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
-				key::TITLE => __('backend.cancel'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+				key_::TITLE => __('backend.cancel'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-times" => true,
 				],
 				// class
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
-				key::TITLE => __('backend.change_password'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
+				key_::TITLE => __('backend.change_password'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => true,
 				],
-				key::CLASSES_1 => [
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"far fa-arrow-alt-circle-right" => true,
 				],
 				// class
-				key::STYLES => [
+				key_::STYLES => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
@@ -498,10 +498,10 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// $key = self::ID;
 		// $item = []; 
 		// $setting = [
-		// 	key::DB_FIELD => [
-		// 		key::IS_FIELD => true,
-		// 		// key::TYPE => db_field_type::STRING,
-		// 		// key::NAME => self::ID,
+		// 	key_::DB_FIELD => [
+		// 		key_::IS_FIELD => true,
+		// 		// key_::TYPE => db_field_type::STRING,
+		// 		// key_::NAME => self::ID,
 		// 	],		
 		// ];
 		// $this->xxx($key, $item, $setting);
@@ -511,26 +511,26 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// 因為同一個節點，這是共用設定
 		$settings_db_fields_addition = [
 			self::ID => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::STRING,
-					// key::NAME => self::ID,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::STRING,
+					// key_::NAME => self::ID,
 				],				
 			],	
 			self::CREATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::DATETIME,
 					// 指定
-					key::NAME => 'createdAt', 
+					key_::NAME => 'createdAt', 
 				],				
 			],		
 			self::UPDATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::DATETIME,
 					// 指定
-					key::NAME => 'updatedAt',
+					key_::NAME => 'updatedAt',
 				],				
 			],				
         ];
@@ -562,15 +562,15 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// bootstrap樣式應該要這樣做
 		//
 		// self::BUTTON_PREPEND_DETAIL => [
-		// 	// key::TITLE => __('backend.detail'),
-		// 	key::TYPE => type::BUTTON_ICON,
-		// 	key::CLASSES_1 => [
+		// 	// key_::TITLE => __('backend.detail'),
+		// 	key_::TYPE => type::BUTTON_ICON,
+		// 	key_::CLASSES_1 => [
 		// 		"btn-secondary input-group-text" => true,
 		// 	],
-		// 	key::CLASSES_2 => [
+		// 	key_::CLASSES_2 => [
 		// 		"fab fa-elementor" => true,
 		// 	],
-		// 	key::STYLES => [
+		// 	key_::STYLES => [
 		// 		// 這設定label的style沒有錯
 		// 		"font-size" => "1.5em", 
 		// 		"color" => "Tomato",
@@ -580,11 +580,11 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 		// 直接做成專屬樣式，不要搞花招
 		//
 		// self::BUTTON_PREPEND_DETAIL => [
-		// 	// key::TITLE => __('backend.detail'),
-		// 	key::TYPE => type::BUTTON_ICON_BOOTSTRAP,
-		// 	key::ICON => "input-group-text",
-		// 	key::BUTTON => BUTTON::SECONDARY,
-		// 	// key::STYLES => [
+		// 	// key_::TITLE => __('backend.detail'),
+		// 	key_::TYPE => type::BUTTON_ICON_BOOTSTRAP,
+		// 	key_::ICON => "input-group-text",
+		// 	key_::BUTTON => BUTTON::SECONDARY,
+		// 	// key_::STYLES => [
 		// 	// 	// 這設定label的style沒有錯
 		// 	// 	"font-size" => "1.5em", 
 		// 	// 	"color" => "Tomato",
@@ -619,28 +619,28 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
                 self::B_TOP => [
 					// 目前只放button，外層只是分隔線...
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_NORMAL,
-						key::GROUP => group::SHORT_WRAP,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_NORMAL,
+						key_::GROUP => group::SHORT_WRAP,
+						key_::ITEMS => [
 							self::BUTTON_ADD => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ADD,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ADD,
 							],
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_SELECTED_DELETE,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_SELECTED_DELETE,
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_SAVE,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_SAVE,
 							],
 							self::BUTTON_ALL_REFRESH => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_REFRESH,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_REFRESH,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],				
 				],	
@@ -652,29 +652,29 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 				// --------------------------------------------------- 
                 // "top_2d" => [
 				// 	[
-				// 		key::TITLE => __('backend.item'),
-				// 		key::TYPE => type::B_BLOCK_SEPERATOR,
-				// 		key::GROUP => group::SHORT_WRAP,
-				// 		key::LINES => [
+				// 		key_::TITLE => __('backend.item'),
+				// 		key_::TYPE => type::B_BLOCK_SEPERATOR,
+				// 		key_::GROUP => group::SHORT_WRAP,
+				// 		key_::LINES => [
 				// 			[
-				// 				key::TITLE => __('backend.item'),
-				// 				key::TYPE => type::B_BLOCK_SEPERATOR,
-				// 				key::GROUP => group::SHORT_WRAP,
-				// 				key::ITEMS => [
+				// 				key_::TITLE => __('backend.item'),
+				// 				key_::TYPE => type::B_BLOCK_SEPERATOR,
+				// 				key_::GROUP => group::SHORT_WRAP,
+				// 				key_::ITEMS => [
 				// 					self::BUTTON_ADD => [
 				// 						// 因為ID重複，所以加上Top
-				// 						key::ID => "index_item_top_" . self::BUTTON_ADD,
+				// 						key_::ID => "index_item_top_" . self::BUTTON_ADD,
 				// 					],
 				// 					self::BUTTON_SELECTED_DELETE => [
 				// 						// 因為ID重複，所以加上Top
-				// 						key::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
+				// 						key_::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
 				// 					],
 				// 				],
-				// 				key::STYLES => [
+				// 				key_::STYLES => [
 				// 				],
 				// 			],
 				// 		],
-				// 		key::STYLES => [
+				// 		key_::STYLES => [
 				// 		],
 				// 	],
 				// ],
@@ -686,137 +686,137 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[				
-						key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
-						key::TITLE => __('backend.selected'),
-						key::TYPE => type::CHECKBOX_SELECTED,
-						key::ITEMS => [
+						key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
+						key_::TITLE => __('backend.selected'),
+						key_::TYPE => type::CHECKBOX_SELECTED,
+						key_::ITEMS => [
 							self::CHECKBOX_SELECTED => [
 								
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "45px",
 						],
 					],
 					[
-						key::TITLE => __('backend.account'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::INPUT_GROUP,
-						key::ITEMS => [
+						key_::TITLE => __('backend.account'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::INPUT_GROUP,
+						key_::ITEMS => [
 							self::ACCOUNT => [					// 帳號不可以改
-								key::TITLE => __('backend.account'),
-								key::TYPE => type::TEXT,
+								key_::TITLE => __('backend.account'),
+								key_::TYPE => type::TEXT,
 							],
 							self::BUTTON_PREPEND_DETAIL => [
-								// key::TITLE => __('backend.detail'),
-								key::TYPE => type::BUTTON_ICON,
-								key::CLASSES_1 => [
+								// key_::TITLE => __('backend.detail'),
+								key_::TYPE => type::BUTTON_ICON,
+								key_::CLASSES_1 => [
 									"btn-secondary input-group-text" => true,
 								],
-								key::CLASSES_2 => [
+								key_::CLASSES_2 => [
 									"fab fa-elementor" => true,
 								],
-								key::STYLES => [
+								key_::STYLES => [
 									// 這設定label的style沒有錯
 									"font-size" => "1.5em", 
 									"color" => "Tomato",
 								],
 							],
 							self::PANEL_DETAIL => [
-								key::TITLE => __('backend.detail'),
-								key::TYPE => type::PANEL,
-								key::ITEMS => [],
-								key::USE_ => use_::B_BLOCK,
-								key::CONTENT => [
+								key_::TITLE => __('backend.detail'),
+								key_::TYPE => type::PANEL,
+								key_::ITEMS => [],
+								key_::USE_ => use_::B_BLOCK,
+								key_::CONTENT => [
 									// 因為前端沒很複雜，這裡簡單寫
 									self::B_PANEL_DETAIL
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "200px",
 						],
 					],
 					[
-						key::TITLE => __('backend.email'),
-						key::TYPE => type::LABEL,
-						key::ITEMS => [
+						key_::TITLE => __('backend.email'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
 							self::EMAIL => [
-								key::TYPE => type::TEXT,
-								key::VALIDATE => validate::EMAIL,										
+								key_::TYPE => type::TEXT,
+								key_::VALIDATE => validate::EMAIL,										
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "250px",
 						],
 					],
 					[
-						key::TITLE => __('backend.gender'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::INPUT_GROUP,
-						key::ITEMS => [
+						key_::TITLE => __('backend.gender'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::INPUT_GROUP,
+						key_::ITEMS => [
 							self::GENDER => [
-								 key::TYPE => type::LABEL_BY_OPTION_VALUE,
-								// key::TYPE => type::RADIOBOX,
-								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+								 key_::TYPE => type::LABEL_BY_OPTION_VALUE,
+								// key_::TYPE => type::RADIOBOX,
+								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
-										key::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "female",
+										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "female",
 									],
 									"male" => [
-										key::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "male",
+										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "male",
 									],
 									
 								]),
-								key::STYLES => [
+								key_::STYLES => [
 									"width" => "45px",
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "45px",
 							// "width" => "180px",
 						],
 					],
 					[
-						key::TITLE => __('backend.operator'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::INPUT_GROUP,
-						key::ITEMS => [
+						key_::TITLE => __('backend.operator'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::INPUT_GROUP,
+						key_::ITEMS => [
 							self::BUTTON_DELETE => [								
-								key::STYLES => [
+								key_::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
 									"width" => "45px",
 								],
 							],
 							self::BUTTON_EDIT => [
-								key::STYLES => [
+								key_::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
 									"width" => "45px",
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "92px",
 						],
 					],
 					[
-						key::TITLE => __('backend.status'),
-						key::TYPE => type::LABEL,
-						key::ITEMS => [
+						key_::TITLE => __('backend.status'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
 							self::STATUS => [
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									action::AUTO_UPDATE => true,
 								],	
-								key::HINT => [
-									key::DIRECTION => direction::TOP,
-									key::TITLE => "-1 停用 0 未驗證 1 已驗證",
+								key_::HINT => [
+									key_::DIRECTION => direction::TOP,
+									key_::TITLE => "-1 停用 0 未驗證 1 已驗證",
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "45px",
 						],
 					],					
@@ -829,20 +829,20 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
                 self::B_BOTTOM => [
 					// 目前只放button，外層只是分隔線...
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_NORMAL,
-						key::GROUP => group::SHORT_WRAP,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_NORMAL,
+						key_::GROUP => group::SHORT_WRAP,
+						key_::ITEMS => [
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_SELECTED_DELETE,
+								key_::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_SELECTED_DELETE,
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_ALL_SAVE,
+								key_::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_ALL_SAVE,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],			
 				],				
@@ -869,141 +869,141 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 				// --------------------------------------------------- 
                 self::B_PANEL_ADD => [
 					[
-						key::TITLE => __('backend.account'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.account'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::ACCOUNT => [					// 帳號不可以改
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::ACCOUNT,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::ACCOUNT,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.account'),
-								key::TYPE => type::TEXT_EXIST_CHECK,
-								key::CLASSES => [
+								key_::TITLE => __('backend.account'),
+								key_::TYPE => type::TEXT_EXIST_CHECK,
+								key_::CLASSES => [
 									class_::DISABLED => false,
 								], 
-								key::CLASSES_1 => [
+								key_::CLASSES_1 => [
 									class_::REQUIRED => true,
 								], 
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.password_new'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_new'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_NEW => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD,
-								key::DB_FIELD => [
-									// key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD,
+								key_::DB_FIELD => [
+									// key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.password_new'),
-								key::TYPE => type::PASSWORD,
+								key_::TITLE => __('backend.password_new'),
+								key_::TYPE => type::PASSWORD,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.password_confirm'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_confirm'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_CONFIRM => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD_CONFIRM,
-								key::TITLE => __('backend.password_confirm'),
-								key::TYPE => type::PASSWORD,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD_CONFIRM,
+								key_::TITLE => __('backend.password_confirm'),
+								key_::TYPE => type::PASSWORD,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.email'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.email'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::EMAIL => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::EMAIL,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::EMAIL,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.email'),
-								key::TYPE => type::TEXT,
-								key::VALIDATE => validate::EMAIL,				
+								key_::TITLE => __('backend.email'),
+								key_::TYPE => type::TEXT,
+								key_::VALIDATE => validate::EMAIL,				
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.gender'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.gender'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::GENDER => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.gender'),
-								key::TYPE => type::RADIOBOX,
-								key::STYLES_1 => [
+								key_::TITLE => __('backend.gender'),
+								key_::TYPE => type::RADIOBOX,
+								key_::STYLES_1 => [
 									"height" => "40px"
 								],								
-								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "female",
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "female",
 									],
 									"male" => [
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
 									],
 									
 								]),
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.status'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.status'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::STATUS => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::STATUS,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::STATUS,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.status'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.status'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									action::AUTO_UPDATE => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_SHORT_WRAP,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PANEL_ADD_BUTTON_ADD => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+								key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
 							],
 							self::PANEL_ADD_BUTTON_CANCEL => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+								key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],				
 				],
@@ -1015,96 +1015,96 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
                 self::B_PANEL_DETAIL => [
 					// 不一定應該在這邊提供更改密碼，這裡是為了打架構測試所以才加的
 					[
-						key::TITLE => __('backend.password_new'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_new'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_NEW => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.password_new_confirm'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_new_confirm'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_CONFIRM => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW_CONFIRM,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PASSWORD_NEW_CONFIRM,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						//key::TITLE => __('backend.change_password'),
-						key::TYPE => type::B_BLOCK_SHORT_WRAP,
-						// key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						//key_::TITLE => __('backend.change_password'),
+						key_::TYPE => type::B_BLOCK_SHORT_WRAP,
+						// key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
 								// 因為ID重複，所以加上Top
-								key::TITLE => __('backend.change_password'),
-								key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
+								key_::TITLE => __('backend.change_password'),
+								key_::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],	
 					//
 					[
-						key::TITLE => __('backend.gender'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.gender'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::GENDER => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER,
-								key::TYPE => type::RADIOBOX,
-								key::STYLES_1 => [
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER,
+								key_::TYPE => type::RADIOBOX,
+								key_::STYLES_1 => [
 									"height" => "40px",
 									"line-height" => "50px",
 								],
 								
-								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
-										key::STYLES_1 => "height:40px;",
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
+										key_::STYLES_1 => "height:40px;",
 									],
 									"male" => [
-										key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
-										key::STYLES_1 => "height:40px;",
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
+										key_::STYLES_1 => "height:40px;",
 									],
 									
 								]),
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.created_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.created_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::CREATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.updated_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.updated_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::UPDATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 				],
@@ -1171,165 +1171,165 @@ class hahaha_table_accounts_login_records extends hahaha_table_base
 				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[
-						key::TITLE => __('backend.account'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.account'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::ACCOUNT => [					// 帳號不可以改
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ACCOUNT,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ACCOUNT,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.account'),
-								key::TYPE => type::TEXT_EXIST_CHECK,
-								key::CLASSES => [
+								key_::TITLE => __('backend.account'),
+								key_::TYPE => type::TEXT_EXIST_CHECK,
+								key_::CLASSES => [
 									class_::DISABLED => false,
 								], 
-								key::CLASSES_1 => [
+								key_::CLASSES_1 => [
 									class_::REQUIRED => true,
 								], 
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.password_new'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_new'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_NEW => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.password_new'),
-								key::TYPE => type::PASSWORD,
+								key_::TITLE => __('backend.password_new'),
+								key_::TYPE => type::PASSWORD,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.password_confirm'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.password_confirm'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PASSWORD_CONFIRM => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD_CONFIRM,
-								key::TITLE => __('backend.password_confirm'),
-								key::TYPE => type::PASSWORD,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PASSWORD_CONFIRM,
+								key_::TITLE => __('backend.password_confirm'),
+								key_::TYPE => type::PASSWORD,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.email'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.email'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::EMAIL => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::EMAIL,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::EMAIL,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.email'),
-								key::TYPE => type::TEXT,
-								key::VALIDATE => validate::EMAIL,				
+								key_::TITLE => __('backend.email'),
+								key_::TYPE => type::TEXT,
+								key_::VALIDATE => validate::EMAIL,				
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.gender'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.gender'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::GENDER => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.gender'),
-								key::TYPE => type::RADIOBOX,
-								key::STYLES_1 => [
+								key_::TITLE => __('backend.gender'),
+								key_::TYPE => type::RADIOBOX,
+								key_::STYLES_1 => [
 									"height" => "40px"
 								],								
-								key::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
+								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
 									"female" => [
-										key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "female",
+										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "female",
 									],
 									"male" => [
-										key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "male",
+										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "male",
 									],
 									
 								]),
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.status'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.status'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::STATUS => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::STATUS,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::STATUS,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.status'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.status'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									action::AUTO_UPDATE => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.created_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.created_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::CREATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.updated_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.updated_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::UPDATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_SHORT_WRAP,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PANEL_ADD_BUTTON_ADD => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+								key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
 							],
 							self::PANEL_ADD_BUTTON_CANCEL => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+								key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],					
 				],

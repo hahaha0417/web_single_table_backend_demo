@@ -32,7 +32,7 @@ namespace App\Http\Controllers\Backend\Table;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -135,7 +135,7 @@ class IndexController extends CommonController
             ->Initial_Index();
             
         $target_repository_ = EntityManager::getRepository($target_setting_table['entity']);
-        
+         
         $data_list = [];
         $data_link = [];
         
@@ -149,8 +149,8 @@ class IndexController extends CommonController
         // -------------------------------------------------------------------- 
         // Initial_Fields_Index屬二次附加的東西
         // 因為是架構基石，不做太多客製化設計，如要客製化(如['*'])，請再另外做一個通用組合模組
-        // ex Initial_Fields(xxx::INDEX, key::FIELD_ALL);
-        // 或者是 Inital_Page($parameter_, xxx::INDEX, key::FIELD_ALL)，初始化腳本
+        // ex Initial_Fields(xxx::INDEX, key_::FIELD_ALL);
+        // 或者是 Inital_Page($parameter_, xxx::INDEX, key_::FIELD_ALL)，初始化腳本
         // 這樣我其他頁也可以用，不需要強調這個小細節
         // -------------------------------------------------------------------- 
         // 注意 : 那兩個trait可能用一用，我可能要拆出來放到hahahalib，或者做成通用包，除非我確定要整入(php hahaha framework or p"h"p framework 的single table)，不然先分開
@@ -211,8 +211,8 @@ class IndexController extends CommonController
         $parameter_->Target_Table_Identify = &$target_table_identify;
         $parameter_->Target_Table = &$target_table;
         $parameter_->Index = [
-            key::DATA_LIST => &$data_list,
-            key::DATA_LINK => &$data_link,
+            key_::DATA_LIST => &$data_list,
+            key_::DATA_LINK => &$data_link,
         ];
         
         //
@@ -291,8 +291,8 @@ class IndexController extends CommonController
         // -------------------------------------------------------------------- 
         // Initial_Fields_Index屬二次附加的東西
         // 因為是架構基石，不做太多客製化設計，如要客製化(如['*'])，請再另外做一個通用組合模組
-        // ex Initial_Fields(xxx::INDEX, key::FIELD_ALL);
-        // 或者是 Inital_Page($parameter_, xxx::INDEX, key::FIELD_ALL)，初始化腳本
+        // ex Initial_Fields(xxx::INDEX, key_::FIELD_ALL);
+        // 或者是 Inital_Page($parameter_, xxx::INDEX, key_::FIELD_ALL)，初始化腳本
         // 這樣我其他頁也可以用，不需要強調這個小細節
         // -------------------------------------------------------------------- 
         // 注意 : 那兩個trait可能用一用，我可能要拆出來放到hahahalib，或者做成通用包，除非我確定要整入(php hahaha framework or p"h"p framework 的single table)，不然先分開
@@ -310,7 +310,7 @@ class IndexController extends CommonController
         }
         // --------------------------------------------------------------------     
         $filters = [
-            key::NONE => ["id", "=", $id],     
+            key_::NONE => ["id", "=", $id],     
         ];
         $result_ = $target_repository_->findByFields($data_list, 
             $target_setting_table, 
@@ -365,7 +365,7 @@ class IndexController extends CommonController
         $parameter_->Target_Table_Identify = &$target_table_identify;
         $parameter_->Target_Table = &$target_table;
         $parameter_->Edit = [
-            key::DATA => $data,
+            key_::DATA => $data,
         ];
         //
 

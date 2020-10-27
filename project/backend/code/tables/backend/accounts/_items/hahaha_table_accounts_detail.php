@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -136,12 +136,12 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// $settings_options = [
 		// 	self::GENDER => [
 		// 		'male' => [
-		// 			key::VALUE => '1',					
-		// 			key::TITLE => __('backend.male'),
+		// 			key_::VALUE => '1',					
+		// 			key_::TITLE => __('backend.male'),
 		// 		],	
 		// 		'female' => [
-		// 			key::VALUE => '0',
-		// 			key::TITLE => __('backend.female'),
+		// 			key_::VALUE => '0',
+		// 			key_::TITLE => __('backend.female'),
 		// 		],
 							
 		// 	],
@@ -156,12 +156,12 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 	因為未來要移植php hahaha framework，所以不放在config
 	
 	"id" => [
-		key::TYPE => type::TEXT,
-		key::VALIDATE => validate::EMAIL,
-		key::ACTIONS => [
+		key_::TYPE => type::TEXT,
+		key_::VALIDATE => validate::EMAIL,
+		key_::ACTIONS => [
 			action::AUTO_UPDATE => false,
 		],				
-		key::CLASSES => [
+		key_::CLASSES => [
 			class_::VISLBLED => true,
 			class_::ENABLED => true,
 			class_::DISPLAY_NONE => false,
@@ -179,7 +179,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// $key = self::ID;
 		// $item = []; 
 		// $setting = [
-		// 	key::TYPE => type::TEXT,
+		// 	key_::TYPE => type::TEXT,
 		// ];
 		// $this->xxx($key, $item, $setting);
 		// $settings_fields[$key] = &$item;
@@ -188,197 +188,197 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// 因為同一個節點，這是共用設定
 		$settings_fields = [
 			self::ID => [
-				key::ID => self::IDENTIFY . "_" . self::ID,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::NAME => self::ID,
+				key_::ID => self::IDENTIFY . "_" . self::ID,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::NAME => self::ID,
 				],
-				key::TITLE => __('backend.id'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.id'),
+				key_::TYPE => type::TEXT,
 		
-				key::PLACEHOLDER => __('backend.help') . " : " . "integer",
+				key_::PLACEHOLDER => __('backend.help') . " : " . "integer",
 			],
 			self::ACCOUNTS_ID => [
-				key::ID => self::IDENTIFY . "_" . self::ID,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::ID,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					key::NAME => "accountsId",
+					key_::NAME => "accountsId",
 				],
-				key::TITLE => __('backend.accounts_id'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.accounts_id'),
+				key_::TYPE => type::TEXT,
 	
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.accounts_id'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.accounts_id'),
 			],
 			self::NAME => [
-				key::ID => self::IDENTIFY . "_" . self::NAME,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::NAME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "name",
+					// key_::NAME => "name",
 				],
-				key::TITLE => __('backend.name'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.name'),
+				key_::TYPE => type::TEXT,
 
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.name'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.name'),
 			],
 			self::NICKNAME => [
-				key::ID => self::IDENTIFY . "_" . self::NICKNAME,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::NICKNAME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "nickname",
+					// key_::NAME => "nickname",
 				],
-				key::TITLE => __('backend.nickname'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.nickname'),
+				key_::TYPE => type::TEXT,
 		
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.nickname'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.nickname'),
 			],
 			self::AVATAR => [
-				key::ID => self::IDENTIFY . "_" . self::AVATAR,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::AVATAR,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "avatar",
+					// key_::NAME => "avatar",
 				],
-				key::TITLE => __('backend.avatar'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.avatar'),
+				key_::TYPE => type::TEXT,
 		
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.avatar'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.avatar'),
 			],
 			self::IMAGE => [
-				key::ID => self::IDENTIFY . "_" . self::IMAGE,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::IMAGE,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "image",
+					// key_::NAME => "image",
 				],
-				key::TITLE => __('backend.image'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.image'),
+				key_::TYPE => type::TEXT,
 
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.image'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.image'),
 			],
 			self::URL => [
-				key::ID => self::IDENTIFY . "_" . self::URL,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::URL,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "url",
+					// key_::NAME => "url",
 				],
-				key::TITLE => __('backend.url'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.url'),
+				key_::TYPE => type::TEXT,
 
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.url'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.url'),
 			],
 			self::PHONE => [
-				key::ID => self::IDENTIFY . "_" . self::PHONE,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::PHONE,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					// key::NAME => "phone",
+					// key_::NAME => "phone",
 				],
-				key::TITLE => __('backend.phone'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.phone'),
+				key_::TYPE => type::TEXT,
 
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.phone'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.phone'),
 			],
 			self::VERIFY_TOKEN => [
-				key::ID => self::IDENTIFY . "_" . self::VERIFY_TOKEN,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
+				key_::ID => self::IDENTIFY . "_" . self::VERIFY_TOKEN,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
 					// 這裡另外給entity variable處理
-					key::NAME => "verifyToken",
+					key_::NAME => "verifyToken",
 				],
-				key::TITLE => __('backend.verify_token'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.verify_token'),
+				key_::TYPE => type::TEXT,
 
-				key::PLACEHOLDER => __('backend.help') . " : " . __('backend.verify_token'),
+				key_::PLACEHOLDER => __('backend.help') . " : " . __('backend.verify_token'),
 			],
 			self::CREATED_AT => [
-				key::ID => self::IDENTIFY . "_" . self::CREATED_AT,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					key::NAME => 'createdAt',
+				key_::ID => self::IDENTIFY . "_" . self::CREATED_AT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					key_::NAME => 'createdAt',
 				],
-				key::TITLE => __('backend.created_at'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.created_at'),
+				key_::TYPE => type::TEXT,
 
 			],
 			self::UPDATED_AT => [
-				key::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					key::NAME => 'updatedAt',
+				key_::ID => self::IDENTIFY . "_" . self::UPDATED_AT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					key_::NAME => 'updatedAt',
 				],
-				key::TITLE => __('backend.updated_at'),
-				key::TYPE => type::TEXT,
+				key_::TITLE => __('backend.updated_at'),
+				key_::TYPE => type::TEXT,
 
 			],
 			//
 			self::CHECKBOX_SELECTED => [
-				key::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
-				key::TITLE => __('backend.selected'),
-				key::TYPE => type::CHECKBOX_SELECTED,
+				key_::ID => self::IDENTIFY . "_" . self::CHECKBOX_SELECTED,
+				key_::TITLE => __('backend.selected'),
+				key_::TYPE => type::CHECKBOX_SELECTED,
 			],
 			
 			// ---------------------------------------------------------------------------- 
 			// 功能
 			// ----------------------------------------------------------------------------
 			self::BUTTON_PREPEND_DETAIL => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
-				// key::TITLE => __('backend.detail'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_PREPEND_DETAIL,
+				// key_::TITLE => __('backend.detail'),
+				key_::TYPE => type::BUTTON_ICON,
 			],
 			self::PANEL_DETAIL => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
-				key::TITLE => __('backend.detail'),
-				key::TYPE => type::PANEL,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL,
+				key_::TITLE => __('backend.detail'),
+				key_::TYPE => type::PANEL,
 			],
 			// ------------------------- 
 			self::BUTTON_DELETE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_DELETE,
 				// 不顯示字
-				//key::TITLE => __('backend.delete'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES_BUTTON => [
+				//key_::TITLE => __('backend.delete'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			self::BUTTON_EDIT => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_EDIT,
 				// 不顯示字
-				// key::TITLE => __('backend.edit'),
-				key::TYPE => type::BUTTON_ICON_LINK,
-				key::INDEX => self::ID,
-				key::CLASSES_BUTTON => [
+				// key_::TITLE => __('backend.edit'),
+				key_::TYPE => type::BUTTON_ICON_LINK,
+				key_::INDEX => self::ID,
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-edit" => true,
 				],
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			// ------------------------- 
 			self::UPLOAD => [
-				key::ID => self::IDENTIFY . "_" . self::UPLOAD,
+				key_::ID => self::IDENTIFY . "_" . self::UPLOAD,
 				// 不顯示字
-				// key::TITLE => __('backend.edit'),
-				key::TYPE => type::UPLOAD,
-				key::INDEX => self::ID,
-				key::CLASSES_BUTTON => [
+				// key_::TITLE => __('backend.edit'),
+				key_::TYPE => type::UPLOAD,
+				key_::INDEX => self::ID,
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::STYLES => [
+				key_::STYLES => [
 					"display" => "inline-block",
 					"width" => "50px",
 					"height" => "50px",
@@ -386,172 +386,172 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 			],
 			// 附加
 			self::BUTTON_ACCOUNTS_ID => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ACCOUNTS_ID,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ACCOUNTS_ID,
 				// 不顯示字
-				// key::TITLE => __('backend.edit'),
-				key::TYPE => type::BUTTON_ICON_LINK,
-				key::INDEX => self::ID,
-				key::CLASSES_1 => [
+				// key_::TITLE => __('backend.edit'),
+				key_::TYPE => type::BUTTON_ICON_LINK,
+				key_::INDEX => self::ID,
+				key_::CLASSES_1 => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_2 => [
+				key_::CLASSES_2 => [
 					"fas fa-user" => true,
 				],
-				key::STYLES_1 => [
+				key_::STYLES_1 => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
 			],
 			//
 			self::BUTTON_ADD => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
-				key::TITLE => __('backend.add'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ADD,
+				key_::TITLE => __('backend.add'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ADD => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_SELECTED_DELETE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
-				key::TITLE => __('backend.selected_delete'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE,
+				key_::TITLE => __('backend.selected_delete'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_SELECTED_DELETE => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-minus" => true,
 				],
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_ALL_SAVE => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
-				key::TITLE => __('backend.all_save'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
+				key_::TITLE => __('backend.all_save'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-save" => true,
 				],
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			self::BUTTON_ALL_REFRESH => [
-				key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
-				key::TITLE => __('backend.all_refresh'),
-				key::TYPE => type::BUTTON_ICON,
-				key::CLASSES => [
+				key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
+				key_::TITLE => __('backend.all_refresh'),
+				key_::TYPE => type::BUTTON_ICON,
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-refresh" => true,
 				],
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			//
 			self::PANEL_ADD_BUTTON_ADD => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
-				key::TITLE => __('backend.add'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD,
+				key_::TITLE => __('backend.add'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_ADD => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-plus" => true,
 				],
 				// class
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			self::PANEL_ADD_BUTTON_CANCEL => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
-				key::TITLE => __('backend.cancel'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL,
+				key_::TITLE => __('backend.cancel'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_ADD_BUTTON_CANCEL => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"fas fa-times" => true,
 				],
 				// class
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
-				key::SETTINGS => [
+				key_::SETTINGS => [
 					setting::LABEL => false,
 				],
 			],
 			self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => [
-				key::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
-				key::TITLE => __('backend.change_password'),
-				key::TYPE => type::BUTTON_ICON,
+				key_::ID => self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD,
+				key_::TITLE => __('backend.change_password'),
+				key_::TYPE => type::BUTTON_ICON,
 				// class
-				key::CLASSES => [
+				key_::CLASSES => [
 					self::IDENTIFY . "_" . self::PANEL_DETAIL_BUTTON_CHANGE_PASSWORD => true,
 				],
-				key::CLASSES_BUTTON => [
+				key_::CLASSES_BUTTON => [
 					"btn btn-dark" => true,
 				],
-				key::CLASSES_ICON => [
+				key_::CLASSES_ICON => [
 					"far fa-arrow-alt-circle-right" => true,
 				],
 				// class
-				key::STYLES_BUTTON => [
+				key_::STYLES_BUTTON => [
 					"font-size" => "1.5em", 
 					"color" => "Tomato",
 				],
@@ -583,10 +583,10 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// $key = self::ID;
 		// $item = []; 
 		// $setting = [
-		// 	key::DB_FIELD => [
-		// 		key::IS_FIELD => true,
-		// 		// key::TYPE => db_field_type::STRING,
-		// 		// key::NAME => self::ID,
+		// 	key_::DB_FIELD => [
+		// 		key_::IS_FIELD => true,
+		// 		// key_::TYPE => db_field_type::STRING,
+		// 		// key_::NAME => self::ID,
 		// 	],		
 		// ];
 		// $this->xxx($key, $item, $setting);
@@ -596,26 +596,26 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// 因為同一個節點，這是共用設定
 		$settings_db_fields_addition = [
 			self::ID => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::STRING,
-					// key::NAME => self::ID,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::STRING,
+					// key_::NAME => self::ID,
 				],				
 			],	
 			self::CREATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::DATETIME,
 					// 指定
-					key::NAME => 'createdAt', 
+					key_::NAME => 'createdAt', 
 				],				
 			],		
 			self::UPDATED_AT => [
-				key::DB_FIELD => [
-					key::IS_FIELD => true,
-					// key::TYPE => db_field_type::DATETIME,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+					// key_::TYPE => db_field_type::DATETIME,
 					// 指定
-					key::NAME => 'updatedAt',
+					key_::NAME => 'updatedAt',
 				],				
 			],				
         ];
@@ -647,15 +647,15 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// bootstrap樣式應該要這樣做
 		//
 		// self::BUTTON_PREPEND_DETAIL => [
-		// 	// key::TITLE => __('backend.detail'),
-		// 	key::TYPE => type::BUTTON_ICON,
-		// 	key::CLASSES_1 => [
+		// 	// key_::TITLE => __('backend.detail'),
+		// 	key_::TYPE => type::BUTTON_ICON,
+		// 	key_::CLASSES_1 => [
 		// 		"btn-secondary input-group-text" => true,
 		// 	],
-		// 	key::CLASSES_2 => [
+		// 	key_::CLASSES_2 => [
 		// 		"fab fa-elementor" => true,
 		// 	],
-		// 	key::STYLES => [
+		// 	key_::STYLES => [
 		// 		// 這設定label的style沒有錯
 		// 		"font-size" => "1.5em", 
 		// 		"color" => "Tomato",
@@ -665,11 +665,11 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 		// 直接做成專屬樣式，不要搞花招
 		//
 		// self::BUTTON_PREPEND_DETAIL => [
-		// 	// key::TITLE => __('backend.detail'),
-		// 	key::TYPE => type::BUTTON_ICON_BOOTSTRAP,
-		// 	key::ICON => "input-group-text",
-		// 	key::BUTTON => BUTTON::SECONDARY,
-		// 	// key::STYLES => [
+		// 	// key_::TITLE => __('backend.detail'),
+		// 	key_::TYPE => type::BUTTON_ICON_BOOTSTRAP,
+		// 	key_::ICON => "input-group-text",
+		// 	key_::BUTTON => BUTTON::SECONDARY,
+		// 	// key_::STYLES => [
 		// 	// 	// 這設定label的style沒有錯
 		// 	// 	"font-size" => "1.5em", 
 		// 	// 	"color" => "Tomato",
@@ -704,29 +704,29 @@ class hahaha_table_accounts_detail extends hahaha_table_base
                 self::B_TOP => [
 					// 目前只放button，外層只是分隔線...
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_NORMAL,
-						key::GROUP => group::SHORT_WRAP,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_NORMAL,
+						key_::GROUP => group::SHORT_WRAP,
+						key_::ITEMS => [
 							// 新增
 							// self::BUTTON_ADD => [
 							// 	// 因為ID重複，所以加上Top
-							// 	key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ADD,
+							// 	key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ADD,
 							// ],
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_SELECTED_DELETE,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_SELECTED_DELETE,
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_SAVE,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_SAVE,
 							],
 							self::BUTTON_ALL_REFRESH => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_REFRESH,
+								key_::ID => self::IDENTIFY . "_" . self::B_TOP . "_" . self::BUTTON_ALL_REFRESH,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],				
 				],	
@@ -738,29 +738,29 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				// --------------------------------------------------- 
                 // "top_2d" => [
 				// 	[
-				// 		key::TITLE => __('backend.item'),
-				// 		key::TYPE => type::B_BLOCK_SEPERATOR,
-				// 		key::GROUP => group::SHORT_WRAP,
-				// 		key::LINES => [
+				// 		key_::TITLE => __('backend.item'),
+				// 		key_::TYPE => type::B_BLOCK_SEPERATOR,
+				// 		key_::GROUP => group::SHORT_WRAP,
+				// 		key_::LINES => [
 				// 			[
-				// 				key::TITLE => __('backend.item'),
-				// 				key::TYPE => type::B_BLOCK_SEPERATOR,
-				// 				key::GROUP => group::SHORT_WRAP,
-				// 				key::ITEMS => [
+				// 				key_::TITLE => __('backend.item'),
+				// 				key_::TYPE => type::B_BLOCK_SEPERATOR,
+				// 				key_::GROUP => group::SHORT_WRAP,
+				// 				key_::ITEMS => [
 				// 					self::BUTTON_ADD => [
 				// 						// 因為ID重複，所以加上Top
-				// 						key::ID => "index_item_top_" . self::BUTTON_ADD,
+				// 						key_::ID => "index_item_top_" . self::BUTTON_ADD,
 				// 					],
 				// 					self::BUTTON_SELECTED_DELETE => [
 				// 						// 因為ID重複，所以加上Top
-				// 						key::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
+				// 						key_::ID => "index_item_top_" . self::BUTTON_SELECTED_DELETE,
 				// 					],
 				// 				],
-				// 				key::STYLES => [
+				// 				key_::STYLES => [
 				// 				],
 				// 			],
 				// 		],
-				// 		key::STYLES => [
+				// 		key_::STYLES => [
 				// 		],
 				// 	],
 				// ],
@@ -772,54 +772,54 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[				
-						key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
-						key::TITLE => __('backend.selected'),
-						key::TYPE => type::CHECKBOX_SELECTED,
-						key::ITEMS => [
+						key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
+						key_::TITLE => __('backend.selected'),
+						key_::TYPE => type::CHECKBOX_SELECTED,
+						key_::ITEMS => [
 							self::CHECKBOX_SELECTED => [
-								key::STYLES_1 => [
+								key_::STYLES_1 => [
 									"margin-top" => "5px",
 								],								
 							],
 							
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "45px",
 						],
 					],
 					[
-						key::TITLE => __('backend.avatar'),
-						key::TYPE => type::LABEL,
-						key::ITEMS => [
+						key_::TITLE => __('backend.avatar'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
 							self::AVATAR => [
-								key::TYPE => type::IMAGE,
-								key::STYLES => [
+								key_::TYPE => type::IMAGE,
+								key_::STYLES => [
 									"margin-top" => "5px",
 									"float" => "left",
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "90px",
 						],
 					],
 					[
-						key::TITLE => __('backend.accounts_id'),
-						key::TYPE => type::LABEL,
-						key::ITEMS => [
+						key_::TITLE => __('backend.accounts_id'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
 							self::ACCOUNTS_ID => [
-								key::TYPE => type::TEXT,
-								key::ATTRS => [
+								key_::TYPE => type::TEXT,
+								key_::ATTRS => [
 									attr::READONLY => true,
 								],									
-								key::STYLES => [
+								key_::STYLES => [
 									"width" => "70%", 
 									"float" => "left", 
 									"margin-top" => "5px",
 								],
 							],
 							self::BUTTON_ACCOUNTS_ID => [
-								key::STYLES => [
+								key_::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
 									"width" => "22%",
@@ -827,33 +827,33 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "90px",
 						],
 						
 					],
 					[
-						key::TITLE => __('backend.name'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::INPUT_GROUP,
-						key::ITEMS => [
+						key_::TITLE => __('backend.name'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::INPUT_GROUP,
+						key_::ITEMS => [
 							self::NAME => [					// 帳號不可以改
-								key::TITLE => __('backend.name'),
-								key::TYPE => type::TEXT,
-								key::STYLES => [
+								key_::TITLE => __('backend.name'),
+								key_::TYPE => type::TEXT,
+								key_::STYLES => [
 									"margin-top" => "5px",
 								],
 							],
 							self::BUTTON_PREPEND_DETAIL => [
-								// key::TITLE => __('backend.detail'),
-								key::TYPE => type::BUTTON_ICON,
-								key::CLASSES_BUTTON => [
+								// key_::TITLE => __('backend.detail'),
+								key_::TYPE => type::BUTTON_ICON,
+								key_::CLASSES_BUTTON => [
 									"btn-secondary input-group-text" => true,
 								],
-								key::CLASSES_ICON => [
+								key_::CLASSES_ICON => [
 									"fab fa-elementor" => true,
 								],
-								key::STYLES_BUTTON => [
+								key_::STYLES_BUTTON => [
 									// 這設定label的style沒有錯
 									"font-size" => "1.5em", 
 									"color" => "Tomato",
@@ -861,40 +861,40 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								],
 							],
 							self::PANEL_DETAIL => [
-								key::TITLE => __('backend.detail'),
-								key::TYPE => type::PANEL,
-								key::ITEMS => [],
-								key::USE_ => use_::B_BLOCK,
-								key::CONTENT => [
+								key_::TITLE => __('backend.detail'),
+								key_::TYPE => type::PANEL,
+								key_::ITEMS => [],
+								key_::USE_ => use_::B_BLOCK,
+								key_::CONTENT => [
 									// 因為前端沒很複雜，這裡簡單寫
 									self::B_PANEL_DETAIL
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "150px",
 						],
 					],
 					[
-						key::TITLE => __('backend.image'),
-						key::TYPE => type::LABEL,
-						key::ITEMS => [
+						key_::TITLE => __('backend.image'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
 							self::IMAGE => [
-								key::TYPE => type::IMAGE,
+								key_::TYPE => type::IMAGE,
 							],
 							self::UPLOAD => [
-								key::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
-								key::TYPE => type::UPLOAD,
-								key::STYLES => [
+								key_::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
+								key_::TYPE => type::UPLOAD,
+								key_::STYLES => [
 									"margin-top" => "5px", 
 								],
-								key::URL => "",					// table url + path
-								key::PATH => "",				// table path + path
+								key_::URL => "",					// table url + path
+								key_::PATH => "",				// table path + path
 								// 二次關聯，請在設定完後寫關聯規則，大概作法為，上傳成功後，某個元件的設定(array) => 某個元件的設定(array)
 								// 因為是列表，所以只要把需要的id存下來，找到index，就可以知道要怎樣處理了
 								// 區塊的地方，因為已知對應，所以也知道要怎樣處理
-								// key::UPLOAD_FILE => [
-								// 	key::SUCCESS => [
+								// key_::UPLOAD_FILE => [
+								// 	key_::SUCCESS => [
 								// 		[self::B_MAIN, self::UPLOAD] => [
 								// 			[self::B_MAIN, self::IMAGE],
 								// 		],
@@ -902,49 +902,49 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 								// ],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "90px",
 							"margin-top" => "5px",
 						],
 					],
 					[
-						key::TITLE => __('backend.operator'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::INPUT_GROUP,
-						key::ITEMS => [
+						key_::TITLE => __('backend.operator'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::INPUT_GROUP,
+						key_::ITEMS => [
 							self::BUTTON_DELETE => [								
-								key::STYLES => [
+								key_::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
 									"width" => "55px",
 									"margin-right" => "0px", 
 								],
-								key::STYLES_1 => [
+								key_::STYLES_1 => [
 									"margin-right" => "0px", 
 									"width" => "50px",
 								],
-								key::STYLES_2 => [
+								key_::STYLES_2 => [
 									"margin-right" => "0px", 
 								],
 							],
 							self::BUTTON_EDIT => [
-								key::STYLES => [
+								key_::STYLES => [
 									"font-size" => "1em", 
 									"color" => "Tomato",
 									"width" => "55px",
 									"margin-right" => "0px", 
 								],
-								key::STYLES_1 => [
+								key_::STYLES_1 => [
 									"margin-right" => "0px", 
 									"width" => "50px",
 								],
-								key::STYLES_2 => [
+								key_::STYLES_2 => [
 									"margin-right" => "0px", 
 								],
 							],
 							
 						],
-						key::STYLES => [
+						key_::STYLES => [
 							"width" => "92px",
 							
 						],
@@ -958,26 +958,26 @@ class hahaha_table_accounts_detail extends hahaha_table_base
                 self::B_BOTTOM => [
 					// 目前只放button，外層只是分隔線...
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_NORMAL,
-						key::GROUP => group::SHORT_WRAP,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_NORMAL,
+						key_::GROUP => group::SHORT_WRAP,
+						key_::ITEMS => [
 							self::BUTTON_SELECTED_DELETE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_SELECTED_DELETE,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_SELECTED_DELETE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 							],
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_ALL_SAVE,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::B_BOTTOM . "_" . self::BUTTON_ALL_SAVE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],			
 				],				
@@ -1011,93 +1011,93 @@ class hahaha_table_accounts_detail extends hahaha_table_base
                 self::B_PANEL_DETAIL => [
 					// 不一定應該在這邊提供更改密碼，這裡是為了打架構測試所以才加的
 					[
-						key::TITLE => __('backend.avatar'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.avatar'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::AVATAR => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::AVATAR,
-								key::TYPE => type::IMAGE,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::AVATAR,
+								key_::TYPE => type::IMAGE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 							],
 							
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.nickname'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.nickname'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::NICKNAME => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::NICKNAME,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::NICKNAME,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.url'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.url'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::URL => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::URL,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::URL,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.phone'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.phone'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::NAME => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PHONE,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PHONE,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],	
 					// [
-					// 	key::TITLE => __('backend.image'),
-					// 	key::TYPE => type::LABEL,
-					// 	key::GROUP => group::FORM_GROUP_ROW,
-					// 	key::ITEMS => [
+					// 	key_::TITLE => __('backend.image'),
+					// 	key_::TYPE => type::LABEL,
+					// 	key_::GROUP => group::FORM_GROUP_ROW,
+					// 	key_::ITEMS => [
 					// 		self::IMAGE => [
-					// 			key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::IMAGE,
-					// 			key::TYPE => type::IMAGE_UPLOAD_RE,
+					// 			key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::IMAGE,
+					// 			key_::TYPE => type::IMAGE_UPLOAD_RE,
 					// 		],
 					// 	],
-					// 	key::STYLES => [
+					// 	key_::STYLES => [
 					// 	],
 					// ],				
 					[
-						key::TITLE => __('backend.created_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.created_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::CREATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.updated_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.updated_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::UPDATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 				],
@@ -1164,268 +1164,268 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[
-						key::TITLE => __('backend.id'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.id'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::ID => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ID,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::ID,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.id'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.id'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
-								key::ATTRS => [
+								key_::ATTRS => [
 									attr::READONLY => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.name'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.name'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::NAME => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::NAME,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::NAME,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.name'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.name'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
 								
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.nickname'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.nickname'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::NICKNAME => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::NICKNAME,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::NICKNAME,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.nickname'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.nickname'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
 								
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.avatar'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.avatar'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::AVATAR => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::AVATAR,
-								key::TYPE => type::TEXT,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::AVATAR,
+								key_::TYPE => type::TEXT,
 								
 							],
 							self::UPLOAD => [
-								key::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
-								key::TYPE => type::UPLOAD,
-								key::STYLES => [
+								key_::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
+								key_::TYPE => type::UPLOAD,
+								key_::STYLES => [
 									"margin-top" => "5px", 
 								],
-								key::SETTINGS => [
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
-								key::URL => "",					// table url + path
-								key::PATH => "",				// table path + path
+								key_::URL => "",					// table url + path
+								key_::PATH => "",				// table path + path
 				
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.avatar'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.avatar'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::AVATAR => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::AVATAR,
-								key::TYPE => type::IMAGE,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::AVATAR,
+								key_::TYPE => type::IMAGE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								], 
 								
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.image'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.image'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::IMAGE => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::IMAGE,
-								key::TYPE => type::TEXT,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::IMAGE,
+								key_::TYPE => type::TEXT,
 								
 							],
 							self::UPLOAD => [
-								key::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
-								key::TYPE => type::UPLOAD,
-								key::STYLES => [
+								key_::ID => self::IDENTIFY . "_" . self::IMAGE . "_" . self::UPLOAD,
+								key_::TYPE => type::UPLOAD,
+								key_::STYLES => [
 									"margin-top" => "5px", 
 								],
-								key::SETTINGS => [
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
-								key::URL => "",					// table url + path
-								key::PATH => "",				// table path + path
+								key_::URL => "",					// table url + path
+								key_::PATH => "",				// table path + path
 				
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.image'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.image'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::IMAGE => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::IMAGE,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::IMAGE,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.image'),
-								key::TYPE => type::IMAGE,
-								key::SETTINGS => [
+								key_::TITLE => __('backend.image'),
+								key_::TYPE => type::IMAGE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 								
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.url'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.url'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::URL => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::URL,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::URL,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.url'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.url'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.phone'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.phone'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::PHONE => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PHONE,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::PHONE,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.phone'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.phone'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.verify_token'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.verify_token'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::VERIFY_TOKEN => [
-								key::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::VERIFY_TOKEN,
-								key::DB_FIELD => [
-									key::IS_FIELD => true,
+								key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::VERIFY_TOKEN,
+								key_::DB_FIELD => [
+									key_::IS_FIELD => true,
 								],
-								key::TITLE => __('backend.verify_token'),
-								key::TYPE => type::TEXT,
-								key::ACTIONS => [
+								key_::TITLE => __('backend.verify_token'),
+								key_::TYPE => type::TEXT,
+								key_::ACTIONS => [
 									// action::AUTO_UPDATE => true,
 								],	
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.created_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.created_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::CREATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::CREATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						key::TITLE => __('backend.updated_at'),
-						key::TYPE => type::LABEL,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						key_::TITLE => __('backend.updated_at'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::UPDATED_AT => [
-								key::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::UPDATED_AT,
 							],
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],
 					[
-						// key::TITLE => __('backend.item'),
-						key::TYPE => type::B_BLOCK_SHORT_WRAP,
-						key::GROUP => group::FORM_GROUP_ROW,
-						key::ITEMS => [
+						// key_::TITLE => __('backend.item'),
+						key_::TYPE => type::B_BLOCK_SHORT_WRAP,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
 							self::BUTTON_ALL_SAVE => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_SAVE,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 							],
 							self::BUTTON_ALL_REFRESH => [
 								// 因為ID重複，所以加上Top
-								key::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
-								key::SETTINGS => [
+								key_::ID => self::IDENTIFY . "_" . self::BUTTON_ALL_REFRESH,
+								key_::SETTINGS => [
 									setting::LABEL => false,
 								],
 							],
 							
 						],
-						key::STYLES => [
+						key_::STYLES => [
 						],
 					],							
 				],

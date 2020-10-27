@@ -10,7 +10,7 @@ require $root_ . "/vendor/autoload.php";
 
  
 use hahahalib\script\hahaha_file_deal as script;
-use hahahalib\script\hahaha_file_deal_define_key as key;
+use hahahalib\script\hahaha_file_deal_define_key as key_;
 use hahahalib\script\hahaha_file_deal_define_operator as op;
 
 $src_ = realpath(dirname(__FILE__) . "/node_modules");
@@ -34,7 +34,7 @@ $list_ = [
 		// -------------------------------------------- 
 		"item1" => [			
 			op::DELETE_TREE => [
-				key::DIR => $dst_ . "/" . "plugin",
+				key_::DIR => $dst_ . "/" . "plugin",
 			],
 		],
 		// -------------------------------------------- 
@@ -42,8 +42,8 @@ $list_ = [
 		// -------------------------------------------- 
 		"item2" => [			
 			op::MKDIR => [
-				key::DIR => $dst_ . "/" . "plugin",
-				key::MODE => 0775,
+				key_::DIR => $dst_ . "/" . "plugin",
+				key_::MODE => 0775,
 			],
 		],
 		// -------------------------------------------- 
@@ -55,20 +55,20 @@ $list_ = [
 		// ---------------------------------- 
 		"jquery" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery",
-				key::DST => $dst_ . "/plugin/" . "jquery",
+				key_::SRC => $src_ . "/" . "jquery",
+				key_::DST => $dst_ . "/plugin/" . "jquery",
 			],
 		],
 		"bootstrap" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "bootstrap",
-				key::DST => $dst_ . "/plugin/" . "bootstrap",
+				key_::SRC => $src_ . "/" . "bootstrap",
+				key_::DST => $dst_ . "/plugin/" . "bootstrap",
 			],
 		],
 		"@fortawesome/fontawesome-free" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "@fortawesome/fontawesome-free",
-				key::DST => $dst_ . "/plugin/" . "fontawesome-free",
+				key_::SRC => $src_ . "/" . "@fortawesome/fontawesome-free",
+				key_::DST => $dst_ . "/plugin/" . "fontawesome-free",
 			],
 		],
 		// ---------------------------------- 
@@ -76,38 +76,38 @@ $list_ = [
 		// ---------------------------------- 
 		"mkdir jquery_plugin" => [			
 			op::MKDIR => [
-				key::DIR => $dst_ . "/plugin/" . "jquery_plugin",
-				key::MODE => 0775,
+				key_::DIR => $dst_ . "/plugin/" . "jquery_plugin",
+				key_::MODE => 0775,
 			],
 		],
 		"jquery-ui-dist" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery-ui-dist",
-				key::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-ui-dist",
+				key_::SRC => $src_ . "/" . "jquery-ui-dist",
+				key_::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-ui-dist",
 			],
 		],
 		"jquery-ui-themes" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery-ui-themes",
-				key::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-ui-themes",
+				key_::SRC => $src_ . "/" . "jquery-ui-themes",
+				key_::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-ui-themes",
 			],
 		],
 		"jquery-slimscroll" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery-slimscroll",
-				key::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-slimscroll",
+				key_::SRC => $src_ . "/" . "jquery-slimscroll",
+				key_::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-slimscroll",
 			],
 		],
 		"jquery-autocomplete" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery-autocomplete",
-				key::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-autocomplete",
+				key_::SRC => $src_ . "/" . "jquery-autocomplete",
+				key_::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-autocomplete",
 			],
 		],
 		"jquery-file-upload" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "jquery-file-upload",
-				key::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-file-upload",
+				key_::SRC => $src_ . "/" . "jquery-file-upload",
+				key_::DST => $dst_ . "/plugin/" . "jquery_plugin/jquery-file-upload",
 			],
 		],
 		// ---------------------------------- 
@@ -115,20 +115,20 @@ $list_ = [
 		// ---------------------------------- 		
 		"mkdir ckeditor" => [			
 			op::MKDIR => [
-				key::DIR => $dst_ . "/plugin/" . "ckeditor",
-				key::MODE => 0775,
+				key_::DIR => $dst_ . "/plugin/" . "ckeditor",
+				key_::MODE => 0775,
 			],
 		],
 		"ckeditor4" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "ckeditor4",
-				key::DST => $dst_ . "/plugin/" . "ckeditor/ckeditor4",
+				key_::SRC => $src_ . "/" . "ckeditor4",
+				key_::DST => $dst_ . "/plugin/" . "ckeditor/ckeditor4",
 			],
 		],
 		"ckeditor5" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "ckeditor5",
-				key::DST => $dst_ . "/plugin/" . "ckeditor/ckeditor5",
+				key_::SRC => $src_ . "/" . "ckeditor5",
+				key_::DST => $dst_ . "/plugin/" . "ckeditor/ckeditor5",
 			],
 		],
 		// ---------------------------------- 
@@ -136,62 +136,62 @@ $list_ = [
 		// ---------------------------------- 
 		"async" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "async",
-				key::DST => $dst_ . "/plugin/" . "async",
+				key_::SRC => $src_ . "/" . "async",
+				key_::DST => $dst_ . "/plugin/" . "async",
 			],
 		],
 		"form" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "form",
-				key::DST => $dst_ . "/plugin/" . "form",
+				key_::SRC => $src_ . "/" . "form",
+				key_::DST => $dst_ . "/plugin/" . "form",
 			],
 		],
 		"labelauty" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "labelauty",
-				key::DST => $dst_ . "/plugin/" . "labelauty",
+				key_::SRC => $src_ . "/" . "labelauty",
+				key_::DST => $dst_ . "/plugin/" . "labelauty",
 			],
 		],
 		"npm-modernizr" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "npm-modernizr",
-				key::DST => $dst_ . "/plugin/" . "npm-modernizr",
+				key_::SRC => $src_ . "/" . "npm-modernizr",
+				key_::DST => $dst_ . "/plugin/" . "npm-modernizr",
 			],
 		],
 		"layerui" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "layerui",
-				key::DST => $dst_ . "/plugin/" . "layerui",
+				key_::SRC => $src_ . "/" . "layerui",
+				key_::DST => $dst_ . "/plugin/" . "layerui",
 			],
 		],
 		"lazyload" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "lazyload",
-				key::DST => $dst_ . "/plugin/" . "lazyload",
+				key_::SRC => $src_ . "/" . "lazyload",
+				key_::DST => $dst_ . "/plugin/" . "lazyload",
 			],
 		],
 		"owl.carousel" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "owl.carousel",
-				key::DST => $dst_ . "/plugin/" . "owl.carousel",
+				key_::SRC => $src_ . "/" . "owl.carousel",
+				key_::DST => $dst_ . "/plugin/" . "owl.carousel",
 			],
 		],
 		"slider-pro" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "slider-pro",
-				key::DST => $dst_ . "/plugin/" . "slider-pro",
+				key_::SRC => $src_ . "/" . "slider-pro",
+				key_::DST => $dst_ . "/plugin/" . "slider-pro",
 			],
 		],
 		"slim-scroll" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "slim-scroll",
-				key::DST => $dst_ . "/plugin/" . "slim-scroll",
+				key_::SRC => $src_ . "/" . "slim-scroll",
+				key_::DST => $dst_ . "/plugin/" . "slim-scroll",
 			],
 		],
 		"validator" => [			
 			op::MOVE => [
-				key::SRC => $src_ . "/" . "validator",
-				key::DST => $dst_ . "/plugin/" . "validator",
+				key_::SRC => $src_ . "/" . "validator",
+				key_::DST => $dst_ . "/plugin/" . "validator",
 			],
 		],
 		// -------------------------------------------- 
@@ -199,7 +199,7 @@ $list_ = [
 		// -------------------------------------------- 
 		"item4" => [			
 			op::DELETE_TREE => [
-			 	key::DIR => $src_ ,
+			 	key_::DIR => $src_ ,
 			],			
 		],
 		// -------------------------------------------- 

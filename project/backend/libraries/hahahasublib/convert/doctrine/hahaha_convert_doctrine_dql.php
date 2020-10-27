@@ -19,7 +19,7 @@ use hahahasublib\hahaha_instance_trait;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -76,19 +76,19 @@ class hahaha_convert_doctrine_dql
     基於直觀，少用 $qb->expr()->，除非有比較難處理的，不然直接查到指令放進來即可
     $query_builder Doctrine Query Builder
     [
-        key::AND => ['xx', '=', '123'],
-        key::OR => ['xx', '>', '123'],
-        key::OR => ['xx', operator::BETWEEN, '123', '234'],
+        key_::AND => ['xx', '=', '123'],
+        key_::OR => ['xx', '>', '123'],
+        key_::OR => ['xx', operator::BETWEEN, '123', '234'],
         // ---------------------------------------------------------- 
         // 有空再弄
         // ---------------------------------------------------------- 
         // 命令處理，大約用幾次for迴圈，寫個模組串出指令
         // (a or b) and c
-        key::AND_X => [
+        key_::AND_X => [
             "(", 
-                ["id", op::IN, ["2", "4"]], key::OR, ["id", op::IN, ["3", "4"]],                 
+                ["id", op::IN, ["2", "4"]], key_::OR, ["id", op::IN, ["3", "4"]],                 
             ")",                      
-            key::AND, ["id", op::NOT_IN, ["2"]],
+            key_::AND, ["id", op::NOT_IN, ["2"]],
         ],
         // ---------------------------------------------------------- 
     ]
@@ -114,15 +114,15 @@ class hahaha_convert_doctrine_dql
                 $str = "{$alias}.{$filter[0]} {$filter[1]} '{$filter[2]}'";
             }
 
-            if($key == key::NONE)  
+            if($key == key_::NONE)  
             {
                 $query_builder->where($str);           
             }  
-            else if($key == key::AND)  
+            else if($key == key_::AND)  
             {
                 $query_builder->andWhere($str);
             }  
-            else if($key == key::OR)  
+            else if($key == key_::OR)  
             {
                 $query_builder->orWhere($str);
             }  

@@ -34,7 +34,7 @@ class hahaha_define_html_style
     // --------------------------------------  
     // doctrine
     // --------------------------------------
-    // key::NONE key::AND key::OR
+    // key_::NONE key_::AND key_::OR
     // --------------------------------------  
 
 

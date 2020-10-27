@@ -46,7 +46,7 @@
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -84,78 +84,78 @@ $target_setting_table_ = &$parameter_->Target_Setting_Table;
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);  
 ?>
 
-@if($item->item[key::TYPE] == type::B_BLOCK_NORMAL)                                      
-    <div @if(!empty($item->item[key::GROUP])) class="{{$item->item[key::GROUP]}}" @endif>
-        @foreach($item->item[key::ITEMS] as $key_field => $field)                                     
-            @if($field[key::TYPE] == type::BUTTON_ICON)  
+@if($item->item[key_::TYPE] == type::B_BLOCK_NORMAL)                                      
+    <div @if(!empty($item->item[key_::GROUP])) class="{{$item->item[key_::GROUP]}}" @endif>
+        @foreach($item->item[key_::ITEMS] as $key_field => $field)                                     
+            @if($field[key_::TYPE] == type::BUTTON_ICON)  
                 <?php $label = true; ?>
-                @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::LABEL])) 
-                    <?php $label = $field[key::SETTINGS][setting::LABEL]; ?>
+                @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
+                    <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
                 @endif    
                 <?php $input = true; ?>
-                @if(isset($field[key::SETTINGS]) && isset($field[key::SETTINGS][setting::INPUT])) 
-                    <?php $input = $field[key::SETTINGS][setting::INPUT]; ?>
+                @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::INPUT])) 
+                    <?php $input = $field[key_::SETTINGS][setting::INPUT]; ?>
                 @endif   
 
                 @if($label) 
-                    <label for="{{$field[key::ID]}}" 
+                    <label for="{{$field[key_::ID]}}" 
                         class="col-sm-3 col-form-label 
-                            @if(!empty($field[key::CLASSES_LABEL]))
-                                {{$field[key::CLASSES_LABEL]}} 
+                            @if(!empty($field[key_::CLASSES_LABEL]))
+                                {{$field[key_::CLASSES_LABEL]}} 
                             @endif 
                         "    
                         style="
-                            @if(!empty($field[key::STYLES_LABEL]))
-                                {{$field[key::STYLES_LABEL]}}
+                            @if(!empty($field[key_::STYLES_LABEL]))
+                                {{$field[key_::STYLES_LABEL]}}
                             @endif 
                         "   
-                        @if(!empty($field[key::ID])) 
-                            id="{{$field[key::ID]}}_label" 
+                        @if(!empty($field[key_::ID])) 
+                            id="{{$field[key_::ID]}}_label" 
                         @endif 
                     >
-                    @if(!empty($field[key::TITLE]))
-                        {{$field[key::TITLE]}}
+                    @if(!empty($field[key_::TITLE]))
+                        {{$field[key_::TITLE]}}
                     @endif  
                     </label> 
                 @endif   
                 @if($input) 
                     <div
-                        @if(!empty($field[key::ID])) 
+                        @if(!empty($field[key_::ID])) 
                             @if(!empty($key_data))
-                                id="{{$field[key::ID]}}_{{$key_data}}" 
+                                id="{{$field[key_::ID]}}_{{$key_data}}" 
                             @else
-                                id="{{$field[key::ID]}}" 
+                                id="{{$field[key_::ID]}}" 
                             @endif 
                             
-                            class="{{$field[key::ID]}} 
-                                @if(!empty($field[key::CLASSES]))
-                                    {{$field[key::CLASSES]}}
+                            class="{{$field[key_::ID]}} 
+                                @if(!empty($field[key_::CLASSES]))
+                                    {{$field[key_::CLASSES]}}
                                 @endif 
-                                @if(!empty($field[key::CLASSES_BUTTON]))
-                                    {{$field[key::CLASSES_BUTTON]}}
+                                @if(!empty($field[key_::CLASSES_BUTTON]))
+                                    {{$field[key_::CLASSES_BUTTON]}}
                                 @endif 
                             "
                             style="
-                                @if(!empty($field[key::STYLES])) 
-                                    {{$field[key::STYLES]}}
+                                @if(!empty($field[key_::STYLES])) 
+                                    {{$field[key_::STYLES]}}
                                 @endif 
-                                @if(!empty($field[key::STYLES_BUTTON])) 
-                                    {{$field[key::STYLES_BUTTON]}}
+                                @if(!empty($field[key_::STYLES_BUTTON])) 
+                                    {{$field[key_::STYLES_BUTTON]}}
                                 @endif 
                             " 
                         @endif       
                         
                         >
                         <i class="
-                            @if(!empty($field[key::CLASSES_ICON]))
-                                {{$field[key::CLASSES_ICON]}}
+                            @if(!empty($field[key_::CLASSES_ICON]))
+                                {{$field[key_::CLASSES_ICON]}}
                             @endif 
-                            @if(!empty($field[key::STYLES_ICON]))
-                                {{$field[key::STYLES_ICON]}}
+                            @if(!empty($field[key_::STYLES_ICON]))
+                                {{$field[key_::STYLES_ICON]}}
                             @endif 
                         ">
-                            @if(!empty($field[key::TITLE]) ) 
-                                {{$field[key::TITLE]}} 
+                            @if(!empty($field[key_::TITLE]) ) 
+                                {{$field[key_::TITLE]}} 
                             @endif
                         </i>
                     </div>

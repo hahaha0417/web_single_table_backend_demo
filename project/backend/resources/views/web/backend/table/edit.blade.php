@@ -47,7 +47,7 @@
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -79,7 +79,7 @@ $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
 $target_table_identify_ = &$parameter_->Target_Table_Identify;
 $target_table_ = &$parameter_->Target_Table;
-$data_ = &$parameter_->Edit[key::DATA];
+$data_ = &$parameter_->Edit[key_::DATA];
 
 
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);                                                                                        

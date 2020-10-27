@@ -47,7 +47,7 @@
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -69,15 +69,15 @@ use hahaha\define\hahaha_define_sql_operator as op;
 use Spatie\Url\Url;
 ?>
 
-{{-- laravel套版不要用reference，@foreach($value_item[key::ITEMS] as $key_field => $field)，會找不到$value_item[key::ITEMS] --}}
+{{-- laravel套版不要用reference，@foreach($value_item[key_::ITEMS] as $key_field => $field)，會找不到$value_item[key_::ITEMS] --}}
 @foreach($block->fields as $key_item => $value_item)  
-    <td @if(!empty($value_item[key::STYLES])) style="{{$value_item[key::STYLES]}}" @endif>
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
+    <td @if(!empty($value_item[key_::STYLES])) style="{{$value_item[key_::STYLES]}}" @endif>
+        @if(!empty($value_item[key_::GROUP]))
+            @if($value_item[key_::GROUP] == group::INPUT_GROUP) 
                 <div class="input-group">
             @endif
         @endif        
-        @foreach($value_item[key::ITEMS] as $key_field => $value_field) 
+        @foreach($value_item[key_::ITEMS] as $key_field => $value_field) 
             <?php 
                 // 主要for 禁用reference的使用者，避免到時候被技術卡，被卡收入來源
                 // 架構的地方用reference，維護的地方不用，避免有話說
@@ -90,8 +90,8 @@ use Spatie\Url\Url;
             ?>
             @include("web.backend.table.common.table.item.item")                
         @endforeach  
-        @if(!empty($value_item[key::GROUP]))
-            @if($value_item[key::GROUP] == group::INPUT_GROUP) 
+        @if(!empty($value_item[key_::GROUP]))
+            @if($value_item[key_::GROUP] == group::INPUT_GROUP) 
                 </div>
             @endif
         @endif

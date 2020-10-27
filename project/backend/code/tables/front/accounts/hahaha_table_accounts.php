@@ -25,7 +25,7 @@ use EntityManager;
  * 
  **/
 // ------------------------------------------------------ 
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
@@ -122,12 +122,12 @@ class hahaha_table_accounts
 	因為未來要移植php hahaha framework，所以不放在config
 	
 	"id" => [
-		key::TYPE => type::TEXT,
-		key::VALIDATE => validate::EMAIL,
-		key::ACTIONS => [
+		key_::TYPE => type::TEXT,
+		key_::VALIDATE => validate::EMAIL,
+		key_::ACTIONS => [
 			action::AUTO_UPDATE => false,
 		],				
-		key::TAGS => [
+		key_::TAGS => [
 			tag::VISLBLED => true,
 			tag::ENABLED => true,
 			tag::DISPLAY_NONE => false,
@@ -140,51 +140,51 @@ class hahaha_table_accounts
 		// 使用上，只要self::ID => []，這樣目的是使的可以覆蓋這裡的預設值，基本上有預設的，要調整就必須覆蓋
 		$Fields = [
 			self::ID => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::ACCOUNT => [					// 帳號不可以改
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::PASSWORD => [
-				key::TYPE => type::PASSWORD,
+				key_::TYPE => type::PASSWORD,
 			],
 			self::PASSWORD_CONFIRM => [
-				key::TYPE => type::PASSWORD,
+				key_::TYPE => type::PASSWORD,
 			],
 			self::PASSWORD_NEW => [
-				key::TYPE => type::PASSWORD,
+				key_::TYPE => type::PASSWORD,
 			],
 			self::PASSWORD_NEW_CONFIRM => [
-				key::TYPE => type::PASSWORD,
+				key_::TYPE => type::PASSWORD,
 			],
 			self::EMAIL => [
-				key::TYPE => type::TEXT,
-				key::VALIDATE => validate::EMAIL,				
+				key_::TYPE => type::TEXT,
+				key_::VALIDATE => validate::EMAIL,				
 			],
 			self::GENDER => [
-				key::TYPE => type::RADIOBOX,
+				key_::TYPE => type::RADIOBOX,
 			],
 			self::STATUS => [
-				key::TYPE => type::TEXT,
-				key::ACTIONS => [
+				key_::TYPE => type::TEXT,
+				key_::ACTIONS => [
 					action::AUTO_UPDATE => true,
 				],	
 			],
 			self::CREATED_AT => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
 			self::UPDATED_AT => [
-				key::TYPE => type::TEXT,
-				key::TAGS => [
+				key_::TYPE => type::TEXT,
+				key_::TAGS => [
 					tag::DISABLED => true,
 				],
 			],
@@ -205,51 +205,51 @@ class hahaha_table_accounts
                 // 主要列表
                 "main" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						], 
 					],
 					self::ACCOUNT => [					// 帳號不可以改
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::PASSWORD => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::EMAIL => [
-						key::TYPE => type::TEXT,
-						key::VALIDATE => validate::EMAIL,				
+						key_::TYPE => type::TEXT,
+						key_::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::RADIOBOX,
+						key_::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
-						key::TYPE => type::TEXT,
-						key::ACTIONS => [
+						key_::TYPE => type::TEXT,
+						key_::ACTIONS => [
 							action::AUTO_UPDATE => true,
 						],	
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -258,51 +258,51 @@ class hahaha_table_accounts
                 // detail panel
                 "detail" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::ACCOUNT => [					// 帳號不可以改
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::PASSWORD => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::EMAIL => [
-						key::TYPE => type::TEXT,
-						key::VALIDATE => validate::EMAIL,				
+						key_::TYPE => type::TEXT,
+						key_::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::RADIOBOX,
+						key_::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
-						key::TYPE => type::TEXT,
-						key::ACTIONS => [
+						key_::TYPE => type::TEXT,
+						key_::ACTIONS => [
 							action::AUTO_UPDATE => true,
 						],	
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -310,51 +310,51 @@ class hahaha_table_accounts
                 // new panel
                 "new" => [
 					self::ID => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::ACCOUNT => [					// 帳號不可以改
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::PASSWORD => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::PASSWORD_NEW_CONFIRM => [
-						key::TYPE => type::PASSWORD,
+						key_::TYPE => type::PASSWORD,
 					],
 					self::EMAIL => [
-						key::TYPE => type::TEXT,
-						key::VALIDATE => validate::EMAIL,				
+						key_::TYPE => type::TEXT,
+						key_::VALIDATE => validate::EMAIL,				
 					],
 					self::GENDER => [
-						key::TYPE => type::RADIOBOX,
+						key_::TYPE => type::RADIOBOX,
 					],
 					self::STATUS => [
-						key::TYPE => type::TEXT,
-						key::ACTIONS => [
+						key_::TYPE => type::TEXT,
+						key_::ACTIONS => [
 							action::AUTO_UPDATE => true,
 						],	
 					],
 					self::CREATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
 					self::UPDATED_AT => [
-						key::TYPE => type::TEXT,
-						key::TAGS => [
+						key_::TYPE => type::TEXT,
+						key_::TAGS => [
 							tag::DISABLED => true,
 						],
 					],
@@ -374,51 +374,51 @@ class hahaha_table_accounts
 		$Preview = [
 			"hahaha" => [
 				self::ID => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::ACCOUNT => [					// 帳號不可以改
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::PASSWORD => [
-					key::TYPE => type::PASSWORD,
+					key_::TYPE => type::PASSWORD,
 				],
 				self::PASSWORD_CONFIRM => [
-					key::TYPE => type::PASSWORD,
+					key_::TYPE => type::PASSWORD,
 				],
 				self::PASSWORD_NEW => [
-					key::TYPE => type::PASSWORD,
+					key_::TYPE => type::PASSWORD,
 				],
 				self::PASSWORD_NEW_CONFIRM => [
-					key::TYPE => type::PASSWORD,
+					key_::TYPE => type::PASSWORD,
 				],
 				self::EMAIL => [
-					key::TYPE => type::TEXT,
-					key::VALIDATE => validate::EMAIL,				
+					key_::TYPE => type::TEXT,
+					key_::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::RADIOBOX,
+					key_::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
-					key::TYPE => type::TEXT,
-					key::ACTIONS => [
+					key_::TYPE => type::TEXT,
+					key_::ACTIONS => [
 						action::AUTO_UPDATE => true,
 					],	
 				],
 				self::CREATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::UPDATED_AT => [
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
@@ -436,21 +436,21 @@ class hahaha_table_accounts
 		$Edit = [
 			"hahaha" => [
 				self::ACCOUNT => [					// 帳號不可以改
-					key::TYPE => type::TEXT,
-					key::TAGS => [
+					key_::TYPE => type::TEXT,
+					key_::TAGS => [
 						tag::DISABLED => true,
 					],
 				],
 				self::EMAIL => [
-					key::TYPE => type::TEXT,
-					key::VALIDATE => validate::EMAIL,				
+					key_::TYPE => type::TEXT,
+					key_::VALIDATE => validate::EMAIL,				
 				],
 				self::GENDER => [
-					key::TYPE => type::RADIOBOX,
+					key_::TYPE => type::RADIOBOX,
 				],
 				self::STATUS => [
-					key::TYPE => type::TEXT,
-					key::ACTIONS => [
+					key_::TYPE => type::TEXT,
+					key_::ACTIONS => [
 						action::AUTO_UPDATE => true,
 					],	
 				],

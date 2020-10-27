@@ -26,7 +26,7 @@ class hahaha_alias_table_define
         self::$Namespaces_[] = $namespace;
         
         class_alias(\hahaha\define\hahaha_define_base_direction::class, $namespace . 'direction');
-        class_alias(\hahaha\define\hahaha_define_base_key::class, $namespace . 'key');
+        class_alias(\hahaha\define\hahaha_define_base_key_::class, $namespace . 'key');
         class_alias(\hahaha\define\hahaha_define_base_node::class, $namespace . 'node');
         class_alias(\hahaha\define\hahaha_define_base_validate::class, $namespace . 'validate');
         class_alias(\hahaha\define\hahaha_define_table_db_field_type::class, $namespace . 'field_type');

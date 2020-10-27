@@ -10,7 +10,7 @@
 // base
 // ---------------------------------- 
 use hahaha\define\hahaha_define_base_direction as direction;
-use hahaha\define\hahaha_define_base_key as key;
+use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_node as node;
 use hahaha\define\hahaha_define_base_validate as validate;
 
