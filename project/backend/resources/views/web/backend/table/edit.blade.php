@@ -403,6 +403,9 @@ $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
                             $block->block = &$use_->Block_Top;
                             $block->block_class = "top";
                             $block->block_style = "";
+                            // 有預設值
+                            $block->default = false;
+                            //
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>

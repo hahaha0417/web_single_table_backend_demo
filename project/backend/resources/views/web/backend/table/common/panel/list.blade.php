@@ -87,6 +87,8 @@ use Spatie\Url\Url;
         $item->key_item = &$key_item;
         $item->item = &$value_item;
         $item->data = &$list->data;
+        $item->panel_name = $list->panel_name;
+        $item->default = &$list->default;
     ?>
     @include("web.backend.table.common.panel.item")   
 @endforeach

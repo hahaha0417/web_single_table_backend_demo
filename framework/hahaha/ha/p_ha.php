@@ -722,7 +722,7 @@ class p_ha
     public static function Lineed(&$tab = "", $str = "")
     {
         $line_ = "";
-        self::Line($line_, $tab_, $n);
+        self::Line($line_, $tab_, $str);
         return $line_;
     }
 

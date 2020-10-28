@@ -60,9 +60,9 @@ class Accounts
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cooment", type="string", length=255, nullable=true, options={"comment"="備註"})
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true, options={"comment"="備註"})
      */
-    private $cooment;
+    private $comment;
 
     /**
      * @var \DateTime|null
@@ -78,7 +78,7 @@ class Accounts
      */
     private $updatedAt;
 
-    public function accountLogin(){}
+
 
     /**
      * Get id.
@@ -211,27 +211,27 @@ class Accounts
     }
 
     /**
-     * Set cooment.
+     * Set comment.
      *
-     * @param string|null $cooment
+     * @param string|null $comment
      *
      * @return Accounts
      */
-    public function setCooment($cooment = null)
+    public function setComment($comment = null)
     {
-        $this->cooment = $cooment;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get cooment.
+     * Get comment.
      *
      * @return string|null
      */
-    public function getCooment()
+    public function getComment()
     {
-        return $this->cooment;
+        return $this->comment;
     }
 
     /**

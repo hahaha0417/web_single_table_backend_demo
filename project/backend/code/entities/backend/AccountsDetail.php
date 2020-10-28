@@ -97,7 +97,7 @@ class AccountsDetail
     /**
      * @var string|null
      *
-     * @ORM\Column(name="accounts_id", type="bigint", nullable=true)
+     * @ORM\Column(name="accounts_id", type="string", nullable=true)
      */
     private $accountsId;
 
@@ -349,29 +349,5 @@ class AccountsDetail
     public function getAccounts()
     {
         return $this->accounts;
-    }
-
-    /**
-     * Set accountsId.
-     *
-     * @param int|null $accountsId
-     *
-     * @return AccountsDetail
-     */
-    public function setAccountsId($accountsId = null)
-    {
-        $this->accountsId = $accountsId;
-
-        return $this;
-    }
-
-    /**
-     * Get accountsId.
-     *
-     * @return int|null
-     */
-    public function getAccountsId()
-    {
-        return $this->accountsId;
     }
 }

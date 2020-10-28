@@ -87,6 +87,7 @@ use Spatie\Url\Url;
                 $item->field = &$value_field;
                 $item->key_data = &$block->key_data;
                 $item->data = &$block->data;
+                $item->table_name = &$block->table_name;
             ?>
             @include("web.backend.table.common.table.item.item")                
         @endforeach  

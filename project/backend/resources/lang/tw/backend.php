@@ -68,6 +68,7 @@ return [
     'operator' => '操作',
     'selected' => '選擇',
     'detail' => '細節',
+    'comment' => '備註',
     'edit' => '編輯',
     'new' => '新',
     'verify_token' => '驗證Token',

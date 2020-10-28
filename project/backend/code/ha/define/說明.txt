@@ -1,0 +1,9 @@
+
+use ha\def;
+$result[def\Res::STATUS] = def\Status::SUCCESS;
+$result[def\Res::MSG] = "ddd";
+
+or
+
+$result[\ha\Res::STATUS] = \ha\Status::SUCCESS;
+$result[\ha\Res::MSG] = "ddd";

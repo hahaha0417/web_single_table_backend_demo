@@ -14,6 +14,12 @@ use hahaha\define\hahaha_define_base_direction as base_direction;
 use hahaha\define\hahaha_define_base_node as base_node;
 use hahaha\define\hahaha_define_base_validate as base_validate;
 // ----------------------------------
+// api
+// ---------------------------------- 
+use hahaha\define\hahaha_define_api_request as api_request;
+use hahaha\define\hahaha_define_api_response as api_response;
+use hahaha\define\hahaha_define_api_status as api_status;
+// ----------------------------------
 // db
 // ---------------------------------- 
 // use hahaha\define\hahaha_define_table_db_field_type as db_field_type;

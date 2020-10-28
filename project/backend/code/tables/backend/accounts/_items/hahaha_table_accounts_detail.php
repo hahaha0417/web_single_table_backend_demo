@@ -1056,7 +1056,7 @@ class hahaha_table_accounts_detail extends hahaha_table_base
 						key_::TYPE => type::LABEL,
 						key_::GROUP => group::FORM_GROUP_ROW,
 						key_::ITEMS => [
-							self::NAME => [
+							self::PHONE => [
 								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::PHONE,
 							],
 						],

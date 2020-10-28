@@ -408,6 +408,10 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             $block->block = &$use_->Block_Top;
                             $block->block_class = "top";
                             $block->block_style = "";
+                            // 有預設值
+                            $block->default = true;
+                            //
+                            $block->panel_name = "panel_top";
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -447,6 +451,10 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             $block->panel_class = "add";
                             $block->panel_style = "";
                             $block->form = true;
+                            // 有預設值
+                            $block->default = true;
+                            //
+                            $block->panel_name = "panel_add";
                             ?>
                             @include("web.backend.table.common.panel.panel") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
@@ -495,6 +503,10 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                                         $block->key_data = &$key_data;
                                         $block->data = &$data;
                                         $block->option = &$option;
+                                        // 有預設值
+                                        $block->default = false;
+                                        //
+                                        $block->table_name = "table_main";
                                         ?>
                                         @include("web.backend.table.common.table.td") 
                                         <? // -------------------------------------------------------------------------------------------------------------- ?>   
@@ -535,6 +547,9 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             $block->block = &$use_->Block_Bottom;
                             $block->block_class = "bottom";
                             $block->block_style = "";
+                            // 有預設值
+                            $block->default = true;
+                            //
                             ?>
                             @include("web.backend.table.common.block.block") 
                             <? // -------------------------------------------------------------------------------------------------------------- ?>

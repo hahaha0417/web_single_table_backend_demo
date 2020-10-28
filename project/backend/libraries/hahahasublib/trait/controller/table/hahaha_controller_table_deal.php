@@ -21,6 +21,10 @@ use Config;
 use Request;
 
 
+
+use hahaha\define\hahaha_define_api_request as api_request;
+use hahaha\define\hahaha_define_api_response as api_response;
+use hahaha\define\hahaha_define_api_status as api_status;
 /*
 基於分類，要多個繼承，所以用trait附加
 */
@@ -57,8 +61,13 @@ $ddd = $input;
 		// // 	// 跨id處理資料
 		// // 	$this->operate($result, $input);
 		// // }
+        // $result[api_response::STATUS] = api_status::FAILURE;
+        // $result[api_response::MSG] = "ddd";
+
+        $result[\ha\Res::STATUS] = \ha\Status::SUCCESS;
+        $result[\ha\Res::MSG] = "ddd";
+ 
         
-        $result['msg'] = "ddd";
 
 		return $result;
 

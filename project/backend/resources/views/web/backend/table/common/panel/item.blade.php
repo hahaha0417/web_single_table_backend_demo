@@ -83,6 +83,7 @@ $target_table_ = &$parameter_->Target_Table;
 $target_setting_table_ = &$parameter_->Target_Setting_Table;
 $target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);  
 $data = &$item->data;
+$panel_name_ = &$item->panel_name;
 
 ?>
 
@@ -112,7 +113,7 @@ $data = &$item->data;
             @endif
             @foreach($item->item[key_::ITEMS] as $key_field => $field)  
                 <?php // 簡單用github同步維護即可，因為考量laravel開發者，所以這邊不做成php html模組(我php hahaha framework的single table，會根據這邊的功能，移植到那邊的hahaha_view or 另外模組) ?>
-                @if($field[key_::TYPE] == type::TEXT)  
+                @if($field[key_::TYPE] == type::TEXT) 
                     <?php $label = true; ?>
                     @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
                         <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
@@ -139,7 +140,32 @@ $data = &$item->data;
                         </label> 
                     @endif   
 
-                    @if($input)                                                           
+                    @if($input)    
+                        <?php $input_value = NULL; ?>
+                        @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+                            <?php $input_value = $field[key_::DEFAULT]; ?>    
+                        @endif    
+                        
+                            
+                        {{--  有欄位才填  --}}                        
+                        @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
+                            @if(!empty($field[key_::DB_FIELD][key_::NAME]) && !empty($data[$field[key_::DB_FIELD][key_::NAME]]) )
+                                @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
+                                    <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s'); ?> 
+                                @else
+                                    <?php $input_value = $field[$data[$field[key_::DB_FIELD][key_::NAME]]]; ?>    
+                                @endif
+                            @elseif(!empty($data[$key_field]) ) 
+                                <?php $input_value = $data[$key_field]; ?> 
+                            @else          
+                            @endif
+                        @else
+                            @if(!empty($field[$key_field]) ) 
+                                <?php $input_value = $field[$key_field]; ?> 
+                            @else          
+                            @endif     
+                        @endif     
+                                                                      
                         <input type="text" 
                             @if(!empty($field[key_::ID])) 
                                 @if(!empty($key_data))
@@ -180,21 +206,9 @@ $data = &$item->data;
                             @else 
                                 placeholder="" 
                             @endif 
-                            {{--  有欄位才填  --}}                        
-                            @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
-                                @if(!empty($field[key_::DB_FIELD][key_::NAME]) && !empty($data[$field[key_::DB_FIELD][key_::NAME]]) )
-                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
-                                        value="{{$data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s')}}"
-                                    @else
-                                        value="{{$data[$field[key_::DB_FIELD][key_::NAME]]}}"
-                                    @endif
-                                @elseif(!empty($data[$key_field]) ) 
-                                    value="{{$data[$key_field]}}"
-                                @else
-                                    value=""
-                                @endif
-                            @else
-                                name="{{$key_field}}"
+                                                        
+                            @if(isset($input_value))
+                                value="{{$input_value}}"   
                             @endif
                             
                             @if(!empty($field[key_::HINT])) 
@@ -248,7 +262,29 @@ $data = &$item->data;
                         </label>  
                     @endif   
 
-                    @if($input)                                                          
+                    @if($input)    
+                        <?php $input_value = NULL; ?>
+                        @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+                            <?php $input_value = $field[key_::DEFAULT]; ?>                            
+                        @endif    
+                        {{--  有欄位才填  --}}                        
+                        @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
+                            @if(!empty($field[key_::DB_FIELD][key_::NAME]) && !empty($data[$field[key_::DB_FIELD][key_::NAME]]) )
+                                @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
+                                    <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s'); ?> 
+                                @else
+                                    <?php $input_value = $field[$data[$field[key_::DB_FIELD][key_::NAME]]]; ?>    
+                                @endif
+                            @elseif(!empty($data[$key_field]) ) 
+                                <?php $input_value = $data[$key_field]; ?> 
+                            @else     
+                            @endif
+                        @else
+                            @if(!empty($field[$key_field]) ) 
+                                <?php $input_value = $field[$key_field]; ?> 
+                            @else          
+                            @endif        
+                        @endif                                                             
                         <input type="text" 
                             @if(!empty($field[key_::ID])) 
                                 id="{{$field[key_::ID]}}" 
@@ -283,20 +319,9 @@ $data = &$item->data;
                             @else 
                                 placeholder="" 
                             @endif   
-                            @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
-                                @if(!empty($field[key_::DB_FIELD][key_::NAME]) && !empty($data[$field[key_::DB_FIELD][key_::NAME]]) )
-                                    @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
-                                        value="{{$data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s')}}"
-                                    @else
-                                        value="{{$data[$field[key_::DB_FIELD][key_::NAME]]}}"
-                                    @endif
-                                @elseif(!empty($data[$key_field]) ) 
-                                    value="{{$data[$key_field]}}"
-                                @else
-                                    value=""
-                                @endif
-                            @else
-                                name="{{$key_field}}"
+                           
+                            @if(isset($input_value))
+                                value="{{$input_value}}"   
                             @endif
 
                             @if(!empty($field[key_::HINT])) 
@@ -361,7 +386,30 @@ $data = &$item->data;
                         </label>  
                     @endif  
 
-                    @if($input)                                                          
+                    @if($input)   
+                        <?php $input_value = NULL; ?>
+                        @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+                            <?php $input_value = $field[key_::DEFAULT]; ?>                            
+                        @endif     
+                        {{--  有欄位才填  --}}
+                        {{--  有欄位才填  --}}                        
+                        @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
+                            @if(!empty($field[key_::DB_FIELD][key_::NAME]) && !empty($data[$field[key_::DB_FIELD][key_::NAME]]) )
+                                @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
+                                    <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s'); ?> 
+                                @else
+                                    <?php $input_value = $field[$data[$field[key_::DB_FIELD][key_::NAME]]]; ?>    
+                                @endif
+                            @elseif(!empty($data[$key_field]) ) 
+                                <?php $input_value = $data[$key_field]; ?> 
+                            @else     
+                            @endif
+                        @else
+                            @if(!empty($field[$key_field]) ) 
+                                <?php $input_value = $field[$key_field]; ?> 
+                            @else          
+                            @endif        
+                        @endif                                                    
                         <input type="password" 
                             @if(!empty($key_data))
                                 id="{{$field[key_::ID]}}_{{$key_data}}" 
@@ -398,16 +446,10 @@ $data = &$item->data;
                             @else 
                                 placeholder="" 
                             @endif   
-                            {{--  有欄位才填  --}}
-                            @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
-                                @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                                    value="{{$data[$field[key_::DB_FIELD][key_::NAME]]}}"
-                                @elseif(!empty($data[$key_field])) 
-                                    value="{{$data[$key_field]}}"
-                                @else
-                                    value=""
-                                @endif
-                            @else
+                            
+
+                            @if(isset($input_value))
+                                value="{{$input_value}}"   
                             @endif
 
                             @if(!empty($field[key_::ATTRIBUTES]) && !empty($field[key_::ATTRIBUTES][attr::READONLY])) 
@@ -454,6 +496,30 @@ $data = &$item->data;
 
                     @endif   
                     @if($option) 
+                        <?php $input_value = NULL; ?>
+                        @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+                            <?php $input_value = $field[key_::DEFAULT]; ?>                            
+                        @endif
+                        @foreach($field[key_::OPTIONS] as $key_option => $option) 
+                            <?php $input = true; ?>
+                            @if(isset($field[key_::SETTINGS]) && isset($option[key_::SETTINGS][setting::INPUT]))                             
+                                <?php $input = $option[key_::SETTINGS][setting::INPUT]; ?>
+                            @endif   
+                            
+                            @if($input)                            
+                                @if(!empty($field[key_::DB_FIELD][key_::NAME]))
+                                    @if(!empty($data[$field[key_::DB_FIELD][key_::NAME]]) && $option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
+                                        <?php $input_value = $key_option; ?>
+                                    @endif
+                                @else
+                                    @if(!empty($data[$key_field]) && $option[key_::VALUE] == $data[$key_field])
+                                        <?php $input_value = $key_option; ?>
+                                    @endif
+                                @endif
+                            @endif
+                            
+                        @endforeach
+                        
                         @foreach($field[key_::OPTIONS] as $key_option => $option) 
                             <?php $label = true; ?>
                             @if(isset($option[key_::SETTINGS]) && isset($option[key_::SETTINGS][setting::LABEL])) 
@@ -466,13 +532,13 @@ $data = &$item->data;
                             @if($label) 
                                 <label for="{{$option[key_::ID]}}" 
                                     class="col-sm-3 col-form-label 
-                                        @if(!empty($field[key_::CLASSES_LABEL]))
-                                            {{$field[key_::CLASSES_LABEL]}} 
+                                        @if(!empty($option[key_::CLASSES_LABEL]))
+                                            {{$option[key_::CLASSES_LABEL]}} 
                                         @endif 
                                     "    
                                     style="
-                                        @if(!empty($field[key_::STYLES_LABEL]))
-                                            {{$field[key_::STYLES_LABEL]}}
+                                        @if(!empty($option[key_::STYLES_LABEL]))
+                                            {{$option[key_::STYLES_LABEL]}}
                                         @endif 
                                     " 
                                     @if(!empty($key_data))
@@ -513,15 +579,15 @@ $data = &$item->data;
                                         @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
                                             @if(!empty($key_data) )
                                                 @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                                                    name="{{$field[key_::DB_FIELD][key_::NAME]}}_{{$key_data}}"
+                                                    name="{{$field[key_::DB_FIELD][key_::NAME]}}_{{$key_data}}[{{$panel_name_}}]"
                                                 @else 
-                                                    name="{{$key_field}}_{{$key_data}}"
+                                                    name="{{$key_field}}_{{$key_data}}[{{$panel_name_}}]"
                                                 @endif
                                             @else
                                                 @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                                                    name="{{$field[key_::DB_FIELD][key_::NAME]}}"
+                                                    name="{{$field[key_::DB_FIELD][key_::NAME]}}[{{$panel_name_}}]"
                                                 @else 
-                                                    name="{{$key_field}}"
+                                                    name="{{$key_field}}[{{$panel_name_}}]"
                                                 @endif
                                             @endif
                                         @else
@@ -535,15 +601,11 @@ $data = &$item->data;
                                         value="{{$option[key_::VALUE]}}"
                                         data-labelauty=" "
 
-                                        @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                                            @if(!empty($data[$field[key_::DB_FIELD][key_::NAME]]) && $option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
-                                                checked
-                                            @endif
-                                        @else
-                                            @if(!empty($data[$key_field]) && $option[key_::VALUE] == $data[$key_field])
-                                                checked
-                                            @endif
+                                        @if(isset($input_value) && $key_option == $input_value)
+                                            checked
                                         @endif
+
+                                       
                                     >
                                 </div> 
                             @endif   
@@ -554,9 +616,9 @@ $data = &$item->data;
                     @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
                         <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
                     @endif    
-                    <?php $input = true; ?>
-                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::INPUT])) 
-                        <?php $input = $field[key_::SETTINGS][setting::INPUT]; ?>
+                    <?php $image = true; ?>
+                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::IMAGE])) 
+                        <?php $image = $field[key_::SETTINGS][setting::IMAGE]; ?>
                     @endif   
 
                     @if($label)
@@ -575,7 +637,7 @@ $data = &$item->data;
                         @endif    
                         </label> 
                     @endif  
-                    @if($input)       
+                    @if($image)       
                         <img 
                             id="{{$field[key_::ID]}}_thumbnail"
                             class="col-sm-4 {{$field[key_::ID]}} image {{$field[key_::ID]}}
@@ -606,9 +668,9 @@ $data = &$item->data;
                     @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
                         <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
                     @endif    
-                    <?php $input = true; ?>
-                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::INPUT])) 
-                        <?php $input = $field[key_::SETTINGS][setting::INPUT]; ?>
+                    <?php $button = true; ?>
+                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::BUTTON])) 
+                        <?php $button = $field[key_::SETTINGS][setting::BUTTON]; ?>
                     @endif   
 
                     @if($label) 
@@ -632,7 +694,7 @@ $data = &$item->data;
                         @endif    
                         </label> 
                     @endif   
-                    @if($input) 
+                    @if($button) 
                         <div 
                             id="{{$field[key_::ID]}}"
                                 
@@ -674,9 +736,9 @@ $data = &$item->data;
                     @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
                         <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
                     @endif    
-                    <?php $input = true; ?>
-                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::INPUT])) 
-                        <?php $input = $field[key_::SETTINGS][setting::INPUT]; ?>
+                    <?php $button = true; ?>
+                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::BUTTON])) 
+                        <?php $button = $field[key_::SETTINGS][setting::BUTTON]; ?>
                     @endif   
 
                     @if($label) 
@@ -700,7 +762,7 @@ $data = &$item->data;
                         @endif  
                         </label> 
                     @endif   
-                    @if($input) 
+                    @if($button) 
                         <?php // 這一定要button，不然沒辦法mask form submit ?>
                         <button 
                             type="click"
@@ -744,9 +806,9 @@ $data = &$item->data;
                     @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::LABEL])) 
                         <?php $label = $field[key_::SETTINGS][setting::LABEL]; ?>
                     @endif    
-                    <?php $input = true; ?>
-                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::INPUT])) 
-                        <?php $input = $field[key_::SETTINGS][setting::INPUT]; ?>
+                    <?php $button = true; ?>
+                    @if(isset($field[key_::SETTINGS]) && isset($field[key_::SETTINGS][setting::BUTTON])) 
+                        <?php $button = $field[key_::SETTINGS][setting::BUTTON]; ?>
                     @endif   
 <?php
 $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
@@ -773,7 +835,7 @@ $url_ = Url::fromString($actual_link_);
                         @endif     
                         </label> 
                     @endif   
-                    @if($input) 
+                    @if($button) 
                         <a href="
                                 @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
                                     {{$url_}}/edit/{{$data[$field[key_::DB_FIELD][ $field[key_::INDEX] ]]}}

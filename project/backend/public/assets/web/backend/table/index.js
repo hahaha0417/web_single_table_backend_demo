@@ -86,70 +86,69 @@ $(function() {
 });
 
 $(function() { 
+    // ---------------------------------------- 
+    // 項目太多，再另做一個功能(傳輸最簡)
+    // 不然直接將form丟過去即可
+    // ---------------------------------------- 
     $("#accounts_panel_add_form").submit(function(e){
         alert(333);
         return false;
     });
    
     $('.accounts_panel_add_button_add').click(function() { 
+        // var item = {
+        //     "account" : $("#accounts_panel_add_account").val(),
+        //     "password_new" : $("#accounts_panel_add_password").val(),
+        //     "password_confirm" : $("#accounts_panel_add_password_confirm").val(),
+        //     "email" : $("#accounts_panel_add_email").val(),
+        //     "gender" : $(".accounts_panel_add_gender[name=gender]:checked").val(),
+        //     "status" : $("#accounts_panel_add_status").val(),
+        // };
         
-        
-        var item = {
-            "account" : $("#accounts_panel_add_account").val(),
-            "password_new" : $("#accounts_panel_add_password").val(),
-            "password_confirm" : $("#accounts_panel_add_password_confirm").val(),
-            "email" : $("#accounts_panel_add_email").val(),
-            "gender" : $(".accounts_panel_add_gender[name=gender]:checked").val(),
-            "status" : $("#accounts_panel_add_status").val(),
-        };
-
-        return true;
-        
-        $("#accounts_panel_add_form").submit();
-        
-        alert(222);
-        
-  
-        return false;
-        
-        console.log(item);
-        
+        // var form_data = JSON.stringify(Object.fromEntries(new FormData($('#accounts_panel_add_form')[0])));
+        var form_data = Object.fromEntries(new FormData($('#accounts_panel_add_form')[0]));
+        console.log(form_data);
+                
         $.ajax({
-            type:"POST",
             url:"/backend/table/backend/accounts/list/deal",
+            type:"POST",           
+            
             data:{
                 '_token': $("input[name=_token]").attr("value"),
                 'deal': 'item',
                 'method': 'add',
-                'item': item,
-                'target': "image",
+                'item': form_data,
+                // 'target': "image",
             },
-            success:function(response,status,xhr){  
-                // console.log(response);                         
+            success:function(response, status, xhr){  
+                console.log(response);                         
                 if(response.status == 0){
+                    // 成功
                     layer.msg(
                         response.msg, 
                         {
                             icon: 6,
                             area: ['360px', '100px'],
+                            end: function(index, layero){
+                                //do something
+                                location.reload();     
+                            }
                         }
                     );
-
-                    // console.log($("#index_pic_board_select"));
-                    var image = $("#index_item_image").val();
-                    $("#index_item_image_thumbnail").attr('src', new URL(image, window.location.protocol + "//" + location.host));
                 }
                 else{
+                    // 失敗失敗
                     layer.msg(
                         response.msg, 
                         {
                             icon: 5,
-                            area: ['360px', '100px'],
+                            area: ['360px', '100px'],                            
                         }
                     );
+                                   
                 }                             
             },
-            error:function(response,status,xhr){     
+            error:function(response, status, xhr){     
                 // console.log(response);   
                 if(response.status == 0){
                     layer.msg(
@@ -171,5 +170,6 @@ $(function() {
                 }
             },
         });
+        return true;
     }); 
 }); 

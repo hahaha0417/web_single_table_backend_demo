@@ -80,6 +80,8 @@ use Spatie\Url\Url;
             $list = new \hahaha\hahaha_parameter;
             $list->list = &$block->panel;
             $list->data = &$block->data;
+            $list->panel_name = &$block->panel_name;
+            $list->default = &$block->default;
             ?>
             @include("web.backend.table.common.panel.list")  
         @if(isset($block->form) && $block->form)

@@ -77,6 +77,7 @@ use Spatie\Url\Url;
     $field = &$item->field;
     $key_data = &$item->key_data;
     $data_ = &$item->data;
+    $table_name_ = &$item->table_name;
     //
     // 這從controller傳來
     $parameter_ = \hahaha\hahaha_parameter::Instance();
@@ -129,7 +130,7 @@ use Spatie\Url\Url;
             <?php
                 foreach($field[key_::OPTIONS] as $key => $option) 
                 {
-                    if($option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
+                    if(isset($data[$field[key_::DB_FIELD][key_::NAME]]) && $option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
                     {
                         $label_text = $option[key_::TITLE];
                         break;
@@ -141,19 +142,38 @@ use Spatie\Url\Url;
                 <?php
                 foreach($field[key_::OPTIONS] as $key => $option) 
                 {
-                    if($option[key_::VALUE] == $data[$key_field])
+                    if(isset($data[$key_field]) && $option[key_::VALUE] == $data[$key_field])
                     {
                         $label_text = $option[key_::TITLE];
                         break;
                     }
                 }                                                                                            
             ?>
-            {{$label_text}}
+            @if(isset($label_text))
+                {{$label_text}}
+            @endif
         @endif
     @else
     @endif
 </div>
-@elseif($field[key_::TYPE] == type::TEXT)                                                       
+@elseif($field[key_::TYPE] == type::TEXT)  
+    <?php $input_value = NULL; ?>
+    @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+        <?php $input_value = $field[key_::DEFAULT]; ?>                            
+    @endif   
+    {{--  有欄位才填  --}}
+    @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
+        @if(!empty($field[key_::DB_FIELD][key_::NAME]))
+            @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
+                <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s'); ?>   
+            @else
+                <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]; ?>   
+            @endif
+        @else 
+            <?php $input_value = $data[$key_field]; ?>   
+        @endif
+    @else
+    @endif                                                      
     <input  
         @if(!empty($field[key_::ID])) 
             id="{{$field[key_::ID]}}_{{$key_data}}" 
@@ -189,18 +209,9 @@ use Spatie\Url\Url;
         @else 
             placeholder="" 
         @endif 
-        {{--  有欄位才填  --}}
-        @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
-            @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                @if($target_setting_table_meta_data_->fieldMappings[$field[key_::DB_FIELD][key_::NAME]][key_::TYPE] == field_type::DATETIME)
-                    value="{{$data[$field[key_::DB_FIELD][key_::NAME]]->format('Y-m-d H:i:s')}}"
-                @else
-                    value="{{$data[$field[key_::DB_FIELD][key_::NAME]]}}"
-                @endif
-            @else 
-                value="{{$data[$key_field]}}"
-            @endif
-        @else
+        
+        @if(isset($input_value))
+            value="{{$input_value}}"   
         @endif
 
         @if(!empty($field[key_::HINT])) 
@@ -226,22 +237,20 @@ use Spatie\Url\Url;
         @endif
     >
 @elseif($field[key_::TYPE] == type::PASSWORD) 
-    <label for="{{$field[key_::ID]}}" 
-        class="col-sm-3 col-form-label 
-            @if(!empty($field[key_::CLASSES_LABEL]))
-                {{$field[key_::CLASSES_LABEL]}} 
-            @endif 
-        "    
-        style="
-            @if(!empty($field[key_::STYLES_LABEL]))
-                {{$field[key_::STYLES_LABEL]}}
-            @endif 
-        "  
-        @if(!empty($field[key_::ID])) 
-            id="{{$field[key_::ID]}}_label_{{$key_data}}" 
-        @endif 
-    >{{$field[key_::TITLE]}} :    
-    </label>                                                            
+    <?php $input_value = NULL; ?>
+    @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+        <?php $input_value = $field[key_::DEFAULT]; ?>                            
+    @endif  
+    {{--  有欄位才填  --}}
+    @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
+        @if(!empty($field[key_::DB_FIELD][key_::NAME]))
+            <?php $input_value = $data[$field[key_::DB_FIELD][key_::NAME]]; ?>  
+        @else 
+            <?php $input_value = $data[$key_field]; ?>   
+        @endif
+    @else
+    @endif  
+                                                              
     <input type="password" 
         @if(!empty($field[key_::ID])) 
             id="{{$field[key_::ID]}}_{{$key_data}}" 
@@ -276,14 +285,10 @@ use Spatie\Url\Url;
         @else 
             placeholder="" 
         @endif   
-        {{--  有欄位才填  --}}
-        @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
-            @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                value="{{$data[$field[key_::DB_FIELD][key_::NAME]]}}"
-            @else 
-                value="{{$data[$key_field]}}"
-            @endif
-        @else
+        
+
+        @if(isset($input_value))
+            value="{{$input_value}}"   
         @endif
 
         @if(!empty($field[key_::ATTRIBUTES]) && !empty($field[key_::ATTRIBUTES][attr::READONLY])) 
@@ -478,6 +483,27 @@ $url_ = Url::fromString($actual_link_);
         </div>
     </a>
 @elseif($field[key_::TYPE] == type::RADIOBOX)   
+    <?php $input_value = NULL; ?>
+    @if(isset($item->default) && $item->default  && isset($field[key_::DEFAULT]))
+        <?php $input_value = $field[key_::DEFAULT]; ?>        
+    @endif
+    @foreach($field[key_::OPTIONS] as $key_option => $option) 
+        <?php $input = true; ?>
+        @if(isset($field[key_::SETTINGS]) && isset($option[key_::SETTINGS][setting::INPUT])) 
+            <?php $input = $option[key_::SETTINGS][setting::INPUT]; ?>
+        @endif   
+        @if($input)                            
+            @if(!empty($field[key_::DB_FIELD][key_::NAME]))
+                @if(!empty($data[$field[key_::DB_FIELD][key_::NAME]]) && $option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
+                    <?php $input_value = $key_option; ?>
+                @endif
+            @else
+                @if(!empty($data[$key_field]) && $option[key_::VALUE] == $data[$key_field])
+                    <?php $input_value = $key_option; ?>
+                @endif
+            @endif
+        @endif
+    @endforeach
     
     @foreach($field[key_::OPTIONS] as $key_option => $option)    
         <label for="{{$option[key_::ID]}}_{{$key_data}}" 
@@ -511,15 +537,15 @@ $url_ = Url::fromString($actual_link_);
             @if(!empty($field[key_::DB_FIELD]) && !empty($field[key_::DB_FIELD][key_::IS_FIELD]) )
                 @if(!empty($key_data) )
                     @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                        name="{{$field[key_::DB_FIELD][key_::NAME]}}_{{$key_data}}"
+                        name="{{$field[key_::DB_FIELD][key_::NAME]}}_{{$key_data}}[{{$table_name_}}]"
                     @else 
-                        name="{{$key_field}}_{{$key_data}}"
+                        name="{{$key_field}}_{{$key_data}}[{{$table_name_}}]"
                     @endif
                 @else
                     @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                        name="{{$field[key_::DB_FIELD][key_::NAME]}}"
+                        name="{{$field[key_::DB_FIELD][key_::NAME]}}[{{$table_name_}}]"
                     @else 
-                        name="{{$key_field}}"
+                        name="{{$key_field}}[{{$table_name_}}]"
                     @endif
                 @endif
             @else
@@ -533,14 +559,8 @@ $url_ = Url::fromString($actual_link_);
             value="{{$option[key_::VALUE]}}"
             data-labelauty=" "
 
-            @if(!empty($field[key_::DB_FIELD][key_::NAME]))
-                @if($option[key_::VALUE] == $data[$field[key_::DB_FIELD][key_::NAME]])
-                    checked
-                @endif
-            @else
-                @if($option[key_::VALUE] == $data[$key_field])
-                    checked
-                @endif
+            @if(isset($input_value) && $key_option == $input_value)
+                checked
             @endif
         >
     @endforeach
@@ -576,7 +596,12 @@ $url_ = Url::fromString($actual_link_);
                     $item->data = &$data_;  
                     // 暫存
                     $item = &$item_temp_;
-                    //   
+                    // 
+                    $item->panel_name = "panel_detail";
+                    // 有預設值  
+                    $item->default = false;
+                    //  
+                    
                 ?>
                 @include("web.backend.table.common.panel.item")   
             @endforeach

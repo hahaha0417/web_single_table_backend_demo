@@ -93,10 +93,15 @@ class hahaha_table_accounts extends hahaha_table_base
 	const EMAIL = "email";	
 	const GENDER = "gender";	
 	const STATUS = "status";	
+	const COMMENT = "comment";	
 	const CREATED_AT = "created_at";
 	const UPDATED_AT = "updated_at";
 	// ---------------------------------- 
 	const BUTTON_DETAIL = "button_detail";
+
+
+	const MALE = "male";	
+	const FEMALE = "female";	
 	// -------------------------------------------------------- 
 	// 全域
 	// -------------------------------------------------------- 	
@@ -136,13 +141,13 @@ class hahaha_table_accounts extends hahaha_table_base
 		// 對應DB值
 		$settings_options = [
 			self::GENDER => [
-				'male' => [
+				self::MALE => [
 					key_::VALUE => '1',					
-					key_::TITLE => __('backend.male'), 
+					key_::TITLE => __('backend.' . self::MALE), 
 				],	
-				'female' => [
+				self::FEMALE => [
 					key_::VALUE => '0',
-					key_::TITLE => __('backend.female'),
+					key_::TITLE => __('backend.' . self::FEMALE),
 				],
 							
 			],
@@ -265,6 +270,16 @@ class hahaha_table_accounts extends hahaha_table_base
 					action::AUTO_UPDATE => true,
 				],	
 				key_::PLACEHOLDER => __('backend.help') . " : " . "-1 停權 0 未驗證 1 驗證",	
+			],
+			self::COMMENT => [					// 帳號不可以改
+				key_::ID => self::IDENTIFY . "_" . self::COMMENT,
+				key_::DB_FIELD => [
+					key_::IS_FIELD => true,
+				],
+				key_::TITLE => __('backend.comment'),
+				key_::TYPE => type::TEXT,
+		
+				key_::PLACEHOLDER => __('backend.help') . " : " . "備註",
 			],
 			self::CREATED_AT => [
 				key_::ID => self::IDENTIFY . "_" . self::CREATED_AT,
@@ -739,6 +754,8 @@ class hahaha_table_accounts extends hahaha_table_base
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
+				// 不使用預設值
+				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[				
 						key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . "all_select",		
@@ -829,14 +846,14 @@ class hahaha_table_accounts extends hahaha_table_base
 						key_::GROUP => group::INPUT_GROUP,
 						key_::ITEMS => [
 							self::GENDER => [
-								 key_::TYPE => type::LABEL_BY_OPTION_VALUE,
-								// key_::TYPE => type::RADIOBOX,
+								// key_::TYPE => type::LABEL_BY_OPTION_VALUE,
+								key_::TYPE => type::RADIOBOX,
 								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
-									"female" => [
-										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "female",
+									self::FEMALE => [
+										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . self::FEMALE,
 									],
-									"male" => [
-										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . "male",
+									self::MALE => [
+										key_::ID => self::IDENTIFY . "_" . self::GENDER . "_" . self::MALE,
 									],
 									
 								]),
@@ -930,7 +947,23 @@ class hahaha_table_accounts extends hahaha_table_base
 							"width" => "45px",
 						],
 						
-					],					
+					],		
+					[
+						key_::TITLE => __('backend.comment'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
+							self::COMMENT => [
+								key_::TYPE => type::TEXT,	
+								key_::STYLES => [
+									"margin-top" => "5px",
+								],									
+							],
+						],
+						key_::STYLES => [
+							"width" => "250px",
+						],
+						
+					],			
 				],
 				// --------------------------------------------------- 
 				// 下方區塊 - 一維嵌套
@@ -978,6 +1011,8 @@ class hahaha_table_accounts extends hahaha_table_base
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
 				// --------------------------------------------------- 
+				// 使用預設值
+				// --------------------------------------------------- 
                 self::B_PANEL_ADD => [
 					[
 						key_::TITLE => __('backend.account'),
@@ -997,6 +1032,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::CLASSES_LABEL => [
 									class_::REQUIRED => true,
 								],
+								key_::DEFAULT => "a",
 							],
 						],
 						key_::STYLES => [
@@ -1008,7 +1044,7 @@ class hahaha_table_accounts extends hahaha_table_base
 						key_::GROUP => group::FORM_GROUP_ROW,
 						key_::ITEMS => [
 							self::PASSWORD_NEW => [
-								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD,
+								key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::PASSWORD_NEW,
 								key_::DB_FIELD => [
 									// key_::IS_FIELD => true,
 								],
@@ -1020,6 +1056,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::CLASSES_LABEL => [
 									class_::REQUIRED => true,
 								],
+								key_::DEFAULT => "b",
 							],
 						],
 						key_::STYLES => [
@@ -1040,6 +1077,7 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::CLASSES_LABEL => [
 									class_::REQUIRED => true,
 								],
+								key_::DEFAULT => "c",
 							],
 						],
 						key_::STYLES => [
@@ -1063,7 +1101,8 @@ class hahaha_table_accounts extends hahaha_table_base
 								],	
 								key_::CLASSES_LABEL => [
 									class_::REQUIRED => true,
-								],			
+								],	
+								key_::DEFAULT => "d",	
 							],
 						],
 						key_::STYLES => [
@@ -1085,20 +1124,19 @@ class hahaha_table_accounts extends hahaha_table_base
 									"display" => "block",
 								],								
 								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
-									"female" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "female",
+									self::FEMALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . self::FEMALE,
 									],
-									"male" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . "male",
+									self::MALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_ADD . "_" . self::GENDER . "_" . self::MALE,
+										
 									],
 									
 								]),
-								key_::ATTRS => [
-									attr::REQUIRED => true,
-								],	
 								key_::CLASSES_LABEL => [
 									class_::REQUIRED => true,
 								],
+								key_::DEFAULT => self::FEMALE,
 							],
 						],
 						key_::STYLES => [
@@ -1122,11 +1160,30 @@ class hahaha_table_accounts extends hahaha_table_base
 								key_::CLASSES => [
 									self::B_PANEL_ADD,
 								],	
+								key_::DEFAULT => "e",
 							],
 						],
 						key_::STYLES => [
 						],
 					],
+					[
+						key_::TITLE => __('backend.comment'),
+						key_::TYPE => type::LABEL,
+						key_::GROUP => group::FORM_GROUP_ROW,
+						key_::ITEMS => [
+							self::COMMENT => [
+								key_::TYPE => type::TEXT,	
+								key_::STYLES => [
+									"margin-top" => "5px",
+								],	
+								key_::DEFAULT => "f",							
+							],
+						],
+						key_::STYLES => [
+							
+						],
+						
+					],		
 					[
 						// key_::TITLE => __('backend.item'),
 						key_::TYPE => type::B_BLOCK_SHORT_WRAP,
@@ -1150,6 +1207,8 @@ class hahaha_table_accounts extends hahaha_table_base
 				// 細節面板 - 多筆 - table附加面板
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+				// 不使用預設值
 				// --------------------------------------------------- 
                 self::B_PANEL_DETAIL => [
 					// 不一定應該在這邊提供更改密碼，這裡是為了打架構測試所以才加的
@@ -1207,20 +1266,22 @@ class hahaha_table_accounts extends hahaha_table_base
 								],
 								
 								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
-									"female" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "female",
+									self::FEMALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . self::FEMALE,
 										key_::STYLES => "height:40px;",
 									],
-									"male" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . "male",
+									self::MALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_PANEL_DETAIL . "_" . self::GENDER . "_" . self::MALE,
 										key_::STYLES => "height:40px;",
 									],
 									
-								]),
+								]),								
 							],
+							
 						],
 						key_::STYLES => [
 						],
+						
 					],
 					[
 						key_::TITLE => __('backend.created_at'),
@@ -1307,6 +1368,8 @@ class hahaha_table_accounts extends hahaha_table_base
 				// 主要區塊 - 多筆 - table
 				// --------------------------------------------------- 
 				// 基於彈性，不一定要全部綁一起，如怕亂，請提供設定集，寫設定集的要提供該設定下的使用正常
+				// --------------------------------------------------- 
+				// 不使用預設值
 				// --------------------------------------------------- 
                 self::B_MAIN => [
 					[
@@ -1416,14 +1479,15 @@ class hahaha_table_accounts extends hahaha_table_base
 									"height" => "40px"
 								],								
 								key_::OPTIONS => array_merge_recursive($this->Settings_Options[self::GENDER], [
-									"female" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "female",
+									self::FEMALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . self::FEMALE,
 									],
-									"male" => [
-										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . "male",
+									self::MALE => [
+										key_::ID => self::IDENTIFY . "_" . self::B_MAIN . "_" . self::GENDER . "_" . self::MALE,
 									],
 									
 								]),
+								
 							],
 						],
 						key_::STYLES => [
@@ -1449,6 +1513,22 @@ class hahaha_table_accounts extends hahaha_table_base
 						key_::STYLES => [
 						],
 					],
+					[
+						key_::TITLE => __('backend.comment'),
+						key_::TYPE => type::LABEL,
+						key_::ITEMS => [
+							self::COMMENT => [
+								key_::TYPE => type::TEXT,	
+								key_::STYLES => [
+									"margin-top" => "5px",
+								],									
+							],
+						],
+						key_::STYLES => [
+							"width" => "250px",
+						],
+						
+					],		
 					[
 						key_::TITLE => __('backend.created_at'),
 						key_::TYPE => type::LABEL,
