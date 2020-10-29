@@ -3,27 +3,27 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
+{{--
     ----------------------------------------------------------------------------
     說明
-    ----------------------------------------------------------------------------   
+    ----------------------------------------------------------------------------
     欄位是否要模組化，等草稿定稿再做模組化，避免考慮不完全
 
-    模組化須注意 : 
+    模組化須注意 :
     1. 樣式
     2. 功能
     3. 現在收入狀況
     4. 接口
     5. 變成整個大模塊，並且保證我有任意使用權
-    
+
     ----------------------------------------------------------------------------
-    注意 
+    注意
     ----------------------------------------------------------------------------
     本專案強調是後台"簡易快速開發"，而不是後台"任意客製化"，不要做錯東西
     這裡強調"模組化可以放reference"(需提供正常運作保證)，但是"實際開發不一定要用reference"(由開發的人自行承擔)
     由於目前沒有確定可以正常賺錢，因此不直接進行獨立的模塊化
     ----------------------------------------------------------------------------
-    注意 
+    注意
     ----------------------------------------------------------------------------
     模塊後規劃放在laravel single table backend framework內，除非完成了確定不改
     不然會被人搞，要求要相容舊的接口
@@ -32,21 +32,21 @@
 {{-- ---------------------------------------------------------------------------------------------- --}}
 
 <?
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 // 不要用這個
 // \backend\alias\hahaha_alias_table_define::Alias("\\");
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 // 用傳統的貼法，避免出現錯誤
-// 解法 : 
-// 1. php提供新include，可以insert代碼做整理 * 
-// 2. 插件可以幫我parser class_alias()，例如提供方法指定 
-/** 
- * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析 
+// 解法 :
+// 1. php提供新include，可以insert代碼做整理 *
+// 2. 插件可以幫我parser class_alias()，例如提供方法指定
+/**
+ * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析
  * ! Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("\\");
  * 上面function獨立並只做class_alias
- * 
+ *
  **/
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
@@ -82,36 +82,38 @@ $target_table_ = &$parameter_->Target_Table;
 $data_list_ = &$parameter_->Index[key_::DATA_LIST];
 $data_link_ = &$parameter_->Index[key_::DATA_LINK];
 
-$target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);                                                                                        
+$target_setting_table_meta_data_ = EntityManager::getClassmetadata($target_setting_table_["entity"]);
 // table class 名
 $target_table_class_ = $target_setting_table_['table'];
-// -------------------------------------------------- 
+// --------------------------------------------------
 // 這裡是設定，到時候包成函式
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Identify = $target_table_class_::IDENTIFY;
 $use_->Class_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_ADD;
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Id_Panel_Add_Button_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_ADD;
 $use_->Class_Panel_Add_Button_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_ADD;
+$use_->Id_Panel_Add_Form_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_FORM;
+$use_->Class_Panel_Add_Form_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_FORM;
 $use_->Id_Panel_Add_Button_Cancel_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
 $use_->Class_Panel_Add_Button_Cancel_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::PANEL_ADD_BUTTON_CANCEL;
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Block_Top_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
-$use_->Id_Block_Top_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP; 
+$use_->Id_Block_Top_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
 $use_->Class_Block_Top_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_TOP;
 $use_->Block_Top = &$target_table_->Index[$target_table_class_::B_TOP];
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Panel_Add_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
-$use_->Id_Panel_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD; 
+$use_->Id_Panel_Add_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
 $use_->Class_Panel_Add_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_ADD;
 $use_->Panel_Add = &$target_table_->Index[$target_table_class_::B_PANEL_ADD];
 
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Block_Bottom_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
-$use_->Id_Block_Bottom_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM; 
+$use_->Id_Block_Bottom_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
 $use_->Class_Block_Bottom_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_BOTTOM;
 $use_->Block_Bottom = &$target_table_->Index[$target_table_class_::B_BOTTOM];
-// -------------------------------------------------- 
+// --------------------------------------------------
 $use_->Prepend_Detail_Button_Identify = $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
 $use_->Id_Prepend_Detail_Button_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
 $use_->Class_Prepend_Detail_Button_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::BUTTON_PREPEND_DETAIL;
@@ -120,13 +122,13 @@ $use_->Panel_Detail_Identify = $target_table_class_::IDENTIFY . "_" . $target_ta
 $use_->Id_Panel_Detail_Identify = "#" . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
 $use_->Class_Panel_Detail_Identify = "." . $target_table_class_::IDENTIFY . "_" . $target_table_class_::B_PANEL_DETAIL;
 $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAIL];
-// -------------------------------------------------- 
+// --------------------------------------------------
 
-// ----------------------------------------------------- 
-// 設定                                      
-// ----------------------------------------------------- 
-                                                          
-// ----------------------------------------------------- 
+// -----------------------------------------------------
+// 設定
+// -----------------------------------------------------
+
+// -----------------------------------------------------
 ?>
 
 <!DOCTYPE html>
@@ -134,10 +136,10 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
     <head>
         @include('web.common.main_meta')
         @include('web.common.sub_meta')
-    
+
         @include('web.common.main_script')
         @include('web.common.sub_script')
-                    
+
         @include('web.common.main_css')
         @include('web.common.sub_css')
 
@@ -215,94 +217,94 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
             var index_ = "{{ $index }}";
             var page_ = "{{ $page }}";
              --}}
-        </script>  
-         
+        </script>
+
         {{--  主要文件  --}}
-        {{--  因為參數式內容需要，所以需要產生需要的CSS & JS  
+        {{--  因為參數式內容需要，所以需要產生需要的CSS & JS
             因為表是動態內容，每個表會對應一組CSS & JS，存放在對應的
             // \p_ha::Assets('web/backend/table/index/*')路徑下
             命名為hahaha/backend_accounts_list.css & hahaha/backend/accounts_list.js
             {key} / {stage} / {node}("/"換成"_")
-            --}}        
+            --}}
         {{--    --}}
 
         <script>
-            $(function(){    
+            $(function(){
                 $(function () {
                     jQuery.noConflict(true);
                     $('[data-toggle="tooltip"]').tooltip();
                     jQuery.noConflict(false);
                   })
-                
+
             });
-            
+
         </script>
 
-        
+
         {{-- 自動生成文件 --}}
         <?
             $system_setting_pub_ = \pub\hahaha_system_setting::Instance();
             if($system_setting_pub_->Project->Backend->Generate_Script->Enabled)
             {
-                // generator 
+                // generator
                 $list_ = [
-                    \hahaha\backend\table_index_css::Instance(),         
+                    \hahaha\backend\table_index_css::Instance(),
                     \hahaha\backend\table_index_js::Instance(),
                 ];
-                // 必須初始化，不然沒指標 
+                // 必須初始化，不然沒指標
                 $static_content_ = [];
                 $dynamic_content_ = [];
                 //
                 $generator_ = \hahaha\hahaha_generator_web::Instance();
-                
+
                 $table_file_ = $system_setting_pub_->Project->Backend->Public . "/" . $system_setting_pub_->Project->Backend->Assets . 'web/backend/table/index/table';
                 $file_list_ = [
                     $table_file_ . '/' . $target_table_identify_ . '.css',
                     $table_file_ . '/' . $target_table_identify_ . '.js',
-                ];  
-                
+                ];
+
                 if(!$system_setting_pub_->Project->Backend->Generate_Script->Overwrite)
                 {
                     foreach($file_list_ as $key => $file)
                     {
-                        if(file_exists($file))  
+                        if(file_exists($file))
                         {
                             // 已經有就不處理，unset
                             unset($list_[$key]);
                             unset($file_list_[$key]);
-                        }                  
+                        }
                     }
                 }
-                
+
                 if(!empty($file_list_))
                 {
                     $generator_->Generate($list_,
                         $static_content_,
                         $dynamic_content_
-                    ); 
-                    $generator_->Save($static_content_, 
+                    );
+                    $generator_->Save($static_content_,
                         $file_list_
                     );
                 }
-                
+
             }
-            
+
             // 注意 : CSS必須在index.css前面，JS也必須在index.js前面，以進行覆蓋
             // 其他模組化的，等到我的框架時，再用我的模組，統一前置
             // $generator_->Render($dynamic_content_);
-            
+
         ?>
-       
+
         <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify_}.css")}}">
         <script src="{{\p_ha::Assets("web/backend/table/index/table/{$target_table_identify_}.js")}}"></script>
         {{-- 客製化文件 --}}
         <link rel="stylesheet" href="{{\p_ha::Assets('web/backend/table/index.css')}}">
         <script src="{{\p_ha::Assets('web/backend/table/index.js')}}"></script>
         <script src="{{\p_ha::Assets('cross_origin/iframe_resize_height.js')}}"></script>
-        
-        
+
+
         {{--  附加  --}}
-        
+
 
         <style>
             .container {
@@ -312,7 +314,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                 padding: 0;
                 max-width: 100%;
             }
-            
+
             .sidebar-menu.sidebar-mini {
                 /* 會被iframe遮住 */
                 z-index: 5000;
@@ -328,12 +330,12 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                 width: 400px;
             }
 
-            
+
 
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
     </head>
-    <body>    
+    <body>
         {{--  有需要再模組化，基本上只是分塊整入index資料夾，用@include填入  --}}
         {{--  如要翻譯，請在hahaha_setting_table裡面事先翻好  --}}
 
@@ -355,11 +357,11 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
         <div class="index_title">
             <h1 style="font-weight:bold;">{{__('backend.db_table_list')}}</h1>
             <hr class="hr_title" />
-            
+
             <h3 style="font-weight:bold;">{{$target_setting_table_['title']}}</h3>
             {{$target_setting_table_['description']}}
             <hr class="hr_title" />
-        </div> 
+        </div>
 
         <? // ----------------------------------------------------- ?>
         <? // 標題 - 結束                                           ?>
@@ -377,8 +379,8 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
         <? // 內容面板 ?>
         <? // -------------------------------------------------------------------------------------------------------------- ?>
         <div class="index_content">
-                
-        </div>     
+
+        </div>
         <div class="index_content">
                 {{csrf_field()}}
                 {{--  分隔線  --}}
@@ -388,7 +390,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                 <? // 置頂區塊 ?>
                 <? // 此為挖洞，非客製化 ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
-                
+
                 <? // ----------------------------------------------------- ?>
                 <? // Top - 開始                                           ?>
                 <? // ----------------------------------------------------- ?>
@@ -399,7 +401,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                     <div class="index_result_wrap">
                         <div class="index_result_content">
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
-                            <?php 
+                            <?php
                             // 因為模板array會複製，所以用物件傳
                             $block = new \hahaha\hahaha_parameter;
                             $block->identify = &$use_->Block_Top_Identify;
@@ -413,7 +415,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             //
                             $block->panel_name = "panel_top";
                             ?>
-                            @include("web.backend.table.common.block.block") 
+                            @include("web.backend.table.common.block.block")
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
@@ -427,7 +429,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
 
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
                 <? // Add置中面板 - 草創模組，簡單加就好，有需要複製後另做一份 ?>
-                <? // 此為挖洞，非客製化 ?> 
+                <? // 此為挖洞，非客製化 ?>
                 <? // 彈出面板，所以border-bottom:unset;padding:unset; ?>
                 <? // -------------------------------------------------------------------------------------------------------------- ?>
 
@@ -441,9 +443,9 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                     <div class="index_result_wrap" style="border-bottom:unset;padding:unset;">
                         <div class="index_result_content">
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
-                            <?php 
+                            <?php
                             // 因為模板array會複製，所以用物件傳
-                            $block = new \hahaha\hahaha_parameter; 
+                            $block = new \hahaha\hahaha_parameter;
                             $block->identify = &$use_->Panel_Add_Identify;
                             $block->id = &$use_->Id_Panel_Add_Identify;
                             $block->class = &$use_->Class_Panel_Add_Identify;
@@ -456,7 +458,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             //
                             $block->panel_name = "panel_add";
                             ?>
-                            @include("web.backend.table.common.panel.panel") 
+                            @include("web.backend.table.common.panel.panel")
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
@@ -483,20 +485,20 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                     <div class="index_result_wrap">
                         <div class="index_result_content">
                             <table class="list_tab table table-sm">
-                                <tr id="index_item_all" class="index_item">   
+                                <tr id="index_item_all" class="index_item">
                                     <? // -------------------------------------------------------------------------------------------------------------- ?>
-                                    <?php 
+                                    <?php
                                     // 因為模板array會複製，所以用物件傳
                                     $fields = new \hahaha\hahaha_parameter;
                                     $fields = &$target_table_->Index['main'];
                                     ?>
-                                    @include("web.backend.table.common.table.th", ["fields"]) 
-                                    <? // -------------------------------------------------------------------------------------------------------------- ?>  
+                                    @include("web.backend.table.common.table.th", ["fields"])
+                                    <? // -------------------------------------------------------------------------------------------------------------- ?>
                                 </tr>
-                                @foreach($data_list_ as $key_data => $data)                            
+                                @foreach($data_list_ as $key_data => $data)
                                     <tr id="index_item_{{$key_data}}" class="index_item" item_id="{{$data['id']}}" index="{{$key_data}}">
                                         <? // -------------------------------------------------------------------------------------------------------------- ?>
-                                        <?php 
+                                        <?php
                                         // 因為模板array會複製，所以用物件傳
                                         $block = new \hahaha\hahaha_parameter;
                                         $block->fields = &$target_table_->Index['main'];
@@ -508,10 +510,10 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                                         //
                                         $block->table_name = "table_main";
                                         ?>
-                                        @include("web.backend.table.common.table.td") 
-                                        <? // -------------------------------------------------------------------------------------------------------------- ?>   
-                                    </tr> 
-                                @endforeach                   
+                                        @include("web.backend.table.common.table.td")
+                                        <? // -------------------------------------------------------------------------------------------------------------- ?>
+                                    </tr>
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -538,7 +540,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                     <div class="index_result_wrap">
                         <div class="index_result_content">
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
-                            <?php 
+                            <?php
                             // 因為模板array會複製，所以用物件傳
                             $block = new \hahaha\hahaha_parameter;
                             $block->identify = &$use_->Block_Bottom_Identify;
@@ -551,7 +553,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             $block->default = true;
                             //
                             ?>
-                            @include("web.backend.table.common.block.block") 
+                            @include("web.backend.table.common.block.block")
                             <? // -------------------------------------------------------------------------------------------------------------- ?>
                         </div>
                     </div>
@@ -574,9 +576,9 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                 <?                                                          ?>
                 <? // ----------------------------------------------------- ?>
 
-                
+
                 @if($data_link_['count'] != 0)
-                    <div class="index_result_wrap">                    
+                    <div class="index_result_wrap">
                         <div style="height:5px">&nbsp;</div>
                         <div class="page_list">
                             {{--  laravel樣式，有需要再模組化  --}}
@@ -590,24 +592,24 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                             $out_start_flag_ = false;
                             $out_end_flag_ = false;
 
-                            $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";                            
-                            $url_ = Url::fromString($actual_link_);                         
+                            $actual_link_ = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                            $url_ = Url::fromString($actual_link_);
                             ?>
                             <ul class="pagination" role="navigation">
                                 @if(1 == $page_)
                                     <li class="page-item disabled" aria-disabled="true" aria-label="« First">
                                         <span class="page-link" aria-hidden="true">‹‹</span>
-                                    </li> 
+                                    </li>
                                     <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
                                         <span class="page-link" aria-hidden="true">‹</span>
-                                    </li> 
+                                    </li>
                                 @else
                                     <li class="page-item" aria-disabled="true" aria-label="« First">
                                         <a class="page-link" href="{{$url_->withQueryParameter('page', 1)}}" rel="next" aria-label="« First">‹‹</a>
-                                    </li>    
+                                    </li>
                                     <li class="page-item" aria-disabled="true" aria-label="« Previous">
                                         <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ - 1)}}" rel="next" aria-label="« Previous">‹</a>
-                                    </li>                        
+                                    </li>
                                 @endif
                                 @for ($i = 1; $i <= $count_; $i++)
                                     @if($page_ == $i)
@@ -616,7 +618,7 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                                         <li class="page-item"><a class="page-link" href="{{$url_->withQueryParameter('page', $i)}}">{{$i}}</a></li>
                                     @elseif(!$out_start_flag_ && $i < $range_start_)
                                         <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
-                                        <? $out_start_flag_ = true; ?>                                        
+                                        <? $out_start_flag_ = true; ?>
                                     @elseif(!$out_end_flag_ && $i > $range_end_)
                                         <li class="page-item disabled" aria-current="page"><span class="page-link">...</span></li>
                                         <? $out_end_flag_ = true; ?>
@@ -625,31 +627,31 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
                                 @if($count_ == $page_)
                                     <li class="page-item disabled" aria-disabled="true" aria-label="Next »">
                                         <span class="page-link" aria-hidden="true">›</span>
-                                    </li> 
+                                    </li>
                                     <li class="page-item disabled" aria-disabled="true" aria-label="End »">
                                         <span class="page-link" aria-hidden="true">››</span>
-                                    </li> 
+                                    </li>
                                 @else
                                     <li class="page-item" aria-disabled="true" aria-label="Next »">
                                         <a class="page-link" href="{{$url_->withQueryParameter('page', $page_ + 1)}}" rel="next" aria-label="Next »">›</a>
-                                    </li>            
+                                    </li>
                                     <li class="page-item" aria-disabled="true" aria-label="End »">
                                         <a class="page-link" href="{{$url_->withQueryParameter('page', $count_)}}" rel="next" aria-label="End »">››</a>
-                                    </li>                 
+                                    </li>
                                 @endif
                             </ul>
                         </div>
                     </div>
-                @endif  
+                @endif
 
                 <? // ----------------------------------------------------- ?>
                 <? // Link - 結束                                           ?>
                 <? // ----------------------------------------------------- ?>
                 <?                                                          ?>
                 <? // ----------------------------------------------------- ?>
-     
-        </div>         
-               
+
+        </div>
+
         <? // ----------------------------------------------------- ?>
         <? // 內容 - 結束                                           ?>
         <? // ----------------------------------------------------- ?>
@@ -661,18 +663,18 @@ $use_->Panel_Detail = &$target_table_->Index[$target_table_class_::B_PANEL_DETAI
         <? // ----------------------------------------------------- ?>
         <?                                                          ?>
         <? // ----------------------------------------------------- ?>
-        
+
         <script>
-            
+
             $(function(){
                 // 最後一次載入
-                lazyload();      
-                                
+                lazyload();
+
             });
-            
+
         </script>
     </body>
-    
-    
+
+
 </html>
 

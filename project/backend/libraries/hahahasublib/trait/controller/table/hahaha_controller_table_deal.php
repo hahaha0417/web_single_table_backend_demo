@@ -4,7 +4,7 @@ namespace hahaha;
 
 use hahaha\define\hahaha_define_table_key as key;
 use hahaha\define\hahaha_define_table_tag as tag;
-// 
+//
 use App\Http\Controllers\Backend\Base\Table\IndexController as BaseIndexController;
 
 use App\Http\Controllers\Controller;
@@ -30,32 +30,32 @@ use hahaha\define\hahaha_define_api_status as api_status;
 */
 trait hahaha_controller_table_deal
 {
-	// ---------------------------------------------------------------------------------- 
+	// ----------------------------------------------------------------------------------
 
-	// ----------------------------------------------- 
+	// -----------------------------------------------
 	// 整理項目
 	// -----------------------------------------------
 	/*
-	 ------------------------- 
+	 -------------------------
 	處理
-	 ------------------------- 
+	 -------------------------
 	deal 處理
 	method 方法
 	item 項目
 	*/
-	public function deal() 
+	public function deal()
 	{
 		$input = Request::except(['_token', '_method']);
 
-		// $deal = $input["deal"];
-		// $method = $input['method'];
-$ddd = $input;
+		$deal = $input["deal"];
+		$method = $input['method'];
+
 		$result = [];
 
-		// if($deal == 'item')
-		// {
-		// 	// $this->item($result, $input);
-		// }
+		if($deal == 'item')
+		{
+			$this->item($result, $input);
+		}
 		// // else if($deal == 'operate')
 		// // {
 		// // 	// 跨id處理資料
@@ -64,28 +64,26 @@ $ddd = $input;
         // $result[api_response::STATUS] = api_status::FAILURE;
         // $result[api_response::MSG] = "ddd";
 
-        $result[\ha\Res::STATUS] = \ha\Status::SUCCESS;
-        $result[\ha\Res::MSG] = "ddd";
- 
-        
+
+
 
 		return $result;
 
 	}
 
-	// ---------------------------------------------------------------------------------- 
+	// ----------------------------------------------------------------------------------
 
-	// ----------------------------------------------- 
+	// -----------------------------------------------
 	// 項目
 	// -----------------------------------------------
-	public function item(&$result, &$input) 
+	public function item(&$result, &$input)
 	{
 		$method = $input['method'];
-		
+
 		if($method == "add"){
 			$this->item_add($result, $input);
 		}
-		
+
 		// else if($method == "select_delete"){
 		// 	$id = $input["id"];
 		// 	$result = $this->item_select_delete($id);
@@ -94,7 +92,7 @@ $ddd = $input;
 		// 	$id = $input["id"];
 		// 	$result = $this->item_update($id, $item);
 		// }
-		// else if($method == "all_save"){            
+		// else if($method == "all_save"){
 		// 	$result = $this->item_all_save($item);
 		// }
 		// else if($method == "order"){
@@ -121,26 +119,30 @@ $ddd = $input;
 
 	}
 
-	// ---------------------------------------------------------------------------------- 
+	// ----------------------------------------------------------------------------------
 
-	public function item_add(&$result, &$input) 
+	public function item_add(&$result, &$input)
     {
-		$item = &$input["item"];
+        $item = &$input["item"];
 
+
+
+        $result[\ha\Res::STATUS] = \ha\Status::SUCCESS;
+        $result[\ha\Res::MSG] = "ddd";
 
 
         // $find = Index::where(["id"=>$item["id"]])->first();
-        
+
         // $input = Input::except('_token','_method');
         // $item_id = null;
         // $ok = null;
         // if(!$find)
-        // {            
+        // {
         //     if(!$find){
         //         $ok = Index::create($item);
         //         $item_id = Index::where(["id"=>$item["id"]])->first();
         //     }
-        //     else{                
+        //     else{
         //         // 重複
         //     }
 
@@ -151,22 +153,22 @@ $ddd = $input;
         //     //     return;
         //     // }
         // }
-        
+
         // if($ok){
         //     $result = [
         //         'status' => 0,
         //         'msg' => '建立成功!',
-        //         'item' => $item_id,                
+        //         'item' => $item_id,
         //     ];
         // }
-        // else{   
+        // else{
         //     if($find)
         //     {
         //         $result = [
         //             'status' => 1,
         //             'msg' => 'ID重複，請更改ID!',
         //         ];
-        //     }         
+        //     }
         //     else
         //     {
         //         if($find_id)
@@ -175,10 +177,10 @@ $ddd = $input;
         //                 'status' => 1,
         //                 'msg' => '建立失敗',
         //             ];
-        //         }                
-        //     }    
+        //         }
+        //     }
         // }
-   
+
     }
 
     // public function update($id)
@@ -189,21 +191,21 @@ $ddd = $input;
     // public function destroy($id)
     // {
     //     $item = Index::where(['id'=>$id])->first();
-        
+
     //     $dir = "";
 
     //     $item_page_dir = "";
     //     $item_item_dir = "";
     //     {
-    //         //             
+    //         //
     //         if($item['page'] != null && $item['item'] != null){
     //             $dir .= "index/".$item['page']."/".$item['item']."/";
     //             $item_page_dir = "index/".$item['page']."/";
     //             $item_item_dir = "index/".$item['page']."/".$item['item']."/";
-    //         }            
+    //         }
     //         else if($item['page'] != null && $item['item'] == null){
     //             $dir .= "page/".$item['page']."/";
-    //             $item_page_dir = "page/".$item['page']."/";                
+    //             $item_page_dir = "page/".$item['page']."/";
     //         }
     //         else if($item['page'] == null && $item['item'] != null){
     //             $dir .= "item/".$item['item']."/";
@@ -212,31 +214,31 @@ $ddd = $input;
     //         else if($item['page'] == null && $item['item'] == null){
     //             $dir .= "none/";
     //         }
-    //         $dir .= $item['id']."/";            
+    //         $dir .= $item['id']."/";
     //     }
-                     
+
     //     $item_dir = '/upload/front/index/'.$dir;
-    //     $delete = true;  
-                
-    //     {   
-    //         if(File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){                
+    //     $delete = true;
+
+    //     {
+    //         if(File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){
     //             // 清掉原有資料夾(id)
     //             File::deleteDirectory(base_path().'/public/upload/front/index/'.$dir);
     //             // 上兩層路徑是否為空
     //             if($item_page_dir != "" && $item_item_dir != ""){
     //                 $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_dir);
-    //                 if(count($files_item) == 0){                    
+    //                 if(count($files_item) == 0){
     //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                     $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                     if(count($files_page) == 0){
-    //                         rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);                        
+    //                         rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                     }
     //                     else if(count($files_page) == 1){
     //                         // 似乎是刪不掉
 
-    //                         // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理                                
+    //                         // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理
     //                         // if(!$files_page[0]->isDir() && !$files_page[0]->isFile()){
-    //                         //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir); 
+    //                         //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
     //                         // }
     //                     }
     //                 }
@@ -244,26 +246,26 @@ $ddd = $input;
     //             else if($item_page_dir != "" && $item_item_dir == ""){
     //                 $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                 if(count($files_page) == 0){
-    //                     rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);                        
-    //                 }                    
+    //                     rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);
+    //                 }
     //             }
     //             else if($item_page_dir == "" && $item_item_dir != ""){
     //                 $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                 if(count($files_item) == 0){
-    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);                    
+    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                 }
     //             }
     //             else if($item_page_dir == "" && $item_item_dir == ""){
 
-    //             }      
-    //         }      
-       
-    //         // $delete &= Item::where(["id"=>$id])->delete();  
-    //         $delete &= Index::where(["id"=>$id])->delete();            
-                   
+    //             }
+    //         }
+
+    //         // $delete &= Item::where(["id"=>$id])->delete();
+    //         $delete &= Index::where(["id"=>$id])->delete();
+
     //     }
 
-        
+
 
     //     $result;
     //     if($delete){
@@ -272,7 +274,7 @@ $ddd = $input;
     //             'msg' => '刪除成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '刪除失敗',
@@ -281,29 +283,29 @@ $ddd = $input;
     //     return $result;
     // }
 
-    
 
 
-    
+
+
 
     // public function item_add_index($item)
     // {
     //     $find = Index::where(["page"=>$item["page"],"item"=>$item["item"],"title_name"=>$item["title_name"]])->first();
-        
+
     //     $input = Input::except('_token','_method');
     //     $item_id = null;
     //     $ok = null;
-        
+
     //     if(!$find)
     //     {
     //         // 檢查ID是否重複
     //         $find_id = Index::where(["id"=>$item["id"]])->first();
-            
+
     //         if(!$find_id){
-    //             $ok = Index::create($item);                
+    //             $ok = Index::create($item);
     //             $item_id = Index::where(["id"=>$item["id"]])->first();
     //         }
-    //         else{                
+    //         else{
     //             // 重複
     //         }
     //         // try {
@@ -313,7 +315,7 @@ $ddd = $input;
     //         //     return;
     //         // }
     //     }
-        
+
     //     if($ok){
     //         $result = [
     //             'status' => 0,
@@ -321,14 +323,14 @@ $ddd = $input;
     //             'item' => $item_id,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         if($find)
     //         {
     //             $result = [
     //                 'status' => 1,
     //                 'msg' => 'Title Name重複，請更改標題!',
     //             ];
-    //         }         
+    //         }
     //         else
     //         {
     //             if($find_id)
@@ -337,8 +339,8 @@ $ddd = $input;
     //                     'status' => 1,
     //                     'msg' => 'ID重複，請更改標題!',
     //                 ];
-    //             }                
-    //         }    
+    //             }
+    //         }
     //     }
     //     return $result;
     // }
@@ -346,21 +348,21 @@ $ddd = $input;
     // public function item_add_nav($item)
     // {
     //     $find = Index::where(["page"=>$item["page"],"item"=>$item["item"],"title_name"=>$item["title_name"]])->first();
-        
+
     //     $input = Input::except('_token','_method');
     //     $item_id = null;
     //     $ok = null;
-        
+
     //     if(!$find)
     //     {
     //         // 檢查ID是否重複
     //         $find_id = Index::where(["id"=>$item["id"]])->first();
-            
+
     //         if(!$find_id){
-    //             $ok = Index::create($item);                
+    //             $ok = Index::create($item);
     //             $item_id = Index::where(["id"=>$item["id"]])->first();
     //         }
-    //         else{                
+    //         else{
     //             // 重複
     //         }
     //         // try {
@@ -370,7 +372,7 @@ $ddd = $input;
     //         //     return;
     //         // }
     //     }
-        
+
     //     if($ok){
     //         $result = [
     //             'status' => 0,
@@ -378,14 +380,14 @@ $ddd = $input;
     //             'item' => $item_id,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         if($find)
     //         {
     //             $result = [
     //                 'status' => 1,
     //                 'msg' => 'Title Name重複，請更改標題!',
     //             ];
-    //         }         
+    //         }
     //         else
     //         {
     //             if($find_id)
@@ -394,8 +396,8 @@ $ddd = $input;
     //                     'status' => 1,
     //                     'msg' => 'ID重複，請更改標題!',
     //                 ];
-    //             }                
-    //         }    
+    //             }
+    //         }
     //     }
     //     return $result;
     // }
@@ -405,21 +407,21 @@ $ddd = $input;
     //     for($i = 0; $i < count($id); $i++){
 
     //         $item = Index::where(['id'=>$id[$i]])->first();
-        
+
     //         $dir = "";
 
     //         $item_page_dir = "";
     //         $item_item_dir = "";
     //         {
-    //             //             
+    //             //
     //             if($item['page'] != null && $item['item'] != null){
     //                 $dir .= "index/".$item['page']."/".$item['item']."/";
     //                 $item_page_dir = "index/".$item['page']."/";
     //                 $item_item_dir = "index/".$item['page']."/".$item['item']."/";
-    //             }            
+    //             }
     //             else if($item['page'] != null && $item['item'] == null){
     //                 $dir .= "page/".$item['page']."/";
-    //                 $item_page_dir = "page/".$item['page']."/";                
+    //                 $item_page_dir = "page/".$item['page']."/";
     //             }
     //             else if($item['page'] == null && $item['item'] != null){
     //                 $dir .= "item/".$item['item']."/";
@@ -428,30 +430,30 @@ $ddd = $input;
     //             else if($item['page'] == null && $item['item'] == null){
     //                 $dir .= "none/";
     //             }
-    //             $dir .= $item['id']."/";            
+    //             $dir .= $item['id']."/";
     //         }
-                        
+
     //         $item_dir = '/upload/front/index/'.$dir;
-    //         $delete;        
-    //         {   
-    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){                
+    //         $delete;
+    //         {
+    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){
     //                 // 清掉原有資料夾(id)
     //                 File::deleteDirectory(base_path().'/public/upload/front/index/'.$dir);
     //                 // 上兩層路徑是否為空
     //                 if($item_page_dir != "" && $item_item_dir != ""){
     //                     $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_dir);
-    //                     if(count($files_item) == 0){                    
+    //                     if(count($files_item) == 0){
     //                         rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                         $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                         if(count($files_page) == 0){
-    //                             rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);                        
+    //                             rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                         }
     //                         else if(count($files_page) == 1){
     //                             // 似乎是刪不掉
 
-    //                             // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理                                
+    //                             // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理
     //                             // if(!$files_page[0]->isDir() && !$files_page[0]->isFile()){
-    //                             //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir); 
+    //                             //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
     //                             // }
     //                         }
     //                     }
@@ -459,25 +461,25 @@ $ddd = $input;
     //                 else if($item_page_dir != "" && $item_item_dir == ""){
     //                     $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                     if(count($files_page) == 0){
-    //                         rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);                        
+    //                         rmdir(base_path().'/public/upload/front/index/'.$item_page_dir);
     //                     }
     //                 }
     //                 else if($item_page_dir == "" && $item_item_dir != ""){
     //                     $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                     if(count($files_item) == 0){
-    //                         rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);                    
+    //                         rmdir(base_path().'/public/upload/front/index/'.$item_item_dir);
     //                     }
     //                 }
     //                 else if($item_page_dir == "" && $item_item_dir == ""){
 
-    //                 }      
-    //             }     
+    //                 }
+    //             }
     //         }
     //         // dd(Item::where(["id"=>$id[$i]])->get());
     //         $delete &= Index::where(['id'=>$id[$i]])->delete();
     //         if(Item::where(["id"=>$id[$i]])->count() != 0){
-    //             $delete &= Item::where(["id"=>$id[$i]])->delete();  
-    //         }            
+    //             $delete &= Item::where(["id"=>$id[$i]])->delete();
+    //         }
     //     }
     //     if($delete){
     //         $result = [
@@ -485,7 +487,7 @@ $ddd = $input;
     //             'msg' => '刪除成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '刪除失敗',
@@ -497,14 +499,14 @@ $ddd = $input;
     // public function item_update($id, $item){
     //     $update = null;
     //     $update = Index::where(['id' => $id])->update($item);
-       
+
     //     if($update){
     //         $result = [
     //             'status' => 0,
     //             'msg' => '更新成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -516,7 +518,7 @@ $ddd = $input;
     // public function item_all_save($item){
     //     $delete = true;
     //     for($i = 1; $i <= count($item); $i++){
-    //         $delete &= Index::where(['id'=>$item[$i]["id"]])->update($item[$i]);            
+    //         $delete &= Index::where(['id'=>$item[$i]["id"]])->update($item[$i]);
     //     }
     //     if($delete){
     //         $result = [
@@ -524,7 +526,7 @@ $ddd = $input;
     //             'msg' => '儲存成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '儲存失敗',
@@ -536,7 +538,7 @@ $ddd = $input;
     // public function item_order($id, $item)
     // {
     //     $update = Index::where(["id"=>$id])->update(["order_"=>$item["order_"]]);
-         
+
     //     // dd($update);
     //     // return;
     //     if($update){
@@ -545,14 +547,14 @@ $ddd = $input;
     //             'msg' =>  '排序更新成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '排序更新失敗',
     //         ];
     //     }
-        
-    //     return $result;          
+
+    //     return $result;
     // }
 
     // public function item_page_item_id_update($id, $item)
@@ -576,19 +578,19 @@ $ddd = $input;
     //     $item_temp = Index::where(["id"=>$id])->first();
     //     $dir_temp = "";
     //     $dir = "";
-        
+
     //     $item_page_temp_dir = "";
     //     $item_item_temp_dir = "";
     //     {
-    //         //             
+    //         //
     //         if($item_temp['page'] != null && $item_temp['item'] != null){
     //             $dir_temp .= "index/".$item_temp['page']."/".$item_temp['item']."/";
     //             $item_page_temp_dir = "index/".$item_temp['page']."/";
     //             $item_item_temp_dir = "index/".$item_temp['page']."/".$item_temp['item']."/";
-    //         }            
+    //         }
     //         else if($item_temp['page'] != null && $item_temp['item'] == null){
     //             $dir_temp .= "page/".$item_temp['page']."/";
-    //             $item_page_temp_dir = "page/".$item_temp['page']."/";                
+    //             $item_page_temp_dir = "page/".$item_temp['page']."/";
     //         }
     //         else if($item_temp['page'] == null && $item_temp['item'] != null){
     //             $dir_temp .= "item/".$item_temp['item']."/";
@@ -597,14 +599,14 @@ $ddd = $input;
     //         else if($item_temp['page'] == null && $item_temp['item'] == null){
     //             $dir_temp .= "none/";
     //         }
-    //         $dir_temp .= $item_temp['id']."/";            
+    //         $dir_temp .= $item_temp['id']."/";
     //     }
 
     //     {
     //         if(!empty($item['page'])){
     //             if($dir == "" && $item['page'] != null){
     //                 $dir .= "index/".$item['page']."/";
-    //             }            
+    //             }
     //             else if($dir == "" && $item['page'] == null){
     //                 $dir .= "page/".$item['page']."/";
     //             }
@@ -612,7 +614,7 @@ $ddd = $input;
     //         else{
     //             if($dir == "" && $item_temp['page'] != null){
     //                 $dir .= "index/".$item_temp['page']."/";
-    //             }            
+    //             }
     //             else if($dir == "" && $item_temp['page'] == null){
     //                 $dir .= "page/".$item_temp['page']."/";
     //             }
@@ -621,13 +623,13 @@ $ddd = $input;
     //         if(!empty($item['item'])){
     //             if($dir != "" && $item['item'] != null){
     //                 $dir .= $item['item']."/";
-    //             }            
+    //             }
     //             else if($dir != "" && $item['item'] == null){
-                    
+
     //             }
     //             else if($dir == "" && $item['item'] != null){
     //                 $dir .= "item/".$item['item']."/";
-    //             }            
+    //             }
     //             else if($dir == "" && $item['item'] == null){
     //                 $dir .= "none/";
     //             }
@@ -635,13 +637,13 @@ $ddd = $input;
     //         else{
     //             if($dir != "" && $item_temp['item'] != null){
     //                 $dir .= $item_temp['item']."/";
-    //             }            
+    //             }
     //             else if($dir != "" && $item_temp['item'] == null){
-                    
+
     //             }
     //             else if($dir == "" && $item_temp['item'] != null){
     //                 $dir .= "item/".$item_temp['item']."/";
-    //             }            
+    //             }
     //             else if($dir == "" && $item_temp['item'] == null){
     //                 $dir .= "none/";
     //             }
@@ -652,82 +654,82 @@ $ddd = $input;
     //         }
     //         else{
     //             $dir .= $item_temp['id']."/";
-    //         }                      
+    //         }
     //     }
-           
+
     //     $update = true;
 
     //     // https://laravel.com/docs/5.6/facades
-    //     // http://php.net/manual/zh/ref.filesystem.php            
+    //     // http://php.net/manual/zh/ref.filesystem.php
     //     $image_temp_dir = File::dirname($item_temp["image"])."/";
     //     $image_temp_file_name = File::basename($item_temp["image"]);
 
     //     $title_image_temp_dir = File::dirname($item_temp["title_image"])."/";
     //     $title_image_temp_file_name = File::basename($item_temp["title_image"]);
-        
+
     //     $item_temp_dir = '/upload/front/index/'.$dir_temp;
     //     $item_dir = '/upload/front/index/'.$dir;
-        
+
     //     if($item_temp_dir == $item_dir){
     //         // 圖片路徑沒有更動
     //     }
-    //     else{            
+    //     else{
     //         // 路徑更動
     //         if(!File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){
     //             File::makeDirectory(base_path().'/public/upload/front/index/'.$dir, 0775, true);
-    //         }   
-            
+    //         }
+
     //         File::moveDirectory(base_path().'/public/upload/front/index/'.$dir_temp, base_path().'/public/upload/front/index/'.$dir, true);
-            
+
     //         if($item_page_temp_dir != "" && $item_item_temp_dir != ""){
-    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){    
+    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){
     //                 $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_temp_dir);
-                   
-    //                 if(count($files_item) == 0){   
+
+    //                 if(count($files_item) == 0){
     //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_temp_dir);
-                        
-    //                     if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_page_temp_dir)){  
+
+    //                     if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_page_temp_dir)){
     //                         $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
-                                                                
+
     //                         if(count($files_page) == 0){
-    //                             rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir); 
+    //                             rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
     //                         }
     //                         else if(count($files_page) == 1){
     //                             // 似乎是刪不掉
 
-    //                             // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理                                
+    //                             // 由於刪除後可能檔案系統有紀錄，所以不一定等於0，要另外做處理
     //                             // if(!$files_page[0]->isDir() && !$files_page[0]->isFile()){
-    //                             //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir); 
+    //                             //     rmdir(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
     //                             // }
     //                         }
-    //                     }                       
+    //                     }
     //                 }
     //             }
-                
-                
+
+
     //         }
     //         else if($item_page_temp_dir != "" && $item_item_temp_dir == ""){
-    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){  
+    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){
     //                 $files_page = File::allFiles(base_path().'/public/upload/front/index/'.$item_page_temp_dir);
-                
+
     //                 if(count($files_page) == 0){
-    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_temp_dir);                  
+    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_temp_dir);
     //                 }
     //             }
     //         }
     //         else if($item_page_temp_dir == "" && $item_item_temp_dir != ""){
-    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){  
+    //             if(File::isDirectory(base_path().'/public/upload/front/index/'.$item_item_temp_dir)){
     //                 $files_item = File::allFiles(base_path().'/public/upload/front/index/'.$item_item_temp_dir);
-                
+
     //                 if(count($files_item) == 0){
-    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_temp_dir); 
+    //                     rmdir(base_path().'/public/upload/front/index/'.$item_item_temp_dir);
     //                 }
     //             }
     //         }
     //         else if($item_page_temp_dir == "" && $item_item_temp_dir == ""){
 
-    //         }      
-            
+    //         }
+
     //         if($image_temp_dir == $item_temp_dir){
     //             $item_temp["image"] = $item_dir.$image_temp_file_name;
     //         }
@@ -744,29 +746,29 @@ $ddd = $input;
     //             $item_temp['id'] = $item['id'];
     //         }
 
-            
-            
+
+
     //         $item_item_temp = Item::where(["id"=>$id])->get();
-            
+
     //         for($i = 0; $i < count($item_item_temp); $i++){
     //             $modify = false;
     //             $item_item_image = $item_item_temp[$i]['image'];
     //             $item_item_image_temp_dir = File::dirname($item_item_temp[$i]['image'])."/";
     //             $item_item_image_temp_file_name = File::basename($item_item_temp[$i]['image']);
-                  
+
     //             if($item_item_image_temp_dir == '/upload/front/index/'.$dir_temp.$item_item_temp[$i]['no'].'/' &&
-    //             $item_item_temp[$i]['image'] != $item_dir.$item_item_temp[$i]['no'].'/'.$item_item_image_temp_file_name){                    
+    //             $item_item_temp[$i]['image'] != $item_dir.$item_item_temp[$i]['no'].'/'.$item_item_image_temp_file_name){
     //                 $item_item_temp[$i]['image'] = $item_dir.$item_item_temp[$i]['no'].'/'.$item_item_image_temp_file_name;
-                    
+
     //                 $modify = true;
     //             }
     //             if(!empty($item['id']) && $item_item_temp[$i]['id'] != $item['id']){
     //                 $item_item_temp[$i]['id'] = $item['id'];
     //                 $modify = true;
-    //             }      
+    //             }
     //             if($modify == true){
     //                 $update &= Item::where(["id"=>$id, "no"=>$item_item_temp[$i]['no']])->update($item_item_temp[$i]->toArray());
-    //             }      
+    //             }
     //         }
     //         $update &= Index::where(["id"=>$id])->update($item_temp->toArray());
     //     }
@@ -779,7 +781,7 @@ $ddd = $input;
     //             'item_item' => $item_item_temp,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -793,11 +795,11 @@ $ddd = $input;
     //     $item_target = Index::where(['id'=>$id])->first();
     //     $old_dir;
     //     $old_file_name;
-        
+
     //     $dir = "";
     //     if($item_target['page'] != null && $item_target['item'] != null){
     //         $dir .= "index/".$item_target['page']."/".$item_target['item']."/";
-    //     }            
+    //     }
     //     else if($item_target['page'] != null && $item_target['item'] == null){
     //         $dir .= "page/".$item_target['page']."/";
     //     }
@@ -826,7 +828,7 @@ $ddd = $input;
     //         File::delete(base_path()."/public".$old_dir.$old_file_name);
     //         $files = File::allFiles(base_path()."/public".$old_dir);
     //         if(count($files) == 0){
-    //             rmdir(base_path()."/public".$old_dir);                        
+    //             rmdir(base_path()."/public".$old_dir);
     //         }
     //     }
 
@@ -840,7 +842,7 @@ $ddd = $input;
     //             'thumbnail' => $item[$target],
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '刷新失敗',
@@ -849,7 +851,7 @@ $ddd = $input;
     //     return $result;
     // }
 
-    
+
 
 
     // //
@@ -870,7 +872,7 @@ $ddd = $input;
     //         $dir = "";
     //         if($item['page'] != null && $item['item'] != null){
     //             $dir .= "index/".$item['page']."/".$item['item']."/";
-    //         }            
+    //         }
     //         else if($item['page'] != null && $item['item'] == null){
     //             $dir .= "page/".$item['page']."/";
     //         }
@@ -900,17 +902,17 @@ $ddd = $input;
     //             $old_dir = File::dirname($item_target["title_image"])."/";
     //             $old_file_name = File::basename($item_target["title_image"]);
     //         }
-    //         if($old_dir == '/upload/front/index/'.$dir){  
+    //         if($old_dir == '/upload/front/index/'.$dir){
     //             // echo base_path()."/public".$old_dir.$old_file_name;
-    //             // return ;     
-    //             File::delete(base_path()."/public".$old_dir.$old_file_name);                
+    //             // return ;
+    //             File::delete(base_path()."/public".$old_dir.$old_file_name);
     //         }
 
     //         $path = $file->move(base_path().'/public/upload/front/index/'.$dir, $name_origin);
     //         $filepath = '/upload/front/index/'.$dir.$name_origin;
-            
-    //         $update = Index::where(['id'=>$item['id']])->update([$target => $filepath]);              
-    //     }     
+
+    //         $update = Index::where(['id'=>$item['id']])->update([$target => $filepath]);
+    //     }
     //     // echo $update;
     //     // return;
     //     if($update){
@@ -920,7 +922,7 @@ $ddd = $input;
     //             'image' => $filepath,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -940,13 +942,13 @@ $ddd = $input;
     //     // //     $path = $file->store('avatars', 'uploads');
     //     // //     return response()->json(array('msg' => $path));
     //     // // }
-        
+
     // }
 
     // public function item_check_id($id)
     // {
     //     $id_list = Index::where(["id"=>$id]);
-         
+
     //     // dd($result);
     //     // return;
     //     if($id_list->count() == 0){
@@ -955,34 +957,34 @@ $ddd = $input;
     //             'msg' =>  'ID可以使用',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => 'ID已經存在',
     //         ];
     //     }
-        
-    //     return $result;          
+
+    //     return $result;
     // }
 
     // // -------------------------------------------------------------------------------------
     // public function item_item($input)
-    // {  
+    // {
     //     $method = $input['method'];
     //     $item = $input["item"];
     //     $item_item = $input["item_item"];
     //     $result;
 
-    //     if($method == "items"){    
-    //         // 查詢項目        
+    //     if($method == "items"){
+    //         // 查詢項目
     //         $id = $input["id"];
     //         $result = $this->item_item_items($id);
     //     }
     //     else if($method == "all_update"){
     //         $result = $this->item_item_all_update($id, $item_item);
     //     }
-    //     //        
-    //     else if($method == "add"){            
+    //     //
+    //     else if($method == "add"){
     //         $id = $input["id"];
     //         $result = $this->item_item_add($id);
     //     }
@@ -1001,22 +1003,22 @@ $ddd = $input;
     //         $target = $input["target"];
     //         $result = $this->item_item_upload($target, $item, $item_item);
     //     }
-        
+
     //     return $result;
     // }
 
-    // public function item_item_items($id){    
+    // public function item_item_items($id){
     //     $items = null;
     //     $items = Item::where(['id'=>$id])->orderBy('order_', 'asc')->orderBy('item', 'asc')->get();
-        
-    //     if($items){            
+
+    //     if($items){
     //         $result = [
     //             'status' => 0,
     //             'msg' =>  'ID可以使用',
     //             'items'=> $items,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => 'ID已經存在',
@@ -1036,7 +1038,7 @@ $ddd = $input;
     //             'msg' => '更新成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -1045,10 +1047,10 @@ $ddd = $input;
     //     return $result;
     // }
 
-    // public function item_item_add($id){        
+    // public function item_item_add($id){
     //     $ok = Item::create(['id' => $id]);
     //     // dd($item);
-        
+
     //     if($ok){
     //         $item = Item::where(['no' => $ok['no']])->first();
     //         $result = [
@@ -1057,7 +1059,7 @@ $ddd = $input;
     //             'item'=> $item,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => 'ID已經存在',
@@ -1066,21 +1068,21 @@ $ddd = $input;
     //     return $result;
     // }
 
-    // public function item_item_delete($id, $no){        
+    // public function item_item_delete($id, $no){
     //     $ok = Item::where(['id' => $id, 'no' => $no])->delete();
-    //     if($ok){            
+    //     if($ok){
     //         $result = [
     //             'status' => 0,
     //             'msg' =>  'Item已刪除',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => 'Item刪除失敗',
     //         ];
     //     }
-    //     return $result;   
+    //     return $result;
     // }
 
     // public function item_item_update($id, $no, $item_item){
@@ -1090,11 +1092,11 @@ $ddd = $input;
     //         $item_item_target = Item::where(['id' => $id, 'no' => $no])->first();
     //         $old_dir;
     //         $old_file_name;
-            
+
     //         $dir = "";
     //         if($item_target['page'] != null && $item_target['item'] != null){
     //             $dir .= "index/".$item_target['page']."/".$item_target['item']."/";
-    //         }            
+    //         }
     //         else if($item_target['page'] != null && $item_target['item'] == null){
     //             $dir .= "page/".$item_target['page']."/";
     //         }
@@ -1115,27 +1117,27 @@ $ddd = $input;
     //         $old_dir = File::dirname($item_item_target["image"])."/";
     //         $old_file_name = File::basename($item_item_target["image"]);
     //         //echo $old_dir;
-           
-    //         if($old_dir == '/upload/front/index/'.$dir && $old_dir.$old_file_name != $new_dir.$new_file_name){                
+
+    //         if($old_dir == '/upload/front/index/'.$dir && $old_dir.$old_file_name != $new_dir.$new_file_name){
     //             // 本身目錄
     //             File::delete(base_path()."/public".$old_dir.$old_file_name);
     //             $files = File::allFiles(base_path()."/public".$old_dir);
     //             if(count($files) == 0){
-    //                 rmdir(base_path()."/public".$old_dir);                        
+    //                 rmdir(base_path()."/public".$old_dir);
     //             }
     //         }
     //     }
-        
+
     //     $update = null;
     //     $update = Item::where(['id' => $id, 'no' => $no])->update($item_item);
-       
+
     //     if($update){
     //         $result = [
     //             'status' => 0,
     //             'msg' => '更新成功!',
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -1144,7 +1146,7 @@ $ddd = $input;
     //     return $result;
     // }
 
-    // //--------------------------------------------------------------------------   
+    // //--------------------------------------------------------------------------
 
     // public function item_item_upload($target, $item, $item_item){
     //     $file = Input::file('index_file');
@@ -1161,7 +1163,7 @@ $ddd = $input;
     //         $dir = "";
     //         if($item['page'] != null && $item['item'] != null){
     //             $dir .= "index/".$item['page']."/".$item['item']."/";
-    //         }            
+    //         }
     //         else if($item['page'] != null && $item['item'] == null){
     //             $dir .= "page/".$item['page']."/";
     //         }
@@ -1177,8 +1179,8 @@ $ddd = $input;
 
     //         if(!File::isDirectory(base_path().'/public/upload/front/index/'.$dir)){
     //             File::makeDirectory(base_path().'/public/upload/front/index/'.$dir, 0775, true);
-    //         }   
-            
+    //         }
+
     //         $item_item_target = Item::where(['id'=>$item['id'], 'no'=>$item_item['no']])->first();
     //         $old_dir;
     //         $old_file_name;
@@ -1187,18 +1189,18 @@ $ddd = $input;
     //             $old_dir = File::dirname($item_item_target["image"])."/";
     //             $old_file_name = File::basename($item_item_target["image"]);
     //         }
-            
-    //         if($old_dir == '/upload/front/index/'.$dir){  
+
+    //         if($old_dir == '/upload/front/index/'.$dir){
     //             // echo base_path()."/public".$old_dir.$old_file_name;
-    //             // return ;     
+    //             // return ;
     //             File::delete(base_path()."/public".$old_dir.$old_file_name);
     //         }
 
     //         $path = $file->move(base_path().'/public/upload/front/index/'.$dir, $name_origin);
     //         $filepath = '/upload/front/index/'.$dir.$name_origin;
-            
-    //         $update = Item::where(['id'=>$item['id'], 'no'=>$item_item['no']])->update([$target => $filepath]);              
-    //     }     
+
+    //         $update = Item::where(['id'=>$item['id'], 'no'=>$item_item['no']])->update([$target => $filepath]);
+    //     }
     //     // echo $update;
     //     // return;
     //     if($update){
@@ -1208,7 +1210,7 @@ $ddd = $input;
     //             'image' => $filepath,
     //         ];
     //     }
-    //     else{   
+    //     else{
     //         $result = [
     //             'status' => 1,
     //             'msg' => '更新失敗',
@@ -1217,6 +1219,6 @@ $ddd = $input;
     //     return $result;
     // }
 
-    
+
 
 }

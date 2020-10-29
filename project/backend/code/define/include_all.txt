@@ -3,29 +3,29 @@
 
 所以採用直接複製貼上法使用
 
-// ----------------------------------------------------------- 
+// -----------------------------------------------------------
 // mix
-// ----------------------------------------------------------- 
+// -----------------------------------------------------------
 // ----------------------------------
 // base
-// ---------------------------------- 
+// ----------------------------------
 use hahaha\define\hahaha_define_base_direction as base_direction;
 // use hahaha\define\hahaha_define_base_key as base_key;
 use hahaha\define\hahaha_define_base_node as base_node;
 use hahaha\define\hahaha_define_base_validate as base_validate;
 // ----------------------------------
 // api
-// ---------------------------------- 
+// ----------------------------------
 use hahaha\define\hahaha_define_api_request as api_request;
 use hahaha\define\hahaha_define_api_response as api_response;
 use hahaha\define\hahaha_define_api_status as api_status;
 // ----------------------------------
 // db
-// ---------------------------------- 
+// ----------------------------------
 // use hahaha\define\hahaha_define_table_db_field_type as db_field_type;
 // ----------------------------------
 // html
-// ---------------------------------- 
+// ----------------------------------
 // use hahaha\define\hahaha_define_html_attribute as html_attr;
 // use hahaha\define\hahaha_define_html_class as html_class;
 // use hahaha\define\hahaha_define_html_property as html_prop;
@@ -33,11 +33,13 @@ use hahaha\define\hahaha_define_api_status as api_status;
 // use hahaha\define\hahaha_define_html_tag as html_tag;
 // ----------------------------------
 // sql
-// ---------------------------------- 
+// ----------------------------------
+// use hahaha\define\hahaha_define_sql_key as sql_key;
 // use hahaha\define\hahaha_define_sql_operator as sql_op;
+// use hahaha\define\hahaha_define_sql_order as sql_order;
 // ----------------------------------
 // table
-// ---------------------------------- 
+// ----------------------------------
 use hahaha\define\hahaha_define_table_action as table_action;
 use hahaha\define\hahaha_define_table_group as table_group;
 use hahaha\define\hahaha_define_table_setting as table_setting;
@@ -45,13 +47,13 @@ use hahaha\define\hahaha_define_table_target as table_target;
 use hahaha\define\hahaha_define_table_type as table_type;
 use hahaha\define\hahaha_define_table_use as table_use;
 // ----------------------------------
-// 
-// ---------------------------------- 
-// ----------------------------------------------------------- 
+//
+// ----------------------------------
+// -----------------------------------------------------------
 // 特挑
-// ----------------------------------------------------------- 
+// -----------------------------------------------------------
 use hahaha\define\hahaha_define_base_key as key_;
-// 
+//
 use hahaha\define\hahaha_define_html_attribute as attr;
 use hahaha\define\hahaha_define_html_class as class_;
 use hahaha\define\hahaha_define_html_property as prop;
@@ -59,12 +61,12 @@ use hahaha\define\hahaha_define_html_style as style;
 use hahaha\define\hahaha_define_html_tag as tag;
 //
 use hahaha\define\hahaha_define_table_db_field_type as field_type;
-// 
+//
 use hahaha\define\hahaha_define_sql_operator as op;
 //
-// ----------------------------------------------------------- 
-// 
-// ----------------------------------------------------------- 
+// -----------------------------------------------------------
+//
+// -----------------------------------------------------------
 
 
 
