@@ -55,7 +55,7 @@ trait hahaha_repositories_single_table_composite_trait
         // 筆數內容
         $result_ = $this->findByFields($data_list,
             $setting_table,
-            $filters,
+            $filters
         );
 
         // 清除
