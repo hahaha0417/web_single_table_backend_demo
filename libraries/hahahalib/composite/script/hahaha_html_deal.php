@@ -217,7 +217,7 @@ unset($deal_->Finds_);
 
  -------------------------------------------- 
 */
-class hahaha_file_deal
+class hahaha_html_deal
 {
 	use \hahahalib\hahaha_instance_trait;
 

@@ -46,7 +46,7 @@ composer require nesbot/carbon
 # Predis
 composer require predis/predis
 # redlock(Redis Lock)
-composer require signe/redlock-php
+# composer require signe/redlock-php
 # mongodb
 # composer require mongodb/mongodb
 # 綜合鎖

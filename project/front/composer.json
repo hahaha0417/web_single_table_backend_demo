@@ -17,8 +17,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "nesbot/carbon": "^2.29",
-        "predis/predis": "^1.1",
-        "signe/redlock-php": "^1.1"
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -44,11 +43,9 @@
         "classmap": [
             "database/seeds",
             "database/factories",
-            "libraries",
             "../../libraries",
             "../../config",
-            "../../framework",
-            "code"
+            "../../framework"
         ]
     },
     "autoload-dev": {
