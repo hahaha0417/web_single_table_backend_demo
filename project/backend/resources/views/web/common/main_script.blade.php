@@ -27,13 +27,16 @@
     {{-- jquery ui --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
 
-    {{-- jquery slim --}}
+    {{-- jquery slim --}}	
+	<?php
+	/*
     @if(Config::get('app.debug'))
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" integrity="sha512-1lagjLfnC1I0iqH9plHYIUq3vDMfjhZsLy9elfK89RBcpcRcx4l+kRJBSnHh2Mh6kLxRHoObD1M5UTUbgFy6nA==" crossorigin="anonymous"></script>
     @else
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
     @endif
-
+	*/
+	?>
     {{-- bootstrap --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
 
@@ -62,12 +65,15 @@
     @endif
 
     {{-- jquery slim --}}
+	<?php
+	/*
     @if(Config::get('app.debug'))
         <script src="{{\p_ha::Assets("plugin/plugin/jquery/dist/jquery.slim.js")}}"></script>
     @else
         <script src="{{\p_ha::Assets("plugin/plugin/jquery/dist/jquery.slim.min.js")}}"></script>
     @endif
- 
+	*/
+	?>
     {{-- bootstrap --}}
     @if(Config::get('app.debug'))
         <script src="{{\p_ha::Assets("plugin/plugin/bootstrap/dist/js/bootstrap.bundle.js")}}"></script>
