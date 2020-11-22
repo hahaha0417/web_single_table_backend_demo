@@ -6,11 +6,11 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
+{{--
     ----------------------------------------------------------------------------
-    說明 : 
-    ----------------------------------------------------------------------------   
-    
+    說明 :
+    ----------------------------------------------------------------------------
+
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
@@ -44,9 +44,9 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
     // 預設頁面路徑
     // http://127.0.0.1:8704/backend/page/backend_accounts_list，靜態頁面
     // edit
-    // Route::get('/page/{name}/edit/{}', 'IndexController@page');   
+    // Route::get('/page/{name}/edit/{}', 'IndexController@page');
     // index
-    Route::get('/page/{name}', 'IndexController@page');   
+    Route::get('/page/{name}', 'IndexController@page');
 
 });
 
@@ -56,7 +56,7 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
     // http://127.0.0.1:8700/backend/page/table/backend_accounts_list
     // tool
     // http://127.0.0.1:8700/backend/page/tool/table_field
-    Route::get('page/{class}/{name}', 'IndexController@page');   
+    Route::get('page/{class}/{name}', 'IndexController@page');
 
 });
 
@@ -64,6 +64,7 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
 Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend/tool', 'namespace' => 'Backend\Tool'], function() {
     // tool
     Route::get('/table_field', 'ToolController@table_field');
+    Route::get('/generate/table/php_const', 'ToolController@generate_table_php_const');
 });
 //------------------------------------------------------------------------------------------------------
 // 資料表
@@ -75,17 +76,17 @@ $stages_ = [
 foreach($stages_ as $key => &$stage)
 {
     $setting_table_ = "\\hahaha\\$stage\\hahaha_setting_table";
-    $settings_ = $setting_table_::Instance();		
+    $settings_ = $setting_table_::Instance();
     $routes_ = &$settings_->Routes[$settings_->Settings['default']['route']];
     $controllers_ = &$settings_->Controllers[$settings_->Settings['default']['controller']];
     $tables_ = &$settings_->Tables[$settings_->Settings['default']['table']];
-    
-    if(!empty($routes_['group'])) 
+
+    if(!empty($routes_['group']))
     {
         // 有設定，格式相同，所以使用group
         Route::group($routes_['group'], function() use($tables_, $controllers_) {
             // http://127.0.0.1:8704/backend/table/backend/accounts/list，內部頁面
-            // ---------------------------------------------------------- 
+            // ----------------------------------------------------------
             // 每個table為一個站，目前格式一樣/{stage}/{class}/{item}/(這樣是一個node)
             // 註冊動態路由
             // stage - 站 class - 資料表分類 item - 資料表名
@@ -96,7 +97,7 @@ foreach($stages_ as $key => &$stage)
             {
                 if($controller['method'] == 'get')
                 {
-                    Route::get("/{stage}/{class}/{item}{$controller['node']}", "{$controller['controller']}@{$controller['action']}"); 
+                    Route::get("/{stage}/{class}/{item}{$controller['node']}", "{$controller['controller']}@{$controller['action']}");
                 }
                 else if($controller['method'] == 'post')
                 {
@@ -111,11 +112,11 @@ foreach($stages_ as $key => &$stage)
                     Route::delete("/{stage}/{class}/{item}{$controller['node']}", "{$controller['controller']}@{$controller['action']}");
                 }
             }
-     
+
         });
     }
-    
-    // 切掉關聯，避免迴圈時塞到null(可能assign null導致多一個null key)，這樣不會將原始data刪除    
+
+    // 切掉關聯，避免迴圈時塞到null(可能assign null導致多一個null key)，這樣不會將原始data刪除
     unset($routes_);
     unset($controllers_);
     unset($tables_);

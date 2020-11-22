@@ -7,24 +7,24 @@ use hahahasublib\hahaha_instance_trait;
 use hahaha\hahaha_table_trait;
 //
 use hahaha\hahaha_table_base;
-// 
+//
 use EntityManager;
 
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 // 不要用這個
 // \backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 // 用傳統的貼法，避免出現錯誤
-// 解法 : 
-// 1. php提供新include，可以insert代碼做整理 * 
-// 2. 插件可以幫我parser class_alias()，例如提供方法指定 
-/** 
- * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析 
+// 解法 :
+// 1. php提供新include，可以insert代碼做整理 *
+// 2. 插件可以幫我parser class_alias()，例如提供方法指定
+/**
+ * 特例(2) : ! Intelephense:analysis -- 這樣會導doctrine orm:generate-entities不能解析
  * ! Intelephense:analysis  \backend\alias\hahaha_alias_table_define::Alias("hahaha\\backend\\");
  * 上面function獨立並只做class_alias
- * 
+ *
  **/
-// ------------------------------------------------------ 
+// ------------------------------------------------------
 use hahaha\define\hahaha_define_base_key as key_;
 use hahaha\define\hahaha_define_base_direction as direction;
 use hahaha\define\hahaha_define_html_attribute as attr;
@@ -51,7 +51,7 @@ use hahaha\define\hahaha_define_sql_operator as op;
 因為套版用，設定會是死的，所以直接用array描述，不需要另外從資料庫撈，存在快取
 */
 class hahaha_setting_index
-{	
+{
 	use hahaha_instance_trait;
 
 	/*
@@ -81,7 +81,7 @@ class hahaha_setting_index
 	{
 		$this->Initial();
 	}
-	
+
 	public function Initial()
 	{
 		// 可以給其他人設定
@@ -132,7 +132,7 @@ class hahaha_setting_index
 	--- 'target' => '_self' 站內
 	--- 'target' => 'index_content_frame',
 
-	// ----------------------------------------- 
+	// -----------------------------------------
 	使用方法
 	// -----------------------------------------
 	沒規定要怎樣擺，因為有多站點，因此我統一收在Table裡面
@@ -146,9 +146,9 @@ class hahaha_setting_index
 	Label X 3
 
 	基本上畫面也差不多滿了
-	// ----------------------------------------- 
+	// -----------------------------------------
 	其他用法
-	// ----------------------------------------- 
+	// -----------------------------------------
 	// 'Main' => [
 	// 	// 標籤，可以顯示，目前為隱藏(要查code，應該是改css)
 	// 	'type' => 'label',
@@ -180,7 +180,7 @@ class hahaha_setting_index
 	// ],
 
 	// 'Dashboard' => [
-	// 	// 主控版	
+	// 	// 主控版
 	//     'type' => type::ITEM,
 	//     // 'url' => '/',
 	//     'target' => '_self',
@@ -245,7 +245,7 @@ class hahaha_setting_index
 	// ],
 
 	// 'Global' => [
-	//	全域設定	
+	//	全域設定
 	//     'type' => type::MENU,
 	//     'url' => '/',
 	//     'target' => '_self',
@@ -304,22 +304,22 @@ class hahaha_setting_index
 	public function Menu(&$Menu)
 	{
 		// front
-		$front_settings_ = \hahaha\front\hahaha_setting_table::Instance();		
+		$front_settings_ = \hahaha\front\hahaha_setting_table::Instance();
 		$front_tables_ = &$front_settings_->Tables[$front_settings_->Settings['default']['table']];
 		// backend
 		$backend_settings_ = \hahaha\backend\hahaha_setting_table::Instance();
 		$backend_tables_ = &$backend_settings_->Tables[$backend_settings_->Settings['default']['table']];
 
-		// --------------------------------------------- 
+		// ---------------------------------------------
 		/*
 		'url' => "/backend/tool/table_field",
 		注意 : url page不是這樣改'url' => "/backend/page/tool/table_field",
 		因為是iframe設計，所以url不能load page，會變成遞迴(自己呼叫自己)
-		
+
 		基本上切換原則上用cookie記(因為server不需要知道client端怎樣操作頁面，不重要的存在cookie，何況還可以不同分頁紀錄不同操作)，減低server負擔(server可以讀到cookie)
-		
+
 		*/
-		// --------------------------------------------- 
+		// ---------------------------------------------
 		$Menu = [
 			__('backend.index.menu.home') => [
 				key_::NAME => 'home',
@@ -329,8 +329,8 @@ class hahaha_setting_index
 				key_::ICON => "fa-home",
 				key_::ACTIVE => 'false',
 				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
-				key_::MINI => 'Home',				
-			],		
+				key_::MINI => 'Home',
+			],
 			__('backend.cover') => [
 				key_::NAME => 'cover',
 				key_::TYPE => type::ITEM,
@@ -358,9 +358,9 @@ class hahaha_setting_index
 				// -- Accounts
 				// 第一層
 				key_::NAME => 'table',
-				// ---------------------------------- 
+				// ----------------------------------
 				key_::PAGE => 'table',
-				// ---------------------------------- 
+				// ----------------------------------
 				key_::TYPE => type::MENU,
 				key_::URL => null,
 				key_::TARGET => target::SELF,
@@ -383,7 +383,7 @@ class hahaha_setting_index
 					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
-					// 			'background' => '',								
+					// 			'background' => '',
 					// 			type::MENU => [
 					// 				// 第四層
 					// 				__('backend.index.menu.list') => [
@@ -421,7 +421,7 @@ class hahaha_setting_index
 					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
-					// 			'background' => '',								
+					// 			'background' => '',
 					// 			type::MENU => [
 					// 				// node
 					// 				__('backend.index.menu.list') => [
@@ -438,9 +438,9 @@ class hahaha_setting_index
 					// 			'type' => type::MENU,
 					// 			'url' => null,
 					// 			'target' => 'index_content_frame',
-					// 			'background' => '',								
+					// 			'background' => '',
 					// 			type::MENU => [
-					// 				// node									
+					// 				// node
 					// 				__('backend.index.menu.account') . ' X ' . __('backend.index.menu.product') . ' - ' . __('backend.index.menu.like') => [
 					// 					'name' => 'front_account_product_like',
 					// 					'type' => type::ITEM,
@@ -465,7 +465,7 @@ class hahaha_setting_index
 								key_::TYPE => type::MENU,
 								key_::URL => null,
 								key_::TARGET => 'index_content_frame',
-								key_::BACKGROUND => '',								
+								key_::BACKGROUND => '',
 								key_::MENU => [
 									// 第四層
 									__('backend.index.menu.list') => [
@@ -520,9 +520,9 @@ class hahaha_setting_index
 				// -- Accounts
 				// 第一層
 				key_::NAME => 'tool',
-				// ---------------------------------- 
+				// ----------------------------------
 				key_::PAGE => 'class',
-				// ---------------------------------- 
+				// ----------------------------------
 				key_::TYPE => type::MENU,
 				key_::URL => null,
 				key_::TARGET => target::SELF,
@@ -530,7 +530,7 @@ class hahaha_setting_index
 				key_::ACTIVE => 'false',
 				key_::BACKGROUND => 'rgba(255,255,0,0.5)',
 				key_::MINI => __('backend.index.menu.table'),
-				key_::MENU => [		
+				key_::MENU => [
 					__('backend.table_field') => [
 						// 'name' => 'table_field',
 						key_::NAME => 'table_field',
@@ -538,7 +538,15 @@ class hahaha_setting_index
 						key_::URL => "/backend/tool/table_field",
 						key_::TARGET => 'index_content_frame',
 						key_::BACKGROUND => '',
-					],			
+                    ],
+                    __('backend.table_php_const') => [
+						// 'name' => 'table_field',
+						key_::NAME => 'generate_table_php_const',
+						key_::TYPE => type::ITEM,
+						key_::URL => "/backend/tool/generate/table/php_const",
+						key_::TARGET => 'index_content_frame',
+						key_::BACKGROUND => '',
+					],
 					// __('backend.index.menu.backend') => [
 					// 	'name' => 'backend',
 					// 	'type' => type::MENU,
@@ -552,7 +560,7 @@ class hahaha_setting_index
 					// 		// 	'type' => type::MENU,
 					// 		// 	'url' => null,
 					// 		// 	'target' => 'index_content_frame',
-					// 		// 	'background' => '',								
+					// 		// 	'background' => '',
 					// 		// 	type::MENU => [
 					// 		// 		// 第四層
 					// 		// 		__('backend.index.menu.list') => [
@@ -587,7 +595,7 @@ class hahaha_setting_index
 					// 		// ],
 					// 	],
 					// ],
-					
+
 				],
 			],
 		];

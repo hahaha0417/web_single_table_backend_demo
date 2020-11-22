@@ -52,22 +52,46 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
     <body style="background:rgba(190, 190, 190, 1);">
         <div style="background:rgba(190,255,190,1);">
             <hr>
-            <h1>目標</h1>
+            <h1>資料庫</h1>
             <hr>
         </div>
         <br>
         <div class="form-group row ml-1">
             <label for="ip" class="col-lg-2">Ip</label>
-            <input type="email" class="form-control col-lg-8" id="ip" aria-describedby="ip"" placeholder="Ip" value="{{$parameter_->ip}}">
+            <input type="text" class="form-control col-lg-8" id="ip" aria-describedby="ip"" placeholder="Ip" value="{{$parameter_->ip}}">
         </div>
         <div class="form-group row ml-1">
             <label for="port" class="col-lg-2">Port</label>
-            <input type="email" class="form-control col-lg-8" id="port" aria-describedby="port" placeholder="Port" value="{{$parameter_->port}}">
+            <input type="text" class="form-control col-lg-8" id="port" aria-describedby="port" placeholder="Port" value="{{$parameter_->port}}">
         </div>
 
         <div class="form-group row ml-1">
             <label for="database" class="col-lg-2">資料庫</label>
-            <input type="email" class="form-control col-lg-8" id="database" aria-describedby="database" placeholder="Database" value="{{$parameter_->database}}">
+            <input type="text" class="form-control col-lg-8" id="database" aria-describedby="database" placeholder="Database" value="{{$parameter_->database}}">
+        </div>
+
+        <div style="background:rgba(190,255,190,1);">
+            <hr>
+            <h1>PHP</h1>
+            <hr>
+        </div>
+        <br>
+        <div class="form-group row ml-1">
+            <label for="output_namespace" class="col-lg-2">Namespace</label>
+            <input type="text"" class="form-control col-lg-8" id="output_namespace" aria-describedby="output_namespace"" placeholder="code\define\table\backend" value="{{$parameter_->output_namespace}}">
+        </div>
+        <div class="form-group row ml-1">
+            <label for="output_path" class="col-lg-2">Path</label>
+            <input type="text" class="form-control col-lg-8" id="output_path" aria-describedby="output_path" placeholder="D:\web" value="{{$parameter_->output_path}}">
+        </div>
+
+        <div class="form-group row ml-1">
+            <input type="checkbox" class="form-control col-lg-2" id="pass_table_migrations"
+                @if($parameter_->pass_table_migrations == "true")
+                    checked
+                @endif
+            >
+            <label class="col-lg-8" for="pass_table_migrations">Pass Table migrations</label>
         </div>
 
         <div class="form-group row ml-1">
@@ -81,33 +105,23 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
         </div>
         <br>
 
-        <div class="form-group row ml-1">
-            <label for="table" class="col-lg-2">資料表</label>
-            <select class="form-control col-lg-8" id="table">
-                @foreach($parameter_->table_items as $item)
-                    <option value="{{$item['TABLE_NAME']}}"
-                        @if($item['TABLE_NAME'] == $parameter_->table)
-                            selected
-                        @endif
-                    >{{$item['TABLE_NAME']}}</option>
-                @endforeach
-            </select>
-        </div>
 
         {{-- 這裡不做過濾，因為我不會預知要過濾那些 --}}
 
         <div class="form-group row ml-1">
-            <label for="output" class="col-lg-2">輸出</label>
+            <label for="output" class="col-lg-2">資料表</label>
             <textarea class="form-control col-lg-8" rows="12" id="output">
-@foreach($parameter_->table_fields as $field)
-{{$field['COLUMN_NAME']}}
+@foreach($parameter_->table_items as $item)
+{{$item['TABLE_NAME']}}
 @endforeach
 </textarea>
 
         </div>
 
+
+
         <div class="form-group row ml-1">
-            <button type="button" class="btn btn-dark col-lg-1 send_button">傳送</button>
+            <button type="button" class="btn btn-dark col-lg-1 send_button">產生</button>
         </div>
 
 
@@ -120,10 +134,15 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                 // ip
 
                 $(".update_button").click(function() {
-                    var url = "/backend/tool/table_field";
+                    var url = "/backend/tool/generate/table/php_const";
                     url += "?" + "ip=" + $("#ip").val();
                     url += "&port=" + $("#port").val();
                     url += "&database=" + $("#database").val();
+                    url += "&output_namespace=" + $("#output_namespace").val();
+                    url += "&output_path=" + $("#output_path").val();
+                    url += "&pass_table_migrations=" + $("#pass_table_migrations").prop('checked');
+
+
                     if($("#table option:selected").index() != -1)
                     {
                         url += "&table=" + $( $("#table option")[$("#table option:selected").index()] ).val();
@@ -142,11 +161,14 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                         type:"POST",
                         url:"/backend/api/hahaha/tool/hahahalib/text_deal/command",
                         data:{
+                            'command': 'generate',
+                            'method': 'table_php_const',
+                            'content': $("#output").val(),
                             'ip': $("#ip").val(),
                             'port': $("#port").val(),
-                            'command': 'send',
-                            'method': 'origin',
-                            'content': $("#output").val(),
+                            'database': $("#database").val(),
+                            'output_namespace': $("#output_namespace").val(),
+                            'output_path': $("#output_path").val(),
 
                         },
                         success:function(response,status,xhr){

@@ -25,10 +25,10 @@ return [
             'home' => '首頁',
             'note' => '備註',
             'table' => '資料表',
-            // 站 
+            // 站
             'front' => '前台',
             'backend' => '後台',
-            //             
+            //
             'account' => '會員',
             'product' => '產品',
             'relation' => '關聯',
@@ -36,7 +36,7 @@ return [
             'detail' => '細節',
             'login_record' => '登入紀錄',
             'like' => '我的最愛',
-            
+
         ],
         'tail' => [
         ],
@@ -81,11 +81,11 @@ return [
     'all' => '全部',
     'male' => '男',
     'female' => '女',
-    'add' => '新增', 
-    'cancel' => '取消', 
+    'add' => '新增',
+    'cancel' => '取消',
     'help' => '說明',
     'tool' => '工具',
     'table_field' => '資料表欄位',
+    'table_php_const' => '資料表PHP常數',
 
 ];
- 

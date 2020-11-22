@@ -96,6 +96,72 @@ class ToolController extends CommonController
 
     }
 
+    public function generate_table_php_const()
+    {
+        $parameter_ = \hahaha\hahaha_parameter::Instance();
+        $parameter_->ip = !empty($_GET["ip"]) ? $_GET["ip"] : "127.0.0.1";
+        $parameter_->port = !empty($_GET["port"]) ? $_GET["port"] : "3306";
+        $parameter_->database = !empty($_GET["database"]) ? $_GET["database"] : "";
+        $parameter_->table = !empty($_GET["table"]) ? $_GET["table"] : "";
+        $parameter_->output_namespace = !empty($_GET["output_namespace"]) ? $_GET["output_namespace"] : "";
+        $parameter_->output_path = !empty($_GET["output_path"]) ? $_GET["output_path"] : "";
+        $parameter_->pass_table_migrations = !empty($_GET["pass_table_migrations"]) ? $_GET["pass_table_migrations"] : "false";
 
+
+        try
+        {
+            $db_hahaha = new \hahahalib\hahaha_db_mysql;
+            $db_result_hahaha = new \hahahalib\hahaha_db_mysql_result;
+            $db_hahaha->Connect("127.0.0.1:3306", "root", "hahaha", "{$parameter_->database}");
+            $db_hahaha->Set_Names("utf8");
+
+            // 查資料表
+            $parameter_->table_items = [];
+
+            // 要比數小用like %%
+            $result = $db_hahaha->Query("SELECT * FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='{$parameter_->database}'");
+            if($result)
+            {
+                $db_result_hahaha->Fetch_All($result, $parameter_->table_items);
+
+            }
+
+            if($parameter_->table == "" && !empty($parameter_->table_items))
+            {
+                $parameter_->table = $parameter_->table_items[0]['TABLE_NAME'];
+            }
+
+            if($parameter_->pass_table_migrations == "true")
+            {
+                foreach($parameter_->table_items as $key => &$item)
+                {
+                    if($item['TABLE_NAME'] == 'migrations')
+                    {
+                        unset($parameter_->table_items[$key]);
+                        break;
+                    }
+                }
+
+            }
+
+            // 查資料表欄位
+            $parameter_->table_fields = [];
+            $result = $db_hahaha->Query("SELECT * FROM information_schema.`COLUMNS` WHERE TABLE_SCHEMA='{$parameter_->database}' AND TABLE_NAME = '{$parameter_->table}'");
+            if($result)
+            {
+                $db_result_hahaha->Fetch_All($result, $parameter_->table_fields);
+
+            }
+
+            $db_hahaha->Close();
+
+        }
+        catch (\Exception $e) {
+
+        }
+
+        return view('web.backend.tool.generate.table.php_const');
+
+    }
 
 }
