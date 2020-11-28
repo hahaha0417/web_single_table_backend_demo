@@ -11,6 +11,7 @@ return array(
     'App\\Api\\Controllers\\Front\\v1_0\\Line\\Bot\\Hahaha\\CommonController' => $baseDir . '/libraries/hahahalib/composite/line/bot/example/Line/Bot/Hahaha/CommonController.php',
     'App\\Api\\Controllers\\Front\\v1_0\\Line\\Bot\\Hahaha\\HahahaController' => $baseDir . '/libraries/hahahalib/composite/line/bot/example/Line/Bot/Hahaha/HahahaController.php',
     'App\\Library\\GetStars' => $baseDir . '/libraries/hahahalib/composite/parser/php_html_parser/example/Library/GetStars.php',
+    'g_plib\\db\\table\\hahaha_generate_php_const' => $baseDir . '/libraries/g_plib/base/db/table/hahaha_generate_php_const.php',
     'hahahalib\\Extend\\ExecParallel\\Job' => $baseDir . '/libraries/hahahalib/extend/command/ravisorg/Job.php',
     'hahahalib\\cache\\hahaha_cache_doctrine' => $baseDir . '/libraries/hahahalib/composite/cache/doctrine/hahaha_cache_doctrine.php',
     'hahahalib\\command\\hahaha_command_christiaan' => $baseDir . '/libraries/hahahalib/composite/command/christiaan/hahaha_command_christiaan.php',
@@ -78,4 +79,5 @@ return array(
     'hahahalib\\script\\hahaha_html_deal_define_operator' => $baseDir . '/libraries/hahahalib/composite/script/define/hahaha_html_deal_define_operator.php',
     'hahahasublib\\hahaha_class_instance_handle_trait' => $baseDir . '/libraries/hahahasublib/trait/hahaha_class_instance_handle_trait.php',
     'hahahasublib\\hahaha_instance_trait' => $baseDir . '/libraries/hahahasublib/trait/hahaha_instance_trait.php',
+    's_ulib\\tool\\text_deal\\hahaha_script_main' => $baseDir . '/libraries/s_ulib/base/tool/text_deal/hahaha_script_main.php',
 );

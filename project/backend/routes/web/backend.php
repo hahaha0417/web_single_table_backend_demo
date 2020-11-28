@@ -64,8 +64,9 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend', '
 Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend/tool', 'namespace' => 'Backend\Tool'], function() {
     // tool
     Route::get('/table_field', 'ToolController@table_field');
-    Route::get('/generate/table/php_const', 'ToolController@generate_table_php_const');
+    Route::get('/generate/db/table/php_const', 'ToolController@generate_db_table_php_const');
 });
+
 //------------------------------------------------------------------------------------------------------
 // 資料表
 $stages_ = [

@@ -85,7 +85,7 @@ return [
     'cancel' => '取消',
     'help' => '說明',
     'tool' => '工具',
-    'table_field' => '資料表欄位',
-    'table_php_const' => '資料表PHP常數',
+    'db_table_field' => '資料庫 - 資料表欄位 - 傳送Text Deal',
+    'db_table_php_const' => '資料庫 - 資料表PHP常數 - 產生器',
 
 ];

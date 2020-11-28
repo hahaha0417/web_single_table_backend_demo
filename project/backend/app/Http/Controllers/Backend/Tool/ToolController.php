@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Crypt;
 
 use entities\backend\Accounts;
 use EntityManager;
+use Config;
 
 /*
 使用laravel session處理login，有需要請自行換別種auth方式
@@ -57,33 +58,29 @@ class ToolController extends CommonController
         {
             $db_hahaha = new \hahahalib\hahaha_db_mysql;
             $db_result_hahaha = new \hahahalib\hahaha_db_mysql_result;
-            $db_hahaha->Connect("127.0.0.1:3306", "root", "hahaha", "{$parameter_->database}");
+            $db_function_hahaha = new \hahahalib\hahaha_db_mysql_function;
+            // -------------------------------------------
+            // 因為怕核心褲太多冗餘，其他框架的初始化設定請自己提供，目前沒寫
+            // -------------------------------------------
+            $ip_ = Config::Get('database.connections.mysql_backend.host');
+            $port_ = Config::Get('database.connections.mysql_backend.port');
+            $username_ = Config::Get('database.connections.mysql_backend.username');
+            $password_ = Config::Get('database.connections.mysql_backend.password');
+            $db_hahaha->Connect("{$ip_}:{$port_}}", "{$username_}", "{$password_}", "{$parameter_->database}");
             $db_hahaha->Set_Names("utf8");
 
-            // 查資料表
+            // 查資料庫
             $parameter_->table_items = [];
-
-            // 要比數小用like %%
-            $result = $db_hahaha->Query("SELECT * FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='{$parameter_->database}'");
-            if($result)
-            {
-                $db_result_hahaha->Fetch_All($result, $parameter_->table_items);
-
-            }
+            $db_function_hahaha->Find_Db_Databases($db_hahaha, $db_result_hahaha, $parameter_->table_items, $parameter_->database);
 
             if($parameter_->table == "" && !empty($parameter_->table_items))
             {
                 $parameter_->table = $parameter_->table_items[0]['TABLE_NAME'];
             }
 
-            // 查資料表欄位
+            // 查資料表
             $parameter_->table_fields = [];
-            $result = $db_hahaha->Query("SELECT * FROM information_schema.`COLUMNS` WHERE TABLE_SCHEMA='{$parameter_->database}' AND TABLE_NAME = '{$parameter_->table}'");
-            if($result)
-            {
-                $db_result_hahaha->Fetch_All($result, $parameter_->table_fields);
-
-            }
+            $db_function_hahaha->Find_Db_Tables($db_hahaha, $db_result_hahaha, $parameter_->table_fields, $parameter_->database, $parameter_->table);
 
             $db_hahaha->Close();
 
@@ -96,7 +93,7 @@ class ToolController extends CommonController
 
     }
 
-    public function generate_table_php_const()
+    public function generate_db_table_php_const()
     {
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         $parameter_->ip = !empty($_GET["ip"]) ? $_GET["ip"] : "127.0.0.1";
@@ -106,25 +103,27 @@ class ToolController extends CommonController
         $parameter_->output_namespace = !empty($_GET["output_namespace"]) ? $_GET["output_namespace"] : "";
         $parameter_->output_path = !empty($_GET["output_path"]) ? $_GET["output_path"] : "";
         $parameter_->pass_table_migrations = !empty($_GET["pass_table_migrations"]) ? $_GET["pass_table_migrations"] : "false";
+        $parameter_->doctrine_style = !empty($_GET["doctrine_style"]) ? $_GET["doctrine_style"] : "";
 
 
         try
         {
             $db_hahaha = new \hahahalib\hahaha_db_mysql;
             $db_result_hahaha = new \hahahalib\hahaha_db_mysql_result;
-            $db_hahaha->Connect("127.0.0.1:3306", "root", "hahaha", "{$parameter_->database}");
+            $db_function_hahaha = new \hahahalib\hahaha_db_mysql_function;
+            // -------------------------------------------
+            // 因為怕核心褲太多冗餘，其他框架的初始化設定請自己提供，目前沒寫
+            // -------------------------------------------
+            $ip_ = Config::Get('database.connections.mysql_backend.host');
+            $port_ = Config::Get('database.connections.mysql_backend.port');
+            $username_ = Config::Get('database.connections.mysql_backend.username');
+            $password_ = Config::Get('database.connections.mysql_backend.password');
+            $db_hahaha->Connect("{$ip_}:{$port_}}", "{$username_}", "{$password_}", "{$parameter_->database}");
             $db_hahaha->Set_Names("utf8");
 
-            // 查資料表
+            // 查資料庫
             $parameter_->table_items = [];
-
-            // 要比數小用like %%
-            $result = $db_hahaha->Query("SELECT * FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='{$parameter_->database}'");
-            if($result)
-            {
-                $db_result_hahaha->Fetch_All($result, $parameter_->table_items);
-
-            }
+            $db_function_hahaha->Find_Db_Databases($db_hahaha, $db_result_hahaha, $parameter_->table_items, $parameter_->database);
 
             if($parameter_->table == "" && !empty($parameter_->table_items))
             {
@@ -144,15 +143,6 @@ class ToolController extends CommonController
 
             }
 
-            // 查資料表欄位
-            $parameter_->table_fields = [];
-            $result = $db_hahaha->Query("SELECT * FROM information_schema.`COLUMNS` WHERE TABLE_SCHEMA='{$parameter_->database}' AND TABLE_NAME = '{$parameter_->table}'");
-            if($result)
-            {
-                $db_result_hahaha->Fetch_All($result, $parameter_->table_fields);
-
-            }
-
             $db_hahaha->Close();
 
         }
@@ -160,7 +150,7 @@ class ToolController extends CommonController
 
         }
 
-        return view('web.backend.tool.generate.table.php_const');
+        return view('web.backend.tool.generate.db.table.php_const');
 
     }
 

@@ -29,7 +29,8 @@
 
     {{-- jquery slim --}}
 	<?php
-	/*
+    /*
+    精簡版 沒有$.ajax
     @if(Config::get('app.debug'))
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" integrity="sha512-1lagjLfnC1I0iqH9plHYIUq3vDMfjhZsLy9elfK89RBcpcRcx4l+kRJBSnHh2Mh6kLxRHoObD1M5UTUbgFy6nA==" crossorigin="anonymous"></script>
     @else

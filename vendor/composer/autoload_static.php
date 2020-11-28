@@ -12,6 +12,7 @@ class ComposerStaticInitec5352c114ea0b700ed092c5af587386
         'App\\Api\\Controllers\\Front\\v1_0\\Line\\Bot\\Hahaha\\CommonController' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/line/bot/example/Line/Bot/Hahaha/CommonController.php',
         'App\\Api\\Controllers\\Front\\v1_0\\Line\\Bot\\Hahaha\\HahahaController' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/line/bot/example/Line/Bot/Hahaha/HahahaController.php',
         'App\\Library\\GetStars' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/parser/php_html_parser/example/Library/GetStars.php',
+        'g_plib\\db\\table\\hahaha_generate_php_const' => __DIR__ . '/../..' . '/libraries/g_plib/base/db/table/hahaha_generate_php_const.php',
         'hahahalib\\Extend\\ExecParallel\\Job' => __DIR__ . '/../..' . '/libraries/hahahalib/extend/command/ravisorg/Job.php',
         'hahahalib\\cache\\hahaha_cache_doctrine' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/cache/doctrine/hahaha_cache_doctrine.php',
         'hahahalib\\command\\hahaha_command_christiaan' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/command/christiaan/hahaha_command_christiaan.php',
@@ -79,6 +80,7 @@ class ComposerStaticInitec5352c114ea0b700ed092c5af587386
         'hahahalib\\script\\hahaha_html_deal_define_operator' => __DIR__ . '/../..' . '/libraries/hahahalib/composite/script/define/hahaha_html_deal_define_operator.php',
         'hahahasublib\\hahaha_class_instance_handle_trait' => __DIR__ . '/../..' . '/libraries/hahahasublib/trait/hahaha_class_instance_handle_trait.php',
         'hahahasublib\\hahaha_instance_trait' => __DIR__ . '/../..' . '/libraries/hahahasublib/trait/hahaha_instance_trait.php',
+        's_ulib\\tool\\text_deal\\hahaha_script_main' => __DIR__ . '/../..' . '/libraries/s_ulib/base/tool/text_deal/hahaha_script_main.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

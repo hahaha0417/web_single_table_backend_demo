@@ -4,11 +4,11 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
+{{--
     ----------------------------------------------------------------------------
-    說明 : 
-    ----------------------------------------------------------------------------   
-    
+    說明 :
+    ----------------------------------------------------------------------------
+
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
@@ -28,7 +28,7 @@ $(function	()	{
         // railColor: 'rgba(190,255,190)', //轨道颜色
         railOpacity: 0.2, //轨道透明度
         railDraggable: true, //是否 滚动条可拖动
-        railClass: 'slimScrollRail', //轨道div类名 
+        railClass: 'slimScrollRail', //轨道div类名
         barClass: 'slimScrollBar', //滚动条div类名
         wrapperClass: 'slimScrollDiv', //外包div类名
         // alwaysVisible: true
@@ -36,7 +36,7 @@ $(function	()	{
 	});
 	//Collapsible Sidebar Menu
 	$('.sidebar-menu .openable > a').click(function()	{
-		
+
 		if(!$('aside').hasClass('sidebar-mini') || Modernizr.mq('(max-width: 991px)'))	{
 			if( $(this).parent().children('.submenu').is(':hidden') ) {
 				$(this).parent().siblings().removeClass('open').children('.submenu').slideUp(200);
@@ -46,7 +46,7 @@ $(function	()	{
 				$(this).parent().removeClass('open').children('.submenu').slideUp(200);
             }
 		}
-		
+
 		return false;
 	});
 
@@ -54,14 +54,14 @@ $(function	()	{
 	if(!$('.sidebar-menu').hasClass('sidebar-mini') || Modernizr.mq('(max-width: 767px)'))	{
 		$('.openable.open').children('.submenu').slideDown(200);
 	}
-	
+
 	//Toggle User container on sidebar menu
 	$('#btn-collapse').click(function()	{
 		$('.sidebar-header').toggleClass('active');
 	});
-	
+
 	//theme setting
-	$("#theme-setting-icon").click(function()	{ 
+	$("#theme-setting-icon").click(function()	{
 		if($('#theme-setting').hasClass('open'))	{
 			$('#theme-setting').removeClass('open');
 			$('#theme-setting-icon').removeClass('open');
@@ -73,7 +73,7 @@ $(function	()	{
 
 		return false;
 	});
-	
+
 	$('#sidebarToggleLG').click(function()	{
 		if($('.wrapper').hasClass('display-right'))	{
 			$('.wrapper').removeClass('display-right');
@@ -85,17 +85,17 @@ $(function	()	{
 			$('aside').toggleClass('sidebar-mini');
 			$('footer').toggleClass('sidebar-mini');
 			$('.main-container').toggleClass('sidebar-mini');
-			
+
 			$('.main-menu').find('.openable').removeClass('open');
 			$('.main-menu').find('.submenu').removeAttr('style');
-		}		
+		}
 	});
-	
+
 	$('#sidebarToggleSM').click(function()	{
 		$('aside').toggleClass('active');
 		$('.wrapper').toggleClass('display-left');
 	});
-	
+
 	$('.sidebarRight-toggle').click(function()	{
 		$('.sidebar-right').toggleClass('active');
 		$('.wrapper').toggleClass('display-right');
@@ -103,15 +103,15 @@ $(function	()	{
 
 		return false;
 	});
-	
+
 	$('.dropdown-menu input').click(function(e) {
         e.stopPropagation(); //This will prevent the event from bubbling up and close the dropdown when you type/click on text boxes.
     });
-	
+
 	//to do list
-	$('.task-finish').click(function()	{ 
+	$('.task-finish').click(function()	{
 		if($(this).is(':checked'))	{
-			$(this).parent().parent().addClass('selected');					
+			$(this).parent().parent().addClass('selected');
 		}
 		else	{
 			$(this).parent().parent().removeClass('selected');
@@ -119,18 +119,18 @@ $(function	()	{
 	});
 
 	//Delete to do list
-	$('.task-del').click(function()	{			
+	$('.task-del').click(function()	{
 		var activeList = $(this).parent().parent();
 
 		activeList.addClass('removed');
-				
+
 		setTimeout(function() {
 			activeList.remove();
 		}, 1000);
-			
+
 		return false;
 	});
-	
+
 	var $activeWidget = '';
 	var $activeWidgetHeader;
 	var $headerHeight;
@@ -144,7 +144,7 @@ $(function	()	{
 	$('.widget-refresh-option').click(function()	{
 
 		$activeWidget = $(this).parent().parent().parent();
-		
+
 		var $activeSpinIcon = $activeWidget.find('.refresh-icon-animated').fadeIn();
 
 		setTimeout(function() {
@@ -176,7 +176,7 @@ $(function	()	{
 	$('.widget-toggle-hidden-option').click(function()	{
 		$activeWidget = $(this).parent().parent().parent();
 
-		$activeWidget.find('.smart-widget-hidden-section').slideToggle();	
+		$activeWidget.find('.smart-widget-hidden-section').slideToggle();
 
 		var $activeSpinIcon = $activeWidget.find('.refresh-icon-animated').fadeIn();
 
@@ -185,7 +185,7 @@ $(function	()	{
 		},500);
 
 
-		$activeWidget = '';			
+		$activeWidget = '';
 
 		return false;
 	});
@@ -207,7 +207,7 @@ $(function	()	{
 
 		if($selectedColor != 'reset')
 			$activeWidget.addClass($selectedColor);
-		
+
 		return false;
 	});
 
@@ -238,35 +238,35 @@ $(function	()	{
 	});
 
 	// Popover
-	jQuery.noConflict(true);
+
     $("[data-toggle=popover]").popover();
-	
+
 	// Tooltip
     $("[data-toggle=tooltip]").tooltip();
     $("[rel=tooltip]").tooltip();
-	jQuery.noConflict(false);
+
     // $(window).load(function() {
     //     $('body').removeClass('overflow-hidden');
-    
+
     //     //Enable animation
     //     $('.wrapper').removeClass('preload');
-    
+
     //     //Chat Notification on top navigation
     //     setTimeout(function() {
     //         $('.chat-notification').find('.badge').addClass('active');
     //         $('.chat-alert').addClass('active');
     //     }, 3000);
-    
+
     //     setTimeout(function() {
     //         $('.chat-alert').removeClass('active');
     //     }, 8000);
     // });
-    
+
     // Toggle Scroll to Top button
     $(window).scroll(function(){
-            
+
          var position = $(window).scrollTop();
-        
+
          if(position >= 200)	{
             $('.scroll-to-top').addClass('active')
          }

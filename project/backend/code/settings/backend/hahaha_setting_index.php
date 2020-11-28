@@ -531,7 +531,7 @@ class hahaha_setting_index
 				key_::BACKGROUND => 'rgba(255,255,0,0.5)',
 				key_::MINI => __('backend.index.menu.table'),
 				key_::MENU => [
-					__('backend.table_field') => [
+					__('backend.db_table_field') => [
 						// 'name' => 'table_field',
 						key_::NAME => 'table_field',
 						key_::TYPE => type::ITEM,
@@ -539,11 +539,11 @@ class hahaha_setting_index
 						key_::TARGET => 'index_content_frame',
 						key_::BACKGROUND => '',
                     ],
-                    __('backend.table_php_const') => [
+                    __('backend.db_table_php_const') => [
 						// 'name' => 'table_field',
 						key_::NAME => 'generate_table_php_const',
 						key_::TYPE => type::ITEM,
-						key_::URL => "/backend/tool/generate/table/php_const",
+						key_::URL => "/backend/tool/generate/db/table/php_const",
 						key_::TARGET => 'index_content_frame',
 						key_::BACKGROUND => '',
 					],

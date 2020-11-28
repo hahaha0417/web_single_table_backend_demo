@@ -3,11 +3,11 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
+{{--
     ----------------------------------------------------------------------------
-    說明 : 
-    ----------------------------------------------------------------------------   
-    
+    說明 :
+    ----------------------------------------------------------------------------
+
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
@@ -18,13 +18,13 @@
     <head>
         @include('web.common.main_meta')
         @include('web.common.sub_meta')
-    
+
         @include('web.common.main_script')
         @include('web.common.sub_script')
-                    
+
         @include('web.common.main_css')
         @include('web.common.sub_css')
-        
+
         @if(Config::get('app.online_script'))
             {{--  jQuery-file-upload  --}}
             @if(Config::get('app.debug'))
@@ -55,6 +55,19 @@
 
             {{--  lazyload  --}}
             <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+
+            {{-- 找不到CDN --}}
+            {{--  tooltip  --}}
+            @if(Config::get('app.debug'))
+                <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-tooltip/jquery.tooltip.js")}}" ></script>
+            @else
+                <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-tooltip/jquery.tooltip.min.js")}}" ></script>
+            @endif
+
+            {{-- 找不到CDN --}}
+            {{--  popover  --}}
+            <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-popover/src/jquery-popover.js")}}" ></script>
+
 
             {{--  layer  --}}
             @if(Config::get('app.debug'))
@@ -88,20 +101,30 @@
                 <script src="{{\p_ha::Assets("plugin/plugin/lazyload/lazyload.min.js")}}" ></script>
             @endif
 
+            {{--  tooltip  --}}
+            @if(Config::get('app.debug'))
+                <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-tooltip/jquery.tooltip.js")}}" ></script>
+            @else
+                <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-tooltip/jquery.tooltip.min.js")}}" ></script>
+            @endif
+
+            {{--  popover  --}}
+            <script src="{{\p_ha::Assets("plugin/plugin/jquery_plugin/jquery-popover/src/jquery-popover.js")}}" ></script>
+
             {{--  layer  --}}
             <script src="{{\p_ha::Assets("plugin/plugin/layerui/dist/layer.js")}}" ></script>
         @endif
-        
+
         <link rel="stylesheet" href="{{\p_ha::Assets("web/backend/index.css")}}">
         <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
         <script src="{{\p_ha::Assets("cross_origin/iframe_resize_height.js")}}"></script>
-        
+
         <script>
-            
-            $(function(){    
-                    
+
+            $(function(){
+
             });
-            
+
         </script>
 
         <style>
@@ -128,27 +151,27 @@
             }
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
-        
-        
+
+
 
     </head>
-    <body>            
+    <body>
         {{-- //////////////////////////////////////////////////////////////////////// --}}
         {{--  nav  --}}
-        @include("fast_use.backend.common.nav.main_nav")        
-        <div id="top_bar">            
+        @include("fast_use.backend.common.nav.main_nav")
+        <div id="top_bar">
         </div>
         {{-- //////////////////////////////////////////////////////////////////////// --}}
-        
-        <div id="content" >           
+
+        <div id="content" >
             <div id="left_box">
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  useful  --}}
-                @include("fast_use.backend.common.menu.main_menu")  
+                @include("fast_use.backend.common.menu.main_menu")
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
             </div>
             <div id="main_box">
-                    
+
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  home   --}}
                 {{--  @include("fast_use.backend.common.home.main_home")    --}}
@@ -161,7 +184,7 @@
                 @if(empty($page_url))
                 <iframe class="content_frame index_content_frame" loaded="0" name="index_content_frame" id="index_content_frame" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{$settings_['default']['index']}}">
                 </iframe>
-                @else 
+                @else
                 <iframe class="content_frame index_content_frame" loaded="0" name="index_content_frame" id="index_content_frame" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="{{$page_url}}">
                 </iframe>
                 @endif
@@ -176,8 +199,8 @@
                 {{--  @include("fast_use.front.common.chat.main_chat")    --}}
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
             {{--  </div>  --}}
-           
-            
+
+
         </div>
         {{-- //////////////////////////////////////////////////////////////////////// --}}
         {{--  整合功能  --}}
@@ -186,16 +209,16 @@
         {{--  容器  --}}
         {{--  @include("fast_use.front.integrate.control.main_control")    --}}
         {{-- //////////////////////////////////////////////////////////////////////// --}}
-        
+
 
     </body>
     <script>
         $(function(){
             // 最後一次載入
-            lazyload();      
-                            
+            lazyload();
+
         });
-        
+
     </script>
 </html>
 

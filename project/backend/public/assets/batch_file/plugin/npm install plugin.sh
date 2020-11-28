@@ -11,6 +11,8 @@ npm i jquery-file-upload
 npm i jquery-ui-dist
 npm i labelauty
 npm i lazyload
+npm i jquery-tooltip
+npm i jquery-popover
 npm i jquery-autocomplete
 npm i jquery-slimscroll
 npm i npm-modernizr

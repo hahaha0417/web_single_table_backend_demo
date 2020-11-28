@@ -95,6 +95,15 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
         </div>
 
         <div class="form-group row ml-1">
+            <input type="checkbox" class="form-control col-lg-2" id="doctrine_style"
+                @if($parameter_->doctrine_style == "true")
+                    checked
+                @endif
+            >
+            <label class="col-lg-8" for="doctrine_style">Doctrine 樣式</label>
+        </div>
+
+        <div class="form-group row ml-1">
             <button type="button" class="btn btn-dark col-lg-1 update_button">更新</button>
         </div>
 
@@ -134,13 +143,14 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                 // ip
 
                 $(".update_button").click(function() {
-                    var url = "/backend/tool/generate/table/php_const";
+                    var url = "/backend/tool/generate/db/table/php_const";
                     url += "?" + "ip=" + $("#ip").val();
                     url += "&port=" + $("#port").val();
                     url += "&database=" + $("#database").val();
                     url += "&output_namespace=" + $("#output_namespace").val();
                     url += "&output_path=" + $("#output_path").val();
                     url += "&pass_table_migrations=" + $("#pass_table_migrations").prop('checked');
+                    url += "&doctrine_style=" + $("#doctrine_style").prop('checked');
 
 
                     if($("#table option:selected").index() != -1)
@@ -159,16 +169,18 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                 $(".send_button").click(function() {
                     $.ajax({
                         type:"POST",
-                        url:"/backend/api/hahaha/tool/hahahalib/text_deal/command",
+                        url:"/backend/api/hahaha/generator/php/command",
                         data:{
                             'command': 'generate',
-                            'method': 'table_php_const',
+                            'method': 'db_table_php_const',
                             'content': $("#output").val(),
                             'ip': $("#ip").val(),
                             'port': $("#port").val(),
                             'database': $("#database").val(),
                             'output_namespace': $("#output_namespace").val(),
                             'output_path': $("#output_path").val(),
+                            'pass_table_migrations': $("#pass_table_migrations").prop('checked'),
+                            'doctrine_style': $("#doctrine_style").prop('checked'),
 
                         },
                         success:function(response,status,xhr){
