@@ -76,14 +76,42 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
             <hr>
         </div>
         <br>
+        
         <div class="form-group row ml-1">
-            <label for="output_namespace" class="col-lg-2">Namespace</label>
-            <input type="text"" class="form-control col-lg-8" id="output_namespace" aria-describedby="output_namespace"" placeholder="code\define\table\backend" value="{{$parameter_->output_namespace}}">
+            <label class="col-lg-2" for="generate_table">產生資料表</label>
+            <input type="checkbox" class="form-control col-lg-2" id="generate_table"
+                @if($parameter_->generate_table == "true")
+                    checked
+                @endif
+            >
         </div>
+        <div class="form-group row ml-5">
+            <label for="output_path" class="col-lg-2">路徑</label>
+            <input type="text" class="form-control col-lg-8" id="output_table_path" aria-describedby="output_table_path" placeholder="D:\web" value="{{$parameter_->output_table_path}}">
+        </div>
+        <div class="form-group row ml-5">
+            <label for="output_table_namespace" class="col-lg-2">Namespace</label>
+            <input type="text" class="form-control col-lg-8" id="output_table_namespace" aria-describedby="output_table_namespace" placeholder="code\define\table\backend" value="{{$parameter_->output_table_namespace}}">
+        </div>
+
+
         <div class="form-group row ml-1">
-            <label for="output_path" class="col-lg-2">Path</label>
-            <input type="text" class="form-control col-lg-8" id="output_path" aria-describedby="output_path" placeholder="D:\web" value="{{$parameter_->output_path}}">
+            <label class="col-lg-2" for="generate_table_field">產生資料表欄位</label>
+            <input type="checkbox" class="form-control col-lg-2" id="generate_table_field"
+                @if($parameter_->generate_table_field == "true")
+                    checked
+                @endif
+            >
         </div>
+        <div class="form-group row ml-5">
+            <label for="output_path" class="col-lg-2">路徑</label>
+            <input type="text" class="form-control col-lg-8" id="output_table_field_path" aria-describedby="output_table_field_path" placeholder="D:\web" value="{{$parameter_->output_table_field_path}}">
+        </div>
+        <div class="form-group row ml-5">
+            <label for="output_table_field_namespace" class="col-lg-2">Namespace</label>
+            <input type="text" class="form-control col-lg-8" id="output_table_field_namespace" aria-describedby="output_table_field_namespace" placeholder="code\define\table\backend" value="{{$parameter_->output_table_field_namespace}}">
+        </div>
+
 
         <div class="form-group row ml-1">
             <input type="checkbox" class="form-control col-lg-2" id="pass_table_migrations"
@@ -147,11 +175,17 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                     url += "?" + "ip=" + $("#ip").val();
                     url += "&port=" + $("#port").val();
                     url += "&database=" + $("#database").val();
-                    url += "&output_namespace=" + $("#output_namespace").val();
-                    url += "&output_path=" + $("#output_path").val();
+                    // url += "&output_namespace=" + $("#output_namespace").val();
+                    //
+                    url += "&generate_table=" + $("#generate_table").prop('checked');
+                    url += "&output_table_path=" + $("#output_table_path").val();
+                    url += "&output_table_namespace=" + $("#output_table_namespace").val();
+                    url += "&generate_table_field=" + $("#generate_table_field").prop('checked');
+                    url += "&output_table_field_path=" + $("#output_table_field_path").val();
+                    url += "&output_table_field_namespace=" + $("#output_table_field_namespace").val();
+                    //
                     url += "&pass_table_migrations=" + $("#pass_table_migrations").prop('checked');
                     url += "&doctrine_style=" + $("#doctrine_style").prop('checked');
-
 
                     if($("#table option:selected").index() != -1)
                     {
@@ -177,10 +211,18 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                             'ip': $("#ip").val(),
                             'port': $("#port").val(),
                             'database': $("#database").val(),
-                            'output_namespace': $("#output_namespace").val(),
-                            'output_path': $("#output_path").val(),
+                            
+                            //
+                            "generate_table": $("#generate_table").prop('checked'),
+                            "output_table_path": $("#output_table_path").val(),
+                            'output_table_namespace': $("#output_table_namespace").val(),
+                            "generate_table_field": $("#generate_table_field").prop('checked'),
+                            "output_table_field_path": $("#output_table_field_path").val(),
+                            'output_table_field_namespace': $("#output_table_field_namespace").val(),
+                            //
                             'pass_table_migrations': $("#pass_table_migrations").prop('checked'),
                             'doctrine_style': $("#doctrine_style").prop('checked'),
+
 
                         },
                         success:function(response,status,xhr){

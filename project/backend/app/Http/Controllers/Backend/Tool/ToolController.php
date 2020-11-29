@@ -100,8 +100,15 @@ class ToolController extends CommonController
         $parameter_->port = !empty($_GET["port"]) ? $_GET["port"] : "3306";
         $parameter_->database = !empty($_GET["database"]) ? $_GET["database"] : "";
         $parameter_->table = !empty($_GET["table"]) ? $_GET["table"] : "";
-        $parameter_->output_namespace = !empty($_GET["output_namespace"]) ? $_GET["output_namespace"] : "";
-        $parameter_->output_path = !empty($_GET["output_path"]) ? $_GET["output_path"] : "";
+        // $parameter_->output_namespace = !empty($_GET["output_namespace"]) ? $_GET["output_namespace"] : "";
+        //
+        $parameter_->generate_table = !empty($_GET["generate_table"]) ? $_GET["generate_table"] : "";
+        $parameter_->output_table_path = !empty($_GET["output_table_path"]) ? $_GET["output_table_path"] : "";
+        $parameter_->output_table_namespace = !empty($_GET["output_table_namespace"]) ? $_GET["output_table_namespace"] : "";
+        $parameter_->generate_table_field = !empty($_GET["generate_table_field"]) ? $_GET["generate_table_field"] : "";
+        $parameter_->output_table_field_path = !empty($_GET["output_table_field_path"]) ? $_GET["output_table_field_path"] : "";
+        $parameter_->output_table_field_namespace = !empty($_GET["output_table_field_namespace"]) ? $_GET["output_table_field_namespace"] : "";
+        //
         $parameter_->pass_table_migrations = !empty($_GET["pass_table_migrations"]) ? $_GET["pass_table_migrations"] : "false";
         $parameter_->doctrine_style = !empty($_GET["doctrine_style"]) ? $_GET["doctrine_style"] : "";
 

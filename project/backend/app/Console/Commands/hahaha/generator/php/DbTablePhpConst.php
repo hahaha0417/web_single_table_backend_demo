@@ -50,8 +50,14 @@ class DbTablePhpConst extends Command
         $password_ = Config::Get('database.connections.mysql_backend.password');
 
         $database_ = Config::Get('hahaha.tool.generate.db_table_php_const.database');
-        $output_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_path');
-        $output_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_namespace');
+        //
+        $generate_table_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table');
+        $output_table_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_path');
+        $output_table_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_namespace');
+        $generate_table_field_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table_field');
+        $output_table_field_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_path');
+        $output_table_field_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_namespace');
+        //
         $doctrine_style_ = Config::Get('hahaha.tool.generate.db_table_php_const.doctrine_style');
 
         $db_hahaha->Connect("{$ip_}:{$port_}}", "{$username_}", "{$password_}", "{$database_}");
@@ -76,14 +82,35 @@ class DbTablePhpConst extends Command
         // 因為接口，所以回轉成\n
         $content_ = implode("\r\n", $tables_);
 
-        $text_deal_main_->Generate($content_,
-            $database_,
-            $output_path_,
-            $output_namespace_,
-            $doctrine_style_,
-            $pass_tables_
-        );
+        // echo $generate_table_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table') . PHP_EOL;
+        // echo $output_table_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_path') . PHP_EOL;
+        // echo $output_table_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_namespace') . PHP_EOL;
+        // echo $generate_table_field_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table_field') . PHP_EOL;
+        // echo $output_table_field_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_path') . PHP_EOL;
+        // echo $output_table_field_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_namespace') . PHP_EOL;
 
+        if($generate_table_)
+        {
+            $text_deal_main_->Generate_Table($content_,
+                $database_,
+                $output_table_path_,
+                $output_table_namespace_,
+                $doctrine_style_,
+                $pass_tables_
+            );
+        }
+
+        if($generate_table_field_)
+        {
+            $text_deal_main_->Generate_Table_Field($content_,
+                $database_,
+                $output_table_field_path_,
+                $output_table_field_namespace_,
+                $doctrine_style_,
+                $pass_tables_
+            );
+        }
+        
         echo "產生php const 成功";
     }
 }
