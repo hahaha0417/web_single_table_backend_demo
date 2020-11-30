@@ -178,7 +178,7 @@
                 {{-- //////////////////////////////////////////////////////////////////////// --}}
                 {{--  如需改成用ajax撈，須建立管理器，管理js & css在頭部不重複，目前沒要這樣做  --}}
                 {{--  iframe無法用ajax取得頁面內容替換  --}}
-                <?
+                <?php
                 $settings_ = \hahaha\backend\hahaha_setting_index::Instance()->Settings;
                 ?>
                 @if(empty($page_url))
