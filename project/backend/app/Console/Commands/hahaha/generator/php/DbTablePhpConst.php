@@ -60,7 +60,7 @@ class DbTablePhpConst extends Command
         //
         $doctrine_style_ = Config::Get('hahaha.tool.generate.db_table_php_const.doctrine_style');
 
-        $db_hahaha->Connect("{$ip_}:{$port_}}", "{$username_}", "{$password_}", "{$database_}");
+        $db_hahaha->Connect("{$ip_}:{$port_}}", $username_, $password_, $database_);
         $db_hahaha->Set_Names("utf8");
 
         // 查資料庫
@@ -77,7 +77,7 @@ class DbTablePhpConst extends Command
             "migrates"
         ];
 
-        $text_deal_main_ = \g_plib\db\table\hahaha_generate_php_const::Instance()->Initial_Setting($ip_, $port_);
+        $text_deal_main_ = \g_plib\db\table\hahaha_generate_php_const::Instance()->Initial_Setting($ip_, $port_, $username_, $password_);
 
         // 因為接口，所以回轉成\n
         $content_ = implode("\r\n", $tables_);
