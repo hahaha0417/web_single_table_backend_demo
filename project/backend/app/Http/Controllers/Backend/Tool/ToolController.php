@@ -98,6 +98,8 @@ class ToolController extends CommonController
         $parameter_ = \hahaha\hahaha_parameter::Instance();
         $parameter_->ip = !empty($_GET["ip"]) ? $_GET["ip"] : "127.0.0.1";
         $parameter_->port = !empty($_GET["port"]) ? $_GET["port"] : "3306";
+        $parameter_->username = !empty($_GET["username"]) ? $_GET["username"] : "root";
+        $parameter_->password = !empty($_GET["password"]) ? $_GET["password"] : "hahaha";
         $parameter_->database = !empty($_GET["database"]) ? $_GET["database"] : "";
         $parameter_->table = !empty($_GET["table"]) ? $_GET["table"] : "";
         // $parameter_->output_namespace = !empty($_GET["output_namespace"]) ? $_GET["output_namespace"] : "";

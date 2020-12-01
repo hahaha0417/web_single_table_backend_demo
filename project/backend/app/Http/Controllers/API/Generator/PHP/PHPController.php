@@ -21,8 +21,8 @@ class PHPController extends Controller
 
         $ip_ = &$_POST["ip"];
         $port_ = &$_POST["port"];
-		$username_ = Config::Get('database.connections.mysql_backend.username');
-        $password_ = Config::Get('database.connections.mysql_backend.password');
+		$username_ = &$_POST["username"];
+        $password_ = &$_POST["password"];
         $text_deal_main_ = \g_plib\db\table\hahaha_generate_php_const::Instance()->Initial_Setting($ip_, $port_, $username_, $password_);
 
         // 二次打包，收集在composite
@@ -69,7 +69,7 @@ class PHPController extends Controller
                         $pass_tables_
                     );
                 }
-                
+
 
             }
         }

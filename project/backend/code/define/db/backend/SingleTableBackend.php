@@ -8,6 +8,5 @@ class SingleTableBackend
 	const ACCOUNTS_DETAIL = "accounts_detail";
 	const ACCOUNTS_LOGIN_RECORDS = "accounts_login_records";
 	const ACCOUNTS_RELATIONS = "accounts_relations";
-	const MIGRATIONS = "migrations";
 
 } 

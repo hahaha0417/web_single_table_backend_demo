@@ -11,7 +11,7 @@
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
-<?php 
+<?php
 $parameter_ = \hahaha\hahaha_parameter::Instance();
 ?>
 
@@ -64,7 +64,14 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
             <label for="port" class="col-lg-2">Port</label>
             <input type="text" class="form-control col-lg-8" id="port" aria-describedby="port" placeholder="Port" value="{{$parameter_->port}}">
         </div>
-
+        <div class="form-group row ml-1">
+            <label for="username" class="col-lg-2">使用者名稱</label>
+            <input type="text" class="form-control col-lg-8" id="username" aria-describedby="username" placeholder="使用者名稱" value="{{$parameter_->username}}">
+        </div>
+        <div class="form-group row ml-1">
+            <label for="password" class="col-lg-2">密碼</label>
+            <input type="text" class="form-control col-lg-8" id="password" aria-describedby="password" placeholder="密碼" value="{{$parameter_->password}}">
+        </div>
         <div class="form-group row ml-1">
             <label for="database" class="col-lg-2">資料庫</label>
             <input type="text" class="form-control col-lg-8" id="database" aria-describedby="database" placeholder="Database" value="{{$parameter_->database}}">
@@ -76,7 +83,7 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
             <hr>
         </div>
         <br>
-        
+
         <div class="form-group row ml-1">
             <label class="col-lg-2" for="generate_table">產生資料表</label>
             <input type="checkbox" class="form-control col-lg-2" id="generate_table"
@@ -174,6 +181,8 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                     var url = "/backend/tool/generate/db/table/php_const";
                     url += "?" + "ip=" + $("#ip").val();
                     url += "&port=" + $("#port").val();
+                    url += "&username=" + $("#username").val();
+                    url += "&password=" + $("#password").val();
                     url += "&database=" + $("#database").val();
                     // url += "&output_namespace=" + $("#output_namespace").val();
                     //
@@ -210,8 +219,10 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
                             'content': $("#output").val(),
                             'ip': $("#ip").val(),
                             'port': $("#port").val(),
+                            'username': $("#username").val(),
+                            'password': $("#password").val(),
                             'database': $("#database").val(),
-                            
+
                             //
                             "generate_table": $("#generate_table").prop('checked'),
                             "output_table_path": $("#output_table_path").val(),
