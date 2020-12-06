@@ -5,6 +5,8 @@ namespace hahaha\define;
 use hahahasublib\hahaha_instance_trait;
 
 /*
+use hahaha\define\hahaha_define_base_key as key;
+
 use hahaha\define\hahaha_define_base_key as key_;
 
 use hahaha\define\hahaha_define_base_key as base_key;

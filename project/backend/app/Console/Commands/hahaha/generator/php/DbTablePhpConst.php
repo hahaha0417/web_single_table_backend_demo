@@ -5,8 +5,21 @@ namespace App\Console\Commands\hahaha\generator\php;
 use Illuminate\Console\Command;
 use Config;
 
+use hahaha\hahaha_define_tool_key_ha as key;
+
 class DbTablePhpConst extends Command
 {
+    // -----------------------------------------------------
+    // 統一作法 - 全部
+    // -----------------------------------------------------
+    const CONFIG_DB = key::DATABASE . "." . key::CONNECTIONS . "." . key::MYSQL_BACKEND;
+    const CONFIG = key::HAHAHA . "." . key::TOOL . "." . key::GENERATE . "." . key::DB_TABLE_PHP_CONST;
+    // -----------------------------------------------------
+    // 統一作法 - 內部
+    // -----------------------------------------------------
+
+    // -----------------------------------------------------
+
     /**
      * The name and signature of the console command.
      *
@@ -44,21 +57,37 @@ class DbTablePhpConst extends Command
         // -------------------------------------------
         // 因為怕核心褲太多冗餘，其他框架的初始化設定請自己提供，目前沒寫
         // -------------------------------------------
-        $ip_ = Config::Get('database.connections.mysql_backend.host');
-        $port_ = Config::Get('database.connections.mysql_backend.port');
-        $username_ = Config::Get('database.connections.mysql_backend.username');
-        $password_ = Config::Get('database.connections.mysql_backend.password');
 
-        $database_ = Config::Get('hahaha.tool.generate.db_table_php_const.database');
+        // -----------------------------------------------------
+        // 統一作法 - 全部
+        // -----------------------------------------------------
+        $config_ = Config::Get(self::CONFIG);
+        $config_db_ = Config::Get(self::CONFIG_DB);
+        // -------------------------------------------
+        $ip_ = &$config_db_[key::HOST];
+        $port_ = &$config_db_[key::PORT];
+        $username_ = &$config_db_[key::USERNAME];
+        $password_ = &$config_db_[key::PASSWORD];
+        // -------------------------------------------
+        $database_ = &$config_[key::DATABASE];
+        // -----------------------------------------------------
+        // 統一作法 - 內部
+        // -----------------------------------------------------
+
+        // -----------------------------------------------------
+
         //
-        $generate_table_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table');
-        $output_table_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_path');
-        $output_table_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_namespace');
-        $generate_table_field_ = Config::Get('hahaha.tool.generate.db_table_php_const.generate_table_field');
-        $output_table_field_path_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_path');
-        $output_table_field_namespace_ = Config::Get('hahaha.tool.generate.db_table_php_const.output_table_field_namespace');
+        $generate_table_ = &$config_[key::GENERATE_TABLE];
+        $output_table_path_ = &$config_[key::OUTPUT_TABLE_PATH];
+        $output_table_namespace_ = &$config_[key::OUTPUT_TABLE_NAMESPACE];
+        $generate_table_field_ = &$config_[key::GENERATE_TABLE_FIELD];
+        $output_table_field_path_ = &$config_[key::OUTPUT_TABLE_FIELD_PATH];
+        $output_table_field_namespace_ = &$config_[key::OUTPUT_TABLE_FIELD_NAMESPACE];
         //
-        $doctrine_style_ = Config::Get('hahaha.tool.generate.db_table_php_const.doctrine_style');
+        $doctrine_style_ = &$config_[key::DOCTRINE_STYLE];
+
+
+
 
         $db_hahaha->Connect("{$ip_}:{$port_}}", $username_, $password_, $database_);
         $db_hahaha->Set_Names("utf8");
@@ -74,7 +103,7 @@ class DbTablePhpConst extends Command
         }
 
         $pass_tables_ = [
-            "migrates"
+            key::MIGRATES,
         ];
 
         $text_deal_main_ = \g_plib\db\table\hahaha_generate_php_const::Instance()->Initial_Setting($ip_, $port_, $username_, $password_);
@@ -91,7 +120,7 @@ class DbTablePhpConst extends Command
 
         if($generate_table_)
         {
-            $text_deal_main_->Generate_Table($content_,
+            $text_deal_main_->Generate_Table_From_String($content_,
                 $database_,
                 $output_table_path_,
                 $output_table_namespace_,
@@ -102,7 +131,7 @@ class DbTablePhpConst extends Command
 
         if($generate_table_field_)
         {
-            $text_deal_main_->Generate_Table_Field($content_,
+            $text_deal_main_->Generate_Table_Field_From_String($content_,
                 $database_,
                 $output_table_field_path_,
                 $output_table_field_namespace_,
@@ -110,7 +139,7 @@ class DbTablePhpConst extends Command
                 $pass_tables_
             );
         }
-        
+
         echo "產生php const 成功";
     }
 }

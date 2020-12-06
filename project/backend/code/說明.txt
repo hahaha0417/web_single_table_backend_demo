@@ -2,18 +2,18 @@
 原本裡面的要直接放在app裡面，但是因為laravel的app是基於PSR4
 我完成的功能，可能要快速遷移至我的php hahaha framework(因為有綁定laravel框架，所以複製到我的框架下一定要修改)
 
- --------------------------------- 
+ ---------------------------------
 目錄
- --------------------------------- 
+ ---------------------------------
 base - 基礎
 define - 定義
-entitys - doctrine entity 
+entitys - doctrine entity
 
- --------------------------------- 
- --------------------------------- 
+ ---------------------------------
+ ---------------------------------
 models
- --------------------------------- 
- --------------------------------- 
+ ---------------------------------
+ ---------------------------------
 因為我專案可能分多個database，且doctrine model generator會自動對應PSR4(我希望自己指定關聯)
 因此我沒辦法控制namespace，沒辦法照我的方式放在namespace hahaha下面
 因此我包在models\test123，以做不同database的區隔
@@ -21,20 +21,24 @@ models
 這可以選擇laravel不同的資料庫連線，需要修改config/doctrine.php & onfig/database.php
 ./vendor/bin/doctrine orm:convert-mapping -f --from-database annotation code --namespace='entities\test123\' ---connection=mysql_read_only
 
-
- ----------------------------- 
+ -----------------------------
 注意
- ----------------------------- 
+ -----------------------------
+這裡是for table，所以其他的盡量不要摻到這裡，ex define key
+
+ -----------------------------
+注意
+ -----------------------------
 orm:generate-entities 3.0已經棄用，使用下面套件
 https://stackoverflow.com/questions/53104430/the-doctrinegenerateentities-command-has-been-deprecated
 composer require symfony/maker-bundle --dev
- --------------------------------------------------------- 
+ ---------------------------------------------------------
 注意 : 經查證 3.0還沒釋出，所以沒辦法確定用法
 沒意外應該是這樣下
 .\vendor\bin\doctrine make:entity --regenerate
 等到確定再來查指令是不是在本身裡面
 .\vendor\bin\doctrine list
- --------------------------------------------------------- 
+ ---------------------------------------------------------
 因為orm:convert-mapping只能強制覆蓋，orm:generate-entities基本上預設只會附加(--regenerate-entities=true則entity有異動會還原)，剩下的要自己處理
 這樣下不會產生備份檔，並且不會覆蓋修改過的entity的get & set
 ./vendor/bin/doctrine orm:generate-entities code --no-backup
@@ -47,9 +51,9 @@ composer require symfony/maker-bundle --dev
 
 因為orm:generate-entities & orm:generate-entities，namespace相同，如果將orm:generate-entities產生在專案裡面，
 會使的composer要特別設置，因為orm:generate-entities速度很快，所以我將它產生專案資料夾外，也就是不儲存，要時再下指令取得最新的
- --------------------------------- 
+ ---------------------------------
 實際用法 *
- --------------------------------- 
+ ---------------------------------
 注意 : 因為不產生在專案內，所以指令在暫存路徑d:/temp/code
 // config/doctrine.php - 要對應路徑
 'paths'         => [
@@ -67,27 +71,27 @@ composer require symfony/maker-bundle --dev
 基於上面描述，entity可以直接修改
 
 如果有新增欄位，則orm:convert-mapping到別的資料夾，再將PHPDoc要的地方複製到專案內
- --------------------------------- 
+ ---------------------------------
 lazy load議題
- --------------------------------- 
+ ---------------------------------
 基本上hahaha管理專案不使用lazy load，因為那會影響效能，並且hahaha也不用eager load，那可能會撈很多資料
 不管指令怎麼下，最後orm有的，一定代表SQL有下到取出
 
 其他人怎樣管，請問負責的人
- --------------------------------- 
+ ---------------------------------
 orm convert mapping問題
- --------------------------------- 
+ ---------------------------------
 因為composite primary key似乎doctrine無法generate entity
 沒設primary key也會出錯
 因此每個table都固定用id當作primary key，如要加速用index的方式，index也可以設成composite
- --------------------------------- 
+ ---------------------------------
 Entities & Repositories議題
- --------------------------------- 
+ ---------------------------------
 Entities - 基於Doctrine基本上只是Generator，因為他後面的附加，都是加在最尾端，其實實際上我可能會照順序排get & set位置，因此我採取，generator在外面暫存資料夾，利用winmerge將我要的東西進行整合
 Repositories - 基本上這只是殼，產生完移動位置整理是OK，因為我是使用class map，所以不會有移動完位置要改很多地方設定的問題
- --------------------------------- 
+ ---------------------------------
 資料夾擺放問題
- --------------------------------- 
+ ---------------------------------
 因為
 table有所謂的相依性(Accounts & Products & AccountsProductsLikes)
 因此假設我分類以表類型做分類，這樣不好查找關聯，因此，我的分類方式是
@@ -100,4 +104,4 @@ table有所謂的相依性(Accounts & Products & AccountsProductsLikes)
 除非非常必要，不然不要沒事用很多層namespace，那不會比較好
 
 至於為什麼最外層要以元件類型當作資料夾，主要是因為doctrine只能產出list，如果我要維護表的同步，Entity放一起我比較好更新，如doctrine可以直接生成樹狀結構(這應該不可能，除非DB本身可以建立樹狀結構的表)，我會考慮以table分類當作最外層資料夾(一樣問題，migrate要不要也可以多層)
- --------------------------------- 
+ ---------------------------------

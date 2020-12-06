@@ -3,9 +3,9 @@
 namespace code\define\table\backend;
 
 /*
-use code\define\table\backend\Accounts as accounts
+use code\define\table\backend\Migrations as migrations
 
-use code\define\table\backend\Accounts as tableAccounts
+use code\define\table\backend\Migrations as tableMigrations
 
 */
 
@@ -20,7 +20,7 @@ use code\define\table\backend\Accounts as tableAccounts
 說明
  ------------------------------------------------------ 
 */
-class Accounts
+class Migrations
 {
 
 	// ------------------------------------------------------------------------------ 
@@ -34,13 +34,7 @@ class Accounts
 	// 常數 
 	// ------------------------------------------------------ 
 	const ID = "id";
-	const ACCOUNT = "account";
-	const PASSWORD = "password";
-	const EMAIL = "email";
-	const GENDER = "gender";
-	const STATUS = "status";
-	const COMMENT = "comment";
-	const CREATED_AT = "created_at";
-	const UPDATED_AT = "updated_at";
+	const MIGRATION = "migration";
+	const BATCH = "batch";
 
 } 

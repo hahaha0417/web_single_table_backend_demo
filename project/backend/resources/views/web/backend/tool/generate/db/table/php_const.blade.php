@@ -50,6 +50,23 @@ $parameter_ = \hahaha\hahaha_parameter::Instance();
 
     </head>
     <body style="background:rgba(190, 190, 190, 1);">
+        <div style="background:rgba(255,190,190,1);">
+            <hr>
+            <h1>注意 : <br>
+                因為是小工具，不做客製化版，有需要請做成command<br>
+                不會有人每次產一樣還要一直輸入的，或帶一大堆參數
+            </h1>
+            <hr>
+        </div>
+        <div style="background:rgba(255,190,190,1);">
+            <hr>
+            <h1>注意 : <br>
+                假設要做fast_use & 指定db file name，必須確認場景<br>
+                單一專案 or 訂製專案，基本上寫command用，不需要特別寫一個小工具<br>
+                目前沒有常用場景，需要多fast_use & 指定db file name
+            </h1>
+            <hr>
+        </div>
         <div style="background:rgba(190,255,190,1);">
             <hr>
             <h1>資料庫</h1>

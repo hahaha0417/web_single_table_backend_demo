@@ -1,11 +1,11 @@
 <?php
 
-namespace code\define\table\backend;
+namespace code\define\db\backend;
 
 /*
-use code\define\table\backend\Accounts as accounts
+use code\define\db\backend\db as db
 
-use code\define\table\backend\Accounts as tableAccounts
+use code\define\db\backend\db as database_db
 
 */
 
@@ -20,7 +20,7 @@ use code\define\table\backend\Accounts as tableAccounts
 說明
  ------------------------------------------------------ 
 */
-class Accounts
+class db
 {
 
 	// ------------------------------------------------------------------------------ 
@@ -29,18 +29,21 @@ class Accounts
 	// ------------------------------------------------------------------------------ 
 	// ------------------------------------------------------------------------------ 
 
+	// ------------------------------------------------------ 
+	// 常數 - 分類
+	// ------------------------------------------------------ 
+
+	// ------------------------------ 
+	// 會員 
+	// ------------------------------ 
+	const ACCOUNTS = "accounts";
+	const ACCOUNTS_DETAIL = "accounts_detail";
+	const ACCOUNTS_LOGIN_RECORDS = "accounts_login_records";
+	const ACCOUNTS_RELATIONS = "accounts_relations";
 
 	// ------------------------------------------------------ 
 	// 常數 
 	// ------------------------------------------------------ 
-	const ID = "id";
-	const ACCOUNT = "account";
-	const PASSWORD = "password";
-	const EMAIL = "email";
-	const GENDER = "gender";
-	const STATUS = "status";
-	const COMMENT = "comment";
-	const CREATED_AT = "created_at";
-	const UPDATED_AT = "updated_at";
+	const MIGRATIONS = "migrations";
 
 } 

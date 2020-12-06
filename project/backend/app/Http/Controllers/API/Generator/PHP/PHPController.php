@@ -50,7 +50,7 @@ class PHPController extends Controller
 
                 if($generate_table_)
                 {
-                    $text_deal_main_->Generate_Table($content_,
+                    $text_deal_main_->Generate_Table_From_String($content_,
                         $database_,
                         $output_table_path_,
                         $output_table_namespace_,
@@ -61,7 +61,7 @@ class PHPController extends Controller
 
                 if($generate_table_field_)
                 {
-                    $text_deal_main_->Generate_Table_Field($content_,
+                    $text_deal_main_->Generate_Table_Field_From_String($content_,
                         $database_,
                         $output_table_field_path_,
                         $output_table_field_namespace_,
