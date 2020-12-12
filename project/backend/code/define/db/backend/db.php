@@ -36,14 +36,13 @@ class db
 	// ------------------------------ 
 	// 會員 
 	// ------------------------------ 
-	const ACCOUNTS = "accounts";
-	const ACCOUNTS_DETAIL = "accounts_detail";
-	const ACCOUNTS_LOGIN_RECORDS = "accounts_login_records";
-	const ACCOUNTS_RELATIONS = "accounts_relations";
+	const PP_ACCOUNTS = "accounts";
+	const PP_ACCOUNTS_DETAIL = "accounts_detail";
+	const PP_ACCOUNTS_LOGIN_RECORDS = "accounts_login_records";
+	const PP_ACCOUNTS_RELATIONS = "accounts_relations";
 
 	// ------------------------------------------------------ 
 	// 常數 
 	// ------------------------------------------------------ 
-	const MIGRATIONS = "migrations";
 
 } 

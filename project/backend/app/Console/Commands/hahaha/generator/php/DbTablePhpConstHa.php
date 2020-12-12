@@ -5,7 +5,7 @@ namespace App\Console\Commands\hahaha\generator\php;
 use Illuminate\Console\Command;
 use Config;
 
-use hahaha\hahaha_define_tool_key_ha as key;
+use g_plib\db\table\hahaha_generate_php_const_key as key;
 
 /*
 O .O Ha Style，不爽勿用
@@ -117,12 +117,23 @@ class DbTablePhpConstHa extends Command
                         key::NAME => $config_output_[key::CLASS_][key::NAME],
                         key::STYLE => $config_output_[key::CLASS_][key::STYLE],
                     ],
+                    // ----------------------------------
+                    // 可不填
+                    // ----------------------------------
+                    key::FIELDS => [
+                        key::REPLACE => [
+                            "accounts" => "p_accounts",
+                            "p_" => "pp_",
+                        ],
+                    ],
+                    // ----------------------------------
                     key::INCLUDE_ALL => $config_output_[key::INCLUDE_ALL],
+
                 ],
                 // 略過
                 key::PASS => [
                     key::TABLES => [
-                        key::MIGRATES,
+                        key::MIGRATIONS,
                     ],
                 ],
                 // 快速使用
@@ -210,12 +221,23 @@ class DbTablePhpConstHa extends Command
                     key::CLASS_ => [
                         key::STYLE => $config_output_[key::CLASS_][key::STYLE],
                     ],
+                    // ----------------------------------
+                    // 可不填
+                    // ----------------------------------
+                    key::FIELDS => [
+                        key::REPLACE => [
+                            "id" => "p_id",
+                            // "accounts" => "p_accounts",
+                            // "p_" => "pp_",
+                        ],
+                    ],
+                    // ----------------------------------
                     key::INCLUDE_ALL => $config_output_[key::INCLUDE_ALL],
                 ],
                 // 略過
                 key::PASS => [
                     key::TABLES => [
-                        key::MIGRATES,
+                        key::MIGRATIONS,
                     ],
                 ],
                 // 快速使用

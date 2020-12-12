@@ -33,7 +33,7 @@ class Accounts
 	// ------------------------------------------------------ 
 	// 常數 
 	// ------------------------------------------------------ 
-	const ID = "id";
+	const P_ID = "id";
 	const ACCOUNT = "account";
 	const PASSWORD = "password";
 	const EMAIL = "email";

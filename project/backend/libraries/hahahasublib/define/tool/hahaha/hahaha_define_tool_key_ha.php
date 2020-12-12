@@ -31,11 +31,17 @@ class hahaha_define_tool_key_ha
     const OUTPUT_TABLE_FIELD_PATH = "output_table_field_path";
     const OUTPUT_TABLE_FIELD_NAMESPACE = "output_table_field_namespace";
     const TABLE = "table";
+    const FIELDS = "fields";
+    const REPLACE = "replace";
     const TABLE_FIELD = "table_field";
     const DOCTRINE_STYLE = "doctrine_style";
     const PASS = "pass";
     const TABLES = "tables";
     const MIGRATES = "migrates";
+    const MIGRATIONS = "migrations";
+    const FROM = "from";
+    const TO = "to";
+
     const FAST_USES = "fast_uses";
     const NONE = "none";
     const PREFIX = "prefix";

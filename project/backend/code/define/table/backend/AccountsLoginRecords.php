@@ -33,8 +33,8 @@ class AccountsLoginRecords
 	// ------------------------------------------------------ 
 	// 常數 
 	// ------------------------------------------------------ 
-	const ID = "id";
-	const ACCOUNTS_ID = "accounts_id";
+	const P_ID = "id";
+	const ACCOUNTS_P_ID = "accounts_id";
 	const IP = "ip";
 	const LOGIN_TIME = "login_time";
 	const DESCRIPTION = "description";

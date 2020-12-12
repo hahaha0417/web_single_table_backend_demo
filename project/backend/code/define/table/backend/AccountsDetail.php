@@ -33,8 +33,8 @@ class AccountsDetail
 	// ------------------------------------------------------ 
 	// 常數 
 	// ------------------------------------------------------ 
-	const ID = "id";
-	const ACCOUNTS_ID = "accounts_id";
+	const P_ID = "id";
+	const ACCOUNTS_P_ID = "accounts_id";
 	const NAME = "name";
 	const NICKNAME = "nickname";
 	const AVATAR = "avatar";
