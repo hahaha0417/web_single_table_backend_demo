@@ -547,6 +547,14 @@ class hahaha_setting_index
 						key_::TARGET => 'index_content_frame',
 						key_::BACKGROUND => '',
 					],
+                    __('backend.path_as_const_style') => [
+						// 'name' => 'table_field',
+						key_::NAME => 'path_as_const_style',
+						key_::TYPE => type::ITEM,
+						key_::URL => "/backend/tool/path_as_const_style",
+						key_::TARGET => 'index_content_frame',
+						key_::BACKGROUND => '',
+					],
 					// __('backend.index.menu.backend') => [
 					// 	'name' => 'backend',
 					// 	'type' => type::MENU,

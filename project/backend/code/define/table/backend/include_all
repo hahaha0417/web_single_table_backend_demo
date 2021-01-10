@@ -1,0 +1,15 @@
+
+
+/*
+use code\define\table\backend\AccountsRelations as accounts;
+use code\define\table\backend\AccountsRelations as accountsDetail;
+use code\define\table\backend\AccountsRelations as accountsLoginRecords;
+use code\define\table\backend\AccountsRelations as accountsRelations;
+*/
+
+/*
+use code\define\table\backend\AccountsRelations as tableAccounts;
+use code\define\table\backend\AccountsRelations as tableAccountsDetail;
+use code\define\table\backend\AccountsRelations as tableAccountsLoginRecords;
+use code\define\table\backend\AccountsRelations as tableAccountsRelations;
+*/

@@ -3,9 +3,9 @@
 namespace code\define\table\backend;
 
 /*
-use code\define\table\backend\Accounts as accounts
+use code\define\table\backend\Accounts as accounts;
 
-use code\define\table\backend\Accounts as tableAccounts
+use code\define\table\backend\Accounts as tableAccounts;
 
 */
 
@@ -34,13 +34,21 @@ class Accounts
 	// 常數 
 	// ------------------------------------------------------ 
 	const P_ID = "id";
+	// 帳號
 	const ACCOUNT = "account";
+	// 密碼
 	const PASSWORD = "password";
+	// 信箱
 	const EMAIL = "email";
+	// 性別 0 女 1 男
 	const GENDER = "gender";
+	// 狀態 -1 停用 0 未驗證 1 驗證
 	const STATUS = "status";
+	// 備註
 	const COMMENT = "comment";
 	const CREATED_AT = "created_at";
 	const UPDATED_AT = "updated_at";
 
 } 
+
+

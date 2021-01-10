@@ -24,12 +24,15 @@ class hahaha_define_tool_key_ha
     const GENERATE = "generate";
     const DB_TABLE_PHP_CONST = "db_table_php_const";
     const DB_TABLE_PHP_CONST_HA = "db_table_php_const_ha";
+    const PATH_AS_CONST_STYLE = "path_as_const_style";
     const GENERATE_TABLE = "generate_table";
     const OUTPUT_TABLE_PATH = "output_table_path";
     const OUTPUT_TABLE_NAMESPACE = "output_table_namespace";
     const GENERATE_TABLE_FIELD = "generate_table_field";
     const OUTPUT_TABLE_FIELD_PATH = "output_table_field_path";
     const OUTPUT_TABLE_FIELD_NAMESPACE = "output_table_field_namespace";
+    const SETTING = "setting";
+    const CACHE = "cache";
     const TABLE = "table";
     const FIELDS = "fields";
     const REPLACE = "replace";
@@ -41,6 +44,7 @@ class hahaha_define_tool_key_ha
     const MIGRATIONS = "migrations";
     const FROM = "from";
     const TO = "to";
+    const CONSTS = "consts";
 
     const FAST_USES = "fast_uses";
     const NONE = "none";
@@ -63,7 +67,7 @@ class hahaha_define_tool_key_ha
 
 
 
-    const NAMESPACE = "namespace";
+    const NAMESPACE_ = "namespace";
     const PATH = "path";
     const CLASS_ = "class";
     const NAME = "name";

@@ -3,9 +3,9 @@
 namespace code\define\db\backend;
 
 /*
-use code\define\db\backend\db as db
+use code\define\db\backend\db as db;
 
-use code\define\db\backend\db as database_db
+use code\define\db\backend\db as database_db;
 
 */
 
@@ -36,6 +36,7 @@ class db
 	// ------------------------------ 
 	// 會員 
 	// ------------------------------ 
+	// aaa
 	const PP_ACCOUNTS = "accounts";
 	const PP_ACCOUNTS_DETAIL = "accounts_detail";
 	const PP_ACCOUNTS_LOGIN_RECORDS = "accounts_login_records";

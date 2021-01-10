@@ -111,7 +111,7 @@ class DbTablePhpConstHa extends Command
             $parameters_ = [
                 // 輸出
                 key::OUTPUT => [
-                    key::NAMESPACE => $config_output_[key::NAMESPACE],
+                    key::NAMESPACE_ => $config_output_[key::NAMESPACE_],
                     key::PATH => $config_output_[key::PATH],
                     key::CLASS_ => [
                         key::NAME => $config_output_[key::CLASS_][key::NAME],
@@ -154,7 +154,7 @@ class DbTablePhpConstHa extends Command
                 // 註解
                 key::COMMENTS => [
                     // ---------------------------------------------------------
-                    key::NAMESPACE => [
+                    key::NAMESPACE_ => [
                         "/*",
                         " ------------------------------------------------------ ",
                         "說明",
@@ -216,7 +216,7 @@ class DbTablePhpConstHa extends Command
             $parameters_ = [
                 // 輸出
                 key::OUTPUT => [
-                    key::NAMESPACE => $config_output_[key::NAMESPACE],
+                    key::NAMESPACE_ => $config_output_[key::NAMESPACE_],
                     key::PATH => $config_output_[key::PATH],
                     key::CLASS_ => [
                         key::STYLE => $config_output_[key::CLASS_][key::STYLE],
@@ -254,7 +254,7 @@ class DbTablePhpConstHa extends Command
                 // 註解
                 key::COMMENTS => [
                     // ---------------------------------------------------------
-                    key::NAMESPACE => [
+                    key::NAMESPACE_ => [
                         "/*",
                         " ------------------------------------------------------ ",
                         "說明",

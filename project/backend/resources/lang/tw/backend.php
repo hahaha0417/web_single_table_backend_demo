@@ -87,5 +87,6 @@ return [
     'tool' => '工具',
     'db_table_field' => '資料庫 - 資料表欄位 - 傳送Text Deal',
     'db_table_php_const' => '資料庫 - 資料表PHP常數 - 產生器',
+    'path_as_const_style' => 'PHP文件常數樣式',
 
 ];

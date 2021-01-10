@@ -24,7 +24,7 @@ return [
                 key_ha::GENERATE_TABLE => [
                     key_ha::ENABLED => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_ENABLED', ''),
                     key_ha::OUTPUT => [
-                        key_ha::NAMESPACE => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE__OUTPUT__NAMESPACE', ''),
+                        key_ha::NAMESPACE_ => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE__OUTPUT__NAMESPACE', ''),
                         key_ha::PATH => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE__OUTPUT__PATH', ''),
                         key_ha::CLASS_ => [
                             key_ha::NAME => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE__OUTPUT__CLASS__NAME', ''),
@@ -36,7 +36,7 @@ return [
                 key_ha::GENERATE_TABLE_FIELD => [
                     key_ha::ENABLED => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_FIELD__ENABLED', ''),
                     key_ha::OUTPUT => [
-                        key_ha::NAMESPACE => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_FIELD__OUTPUT__NAMESPACE', ''),
+                        key_ha::NAMESPACE_ => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_FIELD__OUTPUT__NAMESPACE', ''),
                         key_ha::PATH => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_FIELD__OUTPUT__PATH', ''),
                         key_ha::CLASS_ => [
                             // key_ha::NAME => env('HAHAHA__TOOL__GENERATE__DB_TABLE_PHP_CONST_HA__GENERATE_TABLE_FIELD__OUTPUT__CLASS__NAME', ''),
@@ -48,7 +48,12 @@ return [
                 //
 
             ],
-        ]
+
+        ],
+        key_ha::PATH_AS_CONST_STYLE => [
+            key_ha::SETTING => env('HAHAHA__TOOL__PATH_AS_CONST_STYLE_SETTING', ''),
+            key_ha::CACHE => env('HAHAHA__TOOL__PATH_AS_CONST_STYLE_CACHE', ''),
+        ],
     ],
 
 

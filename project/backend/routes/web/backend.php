@@ -65,6 +65,8 @@ Route::group(['middleware' => ['web', 'backend.login'], 'prefix' => 'backend/too
     // tool
     Route::get('/table_field', 'ToolController@table_field');
     Route::get('/generate/db/table/php_const', 'ToolController@generate_db_table_php_const');
+    Route::get('/path_as_const_style', 'ToolController@path_as_const_style');
+
 });
 
 //------------------------------------------------------------------------------------------------------
