@@ -95,6 +95,9 @@ class ToolController extends CommonController
 
     }
 
+    /*
+    因為沒有其他應用場景 - 這綁定我的const設計，所以不整入腳本reuse
+    */
     public function generate_db_table_php_const()
     {
         $parameter_ = \hahaha\hahaha_parameter::Instance();
