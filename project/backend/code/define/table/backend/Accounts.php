@@ -3,9 +3,9 @@
 namespace code\define\table\backend;
 
 /*
-use code\define\table\backend\Accounts as accounts;
+use code\define\table\backend\accounts as accounts;
 
-use code\define\table\backend\Accounts as tableAccounts;
+use code\define\table\backend\accounts as table_accounts;
 
 */
 
@@ -20,7 +20,7 @@ use code\define\table\backend\Accounts as tableAccounts;
 說明
  ------------------------------------------------------ 
 */
-class Accounts
+class accounts
 {
 
 	// ------------------------------------------------------------------------------ 
@@ -50,5 +50,3 @@ class Accounts
 	const UPDATED_AT = "updated_at";
 
 } 
-
-

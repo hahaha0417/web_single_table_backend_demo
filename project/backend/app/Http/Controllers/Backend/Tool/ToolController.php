@@ -515,7 +515,7 @@ class ToolController extends CommonController
                 $const_key_ = trim($token_[0]);
                 $const_value_ = trim(str_replace("\"", "", $token_[1]));
 
-                $consts[$const_key_] = $const_value_;
+                $consts[$const_key_] = "";
             }
             else
             {

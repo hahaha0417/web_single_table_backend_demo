@@ -3,9 +3,9 @@
 namespace code\define\table\backend;
 
 /*
-use code\define\table\backend\AccountsLoginRecords as accountsLoginRecords;
+use code\define\table\backend\accounts_login_records as accounts_login_records;
 
-use code\define\table\backend\AccountsLoginRecords as tableAccountsLoginRecords;
+use code\define\table\backend\accounts_login_records as table_accounts_login_records;
 
 */
 
@@ -20,7 +20,7 @@ use code\define\table\backend\AccountsLoginRecords as tableAccountsLoginRecords;
 說明
  ------------------------------------------------------ 
 */
-class AccountsLoginRecords
+class accounts_login_records
 {
 
 	// ------------------------------------------------------------------------------ 
@@ -46,5 +46,3 @@ class AccountsLoginRecords
 	const UPDATED_AT = "updated_at";
 
 } 
-
-

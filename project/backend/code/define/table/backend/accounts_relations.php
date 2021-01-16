@@ -3,9 +3,9 @@
 namespace code\define\table\backend;
 
 /*
-use code\define\table\backend\AccountsDetail as accountsDetail;
+use code\define\table\backend\accounts_relations as accounts_relations;
 
-use code\define\table\backend\AccountsDetail as tableAccountsDetail;
+use code\define\table\backend\accounts_relations as table_accounts_relations;
 
 */
 
@@ -20,7 +20,7 @@ use code\define\table\backend\AccountsDetail as tableAccountsDetail;
 說明
  ------------------------------------------------------ 
 */
-class AccountsDetail
+class accounts_relations
 {
 
 	// ------------------------------------------------------------------------------ 
@@ -34,25 +34,13 @@ class AccountsDetail
 	// 常數 
 	// ------------------------------------------------------ 
 	const P_ID = "id";
-	// 會員id
-	const ACCOUNTS_P_ID = "accounts_id";
-	// 名稱
-	const NAME = "name";
-	// 暱稱
-	const NICKNAME = "nickname";
-	// 頭像
-	const AVATAR = "avatar";
-	// 圖片
-	const IMAGE = "image";
-	// 連結
-	const URL = "url";
-	// 電話
-	const PHONE = "phone";
-	// 驗證碼
-	const VERIFY_TOKEN = "verify_token";
+	// 帳號id1
+	const ACCOUNTS_P_ID1 = "accounts_id1";
+	// 帳號id2
+	const ACCOUNTS_P_ID2 = "accounts_id2";
+	// description
+	const DESCRIPTION = "description";
 	const CREATED_AT = "created_at";
 	const UPDATED_AT = "updated_at";
 
 } 
-
-

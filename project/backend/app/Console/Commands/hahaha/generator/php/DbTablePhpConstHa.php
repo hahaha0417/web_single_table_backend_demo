@@ -308,6 +308,7 @@ class DbTablePhpConstHa extends Command
                 $database_,
                 $parameters_
             );
+
         }
 
         echo "產生php const - Ha Style 成功";

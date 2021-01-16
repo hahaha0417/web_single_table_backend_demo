@@ -1,15 +1,15 @@
 
 
 /*
-use code\define\table\backend\AccountsRelations as accounts;
-use code\define\table\backend\AccountsRelations as accountsDetail;
-use code\define\table\backend\AccountsRelations as accountsLoginRecords;
-use code\define\table\backend\AccountsRelations as accountsRelations;
+use code\define\table\backend\accounts as accounts;
+use code\define\table\backend\accounts_detail as accounts_detail;
+use code\define\table\backend\accounts_login_records as accounts_login_records;
+use code\define\table\backend\accounts_relations as accounts_relations;
 */
 
 /*
-use code\define\table\backend\AccountsRelations as tableAccounts;
-use code\define\table\backend\AccountsRelations as tableAccountsDetail;
-use code\define\table\backend\AccountsRelations as tableAccountsLoginRecords;
-use code\define\table\backend\AccountsRelations as tableAccountsRelations;
+use code\define\table\backend\accounts as table_accounts;
+use code\define\table\backend\accounts_detail as table_accounts_detail;
+use code\define\table\backend\accounts_login_records as table_accounts_login_records;
+use code\define\table\backend\accounts_relations as table_accounts_relations;
 */
