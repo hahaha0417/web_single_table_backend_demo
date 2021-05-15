@@ -1,0 +1,14 @@
+因為還是要配合OS(用PHP跑service不能平行執行，不要做那樣，有要用laravel就可以了)
+另外排程為什麼只能固定一種，所以要排程寫一個php檔當作排程檔即可，要控制觸發時間在composer找一個排程管理器，搭個cli
+
+$command_ = \hahahalib\command\hahaha_command_ravisorg::Instance()->Initial();
+//$command_->Block = \hahahalib\command\hahaha_command_ravisorg::CONSTANT_PARALLEL;
+$command_->Add('php ./test_command/a.php', [
+    'stdout' => function($job, $output) { var_dump($output);print "\n"; },
+]);
+$command_->Add('php ./test_command/b.php', [
+    'stdout' => function($job, $output) { var_dump($output);print "\n"; },
+]);
+$command_->Wait();
+
+這樣就可以循序或平行執行了，不要搞得太死

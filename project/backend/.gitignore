@@ -1,3 +1,4 @@
+hahaha.code-workspace
 node_modules
 public/hot
 public/storage
@@ -12,3 +13,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+libraries/hahahalib
+libraries/hahalib
+libraries/g_plib
+libraries/s_ulib
+libraries/_f_lib

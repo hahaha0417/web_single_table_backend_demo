@@ -1,0 +1,3 @@
+其實只要要寫成程式片段
+不一定分類
+ex. job command schedule 不一定要分三類

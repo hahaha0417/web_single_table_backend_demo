@@ -5,6 +5,9 @@ BASEDIR=$(cd `dirname $0`;pwd)
 # 切換目錄
 # cd "$BASEDIR"/../../../../project
 
+cd "$BASEDIR"/../../../../
+[ ! -d "project" ] && mkdir "project"
+
 # 更新
 # -- fast_api
 cd "$BASEDIR"/../../../../project

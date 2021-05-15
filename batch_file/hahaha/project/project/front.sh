@@ -5,10 +5,14 @@ BASEDIR=$(cd `dirname $0`;pwd)
 # 切換目錄
 # cd "$BASEDIR"/../../../../project
 
+cd "$BASEDIR"/../../../../
+[ ! -d "project" ] && mkdir "project"
+
 # 更新
 # -- front
 cd "$BASEDIR"/../../../../project
-laravel new front
+#laravel new front
+composer create-project laravel/laravel front
 # 初始化
 cd "$BASEDIR"/../../../../
 cp -Rf ./env_setting/laravel/batch_file ./project/front
@@ -22,12 +26,14 @@ cd "$BASEDIR"/../../../../project/front
 # ----------------------------------- 
 # Laravel
 # ----------------------------------- 
+composer require doctrine/inflector:~2.0
+composer require doctrine/orm:~2.0
 # Laravel Socialite
-composer require laravel/socialite
+# composer require laravel/socialite
 # Laravel Doctrine
-composer require "laravel-doctrine/orm"
+# composer require "laravel-doctrine/orm"
 # Laravel Cors
-composer require barryvdh/laravel-cors
+# composer require barryvdh/laravel-cors
 
 
 # ----------------------------------- 
@@ -40,11 +46,11 @@ composer require barryvdh/laravel-cors
 # Third Party
 # ----------------------------------- 
 # Guzzle Http
-composer require guzzlehttp/guzzle
+# composer require guzzlehttp/guzzle
 # Carbon
-composer require nesbot/carbon
+# composer require nesbot/carbon
 # Predis
-composer require predis/predis
+# composer require predis/predis
 # redlock(Redis Lock)
 # composer require signe/redlock-php
 # mongodb

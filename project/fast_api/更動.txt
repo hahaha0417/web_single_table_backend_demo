@@ -1,4 +1,0 @@
-translate
-asset
-
-太靠背換成config樣式，一定OK

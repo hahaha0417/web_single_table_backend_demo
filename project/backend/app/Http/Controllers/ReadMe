@@ -1,9 +1,0 @@
-預設不提供客製化
-要客製化請另建資料夾
-ex. 
-API_Custom
-Backend_Custom
-
-注意 : 
-是因為Laravel強制放在Controller裡面
-並且我這專案規畫沒有要客製化(所以不搬到Base，因為這樣比較直觀)
