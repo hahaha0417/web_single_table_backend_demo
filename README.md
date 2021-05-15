@@ -41,4 +41,13 @@ License MIT
 
 備註 : 不一定要用我的預設專案，但是我的預設專案會初始化環境
 
+## 使用套件
+laravel - 主體
+hahahalib - 函式庫
+doctrine - 功能包
+
+備註 : 不用laravel doctrine，因為更新太慢，維護不方便
+
+## 
+
 尚未建置完成
