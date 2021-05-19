@@ -1,5 +1,5 @@
-# laravel single table backend
-## laravel 單表式後台 - 套版用 
+# laravel single table backend demo
+## laravel 單表式後台 - 套版用 - demo
 
 <br>
 <br>
