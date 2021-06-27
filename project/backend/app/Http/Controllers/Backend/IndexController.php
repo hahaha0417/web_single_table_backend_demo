@@ -40,7 +40,6 @@ use pub\hahaha_option as hahaha_option;
 注意 : Aid為呼叫GPL程式相關代碼
  ----------------------------------------
 */
-*/
 class IndexController extends CommonController
 {
     //
