@@ -1,0 +1,122 @@
+@charset "utf-8"; 
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+.home_contact_title{
+    height: auto;
+    float: left;
+    position: relative;
+    margin:50px 0 0 50px;
+}
+
+.home_contact_title .hr_title{
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    width: 92%;
+}
+
+@media (min-width: 768px) { 
+    .home_contact_title .hr_title{
+        margin: 0;
+        border: 1px solid #ccc;
+        width: auto;
+    }
+}
+
+.home_contact_space{
+    width: auto;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+    
+}
+
+.home_contact_content{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin:0 2%;
+   
+} 
+
+@media (min-width: 768px) { 
+    .home_contact_content{
+        width: 92%;
+        height: auto;
+        float: left;
+        position: relative;
+        margin:0px 0 0 50px;
+       
+    } 
+}
+
+.home_contact_content .item{
+    display:block;    
+    width:600px; 
+    height:auto;
+    margin-right:20px;
+}
+
+.home_contact_content .hr1{
+    float: left;
+    position: relative;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    width: 100%;
+ 
+}
+
+
+
+
+.home_contact_content #map{ 
+    margin: 0;
+    width: 280px;
+    height: 200px;
+}
+
+@media (min-width: 768px) { 
+    .home_contact_content #map{ 
+        margin: 0;
+        width: 500px;
+        height: 400px;
+    } 
+}
+
+.home_contact_content .message{
+    float: left;
+    position: relative;
+    margin: 0;
+    width: 92%;
+}
+
+
+
+/* .home_contact_content .message_table {
+    border: none; 
+    border-collapse: collapse;
+
+}
+.home_contact_content .message_table tr,.home_contact_content .message_table td{
+    border: none; 
+    border-collapse: collapse;    
+}
+
+*/
+    

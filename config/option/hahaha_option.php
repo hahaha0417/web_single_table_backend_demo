@@ -2,6 +2,19 @@
 
 namespace pub;
 
+use pub\system_setting\env as system_setting_env;
+use pub\system_setting\system_setting_env as system_setting_system_setting_env;
+use pub\option\env as option_env;
+use pub\option\option_env as option_option_env;
+
+/*
+
+use pub\hahaha_option as hahaha_option;
+
+$hahaha_option = hahaha_option::Instance()->Initial();
+
+*/
+
 /*
 設計上，hahaha_option，規劃可以多重設定，例如我可以切換不同的server或是不同代理商
 公表不需要這麼複雜，有需要再規劃default & local
@@ -30,6 +43,15 @@ class hahaha_option
 	*/
 	public function Initial_Ha($option)
 	{		
+		$option->Web = new \stdClass;
+		$option->Web->Name = option_option_env::WEB_NAME;
+		$option->Web->Description = option_option_env::WEB_DESCRIPTION;
+		$option->Web->Author = option_option_env::WEB_AUTHOR;
+		// 
+		$option->Web->Copyright = new \stdClass;
+		$option->Web->Copyright->Date = "2021 ~ 2025";
+		// ------------------------------------------ 
+
 		$option->Project = new \stdClass;
 
 		

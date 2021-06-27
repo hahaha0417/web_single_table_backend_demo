@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+#asus_footer_zone {
+    background-image: none
+}
+
+#asus_footer_zone {
+    margin: 0 auto;
+    margin-top: 20px !important;
+    padding: 30px 0;
+    display: block;
+    color: #999;
+    background: none;
+    background-size: 100%;
+}
+
+#asus_footer_zone.row:before, #asus_footer_zone.row:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+#asus_footer_zone .span6 {
+    width: 47%;
+    float: left;
+    margin-left: 24px;
+}
+
+
+#asus_footer_zone img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    height: auto;
+    vertical-align: middle;
+    border: none;
+    -ms-interpolation-mode: bicubic;
+}
+
+#asus_footer_zone .hdmi-icon {
+    margin-bottom: 2em;
+}
+
+#asus_footer_zone ul, #asus_footer_zone ol {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    padding: 0;
+    margin: 0 0 10px 25px;
+}
+
+#asus_footer_zone li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 12px;
+    
+    vertical-align: baseline;
+    line-height: 20px;
+}
+
+@media (max-width: 959px) {
+    #asus_footer_zone {
+        min-width: 100%;
+        max-width: 100%;
+        width: auto
+    }
+}
+
+
+@media (max-width: 768px) {
+    #asus_footer_zone .span6 {
+        width: 90%!important;
+        margin: auto!important;
+        display: block;
+        float: none;
+    }
+
+}

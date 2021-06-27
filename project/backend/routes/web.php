@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// -------------------------------------------------- 
+// -------------------------------------------------- 
+// 附加
+// -------------------------------------------------- 
+// -------------------------------------------------- 
+// 有需要再補
+// -------------------------------------------------- 
+$root_path = base_path(); 
+
+// -------------------------------------------------- 
+// base
+// -------------------------------------------------- 
+// 前端入口寫在front
+// Include front routes
+// require $root_path.'/routes/web/front.php';
+// Include backend routes
+require $root_path.'/routes/web/backend.php';
+
+
+// -------------------------------------------------- 
+// custom
+// -------------------------------------------------- 
+// 前端入口寫在front
+// Include front routes
+// require $root_path.'/routes/web/front_custom.php';
+// Include backend routes
+// require $root_path.'/routes/web/backend_custom.php';
+

@@ -1,0 +1,673 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.asus_carousel h1,
+.asus_carousel h2,
+.asus_carousel h3,
+.asus_carousel h4,
+.asus_carousel p,
+.asus_carousel a,
+.asus_carousel li,
+.asus_carousel b,
+.asus_carousel .asus_carousel small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+
+/* ---------- Element ---------- */
+
+.asus_carousel.txt-center {
+    text-align: center;
+}
+
+.asus_carousel {
+    padding: 100px 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .asus_carousel {
+        padding: 50px 0;
+    }
+}
+
+.asus_carousel h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.asus_carousel h2,
+.asus_carousel h3 {
+    font-family: "ROGFontsv", sans-serif, 微軟正黑體!important;
+}
+
+.asus_carousel h3 {
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 64px;
+    line-height: .6em;
+    margin-bottom: 50px;
+}
+
+.asus_carousel .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+.asus_carousel h4 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.asus_carousel #owl_evolution .item h4 {
+    font-family: "Fjalla One", sans-serif, 微軟正黑體!important;
+    font-size: 40px;
+    line-height: .75em;
+    /* margin-top: -10px; */
+}
+
+.asus_carousel .hd-w800 {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+    max-width: 800px;
+}
+
+
+/* ------------ evolution ------------ */
+
+.asus_carousel .asus_carousel {
+    padding: 100px 0;
+}
+
+.asus_carousel .asus_carousel h3 {
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 64px;
+    line-height: .6em;
+    margin-bottom: 50px;
+}
+
+.asus_carousel #owl_evolution {
+    margin-top: 80px;
+}
+
+.asus_carousel #owl_evolution .owl-item {
+    transform-origin: center center;
+    -webkit-transform: scale(.6);
+    -moz-transform: scale(.6);
+    -ms-transform: scale(.6);
+    -o-transform: scale(.6);
+    transform: scale(.6);
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -ms-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    text-align: left;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.asus_carousel #owl_evolution .owl-item.active {
+    opacity: 1;
+}
+
+.asus_carousel #owl_evolution .item {
+    margin: 0 20px;
+}
+
+.asus_carousel #owl_evolution .item h3,
+.asus_carousel #owl_evolution .item h4,
+.asus_carousel #owl_evolution .item p {
+    display: none;
+}
+
+.asus_carousel #owl_evolution .item p {
+    width: 230%;
+    margin-left: -65%;
+}
+
+.asus_carousel #owl_evolution .item h3 {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 48px;
+    padding: 25px 0 0;
+    margin-bottom: 30px;
+}
+
+.asus_carousel #owl_evolution .item h4 {
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 40px;
+    line-height: .75em;
+    /*margin-top: -10px;*/
+}
+
+.asus_carousel #owl_evolution .item h3:last-child {
+    display: block;
+}
+
+.asus_carousel #owl_evolution .item img {
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+}
+
+.asus_carousel #owl_evolution .center {
+    z-index: 5;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    text-align: center;
+    cursor: default;
+}
+
+.asus_carousel #owl_evolution .center .item {
+    margin: 0;
+}
+
+.asus_carousel #owl_evolution .center .item img {
+    margin: 30px 0;
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+}
+
+.asus_carousel #owl_evolution .center .item h3,
+.asus_carousel #owl_evolution .center .item h4,
+.asus_carousel #owl_evolution .center .item p {
+    display: block;
+    -webkit-animation: fromTop .8s forwards;
+    -o-animation: fromTop .8s forwards;
+    animation: fromTop .8s forwards;
+}
+
+.asus_carousel #owl_evolution .center .item p {
+    -webkit-animation: fromBottom .8s forwards;
+    -o-animation: fromBottom .8s forwards;
+    animation: fromBottom .8s forwards;
+}
+
+.asus_carousel #owl_evolution .center .item h3:last-child {
+    display: none;
+}
+
+.asus_carousel #owl_evolution .center ~ .owl-item {
+    text-align: right
+}
+
+.asus_carousel #owl_evolution .center+.owl-item {
+    opacity: 1;
+    z-index: 4;
+    -webkit-transform: scale(.6) translate(80%, 60%);
+    -moz-transform: scale(.6) translate(80%, 60%);
+    -ms-transform: scale(.6) translate(80%, 60%);
+    -o-transform: scale(.6) translate(80%, 60%);
+    transform: scale(.6) translate(80%, 60%);
+}
+
+.asus_carousel #owl_evolution .center+.owl-item+.owl-item {
+    opacity: 1;
+    z-index: 3;
+    -webkit-transform: scale(.6) translate(55%, 30%);
+    -moz-transform: scale(.6) translate(55%, 30%);
+    -ms-transform: scale(.6) translate(55%, 30%);
+    -o-transform: scale(.6) translate(55%, 30%);
+    transform: scale(.6) translate(55%, 30%);
+}
+
+.asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item {
+    opacity: 1;
+    z-index: 2;
+    -webkit-transform: scale(.6) translate(30%, 0%);
+    -moz-transform: scale(.6) translate(30%, 0%);
+    -ms-transform: scale(.6) translate(30%, 0%);
+    -o-transform: scale(.6) translate(30%, 0%);
+    transform: scale(.6) translate(30%, 0%);
+}
+
+.asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item+.owl-item {
+    opacity: 1;
+    z-index: 1;
+    -webkit-transform: scale(.6) translate(0%, -30%);
+    -moz-transform: scale(.6) translate(0%, -30%);
+    -ms-transform: scale(.6) translate(0%, -30%);
+    -o-transform: scale(.6) translate(0%, -30%);
+    transform: scale(.6) translate(0%, -30%);
+}
+
+.asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item+.owl-item+.owl-item,
+.asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item+.owl-item+.owl-item~.owl-item {
+    opacity: 0;
+}
+
+.asus_carousel #owl_evolution .prev-1 {
+    opacity: 1;
+    z-index: 4;
+    -webkit-transform: scale(.6) translate(-80%, 60%);
+    -moz-transform: scale(.6) translate(-80%, 60%);
+    -ms-transform: scale(.6) translate(-80%, 60%);
+    -o-transform: scale(.6) translate(-80%, 60%);
+    transform: scale(.6) translate(-80%, 60%);
+}
+
+.asus_carousel #owl_evolution .prev-2 {
+    opacity: 1;
+    z-index: 3;
+    -webkit-transform: scale(.6) translate(-55%, 30%);
+    -moz-transform: scale(.6) translate(-55%, 30%);
+    -ms-transform: scale(.6) translate(-55%, 30%);
+    -o-transform: scale(.6) translate(-55%, 30%);
+    transform: scale(.6) translate(-55%, 30%);
+}
+
+.asus_carousel #owl_evolution .prev-3 {
+    opacity: 1;
+    z-index: 2;
+    -webkit-transform: scale(.6) translate(-30%, 0%);
+    -moz-transform: scale(.6) translate(-30%, 0%);
+    -ms-transform: scale(.6) translate(-30%, 0%);
+    -o-transform: scale(.6) translate(-30%, 0%);
+    transform: scale(.6) translate(-30%, 0%);
+}
+
+.asus_carousel #owl_evolution .prev-4 {
+    opacity: 1;
+    z-index: 1;
+    -webkit-transform: scale(.6) translate(-0%, -30%);
+    -moz-transform: scale(.6) translate(-0%, -30%);
+    -ms-transform: scale(.6) translate(-0%, -30%);
+    -o-transform: scale(.6) translate(-0%, -30%);
+    transform: scale(.6) translate(-0%, -30%);
+}
+
+.asus_carousel #owl_evolution .prev-5 {
+    opacity: 0;
+}
+
+@-webkit-keyframes fromTop {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes fromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes fromBottom {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.asus_carousel #owl_evolution .owl-controls {
+    width: 100%;
+    height: 72px;
+    position: absolute;
+    top: 40%;
+    pointer-events: none;
+}
+
+.asus_carousel #owl_evolution .owl-prev,
+.asus_carousel #owl_evolution .owl-next {
+    width: 36px;
+    height: 72px;
+    background: url("https://www.asus.com/websites/global/products/R8suNyyA4xqZ0dIi/img/icon/arrow.png") 0 0 no-repeat;
+    pointer-events: all;
+    position: absolute;
+    right: 36%;
+}
+
+.asus_carousel #owl_evolution .owl-prev {
+    right: auto;
+    left: 36%;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.asus_carousel #owl_evolution .owl-controls .disabled {
+    display: none !important;
+}
+
+@media screen and (max-width: 1440px){
+	/* ------------ evolution ------------ */
+    .asus_carousel #owl_evolution .center+.owl-item{
+        -webkit-transform: scale(.5) translate(105%,60%);
+            -moz-transform: scale(.5) translate(105%,60%);
+            -ms-transform: scale(.5) translate(105%,60%);
+                -o-transform: scale(.5) translate(105%,60%);
+                transform: scale(.5) translate(105%,60%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item{
+        -webkit-transform: scale(.5) translate(85%,30%);
+            -moz-transform: scale(.5) translate(85%,30%);
+            -ms-transform: scale(.5) translate(85%,30%);
+                -o-transform: scale(.5) translate(85%,30%);
+                transform: scale(.5) translate(85%,30%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item{
+        -webkit-transform: scale(.5) translate(60%,-10%);
+            -moz-transform: scale(.5) translate(60%,-10%);
+            -ms-transform: scale(.5) translate(60%,-10%);
+                -o-transform: scale(.5) translate(60%,-10%);
+                transform: scale(.5) translate(60%,-10%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item+.owl-item{
+        -webkit-transform: scale(.5) translate(35%,-35%);
+            -moz-transform: scale(.5) translate(35%,-35%);
+            -ms-transform: scale(.5) translate(35%,-35%);
+                -o-transform: scale(.5) translate(35%,-35%);
+                transform: scale(.5) translate(35%,-35%);
+    }
+    .asus_carousel #owl_evolution .prev-1{
+        -webkit-transform: scale(.5) translate(-105%,60%);
+            -moz-transform: scale(.5) translate(-105%,60%);
+            -ms-transform: scale(.5) translate(-105%,60%);
+                -o-transform: scale(.5) translate(-105%,60%);
+                transform: scale(.5) translate(-105%,60%);
+    }
+    .asus_carousel #owl_evolution .prev-2{
+        -webkit-transform: scale(.5) translate(-85%,30%);
+            -moz-transform: scale(.5) translate(-85%,30%);
+            -ms-transform: scale(.5) translate(-85%,30%);
+                -o-transform: scale(.5) translate(-85%,30%);
+                transform: scale(.5) translate(-85%,30%);
+    }
+    .asus_carousel #owl_evolution .prev-3{
+        -webkit-transform: scale(.5) translate(-60%,-10%);
+            -moz-transform: scale(.5) translate(-60%,-10%);
+            -ms-transform: scale(.5) translate(-60%,-10%);
+                -o-transform: scale(.5) translate(-60%,-10%);
+                transform: scale(.5) translate(-60%,-10%);
+    }
+    .asus_carousel #owl_evolution .prev-4{
+        -webkit-transform: scale(.5) translate(-35%,-35%);
+            -moz-transform: scale(.5) translate(-35%,-35%);
+            -ms-transform: scale(.5) translate(-35%,-35%);
+                -o-transform: scale(.5) translate(-35%,-35%);
+                transform: scale(.5) translate(-35%,-35%);
+    }
+    .asus_carousel #owl_evolution .owl-prev, #owl_evolution .owl-next{
+        width: 24px;
+        height: 60px;
+        background-size: contain;
+    }
+    .asus_carousel #owl_evolution .owl-next{right: 34.5%;}
+    .asus_carousel #owl_evolution .owl-prev{left: 34.5%;}
+
+	
+}
+@media screen and (max-width: 1366px){
+	
+	.asus_carousel #owl_evolution .owl-next{right: 33%;}
+	.asus_carousel #owl_evolution .owl-prev{left: 33%;}
+
+	
+}
+@media screen and (max-width: 1280px){
+	
+	.asus_carousel #owl_evolution .item h3:last-child{font-size: 40px;}
+	
+}
+
+
+@media screen and (max-width: 1024px){
+	/* ------------ evolution ------------ */
+    .asus_carousel{padding:50px 0;}
+    .asus_carousel #owl_evolution{margin-top: 30px;}
+    .asus_carousel #owl_evolution .center .item{
+        width: 120%;
+        margin-left: -10%;
+    }
+    .asus_carousel #owl_evolution .item h3{font-size: 32px;margin-bottom: 20px;}
+    .asus_carousel #owl_evolution .center+.owl-item{
+        -webkit-transform: scale(.6) translate(80%,90%);
+        -moz-transform: scale(.6) translate(80%,90%);
+        -ms-transform: scale(.6) translate(80%,90%);
+        -o-transform: scale(.6) translate(80%,90%);
+        transform: scale(.6) translate(80%,90%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item{
+        -webkit-transform: scale(.6) translate(10%,30%);
+        -moz-transform: scale(.6) translate(10%,30%);
+        -ms-transform: scale(.6) translate(10%,30%);
+        -o-transform: scale(.6) translate(10%,30%);
+        transform: scale(.6) translate(10%,30%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item,
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item+.owl-item+.owl-item,
+    .asus_carousel #owl_evolution .prev-3,
+    .asus_carousel #owl_evolution .prev-4{
+        opacity: 0;
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        -ms-transform: scale(.6);
+        -o-transform: scale(.6);
+        transform: scale(.6);
+    }
+    .asus_carousel #owl_evolution .prev-1{
+        -webkit-transform: scale(.6) translate(-80%,90%);
+        -moz-transform: scale(.6) translate(-80%,90%);
+        -ms-transform: scale(.6) translate(-80%,90%);
+        -o-transform: scale(.6) translate(-80%,90%);
+        transform: scale(.6) translate(-80%,90%);
+    }
+    .asus_carousel #owl_evolution .prev-2{
+        -webkit-transform: scale(.6) translate(-10%,30%);
+        -moz-transform: scale(.6) translate(-10%,30%);
+        -ms-transform: scale(.6) translate(-10%,30%);
+        -o-transform: scale(.6) translate(-10%,30%);
+        transform: scale(.6) translate(-10%,30%);
+    }
+    .asus_carousel #owl_evolution .owl-next{right: 33%;}
+    .asus_carousel #owl_evolution .owl-prev{left: 33%;}
+	
+}
+@media screen and (max-width: 1023px){
+	.asus_carousel .hd-1023on{display: block; }
+	.asus_carousel .hd-1023off{display: none; }
+	.asus_carousel h2{
+		font-size: 100px;
+		line-height: 90px;
+		padding-bottom: 10px;
+	}
+	.asus_carousel #protection h2{
+		font-size: 90px;
+		line-height: 80px;
+	}
+	.asus_carousel h2 span{
+		font-size: 36px;
+		line-height: 36px;
+	}
+	.asus_carousel h2 span.top{margin-bottom: -40px; }
+	.asus_carousel h2 span.left{
+		width: 130px;
+		line-height: 25px;
+	}
+	.asus_carousel h2 span.center{
+		width: 90px;
+		line-height: 25px;
+	}
+	
+}
+
+@media screen and (max-width: 768px) {
+    /* ------------ evolution ------------ */
+    .asus_carousel h3 {
+        font-size: 50px;
+    }
+    .asus_carousel #owl_evolution .center .item {
+        width: 150%;
+        margin-left: -25%;
+    }
+    .asus_carousel #owl_evolution .center .item p {
+        width: 200%;
+        margin-left: -50%;
+    }
+    .asus_carousel #owl_evolution .item h3:nth-child(n) {
+        font-size: 28px;
+    }
+    .asus_carousel #owl_evolution .item h4 {
+        font-size: 30px;
+        width: 170%;
+        margin-left: -35%;
+    }
+    .asus_carousel #owl_evolution .center+.owl-item {
+        -webkit-transform: scale(.6) translate(60%, 90%);
+        -moz-transform: scale(.6) translate(60%, 90%);
+        -ms-transform: scale(.6) translate(60%, 90%);
+        -o-transform: scale(.6) translate(60%, 90%);
+        transform: scale(.6) translate(60%, 90%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item {
+        -webkit-transform: scale(.6) translate(10%, 30%);
+        -moz-transform: scale(.6) translate(10%, 30%);
+        -ms-transform: scale(.6) translate(10%, 30%);
+        -o-transform: scale(.6) translate(10%, 30%);
+        transform: scale(.6) translate(10%, 30%);
+    }
+    .asus_carousel #owl_evolution .prev-1 {
+        -webkit-transform: scale(.6) translate(-60%, 90%);
+        -moz-transform: scale(.6) translate(-60%, 90%);
+        -ms-transform: scale(.6) translate(-60%, 90%);
+        -o-transform: scale(.6) translate(-60%, 90%);
+        transform: scale(.6) translate(-60%, 90%);
+    }
+    .asus_carousel #owl_evolution .prev-2 {
+        -webkit-transform: scale(.6) translate(-10%, 30%);
+        -moz-transform: scale(.6) translate(-10%, 30%);
+        -ms-transform: scale(.6) translate(-10%, 30%);
+        -o-transform: scale(.6) translate(-10%, 30%);
+        transform: scale(.6) translate(-10%, 30%);
+    }
+    .asus_carousel #owl_evolution .owl-next {
+        right: 27%;
+    }
+    .asus_carousel #owl_evolution .owl-prev {
+        left: 27%;
+    }
+    .asus_carousel #lighting h2 {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    /* ------------ evolution ------------ */
+    .asus_carousel #owl_evolution .center .item {
+        width: 100%;
+        margin-left: 0%;
+    }
+    .asus_carousel #owl_evolution .center .item p {
+        width: 150%;
+        margin-left: -25%;
+    }
+    .asus_carousel #owl_evolution .center+.owl-item {
+        -webkit-transform: scale(.6) translate(40%, 90%);
+        -moz-transform: scale(.6) translate(40%, 90%);
+        -ms-transform: scale(.6) translate(40%, 90%);
+        -o-transform: scale(.6) translate(40%, 90%);
+        transform: scale(.6) translate(40%, 90%);
+    }
+    .asus_carousel #owl_evolution .center+.owl-item+.owl-item,
+    .asus_carousel #owl_evolution .prev-2 {
+        opacity: 0;
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        -ms-transform: scale(.6);
+        -o-transform: scale(.6);
+        transform: scale(.6);
+    }
+    .asus_carousel #owl_evolution .prev-1 {
+        -webkit-transform: scale(.6) translate(-40%, 90%);
+        -moz-transform: scale(.6) translate(-40%, 90%);
+        -ms-transform: scale(.6) translate(-40%, 90%);
+        -o-transform: scale(.6) translate(-40%, 90%);
+        transform: scale(.6) translate(-40%, 90%);
+    }
+    .asus_carousel #owl_evolution .owl-next {
+        right: 23%;
+    }
+    .asus_carousel #owl_evolution .owl-prev {
+        left: 23%;
+    }
+}
+

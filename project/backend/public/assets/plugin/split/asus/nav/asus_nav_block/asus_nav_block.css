@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* ---------- RESET ---------- */
+	
+#asus_nav_block *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+
+#asus_nav_block h2,
+#asus_nav_block h3,
+#asus_nav_block h4,
+#asus_nav_block p,
+#asus_nav_block a,
+#asus_nav_block li,
+#asus_nav_block b,
+#asus_nav_block small {
+    margin: 0;
+    padding:0;
+    line-height: normal;
+    color: white;
+}
+/* ---------- Element ---------- */
+#asus_nav_block section{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#asus_nav_block img {
+    display: block;
+    margin:0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+
+
+/* ---------- Block ---------- */
+#asus_nav_block .hd-mobile_on,
+#asus_nav_block .hd-1023on {display: none; }
+
+#asus_nav_block .fleft {float: left; }
+#asus_nav_block .fright {float: right; }
+
+#asus_nav_block .hd-w1920,
+#asus_nav_block .hd-w1500,
+#asus_nav_block .hd-w1400,
+#asus_nav_block .hd-w1300,
+#asus_nav_block .hd-w1200,
+#asus_nav_block .hd-w1100,
+#asus_nav_block .hd-w1000,
+#asus_nav_block .hd-w800,
+#asus_nav_block .hd-w500{
+    position: relative;
+    width: 90%;
+    margin:0 auto;
+    z-index: 2;
+}
+#asus_nav_block .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+#asus_nav_block .hd-w1500 {max-width: 1500px;}
+#asus_nav_block .hd-w1400 {max-width: 1400px;}
+#asus_nav_block .hd-w1300 {max-width: 1300px;}
+#asus_nav_block .hd-w1200 {max-width: 1200px;}
+#asus_nav_block .hd-w1100 {max-width: 1100px;}
+#asus_nav_block .hd-w1000 {max-width: 1000px;}
+#asus_nav_block .hd-w800{max-width: 800px;}
+#asus_nav_block .hd-w500{max-width: 500px;}
+#asus_nav_block .hd-ib{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+#asus_nav_block .ib-top{vertical-align: top;}
+#asus_nav_block .ib-bottom{vertical-align: bottom;}
+#asus_nav_block .hd-col20 {width: 20%;}
+#asus_nav_block .hd-col25 {width: 25%;}
+#asus_nav_block .hd-col33 {width: 33.3333%;}
+#asus_nav_block .hd-col40 {width: 40%;}
+#asus_nav_block .hd-col45 {width: 45%;}
+#asus_nav_block .hd-col50 {width: 50%;}
+#asus_nav_block .hd-col55 {width: 55%;}
+#asus_nav_block .hd-col60 {width: 60%;}
+#asus_nav_block .hd-col65 {width: 65%;}
+#asus_nav_block .hd-col80 {width: 80%;}
+#asus_nav_block .hd-col85 {width: 85%;}
+#asus_nav_block .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+#asus_nav_block .hd-bgflip .hd-w1100,
+#asus_nav_block .hd-bgflip .hd-w1200,
+#asus_nav_block .hd-bgflip .hd-w1300,
+#asus_nav_block .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+/* ------------ SEC_MENU ------------ */
+#asus_nav_block{
+    text-align: center;
+    padding-left: 3px;
+}
+#asus_nav_block .hd-col25,
+#asus_nav_block .hd-col50{
+    vertical-align: top;
+    padding: 0 3px;
+}
+#asus_nav_block a{
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+#asus_nav_block h4 {
+    padding: 10px;
+    margin:0;
+    color: #717171;
+    background-color: #333333;
+    font-size: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+    position: relative;
+    z-index: 2;
+    transition: all 0.8s ease 0s;
+    -webkit-transition: all 0.8s ease 0s;
+    -moz-transition: all 0.8s ease 0s;
+    -ms-transition: all 0.8s ease 0s;
+    -o-transition: all 0.8s ease 0s;
+}
+#asus_nav_block img{
+    transition: all 0.8s ease 0s;
+    -webkit-transition: all 0.8s ease 0s;
+    -moz-transition: all 0.8s ease 0s;
+    -ms-transition: all 0.8s ease 0s;
+    -o-transition: all 0.8s ease 0s;
+}
+#asus_nav_block a:hover img{
+    -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+         -o-transform: scale(1.1);
+            transform: scale(1.1);
+}
+#asus_nav_block a:hover h4 {
+    color: white;
+    background: #8D0000;
+}
+@media screen and (max-width: 1366px){
+#asus_nav_block h4{font-size: 18px; }
+
+}
+@media screen and (max-width: 768px){
+
+/* ------------ SEC_MENU ------------ */
+#asus_nav_block .hd-col25{width: 50%; }
+#asus_nav_block .hd-col50{width: 100%; }
+#asus_nav_block h4{font-size: 16px; }
+
+}

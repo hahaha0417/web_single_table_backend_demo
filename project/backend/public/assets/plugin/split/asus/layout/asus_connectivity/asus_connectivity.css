@@ -1,0 +1,1088 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#asus_connectivity * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    
+}
+
+#asus_connectivity::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+
+#asus_connectivity::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+
+#asus_connectivity ul,
+#asus_connectivity ol,
+#asus_connectivity li {
+    margin: 0;
+    padding: 0;
+}
+
+#asus_connectivity {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    z-index: 0;
+}
+
+#asus_connectivity h1,
+#asus_connectivity h2,
+#asus_connectivity h3,
+#asus_connectivity h4,
+#asus_connectivity p,
+#asus_connectivity a,
+#asus_connectivity li,
+#asus_connectivity b,
+#asus_connectivity small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+
+/* ---------- Element ---------- */
+
+#asus_connectivity {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;    
+}
+
+#asus_connectivity img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+#asus_connectivity .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* ---------- Block ---------- */
+
+#asus_connectivity .hd-mobile_on,
+#asus_connectivity .hd-1023on {
+    display: none;
+}
+
+#asus_connectivity .fleft {
+    float: left;
+}
+
+#asus_connectivity .fright {
+    float: right;
+}
+
+#asus_connectivity .hd-w1920,
+#asus_connectivity .hd-w1500,
+#asus_connectivity .hd-w1400,
+#asus_connectivity .hd-w1300,
+#asus_connectivity .hd-w1200,
+#asus_connectivity .hd-w1100,
+#asus_connectivity .hd-w1000,
+#asus_connectivity .hd-w800,
+#asus_connectivity .hd-w500 {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#asus_connectivity .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+
+#asus_connectivity .hd-w1500 {
+    max-width: 1500px;
+}
+
+#asus_connectivity .hd-w1400 {
+    max-width: 1400px;
+}
+
+#asus_connectivity .hd-w1300 {
+    max-width: 1300px;
+}
+
+#asus_connectivity .hd-w1200 {
+    max-width: 1200px;
+}
+
+#asus_connectivity .hd-w1100 {
+    max-width: 1100px;
+}
+
+#asus_connectivity .hd-w1000 {
+    max-width: 1000px;
+}
+
+#asus_connectivity .hd-w800 {
+    max-width: 800px;
+}
+
+#asus_connectivity .hd-w500 {
+    max-width: 500px;
+}
+
+#asus_connectivity .hd-ib {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+#asus_connectivity .ib-top {
+    vertical-align: top;
+}
+
+#asus_connectivity .ib-bottom {
+    vertical-align: bottom;
+}
+
+#asus_connectivity .hd-col20 {
+    width: 20%;
+}
+
+#asus_connectivity .hd-col25 {
+    width: 25%;
+}
+
+#asus_connectivity .hd-col33 {
+    width: 33.3333%;
+}
+
+#asus_connectivity .hd-col40 {
+    width: 40%;
+}
+
+#asus_connectivity .hd-col45 {
+    width: 45%;
+}
+
+#asus_connectivity .hd-col50 {
+    width: 50%;
+}
+
+#asus_connectivity .hd-col55 {
+    width: 55%;
+}
+
+#asus_connectivity .hd-col60 {
+    width: 60%;
+}
+
+#asus_connectivity .hd-col65 {
+    width: 65%;
+}
+
+#asus_connectivity .hd-col80 {
+    width: 80%;
+}
+
+#asus_connectivity .hd-col85 {
+    width: 85%;
+}
+
+#asus_connectivity .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#asus_connectivity .hd-bgflip .hd-w1100,
+#asus_connectivity .hd-bgflip .hd-w1200,
+#asus_connectivity .hd-bgflip .hd-w1300,
+#asus_connectivity .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+/* ---------- Text ---------- */
+
+#asus_connectivity h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #ffffff !important;
+    /*background: #fff;
+		background: -webkit-linear-gradient(black,black, white, black);
+		background: -o-linear-gradient(black,black, white, black);
+		background: -moz-linear-gradient(black,black, white, black);
+		background: linear-gradient(black,black, white, black);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+
+
+/*ie11 above fixed*/
+
+
+/*_:-ms-fullscreen,
+	:root #asus_connectivity h2 {
+	    background: transparent !important;
+	}*/
+
+#asus_connectivity h2.right {
+    text-align: right;
+}
+
+#asus_connectivity h2 span {
+    color: #b80202;
+    font-size: 60px;
+    line-height: 66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#asus_connectivity h2 span.top {
+    display: block;
+    margin: 0 0 30px 5px;
+}
+
+#asus_connectivity h2 span.bottom {
+    display: block;
+    margin: 10px 0 0 5px;
+}
+
+#asus_connectivity h2 span.left,
+#asus_connectivity h2 span.center {
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+
+#asus_connectivity h2 span.center {
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+/*ie11 above fixed*/
+
+_:-ms-fullscreen,
+:root #asus_connectivity h2 span {
+    background: transparent !important;
+}
+
+#asus_connectivity h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#asus_connectivity h4,
+#asus_connectivity h5,
+#asus_connectivity button,
+#asus_connectivity .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+
+#asus_connectivity h4 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+#asus_connectivity h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+#asus_connectivity p,
+#asus_connectivity small,
+#asus_connectivity a,
+#asus_connectivity li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#asus_connectivity p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+#asus_connectivity b {
+    font-weight: bold;
+}
+
+#asus_connectivity small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+#asus_connectivity a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#asus_connectivity a.hd-link:hover {
+    color: white;
+}
+
+#hd .txt_decolineflip {
+    background: url("/assets/plugin_split/asus/layout/asus_connectivity/image/deco-line-flip.png") left bottom no-repeat;
+}
+
+#asus_connectivity .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+
+#asus_connectivity .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+#asus_connectivity .txt-center {
+    text-align: center;
+}
+
+#asus_connectivity .txt-left {
+    text-align: left;
+}
+
+#asus_connectivity sup {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+
+/* ---------- lightbox ---------- */
+
+#asus_connectivity #hd_lightbox {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 10;
+}
+
+#asus_connectivity .hd_filter {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+}
+
+#asus_connectivity .hd_box {
+    width: 1000px;
+    height: 480px;
+    background: #232323;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 35px 60px;
+    box-sizing: border-box;
+}
+
+#asus_connectivity .hd_close {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#asus_connectivity .hd_close>span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: #777777;
+    -webkit-border-radius: 1.5px;
+    -moz-border-radius: 1.5px;
+    border-radius: 1.5px;
+}
+
+#asus_connectivity .hd_close>span:first-child {
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+}
+
+#asus_connectivity .hd_close>span:last-child {
+    -webkit-transform: rotateZ(-45deg) translate(2px, -2px);
+    -moz-transform: rotateZ(-45deg) translate(2px, -2px);
+    -ms-transform: rotateZ(-45deg) translate(2px, -2px);
+    -o-transform: rotateZ(-45deg) translate(2px, -2px);
+    transform: rotateZ(-45deg) translate(2px, -2px);
+}
+
+#asus_connectivity .hd_box>img {
+    position: absolute;
+    right: 40px;
+    bottom: 60px;
+}
+
+#asus_connectivity .hd_box iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ------------ SEC_CONNECTIVITY ------------ */
+
+#asus_connectivity {
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+#asus_connectivity h2:before{
+    content:'';
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    background: url("/assets/plugin_split/asus/layout/asus_connectivity/image/title_connectivity.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+/* ------------ wifi ------------ */
+
+#asus_connectivity .hd-sec-wifi {
+    padding-bottom: 50px;
+}
+
+#asus_connectivity .hd-sec-wifi .fright {
+    margin-left: -16%;
+    margin-right: -5%;
+    position: relative;
+}
+
+#asus_connectivity .hd-sec-wifi .fright .hd-num {
+    display: none;
+}
+
+#asus_connectivity .hd-sec-wifi h3 {
+    font-size: 28px;
+    line-height: 32px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+#asus_connectivity .hd-sec-wifi p {
+    margin-bottom: 15px;
+}
+
+#asus_connectivity .hd-sec-wifi .fleft {
+    margin-top: 3%;
+    position: relative;
+    z-index: 2;
+}
+
+#asus_connectivity .hd-sec-wifi .fleft h3:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 17%;
+    height: 1px;
+    background-color: #940310;
+    bottom: 0;
+    left: 97%;
+    z-index: -1;
+}
+
+#asus_connectivity .hd-sec-wifi .fright:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 9%;
+    height: 39%;
+    border-top: 1px solid #940310;
+    border-right: 2px solid #940310;
+    top: 16.5%;
+    left: 33.5%;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -ms-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    transform: skew(45deg);
+}
+
+#asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) {
+    width: 68%;
+    margin-top: -5%;
+}
+
+#asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) h3:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 74%;
+    height: 260%;
+    border-bottom: 1px solid #940310;
+    border-right: 2px solid #940310;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: skew(-30deg);
+    -moz-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    -o-transform: skew(-30deg);
+    transform: skew(-30deg);
+}
+
+
+/* ------------ languard ------------ */
+
+#asus_connectivity .hd-sec-languard .hd-content {
+    padding-right: 80px;
+}
+
+#asus_connectivity .hd-sec-languard .hd-content p {
+    padding-right: 45px;
+}
+
+#asus_connectivity .hd-sec-languard .fright {
+    position: relative;
+    margin-left: -5%;
+    max-width: 595px;
+    padding-right: 60px;
+}
+
+#asus_connectivity .hd-sec-languard .fright li {
+    position: absolute;
+    left: 78%;
+    min-width: 120px;
+}
+
+#asus_connectivity .hd-sec-languard .fright li:first-child {
+    top: 19%;
+}
+
+#asus_connectivity .hd-sec-languard .fright li:last-child {
+    top: 31%;
+}
+
+
+/* ------------ gamefirst ------------ */
+
+#asus_connectivity .hd-sec-gamefirst {
+    padding: 120px 0 180px;
+}
+
+#asus_connectivity .hd-sec-gamefirst .hd-button {
+    font-family: "Fjalla One", sans-serif;
+    background-color: #ce004a;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 35px auto;
+    display: block;
+    cursor: pointer;
+    width: 152px;
+}
+
+#asus_connectivity .hd-sec-gamefirst .hd-pic03 {
+    height: auto;
+    padding-bottom: 0;
+    position: relative;
+    margin-top: 100px;
+}
+
+#asus_connectivity .hd-sec-gamefirst .hd-pic03 img {
+    max-width: 100% !important;
+    margin: 0 auto;
+}
+
+#asus_connectivity .hd-sec-gamefirst .hd-pic03 #greater {
+    width: 200px;
+    position: absolute;
+    margin: 0;
+    top: -34%;
+    right: 0%;
+    z-index: 2;
+}
+
+#asus_connectivity #watchv,
+#asus_connectivity #gamevideo {
+    display: block;
+    width: 186px;
+    padding: 12px 22px;
+    margin-top: -30px;
+    margin-bottom: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#asus_connectivity #gamevideo {
+    margin: -20px auto;
+}
+
+#asus_connectivity #watchv:hover,
+#asus_connectivity #gamevideo:hover {
+    box-shadow: 0 0 0 1px #8D0000 inset;
+}
+
+#asus_connectivity #watchv:before,
+#asus_connectivity #gamevideo:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#910000+15,630000+38,b40000+66,800000+82,450000+100 */
+    background: #910000;
+    /* Old browsers */
+    background: -moz-linear-gradient(-20deg, #910000 15%, #630000 38%, #b40000 66%, #800000 82%, #450000 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-20deg, #910000 15%, #630000 38%, #b40000 66%, #800000 82%, #450000 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(160deg, #910000 15%, #630000 38%, #b40000 66%, #800000 82%, #450000 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#910000', endColorstr='#450000', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+#asus_connectivity #watchv:hover:before,
+#asus_connectivity #gamevideo:hover:before {
+    opacity: .7;
+}
+
+#asus_connectivity #watchv h4,
+#asus_connectivity #gamevideo h4 {
+    margin: 0;
+    font-weight: normal;
+}
+
+#asus_connectivity #watchv.v-open h4 span.hd-open,
+#asus_connectivity #watchv h4 span.hd-close {
+    display: none;
+}
+
+#asus_connectivity #watchv h4 span.hd-open,
+#asus_connectivity #watchv.v-open h4 span.hd-close {
+    display: inline;
+}
+
+#asus_connectivity .hd-videobox2 {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#asus_connectivity .hd-videobox2.v-open {
+    height: auto;
+}
+
+#asus_connectivity .hd-videobox2 video {
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    /*width: auto;*/
+    height: auto;
+    background: url('/assets/plugin_split/asus/layout/asus_connectivity/image/video_poster.jpg') no-repeat;
+    background-size: cover;
+}
+
+
+/* ------------ logos ------------ */
+
+#asus_connectivity .hd-sec-logos {
+    padding: 5% 0;
+}
+
+#asus_connectivity .hd-sec-logos h4 + p {
+    margin-bottom: 50px;
+}
+
+#asus_connectivity .hd-sec-logos figure.hd-col45 {
+    padding: 0 5%;
+}
+
+#asus_connectivity .hd-sec-logos img {
+    margin-bottom: 30px;
+}
+
+
+/* ------------ SEC_MORE------------ */
+
+#asus_connectivity #more {
+    padding-top: 100px;
+}
+
+#asus_connectivity #more h2 {
+    padding-bottom: 0;
+    margin-bottom: 100px;
+}
+
+#asus_connectivity #more h2:before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: 24%;
+    background: url("/assets/plugin_split/asus/layout/asus_connectivity/image/title_more.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+/* ---------- hidden-section ---------- */
+
+#asus_connectivity .hd-more {
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 50px 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_connectivity/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+#asus_connectivity .hd-btn-more {
+    display: block;
+    width: 100%;
+    height: 61px;
+    padding: 0 20px;
+    margin: 0;
+    text-align: center;
+    background: url("/assets/plugin_split/asus/layout/asus_connectivity/image/more.png") center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#asus_connectivity .hd-sec-hidden {
+    display: none;
+}
+
+
+/* ---------------------------------- */
+
+@media screen and (min-width: 2250px) {
+    #asus_connectivity #more {
+        padding-top: 150px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    #asus_connectivity .hd-sec-gamefirst {
+        padding: 70px 0 100px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    /* ------------ wifi ------------ */
+    #asus_connectivity .hd-sec-wifi .hd-description {
+        margin-top: 60px;
+    }
+    #asus_connectivity .hd-sec-wifi .fright {
+        width: 65%;
+    }
+    #asus_connectivity .hd-sec-wifi .fleft h3:after,
+    #asus_connectivity .hd-sec-wifi .fright:after,
+    #asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) h3:after {
+        display: none;
+    }
+    #asus_connectivity .hd-sec-wifi .fright .hd-num {
+        display: block;
+    }
+    #asus_connectivity .hd-sec-wifi .fright li {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        line-height: 24px;
+        padding-right: 1px;
+        text-align: center;
+        border-radius: 15px;
+        border: 2px solid #b80202;
+        background-color: rgba(0, 0, 0, .6);
+    }
+    #asus_connectivity .hd-sec-wifi .fright li:nth-child(1) {
+        top: 50%;
+        left: 49%;
+    }
+    #asus_connectivity .hd-sec-wifi .fright li:nth-child(2) {
+        top: 67%;
+        left: 69%;
+    }
+    #asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) {
+        width: 100%;
+    }
+    #asus_connectivity .hd-sec-wifi h3:before,
+    #asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) h3:before {
+        content: '1. ';
+        display: inline-block;
+        width: 40px;
+    }
+    #asus_connectivity .hd-sec-wifi .hd-description li:nth-child(1) h3:before {
+        content: '2. ';
+    }
+    #asus_connectivity .hd-sec-gamefirst {
+        padding: 50px 0 70px;
+    }
+    #asus_connectivity .hd-sec-gamefirst .hd-pic03 #greater {
+        width: 150px;
+        top: -22%;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #asus_connectivity .hd_box {
+        width: 100%;
+        padding: 50px 40px;
+    }
+    /* ------------ wifi ------------ */
+    #asus_connectivity .hd-sec-wifi {
+        padding-bottom: 20px;
+    }
+    #asus_connectivity .hd-sec-wifi .fleft {
+        margin: 5% 0 30px auto;
+        width: 100%;
+        float: none;
+    }
+    #asus_connectivity .hd-sec-wifi .fright {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+    #asus_connectivity .hd-sec-wifi h3 {
+        margin-bottom: 20px;
+    }
+    #asus_connectivity .hd-details div.hd-col50 {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    #asus_connectivity .hd-1023on {
+        display: block;
+    }
+    #asus_connectivity .hd-1023off {
+        display: none;
+    }
+    #asus_connectivity h2 {
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    #asus_connectivity #protection h2 {
+        font-size: 90px;
+        line-height: 80px;
+    }
+    #asus_connectivity h2 span {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    #asus_connectivity h2 span.top {
+        margin-bottom: 20px;
+    }
+    #asus_connectivity h2 span.left {
+        width: 130px;
+        line-height: 25px;
+    }
+    #asus_connectivity h2 span.center {
+        width: 90px;
+        line-height: 25px;
+    }
+    /* ------------ languard ------------ */
+    #asus_connectivity .hd-sec-languard .fleft,
+    #asus_connectivity .hd-sec-languard .fright {
+        width: 100%;
+        margin: 30px auto;
+        float: none;
+    }
+    #asus_connectivity .hd-sec-languard .hd-content,
+    #asus_connectivity .hd-sec-languard .hd-content p {
+        padding-right: 0;
+    }
+    #asus_connectivity .hd-sec-languard h4 br {
+        display: none;
+    }
+    #asus_connectivity .hd-sec-gamefirst .hd-pic03 {
+        padding-top: 50px;
+    }
+    #asus_connectivity .hd-sec-gamefirst .hd-pic03 #greater {
+        top: -13%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #asus_connectivity .hd_box {
+        width: 100%;
+        height: auto;
+        padding: 50px 20px 10px;
+    }
+    #asus_connectivity .hd-mobile_on {
+        display: block;
+    }
+    #asus_connectivity .hd-mobile_off {
+        display: none;
+    }
+    #asus_connectivity h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    #asus_connectivity .hd_box {
+        width: 100%;
+        height: auto;
+        padding: 50px 20px 10px;
+    }
+    #asus_connectivity .hd-sec-gamefirst .hd-pic03 #greater {
+        width: 100px;
+        top: -15%;
+    }
+    #asus_connectivity .hd-sec-logos .hd-col45,
+    #asus_connectivity .hd-sec-logos .hd-col55 {
+        width: 100%;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #asus_connectivity h2,
+    #asus_connectivity #protection h2 {
+        font-size: 50px;
+        line-height: 40px;
+    }
+    #asus_connectivity h2 span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    #asus_connectivity h2 span.left {
+        line-height: 20px;
+        width: 100px;
+    }
+    #asus_connectivity h2 span.top {
+        margin-bottom: 15px;
+    }
+    #asus_connectivity h3 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    #asus_connectivity h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    /* ------------ SEC_CONNECTIVITY ------------ */
+    #asus_connectivity {
+        padding-top: 50px;
+        z-index: 0;
+    }
+    #asus_connectivity h2:before {
+        background-size: 1024px;
+        background-position: right top;
+        padding-bottom: 60%;
+    }
+    #asus_connectivity .hd-sec-wifi .fleft {
+        margin: 5% 0 -5% auto;
+        width: 100%;
+    }
+    #asus_connectivity .hd-sec-prolock > div {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    #asus_connectivity .hd-sec-languard .fright li {
+        left: 75%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #asus_connectivity #specs .spec-main {
+        padding-bottom: 135%;
+    }
+    #asus_connectivity #specs ol {
+        -webkit-column-count: 1;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 1;
+        /* Firefox */
+        column-count: 1;
+        padding: 30px 0 0;
+    }
+}

@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+
+.ment_youtube_banner {
+    position: relative;
+    height: 0;
+    background: #000;
+    padding-bottom: 39.3229%;
+    overflow: hidden
+}
+
+@media (min-width:1921px) {
+    .ment_youtube_banner {
+        height: 755px;
+        padding-bottom: 0
+    }
+}
+
+.ment_youtube_banner .arc-scale .loader .arc {
+    border-color: rgba(255, 255, 255, .75)
+}
+
+.ment_youtube_banner .arc-scale .loader .arc::before,
+.ment_youtube_banner .arc-scale .loader .arc::after {
+    background: #000
+}
+
+.ment_youtube_banner .ban-slick {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+
+.ment_youtube_banner .ban-slick .slick-slide {
+    z-index: 1 !important
+}
+
+.ment_youtube_banner .ban-slick .slick-slide.slick-current {
+    z-index: 2 !important
+}
+
+@media (min-width:1921px) {
+    .ment_youtube_banner .ban-slick {
+        position: relative;
+        width: 1920px;
+        top: auto;
+        left: auto;
+        margin: auto
+    }
+}
+
+.ment_youtube_banner .ban-slick a {
+    display: block
+}
+
+.ment_youtube_banner .ban-slick img {
+    transition: opacity .5s cubic-bezier(0, .4, .4, 1);
+    -ms-transition: opacity .5s cubic-bezier(0, .4, .4, 1);
+    -moz-transition: opacity .5s cubic-bezier(0, .4, .4, 1);
+    -webkit-transition: opacity .5s cubic-bezier(0, .4, .4, 1)
+}
+
+.ment_youtube_banner .ban-video {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    padding-bottom: 39.3229%;
+    background: #000;
+    top: 0;
+    left: 0
+}
+
+.ment_youtube_banner .ban-video iframe {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: 0;
+    left: 15%
+}
+
+@media (min-width:992px) {
+    .ment_youtube_banner .ban-slick.is-video {
+        opacity: 0
+    }
+}
+
+@media (max-width:991px) {
+    .ment_youtube_banner {
+        width: 992px;
+        height: 390px;
+        top: 0 !important;
+        left: 50%;
+        margin-left: -496px
+    }
+    .ment_youtube_banner .ban-video {
+        display: none
+    }
+}
+
+@media (max-width:639px) {
+    .ment_youtube_banner {
+        width: 640px;
+        height: 252px;
+        margin-left: -320px
+    }
+}

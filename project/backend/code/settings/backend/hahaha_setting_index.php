@@ -513,6 +513,17 @@ class hahaha_setting_index
 				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
 				key_::MINI => 'Note',
 			],
+            __('backend.aid') => [
+				key_::NAME => 'aid',
+				key_::TYPE => type::ITEM,
+				// key_::URL => \p_ha::V_Url('aid'),
+                key_::URL => \p_ha::V_Url('aid/env'),
+				key_::TARGET => 'index_content_frame',
+				key_::ICON => "fa-desktop",
+				key_::ACTIVE => 'false',
+				key_::BACKGROUND => 'rgba(90,255,150,0.5)',
+				key_::MINI => 'Note',
+			],
 			__('backend.tool') => [
 				// 目前，最多四層，如果不夠用串的
 				// ex.

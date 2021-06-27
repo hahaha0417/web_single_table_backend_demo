@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* 
+    此為換膚設定檔
+*/
+#rog_black_style {
+    background-color: #000000
+}
+
+#rog_black_style #mainmenu .nav>li>a:hover {
+    color: #a10302
+}
+
+#rog_black_style #mainmenu .nav>li.active>a {
+    color: #a10302
+}
+
+#rog_black_style #product-sub-nav>ul>li,
+#rog_black_style #product-business-nav>ul>li,
+#rog_black_style #shop-sub-nav>ul>li {
+    color: #a10302
+}
+
+#rog_black_style #memberbar .info-number {
+    background: url("/media/web_img/asus_sprite.png") no-repeat -25px -83px
+}
+
+#rog_black_style #main-search-zone #search-btn {
+    background: url("/media/web_img/search_btn_black.png") no-repeat 0 0px
+}
+
+#rog_black_style #middle-menu .menuevent {
+    background: url(/media/web_img/asus_sprite.png) no-repeat 0 -127px;
+    color: #a10302
+}
+
+#rog_black_style #middle-menu-zone #extra_link #footer_country_link span {
+    color: #a10302
+}
+
+#rog_black_style .article-btn .article-go-left {
+    background: url("/media/web_img/asus_sprite.png") no-repeat 0px -62px
+}
+
+#rog_black_style .article-btn .article-go-left:hover {
+    background: url("/media/web_img/asus_sprite.png") no-repeat 0px -62px
+}
+
+#rog_black_style .article-btn .article-go-right {
+    background: url("/media/web_img/asus_sprite.png") no-repeat -25px -41px
+}
+
+#rog_black_style .article-btn .article-go-right:hover {
+    background: url("/media/web_img/asus_sprite.png") no-repeat -25px -41px
+}
+
+#rog_black_style .article-btn .article-go-left.no_next:hover,
+#rog_black_style .article-btn .article-go-left.no_next {
+    background: url("/media/web_img/asus_sprite.png") no-repeat 0px -41px
+}
+
+#rog_black_style .article-btn .article-go-right.no_next:hover,
+#rog_black_style .article-btn .article-go-right.no_next {
+    background: url("/media/web_img/asus_sprite.png") no-repeat -25px -62px
+}
+
+#rog_black_style #products-sitemap ul a:hover,
+#rog_black_style #aside-menu ul a:hover,
+#rog_black_style #help-menu ul a:hover,
+#rog_black_style #product-sub-nav>ul ul li a:hover,
+#rog_black_style #product-business-nav>ul ul li a:hover,
+#rog_black_style #shop-sub-nav>ul ul li a:hover,
+#rog_black_style #middle-menu a:hover {
+    color: #a10302
+}
+
+#rog_black_style #bottom-menu a:hover {
+    color: #a10302 !important
+}
+
+#rog_black_style .print-btn {
+    background: url("/media/web_img/asus_sprite.png") no-repeat 0px -175px;
+    color: #a10302
+}
+
+#rog_black_style .print-btn:hover {
+    color: #920201
+}
+
+#rog_black_style .gray-bg-small {
+    background-image: none
+}
+
+#rog_black_style #main-search-zone .selectbox li .keyword {
+    color: #a10302
+}
+
+#rog_black_style .nav-tabs>.active>a {
+    color: #ffffffff
+}
+
+#rog_black_style .nav-tabs>li>a:hover {
+    color: #000000
+}
+
+#rog_black_style .search-query:focus {
+    border-color: #ff0000;
+    outline: 0;
+    outline: thin dotted \9;
+    -webkit-box-shadow: 0 0px 10px rgba(255, 0, 0, 0.5);
+    -moz-box-shadow: 0 0px 10px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0px 10px rgba(255, 0, 0, 0.5)
+}
+
+#rog_black_style .gray-bg-small {
+    background-image: none
+}
+
+#rog_black_style .product-spec {
+    border: 1px solid #3B3B3B
+}
+
+#rog_black_style .product-spec:first-child {
+    border-top: 1px solid #3B3B3B
+}
+
+#rog_black_style .product-spec>li {
+    background-color: #1A1A1A;
+    color: #ffffff;
+    *border-bottom: 1px solid #3B3B3B;
+    border-bottom: 1px solid #3B3B3B \9
+}
+
+#rog_black_style .product-spec>li .spec-item {
+    color: #A10304;
+    background-color: #1A1A1A
+}
+
+#rog_black_style .product-spec>li>.spec-data {
+    border-left: 1px solid #3B3B3B
+}
+
+#rog_black_style .product-spec>li:nth-child(even) {
+    background-color: #000
+}
+
+#rog_black_style .product-spec>li:nth-child(even) .spec-item {
+    background-color: #000
+}
+
+#rog_black_style #NBSpecNotic {
+    color: #565656
+}
+
+#rog_black_style #gallery {
+    border-left: 1px solid #3b3b3b
+}
+
+#rog_black_style .gallery-list {
+    border-top: 1px solid #3b3b3b
+}
+
+#rog_black_style .gallery-list>li img {
+    border-right: 1px solid #3b3b3b;
+    border-bottom: 1px solid #3b3b3b
+}
+
+
+
+#rog_black_style #gallery_box {
+    background-color: black!important;
+}
+
+#rog_black_style #gallery_footer {
+    background-color: black!important;
+    border-top: 1px solid #282828!important;
+}
+
+#rog_black_style .sb-cut-nav a.active,
+#rog_black_style .sb-cut-nav a:hover {
+    background-color: #DC0000!important;
+}
+
+#rog_black_style .sb-cut-nav a {
+    background-color: #333333!important;
+    box-shadow: inset 0 0 1px #333333!important;
+}
+
+#rog_black_style #gallery_title {
+    color: white!important;
+}
+
+#rog_black_style .page-title, 
+#rog_black_style .nav-tabs>li>a {
+    color: #c8c8c8;
+}
+
+#rog_black_style .nav-tabs>.active a {
+    border-top: 3px solid #ffffff;
+}
+
+#rog_black_style .nav-tabs>li>a:hover {
+    color: #ffffff
+}
+
+#rog_black_style #liwheretobuy>a {
+    color: #a10302;
+}

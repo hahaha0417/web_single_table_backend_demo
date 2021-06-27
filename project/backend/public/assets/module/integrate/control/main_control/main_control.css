@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#control_box{
+    background: rgb(220,255,220);
+    /* 預設不顯示區塊 */
+    display: none;
+    width: 96%;
+    height: 600px;
+    position: fixed;
+    float: left;
+    opacity: 0.8;
+    top: 200px;
+    left: 2%;
+    z-index: 2000;
+}
+
+
+#control_box .control_button_box{
+    background: rgb(190,255,190);
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: left;
+}
+
+#control_box .control_button_box .control_button{
+    float: left;
+    display: block;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    margin: 5px;
+    background: black;
+    opacity: 1;
+}
+
+#control_box .control_page_box{
+    background: initial;
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: left;
+}
+
+#control_box .control_page_box .control_page{
+    background: initial;
+    position: absolute;
+    width: 600px;
+    height: 180px;
+    display: block;
+    float: left;   
+
+}
+

@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+
+.asus_aside {
+    padding-bottom: 26px;
+    display: block;
+    float: left;
+}
+
+.asus_aside.width-line-gray {
+    background: url("/assets/plugin_split/asus/aside/asus_aside/image/product-header-gray-bg.jpg") no-repeat 0px 100%;
+    background-size: 100%;
+    margin-left: 0px !important;
+}
+
+
+
+.asus_aside.row:before, .asus_aside.row:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.asus_aside.row:after {
+    clear: both;
+}
+
+.asus_aside #aside-button {
+    min-width: 960px;
+    max-width: 1180px;
+    width: auto;
+    margin: 0 auto;
+    padding: 0 0.1%;
+    box-sizing: border-box;
+}
+
+.asus_aside #aside-button {
+    float: none;
+}
+
+.asus_aside #aside-button {
+    float: left;
+    width: 150px;
+    min-width: 150px;
+}
+
+
+
+.asus_aside .print-btn {
+    background: url("/assets/plugin_split/asus/aside/asus_aside/image/asus_sprite.png") no-repeat 0px -151px;
+    padding: 0 0 0 28px;
+    height: 22px;
+    display: inline-block;
+    line-height: 26.4px;
+    *margin-top: 10px;
+    cursor: pointer;
+}
+
+.asus_aside #aside-button a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.asus_aside a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+#rog_black_style .asus_aside.row {
+    margin-left: 0;
+    width: 100%
+    
+}
+
+#rog_black_style .asus_aside.width-line-gray {
+    background-image: none;
+    border-bottom: 1px solid #505050;
+}
+
+
+#rog_black_style .asus_aside {
+    padding-bottom: 10px;
+}
+
+#rog_black_style .asus_aside .print-btn {
+    background: url("/assets/plugin_split/asus/aside/asus_aside/image/asus_sprite.png") no-repeat 0px -175px;
+    color: #a10302;
+}
+
+.asus_aside a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+#aside-button .asus_aside .print-btn {
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+#rog_black_style .asus_aside .print-btn {
+    background: url("/assets/plugin_split/asus/aside/asus_aside/image/asus_sprite.png") no-repeat 0px -175px;
+    color: #787878;
+    
+}
+
+.asus_aside div.span4 {
+    overflow: hidden;
+}
+
+.asus_aside #product-social-button {
+    width: 280px;
+}
+
+.asus_aside #product-social-button {
+    float: right;
+}

@@ -1,0 +1,724 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+#asus_footer .aai-fnav>li {
+    color: #7c7c7c;
+    padding: 4px 0;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#asus_footer .aai-footer-span {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: top;
+}
+
+#asus_footer .aai-fmiddle,
+#asus_footer .aai-fbootom {
+    *zoom: 1
+}
+
+#asus_footer .aai-fmiddle:after,
+#asus_footer .aai-fbootom:after,
+#asus_footer .aai-fmiddle:before,
+#asus_footer .aai-fbootom:before {
+    content: "";
+    display: table
+}
+
+#asus_footer .aai-fmiddle:after,
+#asus_footer .aai-fbootom:after {
+    clear: both;
+    overflow: hidden
+}
+
+#asus_footer {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #ebebeb
+}
+
+#asus_footer.aai-960 .aai-inner {
+    max-width: 960px
+}
+
+#asus_footer .aai-fmiddle {
+    padding: 40px 0 60px
+}
+
+#asus_footer .aai-inner {
+    margin: 0 auto;
+    min-width: 960px;
+    max-width: 1180px;
+    padding-bottom: 20px;
+    padding: 0 1%
+}
+
+#asus_footer .aai-footer-span {
+    width: 23%!important;
+    float: none;
+    margin-left: 0;
+    padding-right: 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#asus_footer .aai-footer-span:first-child {
+    margin-left: 0
+}
+
+#asus_footer .aai-footer-span h4 {
+    color: #474747;
+    margin: 0 0 20px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: normal
+}
+
+#asus_footer .aai-footer-span #service_call {
+    padding: 4px 0
+}
+
+#asus_footer .aai-footer-span #call_center h4 {
+    font-size: 12px;
+    float: left;
+    margin: 4px 4px 0px 0px;
+    padding: 0px;
+    color: #7C7C7C;
+    line-height: 10px
+}
+
+#asus_footer .aai-footer-span #call_center .tel {
+    margin: 0;
+    font-size: 12px;
+    color: #7C7C7C
+}
+
+#asus_footer .aai-footer-span #call_message {
+    font-size: 12px
+}
+
+#asus_footer .aai-footer-span #call_message a {
+    color: #7C7C7C;
+    text-decoration: none
+}
+
+#asus_footer .aai-footer-span #call_message a:hover {
+    color: #000
+}
+
+#asus_footer .aai-fnav {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+#asus_footer .aai-fnav li>a {
+    color: #7c7c7c;
+    text-decoration: none;
+    font-size: 12px
+}
+
+#asus_footer .aai-fnav li>a:hover {
+    color: #000
+}
+
+#asus_footer #extra_link {
+    float: left
+}
+
+#asus_footer #footer_country_link {
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/global_icon.png") no-repeat scroll 0px 8px;
+    display: block;
+    font-size: 14px;
+    padding: 8px 0px 8px 24px
+}
+
+#asus_footer #footer_country_link>a {
+    color: #000;
+    text-decoration: none
+}
+
+#asus_footer #footer_country_link>a:hover {
+    color: #33b9ff
+}
+
+#asus_footer #aai-copyright {
+    float: right;
+    color: #959595;
+    font-size: 12px
+}
+
+#asus_footer #aai-copyright a {
+    margin-right: 12px;
+    color: #7C7C7C;
+    text-decoration: none;
+    font-size: 12px;
+    border-right: 1px solid #7C7C7C;
+    padding-right: 10px
+}
+
+#asus_footer #aai-copyright a:hover {
+    color: #000
+}
+
+#asus_footer .aai-social-media img {
+    border: none
+}
+
+#asus_footer.aai-ez {
+    padding: 9px 0 3px;
+    min-height: 32px
+}
+
+#asus_footer.aai-ez.aai-bg-black {
+    background-color: #242424
+}
+
+#asus_footer.aai-ez.aai-bg-black .aai-logo>a {
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_b_logo.png") 0 0 no-repeat;
+    background-image: -webkit-image-set(url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_b_logo.png") 1x, url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_b_logo2x.png") 2x)
+}
+
+#asus_footer.aai-ez .aai-logo>a {
+    display: block;
+    float: left;
+    margin: 0;
+    width: 76px;
+    height: 16px;
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_w_logo.png") 0 0 no-repeat;
+    background-image: -webkit-image-set(url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_w_logo.png") 1x, url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_w_logo2x.png") 2x)
+}
+
+#asus_footer.aai-ez #copyright {
+    line-height: 1;
+    padding: 0;
+    margin: 0
+}
+
+@media (max-width: 959px) {
+    #asus_footer .aai-inner {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0
+    }
+}
+
+@media (max-width: 959px) and (min-width: 720px) {
+    #asus_footer .aai-inner {
+        padding: 0 20px;
+        box-sizing: border-box
+    }
+    #asus_footer .aai-social-media {
+        overflow: auto;
+    }
+    #asus_footer .aai-fnav li.aai-social-media>a {
+        float: left;
+        padding: 5px 2px 0!important;
+        display: inline-block!important
+    }
+    #asus_footer #footer_country_link {
+        margin-left: 0
+    }
+}
+
+@media (max-width: 719px) {
+    #asus_footer .aai-inner {
+        padding-bottom: 0px
+    }
+    #asus_footer .aai-fmiddle {
+        padding: 30px 20px 10px
+    }
+    #asus_footer .aai-footer-span {
+        width: 100% !important;
+        overflow: hidden;
+        display: block;
+        height: 40px;
+        border-bottom: 1px solid #CCC;
+        margin-bottom: 20px;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transition: height 0.5s ease;
+        -moz-transition: height 0.5s ease;
+        -o-transition: height 0.5s ease;
+        transition: height 0.5s ease
+    }
+    #asus_footer .aai-fbootom {
+        padding: 0 20px
+    }
+    #asus_footer #extra_link,
+    #asus_footer #aai-copyright {
+        float: none
+    }
+    #asus_footer #aai-copyright {
+        margin-top: 20px
+    }
+    #asus_footer .aai-fnav li {
+        padding: 14px 0
+    }
+}
+
+@media (max-width: 481px) {
+    #asus_footer #aai-copyright a {
+        display: block;
+        border: none;
+        margin-bottom: 10px
+    }
+}
+
+
+/* ------------------------------------------------------- */
+
+
+/*react loading icon*/
+
+
+/*react loading icon end*/
+
+#asus_footer .clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+#asus_footer .show {
+    display: block !important;
+}
+
+#asus_footer .hide {
+    display: none !important;
+}
+
+#asus_footer .paused {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+#asus_footer .poa {
+    position: absolute;
+}
+
+#asus_footer .por {
+    position: relative;
+}
+
+#asus_footer .trs {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#asus_footer .nowrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#asus_footer ul,
+#asus_footer li {
+    list-style: none;
+}
+
+
+/* -------------- Footer 頁尾區塊 ------------- */
+
+#asus_footer {
+    background-color: #ebebeb;
+    box-sizing: border-box;
+    display: block !important;
+    padding: 0 10px;
+    width: 100%;
+    height: auto;
+}
+
+#asus_footer img {
+    border: medium none;
+}
+
+#asus_footer.aai-maxi-w {
+    padding: 0 40px;
+}
+
+#asus_footer.aai-maxi-w .aai-inner {
+    background-color: #ebebeb;
+    max-width: 1400px;
+    min-width: 1100px;
+}
+
+#asus_footer.aai-maxi-w.aai-bg-black .aai-inner {
+    background-color: #242424;
+}
+
+#asus_footer.aai-960 .aai-inner {
+    max-width: 960px;
+}
+
+#asus_footer.aai-bg-black {
+    background-color: #242424 !important;
+}
+
+#asus_footer.aai-bg-black .aai-footer-span h4 {
+    color: #d8d8d8;
+}
+
+#asus_footer.aai-bg-black .aai-fnav > li,
+#asus_footer.aai-bg-black .aai-fnav li > a {
+    color: #c8c8c8;
+}
+
+#asus_footer.aai-bg-black #footer_country_link > a,
+#asus_footer.aai-bg-black #aai-copyright a,
+#asus_footer.aai-bg-black .aai-footer-span #call_message a {
+    color: #c8c8c8;
+}
+
+#asus_footer.aai-bg-black .aai-fnav li > a:hover,
+#asus_footer.aai-bg-black #footer_country_link > a:hover,
+#asus_footer.aai-bg-black #aai-copyright a:hover {
+    color: #fff;
+}
+
+#asus_footer.aai-bg-black .aai-footer-span #call_message a:hover {
+    color: #fff;
+}
+
+#asus_footer.aai-bg-black .aai-footer-span #call_center h4,
+#asus_footer.aai-bg-black .aai-footer-span #call_center .tel {
+    color: #c8c8c8;
+}
+
+#asus_footer.aai-bg-black .aai-inner {
+    background-color: #242424;
+}
+
+#asus_footer .aai-fmiddle {
+    padding: 40px 0 60px;
+}
+
+#asus_footer #copyright {
+    margin-bottom: 10px;
+}
+
+#asus_footer #copyright > li {
+    float: left;
+    line-height: 1.2;
+    list-style: none;
+}
+
+#asus_footer #copyright:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#asus_footer .aai-inner {
+    background-color: #ebebeb;
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1180px;
+    min-width: 960px;
+    padding-bottom: 20px;
+}
+
+#asus_footer .aai-footer-span {
+    float: none;
+    margin-left: 0px;
+    width: 23%;
+}
+
+#asus_footer .aai-footer-span:first-child {
+    margin-left: 0;
+}
+
+#asus_footer .aai-footer-span h4 {
+    color: #474747;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+#asus_footer .aai-footer-span #service_call {
+    padding: 4px 0;
+}
+
+#asus_footer .aai-footer-span #call_center h4 {
+    color: #7c7c7c;
+    float: left;
+    font-size: 12px;
+    line-height: 10px;
+    margin: 4px 4px 0 0;
+    padding: 0;
+}
+
+#asus_footer .aai-footer-span #call_center .tel {
+    color: #7c7c7c;
+    font-size: 12px;
+    margin: 0;
+}
+
+#asus_footer .aai-footer-span #call_message {
+    font-size: 12px;
+}
+
+#asus_footer .aai-footer-span #call_message a {
+    color: #7c7c7c;
+    text-decoration: none;
+}
+
+#asus_footer .aai-footer-span #call_message a:hover {
+    color: #000;
+}
+
+#asus_footer .aai-fnav {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+#asus_footer .aai-fnav li > a {
+    color: #7c7c7c;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+#asus_footer .aai-fnav li > a:hover {
+    color: #000;
+}
+
+#asus_footer #extra_link {
+    float: left;
+}
+
+#asus_footer #footer_country_link {
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/global_icon.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    font-size: 14px;
+    padding: 3px 0 3px 24px;
+}
+
+#asus_footer #footer_country_link > a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#asus_footer #footer_country_link > a:hover {
+    color: #33b9ff;
+}
+
+#asus_footer #aai-copyright {
+    color: #959595;
+    float: right;
+    font-size: 12px;
+}
+
+#asus_footer #aai-copyright a {
+    border-right: 1px solid #7c7c7c;
+    color: #7c7c7c;
+    font-size: 12px;
+    margin-right: 12px;
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+#asus_footer #aai-copyright a:hover {
+    color: #000;
+}
+
+#asus_footer .aai-social-media img {
+    border: medium none;
+}
+
+#asus_footer.aai-ez {
+    min-height: 32px;
+    padding: 9px 0 3px;
+}
+
+#asus_footer.aai-ez.aai-bg-black {
+    background-color: #242424;
+}
+
+#asus_footer.aai-ez.aai-bg-black .aai-logo > a {
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_b_logo.png") no-repeat scroll 0 0 transparent;
+}
+
+#asus_footer.aai-ez .aai-logo > a {
+    background: url("/assets/plugin_split/asus/footer/asus_footer/image/aai_ez_w_logo.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 16px;
+    margin: 0;
+    width: 76px;
+}
+
+#asus_footer.aai-ez #copyright {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+
+/** ___  RWD Mobile  ____________________________________________ **/
+
+
+/* 手機全吃 */
+
+@media only screen and (max-width: 720px) {
+    /* 720 */
+    /* #### */
+    #asus_footer #extra_link {
+        float: none;
+    }
+    #asus_footer #aai-copyright {
+        float: none;
+        text-align: center;
+    }
+    #asus_footer #aai-copyright a {
+        border-right: 0px;
+    }
+    #asus_footer #aai-copyright #copyright {
+        text-align: left;
+    }
+}
+
+#asus_footer,
+#asus_footer.aai-maxi-w .aai-inner {
+    min-width: 784px;
+    margin-top: 1px;
+}
+
+#asus_footer {
+    border-top: 3px solid #fff;
+    padding: 0;
+}
+
+
+/* black-page */
+
+#asus_footer.aai-bg-black .aai-footer-span h4 {
+    color: #d8d8d8;
+}
+
+#asus_footer.aai-bg-black .aai-fnav li > a:hover {
+    color: #d8d8d8;
+}
+
+#asus_footer.aai-maxi-w,
+#asus_footer.aai-maxi-w .aai-inner {
+    background-color: #F1F1F1;
+}
+
+#asus_footer.aai-bg-black,
+#asus_footer.aai-bg-black .aai-inner {
+    background-color: #242424;
+}
+
+#asus_footer .aai-fnav li > a {
+    font-size: 13px;
+    /*line-height: 1.8em;*/
+}
+
+@media only screen and (max-width: 720px) {
+    #asus_footer,
+    #asus_footer.aai-maxi-w .aai-inner {
+        min-width: auto;
+        min-width: inherit;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: 0px;
+    }
+    #asus_footer .aai-fmiddle {
+        padding: 0;
+    }
+    #asus_footer.aai-bg-black .aai-footer-span {
+        padding: 0 5px;
+        border-bottom: 1px solid #575757;
+        box-sizing: border-box;
+    }
+    #asus_footer .aai-fbootom {
+        padding: 0 3px;
+    }
+    #asus_footer .aai-footer-span:first-child {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 959px) and (min-width: 720px) {
+    #asus_footer .aai-fnav li > a {
+        padding: 0;
+    }
+}
+
+@media (max-width: 959px) {
+    #asus_footer .aai-inner,
+    #asus_footer .aai-inner,
+    #asus_footer .aai-sub-inner {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+#asus_footer .aai-social-media > a {
+    position: relative;
+    display: inline-block;
+}
+
+#asus_footer .aai-social-media > a:hover:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 42px;
+    height: 42px;
+}
+
+
+/* ----------------------------------------------------- */
+
+@media (max-width: 719px) {
+    #asus_footer .aai-fnav li.divider-vertical {
+        display: none;
+    }
+}
+
+
+#asus-api-footer.aai-bg-black {
+    background-color: #242424 !important;
+}
+
+body #asus-api-footer.aai-bg-black, body #asus-api-footer.aai-bg-black .aai-inner {
+    background-color: #242424;
+}
+
+#rog_black_style #asus-api-footer, #rog_black_style #asus-api-footer .aai-inner {
+    background-color: #242424;
+}

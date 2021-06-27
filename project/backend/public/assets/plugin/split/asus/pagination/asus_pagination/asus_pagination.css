@@ -1,0 +1,876 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+.asus_pagination * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+.asus_pagination::selection {
+    background: #1d2124;
+    color: #CE0000;
+}
+
+.asus_pagination::-moz-selection {
+    background: #1d2124;
+    color: #ffffff;
+}
+
+.asus_pagination ul,
+.asus_pagination ol,
+.asus_pagination li {
+    margin: 0;
+    padding: 0;
+}
+
+.asus_pagination {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.asus_pagination h1,
+.asus_pagination h2,
+.asus_pagination h3,
+.asus_pagination h4,
+.asus_pagination p,
+.asus_pagination a,
+.asus_pagination li,
+.asus_pagination b,
+.asus_pagination small {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: white;
+}
+
+
+/* ---------- Element ---------- */
+
+.asus_pagination {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 0;
+}
+
+.asus_pagination img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto;
+    border: none;
+}
+
+.asus_pagination .hd-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.asus_pagination .hd-downloadbox,
+.asus_pagination .hd-tagbox {
+    display: block;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    margin: 10px auto 20px;
+}
+
+.asus_pagination .hd-downloadbox {
+    font-family: "Fjalla One", sans-serif;
+    line-height: 46px;
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+}
+
+.asus_pagination .hd-tagbox {
+    border-radius: 10px;
+    width: 90%;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.asus_pagination .hd-tagbox p {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.asus_pagination .hd-tagbox small {
+    font-weight: 400;
+    display: block;
+    line-height: 14px;
+}
+
+.asus_pagination .hd-downloadbox:before,
+.asus_pagination .hd-tagbox:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #c9c9c9;
+    z-index: -1;
+    background: #000000;
+    background: -moz-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: -webkit-linear-gradient(-20deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    background: linear-gradient(160deg, #000000 0%, #c9c9c9 50%, #131313 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313', GradientType=1);
+}
+
+.asus_pagination .hd-downloadbox:before {
+    width: calc(100% + 4px);
+    max-width: 204px;
+    height: 49px;
+}
+
+.asus_pagination .hd-tagbox:before {
+    border-radius: 10px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+
+.asus_pagination p.hd-skewtag {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 21px;
+    font-weight: 400 !important;
+    position: relative;
+    line-height: 46px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.asus_pagination .hd-skewtag:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 45px;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: skewX(340deg);
+    -moz-transform: skewX(340deg);
+    -ms-transform: skewX(340deg);
+    -o-transform: skewX(340deg);
+    transform: skewX(340deg);
+    border: 2px solid #8D0000;
+    z-index: 0;
+}
+
+.asus_pagination .hd-list-dot li {
+    font-size: 16px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.asus_pagination .hd-list-dot li:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+
+.asus_pagination .txt_decoline {
+    background: url('/assets/plugin_split/asus/layout/asus_performance/image/deco-line.png') right bottom no-repeat;
+}
+
+.asus_pagination .txt_decolineflip {
+    background: url('/assets/plugin_split/asus/layout/asus_performance/image/deco-line-flip.png') left bottom no-repeat;
+}
+
+.asus_pagination .hd-frame:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: -1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#800c20+0,5d0600+15,9a0d0e+54,480600+100 */
+    background: #800c20;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #800c20 0%, #5d0600 15%, #9a0d0e 54%, #480600 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#800c20', endColorstr='#480600', GradientType=1);
+    /* IE6-9 */
+}
+
+.asus_pagination .hd-pic01 {
+    width: 100%;
+    background: center center no-repeat;
+    background-size: 1920px;
+}
+
+
+/* ---------- Block ---------- */
+
+.asus_pagination .hd-mobile_on,
+.asus_pagination .hd-1023on {
+    display: none;
+}
+
+.asus_pagination .fleft {
+    float: left;
+}
+
+.asus_pagination .fright {
+    float: right;
+}
+
+.asus_pagination .hd-w1920,
+.asus_pagination .hd-w1500,
+.asus_pagination .hd-w1400,
+.asus_pagination .hd-w1300,
+.asus_pagination .hd-w1200,
+.asus_pagination .hd-w1100,
+.asus_pagination .hd-w1000,
+.asus_pagination .hd-w800,
+.asus_pagination .hd-w500 {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.asus_pagination .hd-w1920 {
+    max-width: 1920px;
+    width: 100%;
+}
+
+.asus_pagination .hd-w1500 {
+    max-width: 1500px;
+}
+
+.asus_pagination .hd-w1400 {
+    max-width: 1400px;
+}
+
+.asus_pagination .hd-w1300 {
+    max-width: 1300px;
+}
+
+.asus_pagination .hd-w1200 {
+    max-width: 1200px;
+}
+
+.asus_pagination .hd-w1100 {
+    max-width: 1100px;
+}
+
+.asus_pagination .hd-w1000 {
+    max-width: 1000px;
+}
+
+.asus_pagination .hd-w800 {
+    max-width: 800px;
+}
+
+.asus_pagination .hd-w500 {
+    max-width: 500px;
+}
+
+.asus_pagination .hd-ib {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -5px;
+}
+
+.asus_pagination .ib-top {
+    vertical-align: top;
+}
+
+.asus_pagination .ib-bottom {
+    vertical-align: bottom;
+}
+
+.asus_pagination .hd-col20 {
+    width: 20%;
+}
+
+.asus_pagination .hd-col25 {
+    width: 25%;
+}
+
+.asus_pagination .hd-col33 {
+    width: 33.3333%;
+}
+
+.asus_pagination .hd-col40 {
+    width: 40%;
+}
+
+.asus_pagination .hd-col45 {
+    width: 45%;
+}
+
+.asus_pagination .hd-col50 {
+    width: 50%;
+}
+
+.asus_pagination .hd-col55 {
+    width: 55%;
+}
+
+.asus_pagination .hd-col60 {
+    width: 60%;
+}
+
+.asus_pagination .hd-col65 {
+    width: 65%;
+}
+
+.asus_pagination .hd-col80 {
+    width: 80%;
+}
+
+.asus_pagination .hd-col85 {
+    width: 85%;
+}
+
+.asus_pagination .hd-bgflip {
+    background: top left no-repeat;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.asus_pagination .hd-bgflip .hd-w1100,
+.asus_pagination .hd-bgflip .hd-w1200,
+.asus_pagination .hd-bgflip .hd-w1300,
+.asus_pagination .hd-bgflip .hd-w1400 {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+/* ---------- Text ---------- */
+
+.asus_pagination h2 {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "ROGFontsv", sans-serif;
+    font-size: 146px;
+    line-height: 100px;
+    padding-bottom: 40px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #ffffff !important;
+    /*background: #fff;
+		background: -webkit-linear-gradient(black,black, white, black);
+		background: -o-linear-gradient(black,black, white, black);
+		background: -moz-linear-gradient(black,black, white, black);
+		background: linear-gradient(black,black, white, black);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 0 0 0 rgba(255, 255, 255, .1);*/
+}
+
+
+/*ie11 above fixed*/
+
+
+/*_:-ms-fullscreen,
+	:root .asus_pagination h2 {
+	    background: transparent !important;
+	}*/
+
+.asus_pagination h2.right {
+    text-align: right;
+}
+
+.asus_pagination h2 span {
+    color: #b80202;
+    font-size: 60px;
+    line-height: 66px;
+    background: #fff;
+    background: #b80202;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.asus_pagination h2 span.top {
+    display: block;
+    margin: 0 0 30px 5px;
+}
+
+.asus_pagination h2 span.bottom {
+    display: block;
+    margin: 10px 0 0 5px;
+}
+
+.asus_pagination h2 span.left,
+.asus_pagination h2 span.center {
+    display: inline-block;
+    width: 258px;
+    text-align: right;
+    line-height: 35px;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
+    margin-right: 10px;
+}
+
+.asus_pagination h2 span.center {
+    width: 145px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+/*ie11 above fixed*/
+
+_:-ms-fullscreen,
+:root .asus_pagination h2 span {
+    background: transparent !important;
+}
+
+.asus_pagination h3 {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.asus_pagination h4,
+.asus_pagination h5,
+.asus_pagination button,
+.asus_pagination .hd-btn {
+    font-family: "Fjalla One", sans-serif;
+    text-transform: uppercase;
+}
+
+.asus_pagination h4 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.asus_pagination h5 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.asus_pagination p,
+.asus_pagination small,
+.asus_pagination a,
+.asus_pagination li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.asus_pagination p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.4rem;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+.asus_pagination b {
+    font-weight: bold;
+}
+
+.asus_pagination small {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.asus_pagination a.hd-link {
+    color: #C50012;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.asus_pagination a.hd-link:hover {
+    color: white;
+}
+
+.asus_pagination .txt-grey {
+    color: #808080;
+    font-weight: 400;
+}
+
+.asus_pagination .txt-red {
+    color: #b80202;
+    font-weight: 400;
+}
+
+.asus_pagination .txt-center {
+    text-align: center;
+}
+
+.asus_pagination .txt-left {
+    text-align: left;
+}
+
+.asus_pagination sup {
+    display: inline-block;
+    margin-top: -7px;
+}
+
+
+/* ------------ SEC_PERFORMANCE ------------ */
+
+.asus_pagination {
+    padding-top: 100px;
+}
+
+.asus_pagination h2:before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    background: url("/assets/plugin_split/asus/layout/asus_performance/image/title_lighting.png") 0 0 no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+/* ------------ overview ------------ */
+
+.asus_pagination {
+    padding: 150px 0 70px;
+}
+
+.asus_pagination .hd-menu {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.asus_pagination .hd-menu ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0;
+}
+
+.asus_pagination .hd-menu li {
+    width: 17%;
+    color: #808080;
+    background-color: #000000;
+    cursor: pointer;
+    -webkit-transform: skewX(-40deg);
+    -moz-transform: skewX(-40deg);
+    -ms-transform: skewX(-40deg);
+    -o-transform: skewX(-40deg);
+    transform: skewX(-40deg);
+    position: relative;
+}
+
+.asus_pagination .hd-menu li:before {
+    content: '';
+    width: calc(100% + 4px);
+    height: calc(100% + 2px);
+    position: absolute;
+    top: -1px;
+    left: -2px;
+    background: #111111;
+    background: -moz-linear-gradient(45deg, #111111 0%, #bbc3d1 29%, #000000 51%, #bbc3d1 78%, #131313 100%);
+    background: -webkit-linear-gradient(45deg, #111111 0%, #bbc3d1 29%, #000000 51%, #bbc3d1 78%, #131313 100%);
+    background: linear-gradient(45deg, #111111 0%, #bbc3d1 29%, #000000 51%, #bbc3d1 78%, #131313 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#111111', endColorstr='#131313', GradientType=1);
+    z-index: -1;
+}
+
+.asus_pagination .hd-menu li:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000000;
+    z-index: -1;
+}
+
+.asus_pagination .hd-menu li h4 {
+    font-size: 21px;
+    line-height: 27px;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 13px 0;
+    text-transform: none;
+    -webkit-transform: skewX(40deg);
+    -moz-transform: skewX(40deg);
+    -ms-transform: skewX(40deg);
+    -o-transform: skewX(40deg);
+    transform: skewX(40deg);
+}
+
+.asus_pagination .hd-menu li:hover {
+    color: white;
+}
+
+.asus_pagination .hd-menu li.hd-active {
+    background-color: #37000a;
+    color: white;
+}
+
+.asus_pagination .hd-menu li.hd-active:before,
+.asus_pagination .hd-menu li.hd-active:after {
+    display: none;
+}
+
+.asus_pagination .hd-details .hd-col60 {
+    margin: 0 auto 70px;
+    float: none;
+}
+
+.asus_pagination .hd-details .hd-detail {
+    display: none;
+}
+
+.asus_pagination .hd-details .hd-open {
+    display: block;
+    -webkit-animation: showfrombottom .8s ease;
+    -moz-animation: showfrombottom .8s ease;
+    -ms-animation: showfrombottom .8s ease;
+    -o-animation: showfrombottom .8s ease;
+    animation: showfrombottom .8s ease;
+}
+
+.asus_pagination .hd-details img.hd-col50 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 30px 0;
+}
+
+.asus_pagination .hd-details div.hd-col50 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -8px;
+    padding-left: 80px;
+}
+
+
+
+
+/* ---------------------------------- */
+
+@media screen and (min-width: 2250px) {
+    .asus_pagination #more {
+        padding-top: 150px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .asus_pagination {
+        padding-top: 50px;
+    }
+    .asus_pagination .hd-menu ul {
+        padding: 0;
+    }
+    .asus_pagination .hd-sec-mode p {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .asus_pagination .hd-menu li {
+        -webkit-transform: skewX(-30deg);
+        -moz-transform: skewX(-30deg);
+        -ms-transform: skewX(-30deg);
+        -o-transform: skewX(-30deg);
+        transform: skewX(-30deg);
+    }
+    .asus_pagination .hd-menu li h4 {
+        font-size: 18px;
+        line-height: 20px;
+        -webkit-transform: skewX(30deg);
+        -moz-transform: skewX(30deg);
+        -ms-transform: skewX(30deg);
+        -o-transform: skewX(30deg);
+        transform: skewX(30deg);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .asus_pagination .hd-details div.hd-col50 {
+        padding-left: 30px;
+    }
+    .asus_pagination .hd-sec-ddr4 {
+        padding: 50px 0;
+    }
+    .asus_pagination .hd-sec-mode .hd-col50 {
+        padding: 0 20px;
+    }
+    .asus_pagination .hd-sec-mode .mode-content ul {
+        padding: 15px 20px;
+    }
+    .asus_pagination #more {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .asus_pagination .hd-1023on {
+        display: block;
+    }
+    .asus_pagination .hd-1023off {
+        display: none;
+    }
+    .asus_pagination h2 {
+        font-size: 100px;
+        line-height: 90px;
+        padding-bottom: 10px;
+    }
+    .asus_pagination #protection h2 {
+        font-size: 90px;
+        line-height: 80px;
+    }
+    .asus_pagination h2 span {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    .asus_pagination h2 span.top {
+        margin-bottom: -40px;
+    }
+    .asus_pagination h2 span.left {
+        width: 130px;
+        line-height: 25px;
+    }
+    .asus_pagination h2 span.center {
+        width: 90px;
+        line-height: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .asus_pagination .hd-mobile_on {
+        display: block;
+    }
+    .asus_pagination .hd-mobile_off {
+        display: none;
+    }
+    .asus_pagination h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    /* ------------ overview ------------ */
+    .asus_pagination {
+        padding: 70px 0 0;
+    }
+    .asus_pagination .hd-menu ul {
+        flex-wrap: wrap;
+    }
+    .asus_pagination .hd-menu li {
+        width: 30%;
+        margin-bottom: 10px;
+    }
+    .asus_pagination .hd-details .hd-col50 {
+        width: 100%;
+    }
+    .asus_pagination .hd-details img.hd-col50 {
+        display: block;
+        width: 80%;
+        margin: 0 auto 30px;
+    }
+    .asus_pagination .hd-sec-ddr4 .fleft,
+    .asus_pagination .hd-sec-ddr4 .fright {
+        width: 100%;
+        padding-left: 0;
+        margin: 0 auto;
+        float: none;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .asus_pagination h2,
+    .asus_pagination #protection h2 {
+        font-size: 50px;
+        line-height: 40px;
+    }
+    .asus_pagination h2 span {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .asus_pagination h2 span.left {
+        line-height: 20px;
+        width: 100px;
+    }
+    .asus_pagination h2 span.top {
+        margin-bottom: -10px;
+    }
+    .asus_pagination h3 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    .asus_pagination h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    /* ------------ SEC_PERFORMANCE ------------ */
+    .asus_pagination {
+        padding-top: 50px;
+    }
+    .asus_pagination h2:before {
+        background-size: 1000px;
+        padding-bottom: 40%;
+    }
+    .asus_pagination .hd-sec-mode .hd-col50 {
+        width: 100%;
+        display: block;
+        margin: 0 auto 30px;
+    }
+    .asus_pagination .hd-sec-mode .hd-col50 h4 {
+        background-size: 500px;
+    }
+}

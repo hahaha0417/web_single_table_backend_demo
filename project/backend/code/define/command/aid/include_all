@@ -1,0 +1,44 @@
+
+/*
+
+
+//
+use hahaha\define\hahaha_define_command_aid_composer as define_composer;
+use hahaha\define\hahaha_define_command_aid_env as define_env;
+use hahaha\define\hahaha_define_command_aid_git as define_git;
+use hahaha\define\hahaha_define_command_aid_migrate as define_migrate;
+use hahaha\define\hahaha_define_command_aid_npm as define_npm;
+use hahaha\define\hahaha_define_command_aid_tool as define_tool;
+//
+use hahaha\define\hahaha_define_command_aid_item as define_item;
+//
+
+//
+use hahaha\define\hahaha_define_command_aid_composer as define_aid_composer;
+use hahaha\define\hahaha_define_command_aid_env as define_aid_env;
+use hahaha\define\hahaha_define_command_aid_git as define_aid_git;
+use hahaha\define\hahaha_define_command_aid_migrate as define_aid_migrate;
+use hahaha\define\hahaha_define_command_aid_npm as define_aid_npm;
+use hahaha\define\hahaha_define_command_aid_tool as define_aid_tool;
+//
+use hahaha\define\hahaha_define_command_aid_item as define_aid_item;
+//
+
+//
+use hahaha\define\hahaha_define_command_aid_composer as define_command_aid_composer;
+use hahaha\define\hahaha_define_command_aid_env as define_command_aid_env;
+use hahaha\define\hahaha_define_command_aid_git as define_command_aid_git;
+use hahaha\define\hahaha_define_command_aid_migrate as define_command_aid_migrate;
+use hahaha\define\hahaha_define_command_aid_npm as define_command_aid_npm;
+use hahaha\define\hahaha_define_command_aid_tool as define_command_aid_tool;
+//
+use hahaha\define\hahaha_define_command_aid_item as define_command_aid_item;
+//
+
+*/
+
+
+
+
+
+

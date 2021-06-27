@@ -2,6 +2,19 @@
 
 namespace pub;
 
+use pub\system_setting\env as system_setting_env;
+use pub\system_setting\system_setting_env as system_setting_system_setting_env;
+use pub\option\env as option_env;
+use pub\option\option_env as option_option_env;
+
+/*
+
+use pub\hahaha_system_setting as hahaha_option;
+
+$hahaha_system_setting = hahaha_system_setting::Instance()->Initial();
+
+*/
+
 /*
 設計上，hahaha_system_setting，規劃可以多重設定，例如我可以切換不同的server或是不同代理商
 公表不需要這麼複雜，有需要再規劃default & local
@@ -46,6 +59,48 @@ class hahaha_system_setting
 		// 	return;
 		// }	
 
+		// -------------------------------------------------------------------------------- 
+		// 
+		// -------------------------------------------------------------------------------- 
+		$time = time();
+		// -------------------------------------------------------------------------------- 
+
+		// -------------------------------------------------------------------------------- 
+		// 重要置頂
+		// -------------------------------------------------------------------------------- 
+		// 線上
+		$system_setting->Online = system_setting_system_setting_env::ONLINE; 
+		// 維護
+		$system_setting->Maintain = system_setting_system_setting_env::MAINTAIN;
+		// ------------------------------------------- 
+		// 除錯
+		$system_setting->Debug = system_setting_system_setting_env::DEBUG;
+		// 版本
+		$system_setting->Version = system_setting_system_setting_env::VERSION;
+		// ------------------------------------------- 
+		// 記錄檔
+		$system_setting->Log = system_setting_system_setting_env::LOG;
+		// ------------------------------------------- 
+
+		// -------------------------------------------------------------------------------- 
+
+		// -------------------------------------------------------------------------------- 
+		// App
+		// -------------------------------------------------------------------------------- 
+		$system_setting->App = new \stdClass;	
+		$system_setting->App->Name = system_setting_system_setting_env::APP_NAME;
+		$system_setting->App->decription = system_setting_system_setting_env::APP_DESCRIPTION;
+		$system_setting->App->Code = system_setting_system_setting_env::APP_CODE;
+		$system_setting->App->Key = system_setting_system_setting_env::APP_KEY;
+		// ------------------------------------------- 
+		// 動畫
+		$system_setting->App->Animsition = system_setting_system_setting_env::APP_ANIMSITION;
+		// ------------------------------------------- 
+		$system_setting->App->Time = &$time;
+		
+		// -------------------------------------------------------------------------------- 
+		
+
 		$system_setting->System = new \stdClass;		
 		if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
 			$system_setting->System->Public = realpath(__DIR__ . "/../../../public/project/windows");
@@ -54,6 +109,8 @@ class hahaha_system_setting
 		{
 			$system_setting->System->Public = realpath(__DIR__ . "/../../../public/project/linux");
 		}
+		
+		// -------------------------------------------------------------------- 
 		// 這跟request url port，避免跑掉
 		if(!empty($_SERVER['SERVER_PORT']) && !empty($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['SERVER_NAME']))
 		{

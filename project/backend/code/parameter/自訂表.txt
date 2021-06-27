@@ -1,0 +1,1 @@
+要暫存 or 傳遞，可以instance or new一個專屬物件來使用

@@ -8,6 +8,7 @@ use hahaha\hahaha_convert_doctrine_dql;
 use Doctrine\ORM\Query;
 use Registry;
 use EntityManager;
+use hahahasublib\hahaha_orm_doctrine;
 
 /**
  * Accounts
@@ -25,29 +26,31 @@ class Accounts extends \Doctrine\ORM\EntityRepository
     /*
     避免複製，用reference
     */
-    public function findByAccountLogin(&$result, &$account) 
+    public function findByAccountLogin(&$result, &$account)
     {
+        $hahaha_orm_doctrine_ = hahaha_orm_doctrine::Instance();
+
         $fields_ = [
             "account",
             "password",
         ];
 
-        // ----------------------------------------- 
+        // -----------------------------------------
         $setting_table_class_ = "\\hahaha\\backend\\hahaha_setting_table";
-        $setting_tables_ = $setting_table_class_::Instance();	
-        // 取出設定檔	
+        $setting_tables_ = $setting_table_class_::Instance();
+        // 取出設定檔
         $tables_ = &$setting_tables_->Tables[$setting_tables_->Settings['default']['table']];
         $setting_table_ = $tables_['accounts'];
-        // 
+        //
         $alias_ = &$setting_table_['alias'];
-        
+
         // 有效能需求，因此採最簡
         // 串出需要的select
 		$select_ = '';
 		$convert_doctrine_dql_ = hahaha_convert_doctrine_dql::Instance();
         $convert_doctrine_dql_->To_Select($select_, $fields_, $alias_);
 
-        $qb_ = Registry::getManager($setting_table_["connection"])->createQueryBuilder();
+        $qb_ = $hahaha_orm_doctrine_->Entity_Manager_->createQueryBuilder();
         $qb_->select($select_)
            ->from($setting_table_['entity'], $alias_)
            ->where("{$alias_}.account = :account")
@@ -64,5 +67,5 @@ class Accounts extends \Doctrine\ORM\EntityRepository
         return true;
     }
 
-    
+
 }

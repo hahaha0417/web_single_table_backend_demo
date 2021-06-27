@@ -1,0 +1,33 @@
+
+/*
+
+//
+use hahaha\command\aid\hahaha_command_aid_composer as command_composer;
+use hahaha\command\aid\hahaha_command_aid_env as command_env;
+use hahaha\command\aid\hahaha_command_aid_git as command_git;
+use hahaha\command\aid\hahaha_command_aid_migrate as command_migrate;
+use hahaha\command\aid\hahaha_command_aid_npm as command_npm;
+use hahaha\command\aid\hahaha_command_aid_tool as command_tool;
+//
+use hahaha\command\aid\hahaha_command_aid as command;
+//
+
+
+//
+use hahaha\command\aid\hahaha_command_aid_composer as command_aid_composer;
+use hahaha\command\aid\hahaha_command_aid_env as command_aid_env;
+use hahaha\command\aid\hahaha_command_aid_git as command_aid_git;
+use hahaha\command\aid\hahaha_command_aid_migrate as command_aid_migrate;
+use hahaha\command\aid\hahaha_command_aid_npm as command_aid_npm;
+use hahaha\command\aid\hahaha_command_aid_tool as command_aid_tool;
+//
+use hahaha\command\aid\hahaha_command_aid as command_aid;
+//
+
+*/
+
+
+
+
+
+

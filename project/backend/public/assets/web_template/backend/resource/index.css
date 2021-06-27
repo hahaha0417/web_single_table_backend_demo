@@ -1,0 +1,324 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+.index_title{
+    height: auto;
+    float: left;
+    position: relative;
+    margin:50px 0 0 50px;
+    /* display:none; */
+}
+
+.index_title .hr_title{
+    border: 1px solid #ccc;
+    width: 98%;
+}
+
+@media (min-width: 768px) {
+    .index_title .hr_title{
+        border: 1px solid #ccc;
+        width: 700px;
+    }  
+
+}
+
+
+.index_space{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.index_content{
+    width: 96%;
+    height: auto;
+    float: left;
+    position: relative;
+    margin: 0 0 0 2%;
+   
+}
+
+.index_content .hr1{
+    border: 1px solid #ccc;
+}
+
+.index_result_wrap{
+	padding: 10px 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.index_result_wrap i{
+	margin-right: 5px;
+}
+.index_result_title{
+	line-height: 35px;
+	padding-bottom: 5px;
+	overflow: hidden;
+}
+.index_result_title h3{
+	font-size: 14px;
+}
+.index_result_title .mark{
+	padding: 5px 10px;
+	border: 1px dashed #e5e5e5;
+	background: #fcf8e3;
+	border-radius: 3px;
+	margin-bottom: 3px;
+}
+.index_result_title .mark p{
+	padding: 0;
+	margin: 0;
+	line-height: 22px;
+	font-size: 12px;
+	color: #666;
+}
+.index_result_content .short_wrap a{
+	margin-right: 20px;
+}
+.index_result_content ul li{
+	line-height: 35px;
+	border-bottom: 1px dashed #eaeaea;
+}
+.index_result_content ul li label{
+	color: #909090;
+	display: inline-block;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+}
+.index_result_content ul li span{
+	font-size: 15px;
+}
+.index_result_content ul li span a{
+	display: inline-block;
+}
+.index_result_content ul li span a img{
+	vertical-align: middle;
+}
+/* i.require{
+	color: #f60;
+	font-family: serif;
+	margin-right: 5px;
+}
+table.add_tab{
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #eee;
+}
+table.add_tab tr{
+	line-height: 40px;
+	border: 1px solid #eee;
+}
+table.add_tab tr th{
+	text-align: right;
+	font-weight: normal;
+	padding-right: 10px;
+	font-size: 14px;
+	border: 1px solid #eee;
+}
+table.add_tab tr td{
+	text-align: left;
+	padding: 3px 10px;
+	font-size: 12px;
+}
+table.add_tab tr td span{
+	margin-left: 10px;
+	color: #666;
+}
+table.add_tab tr td span i{
+	margin-right: 5px;
+}
+.tab_title{
+	height: 35px;
+	background: #f9f9f9;
+	border: 1px solid #e1e1e1;
+	border-bottom: none;
+}
+.tab_title li{
+	line-height: 35px;
+	padding: 0 35px;
+	border-right: 1px solid #e1e1e1;
+	float: left;
+	font-size: 14px;
+	cursor: pointer;
+}
+.tab_title li.active{
+	color: #495058;
+	background: #fff;
+	position: relative;
+	border-bottom: 1px solid #fff;
+}
+.tab_content{
+	display: none;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.btn_group{
+	overflow: hidden;
+	padding: 15px 0;
+}
+.search_wrap{
+	padding: 15px 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+.search_tab tr{
+	line-height: 35px;
+}
+.search_tab th{
+	text-align: right;
+	padding-right: 10px;
+	font-weight: normal;
+}
+.search_tab td{
+	padding: 0 5px;
+} */
+.index_result_content table.list_tab{
+	border-collapse: collapse;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	width: 100%;	
+}
+.index_result_content table.list_tab tr{
+    line-height: 35px;
+   
+}
+.index_result_content table.list_tab tr:nth-child(odd){
+	background: #f9f9f9;
+}
+.index_result_content table.list_tab tr:hover{
+	background: #f1f1f1;
+}
+.index_result_content table.list_tab tr.even-tr{
+	background: #e9fff2;
+}
+.index_result_content table.list_tab tr input{
+	margin-right: 0;
+}
+.index_result_content table.list_tab tr th{
+	font-weight: normal;
+	font-size: 16px;
+	text-align: left;
+    background: #eee;
+    background: rgba(210, 255, 210, 1);
+    /* width: 20px; */
+	
+}
+.index_result_content table.list_tab tr td,table.list_tab tr th{
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #e1e1e1;
+	
+}
+.index_result_content table.list_tab tr td.tc,table.list_tab tr th.tc{
+	text-align: center;
+}
+.index_result_content table.list_tab tr td a{
+	margin-right: 10px;
+	float: left;
+}
+.index_result_content table.list_tab tr input[name='checkbox'].labelauty + label{
+	width: 40px;
+	text-align: center;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    vertical-align: center;
+}
+.index_result_content table.list_tab tr td input[name='checkbox'].labelauty + label > span.labelauty-unchecked-image, input.labelauty + label > span.labelauty-checked-image{
+    vertical-align: 0;
+    margin-top: 15px;
+}
+
+.index_result_content table.list_tab tr td input[type='text']{
+	/* width: 100%; */
+	text-align: center;
+    display: inline-block;
+}
+.index_result_content table.list_tab tr td input[type='text'].md{
+	/* width: 200px; */
+	text-align: left;
+	display: inline-block;
+}
+.index_result_content table.list_tab tr td input[type='text'].lg{
+	/* width: 580px; */
+	text-align: left;
+	display: inline-block;
+}
+
+.index_item_image_upload .ajax-file-upload{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    line-height: 45px;
+
+}
+
+.index_content .index_item_panel{
+	background: rgba(190,255,190,0.8);
+	position: fixed;
+	z-index: 1000;
+	width: 1000px;
+	height: 400px;
+	left: 0;
+	top: 0;
+	display: none;
+	
+}
+
+.index_content .index_item_panel .index_item_panel_content{
+	padding: 25px 25px;
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.index_content .index_item_panel .index_item_panel_content .index_item_panel_comment{
+	resize: none;
+}
+
+/* header
+{
+    background: red;
+}
+#content
+{
+    background: green;
+}
+footer
+{
+    background: blue;
+} */
+
+/* 覆蓋base.css */
+#content {
+    background: initial;
+}
+#main_box {
+    background: initial;
+}
+
+

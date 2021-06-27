@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* https://codepen.io/devstreak/pen/dMYgeO */
+.flat_accordion::-webkit-scrollbar {    
+    width: 5px;
+    height: 50px;
+}
+.flat_accordion::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin:80px 0 5px 0;
+}
+.flat_accordion::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: rgb(219,219,219);
+}
+.flat_accordion::-webkit-scrollbar-thumb:hover {
+    background: rgb(239,239,239);
+}
+.flat_accordion::-ms-scrollbar {
+    width: 5px;
+    height: 50px;
+}
+.flat_accordion::-ms-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin:80px 0 5px 0;
+}
+.flat_accordion::-ms-scrollbar-thumb {
+    -webkit-border-radius: 4px; 
+    border-radius: 4px;
+    background: rgb(219,219,219);
+}
+
+
+.flat_accordion { float: left; position: relative; width: 96%; margin:0px 2%; padding: 0; overflow-x:auto;background: #404344; padding: 0px; height: auto;}
+.flat_accordion .item_box { width: auto; margin:0 50px;}
+.flat_accordion .content { position: relative; margin: 0 auto;}
+.flat_accordion .content ul{margin:0; padding: 0;}
+.flat_accordion .content ul li { float: left; display: block; height: 610px; margin: 0; padding: 0; top: 0; color: #fff; cursor: pointer; position: relative;}
+.flat_accordion .content .fold { width: 100px; height: 100%; text-align: center; position: absolute; top: 0px; left: 0px;}
+.flat_accordion .content .fold img { display: block; margin: 80px auto; width:80px; height:160px;}
+.flat_accordion .content .fold .txt { font-size: 24px; display: block; width: 25px; font-weight: normal; margin: 0px 38px; line-height: 25px;}
+.flat_accordion .content .unfold { width: 680px; height: 100%; display: none; position: absolute; top: 0px; left: 0px;}
+.flat_accordion .content .unfold dl { margin: 50px 60px 0px 60px;}
+.flat_accordion .content .unfold dt { width: 100%; text-align: center; margin-bottom: 40px;}
+.flat_accordion .content .unfold dd { font-size: 18px; line-height: 35px;}
+.flat_accordion .content .unfold dd b { font-size: 30px; font-weight: normal;}
+.flat_accordion .content .unfold dd b a { font-size: 14px; display: inline-block; color: #fff; margin-left: 40px;}

@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+/* header
+{
+    background: red;
+}
+#content
+{
+    background: green;
+}
+footer
+{
+    background: blue;
+} */
+/* flex div置中方法 */
+/* http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html */
+.login_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: red; */
+    width:100vw;
+    height:100vh;
+}
+
+.login_box .login_content{
+    width: 700px;
+    height: 600px;
+}
+
+.login_box .login_form{
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    
+
+
+}
+
+.login_box h1{
+	text-align:center;
+	color:#e6e6e6;
+	font-size:120px;
+	margin:50px 0 10px 0;
+	font-weight:normal;
+}
+.login_box h2{
+	text-align:center;
+	color:#333;
+	font-size:20px;
+	margin-bottom:20px;
+	font-weight:normal;
+}
+
+.login_box span{
+    background:#eee;
+	height:40px;
+	width:40px;
+	text-align:center;
+	line-height:33px;
+	/* border-right:1px solid #ccc; */
+	border-radius:3px 0 0 3px;
+	position: relative;
+	left:1px;
+	top:1px;
+}
+
+.login_box .g-recaptcha{
+    margin: 15px 15px;
+}
+
+
+
+
+
+/* 覆蓋base.css */
+#content {
+    background: initial;
+}
+#main_box {
+    background: initial;
+}
+
+

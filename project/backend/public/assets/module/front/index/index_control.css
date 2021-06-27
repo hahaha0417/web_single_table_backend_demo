@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+/*
+{{-- 原始 : hahaha --}}
+{{-- 維護 :  --}}
+{{-- 指揮 :  --}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+{{-- 決定 : name --}}
+{{-- 
+    ----------------------------------------------------------------------------
+    說明 : 
+    ----------------------------------------------------------------------------   
+    
+    ----------------------------------------------------------------------------
+--}}
+{{-- ---------------------------------------------------------------------------------------------- --}}
+*/
+
+.index_control_container{
+    background: yellow;
+    position: relative;
+    width: 600px;
+    height: 240px;
+    /* 預設不顯示區塊 */
+    display: none;
+    float: left;   
+}
+.index_control_button_page{
+    background: green;
+    position: relative;
+    width: 600px;
+    height: 60px;
+    display: block;
+    float: left; 
+    
+}
+.index_control_button_page .index_control_button{
+    /* background: yellow; */
+    display: block;
+    margin: 0 auto;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    position: relative;
+    float: left;   
+    opacity: 1; 
+}
+.index_control_page{
+    background: red;
+    position: relative;
+    width: 600px;
+    height: 180px;
+    display: block;
+    float: left;    
+}
+.index_control_page .nav_button{
+    display: block;
+    margin: 0 auto;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    position: relative;
+    left: 200px;
+    float: left;
+    opacity: 1;
+}
+.index_control_page .content{
+    display: block;
+    margin: 0 auto;
+    background: green;  
+    position: relative;  
+    float: left;
+}
+.index_control_page .content .left_button{
+    float: left;
+    display: block;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    opacity: 1;
+}
+.index_control_page .content .main_box_div{
+    float: left;
+    display: block;
+}
+.index_control_page .content .main_button{
+    float: left;
+    display: block;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    opacity: 1;
+}
+.index_control_page .content .right_button{
+    float: left;
+    display: block;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    opacity: 1;
+}
+.index_control_page .tail_button{
+    display: block;
+    left: 200px;
+    margin: 0 auto;
+    text-align:center;
+    line-height:50px;
+    width: 200px;
+    height: 60px;
+    position: relative;
+    float: left;
+    opacity: 1;
+}

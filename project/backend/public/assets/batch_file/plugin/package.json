@@ -1,0 +1,34 @@
+{
+  "name": "plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^4.5.3",
+    "ckeditor4": "^4.15.1",
+    "ckeditor5": "^23.1.0",
+    "jquery": "^3.5.1",
+    "jquery-autocomplete": "^1.2.8",
+    "jquery-file-upload": "^4.0.11",
+    "jquery-popover": "0.0.4",
+    "jquery-slimscroll": "^1.3.8",
+    "jquery-tooltip": "^0.2.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1",
+    "jquery-ui-themes": "^1.12.0",
+    "labelauty": "^1.1.3",
+    "layerui": "^3.1.1",
+    "lazyload": "^2.0.0-rc.2",
+    "npm-modernizr": "^2.8.3",
+    "owl.carousel": "^2.3.4",
+    "slider-pro": "^1.5.0",
+    "slim-scroll": "^1.3.18"
+  }
+}
