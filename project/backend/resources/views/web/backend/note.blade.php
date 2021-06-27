@@ -3,11 +3,11 @@
 {{-- 指揮 :  --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
 {{-- 決定 : name --}}
-{{-- 
+{{--
     ----------------------------------------------------------------------------
-    說明 : 
-    ----------------------------------------------------------------------------   
-    
+    說明 :
+    ----------------------------------------------------------------------------
+
     ----------------------------------------------------------------------------
 --}}
 {{-- ---------------------------------------------------------------------------------------------- --}}
@@ -22,7 +22,7 @@
 
         @include('web.common.main_script')
         @include('web.common.sub_script')
-                
+
         @include('web.common.main_css')
         @include('web.common.sub_css')
 
@@ -30,12 +30,12 @@
         <script src="{{\p_ha::Assets("web/backend/index.js")}}"></script>
         <script src="{{\p_ha::Assets('libraries/common/library/ui/doc.js')}}" ></script>
         <script src="{{\p_ha::Assets('libraries/common/library/ui/iframe.js')}}" ></script>
-        
+
         <script>
-            $(function(){    
-                    
+            $(function(){
+
             });
-            
+
         </script>
 
         <style>
@@ -46,46 +46,46 @@
                 padding: 0;
                 max-width: 100%;
             }
-            
+
         </style>
         {{--  基於現在瀏覽器下載是並行的，因此程式碼檔案太多並不會嚴重影響效能，因此盡可能的拆成分散式模組  --}}
-        
-        
-        
+
+
+
     </head>
-    <body style="background:rgba(190, 190, 190, 1);">            
+    <body style="background:rgba(190, 190, 190, 1);">
         <div style="background:rgba(190,255,190,1);">
                 <hr />
                 <h1>註解</h1>
                 <hr />
             </div>
             <br />
-    
+
             {{-- <div style="background:rgba(255,190,190,1);">
                 <hr />
                 <h1>Node</h1>
                 <hr />
             </div>
             <br /> --}}
-    
+
             {{--  例 : Index  --}}
             {{--  Cover 封面頁  --}}
             {{--  Carousel 輪播圖頁  --}}
             {{--  Item 項目頁        --}}
             {{--  由於小項目，是否寫在一頁都可以         --}}
-    
+
             {{--  基本上<a>的target原則上使用下面規則  --}}
             {{--  目錄階段 : 顯示在父頁面(_parent)及本頁面(_self)  --}}
             {{--  內部鏈結 : 顯示在本頁不同位置頁面(#XXX)  --}}
             {{--  -- https://cnzhx.net/blog/html-links/  --}}
             {{--  編輯階段 : 顯示在新頁面(_blank)  --}}
-    
+
             {{--  Root  --}}
-            {{-- <div>            
+            {{-- <div>
                 <div id="root_index" style="background:rgba(190,255,190,1);">
                     <hr />
                     <div style="margin-left:20px;">
-                        
+
                         1. 每頁的Title整併到Global統一管理<br>
                         <div style="position:relative;">
                             <img width="800px" height="400px" src="{{url("image/backend/global/title.png")}}" />
@@ -96,13 +96,33 @@
                 </div>
             </div> --}}
         </div>
+        {{-- ------------------------------------------------------------------------------ --}}
+        <script>
+
+            $(function(){
+                if($(parent.document) && $(parent.document).find(".content_frame"))
+                {
+                    var iframe_ = $($(parent.document) && $(parent.document).find(".content_frame"));
+                    $.each(iframe_, function(key, value){
+                        value.onload = function(){
+                            let ui_frame_ = new hahaha_ui_iframe;
+                            ui_frame_.set_parent_iframe_height_by_id($(value).attr("id"));
+                            iframe_.loaded = 1;
+                        };
+                    });
+
+                    $(window).resize(function(){
+                        $.each(iframe_, function(key, value){
+                            let ui_frame_ = new hahaha_ui_iframe;
+                            ui_frame_.set_parent_iframe_height_by_id($(value).attr("id"), false);
+                        });
+
+                    });
+                }
+            });
+
+        </script>
+        {{-- ------------------------------------------------------------------------------ --}}
     </body>
-    <script>
-        $(function(){
-             
-                            
-        });
-        
-    </script>
 </html>
 

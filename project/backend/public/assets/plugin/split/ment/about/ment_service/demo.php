@@ -3,7 +3,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 <link rel="stylesheet" href="{{asset("assets/plugin_split/ment/about/ment_service/ment_service.css")}}">
-<script src="{{asset("assets/plugin_split/ment/about/ment_service/ment_service.js")}}"></script>  
+<script src="{{asset("assets/plugin_split/ment/about/ment_service/ment_service.js")}}"></script>
 <article class="ment_service">
     <div class="container">
         <div class="head">
@@ -55,6 +55,6 @@
     <div class="bot-l"></div>
     <div class="anis-1"></div>
     <div class="anis-2"></div>
-    <div class="item-1"><img data-src="/assets/plugin_split/ment/about/ment_service/image/index_serv_ite1_1.png" src="/assets/plugin_split/ment/about/ment_service/image/blank.svg" alt="*" class="lazy-ite-1 img-responsive"></div>
-    <div class="item-2"><img data-src="/assets/plugin_split/ment/about/ment_service/image/index_serv_ite2_1.png" src="/assets/plugin_split/ment/about/ment_service/image/blank.svg" alt="*" class="lazy-ite-2 img-responsive"></div>
+    <div class="item-1"><img src="/assets/plugin_split/ment/about/ment_service/image/index_serv_ite1_1.png" alt="*" class="lazy-ite-1 img-responsive"></div>
+    <div class="item-2"><img src="/assets/plugin_split/ment/about/ment_service/image/index_serv_ite2_1.png" alt="*" class="lazy-ite-2 img-responsive"></div>
 </article>
